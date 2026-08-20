@@ -321,8 +321,14 @@ function lineChart(series, opts) {
   const sets = (isMulti(series) ? series : [series]).map((p) => decimate(p)).filter((p) => p.length);
   if (!sets.length) return '<p class="empty">No observations in this range.</p>';
 
-  const W = 1000, H = height;
-  const m = { t: 18, r: 14, b: 26, l: 58 };
+  // The viewBox is sized to roughly the CSS pixels it will occupy, so one SVG
+  // unit is about one screen pixel and a 10px axis label renders at 10px. A
+  // fixed 1000-unit box looks right on a desktop and shrinks the type to
+  // three pixels on a phone, which is the same as not drawing it.
+  const W = opts.width || Math.min(1000, Math.max(340, Math.round(window.innerWidth * 0.9)));
+  const narrow = W < 700;
+  const H = narrow ? Math.round(height * 0.78) : height;
+  const m = { t: 18, r: 14, b: 26, l: narrow ? 42 : 58 };
   const iw = W - m.l - m.r, ih = H - m.t - m.b;
 
   const allX = sets.reduce((a, s) => a.concat(s.map((p) => Date.parse(p[0]))), []);
@@ -358,7 +364,10 @@ function lineChart(series, opts) {
 
   const years = [];
   const span = (x1 - x0) / 31536000000;
-  const stepY = span > 40 ? 10 : span > 18 ? 5 : span > 8 ? 2 : 1;
+  // Roughly one label per 90 units of width, rounded up the 1/2/5/10 ladder,
+  // so the year axis does not overprint itself on a narrow screen.
+  const wantYears = Math.max(2, Math.floor(iw / (narrow ? 60 : 90)));
+  const stepY = [1, 2, 5, 10, 25].find((k) => span / k <= wantYears) || 50;
   const startY = new Date(x0).getUTCFullYear();
   for (let y = Math.ceil(startY / stepY) * stepY; ; y += stepY) {
     const t = Date.UTC(y, 0, 1);
@@ -378,7 +387,7 @@ function lineChart(series, opts) {
     .map((e) => {
       const x = e.x.toFixed(1);
       const label = (e.label || "").slice(0, 22);
-      const room = e.x - lastLabelX > 42;
+      const room = e.x - lastLabelX > (W / 1000) * 42;
       if (label && room) lastLabelX = e.x;
       return (
         '<line class="event" x1="' + x + '" y1="' + m.t + '" x2="' + x + '" y2="' + (m.t + ih) + '"/>' +
@@ -407,6 +416,7 @@ function lineChart(series, opts) {
   return (
     '<svg class="chart" id="' + id + '" viewBox="0 0 ' + W + " " + H + '" ' +
     'style="--len:' + Math.round(iw * 1.6) + '" data-x0="' + x0 + '" data-x1="' + x1 + '" ' +
+    'data-w="' + W + '" data-l="' + m.l + '" ' +
     'role="img" aria-label="Time series chart, ' + sets[0].length + ' points">' +
     guides.join("") + zero + years.join("") + marks + paths +
     '<g class="hover"></g></svg>'
@@ -419,8 +429,11 @@ function wireHover(svg, series, units, readoutEl, labels) {
   if (!svg || !readoutEl) return;
   const data = (isMulti(series) ? series : [series]).map((s) => decimate(s));
   const x0 = +svg.dataset.x0, x1 = +svg.dataset.x1;
-  const m = { l: 58, r: 14, t: 18, b: 26 };
-  const iw = 1000 - m.l - m.r;
+  // The chart chose its own viewBox width and left margin; read them back
+  // rather than assume, or the crosshair lands in the wrong place.
+  const W = +svg.dataset.w || 1000;
+  const m = { l: +svg.dataset.l || 58, r: 14, t: 18, b: 26 };
+  const iw = W - m.l - m.r;
   const vbH = +(svg.getAttribute("viewBox") || "0 0 1000 300").split(/\s+/)[3];
   const g = svg.querySelector(".hover");
   const base = readoutEl.innerHTML;
@@ -428,7 +441,7 @@ function wireHover(svg, series, units, readoutEl, labels) {
 
   const move = (ev) => {
     const box = svg.getBoundingClientRect();
-    const rel = ((ev.clientX - box.left) / box.width) * 1000;
+    const rel = ((ev.clientX - box.left) / box.width) * W;
     const t = x0 + ((rel - m.l) / iw) * (x1 - x0);
     const picks = data.map((sr) => {
       let best = sr[0], bestD = Infinity;
