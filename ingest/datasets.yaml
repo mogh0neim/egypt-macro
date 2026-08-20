@@ -1,0 +1,443 @@
+# Registry of every historical-data endpoint on cbe.org.eg.
+#
+# shape:
+#   wide         date column + one column per measure -> one series per measure
+#   long_by_key  date + a key column (e.g. Currency) + measure columns
+#   records      one row per event (an auction); series are derived downstream
+#
+# expect_min_rows guards against a silent upstream breakage: the fetch fails
+# loudly rather than committing a truncated series. Baselines were measured
+# 2026-08-20 and are set slightly below the observed count.
+#
+# zero_is_missing: CBE prints 0.000% on days it published no rate. A zero rate
+# is not an observation -- kept, it would put a spike to the floor in every
+# chart and destroy the series minimum. Volume columns set zero_ok on the
+# column, because no trades genuinely is zero.
+#
+# Suffixes are quoted where they could be read as something else: YAML 1.1
+# treats a bare ON as the boolean true, which silently produced series called
+# EG.IBK.D.True until it was caught.
+#
+# tables: some responses carry several panels. Auctions split one table per
+# tenor (concatenated); the interbank endpoints return rates then volumes,
+# which are different measures and are declared here. A response with more
+# than one table and no `tables:` entry is an error, not a guess.
+
+currencies:
+  US Dollar: USD
+  Euro: EUR
+  Pound Sterling: GBP
+  Canadian Dollar: CAD
+  Danish Krone: DKK
+  Norwegian Krone: NOK
+  Swedish Krona: SEK
+  Swiss Franc: CHF
+  Japanese Yen 100: JPY100
+  Saudi Riyal: SAR
+  Kuwaiti Dinar: KWD
+  UAE Dirham: AED
+  Australian Dollar: AUD
+  Bahraini Dinar: BHD
+  Omani Riyal: OMR
+  Qatari Riyal: QAR
+  Jordanian Dinar: JOD
+  Chinese Yuan: CNY
+  Chinese yuan: CNY
+
+datasets:
+
+  # ---------- foreign exchange ----------
+
+  - key: fx_official
+    zero_is_missing: true
+    path: /en/economic-research/statistics/cbe-exchange-rates/historical-data
+    title_en: CBE Official Exchange Rates
+    family: fx
+    freq: D
+    shape: long_by_key
+    date_col: Date
+    key_col: Currency
+    key_map: currencies
+    value_cols: [Buy, Sell]
+    id_pattern: EG.FX.OFF.{key}.{col}
+    unit: EGP per unit of foreign currency
+    select: all
+    expect_min_rows: 90000
+
+  - key: fx_market
+    zero_is_missing: true
+    path: /en/economic-research/statistics/exchange-rates/historical-data
+    title_en: Average Market Exchange Rates
+    family: fx
+    freq: D
+    shape: long_by_key
+    date_col: Date
+    key_col: Currency
+    key_map: currencies
+    value_cols: [Buy, Sell]
+    id_pattern: EG.FX.MKT.{key}.{col}
+    unit: EGP per unit of foreign currency
+    select: all
+    expect_min_rows: 24000
+
+  - key: fx_interbank
+    zero_is_missing: true
+    path: /en/markets/foreign-exchange/foreign-exchange-historical-data
+    title_en: Interbank Foreign Exchange Weighted Average
+    family: fx
+    freq: D
+    shape: wide
+    date_col: Date
+    id_pattern: EG.FX.IBK.WAVG
+    columns:
+      Weighted Avg.: {suffix: WAVG, unit: EGP per USD}
+    expect_min_rows: 5200
+
+  # ---------- money market ----------
+
+  - key: interbank_daily
+    zero_is_missing: true
+    path: /en/economic-research/statistics/daily-interbank-rates-and-volumes/historical-data
+    title_en: Daily Interbank Rates and Volumes
+    family: rates
+    freq: D
+    shape: wide
+    date_col: Date
+    # The response carries two panels: rates first, then traded volumes.
+    tables:
+      - id_pattern: EG.IBK.D.{suffix}
+        unit: percent per annum
+        columns:
+          Overnight: {suffix: "ON"}
+          Less than a Week: {suffix: LT1W}
+          One Week: {suffix: W1}
+          Less than a Month: {suffix: LT1M}
+          One Month: {suffix: M1}
+          More than a Month: {suffix: GT1M}
+      - id_pattern: EG.IBK.D.VOL.{suffix}
+        unit: EGP million
+        columns:
+          Overnight: {suffix: "ON", zero_ok: true}
+          Less than a Week: {suffix: LT1W, zero_ok: true}
+          One Week: {suffix: W1, zero_ok: true}
+          Less than a Month: {suffix: LT1M, zero_ok: true}
+          One Month: {suffix: M1, zero_ok: true}
+          More than a Month: {suffix: GT1M, zero_ok: true}
+          Total Value: {suffix: TOTAL, zero_ok: true}
+    expect_min_rows: 7800
+
+  - key: interbank_biweekly
+    zero_is_missing: true
+    path: /en/economic-research/statistics/bi-weekly-interbank-rates-and-volumes/historical-data
+    title_en: Bi-Weekly Interbank Rates and Volumes
+    family: rates
+    freq: BW
+    shape: wide
+    date_col: Period
+    date_kind: period_range   # "04/08/2026 - 17/08/2026", dated to the period end
+    select: all               # the select lists the maintenance periods
+    tables:
+      - id_pattern: EG.IBK.BW.{suffix}
+        unit: percent per annum
+        columns:
+          Overnight: {suffix: "ON"}
+          Less than a Week: {suffix: LT1W}
+          One Week: {suffix: W1}
+          Less than a Month: {suffix: LT1M}
+          One Month: {suffix: M1}
+          More than a Month: {suffix: GT1M}
+      - id_pattern: EG.IBK.BW.VOL.{suffix}
+        unit: EGP million
+        columns:
+          Overnight: {suffix: "ON", zero_ok: true}
+          Less than a Week: {suffix: LT1W, zero_ok: true}
+          One Week: {suffix: W1, zero_ok: true}
+          Less than a Month: {suffix: LT1M, zero_ok: true}
+          One Month: {suffix: M1, zero_ok: true}
+          More than a Month: {suffix: GT1M, zero_ok: true}
+          Total Value: {suffix: TOTAL, zero_ok: true}
+    expect_min_rows: 800
+
+  - key: conia
+    zero_is_missing: true
+    path: /en/economic-research/statistics/conia/historical-data
+    title_en: Cairo Overnight Index Average (CONIA)
+    family: rates
+    freq: D
+    shape: wide
+    date_col: Date
+    date_kind: dmy_text       # "18 Aug 2026"
+    id_pattern: EG.CONIA.{suffix}
+    columns:
+      O/N Rate: {suffix: "ON.RATE", unit: percent per annum}
+      Volume (EGP MIO): {suffix: "ON.VOL", unit: EGP million, zero_ok: true}
+    expect_min_rows: 2300
+
+  - key: conia_index
+    zero_is_missing: true
+    path: /en/economic-research/statistics/conia/index-historical-data
+    title_en: CONIA Compounded Rates and Index
+    family: rates
+    freq: D
+    shape: wide
+    date_col: Date
+    date_kind: dmy_text
+    id_pattern: EG.CONIA.IDX.{suffix}
+    columns:
+      30-day Rate: {suffix: 30D, unit: percent per annum}
+      90-day Rate: {suffix: 90D, unit: percent per annum}
+      180-day Rate: {suffix: 180D, unit: percent per annum}
+      CONIA Index: {suffix: LEVEL, unit: index}
+    expect_min_rows: 2300
+
+  # ---------- policy rates ----------
+
+  - key: discount_rate
+    zero_is_missing: true
+    path: /en/economic-research/statistics/discount-rates/historical-data
+    title_en: CBE Discount Rate
+    family: policy
+    freq: IRR
+    shape: wide
+    date_col: Date
+    id_pattern: EG.RATE.DISCOUNT
+    columns:
+      Rate: {suffix: DISCOUNT, unit: percent per annum}
+    expect_min_rows: 110
+
+  - key: corridor
+    zero_is_missing: true
+    path: /en/economic-research/statistics/overnight-deposit-and-lending-rate/historical-data
+    title_en: Overnight Deposit and Lending Rates (the corridor)
+    family: policy
+    freq: IRR
+    shape: wide
+    date_col: Date
+    date_kind: dmy_text
+    id_pattern: EG.RATE.{suffix}
+    unit: percent per annum
+    columns:
+      Overnight Deposit Rate: {suffix: "ON.DEP"}
+      Overnight Lending Rate: {suffix: "ON.LEND"}
+    expect_min_rows: 30
+
+  - key: main_operation
+    zero_is_missing: true
+    path: /en/economic-research/statistics/open-market-operations/historical-data
+    title_en: Main Operation Rate
+    family: policy
+    freq: IRR
+    shape: wide
+    date_col: Date
+    date_kind: dmy_text
+    id_pattern: EG.RATE.MAIN
+    columns:
+      Fixed rate: {suffix: MAIN, unit: percent per annum}
+    expect_min_rows: 30
+
+  - key: retail_rates
+    zero_is_missing: true
+    path: /en/economic-research/statistics/monthly-interest-rates/historical-data
+    title_en: Monthly Deposit and Lending Interest Rates
+    family: rates
+    freq: M
+    shape: wide
+    date_col: Month
+    date_kind: mon_year       # "Jun - 2026"
+    id_pattern: EG.RATE.RETAIL.{suffix}
+    unit: percent per annum
+    columns:
+      "EGP Deposits - > 1 Month <= 3 Months": {suffix: DEP.1M3M}
+      "EGP Deposits - > 3 Months <= 6 Months": {suffix: DEP.3M6M}
+      "EGP Deposits - > 6 Months <= 1 Year": {suffix: DEP.6M1Y}
+      "EGP Loans - <= 1 Year (Corporate)": {suffix: LOAN.CORP.LT1Y}
+    expect_min_rows: 190
+
+  # ---------- prices ----------
+
+  - key: inflation
+    path: /en/economic-research/statistics/inflation-rates/historical-data
+    title_en: Consumer Price Inflation
+    family: prices
+    freq: M
+    shape: wide
+    date_col: Date
+    date_kind: mon_year_text  # "Jul 2026"
+    unit: percent
+    variants:
+      - {radio: yy, id_pattern: "EG.CPI.{suffix}.YOY"}
+      - {radio: mm, id_pattern: "EG.CPI.{suffix}.MOM"}
+    columns:
+      Headline (y/y): {suffix: HDL}
+      Core (y/y): {suffix: CORE}
+      Regulated Items (y/y): {suffix: REG}
+      Fruits and Vegetables (y/y): {suffix: FRVEG}
+      Headline (m/m): {suffix: HDL}
+      Core (m/m): {suffix: CORE}
+      Regulated Items (m/m): {suffix: REG}
+      Fruits and Vegetables (m/m): {suffix: FRVEG}
+    expect_min_rows: 300
+
+  # ---------- government securities ----------
+
+  - key: tbills_secondary
+    zero_is_missing: true
+    path: /en/economic-research/statistics/egp-t-bills-secondary-market/historical-data
+    title_en: EGP T-Bills Secondary Market
+    family: govt
+    freq: D
+    shape: wide
+    date_col: Tenor - Trade Date
+    id_pattern: EG.TB.SEC.{suffix}
+    columns:
+      "1 Month (Up to 30 Days) - W. A. Yield %": {suffix: 1M.YLD, unit: percent per annum}
+      "1 Month (Up to 30 Days) - Volume in EGP mio": {suffix: 1M.VOL, unit: EGP million, zero_ok: true}
+      "2 Months (31 - 60 Days) - W. A. Yield %": {suffix: 2M.YLD, unit: percent per annum}
+      "2 Months (31 - 60 Days) - Volume in EGP mio": {suffix: 2M.VOL, unit: EGP million, zero_ok: true}
+      "3 Months (61 - 91 Days) - W. A. Yield %": {suffix: 3M.YLD, unit: percent per annum}
+      "3 Months (61 - 91 Days) - Volume in EGP mio": {suffix: 3M.VOL, unit: EGP million, zero_ok: true}
+      "6 Months (92 - 182 Days) - W. A. Yield %": {suffix: 6M.YLD, unit: percent per annum}
+      "6 Months (92 - 182 Days) - Volume in EGP mio": {suffix: 6M.VOL, unit: EGP million, zero_ok: true}
+      "9 Months (183 - 273 Days) - W. A. Yield %": {suffix: 9M.YLD, unit: percent per annum}
+      "9 Months (183 - 273 Days) - Volume in EGP mio": {suffix: 9M.VOL, unit: EGP million, zero_ok: true}
+      "12 Months (274 - 365 Days) - W. A. Yield %": {suffix: 12M.YLD, unit: percent per annum}
+      "12 Months (274 - 365 Days) - Volume in EGP mio": {suffix: 12M.VOL, unit: EGP million, zero_ok: true}
+    expect_min_rows: 2300
+
+  # ---------- auctions (record tables) ----------
+
+  - key: auction_tbills_egp
+    path: /en/auctions/egp-t-bills/historical-data
+    title_en: EGP Treasury Bill Auctions
+    family: auctions
+    shape: records
+    date_col: Issue Date
+    expect_min_rows: 4000
+
+  - key: auction_tbonds_fixed
+    path: /en/auctions/egp-t-bonds-fixed-coupon/historical-data
+    title_en: EGP Fixed-Coupon Treasury Bond Auctions
+    family: auctions
+    shape: records
+    date_col: Issue Date
+    expect_min_rows: 1300
+
+  - key: auction_tbonds_frn
+    path: /en/auctions/egp-t-bonds-frn/historical-data
+    title_en: EGP Floating-Rate Note Auctions
+    family: auctions
+    shape: records
+    date_col: Issue Date
+    expect_min_rows: 100
+
+  - key: auction_tbonds_zero
+    path: /en/auctions/egp-t-bonds-zero-coupon/historical-data
+    title_en: EGP Zero-Coupon Treasury Bond Auctions
+    family: auctions
+    shape: records
+    date_col: Issue Date
+    expect_min_rows: 100
+
+  - key: auction_tbills_usd
+    path: /en/auctions/usd-t-bills/historical-data
+    title_en: USD Treasury Bill Auctions
+    family: auctions
+    shape: records
+    date_col: Issue Date
+    expect_min_rows: 80
+
+  - key: auction_tbills_eur
+    path: /en/auctions/eur-t-bills/historical-data
+    title_en: EUR Treasury Bill Auctions
+    family: auctions
+    shape: records
+    date_col: Issue Date
+    expect_min_rows: 20
+
+  - key: auction_sukuk_fixed
+    path: /en/auctions/egp-fixed-sukuk/egp-fixed-sukuk-historical-data
+    title_en: EGP Fixed-Return Sukuk Auctions
+    family: auctions
+    shape: records
+    date_col: Issue Date
+    expect_min_rows: 10
+
+  - key: auction_sukuk_floating
+    path: /en/auctions/egp-floating-sukuk/egp-floating-sukuk-historical-data
+    title_en: EGP Floating-Return Sukuk Auctions
+    family: auctions
+    shape: records
+    date_col: Issue Date
+    expect_min_rows: 0        # no auctions held yet
+
+  - key: auction_retail_bonds
+    path: /en/auctions/egp-retail-bonds/historical-data
+    title_en: EGP Retail Bond Auctions
+    family: auctions
+    shape: records
+    date_col: Issue Date
+    expect_min_rows: 0        # no auctions held yet
+
+  - key: auction_mof_notes
+    path: /en/auctions/egp-mof-notes/historical-data
+    title_en: EGP Ministry of Finance Notes
+    family: auctions
+    shape: records
+    date_col: Date
+    expect_min_rows: 1
+
+  - key: auction_repo_fixed
+    path: /en/auctions/fixed-rate-repo/historical-data
+    title_en: Fixed-Rate Repo Auctions
+    family: auctions
+    shape: records
+    date_col: Issue Date
+    expect_min_rows: 100
+
+  - key: auction_repo_variable
+    path: /en/auctions/variable-rate-repo/historical-data
+    title_en: Variable-Rate Repo Auctions
+    family: auctions
+    shape: records
+    date_col: Issue Date
+    expect_min_rows: 50
+
+  - key: auction_deposits_fixed
+    path: /en/auctions/fixed-rate-deposits/historical-data
+    title_en: Fixed-Rate Deposit Auctions
+    family: auctions
+    shape: records
+    date_col: Date
+    expect_min_rows: 550
+
+  - key: auction_deposits_variable
+    path: /en/auctions/variable-rate-deposits/historical-data
+    title_en: Variable-Rate Deposit Auctions
+    family: auctions
+    shape: records
+    date_col: Issue Date
+    expect_min_rows: 500
+
+  - key: auction_deposits_corridor
+    path: /en/auctions/corridor-linked-deposits/historical-data
+    title_en: Corridor-Linked Deposit Auctions
+    family: auctions
+    shape: records
+    date_col: Issue Date
+    expect_min_rows: 280
+
+  - key: auction_fx_regular
+    path: /en/auctions/regular-fx-auction/historical-data
+    title_en: Regular Foreign Exchange Auctions
+    family: auctions
+    shape: records
+    date_col: Date
+    expect_min_rows: 450
+
+  - key: auction_fx_exceptional
+    path: /en/auctions/exceptional-fx-auction/historical-data
+    title_en: Exceptional Foreign Exchange Auctions
+    family: auctions
+    shape: records
+    date_col: Date
+    expect_min_rows: 5

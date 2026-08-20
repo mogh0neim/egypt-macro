@@ -1,0 +1,65 @@
+# Phase 0 gate.
+#
+# cbe.org.eg sits behind an F5 WAF. It accepts browser-shaped requests from a
+# residential Egyptian IP, and rejects Anthropic's servers outright. Whether it
+# accepts a GitHub-hosted runner (Azure IP space) is the question that decides
+# the whole ingestion architecture, so it gets its own workflow and runs before
+# anything else is built on top.
+#
+# Run it from the Actions tab. A green check means the daily scrape can live on
+# GitHub for free. A red X means we walk the fallback ladder: Cloudflare
+# Workers -> a proxy -> a small VPS -> a self-hosted runner.
+
+name: probe-cbe-connectivity
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Weekly, so we notice if CBE starts blocking us after the fact.
+    - cron: "17 6 * * 1"
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Report runner egress IP
+        run: |
+          echo "Runner public IP: $(curl -s --max-time 10 https://api.ipify.org || echo unknown)"
+
+      - name: Probe the CBE exchange-rates page
+        id: probe
+        run: python ingest/cbe_client.py
+
+      - name: Probe a historical-data POST
+        run: |
+          python - <<'PY'
+          import sys
+          sys.path.insert(0, "ingest")
+          from cbe_client import CBEClient
+          from parse_table import parse_table
+
+          client = CBEClient(delay=0)
+          path = "/en/economic-research/statistics/discount-rates/historical-data"
+          spec = client.form_spec(path)
+          body = client.historical(spec, "01/01/1980", "31/12/2035")
+          cols, rows = parse_table(body.decode("utf-8", "replace"))
+          print(f"columns: {cols}")
+          print(f"rows:    {len(rows)}")
+          assert len(rows) >= 100, f"expected >=100 discount-rate rows, got {len(rows)}"
+          print("POST endpoint reachable from this runner.")
+          PY
+
+      - name: Verdict
+        if: always()
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then
+            echo "::notice::CBE is reachable from GitHub-hosted runners. Daily scrape can run here."
+          else
+            echo "::error::CBE is NOT reachable from this runner. Fall back to Cloudflare Workers, a proxy, or a small VPS."
+          fi

@@ -1,0 +1,656 @@
+{
+ "generated": "2026-08-20",
+ "note": "FX events are detected from a >4.0% single-day move in EG.FX.OFF.USD.SELL. Labels are added by hand and preserved across regeneration.",
+ "fx_regimes": [
+  {
+   "from": "2005-01-01",
+   "to": "2016-11-02",
+   "label": "Managed peg"
+  },
+  {
+   "from": "2016-11-03",
+   "to": "2022-03-20",
+   "label": "Post-float managed rate"
+  },
+  {
+   "from": "2022-03-21",
+   "to": "2024-03-05",
+   "label": "Stepwise devaluations"
+  },
+  {
+   "from": "2024-03-06",
+   "to": null,
+   "label": "Post-Ras El Hekma float"
+  }
+ ],
+ "events": [
+  {
+   "date": "2006-08-26",
+   "type": "fx_move",
+   "label": null,
+   "direction": "appreciation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 5.751,
+    "to": 5.3785,
+    "pct_change": -6.48,
+    "previous_date": "2006-08-24"
+   }
+  },
+  {
+   "date": "2006-08-27",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 5.3785,
+    "to": 5.7508,
+    "pct_change": 6.92,
+    "previous_date": "2006-08-26"
+   }
+  },
+  {
+   "date": "2012-04-28",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 6.0567,
+    "to": 7.0,
+    "pct_change": 15.57,
+    "previous_date": "2012-04-26"
+   }
+  },
+  {
+   "date": "2012-04-29",
+   "type": "fx_move",
+   "label": null,
+   "direction": "appreciation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 7.0,
+    "to": 6.0571,
+    "pct_change": -13.47,
+    "previous_date": "2012-04-28"
+   }
+  },
+  {
+   "date": "2013-01-01",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 6.329,
+    "to": 6.8916,
+    "pct_change": 8.89,
+    "previous_date": "2012-12-31"
+   }
+  },
+  {
+   "date": "2013-01-02",
+   "type": "fx_move",
+   "label": null,
+   "direction": "appreciation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 6.8916,
+    "to": 6.379,
+    "pct_change": -7.44,
+    "previous_date": "2013-01-01"
+   }
+  },
+  {
+   "date": "2015-02-09",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 7.1501,
+    "to": 7.5401,
+    "pct_change": 5.45,
+    "previous_date": "2014-12-14"
+   }
+  },
+  {
+   "date": "2016-03-14",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 7.7401,
+    "to": 8.86,
+    "pct_change": 14.47,
+    "previous_date": "2016-03-13"
+   }
+  },
+  {
+   "date": "2016-11-03",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 8.79,
+    "to": 14.655,
+    "pct_change": 66.72,
+    "previous_date": "2016-11-02"
+   }
+  },
+  {
+   "date": "2016-11-06",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 14.655,
+    "to": 16.2222,
+    "pct_change": 10.69,
+    "previous_date": "2016-11-03"
+   }
+  },
+  {
+   "date": "2016-11-07",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 16.2222,
+    "to": 17.2632,
+    "pct_change": 6.42,
+    "previous_date": "2016-11-06"
+   }
+  },
+  {
+   "date": "2016-11-13",
+   "type": "fx_move",
+   "label": null,
+   "direction": "appreciation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 17.0738,
+    "to": 16.3122,
+    "pct_change": -4.46,
+    "previous_date": "2016-11-10"
+   }
+  },
+  {
+   "date": "2016-11-20",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 16.1351,
+    "to": 17.6519,
+    "pct_change": 9.4,
+    "previous_date": "2016-11-17"
+   }
+  },
+  {
+   "date": "2016-12-29",
+   "type": "fx_move",
+   "label": null,
+   "direction": "appreciation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 19.2065,
+    "to": 18.4108,
+    "pct_change": -4.14,
+    "previous_date": "2016-12-28"
+   }
+  },
+  {
+   "date": "2017-02-14",
+   "type": "fx_move",
+   "label": null,
+   "direction": "appreciation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 17.3519,
+    "to": 16.6281,
+    "pct_change": -4.17,
+    "previous_date": "2017-02-13"
+   }
+  },
+  {
+   "date": "2017-03-07",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 16.7205,
+    "to": 17.4611,
+    "pct_change": 4.43,
+    "previous_date": "2017-03-06"
+   }
+  },
+  {
+   "date": "2022-03-21",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 15.7786,
+    "to": 18.2884,
+    "pct_change": 15.91,
+    "previous_date": "2022-03-20"
+   }
+  },
+  {
+   "date": "2022-10-27",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 19.7673,
+    "to": 22.9986,
+    "pct_change": 16.35,
+    "previous_date": "2022-10-26"
+   }
+  },
+  {
+   "date": "2022-10-30",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 22.9986,
+    "to": 24.1353,
+    "pct_change": 4.94,
+    "previous_date": "2022-10-27"
+   }
+  },
+  {
+   "date": "2023-01-04",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 24.8056,
+    "to": 26.4853,
+    "pct_change": 6.77,
+    "previous_date": "2023-01-03"
+   }
+  },
+  {
+   "date": "2023-01-11",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 27.6983,
+    "to": 29.7631,
+    "pct_change": 7.45,
+    "previous_date": "2023-01-10"
+   }
+  },
+  {
+   "date": "2023-03-30",
+   "type": "mpc",
+   "label": "MPC Press Release 30 March 2023",
+   "decision": "hike",
+   "rates": {
+    "discount_rate": 18.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2023/03/30/16/00/mpc-press-release-30-march-2023"
+  },
+  {
+   "date": "2023-05-18",
+   "type": "mpc",
+   "label": "MPC Press Release 18 May 2023",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 18.25,
+    "lending_rate": 19.25,
+    "main_operation_rate": 18.75,
+    "discount_rate": 18.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2023/05/18/14/28/mpc-press-release-18-may-2023"
+  },
+  {
+   "date": "2023-06-22",
+   "type": "mpc",
+   "label": "MPC Press Release 22 June 2023",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 18.25,
+    "lending_rate": 19.25,
+    "main_operation_rate": 18.75,
+    "discount_rate": 18.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2023/06/22/17/52/mpc-press-release-22-june-2023"
+  },
+  {
+   "date": "2023-08-03",
+   "type": "mpc",
+   "label": "MPC Press Release 3 August 2023",
+   "decision": "hike",
+   "rates": {
+    "discount_rate": 19.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2023/08/03/14/12/mpc-press-release-3-august-2023"
+  },
+  {
+   "date": "2023-09-21",
+   "type": "mpc",
+   "label": "MPC Press Release 21 September 2023",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 19.25,
+    "lending_rate": 20.25,
+    "main_operation_rate": 19.75,
+    "discount_rate": 19.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2023/09/21/16/02/mpc-press-release-21-september-2023"
+  },
+  {
+   "date": "2023-11-02",
+   "type": "mpc",
+   "label": "MPC Press Release 2 November 2023",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 19.25,
+    "lending_rate": 20.25,
+    "main_operation_rate": 19.75,
+    "discount_rate": 19.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2023/11/02/16/16/mpc-press-release-2-november-2023"
+  },
+  {
+   "date": "2023-12-21",
+   "type": "mpc",
+   "label": "MPC Press Release 21 December 2023",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 19.25,
+    "lending_rate": 20.25,
+    "main_operation_rate": 19.75,
+    "discount_rate": 19.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2023/12/21/15/46/mpc-press-release-21-december-2023"
+  },
+  {
+   "date": "2024-02-01",
+   "type": "mpc",
+   "label": "MPC Press Release 1 February 2024",
+   "decision": "hike",
+   "rates": {
+    "discount_rate": 21.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2024/02/01/17/37/press-release-\u2013-february-1st,-2024"
+  },
+  {
+   "date": "2024-03-06",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 30.9586,
+    "to": 49.5686,
+    "pct_change": 60.11,
+    "previous_date": "2024-03-05"
+   }
+  },
+  {
+   "date": "2024-03-06",
+   "type": "mpc",
+   "label": "Special MPC Press Release 6 March 2024",
+   "decision": null,
+   "rates": {
+    "discount_rate": 27.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2024/03/06/05/42/special-mpc-press-release-6-march-2024"
+  },
+  {
+   "date": "2024-03-20",
+   "type": "mpc",
+   "label": "Press release The MPC meeting scheduled for 28 March 2024 has been cancelled",
+   "decision": null,
+   "rates": {},
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2024/03/20/11/52/press-release-the-mpc-meeting-scheduled-for-28-march-2024-has-been-cancelled"
+  },
+  {
+   "date": "2024-05-23",
+   "type": "mpc",
+   "label": "MPC Press Release 23 May 2024",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 27.25,
+    "lending_rate": 28.25,
+    "main_operation_rate": 27.75,
+    "discount_rate": 27.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2024/05/23/15/13/mpc-press-release-23-may-2024"
+  },
+  {
+   "date": "2024-07-18",
+   "type": "mpc",
+   "label": "MPC Press Release 18 July 2024",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 27.25,
+    "lending_rate": 28.25,
+    "main_operation_rate": 27.75,
+    "discount_rate": 27.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2024/07/18/14/06/mpc-press-release-18-july-2024"
+  },
+  {
+   "date": "2024-09-05",
+   "type": "mpc",
+   "label": "MPC Press Release 5 September 2024",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 27.25,
+    "lending_rate": 28.25,
+    "main_operation_rate": 27.75,
+    "discount_rate": 27.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2024/09/05/12/26/mpc-press-release-5-september-2024"
+  },
+  {
+   "date": "2024-10-17",
+   "type": "mpc",
+   "label": "MPC Press Release 17 October 2024",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 27.25,
+    "lending_rate": 28.25,
+    "main_operation_rate": 27.75,
+    "discount_rate": 27.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2024/10/17/14/06/mpc-press-release-17-october-2024"
+  },
+  {
+   "date": "2024-11-21",
+   "type": "mpc",
+   "label": "MPC Press Release 21 November 2024",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 27.25,
+    "lending_rate": 28.25,
+    "main_operation_rate": 27.75,
+    "discount_rate": 27.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2024/11/21/15/00/mpc-press-release-21-november-2024"
+  },
+  {
+   "date": "2024-12-26",
+   "type": "mpc",
+   "label": "MPC Press Release 26 December 2024",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 27.25,
+    "lending_rate": 28.25,
+    "main_operation_rate": 27.75,
+    "discount_rate": 27.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2024/12/26/12/38/mpc-press-release-26-december-2024"
+  },
+  {
+   "date": "2025-02-20",
+   "type": "mpc",
+   "label": "MPC Press Release 20 February 2025",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 27.25,
+    "lending_rate": 28.25,
+    "main_operation_rate": 27.75,
+    "discount_rate": 27.75
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2025/02/20/15/32/mpc-press-release-20-february-2025"
+  },
+  {
+   "date": "2025-04-17",
+   "type": "mpc",
+   "label": "MPC Press Release 17 April 2025",
+   "decision": "cut",
+   "rates": {
+    "discount_rate": 25.5
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2025/04/17/15/09/mpc-press-release-17-april-2025"
+  },
+  {
+   "date": "2025-05-22",
+   "type": "mpc",
+   "label": "MPC Press Release 22 May 2025",
+   "decision": "cut",
+   "rates": {
+    "discount_rate": 24.5
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2025/05/22/14/05/mpc-press-release-22-may-2025"
+  },
+  {
+   "date": "2025-07-10",
+   "type": "mpc",
+   "label": "MPC Press Release 10 July 2025",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 24.0,
+    "lending_rate": 25.0,
+    "main_operation_rate": 24.5,
+    "discount_rate": 24.5
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2025/07/10/14/15/mpc-press-release-10-july-2025"
+  },
+  {
+   "date": "2025-08-28",
+   "type": "mpc",
+   "label": "MPC Press Release 28 August 2025",
+   "decision": "cut",
+   "rates": {
+    "discount_rate": 22.5
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2025/08/28/14/45/mpc-press-release-28-august-2025"
+  },
+  {
+   "date": "2025-10-02",
+   "type": "mpc",
+   "label": "MPC Press Release 2 October 2025",
+   "decision": "cut",
+   "rates": {
+    "discount_rate": 21.5
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2025/10/02/14/43/mpc-press-release-2-october-2025"
+  },
+  {
+   "date": "2025-11-20",
+   "type": "mpc",
+   "label": "MPC Press Release 20 November 2025",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 21.0,
+    "lending_rate": 22.0,
+    "main_operation_rate": 21.5,
+    "discount_rate": 21.5
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2025/11/20/15/59/mpc-press-release-20-november-2025"
+  },
+  {
+   "date": "2025-12-25",
+   "type": "mpc",
+   "label": "MPC Press Release 25 December 2025",
+   "decision": "cut",
+   "rates": {
+    "discount_rate": 20.5
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2025/12/25/15/51/mpc-press-release-25-december-2025"
+  },
+  {
+   "date": "2026-02-12",
+   "type": "mpc",
+   "label": "MPC Press Release 12 February 2026",
+   "decision": "cut",
+   "rates": {
+    "discount_rate": 19.5
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2026/02/12/15/02/mpc-press-release-12-february-2026"
+  },
+  {
+   "date": "2026-03-08",
+   "type": "fx_move",
+   "label": null,
+   "direction": "devaluation",
+   "evidence": {
+    "series": "EG.FX.OFF.USD.SELL",
+    "from": 50.2271,
+    "to": 52.238,
+    "pct_change": 4.0,
+    "previous_date": "2026-03-05"
+   }
+  },
+  {
+   "date": "2026-04-02",
+   "type": "mpc",
+   "label": "MPC Press Release 2 April 2026",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 19.0,
+    "lending_rate": 20.0,
+    "main_operation_rate": 19.5,
+    "discount_rate": 19.5
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2026/04/02/16/20/mpc-press-release-2-april-2026"
+  },
+  {
+   "date": "2026-05-21",
+   "type": "mpc",
+   "label": "MPC Press Release 21 May 2026",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 19.0,
+    "lending_rate": 20.0,
+    "main_operation_rate": 19.5,
+    "discount_rate": 19.5
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2026/05/21/17/38/mpc-press-release-21-may-2026"
+  },
+  {
+   "date": "2026-07-09",
+   "type": "mpc",
+   "label": "MPC Press Release 9 July 2026",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 19.0,
+    "lending_rate": 20.0,
+    "main_operation_rate": 19.5,
+    "discount_rate": 19.5
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2026/07/09/17/02/mpc-press-release-9-july-2026"
+  }
+ ]
+}

@@ -1,0 +1,4195 @@
+[
+ {
+  "series_id": "EG.CONIA.IDX.180D",
+  "title_en": "CONIA Compounded Rates and Index - 180-day Rate",
+  "family": "rates",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 2218,
+  "first_period": "2017-07-02",
+  "last_period": "2026-08-20",
+  "last": 20.6585,
+  "previous": 20.6592,
+  "highest": {
+   "value": 29.4336,
+   "period": "2025-04-22"
+  },
+  "lowest": {
+   "value": 9.2586,
+   "period": "2022-01-03"
+  },
+  "median": 17.6699,
+  "biggest_move": {
+   "period": "2024-06-23",
+   "pct_change": 1.94,
+   "change": 0.4947
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.CONIA.IDX.30D",
+  "title_en": "CONIA Compounded Rates and Index - 30-day Rate",
+  "family": "rates",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 2318,
+  "first_period": "2017-01-31",
+  "last_period": "2026-08-20",
+  "last": 19.7983,
+  "previous": 19.8013,
+  "highest": {
+   "value": 27.9057,
+   "period": "2025-02-13"
+  },
+  "lowest": {
+   "value": 8.8135,
+   "period": "2021-08-10"
+  },
+  "median": 17.03535,
+  "biggest_move": {
+   "period": "2024-03-10",
+   "pct_change": 3.01,
+   "change": 0.6537
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.CONIA.IDX.90D",
+  "title_en": "CONIA Compounded Rates and Index - 90-day Rate",
+  "family": "rates",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 2275,
+  "first_period": "2017-04-02",
+  "last_period": "2026-08-20",
+  "last": 20.2347,
+  "previous": 20.2369,
+  "highest": {
+   "value": 28.4627,
+   "period": "2025-04-08"
+  },
+  "lowest": {
+   "value": 9.0936,
+   "period": "2021-12-28"
+  },
+  "median": 17.2796,
+  "biggest_move": {
+   "period": "2024-04-15",
+   "pct_change": 2.76,
+   "change": 0.6525
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.CONIA.IDX.LEVEL",
+  "title_en": "CONIA Compounded Rates and Index - CONIA Index",
+  "family": "rates",
+  "freq": "D",
+  "unit": "index",
+  "n": 2338,
+  "first_period": "2017-01-02",
+  "last_period": "2026-08-20",
+  "last": 5184.35719,
+  "previous": 5181.54383,
+  "highest": {
+   "value": 5184.35719,
+   "period": "2026-08-20"
+  },
+  "lowest": {
+   "value": 1000.0,
+   "period": "2017-01-02"
+  },
+  "median": 1993.238605,
+  "biggest_move": {
+   "period": "2024-06-23",
+   "pct_change": 0.76,
+   "change": 23.14058
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.CONIA.ON.RATE",
+  "title_en": "Cairo Overnight Index Average (CONIA) - O/N Rate",
+  "family": "rates",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 2338,
+  "first_period": "2016-12-29",
+  "last_period": "2026-08-19",
+  "last": 19.546,
+  "previous": 19.55,
+  "highest": {
+   "value": 27.75,
+   "period": "2025-02-09"
+  },
+  "lowest": {
+   "value": 8.286,
+   "period": "2022-02-21"
+  },
+  "median": 16.8965,
+  "biggest_move": {
+   "period": "2024-03-06",
+   "pct_change": 26.68,
+   "change": 5.798
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.CONIA.ON.VOL",
+  "title_en": "Cairo Overnight Index Average (CONIA) - Volume (EGP MIO)",
+  "family": "rates",
+  "freq": "D",
+  "unit": "EGP million",
+  "n": 2338,
+  "first_period": "2016-12-29",
+  "last_period": "2026-08-19",
+  "last": 18226.6,
+  "previous": 26690.3,
+  "highest": {
+   "value": 105031.5,
+   "period": "2024-03-05"
+  },
+  "lowest": {
+   "value": 310.8,
+   "period": "2018-02-14"
+  },
+  "median": 10423.0,
+  "biggest_move": {
+   "period": "2024-02-13",
+   "pct_change": 1820.0,
+   "change": 15925.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.CPI.CORE.MOM",
+  "title_en": "Consumer Price Inflation - Core (m/m)",
+  "family": "prices",
+  "freq": "M",
+  "unit": "percent",
+  "n": 259,
+  "first_period": "2005-01-01",
+  "last_period": "2026-07-01",
+  "last": 0.0,
+  "previous": 0.3,
+  "highest": {
+   "value": 13.242,
+   "period": "2024-02-01"
+  },
+  "lowest": {
+   "value": -2.26,
+   "period": "2019-09-01"
+  },
+  "median": 0.654,
+  "biggest_move": {
+   "period": "2021-01-01",
+   "pct_change": 7500.0,
+   "change": 0.525
+  },
+  "flags": [
+   "2 zero values (CBE publishes 0 where no rate was set)"
+  ]
+ },
+ {
+  "series_id": "EG.CPI.CORE.YOY",
+  "title_en": "Consumer Price Inflation - Core (y/y)",
+  "family": "prices",
+  "freq": "M",
+  "unit": "percent",
+  "n": 259,
+  "first_period": "2005-01-01",
+  "last_period": "2026-07-01",
+  "last": 14.7,
+  "previous": 14.3,
+  "highest": {
+   "value": 41.0,
+   "period": "2023-06-01"
+  },
+  "lowest": {
+   "value": 0.722,
+   "period": "2020-07-01"
+  },
+  "median": 8.764,
+  "biggest_move": {
+   "period": "2020-09-01",
+   "pct_change": 290.43,
+   "change": 2.428
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.CPI.FRVEG.MOM",
+  "title_en": "Consumer Price Inflation - Fruits and Vegetables (m/m)",
+  "family": "prices",
+  "freq": "M",
+  "unit": "percent",
+  "n": 259,
+  "first_period": "2005-01-01",
+  "last_period": "2026-07-01",
+  "last": -0.5,
+  "previous": -8.7,
+  "highest": {
+   "value": 27.602,
+   "period": "2022-04-01"
+  },
+  "lowest": {
+   "value": -19.488,
+   "period": "2018-12-01"
+  },
+  "median": 1.979,
+  "biggest_move": {
+   "period": "2011-08-01",
+   "pct_change": 12559.09,
+   "change": 2.763
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.CPI.FRVEG.YOY",
+  "title_en": "Consumer Price Inflation - Fruits and Vegetables (y/y)",
+  "family": "prices",
+  "freq": "M",
+  "unit": "percent",
+  "n": 259,
+  "first_period": "2005-01-01",
+  "last_period": "2026-07-01",
+  "last": 31.5,
+  "previous": 16.9,
+  "highest": {
+   "value": 107.71,
+   "period": "2023-09-01"
+  },
+  "lowest": {
+   "value": -13.355,
+   "period": "2019-10-01"
+  },
+  "median": 19.805,
+  "biggest_move": {
+   "period": "2005-03-01",
+   "pct_change": 24928.57,
+   "change": -3.49
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.CPI.HDL.MOM",
+  "title_en": "Consumer Price Inflation - Headline (m/m)",
+  "family": "prices",
+  "freq": "M",
+  "unit": "percent",
+  "n": 259,
+  "first_period": "2005-01-01",
+  "last_period": "2026-07-01",
+  "last": 0.0,
+  "previous": -0.4,
+  "highest": {
+   "value": 11.374,
+   "period": "2024-02-01"
+  },
+  "lowest": {
+   "value": -3.39,
+   "period": "2018-12-01"
+  },
+  "median": 0.968,
+  "biggest_move": {
+   "period": "2020-03-01",
+   "pct_change": 5175.0,
+   "change": 0.621
+  },
+  "flags": [
+   "1 zero values (CBE publishes 0 where no rate was set)"
+  ]
+ },
+ {
+  "series_id": "EG.CPI.HDL.YOY",
+  "title_en": "Consumer Price Inflation - Headline (y/y)",
+  "family": "prices",
+  "freq": "M",
+  "unit": "percent",
+  "n": 319,
+  "first_period": "2000-01-01",
+  "last_period": "2026-07-01",
+  "last": 14.9,
+  "previous": 14.3,
+  "highest": {
+   "value": 38.0,
+   "period": "2023-09-01"
+  },
+  "lowest": {
+   "value": 2.134,
+   "period": "2001-09-01"
+  },
+  "median": 10.445,
+  "biggest_move": {
+   "period": "2004-01-01",
+   "pct_change": 131.53,
+   "change": 7.238
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.CPI.REG.MOM",
+  "title_en": "Consumer Price Inflation - Regulated Items (m/m)",
+  "family": "prices",
+  "freq": "M",
+  "unit": "percent",
+  "n": 259,
+  "first_period": "2005-01-01",
+  "last_period": "2026-07-01",
+  "last": 0.0,
+  "previous": 0.1,
+  "highest": {
+   "value": 9.547,
+   "period": "2018-06-01"
+  },
+  "lowest": {
+   "value": -3.777,
+   "period": "2015-04-01"
+  },
+  "median": 0.39,
+  "biggest_move": {
+   "period": "2020-03-01",
+   "pct_change": 130200.0,
+   "change": 1.302
+  },
+  "flags": [
+   "44 zero values (CBE publishes 0 where no rate was set)"
+  ]
+ },
+ {
+  "series_id": "EG.CPI.REG.YOY",
+  "title_en": "Consumer Price Inflation - Regulated Items (y/y)",
+  "family": "prices",
+  "freq": "M",
+  "unit": "percent",
+  "n": 259,
+  "first_period": "2005-01-01",
+  "last_period": "2026-07-01",
+  "last": 11.4,
+  "previous": 13.7,
+  "highest": {
+   "value": 32.82,
+   "period": "2024-04-01"
+  },
+  "lowest": {
+   "value": 1.121,
+   "period": "2006-01-01"
+  },
+  "median": 10.785,
+  "biggest_move": {
+   "period": "2016-04-01",
+   "pct_change": 209.21,
+   "change": 4.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.EXT.REMIT.FYTD",
+  "title_en": "Workers' Remittances, cumulative fiscal year to date",
+  "family": "external",
+  "freq": "M",
+  "unit": "USD million",
+  "n": 6,
+  "first_period": "2025-05-31",
+  "last_period": "2026-05-31",
+  "last": 43100.0,
+  "previous": 39200.0,
+  "highest": {
+   "value": 43100.0,
+   "period": "2026-05-31"
+  },
+  "lowest": {
+   "value": 25600.0,
+   "period": "2026-01-31"
+  },
+  "median": 33850.0,
+  "biggest_move": {
+   "period": "2026-01-31",
+   "pct_change": 21.95,
+   "change": -7200.0
+  },
+  "flags": [
+   "no new value in 81 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.FX.IBK.WAVG",
+  "title_en": "Interbank Foreign Exchange Weighted Average - Weighted Avg.",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per USD",
+  "n": 5294,
+  "first_period": "2004-12-23",
+  "last_period": "2026-08-20",
+  "last": 50.8837,
+  "previous": 50.718,
+  "highest": {
+   "value": 54.718,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 5.2996,
+   "period": "2008-08-07"
+  },
+  "median": 7.7301,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.8,
+   "change": 5.865
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.AED.BUY",
+  "title_en": "Average Market Exchange Rates - UAE Dirham Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2796,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 13.7924,
+  "previous": 13.7382,
+  "highest": {
+   "value": 14.8782,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 1.9447,
+   "period": "2014-12-14"
+  },
+  "median": 4.82805,
+  "biggest_move": {
+   "period": "2024-03-06",
+   "pct_change": 60.43,
+   "change": 5.0736
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.AED.SELL",
+  "title_en": "Average Market Exchange Rates - UAE Dirham Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2796,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 13.8211,
+  "previous": 13.7668,
+  "highest": {
+   "value": 14.9115,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 1.9539,
+   "period": "2014-11-25"
+  },
+  "median": 4.8595,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 60.76,
+   "change": 1.4692
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.CHF.BUY",
+  "title_en": "Average Market Exchange Rates - Swiss Franc Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2796,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 62.3254,
+  "previous": 62.0973,
+  "highest": {
+   "value": 68.4352,
+   "period": "2026-05-05"
+  },
+  "lowest": {
+   "value": 6.9946,
+   "period": "2015-01-14"
+  },
+  "median": 17.97465,
+  "biggest_move": {
+   "period": "2024-03-06",
+   "pct_change": 60.83,
+   "change": 21.1564
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.CHF.SELL",
+  "title_en": "Average Market Exchange Rates - Swiss Franc Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2796,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 62.672,
+  "previous": 62.4043,
+  "highest": {
+   "value": 68.5889,
+   "period": "2026-05-05"
+  },
+  "lowest": {
+   "value": 7.0275,
+   "period": "2015-01-14"
+  },
+  "median": 18.0828,
+  "biggest_move": {
+   "period": "2024-03-06",
+   "pct_change": 60.65,
+   "change": 21.1696
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.CNY.BUY",
+  "title_en": "Average Market Exchange Rates - Chinese yuan Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2797,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 7.5119,
+  "previous": 7.4818,
+  "highest": {
+   "value": 19.3719,
+   "period": "2022-09-15"
+  },
+  "lowest": {
+   "value": 1.1476,
+   "period": "2014-12-24"
+  },
+  "median": 2.6221,
+  "biggest_move": {
+   "period": "2022-09-15",
+   "pct_change": 597.48,
+   "change": 16.5945
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.CNY.SELL",
+  "title_en": "Average Market Exchange Rates - Chinese yuan Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2797,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 7.5342,
+  "previous": 7.499,
+  "highest": {
+   "value": 19.4483,
+   "period": "2022-09-15"
+  },
+  "lowest": {
+   "value": 1.153,
+   "period": "2014-12-24"
+  },
+  "median": 2.6423,
+  "biggest_move": {
+   "period": "2022-09-15",
+   "pct_change": 597.17,
+   "change": 16.6587
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.EUR.BUY",
+  "title_en": "Average Market Exchange Rates - Euro Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2797,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 58.6164,
+  "previous": 58.3674,
+  "highest": {
+   "value": 63.2016,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 7.9783,
+   "period": "2015-03-15"
+  },
+  "median": 19.8486,
+  "biggest_move": {
+   "period": "2024-03-06",
+   "pct_change": 60.77,
+   "change": 20.3298
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.EUR.SELL",
+  "title_en": "Average Market Exchange Rates - Euro Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2797,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 58.9403,
+  "previous": 58.5738,
+  "highest": {
+   "value": 63.3281,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 1.954,
+   "period": "2014-11-27"
+  },
+  "median": 19.9828,
+  "biggest_move": {
+   "period": "2014-12-03",
+   "pct_change": 352.87,
+   "change": 6.8951
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.GBP.BUY",
+  "title_en": "Average Market Exchange Rates - Pound Sterling Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2797,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 68.51,
+  "previous": 68.2223,
+  "highest": {
+   "value": 72.6327,
+   "period": "2026-05-05"
+  },
+  "lowest": {
+   "value": 10.7386,
+   "period": "2016-10-25"
+  },
+  "median": 22.8873,
+  "biggest_move": {
+   "period": "2024-03-06",
+   "pct_change": 60.9,
+   "change": 23.8126
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.GBP.SELL",
+  "title_en": "Average Market Exchange Rates - Pound Sterling Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2797,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 68.8533,
+  "previous": 68.529,
+  "highest": {
+   "value": 72.7842,
+   "period": "2026-05-05"
+  },
+  "lowest": {
+   "value": 10.7688,
+   "period": "2016-10-25"
+  },
+  "median": 23.0193,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 62.59,
+   "change": 6.8414
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.JPY100.BUY",
+  "title_en": "Average Market Exchange Rates - Japanese Yen 100 Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2796,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 31.7327,
+  "previous": 31.5831,
+  "highest": {
+   "value": 36.3054,
+   "period": "2025-04-22"
+  },
+  "lowest": {
+   "value": 5.9465,
+   "period": "2014-12-24"
+  },
+  "median": 15.6521,
+  "biggest_move": {
+   "period": "2024-03-06",
+   "pct_change": 61.37,
+   "change": 12.5796
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.JPY100.SELL",
+  "title_en": "Average Market Exchange Rates - Japanese Yen 100 Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2796,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 31.9213,
+  "previous": 31.7349,
+  "highest": {
+   "value": 36.387,
+   "period": "2025-04-22"
+  },
+  "lowest": {
+   "value": 5.9741,
+   "period": "2014-12-24"
+  },
+  "median": 15.7736,
+  "biggest_move": {
+   "period": "2024-03-06",
+   "pct_change": 61.19,
+   "change": 12.5861
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.KWD.BUY",
+  "title_en": "Average Market Exchange Rates - Kuwaiti Dinar Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2797,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 164.9562,
+  "previous": 164.3122,
+  "highest": {
+   "value": 178.0251,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 24.2715,
+   "period": "2015-01-08"
+  },
+  "median": 58.7306,
+  "biggest_move": {
+   "period": "2024-03-06",
+   "pct_change": 60.45,
+   "change": 60.5767
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.KWD.SELL",
+  "title_en": "Average Market Exchange Rates - Kuwaiti Dinar Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2797,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 165.228,
+  "previous": 164.5833,
+  "highest": {
+   "value": 178.409,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 24.3964,
+   "period": "2015-01-12"
+  },
+  "median": 59.1126,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 60.35,
+   "change": 17.7291
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.SAR.BUY",
+  "title_en": "Average Market Exchange Rates - Saudi Riyal Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2796,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 13.4923,
+  "previous": 13.4403,
+  "highest": {
+   "value": 14.5538,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 1.9023,
+   "period": "2015-01-08"
+  },
+  "median": 4.72865,
+  "biggest_move": {
+   "period": "2025-07-10",
+   "pct_change": 106.25,
+   "change": 6.7936
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.SAR.SELL",
+  "title_en": "Average Market Exchange Rates - Saudi Riyal Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2796,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 13.5193,
+  "previous": 13.4665,
+  "highest": {
+   "value": 14.5819,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 1.912,
+   "period": "2015-01-12"
+  },
+  "median": 4.75895,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 60.77,
+   "change": 1.4389
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.USD.BUY",
+  "title_en": "Average Market Exchange Rates - US Dollar Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2798,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 50.6581,
+  "previous": 50.46,
+  "highest": {
+   "value": 54.6537,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 7.1431,
+   "period": "2014-12-14"
+  },
+  "median": 17.7323,
+  "biggest_move": {
+   "period": "2024-03-06",
+   "pct_change": 60.42,
+   "change": 18.6329
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.MKT.USD.SELL",
+  "title_en": "Average Market Exchange Rates - US Dollar Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 2798,
+  "first_period": "2014-11-25",
+  "last_period": "2026-08-19",
+  "last": 50.7581,
+  "previous": 50.56,
+  "highest": {
+   "value": 54.7537,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 7.1766,
+   "period": "2014-11-25"
+  },
+  "median": 17.8469,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 60.76,
+   "change": 5.3957
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.AED.BUY",
+  "title_en": "CBE Official Exchange Rates - UAE Dirham Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 13.8356,
+  "previous": 13.7905,
+  "highest": {
+   "value": 14.8767,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 1.4401,
+   "period": "2008-08-07"
+  },
+  "median": 2.1018,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.89,
+   "change": 1.5969
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.AED.SELL",
+  "title_en": "CBE Official Exchange Rates - UAE Dirham Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 13.8743,
+  "previous": 13.8292,
+  "highest": {
+   "value": 14.9209,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 1.4457,
+   "period": "2008-08-07"
+  },
+  "median": 2.1075,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.73,
+   "change": 1.597
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.AUD.BUY",
+  "title_en": "CBE Official Exchange Rates - Australian Dollar Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5171,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 36.1846,
+  "previous": 35.8387,
+  "highest": {
+   "value": 38.5064,
+   "period": "2026-05-03"
+  },
+  "lowest": {
+   "value": 3.3832,
+   "period": "2008-10-27"
+  },
+  "median": 6.6638,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 67.18,
+   "change": 4.5155
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.AUD.SELL",
+  "title_en": "CBE Official Exchange Rates - Australian Dollar Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5171,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 36.3043,
+  "previous": 35.9475,
+  "highest": {
+   "value": 38.6317,
+   "period": "2026-05-03"
+  },
+  "lowest": {
+   "value": 3.397,
+   "period": "2008-10-27"
+  },
+  "median": 6.6839,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.94,
+   "change": 4.5125
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.BHD.BUY",
+  "title_en": "CBE Official Exchange Rates - Bahraini Dinar Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5171,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 134.7744,
+  "previous": 134.3349,
+  "highest": {
+   "value": 144.648,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 14.0289,
+   "period": "2008-08-07"
+  },
+  "median": 20.4734,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.88,
+   "change": 15.5562
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.BHD.SELL",
+  "title_en": "CBE Official Exchange Rates - Bahraini Dinar Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5171,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 135.155,
+  "previous": 134.7154,
+  "highest": {
+   "value": 145.2107,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 14.0857,
+   "period": "2008-08-07"
+  },
+  "median": 20.5308,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.71,
+   "change": 15.5541
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.CAD.BUY",
+  "title_en": "CBE Official Exchange Rates - Canadian Dollar Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5171,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 36.9046,
+  "previous": 36.5191,
+  "highest": {
+   "value": 39.4294,
+   "period": "2026-05-05"
+  },
+  "lowest": {
+   "value": 4.334,
+   "period": "2008-10-27"
+  },
+  "median": 6.6772,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.65,
+   "change": 4.3719
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.CAD.SELL",
+  "title_en": "CBE Official Exchange Rates - Canadian Dollar Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5171,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 37.014,
+  "previous": 36.6249,
+  "highest": {
+   "value": 39.5439,
+   "period": "2026-05-05"
+  },
+  "lowest": {
+   "value": 4.3502,
+   "period": "2008-10-27"
+  },
+  "median": 6.6971,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.47,
+   "change": 4.3716
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.CHF.BUY",
+  "title_en": "CBE Official Exchange Rates - Swiss Franc Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5171,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 63.7646,
+  "previous": 62.4979,
+  "highest": {
+   "value": 68.5346,
+   "period": "2026-05-05"
+  },
+  "lowest": {
+   "value": 4.3403,
+   "period": "2006-02-28"
+  },
+  "median": 8.0084,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.23,
+   "change": 5.9814
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.CHF.SELL",
+  "title_en": "CBE Official Exchange Rates - Swiss Franc Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5171,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 63.9556,
+  "previous": 62.7009,
+  "highest": {
+   "value": 68.7309,
+   "period": "2026-05-05"
+  },
+  "lowest": {
+   "value": 4.3564,
+   "period": "2006-02-28"
+  },
+  "median": 8.0338,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.12,
+   "change": 5.9865
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.CNY.BUY",
+  "title_en": "CBE Official Exchange Rates - Chinese Yuan Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 4469,
+  "first_period": "2006-08-26",
+  "last_period": "2026-08-20",
+  "last": 7.5585,
+  "previous": 7.5168,
+  "highest": {
+   "value": 7.9684,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 0.7328,
+   "period": "2007-11-05"
+  },
+  "median": 2.2783,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.75,
+   "change": 0.8656
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.CNY.SELL",
+  "title_en": "CBE Official Exchange Rates - Chinese Yuan Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 4469,
+  "first_period": "2006-08-26",
+  "last_period": "2026-08-20",
+  "last": 7.5798,
+  "previous": 7.5384,
+  "highest": {
+   "value": 7.9904,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 0.7356,
+   "period": "2007-11-05"
+  },
+  "median": 2.2979,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.6,
+   "change": 0.8665
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.DKK.BUY",
+  "title_en": "CBE Official Exchange Rates - Danish Krone Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5170,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 7.9495,
+  "previous": 7.8644,
+  "highest": {
+   "value": 8.4532,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 0.8982,
+   "period": "2005-11-16"
+  },
+  "median": 1.29305,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.83,
+   "change": 0.8742
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.DKK.SELL",
+  "title_en": "CBE Official Exchange Rates - Danish Krone Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5170,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 7.9719,
+  "previous": 7.8865,
+  "highest": {
+   "value": 8.4753,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 0.9017,
+   "period": "2005-11-16"
+  },
+  "median": 1.2965,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.68,
+   "change": 0.8744
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.EUR.BUY",
+  "title_en": "CBE Official Exchange Rates - Euro Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 59.427,
+  "previous": 58.7925,
+  "highest": {
+   "value": 63.1676,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 6.698,
+   "period": "2005-11-16"
+  },
+  "median": 9.6362,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.86,
+   "change": 6.5063
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.EUR.SELL",
+  "title_en": "CBE Official Exchange Rates - Euro Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 59.6002,
+  "previous": 58.9595,
+  "highest": {
+   "value": 63.3349,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 6.7231,
+   "period": "2005-11-16"
+  },
+  "median": 9.66545,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.66,
+   "change": 6.5043
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.GBP.BUY",
+  "title_en": "CBE Official Exchange Rates - Pound Sterling Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 69.3154,
+  "previous": 68.674,
+  "highest": {
+   "value": 72.7084,
+   "period": "2026-05-05"
+  },
+  "lowest": {
+   "value": 1.1424,
+   "period": "2016-02-02"
+  },
+  "median": 11.84605,
+  "biggest_move": {
+   "period": "2016-02-03",
+   "pct_change": 879.81,
+   "change": 10.051
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.GBP.SELL",
+  "title_en": "CBE Official Exchange Rates - Pound Sterling Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 69.526,
+  "previous": 68.8681,
+  "highest": {
+   "value": 72.9196,
+   "period": "2026-05-05"
+  },
+  "lowest": {
+   "value": 7.6469,
+   "period": "2009-01-22"
+  },
+  "median": 11.8801,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 68.71,
+   "change": 7.4358
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.JOD.BUY",
+  "title_en": "CBE Official Exchange Rates - Jordanian Dinar Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5170,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 71.569,
+  "previous": 71.3356,
+  "highest": {
+   "value": 76.969,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 7.4501,
+   "period": "2008-08-07"
+  },
+  "median": 10.8872,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 67.25,
+   "change": 8.3071
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.JOD.SELL",
+  "title_en": "CBE Official Exchange Rates - Jordanian Dinar Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5170,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 71.9681,
+  "previous": 71.7341,
+  "highest": {
+   "value": 77.3842,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 7.4994,
+   "period": "2008-08-07"
+  },
+  "median": 10.9323,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.79,
+   "change": 8.2926
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.JPY100.BUY",
+  "title_en": "CBE Official Exchange Rates - Japanese Yen 100 Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 32.0573,
+  "previous": 31.8322,
+  "highest": {
+   "value": 36.3485,
+   "period": "2025-04-22"
+  },
+  "lowest": {
+   "value": 4.0484,
+   "period": "2008-09-10"
+  },
+  "median": 7.77525,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 67.05,
+   "change": 5.6928
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.JPY100.SELL",
+  "title_en": "CBE Official Exchange Rates - Japanese Yen 100 Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 32.1473,
+  "previous": 31.9279,
+  "highest": {
+   "value": 36.4454,
+   "period": "2025-04-22"
+  },
+  "lowest": {
+   "value": 4.607,
+   "period": "2007-06-24"
+  },
+  "median": 7.8023,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.9,
+   "change": 5.6944
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.KWD.BUY",
+  "title_en": "CBE Official Exchange Rates - Kuwaiti Dinar Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 165.6258,
+  "previous": 164.8707,
+  "highest": {
+   "value": 178.0065,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 18.5944,
+   "period": "2009-02-05"
+  },
+  "median": 25.55265,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.61,
+   "change": 19.2883
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.KWD.SELL",
+  "title_en": "CBE Official Exchange Rates - Kuwaiti Dinar Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 166.1344,
+  "previous": 165.3784,
+  "highest": {
+   "value": 178.5206,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 18.8512,
+   "period": "2009-02-05"
+  },
+  "median": 25.63715,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.29,
+   "change": 19.2784
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.NOK.BUY",
+  "title_en": "CBE Official Exchange Rates - Norwegian Krone Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5170,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 5.454,
+  "previous": 5.3883,
+  "highest": {
+   "value": 5.7954,
+   "period": "2026-05-05"
+  },
+  "lowest": {
+   "value": 0.7662,
+   "period": "2009-01-15"
+  },
+  "median": 1.1604,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 67.02,
+   "change": 0.7187
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.NOK.SELL",
+  "title_en": "CBE Official Exchange Rates - Norwegian Krone Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5170,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 5.4699,
+  "previous": 5.404,
+  "highest": {
+   "value": 5.8116,
+   "period": "2026-05-05"
+  },
+  "lowest": {
+   "value": 0.7693,
+   "period": "2009-01-15"
+  },
+  "median": 1.16425,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.91,
+   "change": 0.7193
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.OMR.BUY",
+  "title_en": "CBE Official Exchange Rates - Omani Riyal Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5171,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 131.981,
+  "previous": 131.5437,
+  "highest": {
+   "value": 141.9244,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 13.741,
+   "period": "2008-08-07"
+  },
+  "median": 20.0512,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.9,
+   "change": 15.2348
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.OMR.SELL",
+  "title_en": "CBE Official Exchange Rates - Omani Riyal Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5171,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 132.3603,
+  "previous": 131.923,
+  "highest": {
+   "value": 142.3249,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 13.7976,
+   "period": "2008-08-10"
+  },
+  "median": 20.1089,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.7,
+   "change": 15.2328
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.QAR.BUY",
+  "title_en": "CBE Official Exchange Rates - Qatari Riyal Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5171,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 13.9293,
+  "previous": 13.8934,
+  "highest": {
+   "value": 14.9844,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 0.862,
+   "period": "2006-03-02"
+  },
+  "median": 2.12,
+  "biggest_move": {
+   "period": "2006-03-05",
+   "pct_change": 82.41,
+   "change": 0.7104
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.QAR.SELL",
+  "title_en": "CBE Official Exchange Rates - Qatari Riyal Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5171,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 13.9905,
+  "previous": 13.9335,
+  "highest": {
+   "value": 15.031,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 0.8652,
+   "period": "2006-03-02"
+  },
+  "median": 2.1259,
+  "biggest_move": {
+   "period": "2006-03-05",
+   "pct_change": 82.42,
+   "change": 0.7131
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.SAR.BUY",
+  "title_en": "CBE Official Exchange Rates - Saudi Riyal Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 13.5331,
+  "previous": 13.4889,
+  "highest": {
+   "value": 14.553,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 1.4103,
+   "period": "2008-08-07"
+  },
+  "median": 2.0584,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.86,
+   "change": 1.5635
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.SAR.SELL",
+  "title_en": "CBE Official Exchange Rates - Saudi Riyal Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 13.5709,
+  "previous": 13.5268,
+  "highest": {
+   "value": 14.5918,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 1.4159,
+   "period": "2008-08-07"
+  },
+  "median": 2.0641,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.72,
+   "change": 1.5639
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.SEK.BUY",
+  "title_en": "CBE Official Exchange Rates - Swedish Krona Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 5.3657,
+  "previous": 5.3261,
+  "highest": {
+   "value": 5.7893,
+   "period": "2026-04-30"
+  },
+  "lowest": {
+   "value": 0.6083,
+   "period": "2009-03-02"
+  },
+  "median": 1.06275,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.55,
+   "change": 0.6545
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.SEK.SELL",
+  "title_en": "CBE Official Exchange Rates - Swedish Krona Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 5.3814,
+  "previous": 5.3415,
+  "highest": {
+   "value": 5.8301,
+   "period": "2026-05-03"
+  },
+  "lowest": {
+   "value": 0.6111,
+   "period": "2009-03-02"
+  },
+  "median": 1.0663,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.45,
+   "change": 0.6551
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.USD.BUY",
+  "title_en": "CBE Official Exchange Rates - US Dollar Buy",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 50.814,
+  "previous": 50.6483,
+  "highest": {
+   "value": 54.648,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 5.2896,
+   "period": "2008-08-07"
+  },
+  "median": 7.7201,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.88,
+   "change": 5.865
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.FX.OFF.USD.SELL",
+  "title_en": "CBE Official Exchange Rates - US Dollar Sell",
+  "family": "fx",
+  "freq": "D",
+  "unit": "EGP per unit of foreign currency",
+  "n": 5172,
+  "first_period": "2005-01-02",
+  "last_period": "2026-08-20",
+  "last": 50.9534,
+  "previous": 50.7877,
+  "highest": {
+   "value": 54.788,
+   "period": "2026-04-07"
+  },
+  "lowest": {
+   "value": 5.3096,
+   "period": "2008-08-07"
+  },
+  "median": 7.7401,
+  "biggest_move": {
+   "period": "2016-11-03",
+   "pct_change": 66.72,
+   "change": 5.865
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.BW.GT1M",
+  "title_en": "Bi-Weekly Interbank Rates and Volumes - More than a Month",
+  "family": "rates",
+  "freq": "BW",
+  "unit": "percent per annum",
+  "n": 155,
+  "first_period": "2010-07-26",
+  "last_period": "2026-07-20",
+  "last": 19.758,
+  "previous": 19.135,
+  "highest": {
+   "value": 27.75,
+   "period": "2025-03-03"
+  },
+  "lowest": {
+   "value": 8.274,
+   "period": "2011-01-24"
+  },
+  "median": 14.85,
+  "biggest_move": {
+   "period": "2020-05-18",
+   "pct_change": 37.4,
+   "change": -5.965
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.BW.LT1M",
+  "title_en": "Bi-Weekly Interbank Rates and Volumes - Less than a Month",
+  "family": "rates",
+  "freq": "BW",
+  "unit": "percent per annum",
+  "n": 413,
+  "first_period": "2010-07-12",
+  "last_period": "2026-08-17",
+  "last": 19.126,
+  "previous": 19.877,
+  "highest": {
+   "value": 27.765,
+   "period": "2024-03-18"
+  },
+  "lowest": {
+   "value": 8.266,
+   "period": "2010-12-13"
+  },
+  "median": 11.25,
+  "biggest_move": {
+   "period": "2024-03-18",
+   "pct_change": 29.86,
+   "change": 6.385
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.BW.LT1W",
+  "title_en": "Bi-Weekly Interbank Rates and Volumes - Less than a Week",
+  "family": "rates",
+  "freq": "BW",
+  "unit": "percent per annum",
+  "n": 417,
+  "first_period": "2010-07-12",
+  "last_period": "2026-08-17",
+  "last": 19.458,
+  "previous": 19.775,
+  "highest": {
+   "value": 27.75,
+   "period": "2025-02-17"
+  },
+  "lowest": {
+   "value": 8.253,
+   "period": "2010-11-15"
+  },
+  "median": 11.036,
+  "biggest_move": {
+   "period": "2024-03-18",
+   "pct_change": 30.09,
+   "change": 6.399
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.BW.M1",
+  "title_en": "Bi-Weekly Interbank Rates and Volumes - One Month",
+  "family": "rates",
+  "freq": "BW",
+  "unit": "percent per annum",
+  "n": 145,
+  "first_period": "2010-09-20",
+  "last_period": "2026-06-08",
+  "last": 19.0,
+  "previous": 19.75,
+  "highest": {
+   "value": 27.75,
+   "period": "2024-04-01"
+  },
+  "lowest": {
+   "value": 8.25,
+   "period": "2010-10-04"
+  },
+  "median": 11.25,
+  "biggest_move": {
+   "period": "2017-08-14",
+   "pct_change": 85.77,
+   "change": 9.22
+  },
+  "flags": [
+   "no new value in 73 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.IBK.BW.ON",
+  "title_en": "Bi-Weekly Interbank Rates and Volumes - Overnight",
+  "family": "rates",
+  "freq": "BW",
+  "unit": "percent per annum",
+  "n": 419,
+  "first_period": "2010-07-12",
+  "last_period": "2026-08-17",
+  "last": 19.396,
+  "previous": 19.774,
+  "highest": {
+   "value": 27.569,
+   "period": "2025-02-03"
+  },
+  "lowest": {
+   "value": 8.258,
+   "period": "2010-10-04"
+  },
+  "median": 10.906,
+  "biggest_move": {
+   "period": "2024-03-18",
+   "pct_change": 20.9,
+   "change": 4.449
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.BW.VOL.GT1M",
+  "title_en": "Bi-Weekly Interbank Rates and Volumes - More than a Month",
+  "family": "rates",
+  "freq": "BW",
+  "unit": "EGP million",
+  "n": 419,
+  "first_period": "2010-07-12",
+  "last_period": "2026-08-17",
+  "last": 0.0,
+  "previous": 0.0,
+  "highest": {
+   "value": 61000.0,
+   "period": "2026-06-08"
+  },
+  "lowest": {
+   "value": 0.0,
+   "period": "2010-07-12"
+  },
+  "median": 0.0,
+  "biggest_move": {
+   "period": "2018-07-02",
+   "pct_change": 7693.4,
+   "change": 2517.28
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.BW.VOL.LT1M",
+  "title_en": "Bi-Weekly Interbank Rates and Volumes - Less than a Month",
+  "family": "rates",
+  "freq": "BW",
+  "unit": "EGP million",
+  "n": 419,
+  "first_period": "2010-07-12",
+  "last_period": "2026-08-17",
+  "last": 10470.0,
+  "previous": 11600.0,
+  "highest": {
+   "value": 165961.2,
+   "period": "2026-05-25"
+  },
+  "lowest": {
+   "value": 0.0,
+   "period": "2014-11-10"
+  },
+  "median": 4100.0,
+  "biggest_move": {
+   "period": "2021-10-18",
+   "pct_change": 1538.16,
+   "change": 5845.0
+  },
+  "flags": [
+   "6 zero values (CBE publishes 0 where no rate was set)"
+  ]
+ },
+ {
+  "series_id": "EG.IBK.BW.VOL.LT1W",
+  "title_en": "Bi-Weekly Interbank Rates and Volumes - Less than a Week",
+  "family": "rates",
+  "freq": "BW",
+  "unit": "EGP million",
+  "n": 419,
+  "first_period": "2010-07-12",
+  "last_period": "2026-08-17",
+  "last": 87377.34,
+  "previous": 80860.0,
+  "highest": {
+   "value": 210281.2,
+   "period": "2026-05-25"
+  },
+  "lowest": {
+   "value": 0.0,
+   "period": "2010-11-01"
+  },
+  "median": 4470.0,
+  "biggest_move": {
+   "period": "2013-03-18",
+   "pct_change": 7766.67,
+   "change": 932.0
+  },
+  "flags": [
+   "2 zero values (CBE publishes 0 where no rate was set)"
+  ]
+ },
+ {
+  "series_id": "EG.IBK.BW.VOL.M1",
+  "title_en": "Bi-Weekly Interbank Rates and Volumes - One Month",
+  "family": "rates",
+  "freq": "BW",
+  "unit": "EGP million",
+  "n": 419,
+  "first_period": "2010-07-12",
+  "last_period": "2026-08-17",
+  "last": 0.0,
+  "previous": 0.0,
+  "highest": {
+   "value": 100000.0,
+   "period": "2026-06-08"
+  },
+  "lowest": {
+   "value": 0.0,
+   "period": "2010-07-12"
+  },
+  "median": 0.0,
+  "biggest_move": {
+   "period": "2026-06-08",
+   "pct_change": 5960.61,
+   "change": 98350.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.BW.VOL.ON",
+  "title_en": "Bi-Weekly Interbank Rates and Volumes - Overnight",
+  "family": "rates",
+  "freq": "BW",
+  "unit": "EGP million",
+  "n": 419,
+  "first_period": "2010-07-12",
+  "last_period": "2026-08-17",
+  "last": 190422.0,
+  "previous": 540866.0,
+  "highest": {
+   "value": 540866.0,
+   "period": "2026-08-03"
+  },
+  "lowest": {
+   "value": 575.0,
+   "period": "2010-11-01"
+  },
+  "median": 69060.0,
+  "biggest_move": {
+   "period": "2010-11-29",
+   "pct_change": 509.42,
+   "change": 3352.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.BW.VOL.TOTAL",
+  "title_en": "Bi-Weekly Interbank Rates and Volumes - Total Value",
+  "family": "rates",
+  "freq": "BW",
+  "unit": "EGP million",
+  "n": 419,
+  "first_period": "2010-07-12",
+  "last_period": "2026-08-17",
+  "last": 530736.84,
+  "previous": 864795.68,
+  "highest": {
+   "value": 1078929.6,
+   "period": "2026-05-25"
+  },
+  "lowest": {
+   "value": 4324.0,
+   "period": "2010-11-01"
+  },
+  "median": 94825.0,
+  "biggest_move": {
+   "period": "2023-01-23",
+   "pct_change": 130.88,
+   "change": 174217.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.BW.VOL.W1",
+  "title_en": "Bi-Weekly Interbank Rates and Volumes - One Week",
+  "family": "rates",
+  "freq": "BW",
+  "unit": "EGP million",
+  "n": 419,
+  "first_period": "2010-07-12",
+  "last_period": "2026-08-17",
+  "last": 242467.5,
+  "previous": 231469.68,
+  "highest": {
+   "value": 375853.5,
+   "period": "2026-06-22"
+  },
+  "lowest": {
+   "value": 0.0,
+   "period": "2018-08-27"
+  },
+  "median": 8950.0,
+  "biggest_move": {
+   "period": "2020-06-15",
+   "pct_change": 80063.33,
+   "change": 24019.0
+  },
+  "flags": [
+   "5 zero values (CBE publishes 0 where no rate was set)"
+  ]
+ },
+ {
+  "series_id": "EG.IBK.BW.W1",
+  "title_en": "Bi-Weekly Interbank Rates and Volumes - One Week",
+  "family": "rates",
+  "freq": "BW",
+  "unit": "percent per annum",
+  "n": 414,
+  "first_period": "2010-07-12",
+  "last_period": "2026-08-17",
+  "last": 19.747,
+  "previous": 19.775,
+  "highest": {
+   "value": 27.677,
+   "period": "2024-04-01"
+  },
+  "lowest": {
+   "value": 8.257,
+   "period": "2010-11-15"
+  },
+  "median": 11.1005,
+  "biggest_move": {
+   "period": "2016-11-21",
+   "pct_change": 25.85,
+   "change": 3.087
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.D.GT1M",
+  "title_en": "Daily Interbank Rates and Volumes - More than a Month",
+  "family": "rates",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 219,
+  "first_period": "2010-07-14",
+  "last_period": "2026-07-12",
+  "last": 19.758,
+  "previous": 19.0,
+  "highest": {
+   "value": 27.75,
+   "period": "2024-03-19"
+  },
+  "lowest": {
+   "value": 0.106,
+   "period": "2013-04-16"
+  },
+  "median": 12.332,
+  "biggest_move": {
+   "period": "2013-05-15",
+   "pct_change": 9994.34,
+   "change": 10.594
+  },
+  "flags": [
+   "no new value in 39 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.IBK.D.LT1M",
+  "title_en": "Daily Interbank Rates and Volumes - Less than a Month",
+  "family": "rates",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 1764,
+  "first_period": "2010-06-29",
+  "last_period": "2026-08-18",
+  "last": 19.7,
+  "previous": 19.0,
+  "highest": {
+   "value": 27.8,
+   "period": "2024-03-12"
+  },
+  "lowest": {
+   "value": 0.102,
+   "period": "2013-04-11"
+  },
+  "median": 10.335,
+  "biggest_move": {
+   "period": "2013-04-17",
+   "pct_change": 9928.85,
+   "change": 10.326
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.D.LT1W",
+  "title_en": "Daily Interbank Rates and Volumes - Less than a Week",
+  "family": "rates",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 2223,
+  "first_period": "2010-06-29",
+  "last_period": "2026-08-19",
+  "last": 19.636,
+  "previous": 19.608,
+  "highest": {
+   "value": 27.75,
+   "period": "2024-03-07"
+  },
+  "lowest": {
+   "value": 0.1,
+   "period": "2013-04-14"
+  },
+  "median": 11.0,
+  "biggest_move": {
+   "period": "2013-04-17",
+   "pct_change": 9801.96,
+   "change": 9.998
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.D.M1",
+  "title_en": "Daily Interbank Rates and Volumes - One Month",
+  "family": "rates",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 209,
+  "first_period": "2010-09-15",
+  "last_period": "2026-06-01",
+  "last": 19.0,
+  "previous": 19.75,
+  "highest": {
+   "value": 27.75,
+   "period": "2024-03-24"
+  },
+  "lowest": {
+   "value": 0.106,
+   "period": "2013-04-16"
+  },
+  "median": 10.55,
+  "biggest_move": {
+   "period": "2013-04-18",
+   "pct_change": 9796.23,
+   "change": 10.384
+  },
+  "flags": [
+   "no new value in 80 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.IBK.D.ON",
+  "title_en": "Daily Interbank Rates and Volumes - Overnight",
+  "family": "rates",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 3912,
+  "first_period": "2010-06-29",
+  "last_period": "2026-08-19",
+  "last": 19.537,
+  "previous": 19.565,
+  "highest": {
+   "value": 27.735,
+   "period": "2025-02-09"
+  },
+  "lowest": {
+   "value": 0.1,
+   "period": "2013-04-10"
+  },
+  "median": 10.928,
+  "biggest_move": {
+   "period": "2013-04-17",
+   "pct_change": 9938.0,
+   "change": 9.938
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.D.VOL.GT1M",
+  "title_en": "Daily Interbank Rates and Volumes - More than a Month",
+  "family": "rates",
+  "freq": "D",
+  "unit": "EGP million",
+  "n": 3922,
+  "first_period": "2010-06-29",
+  "last_period": "2026-08-19",
+  "last": 0.0,
+  "previous": 0.0,
+  "highest": {
+   "value": 50000.0,
+   "period": "2025-12-30"
+  },
+  "lowest": {
+   "value": 0.0,
+   "period": "2010-06-29"
+  },
+  "median": 0.0,
+  "biggest_move": {
+   "period": "2024-04-03",
+   "pct_change": 400.0,
+   "change": 14000.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.D.VOL.LT1M",
+  "title_en": "Daily Interbank Rates and Volumes - Less than a Month",
+  "family": "rates",
+  "freq": "D",
+  "unit": "EGP million",
+  "n": 3922,
+  "first_period": "2010-06-29",
+  "last_period": "2026-08-19",
+  "last": 0.0,
+  "previous": 1000.0,
+  "highest": {
+   "value": 95581.0,
+   "period": "2024-06-11"
+  },
+  "lowest": {
+   "value": 0.0,
+   "period": "2010-07-06"
+  },
+  "median": 0.0,
+  "biggest_move": {
+   "period": "2018-06-19",
+   "pct_change": 42703.03,
+   "change": 2818.4
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.D.VOL.LT1W",
+  "title_en": "Daily Interbank Rates and Volumes - Less than a Week",
+  "family": "rates",
+  "freq": "D",
+  "unit": "EGP million",
+  "n": 3922,
+  "first_period": "2010-06-29",
+  "last_period": "2026-08-19",
+  "last": 5500.0,
+  "previous": 55000.0,
+  "highest": {
+   "value": 106175.0,
+   "period": "2026-05-19"
+  },
+  "lowest": {
+   "value": 0.0,
+   "period": "2010-06-30"
+  },
+  "median": 100.0,
+  "biggest_move": {
+   "period": "2023-12-19",
+   "pct_change": 47032.0,
+   "change": 11758.0
+  },
+  "flags": [
+   "1699 zero values (CBE publishes 0 where no rate was set)"
+  ]
+ },
+ {
+  "series_id": "EG.IBK.D.VOL.M1",
+  "title_en": "Daily Interbank Rates and Volumes - One Month",
+  "family": "rates",
+  "freq": "D",
+  "unit": "EGP million",
+  "n": 3922,
+  "first_period": "2010-06-29",
+  "last_period": "2026-08-19",
+  "last": 0.0,
+  "previous": 0.0,
+  "highest": {
+   "value": 100000.0,
+   "period": "2026-06-01"
+  },
+  "lowest": {
+   "value": 0.0,
+   "period": "2010-06-29"
+  },
+  "median": 0.0,
+  "biggest_move": {
+   "period": "2015-02-18",
+   "pct_change": 2566.67,
+   "change": 385.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.IBK.D.VOL.ON",
+  "title_en": "Daily Interbank Rates and Volumes - Overnight",
+  "family": "rates",
+  "freq": "D",
+  "unit": "EGP million",
+  "n": 3922,
+  "first_period": "2010-06-29",
+  "last_period": "2026-08-19",
+  "last": 26038.0,
+  "previous": 38129.0,
+  "highest": {
+   "value": 150045.0,
+   "period": "2024-03-05"
+  },
+  "lowest": {
+   "value": 0.0,
+   "period": "2010-08-12"
+  },
+  "median": 6990.0,
+  "biggest_move": {
+   "period": "2010-12-15",
+   "pct_change": 3350.0,
+   "change": 335.0
+  },
+  "flags": [
+   "10 zero values (CBE publishes 0 where no rate was set)"
+  ]
+ },
+ {
+  "series_id": "EG.IBK.D.VOL.TOTAL",
+  "title_en": "Daily Interbank Rates and Volumes - Total Value",
+  "family": "rates",
+  "freq": "D",
+  "unit": "EGP million",
+  "n": 3922,
+  "first_period": "2010-06-29",
+  "last_period": "2026-08-19",
+  "last": 31538.0,
+  "previous": 160534.0,
+  "highest": {
+   "value": 252830.0,
+   "period": "2026-04-28"
+  },
+  "lowest": {
+   "value": 0.0,
+   "period": "2020-06-07"
+  },
+  "median": 9492.5,
+  "biggest_move": {
+   "period": "2010-10-26",
+   "pct_change": 3805.0,
+   "change": 761.0
+  },
+  "flags": [
+   "1 zero values (CBE publishes 0 where no rate was set)"
+  ]
+ },
+ {
+  "series_id": "EG.IBK.D.VOL.W1",
+  "title_en": "Daily Interbank Rates and Volumes - One Week",
+  "family": "rates",
+  "freq": "D",
+  "unit": "EGP million",
+  "n": 3922,
+  "first_period": "2010-06-29",
+  "last_period": "2026-08-19",
+  "last": 0.0,
+  "previous": 66405.0,
+  "highest": {
+   "value": 203115.0,
+   "period": "2026-05-12"
+  },
+  "lowest": {
+   "value": 0.0,
+   "period": "2010-08-02"
+  },
+  "median": 130.0,
+  "biggest_move": {
+   "period": "2011-11-29",
+   "pct_change": 69500.0,
+   "change": 3475.0
+  },
+  "flags": [
+   "1661 zero values (CBE publishes 0 where no rate was set)"
+  ]
+ },
+ {
+  "series_id": "EG.IBK.D.W1",
+  "title_en": "Daily Interbank Rates and Volumes - One Week",
+  "family": "rates",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 2262,
+  "first_period": "2010-06-29",
+  "last_period": "2026-08-18",
+  "last": 19.62,
+  "previous": 19.7,
+  "highest": {
+   "value": 27.77,
+   "period": "2024-03-11"
+  },
+  "lowest": {
+   "value": 0.102,
+   "period": "2013-04-11"
+  },
+  "median": 9.971,
+  "biggest_move": {
+   "period": "2013-04-17",
+   "pct_change": 9873.79,
+   "change": 10.17
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.RATE.DISCOUNT",
+  "title_en": "CBE Discount Rate - Rate",
+  "family": "policy",
+  "freq": "IRR",
+  "unit": "percent per annum",
+  "n": 112,
+  "first_period": "1991-01-03",
+  "last_period": "2026-02-15",
+  "last": 19.5,
+  "previous": 20.5,
+  "highest": {
+   "value": 27.75,
+   "period": "2024-03-06"
+  },
+  "lowest": {
+   "value": 8.5,
+   "period": "2009-08-02"
+  },
+  "median": 16.95,
+  "biggest_move": {
+   "period": "2024-03-06",
+   "pct_change": 27.59,
+   "change": 6.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.RATE.MAIN",
+  "title_en": "Main Operation Rate - Fixed rate",
+  "family": "policy",
+  "freq": "IRR",
+  "unit": "percent per annum",
+  "n": 31,
+  "first_period": "2014-07-20",
+  "last_period": "2026-02-15",
+  "last": 19.5,
+  "previous": 20.5,
+  "highest": {
+   "value": 27.75,
+   "period": "2024-03-06"
+  },
+  "lowest": {
+   "value": 8.75,
+   "period": "2020-11-15"
+  },
+  "median": 16.25,
+  "biggest_move": {
+   "period": "2024-03-06",
+   "pct_change": 27.59,
+   "change": 6.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.RATE.ON.DEP",
+  "title_en": "Overnight Deposit and Lending Rates (the corridor) - Overnight Deposit Rate",
+  "family": "policy",
+  "freq": "IRR",
+  "unit": "percent per annum",
+  "n": 31,
+  "first_period": "2014-07-20",
+  "last_period": "2026-02-15",
+  "last": 19.0,
+  "previous": 20.0,
+  "highest": {
+   "value": 27.25,
+   "period": "2024-03-06"
+  },
+  "lowest": {
+   "value": 8.25,
+   "period": "2020-11-15"
+  },
+  "median": 15.75,
+  "biggest_move": {
+   "period": "2024-03-06",
+   "pct_change": 28.24,
+   "change": 6.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.RATE.ON.LEND",
+  "title_en": "Overnight Deposit and Lending Rates (the corridor) - Overnight Lending Rate",
+  "family": "policy",
+  "freq": "IRR",
+  "unit": "percent per annum",
+  "n": 31,
+  "first_period": "2014-07-20",
+  "last_period": "2026-02-15",
+  "last": 20.0,
+  "previous": 21.0,
+  "highest": {
+   "value": 28.25,
+   "period": "2024-03-06"
+  },
+  "lowest": {
+   "value": 9.25,
+   "period": "2020-11-15"
+  },
+  "median": 16.75,
+  "biggest_move": {
+   "period": "2024-03-06",
+   "pct_change": 26.97,
+   "change": 6.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.RATE.RETAIL.DEP.1M3M",
+  "title_en": "Monthly Deposit and Lending Interest Rates - EGP Deposits - > 1 Month <= 3 Months",
+  "family": "rates",
+  "freq": "M",
+  "unit": "percent per annum",
+  "n": 193,
+  "first_period": "2010-06-01",
+  "last_period": "2026-06-01",
+  "last": 14.3,
+  "previous": 14.2,
+  "highest": {
+   "value": 21.0,
+   "period": "2025-01-01"
+  },
+  "lowest": {
+   "value": 6.3,
+   "period": "2010-06-01"
+  },
+  "median": 7.9,
+  "biggest_move": {
+   "period": "2016-12-01",
+   "pct_change": 17.05,
+   "change": 1.5
+  },
+  "flags": [
+   "no new value in 80 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.RATE.RETAIL.DEP.3M6M",
+  "title_en": "Monthly Deposit and Lending Interest Rates - EGP Deposits - > 3 Months <= 6 Months",
+  "family": "rates",
+  "freq": "M",
+  "unit": "percent per annum",
+  "n": 193,
+  "first_period": "2010-06-01",
+  "last_period": "2026-06-01",
+  "last": 14.3,
+  "previous": 13.9,
+  "highest": {
+   "value": 18.3,
+   "period": "2025-01-01"
+  },
+  "lowest": {
+   "value": 6.9,
+   "period": "2010-06-01"
+  },
+  "median": 8.4,
+  "biggest_move": {
+   "period": "2024-05-01",
+   "pct_change": 14.09,
+   "change": 2.1
+  },
+  "flags": [
+   "no new value in 80 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.RATE.RETAIL.DEP.6M1Y",
+  "title_en": "Monthly Deposit and Lending Interest Rates - EGP Deposits - > 6 Months <= 1 Year",
+  "family": "rates",
+  "freq": "M",
+  "unit": "percent per annum",
+  "n": 193,
+  "first_period": "2010-06-01",
+  "last_period": "2026-06-01",
+  "last": 14.3,
+  "previous": 14.1,
+  "highest": {
+   "value": 17.9,
+   "period": "2024-12-01"
+  },
+  "lowest": {
+   "value": 7.2,
+   "period": "2010-07-01"
+  },
+  "median": 9.2,
+  "biggest_move": {
+   "period": "2023-03-01",
+   "pct_change": 10.2,
+   "change": 1.0
+  },
+  "flags": [
+   "no new value in 80 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.RATE.RETAIL.LOAN.CORP.LT1Y",
+  "title_en": "Monthly Deposit and Lending Interest Rates - EGP Loans - <= 1 Year (Corporate)",
+  "family": "rates",
+  "freq": "M",
+  "unit": "percent per annum",
+  "n": 193,
+  "first_period": "2010-06-01",
+  "last_period": "2026-06-01",
+  "last": 20.5,
+  "previous": 20.6,
+  "highest": {
+   "value": 26.7,
+   "period": "2024-12-01"
+  },
+  "lowest": {
+   "value": 9.3,
+   "period": "2021-09-01"
+  },
+  "median": 12.4,
+  "biggest_move": {
+   "period": "2024-03-01",
+   "pct_change": 16.5,
+   "change": 3.3
+  },
+  "flags": [
+   "no new value in 80 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.RES.NIR",
+  "title_en": "Net International Reserves",
+  "family": "external",
+  "freq": "M",
+  "unit": "USD million",
+  "n": 91,
+  "first_period": "2015-06-23",
+  "last_period": "2026-08-05",
+  "last": 56293.9,
+  "previous": 55072.3,
+  "highest": {
+   "value": 56293.9,
+   "period": "2026-08-05"
+  },
+  "lowest": {
+   "value": 15536.4,
+   "period": "2016-08-08"
+  },
+  "median": 40468.0,
+  "biggest_move": {
+   "period": "2016-12-06",
+   "pct_change": 39.2,
+   "change": 6493.8
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.12M.AMT.ACC",
+  "title_en": "EGP treasury bill 12-month auction, amount accepted",
+  "family": "govt",
+  "freq": "W",
+  "unit": "EGP",
+  "n": 1021,
+  "first_period": "2004-04-06",
+  "last_period": "2026-08-18",
+  "last": 72202700000.0,
+  "previous": 48462700000.0,
+  "highest": {
+   "value": 217878150000.0,
+   "period": "2024-03-19"
+  },
+  "lowest": {
+   "value": 62850000.0,
+   "period": "2022-05-03"
+  },
+  "median": 4000000000.0,
+  "biggest_move": {
+   "period": "2023-07-11",
+   "pct_change": 8779.4,
+   "change": 9429075000.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.12M.AMT.SUB",
+  "title_en": "EGP treasury bill 12-month auction, amount submitted",
+  "family": "govt",
+  "freq": "W",
+  "unit": "EGP",
+  "n": 1021,
+  "first_period": "2004-04-06",
+  "last_period": "2026-08-18",
+  "last": 115720900000.0,
+  "previous": 104985700000.0,
+  "highest": {
+   "value": 408104775000.0,
+   "period": "2024-03-19"
+  },
+  "lowest": {
+   "value": 1005325000.0,
+   "period": "2006-12-12"
+  },
+  "median": 11675550000.0,
+  "biggest_move": {
+   "period": "2025-01-07",
+   "pct_change": 397.44,
+   "change": 135481325000.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.12M.BIDCOVER",
+  "title_en": "EGP treasury bill 12-month auction, bid-to-cover ratio",
+  "family": "govt",
+  "freq": "W",
+  "unit": "ratio",
+  "n": 1021,
+  "first_period": "2004-04-06",
+  "last_period": "2026-08-18",
+  "last": 1.6027,
+  "previous": 2.1663,
+  "highest": {
+   "value": 262.9872,
+   "period": "2023-07-04"
+  },
+  "lowest": {
+   "value": 1.0,
+   "period": "2016-11-01"
+  },
+  "median": 2.2458,
+  "biggest_move": {
+   "period": "2019-11-26",
+   "pct_change": 4529.13,
+   "change": 61.0074
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.12M.YLD.MAX",
+  "title_en": "EGP treasury bill 12-month auction, maximum accepted yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 1021,
+  "first_period": "2004-04-06",
+  "last_period": "2026-08-18",
+  "last": 24.99,
+  "previous": 25.1,
+  "highest": {
+   "value": 32.599,
+   "period": "2024-03-12"
+  },
+  "lowest": {
+   "value": 5.9,
+   "period": "2008-02-12"
+  },
+  "median": 13.88,
+  "biggest_move": {
+   "period": "2008-05-13",
+   "pct_change": 30.87,
+   "change": 2.3
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.12M.YLD.MIN",
+  "title_en": "EGP treasury bill 12-month auction, minimum accepted yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 1021,
+  "first_period": "2004-04-06",
+  "last_period": "2026-08-18",
+  "last": 24.89,
+  "previous": 24.8,
+  "highest": {
+   "value": 28.0,
+   "period": "2024-03-12"
+  },
+  "lowest": {
+   "value": 5.08,
+   "period": "2008-02-12"
+  },
+  "median": 13.5,
+  "biggest_move": {
+   "period": "2023-10-03",
+   "pct_change": 56.24,
+   "change": 8.999
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.12M.YLD.WAVG",
+  "title_en": "EGP treasury bill 12-month auction, weighted average yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 1021,
+  "first_period": "2004-04-06",
+  "last_period": "2026-08-18",
+  "last": 24.95,
+  "previous": 25.069,
+  "highest": {
+   "value": 32.303,
+   "period": "2024-03-12"
+  },
+  "lowest": {
+   "value": 5.62,
+   "period": "2008-02-12"
+  },
+  "median": 13.82,
+  "biggest_move": {
+   "period": "2008-05-13",
+   "pct_change": 24.39,
+   "change": 1.805
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.3M.AMT.ACC",
+  "title_en": "EGP treasury bill 3-month auction, amount accepted",
+  "family": "govt",
+  "freq": "W",
+  "unit": "EGP",
+  "n": 1062,
+  "first_period": "2002-06-27",
+  "last_period": "2026-08-18",
+  "last": 39791050000.0,
+  "previous": 43935025000.0,
+  "highest": {
+   "value": 162612750000.0,
+   "period": "2024-02-20"
+  },
+  "lowest": {
+   "value": 21400000.0,
+   "period": "2003-05-15"
+  },
+  "median": 2500000000.0,
+  "biggest_move": {
+   "period": "2003-05-22",
+   "pct_change": 11643.46,
+   "change": 2491700000.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.3M.AMT.SUB",
+  "title_en": "EGP treasury bill 3-month auction, amount submitted",
+  "family": "govt",
+  "freq": "W",
+  "unit": "EGP",
+  "n": 1062,
+  "first_period": "2002-06-27",
+  "last_period": "2026-08-18",
+  "last": 126264825000.0,
+  "previous": 117988875000.0,
+  "highest": {
+   "value": 271618500000.0,
+   "period": "2025-03-18"
+  },
+  "lowest": {
+   "value": 310000000.0,
+   "period": "2003-01-30"
+  },
+  "median": 6930087500.0,
+  "biggest_move": {
+   "period": "2003-02-06",
+   "pct_change": 814.52,
+   "change": 2525000000.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.3M.BIDCOVER",
+  "title_en": "EGP treasury bill 3-month auction, bid-to-cover ratio",
+  "family": "govt",
+  "freq": "W",
+  "unit": "ratio",
+  "n": 1062,
+  "first_period": "2002-06-27",
+  "last_period": "2026-08-18",
+  "last": 3.1732,
+  "previous": 2.6855,
+  "highest": {
+   "value": 367.2777,
+   "period": "2020-03-31"
+  },
+  "lowest": {
+   "value": 1.0,
+   "period": "2003-01-30"
+  },
+  "median": 2.0208,
+  "biggest_move": {
+   "period": "2019-02-19",
+   "pct_change": 7662.87,
+   "change": 156.2382
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.3M.YLD.MAX",
+  "title_en": "EGP treasury bill 3-month auction, maximum accepted yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 1062,
+  "first_period": "2002-06-27",
+  "last_period": "2026-08-18",
+  "last": 24.24,
+  "previous": 24.642,
+  "highest": {
+   "value": 31.698,
+   "period": "2024-12-17"
+  },
+  "lowest": {
+   "value": 4.802,
+   "period": "2003-01-16"
+  },
+  "median": 12.999,
+  "biggest_move": {
+   "period": "2003-01-30",
+   "pct_change": 80.08,
+   "change": 4.003
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.3M.YLD.MIN",
+  "title_en": "EGP treasury bill 3-month auction, minimum accepted yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 1062,
+  "first_period": "2002-06-27",
+  "last_period": "2026-08-18",
+  "last": 24.001,
+  "previous": 24.299,
+  "highest": {
+   "value": 31.301,
+   "period": "2024-12-17"
+  },
+  "lowest": {
+   "value": 3.998,
+   "period": "2003-01-16"
+  },
+  "median": 12.499,
+  "biggest_move": {
+   "period": "2008-05-20",
+   "pct_change": 64.55,
+   "change": 3.551
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.3M.YLD.WAVG",
+  "title_en": "EGP treasury bill 3-month auction, weighted average yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 1062,
+  "first_period": "2002-06-27",
+  "last_period": "2026-08-18",
+  "last": 24.191,
+  "previous": 24.631,
+  "highest": {
+   "value": 31.637,
+   "period": "2024-12-17"
+  },
+  "lowest": {
+   "value": 4.603,
+   "period": "2003-01-16"
+  },
+  "median": 12.888,
+  "biggest_move": {
+   "period": "2008-05-20",
+   "pct_change": 56.95,
+   "change": 3.342
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.6M.AMT.ACC",
+  "title_en": "EGP treasury bill 6-month auction, amount accepted",
+  "family": "govt",
+  "freq": "W",
+  "unit": "EGP",
+  "n": 1113,
+  "first_period": "2002-07-09",
+  "last_period": "2026-08-18",
+  "last": 83641800000.0,
+  "previous": 97058450000.0,
+  "highest": {
+   "value": 123278475000.0,
+   "period": "2026-01-13"
+  },
+  "lowest": {
+   "value": 89050000.0,
+   "period": "2023-12-19"
+  },
+  "median": 3000000000.0,
+  "biggest_move": {
+   "period": "2020-03-24",
+   "pct_change": 9986.93,
+   "change": 11097975000.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.6M.AMT.SUB",
+  "title_en": "EGP treasury bill 6-month auction, amount submitted",
+  "family": "govt",
+  "freq": "W",
+  "unit": "EGP",
+  "n": 1113,
+  "first_period": "2002-07-09",
+  "last_period": "2026-08-18",
+  "last": 221986350000.0,
+  "previous": 180072650000.0,
+  "highest": {
+   "value": 347935575000.0,
+   "period": "2026-04-21"
+  },
+  "lowest": {
+   "value": 767050000.0,
+   "period": "2004-06-15"
+  },
+  "median": 7075150000.0,
+  "biggest_move": {
+   "period": "2024-07-02",
+   "pct_change": 265.69,
+   "change": 40760475000.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.6M.BIDCOVER",
+  "title_en": "EGP treasury bill 6-month auction, bid-to-cover ratio",
+  "family": "govt",
+  "freq": "W",
+  "unit": "ratio",
+  "n": 1113,
+  "first_period": "2002-07-09",
+  "last_period": "2026-08-18",
+  "last": 2.654,
+  "previous": 1.8553,
+  "highest": {
+   "value": 292.0778,
+   "period": "2023-12-19"
+  },
+  "lowest": {
+   "value": 1.0,
+   "period": "2003-03-25"
+  },
+  "median": 2.0913,
+  "biggest_move": {
+   "period": "2023-12-19",
+   "pct_change": 9340.14,
+   "change": 288.9838
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.6M.YLD.MAX",
+  "title_en": "EGP treasury bill 6-month auction, maximum accepted yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 1113,
+  "first_period": "2002-07-09",
+  "last_period": "2026-08-18",
+  "last": 25.641,
+  "previous": 25.94,
+  "highest": {
+   "value": 32.15,
+   "period": "2024-03-12"
+  },
+  "lowest": {
+   "value": 5.087,
+   "period": "2008-02-05"
+  },
+  "median": 13.349,
+  "biggest_move": {
+   "period": "2003-02-04",
+   "pct_change": 79.58,
+   "change": 4.376
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.6M.YLD.MIN",
+  "title_en": "EGP treasury bill 6-month auction, minimum accepted yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 1113,
+  "first_period": "2002-07-09",
+  "last_period": "2026-08-18",
+  "last": 24.499,
+  "previous": 24.79,
+  "highest": {
+   "value": 30.981,
+   "period": "2024-12-24"
+  },
+  "lowest": {
+   "value": 4.407,
+   "period": "2003-01-14"
+  },
+  "median": 13.001,
+  "biggest_move": {
+   "period": "2003-04-08",
+   "pct_change": 98.32,
+   "change": 5.899
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.6M.YLD.WAVG",
+  "title_en": "EGP treasury bill 6-month auction, weighted average yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 1113,
+  "first_period": "2002-07-09",
+  "last_period": "2026-08-18",
+  "last": 25.599,
+  "previous": 25.861,
+  "highest": {
+   "value": 31.837,
+   "period": "2024-03-12"
+  },
+  "lowest": {
+   "value": 5.039,
+   "period": "2008-02-05"
+  },
+  "median": 13.263,
+  "biggest_move": {
+   "period": "2003-02-04",
+   "pct_change": 61.45,
+   "change": 3.261
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.9M.AMT.ACC",
+  "title_en": "EGP treasury bill 9-month auction, amount accepted",
+  "family": "govt",
+  "freq": "W",
+  "unit": "EGP",
+  "n": 836,
+  "first_period": "2008-10-14",
+  "last_period": "2026-08-18",
+  "last": 102320950000.0,
+  "previous": 90000000000.0,
+  "highest": {
+   "value": 102320950000.0,
+   "period": "2026-08-18"
+  },
+  "lowest": {
+   "value": 4650000.0,
+   "period": "2022-09-27"
+  },
+  "median": 4403787500.0,
+  "biggest_move": {
+   "period": "2022-10-04",
+   "pct_change": 87572.04,
+   "change": 4072100000.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.9M.AMT.SUB",
+  "title_en": "EGP treasury bill 9-month auction, amount submitted",
+  "family": "govt",
+  "freq": "W",
+  "unit": "EGP",
+  "n": 836,
+  "first_period": "2008-10-14",
+  "last_period": "2026-08-18",
+  "last": 193990150000.0,
+  "previous": 201530575000.0,
+  "highest": {
+   "value": 348051875000.0,
+   "period": "2024-03-19"
+  },
+  "lowest": {
+   "value": 2446000000.0,
+   "period": "2008-10-28"
+  },
+  "median": 11617212500.0,
+  "biggest_move": {
+   "period": "2024-03-12",
+   "pct_change": 321.69,
+   "change": 138334250000.0
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.9M.BIDCOVER",
+  "title_en": "EGP treasury bill 9-month auction, bid-to-cover ratio",
+  "family": "govt",
+  "freq": "W",
+  "unit": "ratio",
+  "n": 836,
+  "first_period": "2008-10-14",
+  "last_period": "2026-08-18",
+  "last": 1.8959,
+  "previous": 2.2392,
+  "highest": {
+   "value": 3046.8817,
+   "period": "2022-09-27"
+  },
+  "lowest": {
+   "value": 1.0356,
+   "period": "2014-06-03"
+  },
+  "median": 2.0947,
+  "biggest_move": {
+   "period": "2022-09-27",
+   "pct_change": 129229.84,
+   "change": 3044.5258
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.9M.YLD.MAX",
+  "title_en": "EGP treasury bill 9-month auction, maximum accepted yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 836,
+  "first_period": "2008-10-14",
+  "last_period": "2026-08-18",
+  "last": 25.63,
+  "previous": 25.949,
+  "highest": {
+   "value": 31.801,
+   "period": "2024-03-12"
+  },
+  "lowest": {
+   "value": 9.75,
+   "period": "2009-09-29"
+  },
+  "median": 15.49,
+  "biggest_move": {
+   "period": "2011-02-08",
+   "pct_change": 18.55,
+   "change": 1.961
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.9M.YLD.MIN",
+  "title_en": "EGP treasury bill 9-month auction, minimum accepted yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 836,
+  "first_period": "2008-10-14",
+  "last_period": "2026-08-18",
+  "last": 25.391,
+  "previous": 25.501,
+  "highest": {
+   "value": 30.0,
+   "period": "2024-03-12"
+  },
+  "lowest": {
+   "value": 9.6,
+   "period": "2009-09-29"
+  },
+  "median": 14.9495,
+  "biggest_move": {
+   "period": "2017-06-13",
+   "pct_change": 30.56,
+   "change": 4.681
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EGP.9M.YLD.WAVG",
+  "title_en": "EGP treasury bill 9-month auction, weighted average yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 836,
+  "first_period": "2008-10-14",
+  "last_period": "2026-08-18",
+  "last": 25.563,
+  "previous": 25.913,
+  "highest": {
+   "value": 31.471,
+   "period": "2024-03-12"
+  },
+  "lowest": {
+   "value": 9.707,
+   "period": "2009-09-29"
+  },
+  "median": 15.3535,
+  "biggest_move": {
+   "period": "2016-11-15",
+   "pct_change": 13.12,
+   "change": 2.17
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.EUR.12M.AMT.ACC",
+  "title_en": "EUR treasury bill 12-month auction, amount accepted",
+  "family": "govt",
+  "freq": "W",
+  "unit": "EGP",
+  "n": 25,
+  "first_period": "2012-08-29",
+  "last_period": "2025-11-04",
+  "last": 627800000.0,
+  "previous": 591700000.0,
+  "highest": {
+   "value": 734300000.0,
+   "period": "2014-11-18"
+  },
+  "lowest": {
+   "value": 513300000.0,
+   "period": "2012-08-29"
+  },
+  "median": 640200000.0,
+  "biggest_move": {
+   "period": "2012-11-20",
+   "pct_change": 24.72,
+   "change": 126900000.0
+  },
+  "flags": [
+   "no new value in 289 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.TB.EUR.12M.AMT.SUB",
+  "title_en": "EUR treasury bill 12-month auction, amount submitted",
+  "family": "govt",
+  "freq": "W",
+  "unit": "EGP",
+  "n": 25,
+  "first_period": "2012-08-29",
+  "last_period": "2025-11-04",
+  "last": 707800000.0,
+  "previous": 726700000.0,
+  "highest": {
+   "value": 1210200000.0,
+   "period": "2012-11-20"
+  },
+  "lowest": {
+   "value": 705300000.0,
+   "period": "2020-08-18"
+  },
+  "median": 806400000.0,
+  "biggest_move": {
+   "period": "2012-11-20",
+   "pct_change": 37.49,
+   "change": 330000000.0
+  },
+  "flags": [
+   "no new value in 289 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.TB.EUR.12M.BIDCOVER",
+  "title_en": "EUR treasury bill 12-month auction, bid-to-cover ratio",
+  "family": "govt",
+  "freq": "W",
+  "unit": "ratio",
+  "n": 25,
+  "first_period": "2012-08-29",
+  "last_period": "2025-11-04",
+  "last": 1.1274,
+  "previous": 1.2282,
+  "highest": {
+   "value": 1.8903,
+   "period": "2012-11-20"
+  },
+  "lowest": {
+   "value": 1.0727,
+   "period": "2016-11-15"
+  },
+  "median": 1.2288,
+  "biggest_move": {
+   "period": "2024-11-05",
+   "pct_change": 19.95,
+   "change": 0.2388
+  },
+  "flags": [
+   "no new value in 289 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.TB.EUR.12M.YLD.MAX",
+  "title_en": "EUR treasury bill 12-month auction, maximum accepted yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 25,
+  "first_period": "2012-08-29",
+  "last_period": "2025-11-04",
+  "last": 2.25,
+  "previous": 2.25,
+  "highest": {
+   "value": 4.0,
+   "period": "2023-08-15"
+  },
+  "lowest": {
+   "value": 1.4,
+   "period": "2020-11-10"
+  },
+  "median": 2.18,
+  "biggest_move": {
+   "period": "2023-08-15",
+   "pct_change": 73.91,
+   "change": 1.7
+  },
+  "flags": [
+   "no new value in 289 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.TB.EUR.12M.YLD.MIN",
+  "title_en": "EUR treasury bill 12-month auction, minimum accepted yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 25,
+  "first_period": "2012-08-29",
+  "last_period": "2025-11-04",
+  "last": 2.25,
+  "previous": 2.25,
+  "highest": {
+   "value": 3.999,
+   "period": "2023-08-15"
+  },
+  "lowest": {
+   "value": 1.35,
+   "period": "2020-11-10"
+  },
+  "median": 1.97,
+  "biggest_move": {
+   "period": "2023-08-15",
+   "pct_change": 74.63,
+   "change": 1.709
+  },
+  "flags": [
+   "no new value in 289 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.TB.EUR.12M.YLD.WAVG",
+  "title_en": "EUR treasury bill 12-month auction, weighted average yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 25,
+  "first_period": "2012-08-29",
+  "last_period": "2025-11-04",
+  "last": 2.25,
+  "previous": 2.25,
+  "highest": {
+   "value": 4.0,
+   "period": "2023-08-15"
+  },
+  "lowest": {
+   "value": 1.396,
+   "period": "2020-11-10"
+  },
+  "median": 2.171,
+  "biggest_move": {
+   "period": "2023-08-15",
+   "pct_change": 73.91,
+   "change": 1.7
+  },
+  "flags": [
+   "no new value in 289 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.TB.SEC.12M.VOL",
+  "title_en": "EGP T-Bills Secondary Market - 12 Months (274 - 365 Days) - Volume in EGP mio",
+  "family": "govt",
+  "freq": "D",
+  "unit": "EGP million",
+  "n": 2335,
+  "first_period": "2014-01-06",
+  "last_period": "2026-08-19",
+  "last": 13498.8,
+  "previous": 82591.45,
+  "highest": {
+   "value": 276575000.0,
+   "period": "2018-12-19"
+  },
+  "lowest": {
+   "value": 0.0,
+   "period": "2020-07-06"
+  },
+  "median": 1246.2,
+  "biggest_move": {
+   "period": "2018-12-19",
+   "pct_change": 2348832171.76,
+   "change": 276574988.225
+  },
+  "flags": [
+   "2 zero values (CBE publishes 0 where no rate was set)"
+  ]
+ },
+ {
+  "series_id": "EG.TB.SEC.12M.YLD",
+  "title_en": "EGP T-Bills Secondary Market - 12 Months (274 - 365 Days) - W. A. Yield %",
+  "family": "govt",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 2332,
+  "first_period": "2014-01-06",
+  "last_period": "2026-08-19",
+  "last": 24.228,
+  "previous": 24.377,
+  "highest": {
+   "value": 31.336,
+   "period": "2024-03-12"
+  },
+  "lowest": {
+   "value": 10.25,
+   "period": "2020-04-12"
+  },
+  "median": 18.2105,
+  "biggest_move": {
+   "period": "2022-07-07",
+   "pct_change": 24.77,
+   "change": 3.22
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.SEC.1M.VOL",
+  "title_en": "EGP T-Bills Secondary Market - 1 Month (Up to 30 Days) - Volume in EGP mio",
+  "family": "govt",
+  "freq": "D",
+  "unit": "EGP million",
+  "n": 2375,
+  "first_period": "2014-01-06",
+  "last_period": "2026-08-19",
+  "last": 11401.525,
+  "previous": 29841.025,
+  "highest": {
+   "value": 1793925000.0,
+   "period": "2018-12-19"
+  },
+  "lowest": {
+   "value": 0.275,
+   "period": "2016-12-18"
+  },
+  "median": 2486.225,
+  "biggest_move": {
+   "period": "2018-12-19",
+   "pct_change": 238197410.37,
+   "change": 1793924246.875
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.SEC.1M.YLD",
+  "title_en": "EGP T-Bills Secondary Market - 1 Month (Up to 30 Days) - W. A. Yield %",
+  "family": "govt",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 2375,
+  "first_period": "2014-01-06",
+  "last_period": "2026-08-19",
+  "last": 22.552,
+  "previous": 21.908,
+  "highest": {
+   "value": 30.961,
+   "period": "2024-11-25"
+  },
+  "lowest": {
+   "value": 9.162,
+   "period": "2017-02-19"
+  },
+  "median": 17.0,
+  "biggest_move": {
+   "period": "2018-09-10",
+   "pct_change": 88.92,
+   "change": 8.348
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.SEC.2M.VOL",
+  "title_en": "EGP T-Bills Secondary Market - 2 Months (31 - 60 Days) - Volume in EGP mio",
+  "family": "govt",
+  "freq": "D",
+  "unit": "EGP million",
+  "n": 2365,
+  "first_period": "2014-01-06",
+  "last_period": "2026-08-19",
+  "last": 8332.5,
+  "previous": 21874.875,
+  "highest": {
+   "value": 4256050000.0,
+   "period": "2018-12-19"
+  },
+  "lowest": {
+   "value": 0.025,
+   "period": "2019-08-04"
+  },
+  "median": 993.45,
+  "biggest_move": {
+   "period": "2018-12-19",
+   "pct_change": 306521326.0,
+   "change": 4256048611.5
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.SEC.2M.YLD",
+  "title_en": "EGP T-Bills Secondary Market - 2 Months (31 - 60 Days) - W. A. Yield %",
+  "family": "govt",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 2365,
+  "first_period": "2014-01-06",
+  "last_period": "2026-08-19",
+  "last": 23.686,
+  "previous": 23.607,
+  "highest": {
+   "value": 31.097,
+   "period": "2024-11-25"
+  },
+  "lowest": {
+   "value": 6.868,
+   "period": "2017-02-14"
+  },
+  "median": 17.61,
+  "biggest_move": {
+   "period": "2017-02-15",
+   "pct_change": 141.74,
+   "change": 9.735
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.SEC.3M.VOL",
+  "title_en": "EGP T-Bills Secondary Market - 3 Months (61 - 91 Days) - Volume in EGP mio",
+  "family": "govt",
+  "freq": "D",
+  "unit": "EGP million",
+  "n": 2374,
+  "first_period": "2014-01-06",
+  "last_period": "2026-08-19",
+  "last": 17157.75,
+  "previous": 43640.0,
+  "highest": {
+   "value": 5763850000.0,
+   "period": "2018-12-19"
+  },
+  "lowest": {
+   "value": 0.225,
+   "period": "2016-12-19"
+  },
+  "median": 2235.5375,
+  "biggest_move": {
+   "period": "2018-12-19",
+   "pct_change": 292365925.01,
+   "change": 5763848028.55
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.SEC.3M.YLD",
+  "title_en": "EGP T-Bills Secondary Market - 3 Months (61 - 91 Days) - W. A. Yield %",
+  "family": "govt",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 2374,
+  "first_period": "2014-01-06",
+  "last_period": "2026-08-19",
+  "last": 23.595,
+  "previous": 23.879,
+  "highest": {
+   "value": 31.614,
+   "period": "2024-12-11"
+  },
+  "lowest": {
+   "value": 6.461,
+   "period": "2017-02-20"
+  },
+  "median": 18.222,
+  "biggest_move": {
+   "period": "2017-02-21",
+   "pct_change": 159.99,
+   "change": 10.337
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.SEC.6M.VOL",
+  "title_en": "EGP T-Bills Secondary Market - 6 Months (92 - 182 Days) - Volume in EGP mio",
+  "family": "govt",
+  "freq": "D",
+  "unit": "EGP million",
+  "n": 2373,
+  "first_period": "2014-01-06",
+  "last_period": "2026-08-19",
+  "last": 45003.05,
+  "previous": 81300.925,
+  "highest": {
+   "value": 1245900000.0,
+   "period": "2018-12-19"
+  },
+  "lowest": {
+   "value": 0.4,
+   "period": "2017-08-27"
+  },
+  "median": 2215.85,
+  "biggest_move": {
+   "period": "2018-12-19",
+   "pct_change": 214689944.37,
+   "change": 1245899419.675
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.SEC.6M.YLD",
+  "title_en": "EGP T-Bills Secondary Market - 6 Months (92 - 182 Days) - W. A. Yield %",
+  "family": "govt",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 2373,
+  "first_period": "2014-01-06",
+  "last_period": "2026-08-19",
+  "last": 25.133,
+  "previous": 25.206,
+  "highest": {
+   "value": 31.544,
+   "period": "2024-12-11"
+  },
+  "lowest": {
+   "value": 10.414,
+   "period": "2014-01-06"
+  },
+  "median": 18.208,
+  "biggest_move": {
+   "period": "2017-10-16",
+   "pct_change": 56.31,
+   "change": 6.768
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.SEC.9M.VOL",
+  "title_en": "EGP T-Bills Secondary Market - 9 Months (183 - 273 Days) - Volume in EGP mio",
+  "family": "govt",
+  "freq": "D",
+  "unit": "EGP million",
+  "n": 2311,
+  "first_period": "2014-01-06",
+  "last_period": "2026-08-19",
+  "last": 18415.9,
+  "previous": 81706.65,
+  "highest": {
+   "value": 570225000.0,
+   "period": "2018-12-19"
+  },
+  "lowest": {
+   "value": 0.025,
+   "period": "2016-09-19"
+  },
+  "median": 1126.675,
+  "biggest_move": {
+   "period": "2023-08-29",
+   "pct_change": 64000300.0,
+   "change": 16000.075
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.SEC.9M.YLD",
+  "title_en": "EGP T-Bills Secondary Market - 9 Months (183 - 273 Days) - W. A. Yield %",
+  "family": "govt",
+  "freq": "D",
+  "unit": "percent per annum",
+  "n": 2311,
+  "first_period": "2014-01-06",
+  "last_period": "2026-08-19",
+  "last": 25.034,
+  "previous": 25.545,
+  "highest": {
+   "value": 34.502,
+   "period": "2024-03-10"
+  },
+  "lowest": {
+   "value": 10.4,
+   "period": "2016-04-04"
+  },
+  "median": 18.112,
+  "biggest_move": {
+   "period": "2022-12-22",
+   "pct_change": 37.44,
+   "change": 5.336
+  },
+  "flags": []
+ },
+ {
+  "series_id": "EG.TB.USD.12M.AMT.ACC",
+  "title_en": "USD treasury bill 12-month auction, amount accepted",
+  "family": "govt",
+  "freq": "W",
+  "unit": "EGP",
+  "n": 83,
+  "first_period": "2011-11-30",
+  "last_period": "2026-06-02",
+  "last": 461500000.0,
+  "previous": 933900000.0,
+  "highest": {
+   "value": 1799500000.0,
+   "period": "2013-11-26"
+  },
+  "lowest": {
+   "value": 461500000.0,
+   "period": "2026-06-02"
+  },
+  "median": 1000000000.0,
+  "biggest_move": {
+   "period": "2012-11-27",
+   "pct_change": 226.5,
+   "change": 1191400000.0
+  },
+  "flags": [
+   "no new value in 79 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.TB.USD.12M.AMT.SUB",
+  "title_en": "USD treasury bill 12-month auction, amount submitted",
+  "family": "govt",
+  "freq": "W",
+  "unit": "EGP",
+  "n": 83,
+  "first_period": "2011-11-30",
+  "last_period": "2026-06-02",
+  "last": 551500000.0,
+  "previous": 1078900000.0,
+  "highest": {
+   "value": 2615800000.0,
+   "period": "2011-11-30"
+  },
+  "lowest": {
+   "value": 540600000.0,
+   "period": "2021-06-08"
+  },
+  "median": 1196000000.0,
+  "biggest_move": {
+   "period": "2021-11-16",
+   "pct_change": 226.67,
+   "change": 1225400000.0
+  },
+  "flags": [
+   "no new value in 79 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.TB.USD.12M.BIDCOVER",
+  "title_en": "USD treasury bill 12-month auction, bid-to-cover ratio",
+  "family": "govt",
+  "freq": "W",
+  "unit": "ratio",
+  "n": 83,
+  "first_period": "2011-11-30",
+  "last_period": "2026-06-02",
+  "last": 1.195,
+  "previous": 1.1553,
+  "highest": {
+   "value": 2.2701,
+   "period": "2011-12-21"
+  },
+  "lowest": {
+   "value": 1.0,
+   "period": "2021-06-08"
+  },
+  "median": 1.1746,
+  "biggest_move": {
+   "period": "2011-12-21",
+   "pct_change": 32.85,
+   "change": 0.5613
+  },
+  "flags": [
+   "no new value in 79 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.TB.USD.12M.YLD.MAX",
+  "title_en": "USD treasury bill 12-month auction, maximum accepted yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 83,
+  "first_period": "2011-11-30",
+  "last_period": "2026-06-02",
+  "last": 4.2,
+  "previous": 4.0,
+  "highest": {
+   "value": 5.149,
+   "period": "2023-06-06"
+  },
+  "lowest": {
+   "value": 2.14,
+   "period": "2014-12-16"
+  },
+  "median": 3.62,
+  "biggest_move": {
+   "period": "2016-05-10",
+   "pct_change": 59.56,
+   "change": 1.34
+  },
+  "flags": [
+   "no new value in 79 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.TB.USD.12M.YLD.MIN",
+  "title_en": "USD treasury bill 12-month auction, minimum accepted yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 83,
+  "first_period": "2011-11-30",
+  "last_period": "2026-06-02",
+  "last": 4.2,
+  "previous": 4.0,
+  "highest": {
+   "value": 5.149,
+   "period": "2023-12-05"
+  },
+  "lowest": {
+   "value": 2.1,
+   "period": "2014-12-16"
+  },
+  "median": 3.55,
+  "biggest_move": {
+   "period": "2016-05-10",
+   "pct_change": 60.91,
+   "change": 1.34
+  },
+  "flags": [
+   "no new value in 79 days (discontinued?)"
+  ]
+ },
+ {
+  "series_id": "EG.TB.USD.12M.YLD.WAVG",
+  "title_en": "USD treasury bill 12-month auction, weighted average yield",
+  "family": "govt",
+  "freq": "W",
+  "unit": "percent per annum",
+  "n": 83,
+  "first_period": "2011-11-30",
+  "last_period": "2026-06-02",
+  "last": 4.2,
+  "previous": 4.0,
+  "highest": {
+   "value": 5.149,
+   "period": "2023-06-06"
+  },
+  "lowest": {
+   "value": 2.133,
+   "period": "2014-12-16"
+  },
+  "median": 3.62,
+  "biggest_move": {
+   "period": "2016-05-10",
+   "pct_change": 60.94,
+   "change": 1.359
+  },
+  "flags": [
+   "no new value in 79 days (discontinued?)"
+  ]
+ }
+]

@@ -1,0 +1,72 @@
+# The daily ingest.
+#
+# Every run commits the raw responses under data/raw/. That commit history is
+# the point: CBE silently overwrites revised figures, so git is the only record
+# that a number ever read differently. It cannot be backfilled, which is why
+# this workflow is switched on before any of the parsing or the site exists.
+
+name: scrape-daily
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 08:20 UTC = 10:20 Cairo (EET, UTC+2). CBE posts the official rates in the
+    # morning; this leaves a comfortable margin without hammering them at 09:00.
+    - cron: "20 8 * * *"
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # Order matters: derive reads the auction records fetch_series wrote,
+      # summarise reads everything, and detect_events reads the FX series.
+      - name: Fetch all datasets
+        run: python ingest/fetch_series.py --delay 1.5
+
+      - name: Derive auction series (yield curve, bid-to-cover)
+        run: python ingest/derive_series.py
+
+      - name: Extract press-release series (reserves, remittances, MPC)
+        run: python ingest/fetch_press.py --skip-cached --delay 1.5
+
+      - name: Rebuild event annotations
+        run: python ingest/detect_events.py
+
+      - name: Summarise and check
+        run: python ingest/summarise.py --check
+
+      - name: Commit any changes
+        run: |
+          git config user.name  "egypt-macro-bot"
+          git config user.email "actions@github.com"
+          git add data catalog corpus events.json
+          if git diff --staged --quiet; then
+            echo "No change in CBE data today."
+            exit 0
+          fi
+          # Name what moved, so `git log` reads as a revision history rather
+          # than a wall of identical messages.
+          CHANGED=$(git diff --staged --name-only -- data/clean/series data/clean/records \
+                    | xargs -r -n1 basename | sed 's/\.csv$//' | paste -sd, - | cut -c1-140)
+          git commit -m "data: $(date -u +%Y-%m-%d) update (${CHANGED:-raw only})"
+          git push
+
+      - name: Fail loudly on a short fetch
+        if: failure()
+        run: echo "::error::Ingest failed. Check whether CBE changed an endpoint or started blocking us."

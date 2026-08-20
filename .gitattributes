@@ -1,0 +1,7 @@
+# The workflows run on Linux runners, so anything they execute must be LF.
+* text=auto eol=lf
+*.png binary
+*.pdf binary
+*.xlsx binary
+*.xls binary
+*.gz binary

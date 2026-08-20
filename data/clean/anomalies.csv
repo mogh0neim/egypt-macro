@@ -1,0 +1,8 @@
+series_id,period,kept,discarded,dataset
+EG.FX.IBK.WAVG,2017-08-07,17.7821,18.0778,fx_interbank
+EG.FX.IBK.WAVG,2018-03-18,17.6226,17.6163,fx_interbank
+EG.FX.IBK.WAVG,2021-07-29,15.675,15.7042,fx_interbank
+EG.IBK.BW.ON,2023-11-27,19.395,19.404,interbank_biweekly
+EG.IBK.BW.VOL.LT1W,2023-11-27,10407.0,10380.0,interbank_biweekly
+EG.IBK.BW.VOL.ON,2023-11-27,264437.0,243187.0,interbank_biweekly
+EG.IBK.BW.VOL.TOTAL,2023-11-27,313373.0,292096.0,interbank_biweekly
