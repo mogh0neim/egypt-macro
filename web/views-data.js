@@ -295,10 +295,13 @@ async function viewTopic(key) {
     });
   };
   filterInput.addEventListener("input", apply);
-  app.querySelectorAll("[data-freq]").forEach((b) =>
+  // Scoped to buttons on purpose: the table rows carry data-freq too, and an
+  // unscoped selector would turn every click on a row into a filter change.
+  app.querySelectorAll("button[data-freq]").forEach((b) =>
     b.addEventListener("click", () => {
       freq = b.dataset.freq;
-      app.querySelectorAll("[data-freq]").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.freq === freq)));
+      app.querySelectorAll("button[data-freq]").forEach((x) =>
+        x.setAttribute("aria-pressed", String(x.dataset.freq === freq)));
       apply();
     })
   );
