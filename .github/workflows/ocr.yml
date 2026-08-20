@@ -75,6 +75,7 @@ jobs:
             echo "No new text came out of OCR."
             exit 0
           fi
+          git commit -m "ocr: read the scanned documents $(date -u +%Y-%m-%d)"
           # A long job can finish behind commits that landed while it ran, and a
           # rejected push throws the whole run's work away. Rebase and retry.
           for attempt in 1 2 3; do
