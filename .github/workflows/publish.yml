@@ -21,7 +21,7 @@ on:
       - "events.json"
       - ".github/workflows/publish.yml"
   workflow_run:
-    workflows: ["scrape-daily", "scrape-weekly"]
+    workflows: ["scrape-daily", "scrape-weekly", "ocr-scans"]
     types: [completed]
   workflow_dispatch:
 
