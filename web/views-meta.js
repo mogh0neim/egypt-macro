@@ -123,9 +123,10 @@ function viewAbout() {
 
     "<h3>How it is built</h3>" +
     "<p>Python for the ingest, static JSON and Parquet for the output, and a front end with no " +
-    "framework and no build step. Two scheduled jobs: the live endpoints every morning at " +
-    "08:20 UTC, the Excel archive and the document corpus weekly. The whole thing is a " +
-    "repository, and the repository is the archive.</p>" +
+    "framework and no build step. Two scheduled jobs — the live endpoints every morning " +
+    "at 08:20 UTC, the Excel archive and the document corpus every Sunday — plus a publish " +
+    "step that rebuilds this site after each of them, and an OCR pass run by hand when new " +
+    "scans turn up. The whole thing is a repository, and the repository is the archive.</p>" +
     "<p><a href=\"https://github.com/mogh0neim/egypt-macro\" target=\"_blank\" rel=\"noopener\">" +
     "The code and the data are on GitHub ↗</a></p>" +
     "</section></div>";
