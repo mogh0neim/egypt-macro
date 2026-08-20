@@ -512,6 +512,9 @@ async function route() {
     } else if (hash.startsWith("/search")) {
       document.querySelector('[data-route="search"]')?.classList.add("on");
       await viewSearch();
+    } else if (hash.startsWith("/docs")) {
+      document.querySelector('[data-route="docs"]')?.classList.add("on");
+      await viewDocs();
     } else if (hash.startsWith("/about")) {
       document.querySelector('[data-route="about"]')?.classList.add("on");
       viewAbout();

@@ -33,7 +33,8 @@ Nothing in `data/` or `catalog/` is hand-edited. Timestamps live only in
 
 ### Coverage
 
-30 datasets, ~147,000 observations.
+**1,158 series, 420,000 observations**, from three sources: 30 live endpoints,
+981 Excel files, and figures that exist only inside press-release prose.
 
 - **Exchange rates** — CBE official rates for 18 currencies (buy and sell), daily
   since January 2005. Market rates for 9 currencies since 2014. Interbank
@@ -49,6 +50,19 @@ Nothing in `data/` or `catalog/` is hand-edited. Timestamps live only in
 - **Prices** — headline, core, regulated-item and fresh-produce inflation, both
   year-on-year and month-on-month, back to January 2000.
 - **Auctions** — repo, deposit and foreign-exchange auctions.
+- **Reserves and remittances** — parsed out of press-release text, because CBE
+  publishes neither as a series anywhere.
+
+From the Excel archive, which is where the rest of Egypt's macro record lives:
+
+- **GDP** at factor cost and by expenditure, constant and current prices
+- **Balance of payments**, quarterly and annual, back to FY2004/05
+- **External and domestic debt**, by type and by debtor sector
+- **Banking surveys** — M2 and counterparts, domestic credit, deposits by
+  sector in pounds versus foreign currency
+- **Foreign trade** by country and by degree of processing
+- **State budget** — revenue, expenditure, deficit and financing
+- **FDI, tourism, stock market indicators**
 
 ## Why the git history matters
 
@@ -65,17 +79,53 @@ afterwards.
 ```bash
 pip install -r requirements.txt
 
-python ingest/cbe_client.py      # connectivity check -- run this first
-python ingest/fetch_series.py    # the 30 datasets
-python ingest/derive_series.py   # yield curve and bid-to-cover from auctions
-python ingest/fetch_press.py     # reserves, remittances, MPC statements
-python ingest/detect_events.py   # regenerate chart annotations
-python ingest/summarise.py       # coverage report and quality flags
+python ingest/cbe_client.py             # connectivity check -- run this first
+
+# daily: the 30 live endpoints
+python ingest/fetch_series.py
+python ingest/derive_series.py          # yield curve, bid-to-cover
+python ingest/fetch_press.py            # reserves, remittances, MPC text
+python ingest/detect_events.py          # chart annotations
+python ingest/summarise.py              # coverage and quality flags
+
+# weekly: the archive and the corpus
+python ingest/fetch_excel.py --download
+python ingest/parse_excel.py
+python ingest/fetch_docs.py --download
+python ingest/extract_text.py
+python ingest/mpc_archive.py
+
+# publish
+python ingest/build_search.py           # document search index
+python ingest/build_exports.py          # Parquet, SQLite, static API, zips
 ```
 
-Run them in that order — each reads what the previous one wrote. Individual
-datasets with `--only fx_official`, and `--skip-cached` on `fetch_press.py`
-reuses already-downloaded pages instead of hitting CBE again.
+Run them in that order — each reads what the previous one wrote. `--only
+fx_official` limits to one dataset; `--skip-cached` on `fetch_press.py` reuses
+already-downloaded pages instead of hitting CBE again.
+
+### The site
+
+`web/` is a static front end with no build step and no framework. Serve the
+repository root and open `web/index.html`:
+
+```bash
+python ingest/build_exports.py
+python -m http.server 8765
+# http://localhost:8765/web/index.html
+```
+
+### The API
+
+`build_exports.py` writes `dist/` — static JSON, no key, no rate limit:
+
+```
+dist/api/v1/series.json              every series with its latest value
+dist/api/v1/series/<SERIES_ID>.json  full observations
+dist/parquet/*.parquet               partitioned, sorted for DuckDB range reads
+dist/egypt-macro.sqlite              the whole thing, queryable
+dist/bulk/*.zip                      CSV bundles
+```
 
 Datasets are declared in [`ingest/datasets.yaml`](ingest/datasets.yaml) — path,
 shape, column-to-series mapping, and a minimum row count that makes the job fail
