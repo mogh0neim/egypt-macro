@@ -551,9 +551,9 @@
  ],
  "failed": [],
  "ocr": {
-  "documents": 3,
-  "pages": 3,
-  "characters": 4437,
+  "documents": 74,
+  "pages": 325,
+  "characters": 527092,
   "dpi": 300,
   "engine": "tesseract via PyMuPDF, ara+eng",
   "produced_almost_nothing": []
