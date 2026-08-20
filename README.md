@@ -1,14 +1,16 @@
 # Egypt Macro
 
+> **Not affiliated with, endorsed by, or connected to the Central Bank of Egypt.**
+> This is an independent project. The CBE is the source of every number here; any
+> error in the cleaning is ours, not theirs. For official figures, go to
+> [cbe.org.eg](https://www.cbe.org.eg/en/).
+
 Everything the Central Bank of Egypt publishes, as clean data.
 
 The CBE puts a genuinely valuable body of statistics on its website and makes it
 hard to use: no API, no bulk download, no history you can load into anything, and
 files that get silently overwritten when figures are revised. This repository
 scrapes all of it once a day, cleans it, and commits the result.
-
-**Nothing here is official.** It is a mirror. The Central Bank of Egypt is the
-source of every number; errors in the cleaning are ours.
 
 ## What's in here
 

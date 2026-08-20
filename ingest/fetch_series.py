@@ -98,6 +98,24 @@ def normalise_date(raw: str, kind: str | None) -> str | None:
     return None
 
 
+def _deterministic_gzip(payload: bytes) -> bytes:
+    """Gzip bytes so identical input always produces identical output.
+
+    Two things would otherwise make the raw archive churn on every run, adding
+    a couple of megabytes of new git blobs a day even when CBE published
+    nothing:
+
+      1. gzip stores an mtime in its header, so the same content compressed a
+         minute later is a different file. mtime=0 removes it.
+      2. Writing through a text-mode wrapper applies platform newline
+         translation, so a Windows laptop and a Linux runner produced
+         different bytes for the same response. Compressing the original
+         response bytes avoids the round-trip entirely -- and means the
+         archive really is what CBE served, not a re-encoding of it.
+    """
+    return gzip.compress(payload, compresslevel=9, mtime=0)
+
+
 def slug(text: str) -> str:
     """Turn a free-text key (a currency name) into an ID-safe token."""
     return re.sub(r"[^A-Za-z0-9]+", "", text).upper()
@@ -129,12 +147,7 @@ class Fetcher:
         if self.write_raw:
             RAW.mkdir(parents=True, exist_ok=True)
             name = ds["key"] + (f".{radio}" if radio else "") + ".html.gz"
-            # These fragments are enormously repetitive markup -- the FX
-            # response is 73 MB raw and 1.4 MB gzipped. Since a new blob is
-            # committed every day the data moves, storing them uncompressed
-            # would add gigabytes a year to the repository.
-            with gzip.open(RAW / name, "wt", encoding="utf-8", compresslevel=9) as fh:
-                fh.write(text)
+            (RAW / name).write_bytes(_deterministic_gzip(raw))
 
         return parse_tables(text)
 

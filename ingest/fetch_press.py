@@ -233,12 +233,14 @@ def main() -> int:
                 page = fh.read()
         else:
             try:
-                page = client.get(url)
+                blob = client.get_bytes(url)
             except Exception as exc:  # noqa: BLE001
                 print(f"  skip {url}: {type(exc).__name__}", file=sys.stderr)
                 continue
-            with gzip.open(cache, "wt", encoding="utf-8", compresslevel=9) as fh:
-                fh.write(page)
+            page = blob.decode("utf-8", "replace")
+            # mtime=0 and raw bytes, so an unchanged page compresses to
+            # identical output on any machine. See fetch_series for why.
+            cache.write_bytes(gzip.compress(blob, compresslevel=9, mtime=0))
 
         text = page_text(page)
         period = item["customDate"][:10]
