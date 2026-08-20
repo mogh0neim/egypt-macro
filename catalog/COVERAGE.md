@@ -2,7 +2,7 @@
 
 _Generated 2026-08-20 from `data/clean/series/`._
 
-**153 series, 353,487 observations.**
+**153 series, 353,499 observations.**
 
 | Series | Coverage | n | Latest | Unit |
 |---|---|---|---|---|
@@ -111,24 +111,24 @@ _Generated 2026-08-20 from `data/clean/series/`._
 | `EG.RATE.RETAIL.DEP.6M1Y` | 2010-06-01 to 2026-06-01 | 193 | 14.3 | percent per annum |
 | `EG.RATE.RETAIL.LOAN.CORP.LT1Y` | 2010-06-01 to 2026-06-01 | 193 | 20.5 | percent per annum |
 | `EG.RES.NIR` | 2015-06-23 to 2026-08-05 | 91 | 56293.9 | USD million |
-| `EG.TB.EGP.12M.AMT.ACC` | 2004-04-06 to 2026-08-18 | 1,021 | 7.22027e+10 | EGP |
-| `EG.TB.EGP.12M.AMT.SUB` | 2004-04-06 to 2026-08-18 | 1,021 | 1.15721e+11 | EGP |
-| `EG.TB.EGP.12M.BIDCOVER` | 2004-04-06 to 2026-08-18 | 1,021 | 1.6027 | ratio |
-| `EG.TB.EGP.12M.YLD.MAX` | 2004-04-06 to 2026-08-18 | 1,021 | 24.99 | percent per annum |
-| `EG.TB.EGP.12M.YLD.MIN` | 2004-04-06 to 2026-08-18 | 1,021 | 24.89 | percent per annum |
-| `EG.TB.EGP.12M.YLD.WAVG` | 2004-04-06 to 2026-08-18 | 1,021 | 24.95 | percent per annum |
+| `EG.TB.EGP.12M.AMT.ACC` | 2004-04-06 to 2026-08-25 | 1,022 | 4.19569e+10 | EGP |
+| `EG.TB.EGP.12M.AMT.SUB` | 2004-04-06 to 2026-08-25 | 1,022 | 9.91699e+10 | EGP |
+| `EG.TB.EGP.12M.BIDCOVER` | 2004-04-06 to 2026-08-25 | 1,022 | 2.3636 | ratio |
+| `EG.TB.EGP.12M.YLD.MAX` | 2004-04-06 to 2026-08-25 | 1,022 | 24.99 | percent per annum |
+| `EG.TB.EGP.12M.YLD.MIN` | 2004-04-06 to 2026-08-25 | 1,022 | 24.85 | percent per annum |
+| `EG.TB.EGP.12M.YLD.WAVG` | 2004-04-06 to 2026-08-25 | 1,022 | 24.955 | percent per annum |
 | `EG.TB.EGP.3M.AMT.ACC` | 2002-06-27 to 2026-08-18 | 1,062 | 3.9791e+10 | EGP |
 | `EG.TB.EGP.3M.AMT.SUB` | 2002-06-27 to 2026-08-18 | 1,062 | 1.26265e+11 | EGP |
 | `EG.TB.EGP.3M.BIDCOVER` | 2002-06-27 to 2026-08-18 | 1,062 | 3.1732 | ratio |
 | `EG.TB.EGP.3M.YLD.MAX` | 2002-06-27 to 2026-08-18 | 1,062 | 24.24 | percent per annum |
 | `EG.TB.EGP.3M.YLD.MIN` | 2002-06-27 to 2026-08-18 | 1,062 | 24.001 | percent per annum |
 | `EG.TB.EGP.3M.YLD.WAVG` | 2002-06-27 to 2026-08-18 | 1,062 | 24.191 | percent per annum |
-| `EG.TB.EGP.6M.AMT.ACC` | 2002-07-09 to 2026-08-18 | 1,113 | 8.36418e+10 | EGP |
-| `EG.TB.EGP.6M.AMT.SUB` | 2002-07-09 to 2026-08-18 | 1,113 | 2.21986e+11 | EGP |
-| `EG.TB.EGP.6M.BIDCOVER` | 2002-07-09 to 2026-08-18 | 1,113 | 2.654 | ratio |
-| `EG.TB.EGP.6M.YLD.MAX` | 2002-07-09 to 2026-08-18 | 1,113 | 25.641 | percent per annum |
-| `EG.TB.EGP.6M.YLD.MIN` | 2002-07-09 to 2026-08-18 | 1,113 | 24.499 | percent per annum |
-| `EG.TB.EGP.6M.YLD.WAVG` | 2002-07-09 to 2026-08-18 | 1,113 | 25.599 | percent per annum |
+| `EG.TB.EGP.6M.AMT.ACC` | 2002-07-09 to 2026-08-25 | 1,114 | 8.27106e+10 | EGP |
+| `EG.TB.EGP.6M.AMT.SUB` | 2002-07-09 to 2026-08-25 | 1,114 | 1.93631e+11 | EGP |
+| `EG.TB.EGP.6M.BIDCOVER` | 2002-07-09 to 2026-08-25 | 1,114 | 2.3411 | ratio |
+| `EG.TB.EGP.6M.YLD.MAX` | 2002-07-09 to 2026-08-25 | 1,114 | 25.501 | percent per annum |
+| `EG.TB.EGP.6M.YLD.MIN` | 2002-07-09 to 2026-08-25 | 1,114 | 25.2 | percent per annum |
+| `EG.TB.EGP.6M.YLD.WAVG` | 2002-07-09 to 2026-08-25 | 1,114 | 25.463 | percent per annum |
 | `EG.TB.EGP.9M.AMT.ACC` | 2008-10-14 to 2026-08-18 | 836 | 1.02321e+11 | EGP |
 | `EG.TB.EGP.9M.AMT.SUB` | 2008-10-14 to 2026-08-18 | 836 | 1.9399e+11 | EGP |
 | `EG.TB.EGP.9M.BIDCOVER` | 2008-10-14 to 2026-08-18 | 836 | 1.8959 | ratio |
