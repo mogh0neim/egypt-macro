@@ -185,8 +185,9 @@ async function viewDocs(presetCategory) {
     '<div class="results" id="dresults"></div>' +
     (ocred
       ? '<p class="foot-note">' + ocred + " of these are scans of paper with no text layer of their own. " +
-        "They have been read by OCR in Arabic and English, so their text is searchable, but a machine " +
-        "reading a scan is not the same as a text layer and the odd word will be wrong.</p>"
+        "They have been read by OCR in Arabic and English, so their text is searchable. Expect the odd " +
+        "word to be wrong, and expect Arabic inside a scan to search less reliably than English: " +
+        "OCR often returns it in visual rather than logical letter order.</p>"
       : "") +
     (scanned
       ? '<p class="foot-note">' + scanned + " of these are scans that OCR has not been run over yet. " +

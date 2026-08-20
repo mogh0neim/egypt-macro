@@ -110,9 +110,11 @@ function viewAbout() {
     "<p>Honesty is cheaper than a footnote later:</p>" +
     "<ul>" +
     "<li>77 documents are scans of paper with no text layer of their own. They are read by " +
-    "OCR, using Tesseract in Arabic and English, so their text is searchable. But a machine " +
-    "reading a scan is not the same as a text layer and the odd word will be wrong. The " +
-    "Documents page labels every one of them.</li>" +
+    "OCR, using Tesseract in Arabic and English, so their text is searchable. It is not as " +
+    "good as a real text layer: the odd word comes out wrong, and Arabic in a scan often " +
+    "comes back with its letters in visual rather than logical order, so searching inside " +
+    "these particular documents works better in English than in Arabic. The Documents page " +
+    "labels every one of them.</li>" +
     "<li>The Financial Soundness Indicator tables are extracted as text but not yet parsed " +
     "into series.</li>" +
     "<li>Twelve Excel files in the archive resisted parsing. Each one is listed with its " +
