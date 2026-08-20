@@ -125,7 +125,7 @@ def main() -> int:
 
     CATALOG.mkdir(exist_ok=True)
     (CATALOG / "summary.json").write_text(
-        json.dumps(summaries, indent=1), encoding="utf-8"
+        json.dumps(summaries, indent=1, ensure_ascii=False), encoding="utf-8"
     )
 
     total_obs = sum(s["n"] for s in summaries)

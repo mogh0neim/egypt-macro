@@ -11790,7 +11790,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.DOMESTIC_DEBT_OF_BOTH_GOVERNME.",
-  "title_en": "Domestic Debt of Both Government and Economic Authorities - \u0623- \u0627\u0644\u0623\u0631\u0635\u062f\u0629 \u0645\u0646 \u0627\u0644\u0633\u0646\u062f\u0627\u062a \u0648\u0627\u0644\u0623\u0630\u0648\u0646",
+  "title_en": "Domestic Debt of Both Government and Economic Authorities - أ- الأرصدة من السندات والأذون",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -11819,7 +11819,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.DOMESTIC_DEBT_OF_BOTH_GOVERNME.1",
-  "title_en": "Domestic Debt of Both Government and Economic Authorities - 1- \u0635\u0627\u0641\u0649  \u0627\u0644\u062f\u064a\u0646 \u0627\u0644\u0645\u062d\u0644\u0649 \u0627\u0644\u062d\u0643\u0648\u0645\u0649(\u0623+\u0628+\u062c+\u062f+\u0647\u0640+\u0648 )",
+  "title_en": "Domestic Debt of Both Government and Economic Authorities - 1- صافى  الدين المحلى الحكومى(أ+ب+ج+د+هـ+و )",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -11848,7 +11848,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.DOMESTIC_DEBT_OF_BOTH_GOVERNME.1_2_3_4",
-  "title_en": "Domestic Debt of Both Government and Economic Authorities - \u0627\u0644\u062f\u064a\u0646 \u0627\u0644\u0639\u0627\u0645 \u0627\u0644\u0645\u062d\u0644\u0649 (1+2+3-4)",
+  "title_en": "Domestic Debt of Both Government and Economic Authorities - الدين العام المحلى (1+2+3-4)",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -11904,7 +11904,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.DOMESTIC_DEBT_OF_BOTH_GOVERNME.2",
-  "title_en": "Domestic Debt of Both Government and Economic Authorities - 2-  \u0635\u0627\u0641\u0649 \u0645\u062f\u064a\u0648\u0646\u064a\u0629 \u0627\u0644\u0647\u064a\u0626\u0627\u062a \u0627\u0644\u0639\u0627\u0645\u0629 \u0627\u0644\u0625\u0642\u062a\u0635\u0627\u062f\u064a\u0629",
+  "title_en": "Domestic Debt of Both Government and Economic Authorities - 2-  صافى مديونية الهيئات العامة الإقتصادية",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -11960,7 +11960,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.DOMESTIC_DEBT_OF_BOTH_GOVERNME.3",
-  "title_en": "Domestic Debt of Both Government and Economic Authorities - 3-  \u0635\u0627\u0641\u0649 \u0645\u062f\u064a\u0648\u0646\u064a\u0629 \u0628\u0646\u0643 \u0627\u0644\u0625\u0633\u062a\u062b\u0645\u0627\u0631 \u0627\u0644\u0642\u0648\u0645\u0649",
+  "title_en": "Domestic Debt of Both Government and Economic Authorities - 3-  صافى مديونية بنك الإستثمار القومى",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -12016,7 +12016,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.DOMESTIC_DEBT_OF_BOTH_GOVERNME.4",
-  "title_en": "Domestic Debt of Both Government and Economic Authorities - 4-  \u0627\u0644\u0645\u062f\u064a\u0648\u0646\u064a\u0629 \u0627\u0644\u0628\u064a\u0646\u064a\u0629",
+  "title_en": "Domestic Debt of Both Government and Economic Authorities - 4-  المديونية البينية",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -12072,7 +12072,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.DOMESTIC_DEBT_OF_BOTH_GOVERNME.5",
-  "title_en": "Domestic Debt of Both Government and Economic Authorities - . \u0645\u0642\u0627\u0628\u0644 \u0646\u0633\u0628\u0629 \u0627\u06445% \u0627\u0644\u0645\u062c\u0646\u0628\u0629 \u0645\u0646 \u0623\u0631\u0628\u0627\u062d \u0627\u0644\u0634\u0631\u0643\u0627\u062a \u0644\u0634\u0631\u0627\u0621 \u0633\u0646\u062f\u0627\u062a \u062d\u0643\u0648\u0645\u064a\u0629",
+  "title_en": "Domestic Debt of Both Government and Economic Authorities - . مقابل نسبة ال5% المجنبة من أرباح الشركات لشراء سندات حكومية",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -12949,7 +12949,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.DOMESTIC_DEBT_OF_BOTH_GOVERNME.X",
-  "title_en": "Domestic Debt of Both Government and Economic Authorities - \u062f-  \u0634\u0647\u0627\u062f\u0629 \u0627\u0644\u0645\u0635\u0631\u0649 \u0627\u0644\u062f\u0648\u0644\u0627\u0631\u064a\u0629X",
+  "title_en": "Domestic Debt of Both Government and Economic Authorities - د-  شهادة المصرى الدولاريةX",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -12978,7 +12978,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.NATIONAL_INVESTMENT_BANK.",
-  "title_en": "National Investment Bank - - \u0627\u0644\u062e\u0635\u0648\u0645  : \u0645\u0646\u0647\u0627",
+  "title_en": "National Investment Bank - - الخصوم  : منها",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13007,7 +13007,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.105",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 105  \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 105  يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13036,7 +13036,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.180",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 180 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 180 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13065,7 +13065,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.181",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 181 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 181 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13094,7 +13094,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.182",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 182 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 182 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13123,7 +13123,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.189",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 189 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 189 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13153,7 +13153,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.203",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 203 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 203 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13182,7 +13182,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.224",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 224 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 224 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13211,7 +13211,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.238",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 238 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 238 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13241,7 +13241,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.243",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 243 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 243 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13271,7 +13271,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.245",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 245 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 245 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13301,7 +13301,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.252",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 252 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 252 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13330,7 +13330,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.257",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 257 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 257 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13360,7 +13360,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.259",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 259 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 259 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13390,7 +13390,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.260",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 260 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 260 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13419,7 +13419,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.264",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 264 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 264 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13449,7 +13449,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.265",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 265 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 265 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13479,7 +13479,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.266",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 266 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 266 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13509,7 +13509,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.267",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 267 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 267 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13538,7 +13538,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.271",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 271 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 271 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13568,7 +13568,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.272",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 272 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 272 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13598,7 +13598,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.273",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 273 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 273 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13627,7 +13627,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.275",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 275 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 275 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13657,7 +13657,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.279",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 279 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 279 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13686,7 +13686,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.280",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 280 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 280 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13715,7 +13715,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.285",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 285 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 285 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13744,7 +13744,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.292",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 292 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 292 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13774,7 +13774,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.294",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 294 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 294 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13804,7 +13804,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.299",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 299 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 299 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13834,7 +13834,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.306",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 306 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 306 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13864,7 +13864,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.307",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 307 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 307 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13894,7 +13894,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.308",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 308 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 308 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13924,7 +13924,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.313",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 313 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 313 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13953,7 +13953,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.314",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 314 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 314 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -13983,7 +13983,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.320",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 320 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 320 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14013,7 +14013,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.322",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 322 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 322 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14042,7 +14042,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.323",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 323 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 323 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14072,7 +14072,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.327",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 327 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 327 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14102,7 +14102,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.329",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 329 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 329 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14131,7 +14131,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.334",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 334 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 334 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14161,7 +14161,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.341",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 341 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 341 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14191,7 +14191,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.342",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 342 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 342 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14220,7 +14220,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.343",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 343 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 343 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14249,7 +14249,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.344",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 344 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 344 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14278,7 +14278,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.350",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 350 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 350 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14308,7 +14308,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.355",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 355 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 355 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14338,7 +14338,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.356",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 356 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 356 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14368,7 +14368,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.357",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 357 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 357 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14398,7 +14398,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.358",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 358 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 358 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14427,7 +14427,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.362",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 362 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 362 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14457,7 +14457,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.363",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 363 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 363 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14487,7 +14487,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.364",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 364 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 364 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14516,7 +14516,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.371",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 371 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 371 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14545,7 +14545,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.69",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 69 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 69 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14574,7 +14574,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.84",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 84 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 84 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14603,7 +14603,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.86",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 86 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 86 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14632,7 +14632,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.89",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 89 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 89 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14661,7 +14661,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.91",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 91 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 91 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14691,7 +14691,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.93",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 93  \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 93  يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -14720,7 +14720,7 @@
  },
  {
   "series_id": "EG.XL.DDEBT.THE_OUTSTANDING_BALANCE_OF_TRE.96",
-  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 96 \u064a\u0648\u0645",
+  "title_en": "The Outstanding Balance of Treasury Bills (Quarterly) - 96 يوم",
   "family": "domestic_debt",
   "freq": "Q",
   "unit": null,
@@ -20191,7 +20191,7 @@
  },
  {
   "series_id": "EG.XL.IRATE.THE_DISCOUNT_RATE_AND_INTEREST.LOANS_LESS_THAN_ONE_YEAR",
-  "title_en": "The Discount Rate and Interest Rates on Deposits and Loans in Egyptian Pound - Loans less than\u00a0one year",
+  "title_en": "The Discount Rate and Interest Rates on Deposits and Loans in Egyptian Pound - Loans less than one year",
   "family": "interest_rates",
   "freq": "Q",
   "unit": null,
@@ -20365,7 +20365,7 @@
  },
  {
   "series_id": "EG.XL.PRICE.CPI.",
-  "title_en": "CPI - \u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u0639\u0627\u0645",
+  "title_en": "CPI - الرقم العام",
   "family": "inflation",
   "freq": "M",
   "unit": null,
@@ -20769,7 +20769,7 @@
  },
  {
   "series_id": "EG.XL.PRICE.WPI_AND_PPI.",
-  "title_en": "WPI and PPI - \u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u0639\u0627\u0645",
+  "title_en": "WPI and PPI - الرقم العام",
   "family": "inflation",
   "freq": "M",
   "unit": null,
@@ -25519,7 +25519,7 @@
  },
  {
   "series_id": "EG.XL.TRADE.MAIN_MERCHANDISE_BALANCES.",
-  "title_en": "Main Merchandise Balances - \u0627\u0644\u0645\u064a\u0632\u0627\u0646 \u0627\u0644\u0633\u0644\u0639\u0649 \u0644\u0644\u0628\u062a\u0631\u0648\u0644",
+  "title_en": "Main Merchandise Balances - الميزان السلعى للبترول",
   "family": "foreign_trade",
   "freq": "Q",
   "unit": null,

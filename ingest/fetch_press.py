@@ -344,7 +344,13 @@ def main() -> int:
             else:
                 by_id.pop(e["series_id"], None)
         cat_path.write_text(
-            json.dumps(sorted(by_id.values(), key=lambda c: c["series_id"]), indent=1),
+            json.dumps(
+                sorted(by_id.values(), key=lambda c: c["series_id"]),
+                indent=1,
+                # Arabic titles literal, not escaped. All four writers of this
+                # file must agree, or every alternate run rewrites all of it.
+                ensure_ascii=False,
+            ),
             encoding="utf-8",
         )
 

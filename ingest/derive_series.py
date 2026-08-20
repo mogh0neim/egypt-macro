@@ -179,7 +179,13 @@ def main() -> int:
     for entry in all_cat:
         by_id[entry["series_id"]] = entry
     CATALOG.write_text(
-        json.dumps(sorted(by_id.values(), key=lambda c: c["series_id"]), indent=1),
+        json.dumps(
+                sorted(by_id.values(), key=lambda c: c["series_id"]),
+                indent=1,
+                # Arabic titles literal, not escaped. All four writers of this
+                # file must agree, or every alternate run rewrites all of it.
+                ensure_ascii=False,
+            ),
         encoding="utf-8",
     )
 
