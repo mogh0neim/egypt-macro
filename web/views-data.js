@@ -163,7 +163,27 @@ async function viewHome() {
     '<p class="lede">Thirteen topics over ' + index.length.toLocaleString() +
     " series. No search box required — pick a subject and read down.</p>" +
     '<div class="topic-grid">' + topicGrid + "</div>" +
-    "</div></section>";
+    "</div></section>" +
+
+    // The overview should be able to reach everything the site has. Without
+    // these two, the archive and the downloads exist only in the navigation.
+    '<section class="section"><div class="wrap">' +
+    '<div class="pair">' +
+    '<a class="wide-card" href="#/docs">' +
+    '<p class="eyebrow">Documents</p>' +
+    "<h3>1,478 publications, read cover to cover</h3>" +
+    "<p>Every statistical bulletin, circular, annual report and press release CBE has " +
+    "put out as a PDF, 53,006 pages of it. Search inside the text and a result lands you " +
+    "on a page number, in English or Arabic.</p>" +
+    '<span class="go">Search the archive →</span></a>' +
+    '<a class="wide-card" href="#/data">' +
+    '<p class="eyebrow">Take it with you</p>' +
+    "<h3>Parquet, SQLite, CSV, and a keyless API</h3>" +
+    "<p>All " + index.length.toLocaleString() + " series in whichever shape suits you, " +
+    "rebuilt every morning. No key, no account, no rate limit, and a SHA-256 for every " +
+    "file so a mirror can check itself.</p>" +
+    '<span class="go">Downloads and API →</span></a>' +
+    "</div></div></section>";
 
   if (fx) {
     wireHover(document.getElementById("hero"), fx.observations, fx.unit, document.getElementById("hero-readout"));
