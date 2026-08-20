@@ -549,5 +549,13 @@
    "pages": 31
   }
  ],
- "failed": []
+ "failed": [],
+ "ocr": {
+  "documents": 3,
+  "pages": 3,
+  "characters": 4437,
+  "dpi": 300,
+  "engine": "tesseract via PyMuPDF, ara+eng",
+  "produced_almost_nothing": []
+ }
 }
