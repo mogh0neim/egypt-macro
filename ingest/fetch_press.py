@@ -305,7 +305,6 @@ def main() -> int:
                     "Parsed from the monthly CBE press release text. CBE does not "
                     "publish this as a downloadable series."
                 ),
-                "retrieved_at": now,
             },
             {
                 "series_id": "EG.EXT.REMIT.FYTD",
@@ -320,7 +319,6 @@ def main() -> int:
                     "total from the start of the fiscal year (1 July). The period is the "
                     "last day of the cumulative window, not a monthly flow."
                 ),
-                "retrieved_at": now,
             },
             {
                 "series_id": "EG.EXT.REMIT.M",
@@ -331,7 +329,6 @@ def main() -> int:
                 "unit": "USD million",
                 "derived": True,
                 "method": "Parsed from CBE remittances press releases (reported in USD billion).",
-                "retrieved_at": now,
             },
         ]
         cat_path = ROOT / "catalog" / "series.json"

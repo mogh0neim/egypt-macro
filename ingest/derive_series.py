@@ -112,7 +112,6 @@ def derive_tbills(path: pathlib.Path, prefix: str, label: str):
                         f"Auctions with tenor in [{[x for x in BUCKETS if x[2]==code][0][0]}, "
                         f"{[x for x in BUCKETS if x[2]==code][0][1]}] days, grouped as {code}."
                     ),
-                    "retrieved_at": now,
                 },
             )
 
@@ -134,7 +133,6 @@ def derive_tbills(path: pathlib.Path, prefix: str, label: str):
                     "unit": "ratio",
                     "derived": True,
                     "method": "Submitted Amount / Accepted Amount, computed here. Not published by CBE.",
-                    "retrieved_at": now,
                 },
             )
 

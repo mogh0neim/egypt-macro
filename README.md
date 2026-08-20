@@ -16,11 +16,20 @@ scrapes all of it once a day, cleans it, and commits the result.
 
 | | |
 |---|---|
-| `data/raw/` | Responses exactly as CBE served them. Committed daily. |
+| `data/raw/` | Responses exactly as CBE served them, gzipped. Rewritten only when the content actually changes. |
 | `data/clean/series/` | Tidy long format: `series_id,period,value` |
 | `data/clean/records/` | Auction results, one row per auction |
+| `data/clean/anomalies.csv` | Dates where CBE published two conflicting values for the same series |
 | `catalog/series.json` | Every series: id, title, unit, frequency, source URL |
+| `catalog/summary.json` | Latest, previous, highest, lowest and coverage per series |
+| `catalog/COVERAGE.md` | The same thing, readable |
+| `catalog/last_run.json` | When the scrape last ran |
+| `corpus/mpc/` | MPC statements as text, with the rate decision parsed out |
+| `events.json` | Devaluations and MPC decisions, for annotating charts |
 | `ingest/` | The scrapers |
+
+Nothing in `data/` or `catalog/` is hand-edited. Timestamps live only in
+`last_run.json`, so a diff anywhere else means a number actually moved.
 
 ### Coverage
 

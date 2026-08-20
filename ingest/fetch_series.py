@@ -98,22 +98,31 @@ def normalise_date(raw: str, kind: str | None) -> str | None:
     return None
 
 
-def _deterministic_gzip(payload: bytes) -> bytes:
-    """Gzip bytes so identical input always produces identical output.
+def write_raw_if_changed(path: pathlib.Path, payload: bytes) -> bool:
+    """Write the gzipped response only if its content actually differs.
 
-    Two things would otherwise make the raw archive churn on every run, adding
-    a couple of megabytes of new git blobs a day even when CBE published
-    nothing:
+    Byte-level gzip determinism is not achievable here. mtime=0 removes the
+    header timestamp, and compressing the original bytes avoids platform
+    newline translation, but different zlib builds still emit different
+    (equally valid) deflate streams for the same input -- so a Windows laptop
+    and a Linux runner disagree no matter what.
 
-      1. gzip stores an mtime in its header, so the same content compressed a
-         minute later is a different file. mtime=0 removes it.
-      2. Writing through a text-mode wrapper applies platform newline
-         translation, so a Windows laptop and a Linux runner produced
-         different bytes for the same response. Compressing the original
-         response bytes avoids the round-trip entirely -- and means the
-         archive really is what CBE served, not a re-encoding of it.
+    Comparing the *decompressed* content sidesteps all of it. If CBE served
+    the same bytes as last time, the existing file is left alone and git sees
+    no change. Without this, every run rewrote all 31 raw files, adding
+    megabytes of meaningless blobs a day to a repository whose entire value is
+    that a diff means something.
+
+    Returns True if the file was written.
     """
-    return gzip.compress(payload, compresslevel=9, mtime=0)
+    if path.exists():
+        try:
+            if gzip.decompress(path.read_bytes()) == payload:
+                return False
+        except (OSError, EOFError, gzip.BadGzipFile):
+            pass  # unreadable or truncated -- rewrite it
+    path.write_bytes(gzip.compress(payload, compresslevel=9, mtime=0))
+    return True
 
 
 def slug(text: str) -> str:
@@ -147,7 +156,7 @@ class Fetcher:
         if self.write_raw:
             RAW.mkdir(parents=True, exist_ok=True)
             name = ds["key"] + (f".{radio}" if radio else "") + ".html.gz"
-            (RAW / name).write_bytes(_deterministic_gzip(raw))
+            write_raw_if_changed(RAW / name, raw)
 
         return parse_tables(text)
 
@@ -225,7 +234,6 @@ class Fetcher:
                 "freq": ds.get("freq"),
                 "unit": unit,
                 "source_url": "https://www.cbe.org.eg" + ds["path"],
-                "retrieved_at": self.retrieved_at,
             }
         )
 
@@ -384,6 +392,12 @@ def main() -> int:
             by_id[entry["series_id"]] = entry
         path.write_text(
             json.dumps(sorted(by_id.values(), key=lambda c: c["series_id"]), indent=1),
+            encoding="utf-8",
+        )
+        # A per-series timestamp rewrote the whole catalog on every run even
+        # when nothing moved. One file-level timestamp instead.
+        (ROOT / "catalog" / "last_run.json").write_text(
+            json.dumps({"retrieved_at": fetcher.retrieved_at, "series": len(by_id)}, indent=1),
             encoding="utf-8",
         )
         print(f"\ncatalog: {len(fetcher.catalog)} series this run, {len(by_id)} total")

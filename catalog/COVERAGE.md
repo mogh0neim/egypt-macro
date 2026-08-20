@@ -1,6 +1,8 @@
 # Coverage
 
-_Generated 2026-08-20 from `data/clean/series/`._
+_Generated from `data/clean/series/`. See `catalog/last_run.json` for the
+run timestamp -- keeping it out of here means this file only changes when
+the coverage actually does._
 
 **153 series, 353,499 observations.**
 
