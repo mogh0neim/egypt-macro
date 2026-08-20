@@ -96,8 +96,8 @@ function viewAbout() {
     "<p>Miqyas scrapes all of it once a day and commits the result. That means there is now a " +
     "record of what CBE published on any past date, which did not exist before and cannot be " +
     "reconstructed after the fact. A commit here means a number moved.</p>" +
-    "<p>Where a number has been computed rather than reproduced — a bid-to-cover ratio, a " +
-    "yield-curve bucket, reserves parsed out of a press release — the series says so on its " +
+    "<p>Where a number has been computed rather than reproduced (a bid-to-cover ratio, a " +
+    "yield-curve bucket, reserves parsed out of a press release) the series says so on its " +
     "own page, and names the method.</p>" +
 
     "<h3>The name</h3>" +
@@ -110,7 +110,7 @@ function viewAbout() {
     "<p>Honesty is cheaper than a footnote later:</p>" +
     "<ul>" +
     "<li>77 documents are scans of paper with no text layer of their own. They are read by " +
-    "OCR — Tesseract, in Arabic and English — so their text is searchable, but a machine " +
+    "OCR, using Tesseract in Arabic and English, so their text is searchable. But a machine " +
     "reading a scan is not the same as a text layer and the odd word will be wrong. The " +
     "Documents page labels every one of them.</li>" +
     "<li>The Financial Soundness Indicator tables are extracted as text but not yet parsed " +
@@ -123,8 +123,8 @@ function viewAbout() {
 
     "<h3>How it is built</h3>" +
     "<p>Python for the ingest, static JSON and Parquet for the output, and a front end with no " +
-    "framework and no build step. Two scheduled jobs — the live endpoints every morning " +
-    "at 08:20 UTC, the Excel archive and the document corpus every Sunday — plus a publish " +
+    "framework and no build step. Two scheduled jobs, the live endpoints every morning " +
+    "at 08:20 UTC and the Excel archive and document corpus every Sunday, plus a publish " +
     "step that rebuilds this site after each of them, and an OCR pass run by hand when new " +
     "scans turn up. The whole thing is a repository, and the repository is the archive.</p>" +
     "<p><a href=\"https://github.com/mogh0neim/egypt-macro\" target=\"_blank\" rel=\"noopener\">" +

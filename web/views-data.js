@@ -111,7 +111,7 @@ async function viewHome() {
   const mpcCard = latestMPC
     ? '<a class="wide-card" href="#/rates">' +
       '<p class="eyebrow">Latest rate decision</p>' +
-      "<h3>" + niceDate(latestMPC.date) + " — the committee " +
+      "<h3>" + niceDate(latestMPC.date) + ", the committee " +
       ({ hold: "left rates unchanged", cut: "cut", hike: "raised" }[latestMPC.decision] || "met") + "</h3>" +
       "<p>Overnight deposit " + esc(latestMPC.deposit_rate || "—") + "%, overnight lending " +
       esc(latestMPC.lending_rate || "—") + "%. Every decision back to June 2005, with what changed in the wording each time.</p>" +
@@ -161,7 +161,7 @@ async function viewHome() {
     '<p class="eyebrow">Browse</p>' +
     "<h2>Everything, by subject</h2>" +
     '<p class="lede">Thirteen topics over ' + index.length.toLocaleString() +
-    " series. No search box required — pick a subject and read down.</p>" +
+    " series. No search box required. Pick a subject and read down.</p>" +
     '<div class="topic-grid">' + topicGrid + "</div>" +
     "</div></section>" +
 
@@ -411,7 +411,7 @@ async function viewSeries(id) {
   // the dropdown is useful whether you want context inside the same table or
   // against the pound.
   const compareOptions = [{ id: "", label: "Compare with… (nothing selected)" }]
-    .concat(siblings.slice(0, 25).map((s) => ({ id: s.series_id, label: lineOf(s) + " — same table" })))
+    .concat(siblings.slice(0, 25).map((s) => ({ id: s.series_id, label: lineOf(s) + " (same table)" })))
     .concat(STARTERS.filter((c) => c.id !== id && state.byId.get(c.id))
       .map((c) => ({ id: c.id, label: (state.byId.get(c.id).title_en || c.id) })));
 

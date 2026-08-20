@@ -46,23 +46,23 @@ Nothing in `data/` or `catalog/` is hand-edited. Timestamps live only in
 of that, 1,478 documents with 53,006 pages of searchable text, and every MPC rate
 decision since June 2005.
 
-- **Exchange rates** — CBE official rates for 18 currencies (buy and sell), daily
+- **Exchange rates**: CBE official rates for 18 currencies (buy and sell), daily
   since January 2005. Market rates for 9 currencies since 2014. Interbank
   weighted average since 2004.
-- **Government securities** — every EGP treasury bill auction since January 2004
+- **Government securities**: every EGP treasury bill auction since January 2004
   with ISIN, tenor, amount offered, amount bid, amount accepted, and minimum,
   maximum and weighted-average yield. Also bonds (fixed coupon, floating rate,
   zero coupon), USD and EUR bills, and sukuk.
-- **Money market** — daily and bi-weekly interbank rates across six tenors,
+- **Money market**: daily and bi-weekly interbank rates across six tenors,
   CONIA and the CONIA compounded index.
-- **Policy rates** — the discount rate back to January 1991, the overnight
+- **Policy rates**: the discount rate back to January 1991, the overnight
   deposit and lending corridor, and the main operation rate.
-- **Prices** — headline, core, regulated-item and fresh-produce inflation, both
+- **Prices**: headline, core, regulated-item and fresh-produce inflation, both
   year-on-year and month-on-month, back to January 2000.
-- **Auctions** — repo, deposit and foreign-exchange auctions.
-- **Reserves and remittances** — parsed out of press-release text, because CBE
+- **Auctions**: repo, deposit and foreign-exchange auctions.
+- **Reserves and remittances**: parsed out of press-release text, because CBE
   publishes neither as a series anywhere.
-- **Rate decisions** — all 169 MPC statements back to June 2005, with a diff
+- **Rate decisions**: all 169 MPC statements back to June 2005, with a diff
   against the previous one. Where CBE's own archive records no decision, it is
   recovered from the published corridor series.
 
@@ -71,10 +71,10 @@ From the Excel archive, which is where the rest of Egypt's macro record lives:
 - **GDP** at factor cost and by expenditure, constant and current prices
 - **Balance of payments**, quarterly and annual, back to FY2004/05
 - **External and domestic debt**, by type and by debtor sector
-- **Banking surveys** — M2 and counterparts, domestic credit, deposits by
+- **Banking surveys**: M2 and counterparts, domestic credit, deposits by
   sector in pounds versus foreign currency
 - **Foreign trade** by country and by degree of processing
-- **State budget** — revenue, expenditure, deficit and financing
+- **State budget**: revenue, expenditure, deficit and financing
 - **FDI, tourism, stock market indicators**
 
 ## Why the git history matters
@@ -117,7 +117,7 @@ python ingest/build_search.py           # document search index
 python ingest/build_site.py             # copy the front end in, make dist/ a site
 ```
 
-Run them in that order — each reads what the previous one wrote. `--only
+Run them in that order - each reads what the previous one wrote. `--only
 fx_official` limits to one dataset; `--skip-cached` on `fetch_press.py` reuses
 already-downloaded pages instead of hitting CBE again.
 
@@ -135,7 +135,7 @@ python -m http.server 8765 --directory dist
 # http://localhost:8765/
 ```
 
-Serving the repository root instead also works — the front end detects that it is
+Serving the repository root instead also works - the front end detects that it is
 running from `web/` and looks one level up for the data.
 
 [`.github/workflows/publish.yml`](.github/workflows/publish.yml) runs those three
@@ -145,7 +145,7 @@ are.
 
 ### The API
 
-`build_exports.py` writes `dist/` — static JSON, no key, no rate limit:
+`build_exports.py` writes `dist/` - static JSON, no key, no rate limit:
 
 ```
 dist/api/v1/series.json              every series with its latest value
@@ -159,7 +159,7 @@ dist/miqyas.sqlite                   the whole thing, queryable
 dist/bulk/*.zip                      CSV bundles
 ```
 
-Datasets are declared in [`ingest/datasets.yaml`](ingest/datasets.yaml) — path,
+Datasets are declared in [`ingest/datasets.yaml`](ingest/datasets.yaml) - path,
 shape, column-to-series mapping, and a minimum row count that makes the job fail
 loudly rather than commit a truncated series.
 
@@ -183,14 +183,14 @@ fiscal year says so explicitly.
 
 **Some dates are missing rather than zero.** A handful of rows in the official FX
 series carry zeros where CBE published nothing. Those are dropped, not
-forward-filled — a gap is a gap.
+forward-filled - a gap is a gap.
 
 ## Attribution
 
 The CBE's [disclaimer](https://www.cbe.org.eg/en/disclaimer) permits reuse of
 information obtained from its website, on two conditions: that the Central Bank
 of Egypt is cited as the source, and that any transformation of the data is
-stated explicitly. Both are honoured here — the raw responses sit alongside the
+stated explicitly. Both are honoured here - the raw responses sit alongside the
 cleaned output so any transformation can be checked against what CBE actually
 served.
 
