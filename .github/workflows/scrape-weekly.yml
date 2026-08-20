@@ -72,8 +72,15 @@ jobs:
             echo "Archive and corpus unchanged this week."
             exit 0
           fi
-          git commit -m "archive: $(date -u +%Y-%m-%d) weekly refresh"
-          git push
+          # A long job can finish behind commits that landed while it ran, and a
+          # rejected push throws the whole run's work away. Rebase and retry.
+          for attempt in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "push rejected; rebasing onto origin/main (attempt $attempt)"
+            git pull --rebase --autostash origin main || exit 1
+          done
+          echo "::error::could not push after three attempts"
+          exit 1
 
       - name: Report what could not be parsed
         if: always()
