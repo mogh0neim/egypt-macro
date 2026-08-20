@@ -1,0 +1,89 @@
+# The Excel archive and the document corpus, weekly.
+#
+# These are deliberately not on the daily job. The 981 Excel files and 2,089
+# documents change on a monthly-to-quarterly rhythm, so re-fetching them every
+# morning would mean ~3,000 requests a day at CBE for almost no new data. The
+# manifests carry content hashes, so a run only downloads what is new.
+#
+# The daily job stays lean: 30 endpoints, a few minutes, every morning.
+
+name: scrape-weekly
+
+on:
+  workflow_dispatch:
+    inputs:
+      force_redownload:
+        description: "Re-download everything, ignoring stored hashes"
+        type: boolean
+        default: false
+  schedule:
+    # 03:40 UTC Sunday — well clear of the daily run.
+    - cron: "40 3 * * 0"
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Reset manifests
+        if: inputs.force_redownload
+        run: rm -f catalog/excel_manifest.json corpus/manifest.json
+
+      - name: Excel time-series archive
+        run: python ingest/fetch_excel.py --download --delay 1.0
+
+      - name: Parse the Excel archive
+        run: python ingest/parse_excel.py
+
+      - name: Document corpus
+        run: python ingest/fetch_docs.py --download --delay 1.0
+
+      - name: Extract document text
+        run: python ingest/extract_text.py
+
+      - name: MPC statement archive and diffs
+        run: python ingest/mpc_archive.py
+
+      - name: Summarise
+        run: python ingest/summarise.py
+
+      - name: Commit
+        run: |
+          git config user.name  "egypt-macro-bot"
+          git config user.email "actions@github.com"
+          git add data catalog corpus
+          if git diff --staged --quiet; then
+            echo "Archive and corpus unchanged this week."
+            exit 0
+          fi
+          git commit -m "archive: $(date -u +%Y-%m-%d) weekly refresh"
+          git push
+
+      - name: Report what could not be parsed
+        if: always()
+        run: |
+          if [ -f catalog/excel_quarantine.json ]; then
+            python -c "
+          import json
+          q = json.load(open('catalog/excel_quarantine.json', encoding='utf-8'))
+          print(f\"{q['count']} Excel files quarantined\")
+          for f in q['files'][:20]:
+              print(f\"  {f.get('category')} | {f.get('subcategory')} | {f['reason'][:70]}\")
+          "
+          fi

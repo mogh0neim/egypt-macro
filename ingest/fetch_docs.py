@@ -73,15 +73,19 @@ def enumerate_all(client: CBEClient) -> list[dict]:
                 if not url:
                     continue
                 did = doc_id(url)
+                # Categories arrive as [{key, value}] and are stored as plain
+                # strings, so normalise before merging -- reading the stored
+                # form as dicts again is how this broke the first time.
+                cats = {
+                    c["value"] if isinstance(c, dict) else c
+                    for c in (item.get("categories") or [])
+                }
                 if did in seen:
                     # An item can appear under more than one listing; merge
                     # the categories rather than letting the last one win.
-                    merged = {
-                        c["value"]
-                        for c in (seen[did].get("categories") or [])
-                        + (item.get("categories") or [])
-                    }
-                    seen[did]["categories"] = sorted(merged)
+                    seen[did]["categories"] = sorted(
+                        set(seen[did].get("categories") or []) | cats
+                    )
                     continue
                 seen[did] = {
                     "id": did,
@@ -90,9 +94,7 @@ def enumerate_all(client: CBEClient) -> list[dict]:
                     "date": (item.get("customDate") or "")[:10],
                     "url": url,
                     "is_file": not url.startswith("/en/") and not url.startswith("/ar/"),
-                    "categories": sorted(
-                        {c["value"] for c in (item.get("categories") or [])}
-                    ),
+                    "categories": sorted(cats),
                     "local": None,
                     "sha256": None,
                     "bytes": None,

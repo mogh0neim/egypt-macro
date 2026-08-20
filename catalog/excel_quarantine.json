@@ -1,0 +1,99 @@
+{
+ "count": 12,
+ "files": [
+  {
+   "id": "7a64d12082545d5b",
+   "url": "/-/media/project/cbe/listing/time-series/foreign-trade/imports-by-geographical-distribution/importsbygeographicaldistribution_quarter2005-2006.xlsx",
+   "category": "Foreign Trade",
+   "subcategory": "Imports by Geographical Distribution",
+   "frequency": "Quarterly",
+   "reason": "ParseError: no period row found (best scores: month=0, quarter=0, fiscal_year=0, year=0)"
+  },
+  {
+   "id": "4e6add888714f8ce",
+   "url": "/-/media/project/cbe/listing/time-series/foreign-trade/imports-by-geographical-distribution/importsbygeographicaldistribution_quarter2006-2007.xlsx",
+   "category": "Foreign Trade",
+   "subcategory": "Imports by Geographical Distribution",
+   "frequency": "Quarterly",
+   "reason": "ParseError: no period row found (best scores: month=0, quarter=0, fiscal_year=0, year=0)"
+  },
+  {
+   "id": "17f83b37ef793038",
+   "url": "/-/media/project/cbe/listing/time-series/foreign-trade/imports-by-geographical-distribution/importsbygeographicaldistribution_quarter2007-2008.xlsx",
+   "category": "Foreign Trade",
+   "subcategory": "Imports by Geographical Distribution",
+   "frequency": "Quarterly",
+   "reason": "ParseError: no period row found (best scores: month=0, quarter=0, fiscal_year=0, year=0)"
+  },
+  {
+   "id": "669d7087b68cd6e5",
+   "url": "/-/media/project/cbe/listing/time-series/foreign-trade/imports-by-geographical-distribution/importsbygeographicaldistribution_quarter2008-2009.xlsx",
+   "category": "Foreign Trade",
+   "subcategory": "Imports by Geographical Distribution",
+   "frequency": "Quarterly",
+   "reason": "ParseError: no period row found (best scores: month=0, quarter=0, fiscal_year=0, year=0)"
+  },
+  {
+   "id": "c935833d3d8a2ef0",
+   "url": "/-/media/project/cbe/listing/time-series/foreign-trade/imports-by-geographical-distribution/importsbygeographicaldistribution_quarter2009-2010.xlsx",
+   "category": "Foreign Trade",
+   "subcategory": "Imports by Geographical Distribution",
+   "frequency": "Quarterly",
+   "reason": "ParseError: no period row found (best scores: month=0, quarter=0, fiscal_year=0, year=0)"
+  },
+  {
+   "id": "42379ff2a2865319",
+   "url": "/-/media/project/cbe/listing/time-series/foreign-trade/imports-by-geographical-distribution/importsbygeographicaldistribution_quarter2010-2011.xlsx",
+   "category": "Foreign Trade",
+   "subcategory": "Imports by Geographical Distribution",
+   "frequency": "Quarterly",
+   "reason": "ParseError: no period row found (best scores: month=0, quarter=0, fiscal_year=0, year=0)"
+  },
+  {
+   "id": "a088c784ce436a06",
+   "url": "/-/media/project/cbe/listing/time-series/foreign-trade/imports-by-geographical-distribution/importsbygeographicaldistribution_quarter2011-2012.xlsx",
+   "category": "Foreign Trade",
+   "subcategory": "Imports by Geographical Distribution",
+   "frequency": "Quarterly",
+   "reason": "ParseError: no period row found (best scores: month=0, quarter=0, fiscal_year=0, year=0)"
+  },
+  {
+   "id": "5541ae665876961b",
+   "url": "/-/media/project/cbe/listing/time-series/inflation/cpi/cpi-annually_.xls",
+   "category": "Inflation",
+   "subcategory": "CPI",
+   "reason": "parsed but produced no observations"
+  },
+  {
+   "id": "4cd61965c2983ec9",
+   "url": "/-/media/project/cbe/listing/time-series/inflation/wpi-and-ppi/wpiandppi_-annual__.xlsx",
+   "category": "Inflation",
+   "subcategory": "WPI and PPI",
+   "reason": "parsed but produced no observations"
+  },
+  {
+   "id": "f6d6bbbddc838f10",
+   "url": "/-/media/project/cbe/listing/time-series/inflation/wpi-and-ppi/wpiandppi_-monthly2017-2018.xlsx",
+   "category": "Inflation",
+   "subcategory": "WPI and PPI",
+   "frequency": "Monthly",
+   "reason": "ParseError: no year row near the period row"
+  },
+  {
+   "id": "fafd7a32f1dff041",
+   "url": "/-/media/project/cbe/listing/time-series/inflation/wpi-and-ppi/wpiandppi_monthly2014-2015.xlsx",
+   "category": "Inflation",
+   "subcategory": "WPI and PPI",
+   "frequency": "Monthly",
+   "reason": "ParseError: no year row near the period row"
+  },
+  {
+   "id": "d08e6778d8472aa8",
+   "url": "/-/media/project/cbe/listing/time-series/inflation/wpi-and-ppi/wpiandppi_monthly2015-2016.xlsx",
+   "category": "Inflation",
+   "subcategory": "WPI and PPI",
+   "frequency": "Monthly",
+   "reason": "ParseError: no year row near the period row"
+  }
+ ]
+}
