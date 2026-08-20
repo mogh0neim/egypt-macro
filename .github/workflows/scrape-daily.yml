@@ -61,10 +61,17 @@ jobs:
             exit 0
           fi
           # Name what moved, so `git log` reads as a revision history rather
-          # than a wall of identical messages.
+          # than a wall of identical messages. catalog/last_run.json changes on
+          # every run by design -- it is the heartbeat proving the scrape ran --
+          # so a commit touching only that is labelled as a no-change check.
           CHANGED=$(git diff --staged --name-only -- data/clean/series data/clean/records \
                     | xargs -r -n1 basename | sed 's/\.csv$//' | paste -sd, - | cut -c1-140)
-          git commit -m "data: $(date -u +%Y-%m-%d) update (${CHANGED:-raw only})"
+          OTHER=$(git diff --staged --name-only | grep -v '^catalog/last_run\.json$' | head -1)
+          if [ -z "$OTHER" ]; then
+            git commit -m "check: $(date -u +%Y-%m-%d), no change in CBE data"
+          else
+            git commit -m "data: $(date -u +%Y-%m-%d) update (${CHANGED:-documents and metadata})"
+          fi
           git push
 
       - name: Fail loudly on a short fetch
