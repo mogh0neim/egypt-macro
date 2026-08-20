@@ -109,8 +109,10 @@ function viewAbout() {
     "<h3>What is not here</h3>" +
     "<p>Honesty is cheaper than a footnote later:</p>" +
     "<ul>" +
-    "<li>77 documents are scans with no text layer. They are findable by title, but nothing " +
-    "inside them is searchable until OCR is wired up.</li>" +
+    "<li>77 documents are scans of paper with no text layer of their own. They are read by " +
+    "OCR — Tesseract, in Arabic and English — so their text is searchable, but a machine " +
+    "reading a scan is not the same as a text layer and the odd word will be wrong. The " +
+    "Documents page labels every one of them.</li>" +
     "<li>The Financial Soundness Indicator tables are extracted as text but not yet parsed " +
     "into series.</li>" +
     "<li>Twelve Excel files in the archive resisted parsing. Each one is listed with its " +
