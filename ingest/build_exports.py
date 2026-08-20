@@ -68,9 +68,12 @@ def load_observations() -> list[tuple[str, str, float]]:
 
 
 def main() -> int:
-    if DIST.exists():
-        shutil.rmtree(DIST)
+    # Clear only the folders this script owns. Wiping all of dist/ would take
+    # dist/search with it, which build_search.py writes and which takes far
+    # longer to rebuild.
     for folder in (PARQUET, API, BULK):
+        if folder.exists():
+            shutil.rmtree(folder)
         folder.mkdir(parents=True, exist_ok=True)
 
     observations = load_observations()
@@ -128,6 +131,9 @@ def main() -> int:
 
     # ---- SQLite, for anyone who would rather just query it ----
     sqlite_path = DIST / "egypt-macro.sqlite"
+    # Rebuilt from scratch each run; dist/ is no longer wiped wholesale, so the
+    # previous file has to be removed explicitly.
+    sqlite_path.unlink(missing_ok=True)
     db = sqlite3.connect(sqlite_path, isolation_level=None)
     # Pragmas must come before any statement opens a transaction. Without them
     # the 380k-row insert spends its time on journal flushes.

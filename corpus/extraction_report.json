@@ -1,0 +1,553 @@
+{
+ "extracted": 1478,
+ "pages": 53006,
+ "by_language": {
+  "en": 977,
+  "ar": 409,
+  "mixed": 8,
+  "unknown": 84
+ },
+ "needs_ocr_count": 77,
+ "needs_ocr": [
+  {
+   "id": "56e0e9cf6eb6be33",
+   "title": "The Monthly Financial Position at 31 May 2026",
+   "date": "2026-05-31",
+   "url": "/-/media/project/cbe/listing/publication/2026/may/the-monthly-financial-position-at-31-may-2026.pdf",
+   "pages": 1
+  },
+  {
+   "id": "a73e5717aa0a6cdb",
+   "title": "The Monthly Financial Position at 30 April 2026",
+   "date": "2026-04-30",
+   "url": "/-/media/project/cbe/listing/publication/2026/april/the-monthly-financal-position-at-30-april-2026.pdf",
+   "pages": 1
+  },
+  {
+   "id": "bb5e8e8ee39e248c",
+   "title": "The Monthly Financial Position at 31 March 2026",
+   "date": "2026-03-31",
+   "url": "/-/media/project/cbe/listing/publication/2026/march/the-monthly-financial-position-at-31-march-2026.pdf",
+   "pages": 1
+  },
+  {
+   "id": "3bfffcc02fef6af5",
+   "title": "The Monthly Financial Position at 28 February 2026",
+   "date": "2026-02-28",
+   "url": "/-/media/project/cbe/listing/publication/2026/february/the-monthly-financal-position-at-28-february-2026.pdf",
+   "pages": 1
+  },
+  {
+   "id": "b12cae261ab0dbf2",
+   "title": "The Monthly Financial Position at 31 January 2026",
+   "date": "2026-01-31",
+   "url": "/-/media/project/cbe/listing/publication/2026/january/the-monthly-financial-position-at-31-january-2026.pdf",
+   "pages": 1
+  },
+  {
+   "id": "8e6d2b8754227742",
+   "title": "The Monthly Financial Position at 31 December 2025",
+   "date": "2025-12-31",
+   "url": "/-/media/project/cbe/listing/publication/2025/december/the-monthly-financial-position-at-31-december-2025.pdf",
+   "pages": 1
+  },
+  {
+   "id": "3daba0240eb64b56",
+   "title": "The Monthly Financial Position at 30 November 2025",
+   "date": "2025-11-30",
+   "url": "/-/media/project/cbe/listing/publication/2025/november/the-monthly-financial-position-at-30-november-2025.pdf",
+   "pages": 1
+  },
+  {
+   "id": "6fdec269226c071f",
+   "title": "The Monthly Financial Position at 31 October 2025",
+   "date": "2025-10-31",
+   "url": "/-/media/project/cbe/listing/publication/2025/october/the-monthly-financial-position-at-31-october-2025.pdf",
+   "pages": 1
+  },
+  {
+   "id": "fd703d416badf7b6",
+   "title": "The Monthly Financial Position at 30 September 2025",
+   "date": "2025-09-30",
+   "url": "/-/media/project/cbe/listing/publication/2025/september/the-monthly-financial-position-at-30-september-2025.pdf",
+   "pages": 1
+  },
+  {
+   "id": "49085fe62d514d7d",
+   "title": "The Monthly Financial Position at 31 August 2025",
+   "date": "2025-08-31",
+   "url": "/-/media/project/cbe/listing/publication/2025/august/the-monthly-financial-position-at-31-august-2025.pdf",
+   "pages": 1
+  },
+  {
+   "id": "1805ec251cc09591",
+   "title": "Financial Statements and audits report in 30 June2025",
+   "date": "2025-08-27",
+   "url": "/-/media/project/cbe/listing/publication/2025/june/financial-statements-and-audits-report-in-30-june-2025.pdf",
+   "pages": 55
+  },
+  {
+   "id": "15a4e27ba1f27822",
+   "title": "The Monthly Financial Position at 31 July 2025",
+   "date": "2025-07-31",
+   "url": "/-/media/project/cbe/listing/publication/2025/july/the-monthly-financial-position-at-31-july-2025.pdf",
+   "pages": 1
+  },
+  {
+   "id": "37b2280a64917b04",
+   "title": "The Monthly Financial Position at 31 May 2025",
+   "date": "2025-05-31",
+   "url": "/-/media/project/cbe/listing/publication/2025/may/the-monthly-financal-position-at-31-may-2025.pdf",
+   "pages": 1
+  },
+  {
+   "id": "69d44b690797a534",
+   "title": "The Monthly Financial Position at 30 April 2025",
+   "date": "2025-04-30",
+   "url": "/-/media/project/cbe/listing/publication/2025/april/the-monthly-financal-position-at-30-april-2025.pdf",
+   "pages": 1
+  },
+  {
+   "id": "023b5e2e57cc12a2",
+   "title": "The Monthly Financial Position at 31 March 2025",
+   "date": "2025-03-31",
+   "url": "/-/media/project/cbe/listing/publication/2025/march/the-monthly-financial-position-at-31-march-2025.pdf",
+   "pages": 1
+  },
+  {
+   "id": "769566403f1914f8",
+   "title": "The Monthly Financial Position at 28 February 2025",
+   "date": "2025-02-28",
+   "url": "/-/media/project/cbe/listing/publication/2025/february/the-monthly-financal-position-at-28-february-2025.pdf",
+   "pages": 1
+  },
+  {
+   "id": "fcc0c8bf3212f9b7",
+   "title": "The Monthly Financial Position at 31 January 2025",
+   "date": "2025-01-31",
+   "url": "/-/media/project/cbe/listing/publication/2025/january/the-monthly-financial-position-at-31-january-2025.pdf",
+   "pages": 1
+  },
+  {
+   "id": "41583b5257854682",
+   "title": "The Monthly Financial Position at 31 December 2024",
+   "date": "2024-12-31",
+   "url": "/-/media/project/cbe/listing/publication/2024/december/the-monthly-financial-position-at-31-december-2024.pdf",
+   "pages": 1
+  },
+  {
+   "id": "e174dfac30184396",
+   "title": "The Monthly Financial Position at 30 November 2024",
+   "date": "2024-11-30",
+   "url": "/-/media/project/cbe/listing/publication/2024/november/the-monthly-financial-position-at-30-november-2024.pdf",
+   "pages": 1
+  },
+  {
+   "id": "7d41334652d27a5f",
+   "title": "The Monthly Financial Position at 31 October 2024",
+   "date": "2024-10-31",
+   "url": "/-/media/project/cbe/listing/publication/2024/october/the-monthly-financial-position-at-31-october-2024.pdf",
+   "pages": 1
+  },
+  {
+   "id": "681da4e3a2a88006",
+   "title": "The Monthly Financial Position at 30 September 2024",
+   "date": "2024-09-30",
+   "url": "/-/media/project/cbe/listing/publication/2024/september/the-monthly-financial-position-at-30-september-2024.pdf",
+   "pages": 1
+  },
+  {
+   "id": "b18d8cbbe345c83b",
+   "title": "The Monthly Financial Position at 31 August 2024",
+   "date": "2024-08-31",
+   "url": "/-/media/project/cbe/listing/publication/2024/august/the-monthly-financial-position-at-31-august-2024.pdf",
+   "pages": 1
+  },
+  {
+   "id": "81ab7a91f9ef4d07",
+   "title": "The Monthly Financial Position at 31 July 2024",
+   "date": "2024-07-31",
+   "url": "/-/media/project/cbe/listing/publication/2024/july/the-monthly-financial-position-at-31-july2024.pdf",
+   "pages": 1
+  },
+  {
+   "id": "465af5b03830f8d3",
+   "title": "The Monthly Financial Position at 31 May 2024",
+   "date": "2024-05-31",
+   "url": "/-/media/project/cbe/listing/publication/2024/may/the-monthly-financial-position-at-31-may-2024.pdf",
+   "pages": 1
+  },
+  {
+   "id": "b35ef7d570a659d4",
+   "title": "The Monthly Financial Position at 30 April 2024",
+   "date": "2024-04-30",
+   "url": "/-/media/project/cbe/listing/publication/2024/april/the-monthly-financal-position-at-30-april-2024.pdf",
+   "pages": 1
+  },
+  {
+   "id": "8ad67c4cf8dfbadd",
+   "title": "The Monthly Financial Position at 31 March 2024",
+   "date": "2024-03-31",
+   "url": "/-/media/project/cbe/listing/publication/2024/march/the-monthly-financial-position-at-31-march-2024.pdf",
+   "pages": 1
+  },
+  {
+   "id": "1595aa3529f15abd",
+   "title": "The Monthly Financial Position at 29 February 2024",
+   "date": "2024-02-29",
+   "url": "/-/media/project/cbe/listing/publication/2024/february/the-monthly-financal-position-at-29-february-2024.pdf",
+   "pages": 1
+  },
+  {
+   "id": "a39c79d1763c2cf5",
+   "title": "The Monthly Financial Position at 31 January  2024",
+   "date": "2024-01-31",
+   "url": "/-/media/project/cbe/listing/publication/2024/january/the-monthly-financial-position-at-31-january-2024.pdf",
+   "pages": 1
+  },
+  {
+   "id": "ecfdc710996cb6df",
+   "title": "The Monthly Financial Position at 31 December 2023",
+   "date": "2023-12-31",
+   "url": "/-/media/project/cbe/listing/publication/2023/december/the-monthly-financial-position-at-31-december-2023.pdf",
+   "pages": 1
+  },
+  {
+   "id": "60e08970e1185b8d",
+   "title": "The Monthly Financial Position at 30 November 2023",
+   "date": "2023-11-30",
+   "url": "/-/media/project/cbe/listing/publication/2023/november/the-monthly-financial-position-at-30-november-2023.pdf",
+   "pages": 1
+  },
+  {
+   "id": "d4d03d27748a4be3",
+   "title": "The Monthly Financial Position at 31 October 2023",
+   "date": "2023-10-31",
+   "url": "/-/media/project/cbe/listing/publication/2023/october-2023/the-monthly-financial-position-at-31-october-2023.pdf",
+   "pages": 1
+  },
+  {
+   "id": "0dd9f003319664ac",
+   "title": "The Monthly Financial Position at 30 September 2023",
+   "date": "2023-09-30",
+   "url": "/-/media/project/cbe/listing/publication/2023/september/the-monthly-financial-position-at-30-september-2023.pdf",
+   "pages": 1
+  },
+  {
+   "id": "a5e0a73ad5a24213",
+   "title": "The Monthly Financial Position at 31 August 2023",
+   "date": "2023-08-31",
+   "url": "/-/media/project/cbe/listing/publication/2023/aug/the-monthly-financial-position-at-31-august2023.pdf",
+   "pages": 1
+  },
+  {
+   "id": "0feef76056cead9a",
+   "title": "Financial Statements and audits report in 30 June 2023",
+   "date": "2023-08-29",
+   "url": "/-/media/project/cbe/listing/publication/2023/financial-statements-and-audits-report-in-30-june-2023.pdf",
+   "pages": 46
+  },
+  {
+   "id": "dc16f71d55b7e657",
+   "title": "The Monthly Financial Position at 31 July 2023",
+   "date": "2023-07-31",
+   "url": "/-/media/project/cbe/listing/publication/2023/july/the-monthly-financial-position-at-31-july2023.pdf",
+   "pages": 1
+  },
+  {
+   "id": "a7726fee807ed448",
+   "title": "The Monthly Financial Position at 31 May 2023",
+   "date": "2023-05-31",
+   "url": "/-/media/project/cbe/listing/publication/2023/may/the-monthly-financial-position-at-31-may-2023.pdf",
+   "pages": 1
+  },
+  {
+   "id": "568b71839678b6c2",
+   "title": "The Monthly Financial Position at 30  April 2023",
+   "date": "2023-04-30",
+   "url": "/-/media/project/cbe/listing/publication/2023/april/the-monthly-financial-position-at-30-april-2023.pdf",
+   "pages": 1
+  },
+  {
+   "id": "704049fe795535f2",
+   "title": "The Monthly Financial Position at 31 March 2023",
+   "date": "2023-03-31",
+   "url": "/-/media/project/cbe/listing/publication/2023/march/the-monthly-financial-position-at-31-march-2023.pdf",
+   "pages": 1
+  },
+  {
+   "id": "657a6460e56a52c4",
+   "title": "The Monthly Financial Position at 28 February 2023",
+   "date": "2023-02-28",
+   "url": "/-/media/project/cbe/listing/publication/2023/feb/the-monthly-financal-position-at-28-february-2023.pdf",
+   "pages": 1
+  },
+  {
+   "id": "9edf13cd6306a212",
+   "title": "The Monthly Financial Position at 31 January 2023",
+   "date": "2023-01-31",
+   "url": "/-/media/project/cbe/listing/publication/2023/jan/the-monthly-financial-position-at-31-january-2023.pdf",
+   "pages": 1
+  },
+  {
+   "id": "cd2eb14b24b7982c",
+   "title": "The Monthly Financial Position at 31 December 2022",
+   "date": "2022-12-31",
+   "url": "/-/media/project/cbe/listing/publication/2023/march/the-monthly-financial-position-at-31-december-2022.pdf",
+   "pages": 1
+  },
+  {
+   "id": "50a9ce40e2df392a",
+   "title": "The Monthly Financial Position at 30 November 2022",
+   "date": "2022-11-30",
+   "url": "/-/media/project/cbe/listing/publication/2022/financial-position--november-2022/the-monthly-financial-position-at-30-november-2022.pdf",
+   "pages": 1
+  },
+  {
+   "id": "742ba2e649319587",
+   "title": "Circular dated 21 November 2022 regarding PM decree related to CBE subsidized interest rates initiatives",
+   "date": "2022-11-21",
+   "url": "/-/media/project/cbe/listing/circulars/nov/circular-dated-21-november-2022-regarding-pm-decree-related-to-cbe-subsidized-interest-rates-initiat.pdf",
+   "pages": 5
+  },
+  {
+   "id": "74eafe169e2b1d3d",
+   "title": "Circular dated 3 November 2022 regarding Sustainable Finance Regulations",
+   "date": "2022-11-03",
+   "url": "/-/media/project/cbe/listing/circulars/nov/circular-dated-3-november-2022-regarding-sustainable-finance-regulations-en.pdf",
+   "pages": 10
+  },
+  {
+   "id": "36367f307d27cc0a",
+   "title": "The Monthly Financial Position at 31 October 2022",
+   "date": "2022-10-31",
+   "url": "/-/media/project/cbe/listing/publication/2022/financial-position--october-2022/the-monthly-financial-position-at-31-october-2022.pdf",
+   "pages": 1
+  },
+  {
+   "id": "a0fe4c2d70c3082f",
+   "title": "The Monthly Financial Position at 30 September 2022",
+   "date": "2022-09-30",
+   "url": "/-/media/project/cbe/listing/publication/2022/financial-position-september-2022/the-monthly-financial-position-at-30-september2022.pdf",
+   "pages": 1
+  },
+  {
+   "id": "f4e738a1f5bd7a8f",
+   "title": "The Monthly Financial Position at 31 August 2022",
+   "date": "2022-08-31",
+   "url": "/-/media/project/cbe/listing/publication/2022/the-monthly-financial-position-at-31-august-2022/the-monthly-financial-position-at-31-august-2022_en.pdf",
+   "pages": 1
+  },
+  {
+   "id": "37e1d42a6316e4fe",
+   "title": "The Monthly Financial Position at 31 July 2022",
+   "date": "2022-07-31",
+   "url": "/-/media/project/cbe/listing/publication/2022/financial-position-july-2022/the-monthly-financial-position-at-31-july-2022_en.pdf",
+   "pages": 1
+  },
+  {
+   "id": "c6ed36c164ed9333",
+   "title": "Financial Statements and audits report in 30 June2022",
+   "date": "2022-06-30",
+   "url": "/-/media/project/cbe/listing/publication/2022/financial-statements-and-audits-report-in-30-june2022.pdf",
+   "pages": 47
+  },
+  {
+   "id": "d3934b8388b63e29",
+   "title": "The Monthly Financial Position at 31 May 2022",
+   "date": "2022-05-31",
+   "url": "/-/media/project/cbe/listing/publication/2022/31-may-2022-ar.pdf",
+   "pages": 1
+  },
+  {
+   "id": "5a1e5643f28a2cf9",
+   "title": "The Monthly Financial Position at 30 April 2022",
+   "date": "2022-04-30",
+   "url": "/-/media/project/cbe/listing/publication/files/the-monthly-financial-position-at-30-april-2022-updated.pdf",
+   "pages": 1
+  },
+  {
+   "id": "564cc26093314aa4",
+   "title": "The Monthly Financial Position at 31 March 2022",
+   "date": "2022-03-31",
+   "url": "/-/media/project/cbe/listing/publication/files/the-monthly-financial-position-at-31-march-2022-updated.pdf",
+   "pages": 1
+  },
+  {
+   "id": "dc1902773daee519",
+   "title": "Circular dated 8 March 2022 regarding Ministry of Trade and Industry decree on imports for personal use",
+   "date": "2022-03-08",
+   "url": "/-/media/project/cbe/listing/circulars/march/8-march-20_3_en.pdf",
+   "pages": 3
+  },
+  {
+   "id": "1304d8588a8e69aa",
+   "title": "The Monthly Financial Position at 28 February 2022",
+   "date": "2022-02-28",
+   "url": "/-/media/project/cbe/listing/publication/files/the-monthly-financial-position-at-28-february-2022-updated.pdf",
+   "pages": 1
+  },
+  {
+   "id": "40be42383134ec23",
+   "title": "The Monthly Financial Position at 31 January 2022",
+   "date": "2022-01-31",
+   "url": "/-/media/project/cbe/listing/publication/2022/the-monthly-financial-position-at-31-january-2022.pdf",
+   "pages": 1
+  },
+  {
+   "id": "d0f2474f1d795bf0",
+   "title": "The Monthly Financial Position at 31 December2021",
+   "date": "2021-12-31",
+   "url": "/-/media/project/cbe/listing/publication/2021/the-monthly-financial-position-at-31-december2021.pdf",
+   "pages": 1
+  },
+  {
+   "id": "528d7bab73d5dccd",
+   "title": "The Monthly Financial Position at 30 November2021",
+   "date": "2021-11-30",
+   "url": "/-/media/project/cbe/listing/publication/2021/the-monthly-financial-position-at-30-november2021.pdf",
+   "pages": 1
+  },
+  {
+   "id": "f1cacca8fedfd016",
+   "title": "Circular dated 14 November 2021 regarding updating regulations on licensing and registration of banks and representative offices of foreign banks",
+   "date": "2021-11-14",
+   "url": "/-/media/project/cbe/listing/circulars/nov/14-novembe_14_en.pdf",
+   "pages": 16
+  },
+  {
+   "id": "351da7c8a66fdefb",
+   "title": "The Monthly Financial Position at 31 October 2021",
+   "date": "2021-10-31",
+   "url": "/-/media/project/cbe/listing/publication/2021/the-monthly-financial-position-at-31-october-2021-(1).pdf",
+   "pages": 1
+  },
+  {
+   "id": "4a857e8bfa0a04df",
+   "title": "The Monthly Financial Position at 30 September 2021",
+   "date": "2021-09-30",
+   "url": "/-/media/project/cbe/listing/publication/2021/the-monthly-financial-position-at-30-september-2021-(1).pdf",
+   "pages": 1
+  },
+  {
+   "id": "f9cbcd8bce0164c8",
+   "title": "The Monthly Financial Position at 31 May 2021",
+   "date": "2021-05-31",
+   "url": "/-/media/project/cbe/listing/publication/2021/the-monthly-financial-position-at-31-may-2021.pdf",
+   "pages": 1
+  },
+  {
+   "id": "c52dabdb80677784",
+   "title": "Monetary Policy Inflation Note May 2021",
+   "date": "2021-05-01",
+   "url": "/-/media/project/cbe/listing/publication/files/the-monthly-financial-position-at-31-may-2021-updated.pdf",
+   "pages": 1
+  },
+  {
+   "id": "94ee8161f6b13ee5",
+   "title": "The Monthly Financial Position at 30 April 2021",
+   "date": "2021-04-30",
+   "url": "/-/media/project/cbe/listing/publication/2021/the-monthly-financial-position-at-30-april-2021.pdf",
+   "pages": 1
+  },
+  {
+   "id": "aeec30df44492f2b",
+   "title": "The Monthly Financial Position at 31 March 2021",
+   "date": "2021-03-31",
+   "url": "/-/media/project/cbe/listing/publication/2021/the-monthly-financial-position-at-31-march-2021.pdf",
+   "pages": 1
+  },
+  {
+   "id": "a9971bc0a9db1d57",
+   "title": "The Monthly Financial Position at 28 February 2021",
+   "date": "2021-02-28",
+   "url": "/-/media/project/cbe/listing/publication/2021/the-monthly-financial-position-at-28-february-2021.pdf",
+   "pages": 1
+  },
+  {
+   "id": "37ecc5995b1700b2",
+   "title": "The Monthly Financial Position at 31 January 2021",
+   "date": "2021-01-31",
+   "url": "/-/media/project/cbe/listing/publication/2021/the-monthly-financial-position-at-31-january-2021.pdf",
+   "pages": 1
+  },
+  {
+   "id": "f83f6a46959044e4",
+   "title": "The Monthly Financial position at 31 December 2020",
+   "date": "2020-12-31",
+   "url": "/-/media/project/cbe/listing/publication/2020/the-monthly-financial-position-at-31-december-2020.pdf",
+   "pages": 1
+  },
+  {
+   "id": "3698e87b1a1b695b",
+   "title": "The Monthly Financial position at 30 November 2020",
+   "date": "2020-11-30",
+   "url": "/-/media/project/cbe/listing/publication/2020/the-monthly-financial-position-at-30-november-2020.pdf",
+   "pages": 1
+  },
+  {
+   "id": "90158e45a08ccb4b",
+   "title": "The Monthly Financial position at 31 October 2020",
+   "date": "2020-10-31",
+   "url": "/-/media/project/cbe/listing/publication/2020/the-monthly-financial-position-at-31-october-2020.pdf",
+   "pages": 1
+  },
+  {
+   "id": "bcca96382bdbe763",
+   "title": "Circular dated 13 July 2020 regarding the answers to banks' inquiries related to the precautionary measures to counter the effects of COVID-19",
+   "date": "2020-07-13",
+   "url": "/-/media/project/cbe/listing/circulars/july/13-july-20_59_en.pdf",
+   "pages": 9
+  },
+  {
+   "id": "83a88281c32880fd",
+   "title": "Circular dated 7 April 2020 regarding the amendment of CBE Board decree concerning central credit registry rules",
+   "date": "2020-04-07",
+   "url": "/-/media/project/cbe/listing/circulars/april/7-april-20_71_en.pdf",
+   "pages": 7
+  },
+  {
+   "id": "00b114f3750637a6",
+   "title": "Circular dated 16 Feb 2020 regarding amending percentage of mortgage loans to total loans portfolio",
+   "date": "2020-02-16",
+   "url": "/-/media/project/cbe/listing/circulars/february/16-feb-202_90_en.pdf",
+   "pages": 4
+  },
+  {
+   "id": "bdbf062ada797252",
+   "title": "press conference to announce the launch of the US dollar Certificate “Biladi” to Egyptians Expatriates dated 29 February 2016",
+   "date": "2016-02-29",
+   "url": "/-/media/project/cbe/listing/news/english/files/ressconfer_371_en.pdf",
+   "pages": 2
+  },
+  {
+   "id": "f7680787e2c6aa5c",
+   "title": "Internet Banking Regulation",
+   "date": "2014-11-09",
+   "url": "/-/media/project/cbe/listing/circulars/files/cbeinterne_216_en.pdf",
+   "pages": 29
+  },
+  {
+   "id": "e9412b24f8f2d290",
+   "title": "MPC Press Statement 2011 June 9",
+   "date": "2011-06-09",
+   "url": "/-/media/project/cbe/listing/news/press-release/en/2011/mpc-press-statement-2011-june-9.pdf",
+   "pages": 1
+  },
+  {
+   "id": "c8892737bdf3cdff",
+   "title": "MPC Press Statement 2011 April 28",
+   "date": "2011-04-28",
+   "url": "/-/media/project/cbe/listing/news/press-release/en/2011/mpc-press-statement-2011-april-28.pdf",
+   "pages": 1
+  },
+  {
+   "id": "c1aa025f27e5b0c9",
+   "title": "Regulations governing the CBE Credit Registry",
+   "date": "2005-04-26",
+   "url": "/-/media/project/cbe/listing/circulars/circular/20regulati_274_en.pdf",
+   "pages": 31
+  }
+ ],
+ "failed": []
+}

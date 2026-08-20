@@ -12176,20 +12176,20 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.ANIMAL_AND_VEGETABLE_FATS_GREASES_AND_OILS",
-  "title_en": "Payments for Merchandise Imports by Degree of Use - animal and vegetable fats, greases and oils",
+  "title_en": "Payments for Merchandise Imports by Degree of Use - Animal and vegetable fats, greases and oils",
   "title_ar": "شحوم ودهون وزيوت نباتية او حيوانية",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.ANIMAL_VEGETABLE_FATS_GREASES_OILS_PROD",
@@ -12202,7 +12202,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.ARTICLES_FOR_THE_CONVEYANCE_OR_PACKING_OF_GO",
@@ -12210,12 +12210,12 @@
   "title_ar": "أصناف لنقل أو تعبئة البضائع",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.A_DURABLE_GOODS_OF_WHICH",
@@ -12228,7 +12228,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.B_NON_DURABLE_GOODS_OF_WHICH",
@@ -12241,7 +12241,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.CARS",
@@ -12254,7 +12254,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.COAL_TYPES_THEREOF",
@@ -12267,7 +12267,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.COMMUNICATION_AND_TELEPHONE_EQUIPMENT",
@@ -12275,12 +12275,12 @@
   "title_ar": "أجهزة للهاتف والاتصالات",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.COMPUTERS",
@@ -12293,7 +12293,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.CONSUMER_GOODS",
@@ -12306,7 +12306,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.COTTON",
@@ -12319,7 +12319,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.COTTON_TEXTILES",
@@ -12332,7 +12332,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.CRANES_AND_BULLDOZERS",
@@ -12340,12 +12340,12 @@
   "title_ar": "روافع واوناش",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.CRUDE_OIL",
@@ -12358,7 +12358,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.DAIRY_PRODUCTS",
@@ -12366,12 +12366,12 @@
   "title_ar": "ألبان ومنتجاته",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.DAIRY_PRODUCTS_EGGS_AND_HONEY",
@@ -12384,7 +12384,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.DATA_TREATMENT_COMPUTERS",
@@ -12392,12 +12392,12 @@
   "title_ar": "الات لمعالجة المعلومات (كمبيوتر)",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.ELECTRIC_APPLIANCES_FOR_TEL_AND_TELEGRAPH",
@@ -12410,7 +12410,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.FUEL_MINERAL_OILS_PRODUCTS_OF_WHICH",
@@ -12423,7 +12423,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.HOUSEHOLD_ELECTRICAL_APPLIANCES",
@@ -12431,12 +12431,12 @@
   "title_ar": "اجهزة كهربائية للاستعمال المنزلى",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.HOUSEHOLD_REFRIGERATORS_ELECTRIC_FREEZERS",
@@ -12449,7 +12449,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.INSECTICIDES",
@@ -12462,7 +12462,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.INTERMEDIATE_GOODS_OF_WHICH",
@@ -12475,7 +12475,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.INVESTMENT_GOODS_OF_WHICH",
@@ -12488,7 +12488,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.IRON_ORE",
@@ -12501,7 +12501,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.IRON_STEEL_PRODUCTS",
@@ -12514,7 +12514,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.LIQUID_AND_AIR_PUMPS",
@@ -12522,12 +12522,12 @@
   "title_ar": "مضخات سوائل وهواء",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.LIVE_FRESH_CHILLED_OR_DRIED_FISH",
@@ -12535,12 +12535,12 @@
   "title_ar": "أسماك حية أو طازجة أو مبردة أو مجففة",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.MAIZE",
@@ -12553,7 +12553,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.MEAT_AND_OFFALS",
@@ -12561,12 +12561,12 @@
   "title_ar": "لحوم وأحشاء وأطراف",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.MEAT_PREPARATIONS",
@@ -12587,12 +12587,12 @@
   "title_ar": "محضرات لحوم لتغذية الحيوانات",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.MEDICINES",
@@ -12600,12 +12600,12 @@
   "title_ar": "أدوية",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.MOTORS_GENERATORS_SPARE_PARTS",
@@ -12618,7 +12618,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.OIL_PRODUCTS_X",
@@ -12626,12 +12626,12 @@
   "title_ar": "منتجات بترولية x",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.OPTICAL_APPLIANCES",
@@ -12644,7 +12644,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.ORGANIC_AND_INORGANIC_COMPOUNDS",
@@ -12652,12 +12652,12 @@
   "title_ar": "مركبات غير عضوية او عضوية",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.ORGANIC_INORGANIC_CHEMICALS",
@@ -12670,7 +12670,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.ORGANIC_SOAP_AND_DETERGENTS",
@@ -12678,12 +12678,12 @@
   "title_ar": "صابون ومحضرات غواسل عضوية",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.PAPER_AND_PAPERBOARD",
@@ -12691,12 +12691,12 @@
   "title_ar": "ورق وورق مقوى",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.PAPER_CARDBOARD_PAPER_ARTICLES_THEREOF",
@@ -12709,7 +12709,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.PASSENGER_VEHICLES",
@@ -12717,12 +12717,12 @@
   "title_ar": "سيارات ركوب",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.PETROLEUM_PRODUCTS_X",
@@ -12735,7 +12735,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.PHARMACEUTICALS",
@@ -12748,7 +12748,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.PHARMACEUTICAL_PREPARATIONS_GAUZE_PADS_AND_V",
@@ -12756,12 +12756,12 @@
   "title_ar": "محضرات صيدلية وشاش وامصال",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.PLASTIC_ARTICLES_THEREOF",
@@ -12774,7 +12774,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.POLYPROPYLENE",
@@ -12782,12 +12782,12 @@
   "title_ar": "بوليميرات بروبيلين",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.RAW_CANE_SUGAR",
@@ -12795,12 +12795,12 @@
   "title_ar": "سكر قصب خام",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.RAW_MATERIALS_OF_WHICH",
@@ -12813,7 +12813,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.READY_MADE_CLOTHES",
@@ -12826,7 +12826,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.REFINED_SUGAR_PRODUCTS",
@@ -12839,7 +12839,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.RUBBER_ARTICLES",
@@ -12852,7 +12852,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.SESAME_SEEDS_FOR_NON_SOWING",
@@ -12878,7 +12878,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.SPARE_PARTS_AND_ACCESSORIES_FOR_CARS_AND_TRA",
@@ -12886,12 +12886,12 @@
   "title_ar": "قطع غيار واجزاء للسيارات والجرارات",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.SPARE_PARTS_FOR_MACHINES_AND_APPLIANCES",
@@ -12899,12 +12899,12 @@
   "title_ar": "قطع غيار واجزاء الات واجهزة",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.TEA",
@@ -12912,12 +12912,12 @@
   "title_ar": "شاى",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.TELEVISIONS",
@@ -12938,12 +12938,12 @@
   "title_ar": "تليفزيونات (أجهزة كاملة او مفككة)",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.TELEVISIONS_PARTS_THEREOF_VIDEOS_AND_COMPUTE",
@@ -12956,7 +12956,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.TEXTILES",
@@ -12964,12 +12964,12 @@
   "title_ar": "أقمشة منسوجة",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.TOBACCO",
@@ -12982,7 +12982,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.TOTAL_IMPORTS",
@@ -12995,7 +12995,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.UNDISTRIBUTED_IMPORTS",
@@ -13008,7 +13008,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.VEHICLES_FOR_PASSENGERS",
@@ -13021,7 +13021,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.WHEAT",
@@ -13034,7 +13034,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.WOOD_ARTICLES_AND_CHARCOAL",
@@ -13047,7 +13047,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter-2014-2015.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandiseimports_quarter2012-2013.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PAYMENTS_FOR_MERCHANDISE_IMPOR.YARN",
@@ -13055,12 +13055,12 @@
   "title_ar": "خيوط",
   "dataset": "excel_archive",
   "family": "foreign_trade",
-  "freq": "A",
+  "freq": "Q",
   "unit": null,
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_annual---new.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/foreign-trade/payments-for-merchandise-imports-by-degree-of-use/merchandise-imports_quarter.xlsx"
  },
  {
   "series_id": "EG.XL.TRADE.PROCEEDS_OF_MERCHANDISE_EXPORT.ALUMINIUM_ARTICLES",

@@ -20,6 +20,7 @@ Run:  python ingest/mpc_archive.py
 from __future__ import annotations
 
 import difflib
+import gzip
 import json
 import pathlib
 import re
@@ -47,6 +48,19 @@ DECISION_MAP = {
     "raise": "hike", "increase": "hike",
     "cut": "cut", "lower": "cut", "reduce": "cut",
 }
+
+
+_RE_CHROME = re.compile(
+    r"^.*?(?:News\s*&\s*Publications\s*News|Home)\s+", re.S
+)
+
+
+def strip_chrome(text: str) -> str:
+    """Drop the breadcrumb trail and repeated title that lead every news page."""
+    out = _RE_CHROME.sub("", text, count=1)
+    # The title is printed twice, then the date. Collapse the duplicate.
+    m = re.match(r"(.{15,120}?)\s+\s+(\d{1,2} \w{3} \d{4})\s*", out)
+    return out[m.end():].strip() if m else out.strip()
 
 
 def sentences(text: str) -> list[str]:
@@ -93,12 +107,12 @@ def collect() -> list[dict]:
         mpc_docs = [
             d for d in manifest
             if "MPC Press Release" in (d.get("categories") or [])
-            and (PAGES / f"{d['id']}.json").exists()
+            and (PAGES / f"{d['id']}.json.gz").exists()
         ]
         for doc in mpc_docs:
             if doc["date"] in found:
                 continue  # the HTML version is cleaner
-            pages = json.loads((PAGES / f"{doc['id']}.json").read_text(encoding="utf-8"))
+            pages = json.loads(gzip.decompress((PAGES / f"{doc['id']}.json.gz").read_bytes()).decode("utf-8"))
             text = " ".join(p["text"] for p in pages["pages"])
             if len(text) < 200:
                 continue  # a scan we cannot read yet
@@ -116,8 +130,14 @@ def collect() -> list[dict]:
 
 def diff(previous: dict, current: dict) -> dict:
     """Sentence-level diff, plus the rate move if both statements state one."""
-    a, b = sentences(previous["text"]), sentences(current["text"])
+    pa, pb = strip_chrome(previous["text"]), strip_chrome(current["text"])
+    a, b = sentences(pa), sentences(pb)
     sm = difflib.SequenceMatcher(None, a, b, autojunk=False)
+    # Similarity is measured on the characters, not on whole sentences. MPC
+    # statements reuse their structure but reword almost every sentence because
+    # the numbers move, so exact sentence matching reports 8% for documents that
+    # are plainly near-identical.
+    text_ratio = difflib.SequenceMatcher(None, pa, pb, autojunk=False).ratio()
 
     added, removed, changed = [], [], []
     for tag, i1, i2, j1, j2 in sm.get_opcodes():
@@ -148,7 +168,8 @@ def diff(previous: dict, current: dict) -> dict:
     return {
         "from_date": previous["date"],
         "to_date": current["date"],
-        "similarity": round(sm.ratio(), 3),
+        "similarity": round(text_ratio, 3),
+        "sentence_overlap": round(sm.ratio(), 3),
         "sentences_added": added,
         "sentences_removed": removed,
         "sentences_changed": changed,

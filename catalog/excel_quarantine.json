@@ -1,22 +1,6 @@
 {
- "count": 9,
+ "count": 12,
  "files": [
-  {
-   "id": "5635a5f174138616",
-   "url": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-and-indicators/external_debt______annual.xlsx",
-   "category": "External Debt",
-   "subcategory": "External debt by type",
-   "frequency": "Annual",
-   "reason": "ParseError: no year row above the period row"
-  },
-  {
-   "id": "bb616feb8e7d3594",
-   "url": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx",
-   "category": "External Debt",
-   "subcategory": "External Debt by Debtor Sector",
-   "frequency": "Annual",
-   "reason": "ParseError: no year row above the period row"
-  },
   {
    "id": "7a64d12082545d5b",
    "url": "/-/media/project/cbe/listing/time-series/foreign-trade/imports-by-geographical-distribution/importsbygeographicaldistribution_quarter2005-2006.xlsx",
@@ -72,6 +56,44 @@
    "subcategory": "Imports by Geographical Distribution",
    "frequency": "Quarterly",
    "reason": "ParseError: no period row found (best scores: month=0, quarter=0, fiscal_year=0, year=0)"
+  },
+  {
+   "id": "5541ae665876961b",
+   "url": "/-/media/project/cbe/listing/time-series/inflation/cpi/cpi-annually_.xls",
+   "category": "Inflation",
+   "subcategory": "CPI",
+   "reason": "parsed but produced no observations"
+  },
+  {
+   "id": "4cd61965c2983ec9",
+   "url": "/-/media/project/cbe/listing/time-series/inflation/wpi-and-ppi/wpiandppi_-annual__.xlsx",
+   "category": "Inflation",
+   "subcategory": "WPI and PPI",
+   "reason": "parsed but produced no observations"
+  },
+  {
+   "id": "f6d6bbbddc838f10",
+   "url": "/-/media/project/cbe/listing/time-series/inflation/wpi-and-ppi/wpiandppi_-monthly2017-2018.xlsx",
+   "category": "Inflation",
+   "subcategory": "WPI and PPI",
+   "frequency": "Monthly",
+   "reason": "ParseError: no year row near the period row"
+  },
+  {
+   "id": "fafd7a32f1dff041",
+   "url": "/-/media/project/cbe/listing/time-series/inflation/wpi-and-ppi/wpiandppi_monthly2014-2015.xlsx",
+   "category": "Inflation",
+   "subcategory": "WPI and PPI",
+   "frequency": "Monthly",
+   "reason": "ParseError: no year row near the period row"
+  },
+  {
+   "id": "d08e6778d8472aa8",
+   "url": "/-/media/project/cbe/listing/time-series/inflation/wpi-and-ppi/wpiandppi_monthly2015-2016.xlsx",
+   "category": "Inflation",
+   "subcategory": "WPI and PPI",
+   "frequency": "Monthly",
+   "reason": "ParseError: no year row near the period row"
   }
  ]
 }
