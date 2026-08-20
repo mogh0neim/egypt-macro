@@ -1,4 +1,6 @@
-# Egypt Macro
+# Miqyas
+
+**[mogh0neim.github.io/egypt-macro](https://mogh0neim.github.io/egypt-macro/)**
 
 > **Not affiliated with, endorsed by, or connected to the Central Bank of Egypt.**
 > This is an independent project. The CBE is the source of every number here; any
@@ -6,6 +8,10 @@
 > [cbe.org.eg](https://www.cbe.org.eg/en/).
 
 Everything the Central Bank of Egypt publishes, as clean data.
+
+*Miqyas* is the Nilometer on Rhoda Island: the graduated marble column Cairo read
+the flood against to forecast the harvest and set the tax rate. Egypt's first
+macroeconomic indicator, in service by 861 AD.
 
 The CBE puts a genuinely valuable body of statistics on its website and makes it
 hard to use: no API, no bulk download, no history you can load into anything, and
@@ -33,8 +39,10 @@ Nothing in `data/` or `catalog/` is hand-edited. Timestamps live only in
 
 ### Coverage
 
-**1,158 series, 420,000 observations**, from three sources: 30 live endpoints,
-981 Excel files, and figures that exist only inside press-release prose.
+**1,300 series, 420,000 observations**, from three sources: 30 live endpoints,
+981 Excel files, and figures that exist only inside press-release prose. On top
+of that, 1,478 documents with 53,006 pages of searchable text, and every MPC rate
+decision since June 2005.
 
 - **Exchange rates** — CBE official rates for 18 currencies (buy and sell), daily
   since January 2005. Market rates for 9 currencies since 2014. Interbank
@@ -106,14 +114,25 @@ already-downloaded pages instead of hitting CBE again.
 
 ### The site
 
-`web/` is a static front end with no build step and no framework. Serve the
-repository root and open `web/index.html`:
+`web/` is a static front end with no build step and no framework. `build_site.py`
+copies it into `dist/`, which then *is* the deployable site root: `index.html` at
+the top with `api/` and `search/` beside it.
 
 ```bash
 python ingest/build_exports.py
-python -m http.server 8765
-# http://localhost:8765/web/index.html
+python ingest/build_search.py
+python ingest/build_site.py
+python -m http.server 8765 --directory dist
+# http://localhost:8765/
 ```
+
+Serving the repository root instead also works — the front end detects that it is
+running from `web/` and looks one level up for the data.
+
+[`.github/workflows/publish.yml`](.github/workflows/publish.yml) runs those three
+steps and deploys `dist/` to GitHub Pages after every scrape. Nothing in `dist/`
+is committed; it is derived in full from `data/`, `catalog/` and `corpus/`, which
+are.
 
 ### The API
 
@@ -122,8 +141,12 @@ python -m http.server 8765
 ```
 dist/api/v1/series.json              every series with its latest value
 dist/api/v1/series/<SERIES_ID>.json  full observations
+dist/api/v1/sparks.json              48-point shapes, for list views
+dist/api/v1/mpc.json                 every rate decision, with statement diffs
+dist/search/                         sharded full-text index over the corpus
+dist/status.json                     when it was built and how much is in it
 dist/parquet/*.parquet               partitioned, sorted for DuckDB range reads
-dist/egypt-macro.sqlite              the whole thing, queryable
+dist/miqyas.sqlite                   the whole thing, queryable
 dist/bulk/*.zip                      CSV bundles
 ```
 

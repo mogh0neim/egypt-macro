@@ -3,39 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Egypt Macro — everything the Central Bank of Egypt publishes</title>
-<meta name="description" content="Egypt's macroeconomic data, cleaned and searchable. Exchange rates since 2005, treasury auctions since 2004, inflation since 2000. Unofficial mirror of the Central Bank of Egypt.">
+<title>Miqyas — Egypt's macroeconomic record</title>
+<meta name="description" content="Every number the Central Bank of Egypt publishes, cleaned, charted and searchable. Exchange rates since 2005, treasury auctions since 2004, inflation since 2000, every rate decision since June 2005. An unofficial mirror, rebuilt daily.">
+<meta name="theme-color" content="#101b33">
+<link rel="canonical" href="https://mogh0neim.github.io/egypt-macro/">
+<meta property="og:title" content="Miqyas — Egypt's macroeconomic record">
+<meta property="og:description" content="Every number the Central Bank of Egypt publishes, cleaned, charted and searchable. An unofficial mirror, rebuilt daily.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<a class="skip" href="#app">Skip to content</a>
+
 <header class="masthead">
   <div class="wrap">
-    <a class="wordmark" href="#/">Egypt Macro</a>
+    <a class="wordmark" href="#/">Miqyas<span class="mark-ar" aria-hidden="true">مقياس</span></a>
     <span class="unofficial">Unofficial</span>
+    <input class="quick" id="quick" type="search" placeholder="Search 1,300 series   /" aria-label="Search series">
+    <button class="menu" id="menu" aria-label="Menu">≡</button>
     <nav>
-      <a href="#/" data-route="home">Indicators</a>
-      <a href="#/search" data-route="search">Series</a>
+      <a href="#/" data-route="home">Overview</a>
+      <a href="#/browse" data-route="browse">Browse</a>
+      <a href="#/find" data-route="find">Find a series</a>
+      <a href="#/rates" data-route="rates">Rate decisions</a>
       <a href="#/docs" data-route="docs">Documents</a>
+      <a href="#/data" data-route="data">Get the data</a>
       <a href="#/about" data-route="about">About</a>
-      <button class="theme-toggle" id="theme" aria-label="Switch between light and dark">◐</button>
+      <button class="theme-toggle" id="theme" aria-label="Switch between light, dark and system theme">Auto</button>
     </nav>
   </div>
 </header>
 
-<main id="app"><div class="wrap"><p class="empty">Loading…</p></div></main>
+<main id="app"><div class="wrap"><div class="skeleton"><div class="sk-line"></div><div class="sk-line"></div><div class="sk-line"></div></div></div></main>
 
 <footer>
   <div class="wrap">
-    <p><b>Not affiliated with, endorsed by, or connected to the Central Bank of Egypt.</b>
+    <div class="foot-cols">
+      <div>
+        <p class="foot-mark">Miqyas</p>
+        <p>Egypt's macroeconomic record, rebuilt from the Central Bank's own publications every morning.</p>
+      </div>
+      <div>
+        <p class="foot-head">Data</p>
+        <a href="#/browse">Browse by subject</a>
+        <a href="#/find">Find a series</a>
+        <a href="#/rates">Rate decisions</a>
+        <a href="#/data">Downloads and API</a>
+      </div>
+      <div>
+        <p class="foot-head">This project</p>
+        <a href="#/about">What is and is not here</a>
+        <a href="https://github.com/mogh0neim/egypt-macro" target="_blank" rel="noopener">Source on GitHub ↗</a>
+        <a href="https://www.cbe.org.eg/en/" target="_blank" rel="noopener">The Central Bank of Egypt ↗</a>
+      </div>
+    </div>
+    <p class="disclaimer"><b>Not affiliated with, endorsed by, or connected to the Central Bank of Egypt.</b>
        The CBE is the source of every number here. Any error in the cleaning is ours.
        For official figures go to <a href="https://www.cbe.org.eg/en/">cbe.org.eg</a>.</p>
-    <p>Rebuilt daily from CBE's own publications. Where a figure has been transformed
-       rather than reproduced, the series says so.</p>
   </div>
 </footer>
 
-<script src="docs.js"></script>
+<script src="core.js"></script>
+<script src="views-data.js"></script>
+<script src="views-docs.js"></script>
+<script src="views-mpc.js"></script>
+<script src="views-meta.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
