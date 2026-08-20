@@ -31,6 +31,8 @@ scrapes all of it once a day, cleans it, and commits the result.
 | `catalog/COVERAGE.md` | The same thing, readable |
 | `catalog/last_run.json` | When the scrape last ran |
 | `corpus/mpc/` | MPC statements as text, with the rate decision parsed out |
+| `corpus/pages/` | Every PDF page as text, gzipped. What search runs on |
+| `corpus/extraction_report.json` | What extracted cleanly, what needed OCR, what failed |
 | `events.json` | Devaluations and MPC decisions, for annotating charts |
 | `ingest/` | The scrapers |
 
@@ -60,6 +62,9 @@ decision since June 2005.
 - **Auctions** — repo, deposit and foreign-exchange auctions.
 - **Reserves and remittances** — parsed out of press-release text, because CBE
   publishes neither as a series anywhere.
+- **Rate decisions** — all 169 MPC statements back to June 2005, with a diff
+  against the previous one. Where CBE's own archive records no decision, it is
+  recovered from the published corridor series.
 
 From the Excel archive, which is where the rest of Egypt's macro record lives:
 
@@ -103,9 +108,13 @@ python ingest/fetch_docs.py --download
 python ingest/extract_text.py
 python ingest/mpc_archive.py
 
+# on demand: read the scans that have no text layer (needs Tesseract)
+python ingest/ocr_scans.py
+
 # publish
-python ingest/build_search.py           # document search index
 python ingest/build_exports.py          # Parquet, SQLite, static API, zips
+python ingest/build_search.py           # document search index
+python ingest/build_site.py             # copy the front end in, make dist/ a site
 ```
 
 Run them in that order — each reads what the previous one wrote. `--only
