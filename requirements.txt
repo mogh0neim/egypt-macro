@@ -1,1 +1,8 @@
+# Every third-party import across ingest/. The daily job only needs PyYAML,
+# but pinning one list keeps the daily, weekly and publish workflows from
+# drifting into three different environments.
 PyYAML>=6.0
+openpyxl>=3.1        # the .xlsx half of the Excel archive
+xlrd>=2.0            # the handful of files that are genuinely legacy BIFF
+PyMuPDF>=1.24        # PDF text extraction for the document corpus
+duckdb>=1.0          # Parquet writing in build_exports

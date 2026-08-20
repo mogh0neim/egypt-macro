@@ -32,6 +32,7 @@ from __future__ import annotations
 import argparse
 import collections
 import csv
+import hashlib
 import json
 import os
 import pathlib
@@ -393,6 +394,56 @@ def build_periods(
     return out
 
 
+# ---------------------------------------------------------------------------
+# Units.
+#
+# CBE never puts the unit in a column of its own. It sits in a caption cell
+# above the period row -- "(LE mn)", "(US.$m.)", "(بالمليون جنيه)" -- and
+# applies to the whole table, except where a single row overrides it by
+# carrying its own bracket, which is how the clearing-house sheets mix
+# transaction counts with transaction values in one table.
+#
+# So: the row label wins, the sheet caption is the fallback. Without this
+# every one of the 1,005 Excel series renders as a bare number with no idea
+# whether it means pounds, dollars, millions or people.
+
+UNIT_PATTERNS = [
+    (r"\bus\s*\.?\s*\$\s*\.?\s*(?:bn|billion)\b", "USD billion"),
+    (r"\bus\s*\.?\s*\$\s*\.?\s*(?:mn|mio|million|mill|mil|m)\b\.?", "USD million"),
+    (r"\bus\s*doll?ars?\s*\.?\s*(?:mn|million)\b", "USD million"),
+    (r"مليون\s*دولار", "USD million"),
+    (r"\b(?:l\s*\.?\s*e|egp|eg\s*\.?\s*p)\s*\.?\s*(?:bn|billion)\b", "EGP billion"),
+    (r"\b(?:l\s*\.?\s*e|egp|eg\s*\.?\s*p)\s*\.?\s*(?:mn|mio|million|mill|mil|m)\b\.?", "EGP million"),
+    (r"بالمليار\s*جنيه|مليار\s*جنيه", "EGP billion"),
+    (r"بالمليون\s*جنيه|مليون\s*جنيه", "EGP million"),
+    (r"\beur\s*\.?\s*(?:mn|million)\b", "EUR million"),
+    (r"\bgbp\s*\.?\s*(?:mn|million)\b", "GBP million"),
+]
+
+
+def _flatten(text) -> str:
+    return re.sub(r"\s+", " ", str(text or "")).lower()
+
+
+def sniff_unit(caption: str, label: str) -> str | None:
+    """Unit for one row: its own label first, then the sheet caption."""
+    for text, label_level in ((_flatten(label), True), (_flatten(caption), False)):
+        for pattern, unit in UNIT_PATTERNS:
+            if re.search(pattern, text):
+                return unit
+        if "%" in text or "percentage" in text or "نسبة مئوية" in text:
+            return "percent"
+        if label_level:
+            continue  # a bare label rarely says "index"; the caption does
+        if "(000" in text or "thousand" in text or "بالألف" in text:
+            return "thousand"
+        if "index" in text or "الرقم القياسي" in text:
+            return "index"
+        if "number of" in text or "in units" in text or "عدد" in text:
+            return "number"
+    return None
+
+
 def find_label_columns(grid: list[list], first_period_col: int) -> tuple[int | None, int | None]:
     """-> (english column, arabic column), decided by script not position."""
     en = ar = None
@@ -425,6 +476,10 @@ def parse_file(path: pathlib.Path, meta: dict) -> tuple[list[tuple], dict[str, d
 
     data_start = periods.pop("__data_start__", period_row)
     first_col = min(periods)
+    # Everything above the data is caption: title, unit bracket, period row.
+    caption = " ".join(
+        str(cell) for row in grid[: data_start + 1] for cell in row if cell
+    )
     en_col, ar_col = find_label_columns(grid, first_col)
     if en_col is None and ar_col is None:
         raise ParseError("no label column found")
@@ -446,7 +501,13 @@ def parse_file(path: pathlib.Path, meta: dict) -> tuple[list[tuple], dict[str, d
         raw = str(row[en_col]) if en_col is not None and en_col < len(row) and row[en_col] else str(row[ar_col])
         level = len(raw) - len(raw.lstrip())
 
-        sid = f"EG.XL.{cat}.{sub}.{slug(label_en or label_ar)}"
+        # An Arabic-only label slugs to the empty string, which would give
+        # every such row in a sheet the same ID. Fall back to a short digest
+        # of the label so the ID stays unique and stable across runs.
+        tail = slug(label_en or label_ar) or "R" + hashlib.sha1(
+            (label_en or label_ar).encode("utf-8")
+        ).hexdigest()[:8].upper()
+        sid = f"EG.XL.{cat}.{sub}.{tail}"
         values = [
             (periods[c], to_number(row[c]))
             for c in sorted(periods)
@@ -468,7 +529,7 @@ def parse_file(path: pathlib.Path, meta: dict) -> tuple[list[tuple], dict[str, d
                 "dataset": "excel_archive",
                 "family": (meta.get("category") or "").lower().replace(" ", "_"),
                 "freq": {"Annual": "A", "Quarterly": "Q", "Monthly": "M"}.get(frequency),
-                "unit": None,
+                "unit": sniff_unit(caption, label_en or label_ar),
                 "level": level // 2,
                 "period_basis": "end",
                 "fiscal_year_basis": "Egypt, 1 July to 30 June",
@@ -549,7 +610,10 @@ def main() -> int:
         w.writerows(rows)
 
     existing = json.loads(OUT_CATALOG.read_text(encoding="utf-8")) if OUT_CATALOG.exists() else []
-    by_id = {c["series_id"]: c for c in existing}
+    # This script owns the EG.XL.* namespace outright. Dropping it before the
+    # merge is what stops a series that CBE has renamed or withdrawn from
+    # sitting in the catalogue forever with no observations behind it.
+    by_id = {c["series_id"]: c for c in existing if not c["series_id"].startswith("EG.XL.")}
     by_id.update(all_cat)
     OUT_CATALOG.write_text(
         json.dumps(sorted(by_id.values(), key=lambda c: c["series_id"]), indent=1, ensure_ascii=False),
