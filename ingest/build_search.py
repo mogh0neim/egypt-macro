@@ -104,6 +104,10 @@ def main() -> int:
                 "categories": doc.get("categories") or meta.get("categories") or [],
                 "pages": doc.get("page_count", 0),
                 "needs_ocr": bool(doc.get("needs_ocr")),
+                # A scan that has been through OCR is still a scan, but its
+                # text is now in the index and the reader should be told
+                # which of the two they are looking at.
+                "ocr": bool(doc.get("ocr")),
                 "url": "https://www.cbe.org.eg" + (doc.get("url") or meta.get("url", "")),
             }
         )
@@ -173,9 +177,13 @@ def main() -> int:
     print(f"{len(final):,} terms indexed, {dropped:,} dropped as too common")
     print(f"{len(shards)} shards, {total/1e6:.1f} MB total, "
           f"median shard {sorted(sizes)[len(sizes)//2]/1024:.0f} KB" if sizes else "")
-    ocr = sum(1 for d in documents if d["needs_ocr"])
-    if ocr:
-        print(f"\n{ocr} documents have no text layer and are indexed by title only.")
+    read_by_ocr = sum(1 for d in documents if d["ocr"])
+    unread = sum(1 for d in documents if d["needs_ocr"] and not d["ocr"])
+    if read_by_ocr:
+        print(f"\n{read_by_ocr} scanned documents were read by OCR and are fully indexed.")
+    if unread:
+        print(f"{unread} documents have no text layer and are indexed by title only. "
+              f"Run ingest/ocr_scans.py to read them.")
     return 0
 
 

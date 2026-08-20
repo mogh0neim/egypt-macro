@@ -1,0 +1,79 @@
+# Read the scanned documents.
+#
+# 77 documents in the corpus are images of paper with no text layer. This
+# installs Tesseract, re-fetches just those PDFs (the mirror is gitignored, so
+# a runner starts without them), reads them in Arabic and English, and commits
+# the text into corpus/pages/ alongside everything else.
+#
+# It is on demand rather than on a schedule. The set only grows when CBE
+# publishes another scan, which is roughly once a month, and the weekly job
+# already reports how many are waiting.
+
+name: ocr-scans
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Only read this many documents (blank = all of them)"
+        type: string
+        default: ""
+      force:
+        description: "Re-read documents that have already been through OCR"
+        type: boolean
+        default: false
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  ocr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # tesseract-ocr-ara is the Arabic model. Without it PyMuPDF falls back to
+      # English and reads Arabic pages as line noise.
+      - name: Install Tesseract with Arabic
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-ara
+          tesseract --version
+          # The tessdata path moves between Ubuntu releases, so find it rather
+          # than hard-code it. PyMuPDF reads TESSDATA_PREFIX and nothing else.
+          TESSDATA=$(dirname "$(find /usr/share -name 'eng.traineddata' | head -1)")
+          echo "tessdata: $TESSDATA"
+          echo "TESSDATA_PREFIX=$TESSDATA" >> "$GITHUB_ENV"
+
+      - name: Read the scans
+        run: |
+          python ingest/ocr_scans.py \
+            ${{ inputs.limit && format('--limit {0}', inputs.limit) || '' }} \
+            ${{ inputs.force && '--force' || '' }}
+
+      - name: Rebuild the search index
+        run: python ingest/build_search.py
+
+      - name: Commit the text
+        run: |
+          git config user.name  "egypt-macro-bot"
+          git config user.email "actions@github.com"
+          git add corpus
+          if git diff --staged --quiet; then
+            echo "No new text came out of OCR."
+            exit 0
+          fi
+          git commit -m "ocr: read the scanned documents $(date -u +%Y-%m-%d)"
+          git push

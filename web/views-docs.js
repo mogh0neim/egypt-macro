@@ -135,7 +135,8 @@ async function viewDocs(presetCategory) {
   // them above the alphabet in the dropdown for no reason a reader can see.
   const cats = [...new Set(docs.flatMap((d) => d.categories))].sort((a, b) =>
     a.trim().localeCompare(b.trim()));
-  const scanned = docs.filter((d) => d.needs_ocr).length;
+  const scanned = docs.filter((d) => d.needs_ocr && !d.ocr).length;
+  const ocred = docs.filter((d) => d.ocr).length;
   const counts = {};
   docs.forEach((d) => d.categories.forEach((c) => (counts[c] = (counts[c] || 0) + 1)));
 
@@ -182,9 +183,14 @@ async function viewDocs(presetCategory) {
     '<button class="chip" id="dclear">Clear</button>' +
     "</div>" +
     '<div class="results" id="dresults"></div>' +
+    (ocred
+      ? '<p class="foot-note">' + ocred + " of these are scans of paper with no text layer of their own. " +
+        "They have been read by OCR in Arabic and English, so their text is searchable, but a machine " +
+        "reading a scan is not the same as a text layer and the odd word will be wrong.</p>"
+      : "") +
     (scanned
-      ? '<p class="foot-note">' + scanned + " of these are scans with no text layer. " +
-        "They are findable by title; reading inside them needs OCR, which is not wired up yet.</p>"
+      ? '<p class="foot-note">' + scanned + " of these are scans that OCR has not been run over yet. " +
+        "They are findable by title only.</p>"
       : "") +
     "</div></section></div>";
 
@@ -204,7 +210,7 @@ async function viewDocs(presetCategory) {
     '<div class="sub">' + (d.date || "—") + " · " + esc(SOURCE_LABEL[d.source] || d.source) +
     (page ? ' · <b class="pagehit">page ' + page + "</b>" : "") +
     (d.pages ? " · " + d.pages + (d.pages === 1 ? " page" : " pages") : "") +
-    (d.needs_ocr ? " · scan, no text layer" : "") +
+    (d.needs_ocr ? (d.ocr ? " · scan, read by OCR" : " · scan, no text layer") : "") +
     (d.categories.length ? " · " + esc(d.categories.slice(0, 3).join(", ").trim()) : "") +
     "</div></a>";
 
