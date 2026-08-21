@@ -296,7 +296,8 @@ async function viewMoneyMarket() {
       [coniaObs, floorObs, ceilObs],
       ["percent per annum", "percent per annum", "percent per annum"],
       document.getElementById("corridor-readout"),
-      ["CONIA", "floor", "ceiling"]
+      ["CONIA", "floor", "ceiling"],
+      { bandMid: [1, 2] }
     );
   }
   if (slope) {

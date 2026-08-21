@@ -724,6 +724,7 @@ function lineChart(series, opts) {
   return (
     '<svg class="chart" id="' + id + '" viewBox="0 0 ' + W + " " + H + '" ' +
     'style="--len:' + Math.round(iw * 1.6) + '" data-x0="' + x0 + '" data-x1="' + x1 + '" ' +
+    'data-y0="' + y0 + '" data-y1="' + y1 + '" ' +
     'data-w="' + W + '" data-l="' + m.l + '" ' +
     'role="img" tabindex="0" ' +
     'aria-label="Time series chart, ' + sets[0].length +
@@ -760,9 +761,14 @@ function armLines(svg) {
   });
 }
 
-/* Crosshair and readout. A touch counts as a pointer, so a phone gets this
- * without a second code path. */
-function wireHover(svg, series, units, readoutEl, labels) {
+/* Crosshair, per-line markers and readout. A touch counts as a pointer, so a
+ * phone gets this without a second code path.
+ *
+ * opts.bandMid: [lo, hi] -- when set 0 is a benchmark read against a band
+ * formed by two other sets (the corridor: CONIA against floor/ceiling), the
+ * readout gets a live version of the gap-to-midpoint line the page already
+ * states once, statically, for the latest reading. */
+function wireHover(svg, series, units, readoutEl, labels, opts) {
   if (!svg || !readoutEl) return;
   /* The readout works off the full series, not the decimated set the chart
    * drew. A 5,172-point series is plotted at every sixth day, so reading the
@@ -772,12 +778,17 @@ function wireHover(svg, series, units, readoutEl, labels) {
    * crosshair is then the number CBE published on that date. */
   const data = isMulti(series) ? series : [series];
   const x0 = +svg.dataset.x0, x1 = +svg.dataset.x1;
-  // The chart chose its own viewBox width and left margin; read them back
-  // rather than assume, or the crosshair lands in the wrong place.
+  const y0 = +svg.dataset.y0, y1 = +svg.dataset.y1;
+  // The chart chose its own viewBox, margins and value range; read them back
+  // rather than assume, or the crosshair and its markers land in the wrong
+  // place. Same px()/py() as lineChart(), so a dot lands exactly on the line.
   const W = +svg.dataset.w || 1000;
   const m = { l: +svg.dataset.l || 58, r: 14, t: 18, b: 26 };
   const iw = W - m.l - m.r;
   const vbH = +(svg.getAttribute("viewBox") || "0 0 1000 300").split(/\s+/)[3];
+  const ih = vbH - m.t - m.b;
+  const px = (t) => m.l + ((t - x0) / (x1 - x0 || 1)) * iw;
+  const py = (v) => m.t + ih - ((v - y0) / (y1 - y0 || 1)) * ih;
   const g = svg.querySelector(".hover");
   const base = readoutEl.innerHTML;
   const unitList = Array.isArray(units) ? units : [units];
@@ -793,15 +804,64 @@ function wireHover(svg, series, units, readoutEl, labels) {
       return best;
     });
 
+  /* The one number a comparison is actually for. Worded with the series'
+   * own labels rather than a signed figure, so which side is ahead never
+   * has to be worked out from a plus or a minus sign. fmtChange already
+   * appends "pp" for a percent unit; anything else needs its unit said once,
+   * or "13.62" reads as a real quantity when it is really index points. */
+  const gapUnit = (unit) =>
+    /percent/i.test(unit || "") ? "" : unit === "index" ? " pts" : unitTag(unit) ? " " + unitTag(unit) : "";
+  const gapLine = (picks) => {
+    if (opts && opts.bandMid && picks.length > opts.bandMid[1]) {
+      const mid = (picks[opts.bandMid[0]][1] + picks[opts.bandMid[1]][1]) / 2;
+      const off = picks[0][1] - mid;
+      const unit = unitList[0];
+      const l0 = esc((labels && labels[0]) || "");
+      return isFlat(off, unit)
+        ? l0 + " on the midpoint"
+        : l0 + " " + fmtChange(off, unit) + gapUnit(unit) + (off > 0 ? " above" : " below") + " the midpoint";
+    }
+    if (picks.length === 2 && unitList[0] === unitList[1]) {
+      const diff = picks[1][1] - picks[0][1];
+      const unit = unitList[0];
+      const l0 = esc((labels && labels[0]) || "the first");
+      const l1 = esc((labels && labels[1]) || "the second");
+      return isFlat(diff, unit)
+        ? "about even"
+        : l1 + " " + fmtChange(diff, unit) + gapUnit(unit) + (diff > 0 ? " above " : " below ") + l0;
+    }
+    return "";
+  };
+
   const paint = (picks) => {
-    const bx = m.l + ((Date.parse(picks[0][0]) - x0) / (x1 - x0)) * iw;
-    g.innerHTML = '<line class="hover-line" x1="' + bx.toFixed(1) + '" y1="' + m.t + '" x2="' + bx.toFixed(1) + '" y2="' + (vbH - m.b) + '"/>';
+    const bx = px(Date.parse(picks[0][0]));
+    // Each dot uses its own point's date, not the crosshair's shared x -- the
+    // corridor's daily benchmark and stepped floor/ceiling do not share dates.
+    const dots = picks
+      .map((p, i) =>
+        '<circle class="hover-dot s' + i + '" cx="' + px(Date.parse(p[0])).toFixed(1) +
+        '" cy="' + py(p[1]).toFixed(1) + '" r="3.5"/>')
+      .join("");
+    g.innerHTML =
+      '<line class="hover-line" x1="' + bx.toFixed(1) + '" y1="' + m.t + '" x2="' + bx.toFixed(1) + '" y2="' + (vbH - m.b) + '"/>' +
+      dots;
+    const gap = gapLine(picks);
     readoutEl.innerHTML =
       picks
-        .map((p, i) =>
-          '<span class="val' + (i ? " alt" : "") + '">' + fmt(p[1], unitList[i]) + "</span>" +
-          (labels && labels[i] ? '<span class="when">' + esc(labels[i]) + "</span>" : ""))
-        .join("") + '<span class="when">' + niceDate(picks[0][0]) + "</span>";
+        .map((p, i) => {
+          // The unit rides along with the value, so a rebased index cannot be
+          // mistaken for a real level once the static note above it scrolls
+          // out of view.
+          const tag = unitTag(unitList[i]);
+          return (
+            '<span class="val' + (i ? " alt" : "") + '">' + fmt(p[1], unitList[i]) +
+            (tag ? ' <i class="u">' + esc(tag) + "</i>" : "") + "</span>" +
+            (labels && labels[i] ? '<span class="when">' + esc(labels[i]) + "</span>" : "")
+          );
+        })
+        .join("") +
+      (gap ? '<span class="gap">' + gap + "</span>" : "") +
+      '<span class="when">' + niceDate(picks[0][0]) + "</span>";
   };
 
   const clear = () => { g.innerHTML = ""; readoutEl.innerHTML = base; };
@@ -812,7 +872,10 @@ function wireHover(svg, series, units, readoutEl, labels) {
     paint(nearest(x0 + ((rel - m.l) / iw) * (x1 - x0)));
   };
   svg.addEventListener("pointermove", move);
-  svg.addEventListener("pointerleave", clear);
+  // A mouse or pen clears the reading on leave, as before. A touch does not:
+  // the moment a finger lifts is the moment it stops covering the chart, and
+  // that is exactly when a phone reader wants the number to still be there.
+  svg.addEventListener("pointerleave", (ev) => { if (ev.pointerType !== "touch") clear(); });
 
   /* The crosshair used to be mouse-only, so the one interactive thing on the
    * page could not be reached from a keyboard at all. Arrows walk the first

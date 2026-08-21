@@ -273,8 +273,7 @@ async function viewSeriesIndex(preset) {
   });
 
   app.innerHTML =
-    '<div class="wrap">' +
-    '<section class="section">' +
+    '<section class="section"><div class="wrap">' +
     '<p class="eyebrow">' + index.length.toLocaleString() + " series</p>" +
     "<h2>Find a series, or read down the subjects</h2>" +
     '<p class="lede">Type a word if you know one. If you would rather not, every subject is ' +
@@ -287,9 +286,9 @@ async function viewSeriesIndex(preset) {
     FIND_SUGGESTIONS.map((s) => '<button class="chip" data-sug="' + esc(s) + '">' + esc(s) + "</button>").join("") +
     "</div>" +
     '<div class="results" id="results"></div>' +
-    "</section>" +
+    "</div></section>" +
 
-    '<section class="section band" id="subjects">' +
+    '<section class="section band" id="subjects"><div class="wrap">' +
     '<p class="eyebrow">By subject</p>' +
     "<h2>All of it, in thirteen subjects</h2>" +
     '<p class="lede">The last card is not a subject: it is a screen assembled out of ' +
@@ -303,7 +302,7 @@ async function viewSeriesIndex(preset) {
       obs[t.key].toLocaleString() + " observations</span></a>"
     ).join("") +
     moneyMarketTopicCard() +
-    "</div></section></div>";
+    "</div></div></section>";
 
   const input = document.getElementById("q");
   const out = document.getElementById("results");
