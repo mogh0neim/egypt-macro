@@ -13,7 +13,112 @@
  * keyword they have to guess.
  */
 
-const docState = { docs: null, meta: null, shards: new Map() };
+const docState = { docs: null, meta: null, shards: new Map(), text: new Map() };
+
+/* How many hits get their matching text fetched. A median document is 3 KB
+ * gzipped and the largest is 600 KB, so fetching all sixty results could be
+ * 36 MB in the worst case for a page nobody scrolls to the bottom of. Twenty is
+ * bounded and covers what anyone reads, and the count line says so rather than
+ * letting the rest look as though they simply had nothing to show. */
+const SNIPPET_LIMIT = 20;
+const SNIPPET_WIDTH = 260;
+
+/* The page text, published by ingest/build_pages.py.
+ *
+ * GitHub Pages serves a .gz as an opaque binary rather than sending
+ * Content-Encoding: gzip, so the browser will not inflate it for us and we do it
+ * here. Where DecompressionStream is missing, a result keeps its page number and
+ * simply has no quote, which is what this page did before it had any. */
+async function loadPageText(id) {
+  if (docState.text.has(id)) return docState.text.get(id);
+  if (typeof DecompressionStream === "undefined") return null;
+  try {
+    const r = await fetch(ROOT + "/pages/" + encodeURIComponent(id) + ".json.gz");
+    if (!r.ok) throw new Error(String(r.status));
+    const json = await new Response(r.body.pipeThrough(new DecompressionStream("gzip"))).json();
+    docState.text.set(id, json.pages || {});
+  } catch (err) {
+    docState.text.set(id, null);
+  }
+  return docState.text.get(id);
+}
+
+/* The stretch of a page that shows why it matched.
+ *
+ * The search runs in folded text and the quote comes out of the original, which
+ * is what normaliseWithMap's index map is for: CBE printed "إجمالى", the index
+ * holds "اجمالي", and a reader should see what CBE printed.
+ *
+ * Anchoring on whichever term appears first is not good enough. Search "reserve
+ * requirement ratio" and the first hit on the page is usually "ratio", in a
+ * sentence about something else. So the window goes where the most distinct
+ * terms fall together, and every one of them inside it is marked. That is the
+ * difference between a snippet that contains part of the query and one that
+ * explains the hit.
+ */
+function snippetFor(pageText, terms) {
+  if (!pageText) return null;
+  const folded = normaliseWithMap(pageText);
+  const hay = folded.text;
+  const source = folded.nfkc;
+
+  // Every occurrence of every term, capped so a term appearing two hundred times
+  // down one column of a statistical table cannot dominate the work.
+  const marks = [];
+  terms.forEach((term, ti) => {
+    let at = hay.indexOf(term);
+    let found = 0;
+    while (at !== -1 && found < 40) {
+      marks.push({ at: at, end: at + term.length, ti: ti });
+      found += 1;
+      at = hay.indexOf(term, at + term.length);
+    }
+  });
+
+  if (!marks.length) {
+    // Every term is on this page or it would not be a hit, so this only happens
+    // where the folding is the whole reason it matched. Show the opening rather
+    // than claim a highlight that is not there.
+    return [{ text: source.slice(0, SNIPPET_WIDTH) + (source.length > SNIPPET_WIDTH ? " …" : "") }];
+  }
+
+  marks.sort((a, b) => a.at - b.at);
+
+  let anchor = marks[0].at;
+  let best = -1;
+  for (const m of marks) {
+    const distinct = new Set();
+    for (const o of marks) {
+      if (o.at >= m.at && o.at < m.at + SNIPPET_WIDTH) distinct.add(o.ti);
+    }
+    if (distinct.size > best) {
+      best = distinct.size;
+      anchor = m.at;
+    }
+  }
+
+  // A little context before the first match, most of the window after it.
+  const fromFolded = Math.max(0, anchor - Math.round(SNIPPET_WIDTH * 0.25));
+  const toFolded = Math.min(hay.length, fromFolded + SNIPPET_WIDTH);
+  const from = folded.map[fromFolded] === undefined ? 0 : folded.map[fromFolded];
+  const to = folded.map[toFolded] === undefined ? source.length : folded.map[toFolded];
+
+  const out = [];
+  if (from > 0) out.push({ text: "… " });
+  let cursor = from;
+  for (const m of marks) {
+    if (m.at < fromFolded || m.end > toFolded) continue;
+    const a = folded.map[m.at];
+    const b = m.end < folded.map.length ? folded.map[m.end] : to;
+    if (a === undefined || b === undefined || a < cursor) continue;
+    if (a > cursor) out.push({ text: source.slice(cursor, a) });
+    out.push({ text: source.slice(a, b), mark: true });
+    cursor = b;
+  }
+  if (cursor < to) out.push({ text: source.slice(cursor, to) });
+  if (to < source.length) out.push({ text: " …" });
+  return out;
+}
 
 /* The collections worth putting on the front of the page. Each is a category
  * as CBE files it; the copy is ours, because "Monetary Policy Inflation Note"
@@ -66,8 +171,11 @@ function shardFor(term, shards) {
   return h % shards;
 }
 
+const queryTerms = (query) =>
+  normaliseQuery(query).split(/\s+/).filter((t) => t.length >= 2);
+
 async function fullText(query) {
-  const terms = normaliseQuery(query).split(/\s+/).filter((t) => t.length >= 2);
+  const terms = queryTerms(query);
   if (!terms.length) return [];
 
   const perTerm = [];
@@ -178,6 +286,10 @@ async function viewDocs(presetCategory) {
       ? '<p class="foot-note">' + scanned + " of these are scans that OCR has not been run over yet. " +
         "They are findable by title only.</p>"
       : "") +
+    '<p class="foot-note">About one page in twenty comes out of its PDF as unmapped glyph ' +
+    "codes rather than as characters, because the file embeds a font with no Unicode mapping. " +
+    "Those pages are searched and quoted on whatever could be read, so a quote from one may " +
+    "have words missing from the middle of it.</p>" +
     "</div></section></div>";
 
   const q = document.getElementById("dq");
@@ -190,15 +302,47 @@ async function viewDocs(presetCategory) {
     (!pick("dcat") || d.categories.indexOf(pick("dcat")) !== -1) &&
     (!pick("dyear") || (d.date || "").indexOf(pick("dyear")) === 0);
 
-  const card = (d, page) =>
+  const card = (d, page, slot) =>
     '<a class="result" href="' + esc(d.url) + (page ? "#page=" + page : "") + '" target="_blank" rel="noopener">' +
     '<div class="title">' + (ARABIC_RE.test(d.title || "") ? '<span dir="auto">' + esc(d.title || d.id) + "</span>" : esc(d.title || d.id)) + "</div>" +
+    (slot === undefined ? "" : '<div class="snip" id="snip-' + slot + '"></div>') +
     '<div class="sub">' + niceDate(d.date) + " · " + esc(SOURCE_LABEL[d.source] || d.source) +
     (page ? ' · <b class="pagehit">page ' + page + "</b>" : "") +
     (d.pages ? " · " + d.pages + (d.pages === 1 ? " page" : " pages") : "") +
     (d.needs_ocr ? (d.ocr ? " · scan, read by OCR" : " · scan, no text layer") : "") +
     (d.categories.length ? " · " + esc(d.categories.slice(0, 3).join(", ").trim()) : "") +
     "</div></a>";
+
+  /* Filled after the list is on screen rather than before it: the rows are the
+   * answer and the quotes are detail, so a reader gets the answer while 3 KB per
+   * document is still in flight. Deduplicated by document, because one bulletin
+   * often supplies several of the hits. */
+  const fillSnippets = async (hits, terms) => {
+    const byDoc = new Map();
+    hits.forEach((h, i) => {
+      const id = docs[h.docIdx].id;
+      if (!byDoc.has(id)) byDoc.set(id, []);
+      byDoc.get(id).push({ slot: i, page: h.page });
+    });
+    await Promise.all(
+      [...byDoc.entries()].map(async (entry) => {
+        const pages = await loadPageText(entry[0]);
+        entry[1].forEach((want) => {
+          const el = document.getElementById("snip-" + want.slot);
+          if (!el) return;
+          const snip = pages && snippetFor(pages[String(want.page)], terms);
+          if (!snip || !snip.length) {
+            el.remove();
+            return;
+          }
+          el.innerHTML =
+            '<span dir="auto">' +
+            snip.map((part) => (part.mark ? "<mark>" + esc(part.text) + "</mark>" : esc(part.text))).join("") +
+            "</span>";
+        });
+      })
+    );
+  };
 
   const run = async () => {
     const query = q.value.trim();
@@ -223,14 +367,19 @@ async function viewDocs(presetCategory) {
 
     if (mode === "full") {
       out.innerHTML = '<p class="empty">Reading 53,000 pages…</p>';
+      const fullTerms = queryTerms(query);
       const hits = await fullText(query);
       const allowed = new Set(filtered.map((d) => d.i));
       const rows = hits.filter((h) => allowed.has(h.docIdx));
       out.innerHTML = rows.length
-        ? '<p class="count-line">' + rows.length + " pages contain every one of those words</p>" +
-          rows.map((h) => card(docs[h.docIdx], h.page)).join("")
+        ? '<p class="count-line">' + rows.length + " pages contain every one of those words" +
+          (rows.length > SNIPPET_LIMIT
+            ? ", showing the matching text for the first " + SNIPPET_LIMIT
+            : "") + "</p>" +
+          rows.map((h, i) => card(docs[h.docIdx], h.page, i < SNIPPET_LIMIT ? i : undefined)).join("")
         : '<p class="empty">No single page contains all of those words. ' +
           "Try fewer words, or switch to matching titles.</p>";
+      if (rows.length) fillSnippets(rows.slice(0, SNIPPET_LIMIT), fullTerms);
       return;
     }
 

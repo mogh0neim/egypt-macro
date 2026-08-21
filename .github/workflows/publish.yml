@@ -61,6 +61,9 @@ jobs:
       - name: Build the document search index
         run: python ingest/build_search.py
 
+      - name: Publish the page text, so a search hit can quote what it found
+        run: python ingest/build_pages.py
+
       - name: Assemble the site root
         run: python ingest/build_site.py
 
@@ -76,10 +79,19 @@ jobs:
               problems.append(f"only {status['series']} series")
           if status["observations"] < 300_000:
               problems.append(f"only {status['observations']} observations")
+          # index.html loads every one of these, so a copy that silently failed
+          # would leave the site half-wired rather than obviously broken.
           for required in ("index.html", "styles.css", "core.js", "app.js",
-                           "api/v1/series.json", "api/v1/sparks.json"):
+                           "palette.js", "views-data.js", "views-docs.js",
+                           "views-mpc.js", "views-meta.js", "views-desk.js",
+                           "views-mydesk.js",
+                           "api/v1/series.json", "api/v1/sparks.json",
+                           "search/documents.json", "search/meta.json"):
               if not (dist / required).exists():
                   problems.append(f"missing {required}")
+          pages = len(list((dist / "pages").glob("*.json.gz"))) if (dist / "pages").exists() else 0
+          if pages < 1000:
+              problems.append(f"only {pages} documents of page text")
           if problems:
               sys.exit("refusing to deploy: " + "; ".join(problems))
           PY

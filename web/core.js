@@ -281,6 +281,46 @@ const normaliseQuery = (s) =>
     .toLowerCase()
     .trim();
 
+/* The same folding, done a character at a time, recording which input character
+ * produced each output character.
+ *
+ * A match found in folded text is at a different offset from the same match in
+ * the original, because dropping diacritics changes the length. That map is what
+ * lets a search hit be highlighted in the text CBE actually printed rather than
+ * in our folded copy of it.
+ *
+ * It has to agree with normaliseQuery above, character for character. The fast
+ * regex version stays separate because it runs over the whole catalogue and this
+ * one runs over a handful of pages.
+ *
+ * Indices are into the NFKC form, which is returned for the same reason.
+ */
+function normaliseWithMap(input) {
+  const nfkc = String(input).normalize("NFKC");
+  const out = [];
+  const map = [];
+  for (let i = 0; i < nfkc.length; i++) {
+    const c = nfkc[i];
+    // Harakat, superscript alef and tatweel are dropped, not replaced.
+    if (/[ً-ْٰـ]/.test(c)) continue;
+    let r;
+    if (/[أإآٱ]/.test(c)) r = "ا";
+    else if (c === "ى") r = "ي";
+    else if (c === "ة") r = "ه";
+    else if (c === "ؤ") r = "و";
+    else if (c === "ئ") r = "ي";
+    else if (c >= "٠" && c <= "٩") r = String(c.charCodeAt(0) - 0x0660);
+    else r = c.toLowerCase();
+    // toLowerCase can lengthen a character. Keep one map entry per output
+    // character or the two fall out of step and every offset after it is wrong.
+    for (const ch of r) {
+      out.push(ch);
+      map.push(i);
+    }
+  }
+  return { nfkc: nfkc, text: out.join(""), map: map };
+}
+
 /* ---------- the topic taxonomy ----------
  *
  * The catalogue's `family` comes from whichever CBE page or spreadsheet tab a

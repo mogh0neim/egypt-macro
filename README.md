@@ -31,7 +31,7 @@ scrapes all of it once a day, cleans it, and commits the result.
 | `catalog/COVERAGE.md` | The same thing, readable |
 | `catalog/last_run.json` | When the scrape last ran |
 | `corpus/mpc/` | MPC statements as text, with the rate decision parsed out |
-| `corpus/pages/` | Every PDF page as text, gzipped. What search runs on |
+| `corpus/pages/` | Every PDF page as text, gzipped. What search runs on, and what a search result quotes |
 | `corpus/extraction_report.json` | What extracted cleanly, what needed OCR, what failed |
 | `events.json` | Devaluations and MPC decisions, for annotating charts |
 | `ingest/` | The scrapers |
@@ -43,8 +43,8 @@ Nothing in `data/` or `catalog/` is hand-edited. Timestamps live only in
 
 **1,300 series, 420,000 observations**, from three sources: 30 live endpoints,
 981 Excel files, and figures that exist only inside press-release prose. On top
-of that, 1,478 documents with 53,006 pages of searchable text, and every MPC rate
-decision since June 2005.
+of that, 1,478 documents with 53,006 pages of searchable text, quoted back with
+the match highlighted, and every MPC rate decision since June 2005.
 
 - **Exchange rates**: CBE official rates for 18 currencies (buy and sell), daily
   since January 2005. Market rates for 9 currencies since 2014. Interbank

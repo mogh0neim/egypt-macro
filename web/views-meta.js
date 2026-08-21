@@ -115,6 +115,11 @@ function viewAbout() {
     "comes back with its letters in visual rather than logical order, so searching inside " +
     "these particular documents works better in English than in Arabic. The Documents page " +
     "labels every one of them.</li>" +
+    "<li>2,824 of the 52,705 pages of text, about one in twenty, lost at least a sixth of " +
+    "their characters on the way out of the PDF. Those files embed a font with no Unicode " +
+    "mapping, so the text layer holds glyph indices rather than letters and nothing short of " +
+    "OCR can recover the words. Those pages are still searched and quoted on whatever could " +
+    "be read, which is why a quote from one can have words missing from the middle.</li>" +
     "<li>The Financial Soundness Indicator tables are extracted as text but not yet parsed " +
     "into series.</li>" +
     "<li>Twelve Excel files in the archive resisted parsing. Each one is listed with its " +

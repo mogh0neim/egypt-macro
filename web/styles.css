@@ -1184,6 +1184,23 @@ input.search::placeholder { color: var(--text-3); }
 }
 .result .sub .pagehit { color: var(--accent); font-weight: 500; }
 
+/* The quote from the page. Not mono: it is prose CBE wrote, and it is set to be
+   read rather than inspected. */
+.result .snip {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--text-2);
+  margin: 0.3rem 0 0.15rem;
+  max-width: 90ch;
+}
+.result .snip mark {
+  background: var(--accent-quiet);
+  color: var(--text);
+  font-weight: 600;
+  padding: 0 0.1em;
+  border-radius: 2px;
+}
+
 .result.rich {
   display: grid;
   grid-template-columns: 1fr 76px 7rem;

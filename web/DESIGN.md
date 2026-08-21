@@ -216,8 +216,23 @@ Function declarations (`renderFreshness`, `route`) *are* window properties.
   the one orchestrated moment; the skeleton shimmer stops too.
 - **`localStorage` reads and writes must be inside `try/catch`.** A private
   window throws on access and the page must still render.
-- Search reaches series and documents. It does **not** index the site's own
-  pages.
+- Search reaches series, documents, topics and the site's own pages, all through
+  the palette. `#/find` still exists and covers series only.
+- **Two normalisations, and they must agree.** `normaliseQuery` folds a string
+  with regexes; `normaliseWithMap` does the same folding a character at a time
+  and records which input character produced each output character, which is what
+  lets a search hit be highlighted in the text CBE printed rather than in our
+  folded copy of it. Both must match `normalise()` in `ingest/extract_text.py`
+  and `shard_of()` in `ingest/build_search.py`, or Arabic queries silently return
+  nothing. The fast one exists because it runs over the whole catalogue; the slow
+  one because it runs over a handful of pages.
+- **Page text is published, gzipped, and inflated in the browser.** GitHub Pages
+  serves a `.gz` as an opaque binary rather than sending `Content-Encoding:
+  gzip`, so `DecompressionStream` does the work. Where it is missing, a result
+  keeps its page number and loses only its quote.
+- A snippet window goes where the **most distinct query terms fall together**,
+  not at the first match. Search "reserve requirement ratio" and the first hit on
+  a page is usually "ratio", in a sentence about something else.
 
 ## Voice
 
