@@ -45,6 +45,13 @@ jobs:
       - name: Extract press-release series (reserves, remittances, MPC)
         run: python ingest/fetch_press.py --skip-cached --delay 1.5
 
+      # Reads only what fetch_press just wrote plus the already-extracted page
+      # text, with no network of its own, so there is no reason for the site's
+      # rate-decision history to wait for Sunday. Left in the weekly run too,
+      # where it gets to see newly extracted PDF statements.
+      - name: MPC statement archive and diffs
+        run: python ingest/mpc_archive.py
+
       - name: Rebuild event annotations
         run: python ingest/detect_events.py
 
