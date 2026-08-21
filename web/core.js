@@ -489,14 +489,17 @@ function armLines(svg) {
   svg.querySelectorAll(".line.draw").forEach((p) => {
     const len = Math.ceil(p.getTotalLength());
     if (len) p.style.setProperty("--len", len);
-    p.addEventListener(
-      "animationend",
-      () => {
-        p.classList.remove("draw");
-        p.style.removeProperty("--len");
-      },
-      { once: true }
-    );
+    const undash = () => {
+      p.classList.remove("draw");
+      p.style.removeProperty("--len");
+    };
+    p.addEventListener("animationend", undash, { once: true });
+    // A hidden tab holds the animation clock at zero, and while it is held the
+    // dash covers the entire path, so the chart is blank rather than
+    // half-drawn. Losing the reveal costs far less than serving an empty
+    // chart, so the dash comes off on a timer whether the animation ran or
+    // not. The animation is 900ms plus at most a 240ms delay.
+    setTimeout(undash, 2000);
   });
 }
 
