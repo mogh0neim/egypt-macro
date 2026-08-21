@@ -1489,6 +1489,13 @@ footer {
   /* The footer is a real navigation surface once the columns stack. */
   .foot-cols a { padding-block: 0.5rem; }
 
+  /* The count is pushed right and refuses to wrap, which squeezed "Bi-Weekly
+     Interbank Rates and Volumes" into four lines. Let the row wrap and put the
+     count under the name instead of beside it. */
+  details.group > summary,
+  details.obs > summary { flex-wrap: wrap; gap: 0.15rem 0.7rem; }
+  .g-meta { margin-inline-start: 0; width: 100%; padding-inline-start: 1.1rem; }
+
   /* The anchor was 17 pixels tall inside a cell twice that, so half of every row
      did nothing when tapped. This grows the target into the padding the cell
      already had, without changing where anything sits. */
