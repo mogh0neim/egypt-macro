@@ -30,7 +30,7 @@ SITE_URL = "https://mogh0neim.github.io/egypt-macro/"
 # of hash URLs is the only kind there is to give. Search engines largely index
 # the root; the rest is here so a crawler that does follow fragments finds the
 # structure rather than guessing at it.
-ROUTES = ["", "#/browse", "#/rates", "#/docs", "#/data", "#/about", "#/find"]
+ROUTES = ["", "#/browse", "#/rates", "#/money-market", "#/docs", "#/data", "#/about", "#/find"]
 
 
 def copy_front_end() -> list[str]:

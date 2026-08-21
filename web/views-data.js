@@ -157,6 +157,8 @@ async function viewHome() {
 
     (mpcCard ? '<section class="section"><div class="wrap">' + mpcCard + "</div></section>" : "") +
 
+    '<section class="section"><div class="wrap">' + moneyMarketCard() + "</div></section>" +
+
     '<section class="section band"><div class="wrap">' +
     '<p class="eyebrow">Browse</p>' +
     "<h2>Everything, by subject</h2>" +
@@ -186,6 +188,7 @@ async function viewHome() {
     "</div></div></section>";
 
   if (fx) {
+    armLines(document.getElementById("hero"));
     wireHover(document.getElementById("hero"), fx.observations, fx.unit, document.getElementById("hero-readout"));
   }
 }
@@ -297,7 +300,11 @@ async function viewTopic(key) {
     '<button class="chip" id="expand-all">Open all tables</button>' +
     "</div>" +
     '<div id="groups">' + accordions + "</div>" +
-    "</section></div>";
+    "</section>" +
+    // The money market page is a curated front door onto part of this topic,
+    // so it belongs here rather than only on the overview.
+    (key === "rates" ? '<section class="section">' + moneyMarketCard() + "</section>" : "") +
+    "</div>";
 
   let freq = "";
   const filterInput = document.getElementById("tfilter");
@@ -388,12 +395,15 @@ async function viewSeries(id) {
       events: data.family === "fx" ? fxEvents() : [],
       id: "sc",
       unit: Array.isArray(units) ? units[0] : units,
+      // A rate that only moves when someone decides it should is a step.
+      step: data.freq === "IRR",
     });
     readoutSlot().innerHTML = last
       ? '<span class="val">' + fmt(last[1], Array.isArray(units) ? units[0] : units) + "</span>" +
         '<span class="when">' + niceDate(last[0]) + "</span>" +
         "<span>" + esc(compareId ? "Both rebased to 100 at the start of the range" : TRANSFORMS[transform].label) + "</span>"
       : '<span class="empty">Nothing in this range.</span>';
+    armLines(document.getElementById("sc"));
     wireHover(document.getElementById("sc"), sets, units, readoutSlot(), labels);
 
     document.querySelectorAll("[data-range]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.range === range)));

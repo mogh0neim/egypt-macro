@@ -170,9 +170,16 @@ a:hover { color: var(--accent); }
   border-radius: 2px;
 }
 
+/* The navigation must never be the thing that gives way -- it is the only route
+   to five of the seven pages -- so the search box is the flexible item in the
+   row. It takes whatever is left over, up to its own width, and gives it back
+   when the navigation needs it. */
 .quick {
   margin-inline-start: auto;
-  width: min(240px, 26vw);
+  flex: 1 1 0;
+  width: auto;
+  max-width: min(240px, 26vw);
+  min-width: 0;
   font-family: var(--body);
   font-size: 0.82rem;
   padding: 0.38rem 0.6rem;
@@ -181,7 +188,9 @@ a:hover { color: var(--accent); }
   border-radius: var(--radius);
   color: var(--text);
 }
-.quick:focus { border-color: var(--accent); outline: none; width: min(340px, 40vw); }
+/* No growth on focus: above the phone breakpoint there is no slack in the row
+   to grow into, and taking it from the navigation is what wrapped the links. */
+.quick:focus { border-color: var(--accent); outline: none; }
 .quick::placeholder { color: var(--text-3); }
 
 .masthead nav {
@@ -189,6 +198,8 @@ a:hover { color: var(--accent); }
   gap: 1rem;
   font-size: 0.84rem;
   align-items: center;
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 .masthead nav a.on { color: var(--accent); }
 .menu { display: none; }
@@ -581,6 +592,8 @@ input.filter:focus { border-color: var(--accent); outline: none; }
 .chart .line.s1 { stroke: var(--gold); }
 .chart .line.s2 { stroke: var(--text-3); stroke-width: 1.4; stroke-dasharray: 4 3; }
 .chart .area { fill: var(--accent); opacity: 0.07; }
+/* The corridor is a band, and reads as one. */
+.chart .band { fill: var(--gold); opacity: 0.16; }
 .chart .tick { font-family: var(--mono); font-size: 10px; fill: var(--text-3); }
 .chart .event { stroke: var(--gold); stroke-width: 1; stroke-dasharray: 2 3; }
 .chart .event-label { font-family: var(--mono); font-size: 9.5px; fill: var(--gold); }
@@ -636,6 +649,16 @@ input.filter:focus { border-color: var(--accent); outline: none; }
 .legend .key { width: 14px; height: 2px; background: var(--accent); display: inline-block; }
 .legend .key.s1 { background: var(--gold); margin-inline-start: 1rem; }
 .legend .key.s2 { background: var(--text-3); margin-inline-start: 1rem; }
+.legend .key.band { height: 9px; background: var(--gold); opacity: 0.4; margin-inline-start: 1rem; }
+
+/* On the corridor chart the floor and the ceiling are two edges of one object,
+   so they are drawn as one thing. The benchmark inside them is the line that
+   carries the eye. */
+#corridor .line.s1, #corridor .line.s2 {
+  stroke: var(--gold);
+  stroke-width: 1.1;
+  stroke-dasharray: none;
+}
 
 /* ---------- series page ---------- */
 

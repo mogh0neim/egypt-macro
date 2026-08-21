@@ -133,7 +133,7 @@ async function viewMPC() {
       : "") +
     ". Each one links back to CBE's own copy.</p>" +
     (sets.length
-      ? '<div id="mpc-chart">' + lineChart(sets, { height: 320, id: "mpcc", unit: "percent per annum" }) + "</div>" +
+      ? '<div id="mpc-chart">' + lineChart(sets, { height: 320, id: "mpcc", unit: "percent per annum", step: true }) + "</div>" +
         '<div class="legend">' +
         labels.map((l, i) => '<span class="key s' + i + '"></span>' + esc(l)).join("") +
         "</div>" +
@@ -158,6 +158,7 @@ async function viewMPC() {
     "</section></div>";
 
   if (sets.length) {
+    armLines(document.getElementById("mpcc"));
     wireHover(
       document.getElementById("mpcc"),
       sets.length > 1 ? sets : sets[0],

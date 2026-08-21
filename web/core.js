@@ -398,15 +398,68 @@ function lineChart(series, opts) {
     })
     .join("");
 
+  /* A policy rate holds at the level the committee set until the committee sets
+   * another one. Joining two decisions with a straight line says the rate
+   * drifted between them, which is a lie about how the corridor works, so a
+   * stepped set gets square corners. Per set rather than per chart, because the
+   * corridor chart puts stepped policy rates and a daily benchmark on one
+   * frame. */
+  const stepped = (i) => (Array.isArray(opts.step) ? !!opts.step[i] : !!opts.step);
+  // A rate still in force should reach today, not stop on the day it last moved.
+  const edge = (W - m.r).toFixed(1);
+  const lastX = (data, i) =>
+    stepped(i) ? edge : px(Date.parse(data[data.length - 1][0])).toFixed(1);
+
+  const segments = (data, i) => {
+    const step = stepped(i);
+    const d = data
+      .map((p, j) => {
+        const x = px(Date.parse(p[0])).toFixed(1), y = py(p[1]).toFixed(1);
+        if (!j) return "M" + x + "," + y;
+        return step ? "H" + x + "V" + y : "L" + x + "," + y;
+      })
+      .join("");
+    return step ? d + "H" + edge : d;
+  };
+
+  // The same run walked right to left, to close a filled shape back along it.
+  const backwards = (data, i) => {
+    const L = data.length - 1;
+    let d = "";
+    if (stepped(i)) {
+      d += "H" + px(Date.parse(data[L][0])).toFixed(1);
+      for (let j = L; j >= 1; j--) {
+        d += "V" + py(data[j - 1][1]).toFixed(1) +
+             "H" + px(Date.parse(data[j - 1][0])).toFixed(1);
+      }
+    } else {
+      for (let j = L; j >= 0; j--) {
+        d += "L" + px(Date.parse(data[j][0])).toFixed(1) + "," + py(data[j][1]).toFixed(1);
+      }
+    }
+    return d;
+  };
+
+  /* Two sets that bound a third are a band, not two lines. The corridor is the
+   * case this exists for: a floor, a ceiling, and where overnight money
+   * actually cleared inside them. */
+  let band = "";
+  if (opts.band && sets[opts.band[0]] && sets[opts.band[1]]) {
+    const li = opts.band[0], hi = opts.band[1];
+    const lo = sets[li], up = sets[hi];
+    band =
+      '<path class="band" d="' + segments(up, hi) +
+      "L" + lastX(lo, li) + "," + py(lo[lo.length - 1][1]).toFixed(1) +
+      backwards(lo, li) + ' Z"/>';
+  }
+
   const paths = sets
     .map((data, i) => {
-      const d = data
-        .map((p, j) => (j ? "L" : "M") + px(Date.parse(p[0])).toFixed(1) + "," + py(p[1]).toFixed(1))
-        .join("");
+      const d = segments(data, i);
       const area =
         i === 0 && sets.length === 1
           ? '<path class="area" d="' + d +
-            "L" + px(Date.parse(data[data.length - 1][0])).toFixed(1) + "," + py(y0).toFixed(1) +
+            "L" + lastX(data, i) + "," + py(y0).toFixed(1) +
             "L" + px(Date.parse(data[0][0])).toFixed(1) + "," + py(y0).toFixed(1) + '  Z"/>'
           : "";
       return area + '<path class="line s' + i + (animate ? " draw" : "") + '" d="' + d + '"/>';
@@ -418,9 +471,33 @@ function lineChart(series, opts) {
     'style="--len:' + Math.round(iw * 1.6) + '" data-x0="' + x0 + '" data-x1="' + x1 + '" ' +
     'data-w="' + W + '" data-l="' + m.l + '" ' +
     'role="img" aria-label="Time series chart, ' + sets[0].length + ' points">' +
-    guides.join("") + zero + years.join("") + marks + paths +
+    guides.join("") + zero + years.join("") + band + marks + paths +
     '<g class="hover"></g></svg>'
   );
+}
+
+/* The draw-on animation reveals the line by pulling a dash the length of the
+ * whole path off it. It needs that length, and the stylesheet can only guess at
+ * it from the width of the chart -- which is close enough for a smooth line and
+ * badly wrong for a spiky one. CONIA's overnight volume covers 19,838 units
+ * inside a 1,485-unit guess, so the dash repeats and the stroke ends up with
+ * thirteen holes punched through it, permanently, because the animation holds
+ * its end state. Measure the path instead, and take the dash off entirely once
+ * the animation is done, so nothing can be left hidden by a stale dasharray. */
+function armLines(svg) {
+  if (!svg) return;
+  svg.querySelectorAll(".line.draw").forEach((p) => {
+    const len = Math.ceil(p.getTotalLength());
+    if (len) p.style.setProperty("--len", len);
+    p.addEventListener(
+      "animationend",
+      () => {
+        p.classList.remove("draw");
+        p.style.removeProperty("--len");
+      },
+      { once: true }
+    );
+  });
 }
 
 /* Crosshair and readout. A touch counts as a pointer, so a phone gets this

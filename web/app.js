@@ -11,6 +11,7 @@ const ROUTES = [
   { test: /^\/browse/, view: () => viewBrowse(), nav: "browse" },
   { test: /^\/topic\/(.+)$/, view: (m) => viewTopic(decodeURIComponent(m[1])), nav: "browse" },
   { test: /^\/s\/(.+)$/, view: (m) => viewSeries(decodeURIComponent(m[1])), nav: "browse" },
+  { test: /^\/money-market/, view: () => viewMoneyMarket(), nav: "browse" },
   { test: /^\/find\??(.*)$/, view: (m) => viewFind(new URLSearchParams(m[1] || "").get("q") || ""), nav: "find" },
   { test: /^\/docs\/(.+)$/, view: (m) => viewDocs(decodeURIComponent(m[1])), nav: "docs" },
   { test: /^\/docs/, view: () => viewDocs(), nav: "docs" },
