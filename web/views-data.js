@@ -33,7 +33,7 @@ const STARTERS = [
 
 /* The headline table on the overview. Order inside a group is deliberate. */
 const HEADLINE_GROUPS = [
-  { label: "Exchange rates", ids: ["EG.FX.OFF.USD.SELL", "EG.FX.MKT.USD.SELL", "EG.FX.IBK.WAVG"] },
+  { label: "Foreign exchange", ids: ["EG.FX.OFF.USD.SELL", "EG.FX.MKT.USD.SELL", "EG.FX.IBK.WAVG"] },
   { label: "Policy rates", ids: ["EG.RATE.ON.DEP", "EG.RATE.ON.LEND", "EG.RATE.MAIN", "EG.RATE.DISCOUNT"] },
   { label: "Prices", ids: ["EG.CPI.HDL.YOY", "EG.CPI.CORE.YOY"] },
   { label: "External", ids: ["EG.RES.NIR", "EG.EXT.REMIT.FYTD"] },
@@ -168,7 +168,7 @@ async function viewHome() {
     "<th>Where it sits</th><th>As of</th>" +
     "</tr></thead><tbody>" + table + "</tbody></table></div>" +
     '<p class="foot-note">Star any row to keep it on your desk: one screen of the ' +
-    'numbers you read every morning, with no prose in the way. <a href="#/desk">Open the desk →</a></p>' +
+    'numbers you read every morning, with no prose in the way. <a href="#/favourites">Open your favourites →</a></p>' +
     "</div></section>" +
 
     (mpcCard ? '<section class="section"><div class="wrap">' + mpcCard + "</div></section>" : "") +
@@ -178,7 +178,7 @@ async function viewHome() {
     "<h2>Everything, by subject</h2>" +
     '<p class="lede">Thirteen topics over ' + index.length.toLocaleString() +
     " series. No search box required. Pick a subject and read down.</p>" +
-    '<div class="topic-grid">' + topicGrid + deskTopicCard() + "</div>" +
+    '<div class="topic-grid">' + topicGrid + moneyMarketTopicCard() + "</div>" +
     "</div></section>" +
 
     // The overview should be able to reach everything the site has. Without
@@ -207,21 +207,63 @@ async function viewHome() {
   }
 }
 
-/* The fourteenth card on both grids. Gold-bordered, because it is not one of
- * the thirteen subjects and should not pretend to be. */
-const deskTopicCard = () =>
-  '<a class="topic-card desk" href="#/money-market">' +
+/* The fourteenth card on the series grid. Gold-bordered, because it is not one
+ * of the thirteen subjects and should not pretend to be. */
+const moneyMarketTopicCard = () =>
+  '<a class="topic-card screen" href="#/money-market">' +
   '<span class="ico" aria-hidden="true">▩</span>' +
   "<h3>The money market</h3><p>Overnight money inside the CBE corridor, the interbank " +
   "tenors and their volumes, and the EGP bill curve with bid to cover.</p>" +
   '<span class="count">A made-up screen, not a CBE table</span></a>';
 
-/* ---------- browse: all topics ---------- */
+/* ---------- series: search and browse, on one page ----------
+ *
+ * These were two pages, Browse and Find, which were two doors onto the same
+ * thing and made the site unable to say where series lived. One page, with the
+ * box at the top and the subjects under it: type if you know the word, read down
+ * if you do not.
+ */
 
-async function viewBrowse() {
+const FIND_SUGGESTIONS = [
+  "dollar", "treasury bill yield", "deposits", "reserves", "inflation",
+  "exports", "tourists", "external debt", "budget deficit", "remittances",
+];
+
+/* Shared by this page and by the panel on the favourites page, so a search for
+ * something to look at and a search for something to keep behave identically. */
+function searchSeries(query, limit) {
+  const q = normaliseQuery(query);
+  const terms = q.split(/\s+/).filter(Boolean);
+  if (!terms.length) return [];
+  return (state.index || [])
+    .filter((s) => {
+      const hay = normaliseQuery(s.series_id + " " + (s.title_en || "") + " " + (s.title_ar || ""));
+      return terms.every((t) => hay.includes(t));
+    })
+    .slice(0, limit || 100);
+}
+
+function seriesResultRow(s, sparks) {
+  return (
+    '<div class="result-row">' +
+    starButton(s.series_id) +
+    '<a class="result rich" href="#/s/' + encodeURIComponent(s.series_id) + '">' +
+    '<span class="title">' + titleHTML(s) + "</span>" +
+    '<span class="spk">' + spark(sparks[s.series_id], { w: 70, h: 20 }) + "</span>" +
+    '<span class="v">' + fmt(s.latest_value, s.unit) + "</span>" +
+    titleAR(s) +
+    '<span class="sub">' + esc(s.series_id) + " · " + (s.n || 0).toLocaleString() + " readings · " +
+    shortDate(s.first) + " – " + shortDate(s.last) + (s.unit ? " · " + esc(unitShort(s.unit)) : "") +
+    (s.stale_days ? " · no longer updated" : "") +
+    "</span></a></div>"
+  );
+}
+
+async function viewSeriesIndex(preset) {
   const app = document.getElementById("app");
   app.innerHTML = skeleton(6);
   const index = await loadIndex();
+  const sparks = await loadSparks();
 
   const counts = {}, obs = {};
   index.forEach((s) => {
@@ -231,12 +273,27 @@ async function viewBrowse() {
   });
 
   app.innerHTML =
-    '<div class="wrap"><section class="section">' +
-    '<p class="eyebrow">Browse</p>' +
-    "<h2>All of it, by subject</h2>" +
-    '<p class="lede">' + index.length.toLocaleString() + " series in thirteen topics. " +
-    "Every topic opens onto the CBE tables it came from, so you can read a whole balance of payments rather than hunt one line of it. " +
-    "The last card is not a topic: it is a screen assembled out of several of them, for a desk that reads the same numbers every morning.</p>" +
+    '<div class="wrap">' +
+    '<section class="section">' +
+    '<p class="eyebrow">' + index.length.toLocaleString() + " series</p>" +
+    "<h2>Find a series, or read down the subjects</h2>" +
+    '<p class="lede">Type a word if you know one. If you would rather not, every subject is ' +
+    "below and each opens onto the CBE tables it came from, so you can read a whole balance " +
+    "of payments rather than hunt one line of it. The star on any result keeps it in your " +
+    '<a href="#/favourites">favourites</a>.</p>' +
+    '<input class="search" id="q" placeholder="dollar, treasury bill yield, تحويلات…" autocomplete="off">' +
+    '<div class="controls suggest">' +
+    '<span class="hint">Try:</span>' +
+    FIND_SUGGESTIONS.map((s) => '<button class="chip" data-sug="' + esc(s) + '">' + esc(s) + "</button>").join("") +
+    "</div>" +
+    '<div class="results" id="results"></div>' +
+    "</section>" +
+
+    '<section class="section band" id="subjects">' +
+    '<p class="eyebrow">By subject</p>' +
+    "<h2>All of it, in thirteen subjects</h2>" +
+    '<p class="lede">The last card is not a subject: it is a screen assembled out of ' +
+    "several of them, for a desk that reads the same numbers every morning.</p>" +
     '<div class="topic-grid">' +
     TOPICS.filter((t) => counts[t.key]).map((t) =>
       '<a class="topic-card" href="#/topic/' + t.key + '">' +
@@ -245,8 +302,35 @@ async function viewBrowse() {
       '<span class="count">' + counts[t.key].toLocaleString() + " series · " +
       obs[t.key].toLocaleString() + " observations</span></a>"
     ).join("") +
-    deskTopicCard() +
+    moneyMarketTopicCard() +
     "</div></section></div>";
+
+  const input = document.getElementById("q");
+  const out = document.getElementById("results");
+
+  const run = () => {
+    const typed = input.value.trim();
+    if (!typed) {
+      out.innerHTML = "";
+      return;
+    }
+    const hits = searchSeries(typed, 100);
+    out.innerHTML = hits.length
+      ? '<p class="count-line">' + hits.length + (hits.length === 100 ? "+" : "") + " matching series</p>" +
+        hits.map((s) => seriesResultRow(s, sparks)).join("")
+      : '<p class="empty">Nothing matches “' + esc(typed) + '”. ' +
+        "Try a broader word, or pick a subject below.</p>";
+  };
+
+  input.addEventListener("input", run);
+  app.querySelectorAll("[data-sug]").forEach((b) =>
+    b.addEventListener("click", () => { input.value = b.dataset.sug; run(); input.focus(); })
+  );
+  if (preset) input.value = preset;
+  run();
+  // Focus only when someone came here to type. Landing on the page with the
+  // keyboard already up would hide the subjects on a phone.
+  if (preset) input.focus();
 }
 
 /* ---------- one topic ---------- */
@@ -256,7 +340,7 @@ async function viewTopic(key) {
   app.innerHTML = skeleton(8);
   const topic = topicByKey(key);
   if (!topic) {
-    app.innerHTML = '<div class="wrap"><p class="empty">No such topic. <a href="#/browse">See all thirteen</a>.</p></div>';
+    app.innerHTML = '<div class="wrap"><p class="empty">No such topic. <a href="#/series">See all thirteen</a>.</p></div>';
     return;
   }
 
@@ -313,7 +397,7 @@ async function viewTopic(key) {
 
   app.innerHTML =
     '<div class="wrap">' +
-    crumbs([{ label: "Browse", href: "#/browse" }, { label: topic.name }]) +
+    crumbs([{ label: "Series", href: "#/series" }, { label: topic.name }]) +
     '<section class="section topic-head">' +
     '<p class="eyebrow">' + topic.icon + " Topic</p>" +
     "<h2>" + esc(topic.name) + "</h2>" +
@@ -499,7 +583,7 @@ async function viewSeries(id) {
   } catch (err) {
     app.innerHTML =
       '<div class="wrap"><p class="empty">There is no series called <code>' + esc(id) + "</code>. " +
-      '<a href="#/browse">Browse by subject</a> or <a href="#/find">search the catalogue</a>.</p></div>';
+      '<a href="#/series">Find or browse series</a>.</p></div>';
     return;
   }
 
@@ -597,7 +681,7 @@ async function viewSeries(id) {
   app.innerHTML =
     '<div class="wrap">' +
     crumbs([
-      { label: "Browse", href: "#/browse" },
+      { label: "Series", href: "#/series" },
       topic ? { label: topic.name, href: "#/topic/" + topic.key } : { label: "Other" },
       { label: table },
     ]) +
@@ -722,76 +806,4 @@ async function viewSeries(id) {
   document.getElementById("copy-tsv").addEventListener("click", (e) =>
     copyTSV(e.target, shown.points, ["period", data.series_id]));
   document.getElementById("share").addEventListener("click", (e) => copyLink(e.target));
-}
-
-/* ---------- find a series ---------- */
-
-const FIND_SUGGESTIONS = [
-  "dollar", "treasury bill yield", "deposits", "reserves", "inflation",
-  "exports", "tourists", "external debt", "budget deficit", "remittances",
-];
-
-async function viewFind(preset) {
-  const app = document.getElementById("app");
-  app.innerHTML = skeleton(5);
-  const index = await loadIndex();
-  const sparks = await loadSparks();
-
-  app.innerHTML =
-    '<div class="wrap"><div class="search-shell">' +
-    '<p class="eyebrow">' + index.length.toLocaleString() + " series</p>" +
-    "<h2>Find a series</h2>" +
-    '<p class="lede">If you would rather not type, <a href="#/browse">browse by subject</a> instead.</p>' +
-    '<input class="search" id="q" placeholder="dollar, treasury bill yield, tourists…" autocomplete="off" autofocus>' +
-    '<div class="controls suggest">' +
-    '<span class="hint">Try:</span>' +
-    FIND_SUGGESTIONS.map((s) => '<button class="chip" data-sug="' + esc(s) + '">' + esc(s) + "</button>").join("") +
-    "</div>" +
-    '<div class="results" id="results"></div>' +
-    "</div></div>";
-
-  const input = document.getElementById("q");
-  const out = document.getElementById("results");
-
-  const run = () => {
-    const q = normaliseQuery(input.value);
-    if (!q) {
-      out.innerHTML =
-        '<p class="empty">Type a word, or pick one of the suggestions above. ' +
-        'Titles and series IDs are both searched, in English and Arabic.</p>';
-      return;
-    }
-    const terms = q.split(/\s+/);
-    const hits = index
-      .filter((s) => {
-        const hay = normaliseQuery(s.series_id + " " + (s.title_en || "") + " " + (s.title_ar || ""));
-        return terms.every((t) => hay.includes(t));
-      })
-      .slice(0, 100);
-    out.innerHTML = hits.length
-      ? '<p class="count-line">' + hits.length + (hits.length === 100 ? "+" : "") + " matching series</p>" +
-        hits.map((s) =>
-          // The star sits outside the anchor rather than inside it: a button
-          // nested in a link is invalid, and a click on it would navigate.
-          '<div class="result-row">' +
-          starButton(s.series_id) +
-          '<a class="result rich" href="#/s/' + encodeURIComponent(s.series_id) + '">' +
-          '<span class="title">' + titleHTML(s) + "</span>" +
-          '<span class="spk">' + spark(sparks[s.series_id], { w: 70, h: 20 }) + "</span>" +
-          '<span class="v">' + fmt(s.latest_value, s.unit) + "</span>" +
-          titleAR(s) +
-          '<span class="sub">' + esc(s.series_id) + " · " + (s.n || 0).toLocaleString() + " readings · " +
-          shortDate(s.first) + " – " + shortDate(s.last) + (s.unit ? " · " + esc(unitShort(s.unit)) : "") +
-          "</span></a></div>"
-        ).join("")
-      : '<p class="empty">Nothing matches “' + esc(input.value) + '”. ' +
-        'Try a broader word, or <a href="#/browse">browse by subject</a>.</p>';
-  };
-
-  input.addEventListener("input", run);
-  app.querySelectorAll("[data-sug]").forEach((b) =>
-    b.addEventListener("click", () => { input.value = b.dataset.sug; run(); input.focus(); })
-  );
-  if (preset) input.value = preset;
-  run();
 }

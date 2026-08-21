@@ -52,7 +52,7 @@ const store = {
   },
 };
 
-/* ---------- the watchlist ----------
+/* ---------- favourites ----------
  *
  * A list of series ids in localStorage and nothing more. No account, no server,
  * no sync: this is the difference between a site someone reads once and one they
@@ -90,8 +90,8 @@ const starButton = (id) => {
   const on = watchHas(id);
   return (
     '<button class="star' + (on ? " on" : "") + '" data-star="' + esc(id) +
-    '" aria-pressed="' + on + '" title="' + (on ? "On your desk" : "Keep this on your desk") +
-    '" aria-label="' + (on ? "Remove from your desk" : "Keep on your desk") + '">' +
+    '" aria-pressed="' + on + '" title="' + (on ? "In your favourites" : "Add to your favourites") +
+    '" aria-label="' + (on ? "Remove from favourites" : "Add to favourites") + '">' +
     (on ? "★" : "☆") +
     "</button>"
   );
@@ -330,7 +330,7 @@ function normaliseWithMap(input) {
  */
 
 const TOPICS = [
-  { key: "money", name: "The pound", icon: "£",
+  { key: "money", name: "Foreign exchange", icon: "£",
     blurb: "Official, market and interbank exchange rates, against the dollar and twelve other currencies.",
     families: ["fx"] },
   { key: "rates", name: "Interest rates", icon: "%",

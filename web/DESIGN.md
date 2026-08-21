@@ -57,19 +57,25 @@ Three faces, from Google Fonts, one `@import` at the top of `styles.css`:
 - `--mono` **IBM Plex Mono** 400/500. **Every number on the site**, plus
   eyebrows, units, dates, chips, metadata, code. Always with
   `font-variant-numeric: tabular-nums` where figures stack in a column.
-- `--arabic` **Amiri** 400/700. The wordmark and every Arabic title. A revival
-  of the Naskh cut for the Amiria Press at Bulaq in Cairo, the Egyptian
-  government press founded in 1820, which set the standard for official Egyptian
-  printing for a century: the same reasoning as the Nilometer. **None of the IBM
-  Plex faces carry Arabic at all**, so before this the wordmark and all 1,095
-  Arabic titles fell through to whatever the operating system picked.
-  Deliberately *not* an imitation of CBE's own identity, which would undercut the
-  disclaimer the whole site rests on.
+- `--arabic` **Almarai** 400/700/800. The wordmark and every Arabic title.
+  **This is the typeface CBE itself uses**: cbe.org.eg loads Almarai at 300, 400,
+  700 and 800 and sets every Arabic word on the site in it. Checked in their
+  stylesheet, not guessed. **None of the IBM Plex faces carry Arabic at all**, so
+  before this the wordmark and all 1,095 Arabic titles fell through to whatever
+  the operating system picked.
 
-Naskh needs different numbers from Latin at the same nominal size: a smaller
-x-height, deep descenders, no capitals to align to. So `.ar` is set about 15%
-larger than the Latin beside it, with `line-height: 1.7`, and `.mark-ar` is
-nudged down onto the shared optical baseline.
+  CBE's *logo* is a separate thing and is not reproduced: bespoke interlocked
+  calligraphy drawn for the mark, which no typeface renders, and copying it would
+  be taking a trademark rather than matching a typeface.
+
+  An earlier pass used Amiri, the Naskh revival from the Amiria Press at Bulaq.
+  Better provenance, wrong answer: CBE's own type is a modern geometric sans, and
+  Almarai also pairs far better with IBM Plex than a book face did.
+
+Almarai carries a Latin-sized x-height, so it needs almost none of the
+compensation a Naskh does: `.ar` sits at `0.95em` with `line-height: 1.6`, and
+`.mark-ar` is nudged `0.02em` onto the shared baseline rather than the `0.06em`
+Amiri needed.
 
 Body is `15px / 1.55`. Headline sizes are all `clamp()` so nothing needs a
 breakpoint to be readable.
@@ -98,6 +104,7 @@ neighbours.
 | `.chip` | Every control. `aria-pressed="true"` for the selected state; `.solid` for a primary action. |
 | `details.group` | Topic accordions, gold `▸` marker, first one open. |
 | `.crumbs` | Mono breadcrumbs from `crumbs()`. |
+| `details.add-panel` | Search the whole catalogue from inside Favourites, so a list can be built without leaving the page it is on. Open by default until the list is the reader's own. |
 
 ## Charts
 
@@ -247,8 +254,21 @@ Function declarations (`renderFreshness`, `route`) *are* window properties.
   the one orchestrated moment; the skeleton shimmer stops too.
 - **`localStorage` reads and writes must be inside `try/catch`.** A private
   window throws on access and the page must still render.
+- **Search and browse are one page**, `#/series`. They were two, Browse and
+  Find, which is why the site could not say where series lived: the navigation
+  had no item meaning "series" at all. `#/browse` and `#/find` still route there,
+  because they are in shared links.
+- **Favourites, not "the desk".** The old name described what the page is for
+  rather than what it is, and the star already looked like a favourites star.
+  `#/desk` and `#/desk?s=` still work.
+- **One vocabulary for the groups**, shared by the overview's headline table and
+  the Favourites defaults: Foreign exchange, Policy rates, Money market, Treasury
+  bills, Prices, External. Policy rates and money market are kept apart on
+  purpose: the corridor is an instrument CBE sets, an interbank fixing is where
+  money actually cleared, and calling both "money market" would be wrong.
 - Search reaches series, documents, topics and the site's own pages, all through
-  the palette. `#/find` still exists and covers series only.
+  the palette. Its page entries carry the old names as hidden synonyms, so
+  someone typing "desk" or "browse" still lands in the right place.
 - **Two normalisations, and they must agree.** `normaliseQuery` folds a string
   with regexes; `normaliseWithMap` does the same folding a character at a time
   and records which input character produced each output character, which is what

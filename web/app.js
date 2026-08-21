@@ -8,12 +8,17 @@
 
 const ROUTES = [
   { test: /^\/$/, view: () => viewHome(), nav: "home" },
-  { test: /^\/browse/, view: () => viewBrowse(), nav: "browse" },
-  { test: /^\/topic\/(.+)$/, view: (m) => viewTopic(decodeURIComponent(m[1])), nav: "browse" },
-  { test: /^\/s\/(.+)$/, view: (m) => viewSeries(decodeURIComponent(m[1])), nav: "browse" },
-  { test: /^\/money-market/, view: () => viewMoneyMarket(), nav: "browse" },
-  { test: /^\/find\??(.*)$/, view: (m) => viewFind(new URLSearchParams(m[1] || "").get("q") || ""), nav: "find" },
-  { test: /^\/desk\??(.*)$/, view: (m) => viewDesk(m[1] || ""), nav: "desk" },
+  /* Search and browse used to be two pages, which is why the site could not say
+   * where series lived. They are one page now. The old addresses still work,
+   * because they are in shared links and in a year of chat history. */
+  { test: /^\/series\??(.*)$/, view: (m) => viewSeriesIndex(new URLSearchParams(m[1] || "").get("q") || ""), nav: "series" },
+  { test: /^\/browse/, view: () => viewSeriesIndex(""), nav: "series" },
+  { test: /^\/find\??(.*)$/, view: (m) => viewSeriesIndex(new URLSearchParams(m[1] || "").get("q") || ""), nav: "series" },
+  { test: /^\/topic\/(.+)$/, view: (m) => viewTopic(decodeURIComponent(m[1])), nav: "series" },
+  { test: /^\/s\/(.+)$/, view: (m) => viewSeries(decodeURIComponent(m[1])), nav: "series" },
+  { test: /^\/money-market/, view: () => viewMoneyMarket(), nav: "series" },
+  { test: /^\/favourites\??(.*)$/, view: (m) => viewDesk(m[1] || ""), nav: "favourites" },
+  { test: /^\/desk\??(.*)$/, view: (m) => viewDesk(m[1] || ""), nav: "favourites" },
   { test: /^\/docs\/(.+)$/, view: (m) => viewDocs(decodeURIComponent(m[1])), nav: "docs" },
   { test: /^\/docs/, view: () => viewDocs(), nav: "docs" },
   { test: /^\/rates/, view: () => viewMPC(), nav: "rates" },
@@ -36,8 +41,8 @@ async function route() {
         '<p class="lede">The link may be from an older version of the site.</p>' +
         '<div class="controls">' +
         '<a class="chip solid" href="#/">Start over</a>' +
-        '<a class="chip" href="#/browse">Browse by subject</a>' +
-        '<a class="chip" href="#/find">Find a series</a>' +
+        '<a class="chip" href="#/series">Find or browse series</a>' +
+        '<a class="chip" href="#/favourites">Your favourites</a>' +
         "</div></section></div>";
     } else {
       const active = document.querySelector('[data-route="' + match.r.nav + '"]');
@@ -113,7 +118,9 @@ document.getElementById("app").addEventListener("click", (e) => {
   // The desk is a view of the list being edited, so it gets told. It handles
   // this itself rather than being redrawn from here: a full redraw moves the row
   // out from under the cursor and the next click lands on a detached node.
-  if (/^#?\/desk/.test(location.hash) && typeof deskOnStar === "function") deskOnStar(id, on);
+  if (/^#?\/(favourites|desk)/.test(location.hash) && typeof deskOnStar === "function") {
+    deskOnStar(id, on);
+  }
 });
 
 /* ---------- the freshness strip ----------

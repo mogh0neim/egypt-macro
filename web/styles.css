@@ -15,7 +15,7 @@
  * it does work.
  */
 
-@import url("https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;450;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;450;600&display=swap");
 
 :root {
   --ink: #101b33;
@@ -40,15 +40,17 @@
   --display: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif;
   --body: "IBM Plex Sans", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, monospace;
-  /* Amiri is a revival of the Naskh cut for the Amiria Press at Bulaq in Cairo,
-     the Egyptian government press founded in 1820, which set the standard for
-     official Egyptian printing for a century. It is the right Arabic for this
-     site for the same reason the Nilometer is: it is Egyptian, and it is old.
-     None of the IBM Plex faces carry Arabic at all, so the wordmark and every
-     CBE Arabic title were falling through to whatever the operating system
-     happened to pick. Amiri is a book face, so it serves the wordmark and
-     running text both. */
-  --arabic: "Amiri", "Noto Naskh Arabic", "Traditional Arabic", serif;
+  /* Almarai, which is the typeface CBE itself sets every Arabic word on
+     cbe.org.eg in: their stylesheet loads it at 300, 400, 700 and 800. Checked,
+     not guessed. A modern geometric Arabic sans rather than a Naskh, so it also
+     sits far better beside IBM Plex than a book face did.
+     None of the IBM Plex faces carry Arabic at all, so before this the wordmark
+     and all 1,095 CBE Arabic titles fell through to whatever the operating
+     system happened to pick.
+     CBE's logo lettering is a separate thing: bespoke interlocked calligraphy
+     drawn for the mark, which no typeface reproduces and which would be copying
+     a trademark rather than matching a typeface. */
+  --arabic: "Almarai", "Noto Sans Arabic", "Segoe UI", sans-serif;
 
   --gutter: clamp(1rem, 4vw, 3.5rem);
   --measure: 1180px;
@@ -159,21 +161,19 @@ a:hover { color: var(--accent); }
   height: 22px;
   background: repeating-linear-gradient(to bottom, var(--gold) 0 2px, transparent 2px 5px);
 }
-/* Naskh sits differently from Latin: a smaller x-height for the same nominal
-   size, deep descenders, and no capitals to align to. So it is set larger than
-   the Latin beside it and nudged down onto the same optical baseline, rather
-   than being scaled to match on paper and looking small on screen. */
+/* Almarai carries a Latin-sized x-height, so unlike a Naskh it needs almost no
+   compensation: a touch larger than the Latin beside it and a hair's nudge onto
+   the shared baseline. Full text colour, because this is half of a bilingual
+   wordmark rather than a note attached to the other half. */
 .mark-ar {
   font-family: var(--arabic);
-  font-weight: 700;
-  font-size: 1.45rem;
+  font-weight: 800;
+  font-size: 1.12rem;
   line-height: 1;
-  /* Full text colour, not the muted grey it had: this is half of a bilingual
-     wordmark rather than a note attached to the other half. */
   color: var(--text);
   text-transform: none;
   letter-spacing: 0;
-  transform: translateY(0.06em);
+  transform: translateY(0.02em);
 }
 .wordmark:hover .mark-ar { color: var(--accent); }
 
@@ -417,13 +417,13 @@ body.palette-open { overflow: hidden; }
   font-family: var(--arabic);
   direction: rtl;
   unicode-bidi: isolate;
-  line-height: 1.7;
+  line-height: 1.6;
   /* The string is right-to-left; the block is not. This page is left-to-right
      and English-primary, so the Arabic starts where the English above it starts.
      Left to itself, `direction: rtl` right-aligns the line inside its own box
      and the title drifts away from the one it translates. */
   text-align: left;
-  font-size: 1.05em;
+  font-size: 0.95em;
   color: var(--text-2);
 }
 
@@ -624,8 +624,8 @@ body.palette-open { overflow: hidden; }
 }
 .section.band .topic-card { background: var(--bg); }
 /* Not one of the thirteen subjects, so it does not pretend to be. */
-.topic-card.desk { border-color: var(--gold); }
-.topic-card.desk .count { color: var(--gold); }
+.topic-card.screen { border-color: var(--gold); }
+.topic-card.screen .count { color: var(--gold); }
 .topic-card:hover { border-color: var(--accent); transform: translateY(-1px); color: inherit; }
 .topic-card .ico {
   font-family: var(--mono);
@@ -830,9 +830,42 @@ table.indicators th.star-col {
   white-space: nowrap;
 }
 
-/* ---------- the desk ---------- */
+/* ---------- favourites ---------- */
 
 .desk-head .lede { max-width: 72ch; }
+
+/* Searching the whole archive from inside the page you are building. Bordered
+   like the accordions it sits among, so it reads as a thing you open rather than
+   as another section of the page. */
+details.add-panel {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius);
+  background: var(--surface);
+  margin-block: 0.6rem 1.4rem;
+}
+details.add-panel > summary {
+  cursor: pointer;
+  padding: 0.8rem 1.1rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  list-style: none;
+}
+details.add-panel > summary::-webkit-details-marker { display: none; }
+details.add-panel > summary::before {
+  content: "+";
+  font-family: var(--mono);
+  color: var(--gold);
+  font-size: 0.95rem;
+  line-height: 1;
+}
+details.add-panel[open] > summary::before { content: "−"; }
+details.add-panel > summary:hover .g-name { color: var(--accent); }
+details.add-panel > div { padding: 0 1.1rem 1rem; }
+/* Bounded, so a broad word cannot push the list it is meant to feed off screen. */
+details.add-panel .results { max-height: 24rem; overflow-y: auto; }
+details.add-panel .empty { padding: 1rem 0; }
 
 /* ---------- the gauge ---------- */
 
@@ -1047,7 +1080,7 @@ table.indicators td.period {
 /* Set at reading size rather than as a caption: for a good part of this
    audience it is the name they know the series by. */
 .series-head .ar {
-  font-size: 1.45rem;
+  font-size: 1.2rem;
   color: var(--text-2);
   margin: 0.1rem 0 1rem;
   max-width: 40ch;
@@ -1229,7 +1262,7 @@ input.search::placeholder { color: var(--text-3); }
   gap: 0.1rem 0.8rem;
   align-items: center;
 }
-.result.rich .ar { grid-area: ar; font-size: 1rem; }
+.result.rich .ar { grid-area: ar; font-size: 0.9rem; }
 .result.rich .title { grid-area: title; }
 .result.rich .spk { grid-area: spk; }
 .result.rich .v {
@@ -1493,7 +1526,8 @@ footer {
      Interbank Rates and Volumes" into four lines. Let the row wrap and put the
      count under the name instead of beside it. */
   details.group > summary,
-  details.obs > summary { flex-wrap: wrap; gap: 0.15rem 0.7rem; }
+  details.obs > summary,
+  details.add-panel > summary { flex-wrap: wrap; gap: 0.15rem 0.7rem; }
   .g-meta { margin-inline-start: 0; width: 100%; padding-inline-start: 1.1rem; }
 
   /* The anchor was 17 pixels tall inside a cell twice that, so half of every row

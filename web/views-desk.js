@@ -192,7 +192,7 @@ async function viewMoneyMarket() {
   app.innerHTML =
     '<section class="hero"><div class="wrap">' +
     crumbs([
-      { label: "Browse", href: "#/browse" },
+      { label: "Series", href: "#/series" },
       { label: "Interest rates", href: "#/topic/rates" },
       { label: "Money market" },
     ]) +

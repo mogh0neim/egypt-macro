@@ -1,21 +1,23 @@
-/* Miqyas -- the desk.
+/* Miqyas -- favourites.
  *
  * One screen of the numbers someone reads every morning, with no prose in the
- * way. It is the same page whether the set is ours or theirs:
+ * way. It was called the desk, which described what it is for rather than what
+ * it is, and left people guessing. It is a favourites list, the star already
+ * looked like one, and now it says so.
  *
- *   #/desk              the watchlist, or a curated default set if it is empty
- *   #/desk?s=ID,ID,...  a set someone was sent, which they can then save
+ *   #/favourites              the list, or a starter set we picked if it is empty
+ *   #/favourites?s=ID,ID,...  a set someone was sent, which they can then save
  *
- * Seeding it with defaults is the whole trick. A watchlist that starts empty is
- * a page that does nothing on the first visit and therefore never gets a second
- * one; a desk that already works is something to adjust rather than build.
+ * Seeding it is the whole trick. A list that starts empty is a page that does
+ * nothing on a first visit and therefore never gets a second one; one that
+ * already works is something to adjust rather than something to build.
  */
 
 const DESK_DEFAULTS = [
-  { label: "The pound", ids: ["EG.FX.OFF.USD.SELL", "EG.FX.MKT.USD.SELL", "EG.FX.IBK.WAVG"] },
-  { label: "The corridor and overnight money",
-    ids: ["EG.RATE.ON.DEP", "EG.RATE.ON.LEND", "EG.RATE.MAIN", "EG.CONIA.ON.RATE", "EG.IBK.D.ON"] },
-  { label: "EGP treasury bills",
+  { label: "Foreign exchange", ids: ["EG.FX.OFF.USD.SELL", "EG.FX.MKT.USD.SELL", "EG.FX.IBK.WAVG"] },
+  { label: "Policy rates", ids: ["EG.RATE.ON.DEP", "EG.RATE.ON.LEND", "EG.RATE.MAIN"] },
+  { label: "Money market", ids: ["EG.CONIA.ON.RATE", "EG.IBK.D.ON"] },
+  { label: "Treasury bills",
     ids: ["EG.TB.EGP.3M.YLD.WAVG", "EG.TB.EGP.6M.YLD.WAVG", "EG.TB.EGP.12M.YLD.WAVG", "EG.TB.EGP.3M.BIDCOVER"] },
   { label: "Prices", ids: ["EG.CPI.HDL.YOY", "EG.CPI.CORE.YOY"] },
   { label: "External", ids: ["EG.RES.NIR", "EG.EXT.REMIT.FYTD"] },
@@ -98,6 +100,69 @@ function deskCSV(rows) {
   setTimeout(() => URL.revokeObjectURL(a.href), 4000);
 }
 
+/* Adding things without leaving the page.
+ *
+ * Starring works from every table on the site, which is the right way to build
+ * this list a number at a time while you are reading. It is a bad way to build
+ * it on purpose: someone who has just arrived and wants the four things they
+ * watch every morning should not have to go and find each of them somewhere
+ * else and come back.
+ *
+ * So the whole catalogue is searchable from here, and the star on a result adds
+ * it in place. The panel opens itself when the list is still the one we picked,
+ * because at that point adding something is the obvious next move.
+ */
+function addPanel(mode) {
+  return (
+    '<details class="add-panel"' + (mode === "mine" ? "" : " open") + ">" +
+    '<summary><span class="g-name">Add anything from the archive</span>' +
+    '<span class="g-meta">all 1,317 series</span></summary>' +
+    "<div>" +
+    '<input class="search" id="add-q" autocomplete="off" ' +
+    'placeholder="dollar, CONIA, treasury bill, تحويلات…">' +
+    '<div class="controls suggest">' +
+    '<span class="hint">Try:</span>' +
+    ["CONIA", "12-month", "core inflation", "reserves", "remittances", "deposits"]
+      .map((s) => '<button class="chip" data-add-sug="' + esc(s) + '">' + esc(s) + "</button>")
+      .join("") +
+    "</div>" +
+    '<div class="results" id="add-results"></div>' +
+    "</div></details>"
+  );
+}
+
+function wireAddPanel(sparks) {
+  const input = document.getElementById("add-q");
+  const out = document.getElementById("add-results");
+  if (!input || !out) return;
+
+  const run = () => {
+    const typed = input.value.trim();
+    if (!typed) {
+      out.innerHTML =
+        '<p class="empty">Type a word. The star on a result adds it here, and the ' +
+        "list below updates when you reload.</p>";
+      return;
+    }
+    // Fewer than the search page shows: this is a panel for picking two or three
+    // things, not for reading a hundred.
+    const hits = searchSeries(typed, 25);
+    out.innerHTML = hits.length
+      ? hits.map((s) => seriesResultRow(s, sparks)).join("")
+      : '<p class="empty">Nothing matches “' + esc(typed) + '”. Try a broader word.</p>';
+  };
+
+  input.addEventListener("input", run);
+  document.querySelectorAll("[data-add-sug]").forEach((b) =>
+    b.addEventListener("click", () => {
+      input.value = b.dataset.addSug;
+      run();
+      input.focus();
+    })
+  );
+  run();
+}
+
 async function viewDesk(query) {
   const app = document.getElementById("app");
   app.innerHTML = skeleton(8);
@@ -146,15 +211,15 @@ async function viewDesk(query) {
 
   const standfirst = {
     default:
-      "A set we chose, so the page is useful before you have picked anything. Star " +
-      "rows anywhere on the site and your desk becomes exactly those, or take all " +
-      "sixteen of these as a starting point and edit from there.",
+      "This is a starter set we picked, so the page is worth opening before you have " +
+      "chosen anything. Search below to add whatever you actually watch, or star any " +
+      "row anywhere on the site.",
     mine:
-      "Your set, kept in this browser only. Nothing is sent anywhere, and clearing " +
-      "your site data clears it.",
+      "The numbers you chose to keep, in one place. Saved in this browser only: nothing " +
+      "is sent anywhere, and clearing your site data clears it.",
     shared:
-      "A set someone sent you. Save it to make it the one this page opens on, or " +
-      "leave it and your own stays untouched.",
+      "A list someone sent you. Save it to make it yours, or just read it and leave your " +
+      "own untouched.",
   }[mode];
 
   const table = groups
@@ -168,9 +233,9 @@ async function viewDesk(query) {
   app.innerHTML =
     '<div class="wrap">' +
     '<section class="section desk-head">' +
-    '<p class="eyebrow">Desk' + (built ? " · " + esc(built) : "") + "</p>" +
+    '<p class="eyebrow">Favourites' + (built ? " · " + esc(built) : "") + "</p>" +
     "<h2>" +
-    (mode === "mine" ? "Your desk" : mode === "shared" ? "A shared set" : "The desk") +
+    (mode === "mine" ? "Your favourites" : mode === "shared" ? "A shared list" : "Favourites") +
     "</h2>" +
     '<p class="lede">' + esc(standfirst) + "</p>" +
     '<div class="controls">' +
@@ -178,10 +243,11 @@ async function viewDesk(query) {
     '<button class="chip" id="d-csv">Download as CSV</button>' +
     '<button class="chip" id="d-share">Copy a link to this set</button>' +
     (mode === "mine"
-      ? '<span class="spacer"></span><button class="chip" id="d-clear">Clear my desk</button>'
+      ? '<span class="spacer"></span><button class="chip" id="d-clear">Remove all</button>'
       : '<span class="spacer"></span><button class="chip" id="d-save">' +
-        (mode === "shared" ? "Save this as my desk" : "Start from this set") + "</button>") +
+        (mode === "shared" ? "Save these as mine" : "Keep all sixteen") + "</button>") +
     "</div>" +
+    addPanel(mode) +
     (missing > 0
       ? '<p class="foot-note">' +
         (missing === 1
@@ -195,12 +261,14 @@ async function viewDesk(query) {
         '<th>Series</th><th class="hide-sm">Shape</th><th>Latest</th><th>Change</th>' +
         "<th>Where it sits</th><th>As of</th>" +
         "</tr></thead><tbody>" + table + "</tbody></table></div>"
-      : '<p class="empty">Nothing on this desk. <a href="#/browse">Browse by subject</a> ' +
-        'or press ctrl-K and star what you need.</p>') +
+      : '<p class="empty">Nothing in your favourites yet. <a href="#/series">Find or browse series</a> ' +
+        'or search above and star what you need.</p>') +
     '<p class="foot-note">The last column is where each current reading sits between that ' +
-    "series' own record low and high, with the gold mark at its median. " +
-    '<a href="#/data">Every one of these is in the API and the bulk downloads →</a></p>' +
+    "series' own record low and high, with the gold mark at its median. Everything here is " +
+    'also in the API and the bulk downloads. <a href="#/data">Take it with you →</a></p>' +
     "</section></div>";
+
+  wireAddPanel(sparks);
 
   document.getElementById("d-copy").addEventListener("click", (e) =>
     copyTSV(
@@ -221,7 +289,7 @@ async function viewDesk(query) {
     const url =
       location.origin +
       location.pathname +
-      "#/desk?s=" +
+      "#/favourites?s=" +
       rows.map((s) => encodeURIComponent(s.series_id)).join(",");
     navigator.clipboard.writeText(url).then(() => flash(e.target, "Link copied"), () => {});
   });
@@ -237,7 +305,7 @@ async function viewDesk(query) {
   if (save) {
     save.addEventListener("click", () => {
       watchSet(rows.map((s) => s.series_id));
-      location.hash = "#/desk";
+      location.hash = "#/favourites";
       route();
     });
   }
