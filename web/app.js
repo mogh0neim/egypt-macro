@@ -81,25 +81,6 @@ document.getElementById("theme").addEventListener("click", () => {
   applyTheme(next);
 });
 
-/* ---------- masthead search ----------
- * An accelerator, never the only way in. Slash focuses it, escape lets go.
- */
-
-const quick = document.getElementById("quick");
-quick.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    const v = quick.value.trim();
-    location.hash = v ? "#/find?q=" + encodeURIComponent(v) : "#/find";
-    quick.blur();
-  }
-  if (e.key === "Escape") { quick.value = ""; quick.blur(); }
-});
-
-document.addEventListener("keydown", (e) => {
-  const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
-  if (e.key === "/" && !typing) { e.preventDefault(); quick.focus(); }
-});
-
 /* ---------- the freshness strip ----------
  *
  * A mirror that rebuilds itself every morning has to be able to say when it

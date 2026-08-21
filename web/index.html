@@ -28,7 +28,11 @@
   <div class="wrap">
     <a class="wordmark" href="#/">Miqyas<span class="mark-ar" aria-hidden="true">مقياس</span></a>
     <span class="unofficial">Unofficial</span>
-    <input class="quick" id="quick" type="search" placeholder="Search 1,300 series   /" aria-label="Search series">
+    <button class="quick" id="quick" aria-label="Search series, topics, documents and pages">
+      <span class="q-ico" aria-hidden="true">⌕</span>
+      <span class="q-label">Search</span>
+      <kbd id="quick-key">Ctrl K</kbd>
+    </button>
     <button class="menu" id="menu" aria-label="Menu">≡</button>
     <nav>
       <a href="#/" data-route="home">Overview</a>
@@ -46,6 +50,15 @@
 <!-- Filled from status.json by app.js. Stays hidden if that fetch fails, so a
      clone with no build does not show an empty bar. -->
 <div class="freshness" id="freshness" hidden></div>
+
+<div class="palette" id="palette" hidden>
+  <div class="palette-box" role="dialog" aria-modal="true" aria-label="Search Miqyas">
+    <input id="pq" type="text" autocomplete="off" spellcheck="false"
+           placeholder="Search series, topics, documents, pages…">
+    <div class="palette-results" id="presults" role="listbox" aria-label="Results"></div>
+    <p class="palette-foot">↑ ↓ to move · return to open · esc to close</p>
+  </div>
+</div>
 
 <main id="app"><div class="wrap"><div class="skeleton"><div class="sk-line"></div><div class="sk-line"></div><div class="sk-line"></div></div></div></main>
 
@@ -83,6 +96,7 @@
 <script src="views-mpc.js"></script>
 <script src="views-meta.js"></script>
 <script src="views-desk.js"></script>
+<script src="palette.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

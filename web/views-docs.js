@@ -15,21 +15,6 @@
 
 const docState = { docs: null, meta: null, shards: new Map() };
 
-/* Must match the normalisation in ingest/build_search.py exactly. If these
- * drift apart, Arabic queries silently return nothing. */
-const normaliseQuery = (s) =>
-  s
-    .normalize("NFKC")
-    .replace(/[ً-ْٰـ]/g, "")
-    .replace(/[أإآٱ]/g, "ا")
-    .replace(/ى/g, "ي")
-    .replace(/ة/g, "ه")
-    .replace(/ؤ/g, "و")
-    .replace(/ئ/g, "ي")
-    .replace(/[٠-٩]/g, (d) => String(d.charCodeAt(0) - 0x0660))
-    .toLowerCase()
-    .trim();
-
 /* The collections worth putting on the front of the page. Each is a category
  * as CBE files it; the copy is ours, because "Monetary Policy Inflation Note"
  * does not tell you what is inside one. */

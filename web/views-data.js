@@ -729,7 +729,7 @@ async function viewFind(preset) {
   const out = document.getElementById("results");
 
   const run = () => {
-    const q = input.value.trim().toLowerCase();
+    const q = normaliseQuery(input.value);
     if (!q) {
       out.innerHTML =
         '<p class="empty">Type a word, or pick one of the suggestions above. ' +
@@ -739,7 +739,7 @@ async function viewFind(preset) {
     const terms = q.split(/\s+/);
     const hits = index
       .filter((s) => {
-        const hay = (s.series_id + " " + (s.title_en || "") + " " + (s.title_ar || "")).toLowerCase();
+        const hay = normaliseQuery(s.series_id + " " + (s.title_en || "") + " " + (s.title_ar || ""));
         return terms.every((t) => hay.includes(t));
       })
       .slice(0, 100);

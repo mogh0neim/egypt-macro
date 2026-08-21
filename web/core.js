@@ -200,6 +200,25 @@ const staleness = (iso) => {
   return Math.floor(days / 365) + " years ago";
 };
 
+/* Arabic search matching. It lives here rather than beside the document search
+ * because three separate searches need it: document titles, full text, and the
+ * command palette.
+ *
+ * Must match the normalisation in ingest/build_search.py exactly. If the two
+ * drift apart, Arabic queries silently return nothing. */
+const normaliseQuery = (s) =>
+  s
+    .normalize("NFKC")
+    .replace(/[ً-ْٰـ]/g, "")
+    .replace(/[أإآٱ]/g, "ا")
+    .replace(/ى/g, "ي")
+    .replace(/ة/g, "ه")
+    .replace(/ؤ/g, "و")
+    .replace(/ئ/g, "ي")
+    .replace(/[٠-٩]/g, (d) => String(d.charCodeAt(0) - 0x0660))
+    .toLowerCase()
+    .trim();
+
 /* ---------- the topic taxonomy ----------
  *
  * The catalogue's `family` comes from whichever CBE page or spreadsheet tab a
