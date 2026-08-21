@@ -115,6 +115,23 @@ const titleHTML = (s) => {
   return ARABIC_RE.test(t) ? '<span dir="auto">' + esc(t) + "</span>" : esc(t);
 };
 
+/* CBE holds an Arabic title for 1,095 of the 1,317 series, and the site has only
+ * ever used it as invisible search fodder.
+ *
+ * Shown where a reader is identifying a series rather than reading values off
+ * one: the series page, search results, the palette. Not inside a table, where
+ * it would double the height of every row for someone who arrived by browsing a
+ * topic and already knows what they are looking at.
+ *
+ * Nothing is rendered for the 222 series without one. A placeholder would be
+ * worse than an absence, because it would imply CBE published a name it did
+ * not. */
+const titleAR = (s) => {
+  const ar = s && s.title_ar;
+  if (!ar || ar === s.title_en) return "";
+  return '<span class="ar" dir="rtl" lang="ar">' + esc(ar) + "</span>";
+};
+
 const fmt = (v, unit) => {
   if (v === null || v === undefined || Number.isNaN(v)) return "—";
   const abs = Math.abs(v);

@@ -599,6 +599,7 @@ async function viewSeries(id) {
     '<div class="series-head">' +
     '<span class="series-id">' + esc(data.series_id) + "</span>" +
     "<h1>" + titleHTML(data) + "</h1>" +
+    titleAR(data) +
     '<div class="big-figure">' +
     '<span class="v">' + fmt(stats.latest_value, data.unit) + "</span>" +
     '<span class="u">' + esc(unitTag(data.unit) || (data.unit ? "" : "no unit stated")) + "</span>" +
@@ -769,6 +770,7 @@ async function viewFind(preset) {
           '<span class="title">' + titleHTML(s) + "</span>" +
           '<span class="spk">' + spark(sparks[s.series_id], { w: 70, h: 20 }) + "</span>" +
           '<span class="v">' + fmt(s.latest_value, s.unit) + "</span>" +
+          titleAR(s) +
           '<span class="sub">' + esc(s.series_id) + " · " + (s.n || 0).toLocaleString() + " readings · " +
           shortDate(s.first) + " – " + shortDate(s.last) + (s.unit ? " · " + esc(unitShort(s.unit)) : "") + "</span></a>"
         ).join("")

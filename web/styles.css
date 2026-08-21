@@ -397,6 +397,11 @@ body.palette-open { overflow: hidden; }
   display: block;
   direction: rtl;
   unicode-bidi: isolate;
+  /* The string is right-to-left; the block is not. This page is left-to-right
+     and English-primary, so the Arabic starts where the English above it starts.
+     Left to itself, `direction: rtl` right-aligns the line inside its own box
+     and the title drifts away from the one it translates. */
+  text-align: left;
   font-size: 0.9em;
   color: var(--text-2);
 }
@@ -1018,7 +1023,16 @@ table.indicators td.period {
   margin: 0.2rem 0 0.7rem;
   max-width: 36ch;
 }
-/* CBE's Excel-derived ids run to 71 characters, and an unbroken mono string
+/* Set at reading size rather than as a caption: for a good part of this
+   audience it is the name they know the series by. */
+.series-head .ar {
+  font-size: 1.1rem;
+  color: var(--text-2);
+  margin: 0 0 0.9rem;
+  max-width: 40ch;
+}
+
+/* CBE's Excel-derived ids run to 88 characters, and an unbroken mono string
    that long pushes a phone sideways on its own. */
 .series-id {
   font-family: var(--mono);
@@ -1166,10 +1180,11 @@ input.search::placeholder { color: var(--text-3); }
 .result.rich {
   display: grid;
   grid-template-columns: 1fr 76px 7rem;
-  grid-template-areas: "title spk v" "sub sub sub";
+  grid-template-areas: "title spk v" "ar ar ar" "sub sub sub";
   gap: 0.1rem 0.8rem;
   align-items: center;
 }
+.result.rich .ar { grid-area: ar; font-size: 0.86rem; }
 .result.rich .title { grid-area: title; }
 .result.rich .spk { grid-area: spk; }
 .result.rich .v {
@@ -1380,7 +1395,7 @@ footer {
   .freshness .wrap > span:not(:first-child):not(.warn) { display: none; }
   .gauge-ends { gap: 0.3rem 1rem; }
   .big-figure .asof { margin-inline-start: 0; width: 100%; }
-  .result.rich { grid-template-columns: 1fr 5rem; grid-template-areas: "title v" "spk spk" "sub sub"; }
+  .result.rich { grid-template-columns: 1fr 5rem; grid-template-areas: "title v" "ar ar" "spk spk" "sub sub"; }
   .mpc-row .src { margin-inline-start: 0; }
   .mpc-row .when { min-width: 7.5rem; }
 }
