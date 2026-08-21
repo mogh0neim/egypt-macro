@@ -1,8 +1,8 @@
 {
- "count": 169,
+ "count": 172,
  "range": [
   "2005-06-02",
-  "2026-07-09"
+  "2026-08-20"
  ],
  "statements": [
   {
@@ -388,6 +388,22 @@
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/press-release/en/2011/mpcpressstatement2011march10.pdf",
    "format": "pdf",
    "chars": 3487
+  },
+  {
+   "date": "2011-04-28",
+   "title": "MPC Press Statement 2011 April 28",
+   "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/press-release/en/2011/mpc-press-statement-2011-april-28.pdf",
+   "format": "pdf",
+   "decision": "hold",
+   "chars": 2286
+  },
+  {
+   "date": "2011-06-09",
+   "title": "MPC Press Statement 2011 June 9",
+   "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/press-release/en/2011/mpc-press-statement-2011-june-9.pdf",
+   "format": "pdf",
+   "decision": "hold",
+   "chars": 2746
   },
   {
    "date": "2011-07-21",
@@ -1460,6 +1476,18 @@
    "discount_rate": 19.5,
    "decision": "hold",
    "chars": 4185
+  },
+  {
+   "date": "2026-08-20",
+   "title": "MPC Press Release 20 August 2026",
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2026/08/20/15/17/mpc-press-release-20-august-2026",
+   "format": "html",
+   "deposit_rate": 19.0,
+   "lending_rate": 20.0,
+   "main_operation_rate": 19.5,
+   "discount_rate": 19.5,
+   "decision": "hold",
+   "chars": 4241
   }
  ],
  "diffs": [
@@ -3663,74 +3691,58 @@
   },
   {
    "from_date": "2011-03-10",
-   "to_date": "2011-07-21",
-   "similarity": 0.27,
-   "sentence_overlap": 0.108,
+   "to_date": "2011-04-28",
+   "similarity": 0.35,
+   "sentence_overlap": 0.343,
    "sentences_added": [],
    "sentences_removed": [],
    "sentences_changed": [
     {
      "before": "Central Bank of Egypt Press Release March 10, 2011 In its meeting held on March 10, 2011, the Monetary Policy Committee (MPC) decided to keep the overnight deposit rate and overnight lending rate unchanged at 8.25 percent and 9.75 percent, respectively.",
-     "after": "Central Bank of Egypt Press Release July 21, 2011 In its meeting held on July 21, 2011, the Monetary Policy Committee (MPC) decided to keep the overnight deposit rate and overnight lending rate unchanged at 8.25 percent and 9.75 percent, respec%vely, and the 7-day repo at 9.25 percent."
+     "after": "Central Bank ofEgyptيي Press Release April 28, 2011 6 In its meeting held on April 28, 2011, the Monetary Policy Committee (MPC) decided to keep the overnight deposit rate and overnight lending rate unchanged at 8.25 percent and 9.75 percent, respectively, and the 7-day repo at 9.25 percent."
     },
     {
      "before": "The CBE has decided to launch regular repurchasing agreements (repo) as part of its monetary policy operational framework on every Tuesday starting March 22, 2011.",
-     "after": "Headline CPI increased by 0.42 percent (m/m) in June following the 0.20 percent in May, keeping the annual rate almost unchanged at 11.79 percent."
+     "after": "Headline CPI increased by 1.37 percent (m/m) in March following the 0.12 percent in ~ February, pushing the annual rate to 11.49 up from 10.71 percent registered in February."
     },
     {
      "before": "The main open market operation will be a 7‐day repo set by the MPC at 9.25 percent.",
-     "after": "On the other hand, core CPI increased by 0.45 percent in June following the 0.54 percent in May, while the annual rate inched up to 8.94 percent from 8.81 percent recorded the previous month."
+     "after": "While the latest monthly increase is relatively high, it has been mainly driven by higher prices of fresh vegetables on the back of weak harvests."
     },
     {
      "before": "The political landscape in Egypt has undergone significant transformations since the last MPC meeting with implications on economic activity and financial markets.",
-     "after": "The latest monthly developments in both headline and core have been mainly driven by sporadic increases in the prices of food items, largely on the back of supply bottlenecks and distortions in the distribution channels."
+     "after": "On the other hand, core CPI declined by 0.17 percent (m/m) in March following an inch up of 0.11 percent in February, mainly driven by a decline in the prices of red meat."
     },
     {
      "before": "On the one hand, market liquidity conditions have come under pressure, while the balance of risks surrounding the inflation and GDP outlooks has changed.",
-     "after": "The continuation of these market imperfections, in addition, to an unanticipated rebound in international food prices pose upside risks to the inflation outlook."
+     "after": "The annual rate fell to percent from 9.51 percent recorded the previous month."
     },
     {
      "before": "In order to ensure that the prevailing short‐term market rates are consistent with the MPCʹs policy rate based on the continuous assessment of macroeconomic developments and the price stability mandate, the CBE has decided to introduce repos as part of its monetary policy operational framework.",
-     "after": "Meanwhile, real GDP contracted by 4.2 percent in 2010/2011 Q3 which marks the ﬁrst negative year-on-year growth rate since the release of quarterly GDP data in 2001/2002."
+     "after": "It is important to 8.54 underscore that the pick up in international food prices since late 2010 has had limited spillover effects on domestic food prices."
     },
     {
      "before": "Headline CPI inched up by 0.12 percent (m/m) in February compared to 1.02 percent in January, while the annual rate declined slightly from 10.79 percent to 10.71 percent on the back of a favorable base effect from last year.",
-     "after": "It is important to note that while a marked decline in economic activity was expected, the magnitude is larger than anticipated at the outset of the revolution."
+     "after": null
     },
     {
      "before": "While the early days in February witnessed a marked increase in food prices driven by disruptions in production lines as well as transportation networks this was largely reversed in recent weeks.",
-     "after": "This came on the back of significant declines in the tourism, manufacturing and construction sectors."
+     "after": null
     },
     {
      "before": "This has been also reflected in core CPI which inched up by 0.11 percent (m/m) in February compared to 0.74 percent in January while the annual rate declined to 9.51 percent compared to 9.74 percent.",
-     "after": "In the meantime, given the increased uncertainty that faced market participants early this year, investment witnessed a significant annual retrenchment of 26 percent in the quarter ending March 2011."
+     "after": null
     },
     {
      "before": "It is important to underscore that the pick up in international food prices since late 2010 have had limited spillover effects on domestic food prices.",
-     "after": "Looking ahead, the current political transformation may continue to have ramifications on both consumption as well as investment decisions, adversely weighing on key sectors within the economy."
-    },
-    {
-     "before": "Nonetheless, if the recent increases in international food prices prove to be persistent this would pose an upside risk to the inflation outlook.",
-     "after": "Moreover, there are concerns related to the global recovery on the back of renewed worries regarding fiscal challenges facing the Euro Area."
+     "after": null
     },
     {
      "before": "The past six weeks have witnessed interruptions in economic activity triggered by the domestic political events.",
-     "after": "These factors, combined, pose downside risks to domestic GDP going forward."
+     "after": "The current political transformation will continue to have ramifications on both consumption as well as investment decisions, adversely weighing on key sectors within the economy."
     },
     {
      "before": "The current political uncertainty will continue to have ramifications on both consumption as well as investment decisions, adversely weighing on key sectors within the economy.",
-     "after": "Against the above background, the slowdown in economic growth should limit upside risks to the inflation outlook."
-    },
-    {
-     "before": "Moreover, there is heightened uncertainty related to the global recovery on the back of higher international oil prices given political tensions in the region.",
-     "after": null
-    },
-    {
-     "before": "These factors, combined, increase the downside risks to domestic GDP going forward.",
-     "after": null
-    },
-    {
-     "before": "Against the above background, the expected slowdown in economic growth could largely offset the upside risks on inflation from the rising international food prices.",
      "after": null
     },
     {
@@ -3739,6 +3751,116 @@
     },
     {
      "before": "Rania Al‐Mashat Division Chief, Monetary Policy Unit Telephone number: 27701315 E‐mail address: monetary.policy@cbe.org.eg",
+     "after": "Rania Al-Mashat Assistant Sub Governor, Monetary Policy Unit Telephone number: 27701315 E-mail address: monetary.policy@cbe.org.eg"
+    }
+   ],
+   "rate_move": null
+  },
+  {
+   "from_date": "2011-04-28",
+   "to_date": "2011-06-09",
+   "similarity": 0.666,
+   "sentence_overlap": 0.188,
+   "sentences_added": [],
+   "sentences_removed": [],
+   "sentences_changed": [
+    {
+     "before": "Central Bank ofEgyptيي Press Release April 28, 2011 6 In its meeting held on April 28, 2011, the Monetary Policy Committee (MPC) decided to keep the overnight deposit rate and overnight lending rate unchanged at 8.25 percent and 9.75 percent, respectively, and the 7-day repo at 9.25 percent.",
+     "after": "Central Bank ofEgyptيي Press Release June 9, 2011 In its meeting held on June 9, 2011, the Monetary Policy Committee (MPC) decided to keep the overnight deposit rate and overnight lending rate unchanged at 8.25 percent 8 and 9.75 percent, respectively, and the 7-day repo at 9.25 percent."
+    },
+    {
+     "before": "Headline CPI increased by 1.37 percent (m/m) in March following the 0.12 percent in ~ February, pushing the annual rate to 11.49 up from 10.71 percent registered in February.",
+     "after": "Headline CPI increased by 0.20 percent (m/m) in May following the 1.21 percent in April, bringing the annual rate down to 11.79 percent from 12.07 percent registered in April."
+    },
+    {
+     "before": "While the latest monthly increase is relatively high, it has been mainly driven by higher prices of fresh vegetables on the back of weak harvests.",
+     "after": "On the other hand, core CPI increased by 0.54 percent in May following the 0.85 percent in April, while the annual rate inched up to 8.81 percent from 8.76 percent recorded the ~ previous month."
+    },
+    {
+     "before": "On the other hand, core CPI declined by 0.17 percent (m/m) in March following an inch up of 0.11 percent in February, mainly driven by a decline in the prices of red meat.",
+     "after": "The latest monthly developments in both headline and core have been mainly driven by sporadic increases in the prices of food items, largely on the back of supply bottlenecks and distortions in the distribution channels."
+    },
+    {
+     "before": "The annual rate fell to percent from 9.51 percent recorded the previous month.",
+     "after": "The continuation of these market imperfections, in addition, to the probable acceleration in international food prices pose upside risks to the inflation outlook."
+    },
+    {
+     "before": "It is important to 8.54 underscore that the pick up in international food prices since late 2010 has had limited spillover effects on domestic food prices.",
+     "after": "Meanwhile, real GDP contracted by 4.2 percent in 2010/2011 Q3 which marks the first negative year-on-year growth rate since the release of quarterly GDP data in 2001/2002."
+    },
+    {
+     "before": "Nonetheless, if the recent increases in international food prices prove to be persistent this would pose an upside risk to the inflation outlook.",
+     "after": "It is important to note that while a marked decline in economic activity was expected, ‘the magnitude is larger than anticipated at the outset of the revolution."
+    },
+    {
+     "before": "The current political transformation will continue to have ramifications on both consumption as well as investment decisions, adversely weighing on key sectors within the economy.",
+     "after": "This came on the back of significant declines in the tourism, manufacturing and construction sectors."
+    },
+    {
+     "before": "Moreover, there is heightened uncertainty related to the global recovery on the back of higher international oil prices given political tensions in the region.",
+     "after": "In the meantime, given the increased uncertainty that faced market participants early this year, investment witnessed a significant annual retrenchment of 26 percent in the quarter ending March 2011."
+    },
+    {
+     "before": "These factors, combined, increase the downside risks to domestic GDP going forward.",
+     "after": "Looking ahead, the current political transformation may continue to have ramifications on both consumption as well as investment decisions, adversely weighing on key sectors within the economy."
+    },
+    {
+     "before": "Against the above background, the expected slowdown in economic growth could largely offset the upside risks on inflation from the rising international food prices.",
+     "after": "Moreover, there are concerns related to the global recovery on the back of higher international oil prices given political tensions in the region."
+    },
+    {
+     "before": null,
+     "after": "These factors, combined, pose downside risks to domestic GDP going forward."
+    },
+    {
+     "before": null,
+     "after": "Against the above background, the slowdown in economic growth should limit upside risks to the inflation outlook."
+    },
+    {
+     "before": "Rania Al-Mashat Assistant Sub Governor, Monetary Policy Unit Telephone number: 27701315 E-mail address: monetary.policy@cbe.org.eg",
+     "after": "Rania Al-Mashat Assistant Sub Governor, Monetary Policy Department Telephone number: 27701315 E-mail address: monetary.policy@cbe.org.eg"
+    }
+   ],
+   "rate_move": null
+  },
+  {
+   "from_date": "2011-06-09",
+   "to_date": "2011-07-21",
+   "similarity": 0.927,
+   "sentence_overlap": 0.529,
+   "sentences_added": [],
+   "sentences_removed": [],
+   "sentences_changed": [
+    {
+     "before": "Central Bank ofEgyptيي Press Release June 9, 2011 In its meeting held on June 9, 2011, the Monetary Policy Committee (MPC) decided to keep the overnight deposit rate and overnight lending rate unchanged at 8.25 percent 8 and 9.75 percent, respectively, and the 7-day repo at 9.25 percent.",
+     "after": "Central Bank of Egypt Press Release July 21, 2011 In its meeting held on July 21, 2011, the Monetary Policy Committee (MPC) decided to keep the overnight deposit rate and overnight lending rate unchanged at 8.25 percent and 9.75 percent, respec%vely, and the 7-day repo at 9.25 percent."
+    },
+    {
+     "before": "Headline CPI increased by 0.20 percent (m/m) in May following the 1.21 percent in April, bringing the annual rate down to 11.79 percent from 12.07 percent registered in April.",
+     "after": "Headline CPI increased by 0.42 percent (m/m) in June following the 0.20 percent in May, keeping the annual rate almost unchanged at 11.79 percent."
+    },
+    {
+     "before": "On the other hand, core CPI increased by 0.54 percent in May following the 0.85 percent in April, while the annual rate inched up to 8.81 percent from 8.76 percent recorded the ~ previous month.",
+     "after": "On the other hand, core CPI increased by 0.45 percent in June following the 0.54 percent in May, while the annual rate inched up to 8.94 percent from 8.81 percent recorded the previous month."
+    },
+    {
+     "before": "The continuation of these market imperfections, in addition, to the probable acceleration in international food prices pose upside risks to the inflation outlook.",
+     "after": "The continuation of these market imperfections, in addition, to an unanticipated rebound in international food prices pose upside risks to the inflation outlook."
+    },
+    {
+     "before": "Meanwhile, real GDP contracted by 4.2 percent in 2010/2011 Q3 which marks the first negative year-on-year growth rate since the release of quarterly GDP data in 2001/2002.",
+     "after": "Meanwhile, real GDP contracted by 4.2 percent in 2010/2011 Q3 which marks the ﬁrst negative year-on-year growth rate since the release of quarterly GDP data in 2001/2002."
+    },
+    {
+     "before": "It is important to note that while a marked decline in economic activity was expected, ‘the magnitude is larger than anticipated at the outset of the revolution.",
+     "after": "It is important to note that while a marked decline in economic activity was expected, the magnitude is larger than anticipated at the outset of the revolution."
+    },
+    {
+     "before": "Moreover, there are concerns related to the global recovery on the back of higher international oil prices given political tensions in the region.",
+     "after": "Moreover, there are concerns related to the global recovery on the back of renewed worries regarding fiscal challenges facing the Euro Area."
+    },
+    {
+     "before": "Rania Al-Mashat Assistant Sub Governor, Monetary Policy Department Telephone number: 27701315 E-mail address: monetary.policy@cbe.org.eg",
      "after": "Rania Al-Mashat Assistant Sub Governor, Monetary Policy Unit Telephone number: 27701315 E-mail address: monetary.policy@cbe.org.eg"
     }
    ],
@@ -14783,6 +14905,117 @@
     {
      "before": "Moving forward, the Committee will calibrate its monetary stance in a manner conducive to bringing inflation toward the target level in H2 2027, guided by evolving economic conditions, forecasted inflation trajectory, and prevailing balance of risks.",
      "after": null
+    }
+   ],
+   "rate_move": {
+    "deposit_rate": {
+     "from": 19.0,
+     "to": 19.0,
+     "change": 0.0
+    },
+    "lending_rate": {
+     "from": 20.0,
+     "to": 20.0,
+     "change": 0.0
+    },
+    "main_operation_rate": {
+     "from": 19.5,
+     "to": 19.5,
+     "change": 0.0
+    }
+   }
+  },
+  {
+   "from_date": "2026-07-09",
+   "to_date": "2026-08-20",
+   "similarity": 0.641,
+   "sentence_overlap": 0.163,
+   "sentences_added": [],
+   "sentences_removed": [],
+   "sentences_changed": [
+    {
+     "before": "News & Publications News MPC Press Release 9 July 2026 MPC Press Release 9 July 2026 09 Jul 2026 MPC decides to keep key policy rates unchanged Cairo, Egypt — The Monetary Policy Committee (MPC) of the Central Bank of Egypt (CBE) has decided to keep its key policy rates unchanged.",
+     "after": "News & Publications News MPC Press Release 20 August 2026 MPC Press Release 20 August 2026 20 Aug 2026 MPC decides to keep key policy rates unchanged Cairo, Egypt — The Monetary Policy Committee (MPC) of the Central Bank of Egypt (CBE) has decided to keep its key policy rates unchanged."
+    },
+    {
+     "before": "Globally, economic activity continues to grow at a slower pace, constrained by geopolitical volatility, persistent trade policy uncertainty, and subdued demand conditions.",
+     "after": "Globally, economic activity has moderated, weighed down by geopolitical volatility and subdued demand."
+    },
+    {
+     "before": "While disinflation has broadly continued across many economies, inflationary pressures remain—though unevenly distributed—prompting central banks to maintain a cautious monetary policy stance in line with respective economic conditions.",
+     "after": "Inflation remains broadly elevated, though price pressures are uneven across economies, leading central banks to follow divergent policy stances aligned with respective economic conditions."
+    },
+    {
+     "before": "Within commodity markets, energy prices recently increased amid heightened uncertainty, following a decline from their conflict-triggered peaks.",
+     "after": "In commodity markets, energy prices have come under renewed upward pressure and exhibited heightened volatility amid escalating regional tensions."
+    },
+    {
+     "before": "Meanwhile, agricultural commodity prices have exhibited divergent movements, reflecting heterogeneous supply and demand conditions across markets.",
+     "after": "Similarly, agricultural prices have trended higher, reflecting supply concerns driven by geopolitical tensions and adverse weather conditions."
+    },
+    {
+     "before": "Overall, the global outlook remains vulnerable to escalating risks, particularly resurgent regional conflict, tighter financial conditions, and supply chain disruptions.",
+     "after": "Overall, the global outlook remains uncertain and susceptible to risks, particularly prolonged tensions, tighter financial conditions, and renewed supply chain disruptions."
+    },
+    {
+     "before": "Domestically, the nowcast for real GDP growth in Q2 2026 points to a mild deceleration, reflecting the adverse impact of the regional conflict on economic activity, following a moderation to 5.0 percent in Q1 2026.",
+     "after": "Domestically, a continued moderation in real economic activity is estimated for Q2 2026 according to the CBE nowcast, reflecting the adverse impact of regional tensions on economic activity, following a moderation to 5.0 percent in Q1 2026."
+    },
+    {
+     "before": "As such, the CBE projects that real GDP growth will average around 5.0 percent for FY 2025/26, with output remaining below potential, though convergence to that level is expected by H1 2027.",
+     "after": "Accordingly, the CBE expects real GDP growth to average around 5.0 percent in FY 2025/26, with output remaining below potential, though expected to gradually converge toward potential by H2 2027."
+    },
+    {
+     "before": "Accordingly, the current output gap trajectory suggests that demand-driven inflationary pressures will remain limited in the short term.",
+     "after": "As such, the output gap trajectory indicates that demand-pull inflationary pressures will remain limited in the short term, supported by the prevailing tight monetary policy stance."
+    },
+    {
+     "before": "Regarding inflation outturns, annual headline inflation in June 2026 eased to 14.3 percent, with monthly headline inflation declining markedly to negative 0.4 percent.",
+     "after": "Regarding inflation outturns, annual headline inflation in July 2026 slightly inched up to 14.9 percent from 14.3 percent in June 2026, with annual core inflation recording 14.7 percent compared to 14.3 percent in June 2026."
+    },
+    {
+     "before": "Meanwhile, annual core inflation edged up to 14.3 percent, largely reflecting an unfavorable base effect, despite monthly dynamics decelerating to 0.3 percent from the previous month.",
+     "after": "This annual uptick is mainly due to unfavorable base effects, as both monthly core and headline inflation came below expectations, recording 0.0 percent in July 2026."
+    },
+    {
+     "before": "Both monthly headline and core readings are below their historical averages, reflecting the gradual dissipation of earlier seasonal shocks.",
+     "after": "Monthly price dynamics point to broad stability, with a few items registering declines."
+    },
+    {
+     "before": "Turning to the outlook, CBE projections indicate that annual headline inflation will accelerate through Q3 2026, albeit at a more moderate pace than projected at the May 2026 MPC meeting.",
+     "after": "This suggests that the effects of previous shocks are gradually dissipating—reinforcing the view that they were predominantly transitory."
+    },
+    {
+     "before": "This assessment is supported by favorable exchange-rate developments as well as a broad-based decline in inflationary pressures.",
+     "after": "Against this backdrop, annual headline inflation is projected to accelerate through Q3 2026 on average, partly due to an unfavorable base effect."
+    },
+    {
+     "before": "These developments will help mitigate unfavorable base effects in Q3 2026, after which inflation is expected to gradually decline and reach single digits, aligning with the targeted level of 7 percent (± 2 p.p.) in H2 2027.",
+     "after": "However, the pace of this acceleration is expected to be more moderate than previously projected at the July 2026 MPC meeting, given the lower-than-expected inflation readings of June and July 2026."
+    },
+    {
+     "before": "The projected disinflation path will be sustained by an adequately tight monetary stance, which will keep medium-term inflation expectations anchored.",
+     "after": "Inflation is subsequently expected to gradually decline starting Q1 2027, converging toward the targeted level of 7 percent (± 2 p.p.) during H2 2027."
+    },
+    {
+     "before": "Nevertheless, the inflation outlook remains subject to heightened risks, notably the resurgence of conflict, which could reverse recent improvements in risk sentiment and intensify uncertainty.",
+     "after": "The disinflation path will continue to be supported by a sufficiently tight monetary stance over the forecast horizon, recent easing of month-on-month underlying inflation, and broad-based cooling across CPI components."
+    },
+    {
+     "before": "In view of the above, the MPC has decided to keep key policy rates unchanged to maintain an adequately positive real interest margin on average over the forecast horizon, supported by better-than-expected macroeconomic developments compared to the last MPC meeting.",
+     "after": "Nonetheless, the forecasted inflation trajectory remains subject to upside risks, including escalating regional hostilities and a higher-than-expected pass-through from fiscal consolidation measures."
+    },
+    {
+     "before": "The Committee will continue to evaluate its monetary stance based on evolving economic conditions, drivers of inflationary pressures, the forecasted inflation trajectory, and the prevailing balance of risks.",
+     "after": "Given the above, the MPC has decided to keep key policy rates unchanged, thereby maintaining an adequately positive real interest rate margin essential to keeping inflation expectations anchored and supporting the projected disinflation path."
+    },
+    {
+     "before": "Looking ahead, the MPC remains firmly committed to price stability and will not hesitate to tighten policy further to ensure inflation returns to target in the near term.",
+     "after": "The Committee will continue to evaluate its monetary stance based on evolving economic conditions, the forecasted inflation trajectory, and the prevailing balance of risks."
+    },
+    {
+     "before": null,
+     "after": "Looking ahead, the MPC remains firmly committed to price stability and will not hesitate to adjust policy to ensure inflation returns to target in the near term."
     }
    ],
    "rate_move": {

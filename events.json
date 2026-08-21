@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-20",
+ "generated": "2026-08-21",
  "note": "FX events are detected from a >4.0% single-day move in EG.FX.OFF.USD.SELL. Labels are added by hand and preserved across regeneration.",
  "fx_regimes": [
   {
@@ -651,6 +651,19 @@
     "discount_rate": 19.5
    },
    "url": "https://www.cbe.org.eg/en/news-publications/news/2026/07/09/17/02/mpc-press-release-9-july-2026"
+  },
+  {
+   "date": "2026-08-20",
+   "type": "mpc",
+   "label": "MPC Press Release 20 August 2026",
+   "decision": "hold",
+   "rates": {
+    "deposit_rate": 19.0,
+    "lending_rate": 20.0,
+    "main_operation_rate": 19.5,
+    "discount_rate": 19.5
+   },
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2026/08/20/15/17/mpc-press-release-20-august-2026"
   }
  ]
 }
