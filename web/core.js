@@ -22,6 +22,7 @@ const state = {
   events: null,
   sparks: null,
   mpc: null,
+  status: null,     // built_at, last_scrape, and the headline counts
   cache: new Map(), // full observation arrays, by series id
 };
 
@@ -80,6 +81,28 @@ const fmtChange = (v, unit) => {
   return pct ? s + "pp" : s;
 };
 
+/* A change that rounds away to nothing is not a rise. fmtChange has already
+ * decided how many decimals the unit deserves, so ask it rather than invent a
+ * threshold: whatever it prints as zeros is flat, gets no arrow, and gets no
+ * colour. Without this, a 0.001pp move on the 12-month bill renders as
+ * "▲ 0.00pp", which claims a rise that did not happen. */
+const isFlat = (v, unit) => {
+  if (v === null || v === undefined || Number.isNaN(v)) return true;
+  return !/[1-9]/.test(fmtChange(v, unit));
+};
+
+const dirClass = (c, unit) => (isFlat(c, unit) ? "" : c > 0 ? "up" : "down");
+const dirArrow = (c, unit) => (isFlat(c, unit) ? "" : c > 0 ? "▲" : "▼");
+
+/* The whole change, arrow and all. A flat reading gets a word rather than a
+ * signed zero, so a table of held rates reads as held. */
+const changeCell = (c, unit) =>
+  c === null || c === undefined || Number.isNaN(c)
+    ? "—"
+    : isFlat(c, unit)
+    ? "flat"
+    : dirArrow(c, unit) + " " + fmtChange(c, unit);
+
 /* Short unit tag for places the full string will not fit. */
 const UNIT_SHORT = {
   "USD million": "$ mn",
@@ -90,7 +113,7 @@ const UNIT_SHORT = {
   "EGP billion": "EGP bn",
   "EGP per USD": "EGP / $",
   "EGP per unit of foreign currency": "EGP",
-  "percent per annum": "% a year",
+  "percent per annum": "p.a.",
   percent: "%",
   ratio: "ratio",
   index: "index",
@@ -100,10 +123,28 @@ const UNIT_SHORT = {
 };
 const unitShort = (u) => (u ? UNIT_SHORT[u] || u : "");
 
+/* The unit as a tag to set beside a formatted figure. Empty when fmt() has
+ * already said it: "14.90%" needs no "%" after it. */
+const unitTag = (u) => {
+  const short = unitShort(u);
+  return short === "%" ? "" : short;
+};
+
 const FREQ_LABEL = {
   A: "Yearly", Q: "Quarterly", M: "Monthly", W: "Weekly",
   BW: "Every two weeks", D: "Daily", IRR: "Only when it changes",
 };
+
+/* What a change is actually measured against. "Since the previous reading" is
+ * true of every series and therefore tells you nothing: a dealer reading a
+ * daily fixing and an economist reading a quarterly account are being told
+ * about very different spans of time. */
+const CHANGE_LABEL = {
+  A: "on the year", Q: "on the quarter", M: "on the month",
+  W: "on the week", BW: "on two weeks", D: "on the day",
+  IRR: "since it moved",
+};
+const changeLabel = (freq) => CHANGE_LABEL[freq] || "on the previous reading";
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const niceDate = (iso) => {
@@ -111,10 +152,14 @@ const niceDate = (iso) => {
   const p = iso.split("-");
   return +p[2] + " " + MONTHS[+p[1] - 1] + " " + p[0];
 };
+/* Written out in full on purpose. "Aug 26" is read as the twenty-sixth of
+ * August by most people and by every non-native reader, and it means August
+ * 2026. Two characters is a cheap price for not being ambiguous about a date
+ * on a page of interest rates. */
 const shortDate = (iso) => {
   if (!iso) return "—";
   const p = iso.split("-");
-  return MONTHS[+p[1] - 1] + " " + p[0].slice(2);
+  return MONTHS[+p[1] - 1] + " " + p[0];
 };
 
 /* "3 days ago" is the fastest way to tell a live daily series from a
@@ -233,6 +278,15 @@ async function loadSeries(id) {
 async function loadMPC() {
   if (!state.mpc) state.mpc = await getJSON(API + "/mpc.json").catch(() => null);
   return state.mpc;
+}
+
+/* build_site.py writes status.json on every publish: when the site was built,
+ * when CBE was last read, and the headline counts. It has been published since
+ * the first deploy and nothing has ever fetched it, which is why a mirror
+ * rebuilt every morning has never been able to say so. */
+async function loadStatus() {
+  if (!state.status) state.status = await getJSON(ROOT + "/status.json").catch(() => null);
+  return state.status;
 }
 
 const fxEvents = () =>

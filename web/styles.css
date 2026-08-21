@@ -218,6 +218,52 @@ a:hover { color: var(--accent); }
 }
 .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
+/* ---------- freshness strip ----------
+ *
+ * Under the masthead rather than in it. That row has no slack left to give
+ * (see the note on .quick above), and this is a fact about the whole archive
+ * rather than a control, so it wants its own line. It scrolls away with the
+ * page; the footer carries the same line permanently.
+ */
+
+.freshness {
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: var(--text-3);
+}
+.freshness .wrap {
+  display: flex;
+  gap: 1.1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-block: 0.4rem;
+}
+/* The leading item carries a graduation in miniature, the same five-notch mark
+   as the wordmark, so the strip reads as a reading taken off the column rather
+   than as a browser status bar. */
+.freshness .wrap > span:first-child { color: var(--text-2); }
+.freshness .wrap > span:first-child::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 9px;
+  margin-inline-end: 0.5rem;
+  vertical-align: -1px;
+  background: repeating-linear-gradient(to bottom, var(--accent) 0 1px, transparent 1px 3px);
+}
+
+/* Volunteering a stale build is worth more than hiding one: a reader who can
+   see the mirror admit it is behind can trust it when it says it is current. */
+.freshness.stale { background: var(--accent-quiet); border-bottom-color: var(--gold); }
+.freshness.stale .wrap > span:first-child { color: var(--gold); }
+.freshness.stale .wrap > span:first-child::before {
+  background: repeating-linear-gradient(to bottom, var(--gold) 0 1px, transparent 1px 3px);
+}
+.freshness .warn { color: var(--gold); }
+
 /* ---------- hero ---------- */
 
 .hero {
@@ -332,7 +378,7 @@ a:hover { color: var(--accent); }
 
 .starter {
   display: grid;
-  grid-template-areas: "q q" "answer spark" "delta delta" "note note";
+  grid-template-areas: "q q" "answer spark" "delta asof" "note note";
   grid-template-columns: 1fr auto;
   align-items: end;
   gap: 0.35rem 1rem;
@@ -369,6 +415,16 @@ a:hover { color: var(--accent); }
 .starter .delta i { font-style: normal; color: var(--text-3); }
 .starter .delta.up { color: var(--accent); }
 .starter .delta.down { color: var(--down); }
+/* Its own cell, so however long the change label runs the line cannot wrap the
+   date onto a second row. */
+.starter .asof {
+  grid-area: asof;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-3);
+  text-align: right;
+  white-space: nowrap;
+}
 /* A starter that opens a page rather than a series runs the full width of the
    grid, which also keeps the grid from ending on a ragged row. */
 .starters .starter.wide { grid-column: 1 / -1; }
@@ -759,7 +815,7 @@ input.filter:focus { border-color: var(--accent); outline: none; }
 .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
 .chip.solid { background: var(--accent); border-color: var(--accent); color: #fff; }
 .chip.solid:hover { opacity: 0.88; color: #fff; }
-select.chip { padding-inline-end: 1.4rem; max-width: 22rem; }
+select.chip { padding-inline-end: 1.4rem; max-width: min(22rem, 100%); }
 
 .linkish {
   background: none;
@@ -958,6 +1014,12 @@ footer {
   text-transform: uppercase;
   color: var(--gold);
 }
+.foot-fresh {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-3);
+  margin: 0 0 0.9rem;
+}
 .disclaimer { max-width: 78ch; margin: 0; }
 .disclaimer a { color: var(--text-2); text-decoration: underline; text-underline-offset: 2px; }
 
@@ -1011,6 +1073,7 @@ footer {
   .theme-toggle { margin-top: 0.8rem; align-self: flex-start; }
   table.indicators td.hide-sm, table.indicators th.hide-sm { display: none; }
   .foot-cols { grid-template-columns: 1fr; }
+  .freshness .wrap > span:not(:first-child):not(.warn) { display: none; }
   .big-figure .asof { margin-inline-start: 0; width: 100%; }
   .result.rich { grid-template-columns: 1fr 5rem; grid-template-areas: "title v" "spk spk" "sub sub"; }
   .mpc-row .src { margin-inline-start: 0; }

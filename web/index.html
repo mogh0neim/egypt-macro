@@ -43,6 +43,10 @@
   </div>
 </header>
 
+<!-- Filled from status.json by app.js. Stays hidden if that fetch fails, so a
+     clone with no build does not show an empty bar. -->
+<div class="freshness" id="freshness" hidden></div>
+
 <main id="app"><div class="wrap"><div class="skeleton"><div class="sk-line"></div><div class="sk-line"></div><div class="sk-line"></div></div></div></main>
 
 <footer>
@@ -66,6 +70,7 @@
         <a href="https://www.cbe.org.eg/en/" target="_blank" rel="noopener">The Central Bank of Egypt ↗</a>
       </div>
     </div>
+    <p class="foot-fresh" id="foot-fresh"></p>
     <p class="disclaimer"><b>Not affiliated with, endorsed by, or connected to the Central Bank of Egypt.</b>
        The CBE is the source of every number here. Any error in the cleaning is ours.
        For official figures go to <a href="https://www.cbe.org.eg/en/">cbe.org.eg</a>.</p>

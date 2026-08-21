@@ -44,9 +44,6 @@ const HEADLINE_GROUPS = [
 const changeOf = (s) =>
   s && s.previous !== null && s.previous !== undefined ? s.latest_value - s.previous : null;
 
-const dirClass = (c) => (c === null || c === 0 ? "" : c > 0 ? "up" : "down");
-const dirArrow = (c) => (c === null || c === 0 ? "" : c > 0 ? "▲" : "▼");
-
 function indicatorRow(s) {
   const c = changeOf(s);
   return (
@@ -54,7 +51,7 @@ function indicatorRow(s) {
     '<td class="name"><a href="#/s/' + encodeURIComponent(s.series_id) + '">' + titleHTML(s) + "</a>" +
     '<span class="unit">' + esc(unitShort(s.unit)) + "</span></td>" +
     "<td>" + fmt(s.latest_value, s.unit) + "</td>" +
-    '<td class="' + dirClass(c) + '">' + dirArrow(c) + " " + fmtChange(c, s.unit) + "</td>" +
+    '<td class="' + dirClass(c, s.unit) + '">' + changeCell(c, s.unit) + "</td>" +
     '<td class="hide-sm">' + fmt(s.lowest && s.lowest.value, s.unit) + "</td>" +
     '<td class="hide-sm">' + fmt(s.highest && s.highest.value, s.unit) + "</td>" +
     '<td class="hide-sm">' + gauge(s.latest_value, s.lowest && s.lowest.value, s.highest && s.highest.value) + "</td>" +
@@ -86,10 +83,11 @@ async function viewHome() {
       '<a class="starter' + (c.wide ? " wide" : "") + '" href="' + (c.href || "#/s/" + encodeURIComponent(c.id)) + '">' +
       '<span class="q">' + esc(c.q) + "</span>" +
       '<span class="answer"><b>' + fmt(s.latest_value, s.unit) + "</b>" +
-      '<i class="u">' + esc(unitShort(s.unit)) + "</i></span>" +
-      '<span class="spark-wrap">' + spark(sparks[c.id], { w: 150, h: 30 }) + "</span>" +
-      '<span class="delta ' + dirClass(ch) + '">' + dirArrow(ch) + " " + fmtChange(ch, s.unit) +
-      '<i> since ' + shortDate(s.last) + "</i></span>" +
+      '<i class="u">' + esc(unitTag(s.unit)) + "</i></span>" +
+      '<span class="spark-wrap">' + spark(sparks[c.id], { w: 120, h: 30 }) + "</span>" +
+      '<span class="delta ' + dirClass(ch, s.unit) + '">' + changeCell(ch, s.unit) +
+      "<i> " + esc(changeLabel(s.freq)) + "</i></span>" +
+      '<span class="asof">latest ' + shortDate(s.last) + "</span>" +
       '<span class="note">' + esc(c.note) + "</span></a>"
     );
   }).join("");
@@ -268,8 +266,8 @@ async function viewTopic(key) {
       (ARABIC_RE.test(lineOf(s)) ? '<span dir="auto">' + esc(lineOf(s)) + "</span>" : esc(lineOf(s))) +
       "</a></td>" +
       '<td class="sparkcell">' + spark(sparks[s.series_id], { w: 82, h: 22 }) + "</td>" +
-      "<td>" + fmt(s.latest_value, s.unit) + '<i class="u">' + esc(unitShort(s.unit)) + "</i></td>" +
-      '<td class="' + dirClass(c) + ' hide-sm">' + dirArrow(c) + " " + fmtChange(c, s.unit) + "</td>" +
+      "<td>" + fmt(s.latest_value, s.unit) + '<i class="u">' + esc(unitTag(s.unit)) + "</i></td>" +
+      '<td class="' + dirClass(c, s.unit) + ' hide-sm">' + changeCell(c, s.unit) + "</td>" +
       '<td class="asof">' + shortDate(s.first) + " – " + shortDate(s.last) + "</td>" +
       '<td class="asof hide-sm">' + esc(FREQ_LABEL[s.freq] || s.freq || "") + "</td>" +
       "</tr>"
@@ -444,11 +442,9 @@ async function viewSeries(id) {
     "<h1>" + titleHTML(data) + "</h1>" +
     '<div class="big-figure">' +
     '<span class="v">' + fmt(stats.latest_value, data.unit) + "</span>" +
-    // fmt() already prints the % sign, so repeating it under the figure would
-    // just be the same character twice.
-    '<span class="u">' + esc(unitShort(data.unit) === "%" ? "" : unitShort(data.unit) || "no unit stated") + "</span>" +
-    '<span class="d ' + dirClass(change) + '">' + dirArrow(change) + " " + fmtChange(change, data.unit) +
-    " since the previous reading</span>" +
+    '<span class="u">' + esc(unitTag(data.unit) || (data.unit ? "" : "no unit stated")) + "</span>" +
+    '<span class="d ' + dirClass(change, data.unit) + '">' + changeCell(change, data.unit) +
+    " " + esc(changeLabel(data.freq)) + "</span>" +
     '<span class="asof">as of ' + niceDate(stats.last) + " · " + staleness(stats.last) + "</span>" +
     "</div>" +
     '<div class="meta-row">' +

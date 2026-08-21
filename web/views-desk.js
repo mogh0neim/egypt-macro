@@ -145,7 +145,7 @@ async function viewMoneyMarket() {
       '<td class="name"><a href="#/s/' + encodeURIComponent(way.series_id) + '">' + esc(TENOR_LABEL[t]) + "</a>" +
       '<span class="unit">weighted average</span></td>' +
       "<td>" + fmt(way.latest_value, way.unit) + "</td>" +
-      '<td class="' + dirClass(c) + '">' + dirArrow(c) + " " + fmtChange(c, way.unit) + "</td>" +
+      '<td class="' + dirClass(c, way.unit) + '">' + changeCell(c, way.unit) + "</td>" +
       '<td class="hide-sm">' + fmt(min && min.latest_value, "percent per annum") + " to " +
       fmt(max && max.latest_value, "percent per annum") + "</td>" +
       "<td>" + fmt(cover && cover.latest_value, "ratio") + "</td>" +

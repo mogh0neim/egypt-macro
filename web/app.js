@@ -100,6 +100,56 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "/" && !typing) { e.preventDefault(); quick.focus(); }
 });
 
+/* ---------- the freshness strip ----------
+ *
+ * A mirror that rebuilds itself every morning has to be able to say when it
+ * last did. Without it a reader cannot tell a fresh page from a workflow that
+ * quietly stopped firing -- and the workflow here has quietly stopped firing
+ * before. build_site.py has written status.json on every publish since the
+ * first deploy; nothing had ever read it.
+ */
+
+async function renderFreshness() {
+  const strip = document.getElementById("freshness");
+  const foot = document.getElementById("foot-fresh");
+  const s = await loadStatus();
+  if (!s || !s.built_at) return;
+
+  const day = s.built_at.slice(0, 10);
+  const clock = s.built_at.slice(11, 16);
+  const today = new Date().toISOString().slice(0, 10);
+  const hours = (Date.now() - Date.parse(s.built_at)) / 3600000;
+
+  /* Thirty-six hours rather than twenty-four. The daily job runs at 08:20 UTC,
+   * so anyone reading in the hours before it fires is looking at a build that
+   * is legitimately a day old, and calling that stale would cry wolf every
+   * morning. */
+  const stale = hours > 36;
+
+  const bits = [
+    stale
+      ? "Last rebuilt " + staleness(day)
+      : "Rebuilt " + clock + " UTC " + (day === today ? "today" : "on " + niceDate(day)),
+  ];
+  if (s.last_scrape) bits.push("CBE last read " + niceDate(s.last_scrape.slice(0, 10)));
+  if (s.series) bits.push(s.series.toLocaleString() + " series");
+  if (s.observations) bits.push(s.observations.toLocaleString() + " observations");
+  if (s.documents) bits.push(s.documents.toLocaleString() + " documents");
+
+  if (strip) {
+    strip.className = "freshness" + (stale ? " stale" : "");
+    strip.innerHTML =
+      '<div class="wrap">' +
+      bits.map((b) => "<span>" + esc(b) + "</span>").join("") +
+      (stale ? '<span class="warn">the daily job may not have run</span>' : "") +
+      "</div>";
+    strip.hidden = false;
+  }
+  // The footer keeps the whole line at every width: it is the one place on the
+  // page with room, and it is where someone checks provenance.
+  if (foot) foot.textContent = bits.join("  ·  ");
+}
+
 /* ---------- mobile navigation ---------- */
 
 document.getElementById("menu").addEventListener("click", () => {
@@ -108,3 +158,4 @@ document.getElementById("menu").addEventListener("click", () => {
 
 window.addEventListener("hashchange", route);
 route();
+renderFreshness();

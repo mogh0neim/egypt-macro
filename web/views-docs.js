@@ -208,7 +208,7 @@ async function viewDocs(presetCategory) {
   const card = (d, page) =>
     '<a class="result" href="' + esc(d.url) + (page ? "#page=" + page : "") + '" target="_blank" rel="noopener">' +
     '<div class="title">' + (ARABIC_RE.test(d.title || "") ? '<span dir="auto">' + esc(d.title || d.id) + "</span>" : esc(d.title || d.id)) + "</div>" +
-    '<div class="sub">' + (d.date || "—") + " · " + esc(SOURCE_LABEL[d.source] || d.source) +
+    '<div class="sub">' + niceDate(d.date) + " · " + esc(SOURCE_LABEL[d.source] || d.source) +
     (page ? ' · <b class="pagehit">page ' + page + "</b>" : "") +
     (d.pages ? " · " + d.pages + (d.pages === 1 ? " page" : " pages") : "") +
     (d.needs_ocr ? (d.ocr ? " · scan, read by OCR" : " · scan, no text layer") : "") +
