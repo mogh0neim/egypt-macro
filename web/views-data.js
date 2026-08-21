@@ -8,9 +8,10 @@
 
 /* ---------- curated starting points ----------
  *
- * Six questions rather than six series IDs. Each is a real question someone
- * turns up with, answered by a number on the card itself, so the card is
- * useful before it is clicked.
+ * Seven questions rather than seven series IDs. Each is a real question
+ * someone turns up with, answered by a number on the card itself, so the card
+ * is useful before it is clicked. The last one runs the full width of the grid
+ * because it opens a whole page rather than one series.
  */
 
 const STARTERS = [
@@ -26,6 +27,8 @@ const STARTERS = [
     note: "Weighted average yield at the 12-month treasury bill auction." },
   { id: "EG.EXT.REMIT.FYTD", q: "What are Egyptians abroad sending home?",
     note: "Workers' remittances, cumulative across the fiscal year." },
+  { id: "EG.CONIA.ON.RATE", q: "What did overnight money actually cost?", href: "#/money-market", wide: true,
+    note: "CONIA, the overnight fixing. Opens the money market page: where the pound funded inside the CBE corridor, the interbank tenors with their volumes, and the EGP bill curve with bid to cover." },
 ];
 
 /* The headline table on the overview. Order inside a group is deliberate. */
@@ -80,7 +83,7 @@ async function viewHome() {
     if (!s) return "";
     const ch = changeOf(s);
     return (
-      '<a class="starter" href="' + (c.href || "#/s/" + encodeURIComponent(c.id)) + '">' +
+      '<a class="starter' + (c.wide ? " wide" : "") + '" href="' + (c.href || "#/s/" + encodeURIComponent(c.id)) + '">' +
       '<span class="q">' + esc(c.q) + "</span>" +
       '<span class="answer"><b>' + fmt(s.latest_value, s.unit) + "</b>" +
       '<i class="u">' + esc(unitShort(s.unit)) + "</i></span>" +
@@ -139,7 +142,7 @@ async function viewHome() {
 
     '<section class="section band"><div class="wrap">' +
     '<p class="eyebrow">Start here</p>' +
-    "<h2>Six questions, already answered</h2>" +
+    "<h2>Seven questions, already answered</h2>" +
     '<p class="lede">Every number below is the latest CBE has published. Click one to see its whole history.</p>' +
     '<div class="starters">' + starters + "</div>" +
     "</div></section>" +
@@ -156,8 +159,6 @@ async function viewHome() {
     "</div></section>" +
 
     (mpcCard ? '<section class="section"><div class="wrap">' + mpcCard + "</div></section>" : "") +
-
-    '<section class="section"><div class="wrap">' + moneyMarketCard() + "</div></section>" +
 
     '<section class="section band"><div class="wrap">' +
     '<p class="eyebrow">Browse</p>' +
@@ -212,7 +213,8 @@ async function viewBrowse() {
     '<p class="eyebrow">Browse</p>' +
     "<h2>All of it, by subject</h2>" +
     '<p class="lede">' + index.length.toLocaleString() + " series in thirteen topics. " +
-    "Every topic opens onto the CBE tables it came from, so you can read a whole balance of payments rather than hunt one line of it.</p>" +
+    "Every topic opens onto the CBE tables it came from, so you can read a whole balance of payments rather than hunt one line of it. " +
+    "The last card is not a topic: it is a screen assembled out of several of them, for a desk that reads the same numbers every morning.</p>" +
     '<div class="topic-grid">' +
     TOPICS.filter((t) => counts[t.key]).map((t) =>
       '<a class="topic-card" href="#/topic/' + t.key + '">' +
@@ -221,6 +223,11 @@ async function viewBrowse() {
       '<span class="count">' + counts[t.key].toLocaleString() + " series · " +
       obs[t.key].toLocaleString() + " observations</span></a>"
     ).join("") +
+    '<a class="topic-card desk" href="#/money-market">' +
+    '<span class="ico" aria-hidden="true">▩</span>' +
+    "<h3>The money market</h3><p>Overnight money inside the CBE corridor, the interbank " +
+    "tenors and their volumes, and the EGP bill curve with bid to cover.</p>" +
+    '<span class="count">A made-up screen, not a CBE table</span></a>' +
     "</div></section></div>";
 }
 

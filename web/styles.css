@@ -369,6 +369,10 @@ a:hover { color: var(--accent); }
 .starter .delta i { font-style: normal; color: var(--text-3); }
 .starter .delta.up { color: var(--accent); }
 .starter .delta.down { color: var(--down); }
+/* A starter that opens a page rather than a series runs the full width of the
+   grid, which also keeps the grid from ending on a ragged row. */
+.starters .starter.wide { grid-column: 1 / -1; }
+
 .starter .note {
   grid-area: note;
   font-size: 0.8rem;
@@ -400,6 +404,9 @@ a:hover { color: var(--accent); }
   cursor: pointer;
 }
 .section.band .topic-card { background: var(--bg); }
+/* Not one of the thirteen subjects, so it does not pretend to be. */
+.topic-card.desk { border-color: var(--gold); }
+.topic-card.desk .count { color: var(--gold); }
 .topic-card:hover { border-color: var(--accent); transform: translateY(-1px); color: inherit; }
 .topic-card .ico {
   font-family: var(--mono);
