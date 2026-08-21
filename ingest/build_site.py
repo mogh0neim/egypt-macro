@@ -117,6 +117,35 @@ def main() -> int:
     manifest.sort(key=lambda m: m["path"])
     manifest_path.write_text(json.dumps(manifest, indent=1), encoding="utf-8")
 
+    # The downloads page needs the size of about thirty files and was fetching
+    # all 3,087 entries to find them: 518 KB, and it blocked the render. Most of
+    # that is one entry per series, per page of document text and per search
+    # shard, none of which anyone downloads by hand.
+    #
+    # manifest.json stays complete, because "every published file with its
+    # SHA-256, so a mirror can check itself" has to remain true. This is the
+    # same data with the bulk left out, at 4 KB.
+    BULK_PREFIXES = ("api/v1/series/", "pages/", "search/")
+    downloads = [m for m in manifest if not m["path"].startswith(BULK_PREFIXES)]
+
+    # manifest.json cannot contain its own hash, and its size is only known once
+    # it has been written, so the entry build_exports left behind was stale: the
+    # download page was offering a 519 KB file and calling it 293 KB. Measure it
+    # here, where the answer is real, and leave the hash out rather than record a
+    # wrong one.
+    downloads = [m for m in downloads if m["path"] != "manifest.json"]
+    downloads.append({
+        "path": "manifest.json",
+        "bytes": manifest_path.stat().st_size,
+        "sha256": None,
+    })
+    downloads.sort(key=lambda m: m["path"])
+    (DIST / "downloads.json").write_text(json.dumps(downloads, indent=1), encoding="utf-8")
+
+    print(f"  manifest.json  {manifest_path.stat().st_size/1e3:.0f} KB, {len(manifest):,} files")
+    print(f"  downloads.json {(DIST / 'downloads.json').stat().st_size/1e3:.0f} KB, "
+          f"{len(downloads)} files a person might fetch by hand")
+
     total = sum(p.stat().st_size for p in DIST.rglob("*") if p.is_file())
     files = sum(1 for p in DIST.rglob("*") if p.is_file())
     print(f"dist/ is a deployable site root: {files:,} files, {total/1e6:.0f} MB")

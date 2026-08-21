@@ -1,8 +1,11 @@
 /* Miqyas -- get the data, and about.
  *
- * The download page reads dist/manifest.json so the sizes on it are the real
- * sizes of the files being offered, not numbers typed into copy that will
- * quietly rot.
+ * The download page reads its sizes off the build rather than out of the copy,
+ * so they cannot quietly rot. It used to read manifest.json for that, which is
+ * 518 KB and 3,087 entries because it lists every series, every page of
+ * document text and every search shard; the page needed thirty of them and
+ * blocked its own render waiting for the rest. downloads.json is the same data
+ * with the bulk left out, at 4 KB.
  */
 
 const MB = (b) => (b >= 1e6 ? (b / 1e6).toFixed(1) + " MB" : Math.round(b / 1e3) + " KB");
@@ -12,7 +15,9 @@ async function viewData() {
   app.innerHTML = skeleton(6);
 
   const index = await loadIndex();
-  const manifest = await getJSON(ROOT + "/manifest.json").catch(() => []);
+  const manifest = await getJSON(ROOT + "/downloads.json")
+    // A clone built before downloads.json existed still has the full manifest.
+    .catch(() => getJSON(ROOT + "/manifest.json").catch(() => []));
   const sizeOf = (path) => {
     const hit = manifest.find((m) => m.path === path);
     return hit ? MB(hit.bytes) : "";

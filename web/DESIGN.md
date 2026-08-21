@@ -57,6 +57,19 @@ Three faces, from Google Fonts, one `@import` at the top of `styles.css`:
 - `--mono` **IBM Plex Mono** 400/500. **Every number on the site**, plus
   eyebrows, units, dates, chips, metadata, code. Always with
   `font-variant-numeric: tabular-nums` where figures stack in a column.
+- `--arabic` **Amiri** 400/700. The wordmark and every Arabic title. A revival
+  of the Naskh cut for the Amiria Press at Bulaq in Cairo, the Egyptian
+  government press founded in 1820, which set the standard for official Egyptian
+  printing for a century: the same reasoning as the Nilometer. **None of the IBM
+  Plex faces carry Arabic at all**, so before this the wordmark and all 1,095
+  Arabic titles fell through to whatever the operating system picked.
+  Deliberately *not* an imitation of CBE's own identity, which would undercut the
+  disclaimer the whole site rests on.
+
+Naskh needs different numbers from Latin at the same nominal size: a smaller
+x-height, deep descenders, no capitals to align to. So `.ar` is set about 15%
+larger than the Latin beside it, with `line-height: 1.7`, and `.mark-ar` is
+nudged down onto the shared optical baseline.
 
 Body is `15px / 1.55`. Headline sizes are all `clamp()` so nothing needs a
 breakpoint to be readable.
@@ -151,6 +164,24 @@ Measured empirically, 360–1920px. The breakpoints and what each is actually fo
 | **980px** | `.two-col` and `.foot-cols` collapse. |
 | **820px** | Phone. Nav becomes a `.menu`-toggled panel, `hide-sm` columns drop, `.result.rich` and `.mpc-row` reflow, the freshness strip keeps only its first item and any warning. |
 | **560px** | Narrow phone. Topic cards go two-up and drop their blurbs, the palette stacks its kind label above the row, the gauge narrows. |
+
+**Forty pixels is the floor for anything tappable.** Measured at 390px, almost
+every control was under it: search and menu at 29 square, chips at 27 tall, and
+the stars at 19 by 18, of which a topic page has a hundred and one. The
+`max-width: 820px` block raises sizes and hides nothing. Two techniques worth
+reusing:
+
+- A link inside a table cell was 17px tall in a cell twice that, so half of every
+  row did nothing. `display: block` plus `padding-block` and a matching negative
+  `margin-block` grows the target into padding the cell already had, without
+  moving anything.
+- Inline links inside a sentence are exempt. They are meant to be text-sized, and
+  a 40px inline link breaks the paragraph.
+
+The search affordance must keep its **label at every width**. An unlabelled
+magnifier was the only route to 1,317 series on a phone. "Find a series" is also
+back in the navigation, `display: none` above 820px, because the panel has
+vertical room the desktop row does not and ctrl-K does not exist on a phone.
 
 Measure before optimising a long page. The overview ran to 8,621px at 390px wide
 and the obvious suspect was the seven full-height starter cards; they were
