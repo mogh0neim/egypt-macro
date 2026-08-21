@@ -218,6 +218,16 @@ Standing rules:
 
   SVG `<text>` shows up as a false positive here; its `className` is an
   `SVGAnimatedString`, which is how to spot it.
+- **Asset URLs are stamped with a content hash** by `version_assets()` in
+  `build_site.py`. Pages serves the front end with `max-age=600` and no version
+  in the filename, so for ten minutes after a deploy a returning reader could
+  hold a mixture: a new `index.html` referencing `views-mydesk.js` and linking to
+  `#/favourites`, with an old cached `app.js` that has heard of neither. That is
+  not a stale site, it is a broken one, and it is exactly what renaming a route
+  produced. The stamp fixes the *mixing*, not the staleness: whichever
+  `index.html` a reader holds points at the assets that belong with it. It hashes
+  the asset bytes rather than the build time, because the archive rebuilds every
+  morning and the front end does not.
 - `--gutter` is `clamp(1rem, 4vw, 3.5rem)`; `--measure` caps the wrap at 1180px.
 - `--radius` is 3px. Everywhere. Chips and badges use 2px.
 

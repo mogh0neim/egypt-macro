@@ -42,6 +42,38 @@ def copy_front_end() -> list[str]:
     return copied
 
 
+def version_assets(names: list[str]) -> str:
+    """Stamp the script and stylesheet URLs in index.html with a content hash.
+
+    Pages serves these with `max-age=600` and no version in the filename, so for
+    ten minutes after a deploy a returning reader can hold a mixture: a new
+    index.html that references views-mydesk.js and links to #/favourites, with an
+    old app.js that has never heard of either. That is not a stale site, it is a
+    broken one, and renaming a route is exactly when it bites.
+
+    A stamp fixes the mixing rather than the staleness. index.html is cached too,
+    so someone can still be a few minutes behind, but whichever copy they hold
+    points at the assets that belong with it.
+
+    The stamp is a hash of the asset bytes, not the build time: the archive is
+    rebuilt every morning and the front end is not, so a timestamp would throw
+    away every reader's cache daily for nothing.
+    """
+    assets = sorted(x for x in names if x.endswith((".js", ".css")))
+    digest = hashlib.sha256()
+    for name in assets:
+        digest.update((DIST / name).read_bytes())
+    stamp = digest.hexdigest()[:10]
+
+    html_path = DIST / "index.html"
+    html = html_path.read_text(encoding="utf-8")
+    for name in assets:
+        html = html.replace('src="' + name + '"', 'src="' + name + "?v=" + stamp + '"')
+        html = html.replace('href="' + name + '"', 'href="' + name + "?v=" + stamp + '"')
+    html_path.write_text(html, encoding="utf-8")
+    return stamp
+
+
 def main() -> int:
     if not (DIST / "api").exists():
         print("dist/api is missing. Run ingest/build_exports.py first.")
@@ -49,7 +81,8 @@ def main() -> int:
     DIST.mkdir(parents=True, exist_ok=True)
 
     copied = copy_front_end()
-    print(f"front end: {len(copied)} files -> dist/")
+    stamp = version_assets(copied)
+    print(f"front end: {len(copied)} files -> dist/, versioned {stamp}")
 
     # GitHub Pages runs Jekyll over an uploaded site unless told not to, and
     # Jekyll silently drops any file or folder whose name starts with an
