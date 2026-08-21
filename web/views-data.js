@@ -44,17 +44,29 @@ const HEADLINE_GROUPS = [
 const changeOf = (s) =>
   s && s.previous !== null && s.previous !== undefined ? s.latest_value - s.previous : null;
 
-function indicatorRow(s) {
+/* One row of the workhorse table, shared by the overview, the money market page
+ * and the desk. opts.spark swaps the record low and high for a shape, which is
+ * what a desk wants day to day: the position of a rate inside its twenty-year
+ * range matters less each morning than which way it has been going. */
+function indicatorRow(s, opts) {
+  opts = opts || {};
   const c = changeOf(s);
   return (
     "<tr>" +
+    '<td class="star-col">' + starButton(s.series_id) + "</td>" +
     '<td class="name"><a href="#/s/' + encodeURIComponent(s.series_id) + '">' + titleHTML(s) + "</a>" +
     '<span class="unit">' + esc(unitShort(s.unit)) + "</span></td>" +
+    (opts.spark ? '<td class="sparkcell hide-sm">' + spark(opts.spark, { w: 82, h: 22 }) + "</td>" : "") +
     "<td>" + fmt(s.latest_value, s.unit) + "</td>" +
     '<td class="' + dirClass(c, s.unit) + '">' + changeCell(c, s.unit) + "</td>" +
-    '<td class="hide-sm">' + fmt(s.lowest && s.lowest.value, s.unit) + "</td>" +
-    '<td class="hide-sm">' + fmt(s.highest && s.highest.value, s.unit) + "</td>" +
-    '<td class="hide-sm">' + gauge(s.latest_value, s.lowest && s.lowest.value, s.highest && s.highest.value) + "</td>" +
+    (opts.spark
+      ? ""
+      : '<td class="hide-sm">' + fmt(s.lowest && s.lowest.value, s.unit) + "</td>" +
+        '<td class="hide-sm">' + fmt(s.highest && s.highest.value, s.unit) + "</td>") +
+    // The gauge stays at every width. It was hidden on a phone alongside the two
+    // columns it summarises, which is exactly backwards: it says what they say,
+    // in a quarter of the space.
+    "<td>" + gauge(s.latest_value, s.lowest && s.lowest.value, s.highest && s.highest.value, { median: s.median }) + "</td>" +
     '<td class="asof">' + shortDate(s.last) + "</td>" +
     "</tr>"
   );
@@ -95,7 +107,7 @@ async function viewHome() {
   const table = HEADLINE_GROUPS.map((g) => {
     const rows = g.ids.map((id) => state.byId.get(id)).filter(Boolean);
     if (!rows.length) return "";
-    return '<tr class="group-head"><td colspan="7">' + esc(g.label) + "</td></tr>" + rows.map(indicatorRow).join("");
+    return '<tr class="group-head"><td colspan="8">' + esc(g.label) + "</td></tr>" + rows.map((r) => indicatorRow(r)).join("");
   }).join("");
 
   const counts = {};
@@ -150,10 +162,13 @@ async function viewHome() {
     "<h2>Headline indicators</h2>" +
     '<p class="lede">Latest reading, the change since the one before it, and where that sits between the series’ own record low and high.</p>' +
     '<div class="table-scroll"><table class="indicators"><thead><tr>' +
+    '<th class="star-col"><span class="sr-only">On your desk</span></th>' +
     "<th>Series</th><th>Latest</th><th>Change</th>" +
     '<th class="hide-sm">Lowest</th><th class="hide-sm">Highest</th>' +
-    '<th class="hide-sm">Where it sits</th><th>As of</th>' +
+    "<th>Where it sits</th><th>As of</th>" +
     "</tr></thead><tbody>" + table + "</tbody></table></div>" +
+    '<p class="foot-note">Star any row to keep it on your desk: one screen of the ' +
+    'numbers you read every morning, with no prose in the way. <a href="#/desk">Open the desk →</a></p>' +
     "</div></section>" +
 
     (mpcCard ? '<section class="section"><div class="wrap">' + mpcCard + "</div></section>" : "") +
@@ -262,6 +277,7 @@ async function viewTopic(key) {
     const c = changeOf(s);
     return (
       '<tr data-title="' + esc(((s.title_en || "") + " " + s.series_id).toLowerCase()) + '" data-freq="' + esc(s.freq || "") + '">' +
+      '<td class="star-col">' + starButton(s.series_id) + "</td>" +
       '<td class="name"><a href="#/s/' + encodeURIComponent(s.series_id) + '">' +
       (ARABIC_RE.test(lineOf(s)) ? '<span dir="auto">' + esc(lineOf(s)) + "</span>" : esc(lineOf(s))) +
       "</a></td>" +
@@ -283,6 +299,7 @@ async function viewTopic(key) {
       "<summary><span class=\"g-name\">" + esc(name) + "</span>" +
       '<span class="g-meta">' + rows.length + " series · from " + shortDate(covers) + "</span></summary>" +
       '<div class="table-scroll"><table class="indicators compact"><thead><tr>' +
+      '<th class="star-col"><span class="sr-only">On your desk</span></th>' +
       "<th>Line</th><th></th><th>Latest</th>" +
       '<th class="hide-sm">Change</th><th>Covers</th><th class="hide-sm">Published</th>' +
       "</tr></thead><tbody>" + rows.map(seriesRow).join("") + "</tbody></table></div></details>"
@@ -614,6 +631,8 @@ async function viewSeries(id) {
     '<div class="readout" id="s-readout"></div>' +
 
     '<div class="controls">' +
+    '<button class="chip star-chip' + (watchHas(id) ? " on" : "") + '" data-star="' + esc(id) + '">' +
+    (watchHas(id) ? "★ On your desk" : "☆ Keep on your desk") + "</button>" +
     '<button class="chip solid" id="dl-range">This range as CSV</button>' +
     '<button class="chip" id="dl-all">Everything as CSV</button>' +
     '<button class="chip" id="copy-tsv">Copy for a spreadsheet</button>' +

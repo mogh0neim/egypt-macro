@@ -211,9 +211,10 @@ async function viewMoneyMarket() {
     "thin volume is not the same fact as a rate on heavy volume. The last column is where " +
     "the current reading sits between that series' own record low and high.</p>" +
     '<div class="table-scroll"><table class="indicators"><thead><tr>' +
+    '<th class="star-col"><span class="sr-only">On your desk</span></th>' +
     "<th>Series</th><th>Latest</th><th>Change</th>" +
     '<th class="hide-sm">Lowest</th><th class="hide-sm">Highest</th>' +
-    '<th class="hide-sm">Where it sits</th><th>As of</th>' +
+    "<th>Where it sits</th><th>As of</th>" +
     "</tr></thead><tbody>" + overnight + "</tbody></table></div>" +
     "</div></section>" +
 

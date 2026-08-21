@@ -52,6 +52,51 @@ const store = {
   },
 };
 
+/* ---------- the watchlist ----------
+ *
+ * A list of series ids in localStorage and nothing more. No account, no server,
+ * no sync: this is the difference between a site someone reads once and one they
+ * open every morning, and it does not need to be more than a list.
+ *
+ * Every read goes through store, which swallows the exception a private window
+ * throws, so a desk still renders from its defaults rather than showing a blank
+ * page to anyone with site data turned off.
+ */
+
+const watchGet = () => {
+  const raw = store.get("watch", []);
+  return Array.isArray(raw) ? raw.filter((x) => typeof x === "string") : [];
+};
+
+const watchHas = (id) => watchGet().indexOf(id) !== -1;
+
+const watchSet = (ids) => store.set("watch", ids.slice(0, 200));
+
+/* Returns the new state, so a caller can update its own buttons without reading
+ * storage again. */
+function watchToggle(id) {
+  const ids = watchGet();
+  const i = ids.indexOf(id);
+  if (i === -1) ids.push(id);
+  else ids.splice(i, 1);
+  watchSet(ids);
+  return i === -1;
+}
+
+/* The star, wherever a series is listed. A button rather than a link, because it
+ * changes something instead of going somewhere, and because a nested anchor
+ * inside a row that is itself a link would be unclickable. */
+const starButton = (id) => {
+  const on = watchHas(id);
+  return (
+    '<button class="star' + (on ? " on" : "") + '" data-star="' + esc(id) +
+    '" aria-pressed="' + on + '" title="' + (on ? "On your desk" : "Keep this on your desk") +
+    '" aria-label="' + (on ? "Remove from your desk" : "Keep on your desk") + '">' +
+    (on ? "★" : "☆") +
+    "</button>"
+  );
+};
+
 /* ---------- formatting ---------- */
 
 const ARABIC_RE = /[؀-ۿ]/;

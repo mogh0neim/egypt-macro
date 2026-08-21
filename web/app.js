@@ -13,6 +13,7 @@ const ROUTES = [
   { test: /^\/s\/(.+)$/, view: (m) => viewSeries(decodeURIComponent(m[1])), nav: "browse" },
   { test: /^\/money-market/, view: () => viewMoneyMarket(), nav: "browse" },
   { test: /^\/find\??(.*)$/, view: (m) => viewFind(new URLSearchParams(m[1] || "").get("q") || ""), nav: "find" },
+  { test: /^\/desk\??(.*)$/, view: (m) => viewDesk(m[1] || ""), nav: "desk" },
   { test: /^\/docs\/(.+)$/, view: (m) => viewDocs(decodeURIComponent(m[1])), nav: "docs" },
   { test: /^\/docs/, view: () => viewDocs(), nav: "docs" },
   { test: /^\/rates/, view: () => viewMPC(), nav: "rates" },
@@ -79,6 +80,40 @@ document.getElementById("theme").addEventListener("click", () => {
   if (next) localStorage.setItem("theme", next);
   else localStorage.removeItem("theme");
   applyTheme(next);
+});
+
+/* ---------- the star ----------
+ *
+ * Delegated once at the root rather than wired per view, because every table on
+ * the site rewrites its own rows and a per-row listener would be lost on each
+ * render. A single id can appear more than once on a page -- the overview and
+ * the money market both list CONIA -- so all of its buttons are updated
+ * together, or one would silently disagree with the other.
+ */
+
+document.getElementById("app").addEventListener("click", (e) => {
+  const button = e.target.closest("[data-star]");
+  if (!button) return;
+  e.preventDefault();
+  const id = button.dataset.star;
+  const on = watchToggle(id);
+
+  document.querySelectorAll('[data-star="' + id + '"]').forEach((el) => {
+    el.classList.toggle("on", on);
+    el.setAttribute("aria-pressed", String(on));
+    if (el.classList.contains("star-chip")) {
+      el.textContent = on ? "★ On your desk" : "☆ Keep on your desk";
+    } else {
+      el.textContent = on ? "★" : "☆";
+      el.title = on ? "On your desk" : "Keep this on your desk";
+      el.setAttribute("aria-label", on ? "Remove from your desk" : "Keep on your desk");
+    }
+  });
+
+  // The desk is a view of the list being edited, so it gets told. It handles
+  // this itself rather than being redrawn from here: a full redraw moves the row
+  // out from under the cursor and the next click lands on a detached node.
+  if (/^#?\/desk/.test(location.hash) && typeof deskOnStar === "function") deskOnStar(id, on);
 });
 
 /* ---------- the freshness strip ----------

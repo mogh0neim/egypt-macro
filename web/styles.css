@@ -280,6 +280,10 @@ a:hover { color: var(--accent); }
  * clicking, which is the rule the rest of the site follows.
  */
 
+/* An author `display` beats the UA rule that implements the hidden attribute, so
+   without this the palette is open on every page load. */
+.palette[hidden] { display: none; }
+
 .palette {
   position: fixed;
   inset: 0;
@@ -761,9 +765,53 @@ input.filter {
 }
 input.filter:focus { border-color: var(--accent); outline: none; }
 
+/* ---------- the star ----------
+ *
+ * Gold when set, because it is structure: it marks what the reader has decided
+ * belongs on their screen. Off it is quiet enough not to compete with the
+ * numbers, which are what the table is for.
+ */
+
+.star {
+  background: none;
+  border: 0;
+  padding: 0.1rem 0.2rem;
+  font-size: 0.95rem;
+  line-height: 1;
+  color: var(--line);
+  cursor: pointer;
+}
+.star:hover { color: var(--gold); }
+.star.on { color: var(--gold); }
+table.indicators td.star-col,
+table.indicators th.star-col {
+  width: 1.9rem;
+  padding-inline: 0.2rem 0;
+  text-align: center;
+}
+/* A chip rather than a bare star on a series page, where there is room to say
+   what it does and no column of neighbours to line up with. */
+.chip.star-chip.on { border-color: var(--gold); color: var(--gold); }
+
+/* Present for a screen reader, absent for everyone else. The star column's
+   header has no visible label because the stars themselves are the label. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- the desk ---------- */
+
+.desk-head .lede { max-width: 72ch; }
+
 /* ---------- the gauge ---------- */
 
 .gauge { width: 82px; height: 20px; display: block; margin-inline-start: auto; }
+@media (max-width: 560px) { .gauge { width: 56px; } }
 .gauge .track { fill: var(--line-soft); }
 .gauge .notch { stroke: var(--line); stroke-width: 1; }
 .gauge .fill { fill: var(--accent-quiet); }
