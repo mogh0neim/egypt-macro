@@ -1174,7 +1174,14 @@ input.search::placeholder { color: var(--text-3); }
 .result { display: block; padding: 0.65rem 0.4rem; border-bottom: 1px solid var(--line-soft); }
 .result:hover { background: var(--surface-2); }
 .result .title { font-weight: 450; }
-.result .sub { font-family: var(--mono); font-size: 0.7rem; color: var(--text-3); }
+.result .sub {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-3);
+  /* Same 88-character CBE ids that overflowed .series-id. An empty-query sweep
+     of this page finds nothing, because it renders no ids at all. */
+  overflow-wrap: anywhere;
+}
 .result .sub .pagehit { color: var(--accent); font-weight: 500; }
 
 .result.rich {
@@ -1196,7 +1203,22 @@ input.search::placeholder { color: var(--text-3); }
 }
 .result.rich .sub { grid-area: sub; }
 
-.empty { color: var(--text-3); font-family: var(--mono); font-size: 0.8rem; padding: 2rem 0; }
+/* The star is a sibling of the row rather than a child, so it needs the row to
+   line them up. */
+.result-row { display: flex; align-items: flex-start; gap: 0.2rem; }
+.result-row > .star { padding-top: 0.7rem; }
+.result-row > .result { flex: 1; min-width: 0; }
+
+.empty {
+  color: var(--text-3);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  padding: 2rem 0;
+  /* The not-found state prints the id that was asked for, and a mistyped one is
+     usually a long one. */
+  overflow-wrap: anywhere;
+}
+code { overflow-wrap: anywhere; }
 
 /* ---------- rate decisions ---------- */
 
@@ -1357,6 +1379,25 @@ footer {
 @media (max-width: 980px) {
   .two-col { grid-template-columns: 1fr; }
   .foot-cols { grid-template-columns: 1fr 1fr; }
+}
+
+/* The overview runs to 8,600px on a 390px screen, and measuring it put the cost
+   somewhere other than where it looked: the thirteen topic cards were 2,371px of
+   it, nearly twice the seven starters. Two columns and no blurbs takes that to
+   about 700. The blurbs are good copy and they are still on Browse at a width
+   that can hold them, and in the lede of every topic page. */
+@media (max-width: 560px) {
+  .topic-grid,
+  .topic-grid.tight { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.5rem; }
+  .topic-card { padding: 0.75rem 0.8rem; }
+  .topic-card p { display: none; }
+  .topic-card h3 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+  .topic-card .ico { margin-bottom: 0.2rem; }
+
+  /* Same idea, less of it: the starters keep everything and give up padding. */
+  .starter { padding: 0.85rem 0.9rem 0.9rem; }
+  .starter .answer b { font-size: 1.5rem; }
+  .starter .note { font-size: 0.74rem; margin-top: 0.25rem; }
 }
 
 @media (max-width: 820px) {

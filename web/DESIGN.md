@@ -150,14 +150,36 @@ Measured empirically, 360–1920px. The breakpoints and what each is actually fo
 | **1150px** | `.quick` and `.unofficial` go. Between here and a comfortable desktop there is room in the masthead for the nav or the search box, not both, and the nav wins. |
 | **980px** | `.two-col` and `.foot-cols` collapse. |
 | **820px** | Phone. Nav becomes a `.menu`-toggled panel, `hide-sm` columns drop, `.result.rich` and `.mpc-row` reflow, the freshness strip keeps only its first item and any warning. |
+| **560px** | Narrow phone. Topic cards go two-up and drop their blurbs, the palette stacks its kind label above the row, the gauge narrows. |
+
+Measure before optimising a long page. The overview ran to 8,621px at 390px wide
+and the obvious suspect was the seven full-height starter cards; they were
+1,360px of it, and the thirteen topic cards were 2,371px. Two columns and no
+blurbs on the cards took the page to 6,879px.
 
 Standing rules:
 
 - **`documentElement.scrollWidth` must equal `clientWidth` at 360px on every
   route.** Wide content scrolls inside its own `overflow-x: auto` container
-  (`.table-scroll`, `pre.code`), and the page body never scrolls sideways. This
-  check is what caught `select.chip { max-width: 22rem }` (352px) overflowing a
-  358px viewport.
+  (`.table-scroll`, `pre.code`), and the page body never scrolls sideways.
+- **Sweep populated states, not empty ones**, and sweep the error states too.
+  CBE's Excel-derived ids run to 88 characters, and an unbroken mono string that
+  long pushes a phone sideways on its own. Four separate places have now needed
+  `overflow-wrap: anywhere` for exactly that reason (`.series-id`, `.result .sub`,
+  `.psub`, `.empty` / `code`), and the first sweep missed the one on `#/find`
+  because it loaded the page with no query, which renders no ids at all.
+- Find the culprit by looking for elements whose **own content** overflows them,
+  not for boxes wider than the viewport. The wide box is usually an ancestor;
+  the offender is the leaf:
+
+  ```js
+  [...d.querySelectorAll("body *")]
+    .filter(e => e.scrollWidth > e.clientWidth + 2 && e.clientWidth > 0)
+    .filter(e => getComputedStyle(e).overflowX === "visible")
+  ```
+
+  SVG `<text>` shows up as a false positive here; its `className` is an
+  `SVGAnimatedString`, which is how to spot it.
 - `--gutter` is `clamp(1rem, 4vw, 3.5rem)`; `--measure` caps the wrap at 1180px.
 - `--radius` is 3px. Everywhere. Chips and badges use 2px.
 

@@ -178,7 +178,7 @@ async function viewHome() {
     "<h2>Everything, by subject</h2>" +
     '<p class="lede">Thirteen topics over ' + index.length.toLocaleString() +
     " series. No search box required. Pick a subject and read down.</p>" +
-    '<div class="topic-grid">' + topicGrid + "</div>" +
+    '<div class="topic-grid">' + topicGrid + deskTopicCard() + "</div>" +
     "</div></section>" +
 
     // The overview should be able to reach everything the site has. Without
@@ -206,6 +206,15 @@ async function viewHome() {
     wireHover(document.getElementById("hero"), fx.observations, fx.unit, document.getElementById("hero-readout"));
   }
 }
+
+/* The fourteenth card on both grids. Gold-bordered, because it is not one of
+ * the thirteen subjects and should not pretend to be. */
+const deskTopicCard = () =>
+  '<a class="topic-card desk" href="#/money-market">' +
+  '<span class="ico" aria-hidden="true">▩</span>' +
+  "<h3>The money market</h3><p>Overnight money inside the CBE corridor, the interbank " +
+  "tenors and their volumes, and the EGP bill curve with bid to cover.</p>" +
+  '<span class="count">A made-up screen, not a CBE table</span></a>';
 
 /* ---------- browse: all topics ---------- */
 
@@ -236,11 +245,7 @@ async function viewBrowse() {
       '<span class="count">' + counts[t.key].toLocaleString() + " series · " +
       obs[t.key].toLocaleString() + " observations</span></a>"
     ).join("") +
-    '<a class="topic-card desk" href="#/money-market">' +
-    '<span class="ico" aria-hidden="true">▩</span>' +
-    "<h3>The money market</h3><p>Overnight money inside the CBE corridor, the interbank " +
-    "tenors and their volumes, and the EGP bill curve with bid to cover.</p>" +
-    '<span class="count">A made-up screen, not a CBE table</span></a>' +
+    deskTopicCard() +
     "</div></section></div>";
 }
 
@@ -766,13 +771,18 @@ async function viewFind(preset) {
     out.innerHTML = hits.length
       ? '<p class="count-line">' + hits.length + (hits.length === 100 ? "+" : "") + " matching series</p>" +
         hits.map((s) =>
+          // The star sits outside the anchor rather than inside it: a button
+          // nested in a link is invalid, and a click on it would navigate.
+          '<div class="result-row">' +
+          starButton(s.series_id) +
           '<a class="result rich" href="#/s/' + encodeURIComponent(s.series_id) + '">' +
           '<span class="title">' + titleHTML(s) + "</span>" +
           '<span class="spk">' + spark(sparks[s.series_id], { w: 70, h: 20 }) + "</span>" +
           '<span class="v">' + fmt(s.latest_value, s.unit) + "</span>" +
           titleAR(s) +
           '<span class="sub">' + esc(s.series_id) + " · " + (s.n || 0).toLocaleString() + " readings · " +
-          shortDate(s.first) + " – " + shortDate(s.last) + (s.unit ? " · " + esc(unitShort(s.unit)) : "") + "</span></a>"
+          shortDate(s.first) + " – " + shortDate(s.last) + (s.unit ? " · " + esc(unitShort(s.unit)) : "") +
+          "</span></a></div>"
         ).join("")
       : '<p class="empty">Nothing matches “' + esc(input.value) + '”. ' +
         'Try a broader word, or <a href="#/browse">browse by subject</a>.</p>';

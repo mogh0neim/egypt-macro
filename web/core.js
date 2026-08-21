@@ -300,7 +300,8 @@ const TOPICS = [
     blurb: "Headline and core inflation, the basket underneath them, and producer prices.",
     families: ["prices", "inflation"] },
   { key: "reserves", name: "Reserves and remittances", icon: "◆",
-    blurb: "Net international reserves, and what Egyptians abroad send home.",
+    blurb: "Two headline numbers, read out of CBE's monthly press release rather than " +
+      "published as a table: net international reserves, and what Egyptians abroad send home.",
     families: ["external"] },
   { key: "bop", name: "Balance of payments", icon: "⇄",
     blurb: "The current account, trade in goods and services, and how the gap is financed.",
