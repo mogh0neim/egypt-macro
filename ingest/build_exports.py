@@ -21,6 +21,7 @@ import csv
 import hashlib
 import json
 import pathlib
+import re
 import shutil
 import sqlite3
 import zipfile
@@ -180,6 +181,24 @@ def main() -> int:
     for sid, period, value in observations:
         per_series[sid].append([period, value])
 
+    # summarise.py writes the flags as prose, for COVERAGE.md to read. Parse the
+    # two numbers back out here rather than in the browser, so a reworded flag
+    # breaks the build instead of silently switching a warning off on the site.
+    def numbers_from(flags):
+        stale = zeros = None
+        rest = []
+        for f in flags:
+            m = re.search(r"no new value in (\d+) days", f)
+            if m:
+                stale = int(m.group(1))
+                continue
+            m = re.match(r"(\d+) zero values", f)
+            if m:
+                zeros = int(m.group(1))
+                continue
+            rest.append(f)
+        return stale, zeros, rest
+
     summary_by_id = {s["series_id"]: s for s in summary}
     index = []
     for sid, points in per_series.items():
@@ -201,6 +220,7 @@ def main() -> int:
             ),
             encoding="utf-8",
         )
+        stale_days, zero_values, other_flags = numbers_from(stats.get("flags") or [])
         index.append(
             {
                 "series_id": sid,
@@ -216,6 +236,16 @@ def main() -> int:
                 "highest": stats.get("highest"),
                 "lowest": stats.get("lowest"),
                 "previous": stats.get("previous"),
+                # All three were computed on every run and thrown away before
+                # they reached the page. The flags matter most: 742 of these
+                # series have published nothing new for longer than their own
+                # rhythm allows, and a reader had no way to know before quoting
+                # one. Omitted rather than sent as null, to keep the index small.
+                "median": stats.get("median"),
+                **({"biggest_move": stats["biggest_move"]} if stats.get("biggest_move") else {}),
+                **({"flags": other_flags} if other_flags else {}),
+                **({"stale_days": stale_days} if stale_days is not None else {}),
+                **({"zero_values": zero_values} if zero_values is not None else {}),
             }
         )
 

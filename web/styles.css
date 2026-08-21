@@ -636,6 +636,19 @@ input.filter:focus { border-color: var(--accent); outline: none; }
 .gauge .fill { fill: var(--accent-quiet); }
 .gauge .mark { stroke: var(--accent); stroke-width: 2.5; }
 .gauge .mark.low { stroke: var(--down); }
+/* Gold, because the median is structure: it says where the middle of the record
+   is, not what the reading is. */
+.gauge .median { stroke: var(--gold); stroke-width: 1.5; }
+
+/* On a series page the column runs the width of the page. It carries real
+   geometry rather than a stretched 82-unit copy, or every stroke on it would
+   scale up with the box. */
+.gauge.wide {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin-inline-start: 0;
+}
 
 /* ---------- sparkline ---------- */
 
@@ -658,6 +671,12 @@ input.filter:focus { border-color: var(--accent); outline: none; }
 /* The corridor is a band, and reads as one. */
 .chart .band { fill: var(--gold); opacity: 0.16; }
 .chart .tick { font-family: var(--mono); font-size: 10px; fill: var(--text-3); }
+/* A regime is a field with a name in it; an event is a dashed rule with a
+   figure above the frame. Deliberately different scales, so the two can share a
+   chart without competing. */
+.chart .regime { fill: var(--gold); opacity: 0.045; }
+.chart .regime.alt { opacity: 0.1; }
+.chart .regime-label { font-family: var(--mono); font-size: 9.5px; fill: var(--gold); opacity: 0.8; }
 .chart .event { stroke: var(--gold); stroke-width: 1; stroke-dasharray: 2 3; }
 .chart .event-label { font-family: var(--mono); font-size: 9.5px; fill: var(--gold); }
 .chart .hover-line { stroke: var(--text-3); stroke-width: 1; }
@@ -723,6 +742,90 @@ input.filter:focus { border-color: var(--accent); outline: none; }
   stroke-dasharray: none;
 }
 
+/* ---------- notices ----------
+ *
+ * Gold, not red: this is structure telling the reader something about the shape
+ * of the record, not a fall. Red on this site only ever means a number went
+ * down.
+ */
+
+.notice {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 0.85rem 1.1rem;
+  margin-block: 1.2rem;
+}
+.notice h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  margin: 0 0 0.25rem;
+  color: var(--gold);
+}
+.notice p { margin: 0; color: var(--text-2); font-size: 0.88rem; max-width: 74ch; }
+
+/* ---------- where a reading sits in its own record ---------- */
+
+.where { border-top: 1px solid var(--line); padding-block: 1.2rem 0.4rem; }
+.gauge-ends {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-3);
+  padding-top: 0.35rem;
+}
+.gauge-ends b {
+  font-weight: 500;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  margin-inline-start: 0.3rem;
+}
+.gauge-ends i { font-style: normal; display: block; color: var(--text-3); }
+.gauge-ends .hi { text-align: right; }
+.where-note {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--text-2);
+  margin: 0.8rem 0 0;
+}
+
+/* ---------- the readings themselves ---------- */
+
+details.obs {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  margin-block: 0.4rem 1rem;
+}
+details.obs > summary {
+  cursor: pointer;
+  padding: 0.8rem 1.1rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  list-style: none;
+}
+details.obs > summary::-webkit-details-marker { display: none; }
+details.obs > summary::before {
+  content: "▸";
+  color: var(--gold);
+  font-size: 0.7rem;
+  transition: transform 0.15s;
+}
+details.obs[open] > summary::before { transform: rotate(90deg); }
+details.obs > summary:hover .g-name { color: var(--accent); }
+details.obs > div { padding: 0 1.1rem 0.9rem; }
+details.obs .count-line { margin-top: 0; }
+/* A date is not a number to be right-aligned against other numbers. */
+table.indicators td.period {
+  text-align: left;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+
 /* ---------- series page ---------- */
 
 .series-head { border-bottom: 1px solid var(--line); padding-block: 1.2rem 1.25rem; }
@@ -734,7 +837,17 @@ input.filter:focus { border-color: var(--accent); outline: none; }
   margin: 0.2rem 0 0.7rem;
   max-width: 36ch;
 }
-.series-id { font-family: var(--mono); font-size: 0.68rem; color: var(--text-3); letter-spacing: 0.04em; }
+/* CBE's Excel-derived ids run to 71 characters, and an unbroken mono string
+   that long pushes a phone sideways on its own. */
+.series-id {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-3);
+  letter-spacing: 0.04em;
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
 
 .big-figure {
   display: flex;
@@ -787,7 +900,15 @@ input.filter:focus { border-color: var(--accent); outline: none; }
   border-bottom: 1px solid var(--line-soft);
   font-size: 0.86rem;
 }
-.sib-list li b { font-family: var(--mono); font-weight: 500; font-variant-numeric: tabular-nums; color: var(--text-2); }
+.sib-list li b {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+/* "13.84" on its own says nothing about what it is. */
+.sib-list li b .u { font-size: 0.72em; color: var(--text-3); font-style: normal; margin-inline-start: 0.3rem; }
 
 .controls {
   display: flex;
@@ -1074,6 +1195,7 @@ footer {
   table.indicators td.hide-sm, table.indicators th.hide-sm { display: none; }
   .foot-cols { grid-template-columns: 1fr; }
   .freshness .wrap > span:not(:first-child):not(.warn) { display: none; }
+  .gauge-ends { gap: 0.3rem 1rem; }
   .big-figure .asof { margin-inline-start: 0; width: 100%; }
   .result.rich { grid-template-columns: 1fr 5rem; grid-template-areas: "title v" "spk spk" "sub sub"; }
   .mpc-row .src { margin-inline-start: 0; }

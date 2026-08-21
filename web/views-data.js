@@ -344,7 +344,126 @@ async function viewTopic(key) {
   });
 }
 
-/* ---------- one series ---------- */
+/* ---------- one series ----------
+ *
+ * The page every search and every click lands on, so it carries the weight.
+ * The rule for what belongs here: a reader should be able to answer "is this a
+ * lot?", "is this current?" and "can I have it?" without leaving.
+ */
+
+/* CBE's own quality flags, which summarise.py has computed on every run and
+ * which nothing had ever shown a reader. 742 of the 1,317 series have gone
+ * quiet well past their own publishing rhythm, and someone could quote one
+ * without ever being told. */
+function qualityNotice(meta, data) {
+  if (!meta) return "";
+  const out = [];
+  if (meta.stale_days) {
+    const cadence = (FREQ_LABEL[data.freq] || "").toLowerCase();
+    out.push(
+      '<div class="notice"><h3>This series looks discontinued</h3>' +
+      "<p>CBE has published nothing new here since " + niceDate(meta.last) + ": " +
+      meta.stale_days.toLocaleString() + " days without a new " +
+      (cadence ? esc(cadence) + " reading" : "reading") +
+      ". What is below is complete as far as it goes, and it is not current.</p></div>"
+    );
+  }
+  if (meta.zero_values) {
+    out.push(
+      '<div class="notice"><h3>' + meta.zero_values.toLocaleString() +
+      " of these readings are exactly zero</h3>" +
+      "<p>CBE publishes a zero where no rate was set rather than leaving the cell " +
+      "empty, and they are reproduced here as published rather than treated as " +
+      "missing. An average taken across this series will be pulled toward zero.</p></div>"
+    );
+  }
+  /* Anything summarise.py flags that build_exports could not classify. Empty in
+   * the catalogue as it stands, and here so that a new kind of flag shows up on
+   * the page by itself rather than waiting for someone to notice it. */
+  (meta.flags || []).forEach((f) =>
+    out.push('<div class="notice"><h3>A note on this series</h3><p>' + esc(f) + "</p></div>")
+  );
+  return out.join("");
+}
+
+/* The largest single step in the record. Led by the absolute change, because
+ * that is the figure that always means something: 371 of the 1,298 series with
+ * a biggest_move have a percentage change over 500%, computed off a base near
+ * zero, and one of them is 2.2 quintillion per cent. A percentage that large is
+ * not a fact about the economy, it is a fact about dividing by almost nothing,
+ * so it is only shown where it is readable -- and never on a series already
+ * measured in percent, where the move in points is the thing that matters and
+ * the ratio is noise. */
+function biggestMove(move, unit) {
+  if (!move || move.change === null || move.change === undefined) return "";
+  const tag = unitTag(unit);
+  const size = (move.change > 0 ? "+" : "-") + fmtChange(move.change, unit) + (tag ? " " + tag : "");
+  const readable = Math.abs(move.pct_change) <= 500 && !/percent/i.test(unit || "");
+  return (
+    "Biggest single move " + size +
+    (readable ? " (" + (move.pct_change > 0 ? "+" : "") + move.pct_change.toFixed(1) + "%)" : "") +
+    " on " + niceDate(move.period) + "."
+  );
+}
+
+/* The graduated column, at full width, with the record low and high dated and
+ * the median marked on it. The gauge is the site's one ornament and until now
+ * it appeared only inside tables, where it is also hidden on a phone. */
+function whereItSits(meta, unit) {
+  if (!meta) return "";
+  const lo = meta.lowest, hi = meta.highest;
+  if (!lo || !hi || lo.value === hi.value) return "";
+
+  const hasMedian = meta.median !== null && meta.median !== undefined && meta.median !== 0;
+  const note = [
+    hasMedian
+      ? "The gold mark is the median of " + (meta.n || 0).toLocaleString() +
+        " readings, " + fmt(meta.median, unit) + "."
+      : "",
+    hasMedian ? vsMedian(meta.latest_value, meta.median) : "",
+    biggestMove(meta.biggest_move, unit),
+  ].filter(Boolean).join(" ");
+
+  return (
+    '<section class="where">' +
+    '<p class="eyebrow">Where this sits in its own record</p>' +
+    gauge(meta.latest_value, lo.value, hi.value, { w: 1000, h: 26, cls: "wide", median: meta.median }) +
+    '<div class="gauge-ends">' +
+    "<span>lowest <b>" + fmt(lo.value, unit) + "</b><i>" + niceDate(lo.period) + "</i></span>" +
+    '<span class="hi">highest <b>' + fmt(hi.value, unit) + "</b><i>" + niceDate(hi.period) + "</i></span>" +
+    "</div>" +
+    (note ? '<p class="where-note">' + esc(note) + "</p>" : "") +
+    "</section>"
+  );
+}
+
+/* The readings themselves, newest first. A chart answers "what shape is this";
+ * only a table answers "what was the number on the third". */
+function observationsTable(points, unit) {
+  const CAP = 500;
+  const rows = points.slice(-CAP).reverse();
+  return (
+    '<p class="count-line">' +
+    (points.length > CAP
+      ? "Newest first. The most recent " + rows.length.toLocaleString() +
+        " of " + points.length.toLocaleString() + " readings in this range."
+      : "Newest first. All " + rows.length.toLocaleString() + " readings in this range.") +
+    "</p>" +
+    '<div class="table-scroll"><table class="indicators compact"><thead><tr>' +
+    "<th>Period</th><th>Value</th><th>Change</th>" +
+    "</tr></thead><tbody>" +
+    rows.map((p, i) => {
+      const prev = rows[i + 1];
+      const c = prev ? p[1] - prev[1] : null;
+      return (
+        '<tr><td class="period">' + niceDate(p[0]) + "</td>" +
+        "<td>" + fmt(p[1], unit) + "</td>" +
+        '<td class="' + dirClass(c, unit) + '">' + (prev ? changeCell(c, unit) : "—") + "</td></tr>"
+      );
+    }).join("") +
+    "</tbody></table></div>"
+  );
+}
 
 async function viewSeries(id) {
   const app = document.getElementById("app");
@@ -369,14 +488,26 @@ async function viewSeries(id) {
     .filter((s) => s.series_id !== id && tableOf(s) === table && topicOf(s) === topicKey)
     .slice(0, 40);
 
-  let range = "Everything";
+  // Which windows are worth offering depends on what this series actually
+  // covers, so the buttons are built per series rather than from one fixed list.
+  const ranges = rangesFor(meta || data);
+  const freqKey = data.freq || "?";
+  const rememberedRanges = store.get("range", {});
+  let range =
+    Object.prototype.hasOwnProperty.call(ranges, rememberedRanges[freqKey] || "")
+      ? rememberedRanges[freqKey]
+      : "Everything";
   let transform = "level";
   let compareId = "";
+
+  // What the export buttons and the table are currently looking at, kept in one
+  // place so "this range" cannot drift from what is on the screen.
+  const shown = { points: [], unit: "", note: "" };
 
   const readoutSlot = () => document.getElementById("s-readout");
 
   const render = async () => {
-    const base = TRANSFORMS[transform].fn(applyRange(data.observations, range));
+    const base = TRANSFORMS[transform].fn(applyRange(data.observations, range, ranges));
     const unit = transform === "level" ? data.unit : transform === "yoy" ? "percent" : "index";
     let sets = base, units = unit, labels = null;
 
@@ -386,30 +517,41 @@ async function viewSeries(id) {
         // Two units on one axis is a lie. Both get rebased to 100 so the
         // comparison is about shape, which is the only honest question.
         const rebase = (p) => (p.length && p[0][1] ? p.map((o) => [o[0], (o[1] / p[0][1]) * 100]) : p);
-        const a = rebase(applyRange(data.observations, range));
-        const b = rebase(applyRange(other.observations, range));
+        const a = rebase(applyRange(data.observations, range, ranges));
+        const b = rebase(applyRange(other.observations, range, ranges));
         sets = [a, b];
         units = ["index", "index"];
         labels = [data.title_en || id, other.title_en || compareId];
       }
     }
 
-    const last = (isMulti(sets) ? sets[0] : sets).slice(-1)[0];
+    shown.points = isMulti(sets) ? sets[0] : sets;
+    shown.unit = Array.isArray(units) ? units[0] : units;
+    shown.note =
+      "Range: " + range + ". " +
+      (compareId ? "Rebased to 100 at the start of the range." : TRANSFORMS[transform].label + ".");
+
+    const last = shown.points.slice(-1)[0];
     document.getElementById("chart-slot").innerHTML = lineChart(sets, {
       height: 340,
       events: data.family === "fx" ? fxEvents() : [],
+      // Four named policy eras, drawn behind the line. Only the pound has them,
+      // and only when the chart is about one series.
+      regimes: data.family === "fx" && !compareId ? fxRegimes() : [],
       id: "sc",
-      unit: Array.isArray(units) ? units[0] : units,
+      unit: shown.unit,
       // A rate that only moves when someone decides it should is a step.
       step: data.freq === "IRR",
     });
     readoutSlot().innerHTML = last
-      ? '<span class="val">' + fmt(last[1], Array.isArray(units) ? units[0] : units) + "</span>" +
+      ? '<span class="val">' + fmt(last[1], shown.unit) + "</span>" +
         '<span class="when">' + niceDate(last[0]) + "</span>" +
         "<span>" + esc(compareId ? "Both rebased to 100 at the start of the range" : TRANSFORMS[transform].label) + "</span>"
       : '<span class="empty">Nothing in this range.</span>';
     armLines(document.getElementById("sc"));
     wireHover(document.getElementById("sc"), sets, units, readoutSlot(), labels);
+
+    document.getElementById("obs-slot").innerHTML = observationsTable(shown.points, shown.unit);
 
     document.querySelectorAll("[data-range]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.range === range)));
     document.querySelectorAll("[data-transform]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.transform === transform)));
@@ -422,8 +564,8 @@ async function viewSeries(id) {
   const stats = meta || {};
   const change = changeOf(stats);
 
-  // Comparison candidates: siblings first, then the six headline series, so
-  // the dropdown is useful whether you want context inside the same table or
+  // Comparison candidates: siblings first, then the headline series, so the
+  // dropdown is useful whether you want context inside the same table or
   // against the pound.
   const compareOptions = [{ id: "", label: "Compare with… (nothing selected)" }]
     .concat(siblings.slice(0, 25).map((s) => ({ id: s.series_id, label: lineOf(s) + " (same table)" })))
@@ -454,8 +596,11 @@ async function viewSeries(id) {
     (data.derived ? "<span><b>Computed by us</b> yes</span>" : "<span><b>Reproduced as published</b> yes</span>") +
     "</div></div>" +
 
+    qualityNotice(meta, data) +
+    whereItSits(meta, data.unit) +
+
     '<div class="controls">' +
-    Object.keys(RANGES).map((k) => '<button class="chip" data-range="' + esc(k) + '">' + esc(k) + "</button>").join("") +
+    Object.keys(ranges).map((k) => '<button class="chip" data-range="' + esc(k) + '">' + esc(k) + "</button>").join("") +
     "</div>" +
     '<div class="controls">' +
     Object.keys(TRANSFORMS).map((k) => '<button class="chip" data-transform="' + k + '">' + esc(TRANSFORMS[k].label) + "</button>").join("") +
@@ -469,10 +614,16 @@ async function viewSeries(id) {
     '<div class="readout" id="s-readout"></div>' +
 
     '<div class="controls">' +
-    '<button class="chip solid" id="dl-csv">Download this series as CSV</button>' +
+    '<button class="chip solid" id="dl-range">This range as CSV</button>' +
+    '<button class="chip" id="dl-all">Everything as CSV</button>' +
+    '<button class="chip" id="copy-tsv">Copy for a spreadsheet</button>' +
     '<a class="chip" href="' + API + "/series/" + encodeURIComponent(id) + '.json" target="_blank" rel="noopener">Open the JSON</a>' +
     '<button class="chip" id="share">Copy a link to this page</button>' +
     "</div>" +
+
+    '<details class="obs"><summary><span class="g-name">The readings themselves</span>' +
+    '<span class="g-meta">' + data.count.toLocaleString() + " in total</span></summary>" +
+    '<div id="obs-slot"></div></details>' +
 
     '<section class="section two-col">' +
     "<div>" +
@@ -483,6 +634,10 @@ async function viewSeries(id) {
       ? "This series is computed, not reproduced. " + esc(data.method || "")
       : "Reproduced from the Central Bank of Egypt with no transformation.") +
     (data.period_basis === "end" ? " Values are dated to the end of the period they describe." : "") +
+    (data.unit
+      ? ""
+      : " CBE's own sheet did not state a unit anywhere the parser could find one, so the " +
+        "figures are reproduced without one rather than given a guessed label.") +
     "</p>" +
     '<div class="meta-col">' +
     (data.source_url
@@ -494,6 +649,7 @@ async function viewSeries(id) {
         esc(data.source_file.startsWith("http") ? data.source_file : "https://www.cbe.org.eg" + data.source_file) +
         '" target="_blank" rel="noopener">' + esc(String(data.source_file).split("/").pop()) + "</a></span>"
       : "") +
+    (data.dataset ? "<span><b>Dataset</b> " + esc(data.dataset) + "</span>" : "") +
     "</div>" +
     '<p class="cite">Suggested citation: Central Bank of Egypt, <i>' + esc(data.title_en || id) +
     "</i>, retrieved from Miqyas on " + niceDate(new Date().toISOString().slice(0, 10)) + ".</p>" +
@@ -502,24 +658,44 @@ async function viewSeries(id) {
     '<p class="eyebrow">Same table</p>' +
     "<h2>" + esc(table) + "</h2>" +
     (siblings.length
-      ? '<ul class="sib-list">' + siblings.slice(0, 12).map((s) =>
+      ? '<ul class="sib-list">' + siblings.slice(0, 10).map((s) =>
           '<li><a href="#/s/' + encodeURIComponent(s.series_id) + '">' +
           (ARABIC_RE.test(lineOf(s)) ? '<span dir="auto">' + esc(lineOf(s)) + "</span>" : esc(lineOf(s))) +
-          "</a><b>" + fmt(s.latest_value, s.unit) + "</b></li>").join("") + "</ul>" +
+          "</a><b>" + fmt(s.latest_value, s.unit) +
+          '<i class="u">' + esc(unitTag(s.unit)) + "</i></b></li>").join("") + "</ul>" +
+        (siblings.length > 10
+          ? '<p class="foot-note">' + (siblings.length - 10) + " more lines in this table.</p>"
+          : "") +
         (topic ? '<a class="go" href="#/topic/' + topic.key + '">All ' + esc(topic.name.toLowerCase()) + " series →</a>" : "")
       : '<p class="lede">Nothing else came from this table.</p>') +
     "</div></section></div>";
 
   await render();
 
-  app.querySelectorAll("[data-range]").forEach((b) => b.addEventListener("click", () => { range = b.dataset.range; render(); }));
+  app.querySelectorAll("[data-range]").forEach((b) =>
+    b.addEventListener("click", () => {
+      range = b.dataset.range;
+      // Remembered per frequency rather than per series: someone who wants five
+      // years of one daily fixing wants five years of the next one too, and the
+      // same words would mean a very different window on a quarterly series.
+      const kept = store.get("range", {});
+      kept[freqKey] = range;
+      store.set("range", kept);
+      render();
+    })
+  );
   app.querySelectorAll("[data-transform]").forEach((b) => b.addEventListener("click", () => { transform = b.dataset.transform; render(); }));
   document.getElementById("cmp").addEventListener("change", (e) => {
     compareId = e.target.value;
     if (compareId) transform = "level";
     render();
   });
-  document.getElementById("dl-csv").addEventListener("click", () => downloadCSV(id, data.observations, data));
+  document.getElementById("dl-range").addEventListener("click", () =>
+    downloadCSV(id, shown.points, data, shown.note));
+  document.getElementById("dl-all").addEventListener("click", () =>
+    downloadCSV(id, data.observations, data, "Every observation, as published."));
+  document.getElementById("copy-tsv").addEventListener("click", (e) =>
+    copyTSV(e.target, shown.points, ["period", data.series_id]));
   document.getElementById("share").addEventListener("click", (e) => copyLink(e.target));
 }
 

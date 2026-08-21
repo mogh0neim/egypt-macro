@@ -26,6 +26,32 @@ const state = {
   cache: new Map(), // full observation arrays, by series id
 };
 
+/* ---------- remembered preferences ----------
+ *
+ * localStorage throws outright in a private window and in some embedded
+ * contexts, so every touch is guarded and every read has a default. Nothing
+ * kept here is worth a broken page: it is a remembered range and, later, a
+ * watchlist.
+ */
+
+const store = {
+  get(key, fallback) {
+    try {
+      const raw = localStorage.getItem("miqyas." + key);
+      return raw === null ? fallback : JSON.parse(raw);
+    } catch (err) {
+      return fallback;
+    }
+  },
+  set(key, value) {
+    try {
+      localStorage.setItem("miqyas." + key, JSON.stringify(value));
+    } catch (err) {
+      /* nothing to do: the preference is a convenience, not state */
+    }
+  },
+};
+
 /* ---------- formatting ---------- */
 
 const ARABIC_RE = /[؀-ۿ]/;
@@ -297,29 +323,56 @@ const fxEvents = () =>
       label: e.label || (e.evidence.pct_change > 0 ? "+" : "") + Math.round(e.evidence.pct_change) + "%",
     }));
 
+/* events.json has carried four named exchange-rate regimes with their date
+ * ranges since it was first generated, and nothing has ever drawn them. They
+ * are the difference between a chart of a line going up and a chart of four
+ * distinct policy eras. */
+const fxRegimes = () => (state.events && state.events.fx_regimes) || [];
+
 /* ---------- the gauge ----------
  * Where a value sits between its own record low and high. It answers "is
  * this a lot?", which a bare number cannot.
  */
 
-function gauge(latest, low, high) {
+function gauge(latest, low, high, opts) {
+  opts = opts || {};
   if (latest === null || latest === undefined) return "";
   if (low === undefined || low === null || high === undefined || high === null || high === low) return "";
   const t = Math.max(0, Math.min(1, (latest - low) / (high - low)));
-  const W = 82, H = 20, pad = 1;
+  // Stretching the 82-unit column with CSS would scale its stroke widths with
+  // it, so the series page asks for real geometry instead of a fat copy.
+  const W = opts.w || 82, H = opts.h || 20, pad = 1;
   const x = pad + t * (W - pad * 2);
   const notches = [0.25, 0.5, 0.75]
     .map((f) => {
       const nx = (pad + f * (W - pad * 2)).toFixed(1);
-      return '<line class="notch" x1="' + nx + '" y1="6" x2="' + nx + '" y2="14"/>';
+      return '<line class="notch" x1="' + nx + '" y1="' + (H / 2 - 4) + '" x2="' + nx + '" y2="' + (H / 2 + 4) + '"/>';
     })
     .join("");
+  const mid = H / 2;
+
+  /* Where the middle of the record sits, in gold, because it is structure
+   * rather than a reading. On the pound this is the whole point: the mark is
+   * hard right and the median is hard left, and the gap between them is what
+   * twenty years of devaluation looks like in one line. */
+  const medianMark =
+    opts.median === undefined || opts.median === null
+      ? ""
+      : (() => {
+          const mt = Math.max(0, Math.min(1, (opts.median - low) / (high - low)));
+          const mx = (pad + mt * (W - pad * 2)).toFixed(1);
+          return '<line class="median" x1="' + mx + '" y1="' + (mid - 6) +
+                 '" x2="' + mx + '" y2="' + (mid + 6) + '"/>';
+        })();
+
   return (
-    '<svg class="gauge" viewBox="0 0 ' + W + " " + H + '" aria-hidden="true">' +
-    '<rect class="track" x="' + pad + '" y="8" width="' + (W - pad * 2) + '" height="4" rx="2"/>' +
-    '<rect class="fill" x="' + pad + '" y="8" width="' + (x - pad).toFixed(1) + '" height="4" rx="2"/>' +
+    '<svg class="gauge' + (opts.cls ? " " + opts.cls : "") + '" viewBox="0 0 ' + W + " " + H + '" aria-hidden="true">' +
+    '<rect class="track" x="' + pad + '" y="' + (mid - 2) + '" width="' + (W - pad * 2) + '" height="4" rx="2"/>' +
+    '<rect class="fill" x="' + pad + '" y="' + (mid - 2) + '" width="' + (x - pad).toFixed(1) + '" height="4" rx="2"/>' +
     notches +
-    '<line class="mark' + (t < 0.02 ? " low" : "") + '" x1="' + x.toFixed(1) + '" y1="3" x2="' + x.toFixed(1) + '" y2="17"/>' +
+    medianMark +
+    '<line class="mark' + (t < 0.02 ? " low" : "") + '" x1="' + x.toFixed(1) + '" y1="' + (mid - 7) +
+    '" x2="' + x.toFixed(1) + '" y2="' + (mid + 7) + '"/>' +
     "</svg>"
   );
 }
@@ -411,6 +464,32 @@ function lineChart(series, opts) {
   }
   // A zero line matters on anything that can go negative -- a trade balance
   // crossing it is the whole story -- and is clutter otherwise.
+  /* Regimes are a wash behind the plot with their name set inside the top of
+   * the band, deliberately at a different visual scale from the event markers:
+   * an event is a dashed vertical rule with a figure above the frame, a regime
+   * is a wide field with a name in it, so the two can share a chart without
+   * competing. A band too narrow to letter keeps the wash and loses the name. */
+  const regimes = (opts.regimes || [])
+    .map((r) => {
+      const a = Math.max(x0, Date.parse(r.from));
+      const b = Math.min(x1, r.to ? Date.parse(r.to) : x1);
+      return b > a ? { a: px(a), b: px(b), label: r.label || "" } : null;
+    })
+    .filter(Boolean)
+    .map((r, i) => {
+      const w = r.b - r.a;
+      const room = w > (W / 1000) * 150;
+      return (
+        '<rect class="regime' + (i % 2 ? " alt" : "") + '" x="' + r.a.toFixed(1) +
+        '" y="' + m.t + '" width="' + w.toFixed(1) + '" height="' + ih + '"/>' +
+        (r.label && room
+          ? '<text class="regime-label" x="' + (r.a + 6).toFixed(1) + '" y="' + (m.t + 12) + '">' +
+            esc(r.label) + "</text>"
+          : "")
+      );
+    })
+    .join("");
+
   const zero =
     y0 < 0 && y1 > 0
       ? '<line class="zero" x1="' + m.l + '" y1="' + py(0).toFixed(1) + '" x2="' + (W - m.r) + '" y2="' + py(0).toFixed(1) + '"/>'
@@ -524,8 +603,10 @@ function lineChart(series, opts) {
     '<svg class="chart" id="' + id + '" viewBox="0 0 ' + W + " " + H + '" ' +
     'style="--len:' + Math.round(iw * 1.6) + '" data-x0="' + x0 + '" data-x1="' + x1 + '" ' +
     'data-w="' + W + '" data-l="' + m.l + '" ' +
-    'role="img" aria-label="Time series chart, ' + sets[0].length + ' points">' +
-    guides.join("") + zero + years.join("") + band + marks + paths +
+    'role="img" tabindex="0" ' +
+    'aria-label="Time series chart, ' + sets[0].length +
+    ' points. Use the arrow keys to read values.">' +
+    regimes + guides.join("") + zero + years.join("") + band + marks + paths +
     '<g class="hover"></g></svg>'
   );
 }
@@ -561,7 +642,13 @@ function armLines(svg) {
  * without a second code path. */
 function wireHover(svg, series, units, readoutEl, labels) {
   if (!svg || !readoutEl) return;
-  const data = (isMulti(series) ? series : [series]).map((s) => decimate(s));
+  /* The readout works off the full series, not the decimated set the chart
+   * drew. A 5,172-point series is plotted at every sixth day, so reading the
+   * drawn points would make one press of the right arrow jump a week and would
+   * report the nearest drawn value rather than the real one. Scanning five
+   * thousand points on a pointer move costs nothing, and the number under the
+   * crosshair is then the number CBE published on that date. */
+  const data = isMulti(series) ? series : [series];
   const x0 = +svg.dataset.x0, x1 = +svg.dataset.x1;
   // The chart chose its own viewBox width and left margin; read them back
   // rather than assume, or the crosshair lands in the wrong place.
@@ -573,11 +660,9 @@ function wireHover(svg, series, units, readoutEl, labels) {
   const base = readoutEl.innerHTML;
   const unitList = Array.isArray(units) ? units : [units];
 
-  const move = (ev) => {
-    const box = svg.getBoundingClientRect();
-    const rel = ((ev.clientX - box.left) / box.width) * W;
-    const t = x0 + ((rel - m.l) / iw) * (x1 - x0);
-    const picks = data.map((sr) => {
+  // Nearest observation in each set to a moment in time.
+  const nearest = (t) =>
+    data.map((sr) => {
       let best = sr[0], bestD = Infinity;
       for (let i = 0; i < sr.length; i++) {
         const d = Math.abs(Date.parse(sr[i][0]) - t);
@@ -585,6 +670,8 @@ function wireHover(svg, series, units, readoutEl, labels) {
       }
       return best;
     });
+
+  const paint = (picks) => {
     const bx = m.l + ((Date.parse(picks[0][0]) - x0) / (x1 - x0)) * iw;
     g.innerHTML = '<line class="hover-line" x1="' + bx.toFixed(1) + '" y1="' + m.t + '" x2="' + bx.toFixed(1) + '" y2="' + (vbH - m.b) + '"/>';
     readoutEl.innerHTML =
@@ -594,8 +681,36 @@ function wireHover(svg, series, units, readoutEl, labels) {
           (labels && labels[i] ? '<span class="when">' + esc(labels[i]) + "</span>" : ""))
         .join("") + '<span class="when">' + niceDate(picks[0][0]) + "</span>";
   };
+
+  const clear = () => { g.innerHTML = ""; readoutEl.innerHTML = base; };
+
+  const move = (ev) => {
+    const box = svg.getBoundingClientRect();
+    const rel = ((ev.clientX - box.left) / box.width) * W;
+    paint(nearest(x0 + ((rel - m.l) / iw) * (x1 - x0)));
+  };
   svg.addEventListener("pointermove", move);
-  svg.addEventListener("pointerleave", () => { g.innerHTML = ""; readoutEl.innerHTML = base; });
+  svg.addEventListener("pointerleave", clear);
+
+  /* The crosshair used to be mouse-only, so the one interactive thing on the
+   * page could not be reached from a keyboard at all. Arrows walk the first
+   * set one observation at a time; Home and End jump to the ends; Escape lets
+   * go. The chart carries tabindex for this. */
+  let idx = -1;
+  svg.addEventListener("keydown", (ev) => {
+    const n = data[0].length;
+    if (ev.key === "ArrowRight") idx = idx < 0 ? n - 1 : Math.min(n - 1, idx + 1);
+    else if (ev.key === "ArrowLeft") idx = idx < 0 ? n - 1 : Math.max(0, idx - 1);
+    else if (ev.key === "Home") idx = 0;
+    else if (ev.key === "End") idx = n - 1;
+    else if (ev.key === "Escape") { idx = -1; clear(); return; }
+    else return;
+    ev.preventDefault();
+    // Anchor on set 0 and take whatever the other sets had at that moment, so a
+    // comparison reads at one date rather than at two.
+    paint(nearest(Date.parse(data[0][idx][0])));
+  });
+  svg.addEventListener("blur", clear);
 }
 
 /* ---------- transformations offered on a series page ---------- */
@@ -625,21 +740,82 @@ const TRANSFORMS = {
   },
 };
 
-const RANGES = {
-  "1 year": 1,
-  "5 years": 5,
-  "10 years": 10,
-  Everything: null,
-  "Since the 2016 float": "2016-11-03",
-  "Since March 2024": "2024-03-06",
-};
+/* The range buttons used to be one fixed list for all 1,300 series, which
+ * served a daily FX series well and everything else badly. "1 year" on a
+ * quarterly series is four points, and "Since March 2024" is a button that does
+ * nothing on a series that stopped publishing in 2019. Since 961 of the 1,317
+ * series are quarterly, the majority case was the one being served worst.
+ *
+ * Build the list out of what the series actually covers instead, and judge a
+ * window by the series' own observed density rather than its nominal frequency:
+ * a monthly series with a decade of gaps should not be offered a window that
+ * lands four points in it.
+ */
+const FLOAT_2016 = "2016-11-03";
+const FLOAT_2024 = "2024-03-06";
 
-function applyRange(points, key) {
-  const r = RANGES[key];
-  if (!r) return points;
-  const from = typeof r === "string" ? Date.parse(r) : Date.now() - r * 31536000000;
+function rangesFor(meta) {
+  const out = {};
+  const first = meta && meta.first ? Date.parse(meta.first) : null;
+  const last = meta && meta.last ? Date.parse(meta.last) : Date.now();
+  const years = first === null ? 0 : (last - first) / 31536000000;
+  const perYear = years > 0 && meta.n ? meta.n / years : 0;
+  const worth = (y) => y < years && perYear * y >= 4;
+
+  if (worth(1)) out["1 year"] = 1;
+  if (worth(5)) out["5 years"] = 5;
+  if (worth(10)) out["10 years"] = 10;
+  out.Everything = null;
+
+  // Only offer this year if the series has actually reached this year.
+  if (new Date(last).getUTCFullYear() >= new Date().getUTCFullYear() && perYear >= 4) {
+    out["This year"] = "ytd";
+  }
+
+  /* The two float dates mean something to the pound and to the money that
+   * prices it, and nothing at all to tourist arrivals. They also have to be
+   * inside the series' own span to be worth a button. */
+  if (/^(fx|rates|govt|policy|interest_rates)$/.test((meta && meta.family) || "")) {
+    if (last >= Date.parse(FLOAT_2016) && first !== null && first < Date.parse(FLOAT_2016)) {
+      out["Since the 2016 float"] = FLOAT_2016;
+    }
+    if (last >= Date.parse(FLOAT_2024) && first !== null && first < Date.parse(FLOAT_2024)) {
+      out["Since March 2024"] = FLOAT_2024;
+    }
+  }
+  return out;
+}
+
+function applyRange(points, key, ranges) {
+  const r = (ranges || {})[key];
+  if (r === null || r === undefined) return points;
+  const from =
+    r === "ytd"
+      ? Date.UTC(new Date().getUTCFullYear(), 0, 1)
+      : typeof r === "string"
+      ? Date.parse(r)
+      : Date.now() - r * 31536000000;
   const cut = points.filter((p) => Date.parse(p[0]) >= from);
   return cut.length > 1 ? cut : points;
+}
+
+/* "Is this a lot?" answered against the series' own middle rather than its
+ * extremes. A multiple is the honest form once a series has moved by more than
+ * a factor of two: the pound is 6.6x its own median, and "558% above" is a true
+ * sentence nobody can read. Returns the comparison only; the caller says what
+ * it is being compared against, so the sentence can name the mark on the gauge. */
+function vsMedian(latest, median) {
+  if (median === null || median === undefined || median === 0) return "";
+  if (latest === null || latest === undefined) return "";
+  // A ratio across zero is meaningless: a deficit against a surplus median.
+  if (median > 0 !== latest > 0) return "";
+  const r = latest / median;
+  return (
+    "Today's reading is " +
+    (r >= 2
+      ? r.toFixed(1) + "× it."
+      : Math.abs((r - 1) * 100).toFixed(0) + "% " + (r >= 1 ? "above" : "below") + " it.")
+  );
 }
 
 /* ---------- small shared bits of markup ---------- */
@@ -658,11 +834,15 @@ const crumbs = (parts) =>
 
 /* Download a series as CSV without a round trip. The data is already in the
  * page; asking a server for it again would be theatre. */
-function downloadCSV(id, observations, meta) {
+function downloadCSV(id, observations, meta, note) {
   const head =
     "# " + ((meta && meta.title_en) || id) + "\n" +
     "# Source: Central Bank of Egypt. Republished by Miqyas, an unofficial mirror.\n" +
     "# Unit: " + ((meta && meta.unit) || "not stated") + "\n" +
+    // What the reader was looking at when they asked for it. A file of 1,200
+    // rows out of 5,172 with nothing saying which 1,200 is a trap.
+    (note ? "# " + note + "\n" : "") +
+    "# Retrieved " + new Date().toISOString().slice(0, 10) + "\n" +
     "series_id,period,value\n";
   const body = observations.map((o) => id + "," + o[0] + "," + o[1]).join("\n");
   const blob = new Blob([head + body], { type: "text/csv;charset=utf-8" });
@@ -677,12 +857,26 @@ function downloadCSV(id, observations, meta) {
 
 /* Copy the current page URL. Used by the share button on a series page. */
 function copyLink(button) {
-  navigator.clipboard.writeText(location.href).then(
-    () => {
-      const was = button.textContent;
-      button.textContent = "Link copied";
-      setTimeout(() => (button.textContent = was), 1600);
-    },
+  navigator.clipboard.writeText(location.href).then(() => flash(button, "Link copied"), () => {});
+}
+
+/* Tab-separated onto the clipboard, which is what pastes straight into a
+ * spreadsheet cell by cell. For most of this audience that is the actual
+ * destination, and a download is a detour through the filesystem. */
+function copyTSV(button, rows, header) {
+  const text =
+    (header ? header.join("\t") + "\n" : "") + rows.map((r) => r.join("\t")).join("\n");
+  navigator.clipboard.writeText(text).then(
+    () => flash(button, rows.length.toLocaleString() + " rows copied"),
     () => {}
   );
+}
+
+/* Say something happened, then put the label back. Shared by every copy button
+ * so they all behave the same way. */
+function flash(button, message) {
+  const was = button.dataset.label || button.textContent;
+  button.dataset.label = was;
+  button.textContent = message;
+  setTimeout(() => (button.textContent = was), 1800);
 }
