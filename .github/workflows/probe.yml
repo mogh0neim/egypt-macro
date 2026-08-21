@@ -17,6 +17,11 @@ on:
   schedule:
     # Weekly, so we notice if CBE starts blocking us after the fact.
     - cron: "17 6 * * 1"
+    # TEMPORARY: no scheduled run has ever fired in this repo, and the schedule
+    # is the only part of the pipeline that cannot be proved by dispatching it
+    # by hand. This is the cheapest workflow to prove it with. Remove once one
+    # schedule-triggered run has landed.
+    - cron: "*/10 * * * *"
 
 jobs:
   probe:
