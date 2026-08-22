@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-21",
+ "generated": "2026-08-22",
  "note": "FX events are detected from a >4.0% single-day move in EG.FX.OFF.USD.SELL. Labels are added by hand and preserved across regeneration.",
  "fx_regimes": [
   {
