@@ -1,5 +1,25 @@
 [
  {
+  "title": "CPI Press Release August 2026",
+  "date": "10 Sep 2026",
+  "time": "15:31:00",
+  "customDate": "2026-09-10T15:31:00",
+  "url": "/en/news-publications/news/2026/09/10/12/29/cpi-press-release-august-2026",
+  "imageUrl": "/-/media/project/cbe/listing/news/featured-listing/cpi-press-release.jpg?h=497&w=693&hash=C01C2B19BB5DDD4A5A0B9990B249004E",
+  "categories": [
+   {
+    "key": "539f213545e64a9c90b390b6ad9f382f",
+    "value": "Monetary Policy"
+   },
+   {
+    "key": "3d72b8aa1fa0478db21703d864794f8c",
+    "value": "CPI Press Release"
+   }
+  ],
+  "itemId": "{E0519DEA-DF50-4820-87E2-F8A197BEB65A}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2026/09/10/12/29/CPI Press Release August 2026"
+ },
+ {
   "title": "Net International Reserves reached US$ 57,214.5 mn at the end of August 2026 (Provisional)",
   "date": "07 Sep 2026",
   "time": "10:26:00",
