@@ -5,11 +5,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2234,
+  "n": 2235,
   "first_period": "2017-07-02",
-  "last_period": "2026-09-14",
-  "last": 20.656,
-  "previous": 20.6591,
+  "last_period": "2026-09-15",
+  "last": 20.6528,
+  "previous": 20.656,
   "highest": {
    "value": 29.4336,
    "period": "2025-04-22"
@@ -18,7 +18,7 @@
    "value": 9.2586,
    "period": "2022-01-03"
   },
-  "median": 17.67715,
+  "median": 17.6774,
   "biggest_move": {
    "period": "2024-06-23",
    "pct_change": 1.94,
@@ -32,11 +32,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2334,
+  "n": 2335,
   "first_period": "2017-01-31",
-  "last_period": "2026-09-14",
-  "last": 19.6339,
-  "previous": 19.6332,
+  "last_period": "2026-09-15",
+  "last": 19.6312,
+  "previous": 19.6339,
   "highest": {
    "value": 27.9057,
    "period": "2025-02-13"
@@ -45,7 +45,7 @@
    "value": 8.8135,
    "period": "2021-08-10"
   },
-  "median": 17.04125,
+  "median": 17.0417,
   "biggest_move": {
    "period": "2024-03-10",
    "pct_change": 3.01,
@@ -59,11 +59,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2291,
+  "n": 2292,
   "first_period": "2017-04-02",
-  "last_period": "2026-09-14",
-  "last": 20.1609,
-  "previous": 20.1675,
+  "last_period": "2026-09-15",
+  "last": 20.152,
+  "previous": 20.1609,
   "highest": {
    "value": 28.4627,
    "period": "2025-04-08"
@@ -72,7 +72,7 @@
    "value": 9.0936,
    "period": "2021-12-28"
   },
-  "median": 17.2983,
+  "median": 17.2996,
   "biggest_move": {
    "period": "2024-04-15",
    "pct_change": 2.76,
@@ -86,20 +86,20 @@
   "family": "rates",
   "freq": "D",
   "unit": "index",
-  "n": 2354,
+  "n": 2355,
   "first_period": "2017-01-02",
-  "last_period": "2026-09-14",
-  "last": 5255.07635,
-  "previous": 5252.27059,
+  "last_period": "2026-09-15",
+  "last": 5257.87001,
+  "previous": 5255.07635,
   "highest": {
-   "value": 5255.07635,
-   "period": "2026-09-14"
+   "value": 5257.87001,
+   "period": "2026-09-15"
   },
   "lowest": {
    "value": 1000.0,
    "period": "2017-01-02"
   },
-  "median": 1998.645255,
+  "median": 1999.44675,
   "biggest_move": {
    "period": "2024-06-23",
    "pct_change": 0.76,
@@ -113,11 +113,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2354,
+  "n": 2355,
   "first_period": "2016-12-29",
-  "last_period": "2026-09-13",
-  "last": 19.231,
-  "previous": 19.47,
+  "last_period": "2026-09-14",
+  "last": 19.138,
+  "previous": 19.231,
   "highest": {
    "value": 27.75,
    "period": "2025-02-09"
@@ -126,7 +126,7 @@
    "value": 8.286,
    "period": "2022-02-21"
   },
-  "median": 16.9005,
+  "median": 16.901,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 26.68,
@@ -140,11 +140,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 2354,
+  "n": 2355,
   "first_period": "2016-12-29",
-  "last_period": "2026-09-13",
-  "last": 49611.8,
-  "previous": 55617.8,
+  "last_period": "2026-09-14",
+  "last": 47503.4,
+  "previous": 49611.8,
   "highest": {
    "value": 105031.5,
    "period": "2024-03-05"
@@ -153,7 +153,7 @@
    "value": 310.8,
    "period": "2018-02-14"
   },
-  "median": 10502.1,
+  "median": 10504.2,
   "biggest_move": {
    "period": "2024-02-13",
    "pct_change": 1820.0,
@@ -409,7 +409,7 @@
    "change": -7200.0
   },
   "flags": [
-   "no new value in 106 days (discontinued?)"
+   "no new value in 107 days (discontinued?)"
   ]
  },
  {
@@ -418,11 +418,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per USD",
-  "n": 5310,
+  "n": 5311,
   "first_period": "2004-12-23",
-  "last_period": "2026-09-14",
-  "last": 51.8583,
-  "previous": 51.3755,
+  "last_period": "2026-09-15",
+  "last": 52.0656,
+  "previous": 51.8583,
   "highest": {
    "value": 54.718,
    "period": "2026-04-07"
@@ -445,11 +445,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2813,
+  "n": 2814,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 14.1009,
-  "previous": 13.9725,
+  "last_period": "2026-09-15",
+  "last": 14.1583,
+  "previous": 14.1009,
   "highest": {
    "value": 14.8782,
    "period": "2026-04-07"
@@ -458,7 +458,7 @@
    "value": 1.9447,
    "period": "2014-12-14"
   },
-  "median": 4.8323,
+  "median": 4.83315,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 60.43,
@@ -472,11 +472,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2813,
+  "n": 2814,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 14.1328,
-  "previous": 14.0001,
+  "last_period": "2026-09-15",
+  "last": 14.187,
+  "previous": 14.1328,
   "highest": {
    "value": 14.9115,
    "period": "2026-04-07"
@@ -485,7 +485,7 @@
    "value": 1.9539,
    "period": "2014-11-25"
   },
-  "median": 4.8655,
+  "median": 4.8656,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 60.76,
@@ -499,11 +499,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2813,
+  "n": 2814,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 63.2107,
-  "previous": 62.8165,
+  "last_period": "2026-09-15",
+  "last": 63.5272,
+  "previous": 63.2107,
   "highest": {
    "value": 68.4352,
    "period": "2026-05-05"
@@ -526,11 +526,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2813,
+  "n": 2814,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 63.5732,
-  "previous": 63.2875,
+  "last_period": "2026-09-15",
+  "last": 63.7974,
+  "previous": 63.5732,
   "highest": {
    "value": 68.5889,
    "period": "2026-05-05"
@@ -539,7 +539,7 @@
    "value": 7.0275,
    "period": "2015-01-14"
   },
-  "median": 18.0947,
+  "median": 18.09515,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 60.65,
@@ -553,11 +553,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2814,
+  "n": 2815,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 7.7213,
-  "previous": 7.6446,
+  "last_period": "2026-09-15",
+  "last": 7.7448,
+  "previous": 7.7213,
   "highest": {
    "value": 19.3719,
    "period": "2022-09-15"
@@ -566,7 +566,7 @@
    "value": 1.1476,
    "period": "2014-12-24"
   },
-  "median": 2.62465,
+  "median": 2.6248,
   "biggest_move": {
    "period": "2022-09-15",
    "pct_change": 597.48,
@@ -580,11 +580,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2814,
+  "n": 2815,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 7.7415,
-  "previous": 7.6656,
+  "last_period": "2026-09-15",
+  "last": 7.7663,
+  "previous": 7.7415,
   "highest": {
    "value": 19.4483,
    "period": "2022-09-15"
@@ -593,7 +593,7 @@
    "value": 1.153,
    "period": "2014-12-24"
   },
-  "median": 2.64585,
+  "median": 2.6459,
   "biggest_move": {
    "period": "2022-09-15",
    "pct_change": 597.17,
@@ -607,11 +607,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2814,
+  "n": 2815,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 59.7526,
-  "previous": 59.3785,
+  "last_period": "2026-09-15",
+  "last": 59.9494,
+  "previous": 59.7526,
   "highest": {
    "value": 63.2016,
    "period": "2026-04-07"
@@ -620,7 +620,7 @@
    "value": 7.9783,
    "period": "2015-03-15"
   },
-  "median": 19.87355,
+  "median": 19.8739,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 60.77,
@@ -634,11 +634,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2814,
+  "n": 2815,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 60.2001,
-  "previous": 59.7359,
+  "last_period": "2026-09-15",
+  "last": 60.2106,
+  "previous": 60.2001,
   "highest": {
    "value": 63.3281,
    "period": "2026-04-07"
@@ -647,7 +647,7 @@
    "value": 1.954,
    "period": "2014-11-27"
   },
-  "median": 20.01335,
+  "median": 20.0135,
   "biggest_move": {
    "period": "2014-12-03",
    "pct_change": 352.87,
@@ -661,11 +661,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2814,
+  "n": 2815,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 69.7969,
-  "previous": 69.1963,
+  "last_period": "2026-09-15",
+  "last": 70.0225,
+  "previous": 69.7969,
   "highest": {
    "value": 72.6327,
    "period": "2026-05-05"
@@ -674,7 +674,7 @@
    "value": 10.7386,
    "period": "2016-10-25"
   },
-  "median": 22.90825,
+  "median": 22.9119,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 60.9,
@@ -688,11 +688,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2814,
+  "n": 2815,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 70.2119,
-  "previous": 69.5933,
+  "last_period": "2026-09-15",
+  "last": 70.3656,
+  "previous": 70.2119,
   "highest": {
    "value": 72.7842,
    "period": "2026-05-05"
@@ -701,7 +701,7 @@
    "value": 10.7688,
    "period": "2016-10-25"
   },
-  "median": 23.0473,
+  "median": 23.0476,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 62.59,
@@ -715,11 +715,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2813,
+  "n": 2814,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 33.4762,
-  "previous": 33.1939,
+  "last_period": "2026-09-15",
+  "last": 33.5008,
+  "previous": 33.4762,
   "highest": {
    "value": 36.3054,
    "period": "2025-04-22"
@@ -728,7 +728,7 @@
    "value": 5.9465,
    "period": "2014-12-24"
   },
-  "median": 15.6759,
+  "median": 15.6762,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 61.37,
@@ -742,11 +742,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2813,
+  "n": 2814,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 33.8383,
-  "previous": 33.5537,
+  "last_period": "2026-09-15",
+  "last": 33.7851,
+  "previous": 33.8383,
   "highest": {
    "value": 36.387,
    "period": "2025-04-22"
@@ -755,7 +755,7 @@
    "value": 5.9741,
    "period": "2014-12-24"
   },
-  "median": 15.7813,
+  "median": 15.78165,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 61.19,
@@ -769,11 +769,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2814,
+  "n": 2815,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 168.8158,
-  "previous": 167.3333,
+  "last_period": "2026-09-15",
+  "last": 169.4196,
+  "previous": 168.8158,
   "highest": {
    "value": 178.0251,
    "period": "2026-04-07"
@@ -796,11 +796,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2814,
+  "n": 2815,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 169.1693,
-  "previous": 167.6593,
+  "last_period": "2026-09-15",
+  "last": 169.7453,
+  "previous": 169.1693,
   "highest": {
    "value": 178.409,
    "period": "2026-04-07"
@@ -809,7 +809,7 @@
    "value": 24.3964,
    "period": "2015-01-12"
   },
-  "median": 59.1173,
+  "median": 59.1186,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 60.35,
@@ -823,11 +823,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2813,
+  "n": 2814,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 13.793,
-  "previous": 13.6678,
+  "last_period": "2026-09-15",
+  "last": 13.8436,
+  "previous": 13.793,
   "highest": {
    "value": 14.5538,
    "period": "2026-04-07"
@@ -836,7 +836,7 @@
    "value": 1.9023,
    "period": "2015-01-08"
   },
-  "median": 4.734,
+  "median": 4.7346,
   "biggest_move": {
    "period": "2025-07-10",
    "pct_change": 106.25,
@@ -850,11 +850,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2813,
+  "n": 2814,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 13.8211,
-  "previous": 13.6933,
+  "last_period": "2026-09-15",
+  "last": 13.8728,
+  "previous": 13.8211,
   "highest": {
    "value": 14.5819,
    "period": "2026-04-07"
@@ -863,7 +863,7 @@
    "value": 1.912,
    "period": "2015-01-12"
   },
-  "median": 4.7647,
+  "median": 4.76485,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 60.77,
@@ -877,11 +877,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2815,
+  "n": 2816,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 51.8011,
-  "previous": 51.3211,
+  "last_period": "2026-09-15",
+  "last": 52.0033,
+  "previous": 51.8011,
   "highest": {
    "value": 54.6537,
    "period": "2026-04-07"
@@ -890,7 +890,7 @@
    "value": 7.1431,
    "period": "2014-12-14"
   },
-  "median": 17.7491,
+  "median": 17.75175,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 60.42,
@@ -904,11 +904,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2815,
+  "n": 2816,
   "first_period": "2014-11-25",
-  "last_period": "2026-09-14",
-  "last": 51.9011,
-  "previous": 51.4211,
+  "last_period": "2026-09-15",
+  "last": 52.1033,
+  "previous": 51.9011,
   "highest": {
    "value": 54.7537,
    "period": "2026-04-07"
@@ -917,7 +917,7 @@
    "value": 7.1766,
    "period": "2014-11-25"
   },
-  "median": 17.8679,
+  "median": 17.8689,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 60.76,
@@ -931,11 +931,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 14.1001,
-  "previous": 13.9667,
+  "last_period": "2026-09-15",
+  "last": 14.1569,
+  "previous": 14.1001,
   "highest": {
    "value": 14.8767,
    "period": "2026-04-07"
@@ -958,11 +958,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 14.139,
-  "previous": 14.008,
+  "last_period": "2026-09-15",
+  "last": 14.1951,
+  "previous": 14.139,
   "highest": {
    "value": 14.9209,
    "period": "2026-04-07"
@@ -985,11 +985,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5187,
+  "n": 5188,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 36.9095,
-  "previous": 36.7767,
+  "last_period": "2026-09-15",
+  "last": 37.0529,
+  "previous": 36.9095,
   "highest": {
    "value": 38.5064,
    "period": "2026-05-03"
@@ -998,7 +998,7 @@
    "value": 3.3832,
    "period": "2008-10-27"
   },
-  "median": 6.6687,
+  "median": 6.66895,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 67.18,
@@ -1012,11 +1012,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5187,
+  "n": 5188,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 37.0301,
-  "previous": 36.8958,
+  "last_period": "2026-09-15",
+  "last": 37.1719,
+  "previous": 37.0301,
   "highest": {
    "value": 38.6317,
    "period": "2026-05-03"
@@ -1025,7 +1025,7 @@
    "value": 3.397,
    "period": "2008-10-27"
   },
-  "median": 6.6874,
+  "median": 6.68785,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.94,
@@ -1039,11 +1039,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5187,
+  "n": 5188,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 137.3549,
-  "previous": 136.0814,
+  "last_period": "2026-09-15",
+  "last": 137.9189,
+  "previous": 137.3549,
   "highest": {
    "value": 144.648,
    "period": "2026-04-07"
@@ -1066,11 +1066,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5187,
+  "n": 5188,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 137.7408,
-  "previous": 136.4679,
+  "last_period": "2026-09-15",
+  "last": 138.3025,
+  "previous": 137.7408,
   "highest": {
    "value": 145.2107,
    "period": "2026-04-07"
@@ -1093,11 +1093,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5187,
+  "n": 5188,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 37.2658,
-  "previous": 36.9805,
+  "last_period": "2026-09-15",
+  "last": 37.3567,
+  "previous": 37.2658,
   "highest": {
    "value": 39.4294,
    "period": "2026-05-05"
@@ -1106,7 +1106,7 @@
    "value": 4.334,
    "period": "2008-10-27"
   },
-  "median": 6.6799,
+  "median": 6.68015,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.65,
@@ -1120,11 +1120,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5187,
+  "n": 5188,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 37.3719,
-  "previous": 37.093,
+  "last_period": "2026-09-15",
+  "last": 37.461,
+  "previous": 37.3719,
   "highest": {
    "value": 39.5439,
    "period": "2026-05-05"
@@ -1133,7 +1133,7 @@
    "value": 4.3502,
    "period": "2008-10-27"
   },
-  "median": 6.7009,
+  "median": 6.701,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.47,
@@ -1147,11 +1147,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5187,
+  "n": 5188,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 63.3418,
-  "previous": 62.8221,
+  "last_period": "2026-09-15",
+  "last": 63.5502,
+  "previous": 63.3418,
   "highest": {
    "value": 68.5346,
    "period": "2026-05-05"
@@ -1160,7 +1160,7 @@
    "value": 4.3403,
    "period": "2006-02-28"
   },
-  "median": 8.0167,
+  "median": 8.0172,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.23,
@@ -1174,11 +1174,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5187,
+  "n": 5188,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 63.5286,
-  "previous": 63.0367,
+  "last_period": "2026-09-15",
+  "last": 63.7341,
+  "previous": 63.5286,
   "highest": {
    "value": 68.7309,
    "period": "2026-05-05"
@@ -1187,7 +1187,7 @@
    "value": 4.3564,
    "period": "2006-02-28"
   },
-  "median": 8.0458,
+  "median": 8.04605,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.12,
@@ -1201,11 +1201,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 4485,
+  "n": 4486,
   "first_period": "2006-08-26",
-  "last_period": "2026-09-14",
-  "last": 7.7196,
-  "previous": 7.648,
+  "last_period": "2026-09-15",
+  "last": 7.7466,
+  "previous": 7.7196,
   "highest": {
    "value": 7.9684,
    "period": "2026-04-07"
@@ -1228,11 +1228,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 4485,
+  "n": 4486,
   "first_period": "2006-08-26",
-  "last_period": "2026-09-14",
-  "last": 7.741,
-  "previous": 7.6691,
+  "last_period": "2026-09-15",
+  "last": 7.7677,
+  "previous": 7.741,
   "highest": {
    "value": 7.9904,
    "period": "2026-04-07"
@@ -1241,7 +1241,7 @@
    "value": 0.7356,
    "period": "2007-11-05"
   },
-  "median": 2.2986,
+  "median": 2.29865,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.6,
@@ -1255,11 +1255,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5186,
+  "n": 5187,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 7.9944,
-  "previous": 7.9605,
+  "last_period": "2026-09-15",
+  "last": 8.0231,
+  "previous": 7.9944,
   "highest": {
    "value": 8.4532,
    "period": "2026-04-07"
@@ -1282,11 +1282,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5186,
+  "n": 5187,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 8.0171,
-  "previous": 7.983,
+  "last_period": "2026-09-15",
+  "last": 8.0464,
+  "previous": 8.0171,
   "highest": {
    "value": 8.4753,
    "period": "2026-04-07"
@@ -1295,7 +1295,7 @@
    "value": 0.9017,
    "period": "2005-11-16"
   },
-  "median": 1.29735,
+  "median": 1.2974,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.68,
@@ -1309,11 +1309,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 59.7637,
-  "previous": 59.5056,
+  "last_period": "2026-09-15",
+  "last": 59.9783,
+  "previous": 59.7637,
   "highest": {
    "value": 63.1676,
    "period": "2026-04-07"
@@ -1322,7 +1322,7 @@
    "value": 6.698,
    "period": "2005-11-16"
   },
-  "median": 9.64665,
+  "median": 9.647,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.86,
@@ -1336,11 +1336,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 59.9304,
-  "previous": 59.6857,
+  "last_period": "2026-09-15",
+  "last": 60.1476,
+  "previous": 59.9304,
   "highest": {
    "value": 63.3349,
    "period": "2026-04-07"
@@ -1349,7 +1349,7 @@
    "value": 6.7231,
    "period": "2005-11-16"
   },
-  "median": 9.67515,
+  "median": 9.676,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.66,
@@ -1363,11 +1363,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 69.8417,
-  "previous": 69.3565,
+  "last_period": "2026-09-15",
+  "last": 70.0605,
+  "previous": 69.8417,
   "highest": {
    "value": 72.7084,
    "period": "2026-05-05"
@@ -1376,7 +1376,7 @@
    "value": 1.1424,
    "period": "2016-02-02"
   },
-  "median": 11.8703,
+  "median": 11.8733,
   "biggest_move": {
    "period": "2016-02-03",
    "pct_change": 879.81,
@@ -1390,11 +1390,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 70.0461,
-  "previous": 69.5578,
+  "last_period": "2026-09-15",
+  "last": 70.2669,
+  "previous": 70.0461,
   "highest": {
    "value": 72.9196,
    "period": "2026-05-05"
@@ -1403,7 +1403,7 @@
    "value": 7.6469,
    "period": "2009-01-22"
   },
-  "median": 11.90505,
+  "median": 11.9073,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 68.71,
@@ -1417,11 +1417,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5186,
+  "n": 5187,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 72.9412,
-  "previous": 72.2631,
+  "last_period": "2026-09-15",
+  "last": 73.2349,
+  "previous": 72.9412,
   "highest": {
    "value": 76.969,
    "period": "2026-04-07"
@@ -1444,11 +1444,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5186,
+  "n": 5187,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 73.345,
-  "previous": 72.6614,
+  "last_period": "2026-09-15",
+  "last": 73.6363,
+  "previous": 73.345,
   "highest": {
    "value": 77.3842,
    "period": "2026-04-07"
@@ -1471,11 +1471,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 33.5047,
-  "previous": 33.4137,
+  "last_period": "2026-09-15",
+  "last": 33.581,
+  "previous": 33.5047,
   "highest": {
    "value": 36.3485,
    "period": "2025-04-22"
@@ -1484,7 +1484,7 @@
    "value": 4.0484,
    "period": "2008-09-10"
   },
-  "median": 7.7798,
+  "median": 7.7801,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 67.05,
@@ -1498,11 +1498,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 33.5997,
-  "previous": 33.5055,
+  "last_period": "2026-09-15",
+  "last": 33.6764,
+  "previous": 33.5997,
   "highest": {
    "value": 36.4454,
    "period": "2025-04-22"
@@ -1511,7 +1511,7 @@
    "value": 4.607,
    "period": "2007-06-24"
   },
-  "median": 7.8089,
+  "median": 7.8091,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.9,
@@ -1525,11 +1525,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 168.719,
-  "previous": 167.232,
+  "last_period": "2026-09-15",
+  "last": 169.3431,
+  "previous": 168.719,
   "highest": {
    "value": 178.0065,
    "period": "2026-04-07"
@@ -1538,7 +1538,7 @@
    "value": 18.5944,
    "period": "2009-02-05"
   },
-  "median": 25.5916,
+  "median": 25.6073,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.61,
@@ -1552,11 +1552,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 169.2302,
-  "previous": 167.7349,
+  "last_period": "2026-09-15",
+  "last": 169.8469,
+  "previous": 169.2302,
   "highest": {
    "value": 178.5206,
    "period": "2026-04-07"
@@ -1565,7 +1565,7 @@
    "value": 18.8512,
    "period": "2009-02-05"
   },
-  "median": 25.68775,
+  "median": 25.7035,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.29,
@@ -1579,11 +1579,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5186,
+  "n": 5187,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 5.5473,
-  "previous": 5.5283,
+  "last_period": "2026-09-15",
+  "last": 5.5597,
+  "previous": 5.5473,
   "highest": {
    "value": 5.7954,
    "period": "2026-05-05"
@@ -1606,11 +1606,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5186,
+  "n": 5187,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 5.5629,
-  "previous": 5.5455,
+  "last_period": "2026-09-15",
+  "last": 5.5816,
+  "previous": 5.5629,
   "highest": {
    "value": 5.8116,
    "period": "2026-05-05"
@@ -1619,7 +1619,7 @@
    "value": 0.7693,
    "period": "2009-01-15"
   },
-  "median": 1.1657,
+  "median": 1.1658,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.91,
@@ -1633,11 +1633,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5187,
+  "n": 5188,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 134.508,
-  "previous": 133.2194,
+  "last_period": "2026-09-15",
+  "last": 135.0461,
+  "previous": 134.508,
   "highest": {
    "value": 141.9244,
    "period": "2026-04-07"
@@ -1660,11 +1660,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5187,
+  "n": 5188,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 134.8857,
-  "previous": 133.6597,
+  "last_period": "2026-09-15",
+  "last": 135.4213,
+  "previous": 134.8857,
   "highest": {
    "value": 142.3249,
    "period": "2026-04-07"
@@ -1673,7 +1673,7 @@
    "value": 13.7976,
    "period": "2008-08-10"
   },
-  "median": 20.1094,
+  "median": 20.10965,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.7,
@@ -1687,11 +1687,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5187,
+  "n": 5188,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 14.2061,
-  "previous": 14.0644,
+  "last_period": "2026-09-15",
+  "last": 14.2633,
+  "previous": 14.2061,
   "highest": {
    "value": 14.9844,
    "period": "2026-04-07"
@@ -1714,11 +1714,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5187,
+  "n": 5188,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 14.2464,
-  "previous": 14.1253,
+  "last_period": "2026-09-15",
+  "last": 14.3038,
+  "previous": 14.2464,
   "highest": {
    "value": 15.031,
    "period": "2026-04-07"
@@ -1741,11 +1741,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 13.7881,
-  "previous": 13.6629,
+  "last_period": "2026-09-15",
+  "last": 13.8426,
+  "previous": 13.7881,
   "highest": {
    "value": 14.553,
    "period": "2026-04-07"
@@ -1768,11 +1768,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 13.8269,
-  "previous": 13.7009,
+  "last_period": "2026-09-15",
+  "last": 13.88,
+  "previous": 13.8269,
   "highest": {
    "value": 14.5918,
    "period": "2026-04-07"
@@ -1795,11 +1795,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 5.296,
-  "previous": 5.2909,
+  "last_period": "2026-09-15",
+  "last": 5.3221,
+  "previous": 5.296,
   "highest": {
    "value": 5.7893,
    "period": "2026-04-30"
@@ -1808,7 +1808,7 @@
    "value": 0.6083,
    "period": "2009-03-02"
   },
-  "median": 1.0634,
+  "median": 1.0635,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.55,
@@ -1822,11 +1822,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 5.3109,
-  "previous": 5.3068,
+  "last_period": "2026-09-15",
+  "last": 5.3366,
+  "previous": 5.3109,
   "highest": {
    "value": 5.8301,
    "period": "2026-05-03"
@@ -1849,11 +1849,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 51.7883,
-  "previous": 51.3068,
+  "last_period": "2026-09-15",
+  "last": 51.9968,
+  "previous": 51.7883,
   "highest": {
    "value": 54.648,
    "period": "2026-04-07"
@@ -1876,11 +1876,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5188,
+  "n": 5189,
   "first_period": "2005-01-02",
-  "last_period": "2026-09-14",
-  "last": 51.9283,
-  "previous": 51.4443,
+  "last_period": "2026-09-15",
+  "last": 52.1345,
+  "previous": 51.9283,
   "highest": {
    "value": 54.788,
    "period": "2026-04-07"
@@ -1930,11 +1930,11 @@
   "family": "rates",
   "freq": "BW",
   "unit": "percent per annum",
-  "n": 414,
+  "n": 415,
   "first_period": "2010-07-12",
-  "last_period": "2026-08-31",
-  "last": 19.474,
-  "previous": 19.126,
+  "last_period": "2026-09-14",
+  "last": 19.683,
+  "previous": 19.474,
   "highest": {
    "value": 27.765,
    "period": "2024-03-18"
@@ -1943,7 +1943,7 @@
    "value": 8.266,
    "period": "2010-12-13"
   },
-  "median": 11.332,
+  "median": 11.414,
   "biggest_move": {
    "period": "2024-03-18",
    "pct_change": 29.86,
@@ -1957,11 +1957,11 @@
   "family": "rates",
   "freq": "BW",
   "unit": "percent per annum",
-  "n": 418,
+  "n": 419,
   "first_period": "2010-07-12",
-  "last_period": "2026-08-31",
-  "last": 19.579,
-  "previous": 19.458,
+  "last_period": "2026-09-14",
+  "last": 19.416,
+  "previous": 19.579,
   "highest": {
    "value": 27.75,
    "period": "2025-02-17"
@@ -1970,7 +1970,7 @@
    "value": 8.253,
    "period": "2010-11-15"
   },
-  "median": 11.041,
+  "median": 11.046,
   "biggest_move": {
    "period": "2024-03-18",
    "pct_change": 30.09,
@@ -2011,11 +2011,11 @@
   "family": "rates",
   "freq": "BW",
   "unit": "percent per annum",
-  "n": 420,
+  "n": 421,
   "first_period": "2010-07-12",
-  "last_period": "2026-08-31",
-  "last": 19.516,
-  "previous": 19.396,
+  "last_period": "2026-09-14",
+  "last": 19.369,
+  "previous": 19.516,
   "highest": {
    "value": 27.569,
    "period": "2025-02-03"
@@ -2024,7 +2024,7 @@
    "value": 8.258,
    "period": "2010-10-04"
   },
-  "median": 10.9145,
+  "median": 10.923,
   "biggest_move": {
    "period": "2024-03-18",
    "pct_change": 20.9,
@@ -2038,11 +2038,11 @@
   "family": "rates",
   "freq": "BW",
   "unit": "EGP million",
-  "n": 420,
+  "n": 421,
   "first_period": "2010-07-12",
-  "last_period": "2026-08-31",
-  "last": 13000.0,
-  "previous": 0.0,
+  "last_period": "2026-09-14",
+  "last": 0.0,
+  "previous": 13000.0,
   "highest": {
    "value": 61000.0,
    "period": "2026-06-08"
@@ -2065,11 +2065,11 @@
   "family": "rates",
   "freq": "BW",
   "unit": "EGP million",
-  "n": 420,
+  "n": 421,
   "first_period": "2010-07-12",
-  "last_period": "2026-08-31",
-  "last": 36446.31,
-  "previous": 10470.0,
+  "last_period": "2026-09-14",
+  "last": 14350.0,
+  "previous": 36446.31,
   "highest": {
    "value": 165961.2,
    "period": "2026-05-25"
@@ -2078,7 +2078,7 @@
    "value": 0.0,
    "period": "2014-11-10"
   },
-  "median": 4120.0,
+  "median": 4140.0,
   "biggest_move": {
    "period": "2021-10-18",
    "pct_change": 1538.16,
@@ -2094,11 +2094,11 @@
   "family": "rates",
   "freq": "BW",
   "unit": "EGP million",
-  "n": 420,
+  "n": 421,
   "first_period": "2010-07-12",
-  "last_period": "2026-08-31",
-  "last": 113050.0,
-  "previous": 87377.34,
+  "last_period": "2026-09-14",
+  "last": 99390.0,
+  "previous": 113050.0,
   "highest": {
    "value": 210281.2,
    "period": "2026-05-25"
@@ -2107,7 +2107,7 @@
    "value": 0.0,
    "period": "2010-11-01"
   },
-  "median": 4485.0,
+  "median": 4500.0,
   "biggest_move": {
    "period": "2013-03-18",
    "pct_change": 7766.67,
@@ -2123,11 +2123,11 @@
   "family": "rates",
   "freq": "BW",
   "unit": "EGP million",
-  "n": 420,
+  "n": 421,
   "first_period": "2010-07-12",
-  "last_period": "2026-08-31",
-  "last": 2000.0,
-  "previous": 0.0,
+  "last_period": "2026-09-14",
+  "last": 0.0,
+  "previous": 2000.0,
   "highest": {
    "value": 100000.0,
    "period": "2026-06-08"
@@ -2150,11 +2150,11 @@
   "family": "rates",
   "freq": "BW",
   "unit": "EGP million",
-  "n": 420,
+  "n": 421,
   "first_period": "2010-07-12",
-  "last_period": "2026-08-31",
-  "last": 412002.5,
-  "previous": 190422.0,
+  "last_period": "2026-09-14",
+  "last": 345559.0,
+  "previous": 412002.5,
   "highest": {
    "value": 540866.0,
    "period": "2026-08-03"
@@ -2163,7 +2163,7 @@
    "value": 575.0,
    "period": "2010-11-01"
   },
-  "median": 69111.0,
+  "median": 69162.0,
   "biggest_move": {
    "period": "2010-11-29",
    "pct_change": 509.42,
@@ -2177,11 +2177,11 @@
   "family": "rates",
   "freq": "BW",
   "unit": "EGP million",
-  "n": 420,
+  "n": 421,
   "first_period": "2010-07-12",
-  "last_period": "2026-08-31",
-  "last": 750656.31,
-  "previous": 530736.84,
+  "last_period": "2026-09-14",
+  "last": 650241.95,
+  "previous": 750656.31,
   "highest": {
    "value": 1078929.6,
    "period": "2026-05-25"
@@ -2190,7 +2190,7 @@
    "value": 4324.0,
    "period": "2010-11-01"
   },
-  "median": 94857.685,
+  "median": 94890.37,
   "biggest_move": {
    "period": "2023-01-23",
    "pct_change": 130.88,
@@ -2204,11 +2204,11 @@
   "family": "rates",
   "freq": "BW",
   "unit": "EGP million",
-  "n": 420,
+  "n": 421,
   "first_period": "2010-07-12",
-  "last_period": "2026-08-31",
-  "last": 174157.5,
-  "previous": 242467.5,
+  "last_period": "2026-09-14",
+  "last": 190942.95,
+  "previous": 174157.5,
   "highest": {
    "value": 375853.5,
    "period": "2026-06-22"
@@ -2217,7 +2217,7 @@
    "value": 0.0,
    "period": "2018-08-27"
   },
-  "median": 8955.0,
+  "median": 8960.0,
   "biggest_move": {
    "period": "2020-06-15",
    "pct_change": 80063.33,
@@ -2233,11 +2233,11 @@
   "family": "rates",
   "freq": "BW",
   "unit": "percent per annum",
-  "n": 415,
+  "n": 416,
   "first_period": "2010-07-12",
-  "last_period": "2026-08-31",
-  "last": 19.639,
-  "previous": 19.747,
+  "last_period": "2026-09-14",
+  "last": 19.617,
+  "previous": 19.639,
   "highest": {
    "value": 27.677,
    "period": "2024-04-01"
@@ -2246,7 +2246,7 @@
    "value": 8.257,
    "period": "2010-11-15"
   },
-  "median": 11.111,
+  "median": 11.145,
   "biggest_move": {
    "period": "2016-11-21",
    "pct_change": 25.85,
@@ -2280,7 +2280,7 @@
    "change": 10.594
   },
   "flags": [
-   "no new value in 22 days (discontinued?)"
+   "no new value in 23 days (discontinued?)"
   ]
  },
  {
@@ -2370,11 +2370,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 3928,
+  "n": 3929,
   "first_period": "2010-06-29",
-  "last_period": "2026-09-13",
-  "last": 19.234,
-  "previous": 19.433,
+  "last_period": "2026-09-14",
+  "last": 19.145,
+  "previous": 19.234,
   "highest": {
    "value": 27.735,
    "period": "2025-02-09"
@@ -2383,7 +2383,7 @@
    "value": 0.1,
    "period": "2013-04-10"
   },
-  "median": 10.9595,
+  "median": 10.962,
   "biggest_move": {
    "period": "2013-04-17",
    "pct_change": 9938.0,
@@ -2397,9 +2397,9 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 3938,
+  "n": 3939,
   "first_period": "2010-06-29",
-  "last_period": "2026-09-13",
+  "last_period": "2026-09-14",
   "last": 0.0,
   "previous": 0.0,
   "highest": {
@@ -2424,9 +2424,9 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 3938,
+  "n": 3939,
   "first_period": "2010-06-29",
-  "last_period": "2026-09-13",
+  "last_period": "2026-09-14",
   "last": 0.0,
   "previous": 0.0,
   "highest": {
@@ -2451,11 +2451,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 3938,
+  "n": 3939,
   "first_period": "2010-06-29",
-  "last_period": "2026-09-13",
-  "last": 23960.0,
-  "previous": 5750.0,
+  "last_period": "2026-09-14",
+  "last": 0.0,
+  "previous": 23960.0,
   "highest": {
    "value": 106175.0,
    "period": "2026-05-19"
@@ -2471,7 +2471,7 @@
    "change": 11758.0
   },
   "flags": [
-   "1703 zero values (CBE publishes 0 where no rate was set)"
+   "1704 zero values (CBE publishes 0 where no rate was set)"
   ]
  },
  {
@@ -2480,9 +2480,9 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 3938,
+  "n": 3939,
   "first_period": "2010-06-29",
-  "last_period": "2026-09-13",
+  "last_period": "2026-09-14",
   "last": 0.0,
   "previous": 0.0,
   "highest": {
@@ -2507,11 +2507,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 3938,
+  "n": 3939,
   "first_period": "2010-06-29",
-  "last_period": "2026-09-13",
-  "last": 70874.0,
-  "previous": 79454.0,
+  "last_period": "2026-09-14",
+  "last": 67862.0,
+  "previous": 70874.0,
   "highest": {
    "value": 150045.0,
    "period": "2024-03-05"
@@ -2520,7 +2520,7 @@
    "value": 0.0,
    "period": "2010-08-12"
   },
-  "median": 7065.5,
+  "median": 7075.0,
   "biggest_move": {
    "period": "2010-12-15",
    "pct_change": 3350.0,
@@ -2536,11 +2536,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 3938,
+  "n": 3939,
   "first_period": "2010-06-29",
-  "last_period": "2026-09-13",
-  "last": 99834.0,
-  "previous": 104457.0,
+  "last_period": "2026-09-14",
+  "last": 67862.0,
+  "previous": 99834.0,
   "highest": {
    "value": 252830.0,
    "period": "2026-04-28"
@@ -2549,7 +2549,7 @@
    "value": 0.0,
    "period": "2020-06-07"
   },
-  "median": 9583.0,
+  "median": 9601.0,
   "biggest_move": {
    "period": "2010-10-26",
    "pct_change": 3805.0,
@@ -2565,11 +2565,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 3938,
+  "n": 3939,
   "first_period": "2010-06-29",
-  "last_period": "2026-09-13",
-  "last": 5000.0,
-  "previous": 19253.0,
+  "last_period": "2026-09-14",
+  "last": 0.0,
+  "previous": 5000.0,
   "highest": {
    "value": 203115.0,
    "period": "2026-05-12"
@@ -2585,7 +2585,7 @@
    "change": 3475.0
   },
   "flags": [
-   "1665 zero values (CBE publishes 0 where no rate was set)"
+   "1666 zero values (CBE publishes 0 where no rate was set)"
   ]
  },
  {
@@ -2748,7 +2748,9 @@
    "pct_change": 17.05,
    "change": 1.5
   },
-  "flags": []
+  "flags": [
+   "no new value in 76 days (discontinued?)"
+  ]
  },
  {
   "series_id": "EG.RATE.RETAIL.DEP.3M6M",
@@ -2775,7 +2777,9 @@
    "pct_change": 14.09,
    "change": 2.1
   },
-  "flags": []
+  "flags": [
+   "no new value in 76 days (discontinued?)"
+  ]
  },
  {
   "series_id": "EG.RATE.RETAIL.DEP.6M1Y",
@@ -2802,7 +2806,9 @@
    "pct_change": 10.2,
    "change": 1.0
   },
-  "flags": []
+  "flags": [
+   "no new value in 76 days (discontinued?)"
+  ]
  },
  {
   "series_id": "EG.RATE.RETAIL.LOAN.CORP.LT1Y",
@@ -2829,7 +2835,9 @@
    "pct_change": 16.5,
    "change": 3.3
   },
-  "flags": []
+  "flags": [
+   "no new value in 76 days (discontinued?)"
+  ]
  },
  {
   "series_id": "EG.RES.NIR",
@@ -3532,7 +3540,7 @@
    "change": 126900000.0
   },
   "flags": [
-   "no new value in 314 days (discontinued?)"
+   "no new value in 315 days (discontinued?)"
   ]
  },
  {
@@ -3561,7 +3569,7 @@
    "change": 330000000.0
   },
   "flags": [
-   "no new value in 314 days (discontinued?)"
+   "no new value in 315 days (discontinued?)"
   ]
  },
  {
@@ -3590,7 +3598,7 @@
    "change": 0.2388
   },
   "flags": [
-   "no new value in 314 days (discontinued?)"
+   "no new value in 315 days (discontinued?)"
   ]
  },
  {
@@ -3619,7 +3627,7 @@
    "change": 1.7
   },
   "flags": [
-   "no new value in 314 days (discontinued?)"
+   "no new value in 315 days (discontinued?)"
   ]
  },
  {
@@ -3648,7 +3656,7 @@
    "change": 1.709
   },
   "flags": [
-   "no new value in 314 days (discontinued?)"
+   "no new value in 315 days (discontinued?)"
   ]
  },
  {
@@ -3677,7 +3685,7 @@
    "change": 1.7
   },
   "flags": [
-   "no new value in 314 days (discontinued?)"
+   "no new value in 315 days (discontinued?)"
   ]
  },
  {
@@ -3686,11 +3694,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "EGP million",
-  "n": 2351,
+  "n": 2352,
   "first_period": "2014-01-06",
-  "last_period": "2026-09-13",
-  "last": 41.9,
-  "previous": 1832.875,
+  "last_period": "2026-09-14",
+  "last": 17.175,
+  "previous": 41.9,
   "highest": {
    "value": 276575000.0,
    "period": "2018-12-19"
@@ -3699,7 +3707,7 @@
    "value": 0.0,
    "period": "2020-07-06"
   },
-  "median": 1246.2,
+  "median": 1244.45,
   "biggest_move": {
    "period": "2018-12-19",
    "pct_change": 2348832171.76,
@@ -3715,11 +3723,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2348,
+  "n": 2349,
   "first_period": "2014-01-06",
-  "last_period": "2026-09-13",
-  "last": 24.574,
-  "previous": 25.091,
+  "last_period": "2026-09-14",
+  "last": 24.24,
+  "previous": 24.574,
   "highest": {
    "value": 31.336,
    "period": "2024-03-12"
@@ -3728,7 +3736,7 @@
    "value": 10.25,
    "period": "2020-04-12"
   },
-  "median": 18.264,
+  "median": 18.283,
   "biggest_move": {
    "period": "2022-07-07",
    "pct_change": 24.77,
@@ -3742,11 +3750,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "EGP million",
-  "n": 2391,
+  "n": 2392,
   "first_period": "2014-01-06",
-  "last_period": "2026-09-13",
-  "last": 13102.325,
-  "previous": 21423.3,
+  "last_period": "2026-09-14",
+  "last": 36605.775,
+  "previous": 13102.325,
   "highest": {
    "value": 1793925000.0,
    "period": "2018-12-19"
@@ -3755,7 +3763,7 @@
    "value": 0.275,
    "period": "2016-12-18"
   },
-  "median": 2501.2,
+  "median": 2503.275,
   "biggest_move": {
    "period": "2018-12-19",
    "pct_change": 238197410.37,
@@ -3769,11 +3777,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2391,
+  "n": 2392,
   "first_period": "2014-01-06",
-  "last_period": "2026-09-13",
-  "last": 22.453,
-  "previous": 23.901,
+  "last_period": "2026-09-14",
+  "last": 24.4,
+  "previous": 22.453,
   "highest": {
    "value": 30.961,
    "period": "2024-11-25"
@@ -3796,11 +3804,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "EGP million",
-  "n": 2381,
+  "n": 2382,
   "first_period": "2014-01-06",
-  "last_period": "2026-09-13",
-  "last": 41.175,
-  "previous": 4677.35,
+  "last_period": "2026-09-14",
+  "last": 3391.525,
+  "previous": 41.175,
   "highest": {
    "value": 4256050000.0,
    "period": "2018-12-19"
@@ -3809,7 +3817,7 @@
    "value": 0.025,
    "period": "2019-08-04"
   },
-  "median": 999.575,
+  "median": 1000.8625,
   "biggest_move": {
    "period": "2018-12-19",
    "pct_change": 306521326.0,
@@ -3823,11 +3831,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2381,
+  "n": 2382,
   "first_period": "2014-01-06",
-  "last_period": "2026-09-13",
-  "last": 24.086,
-  "previous": 24.294,
+  "last_period": "2026-09-14",
+  "last": 24.552,
+  "previous": 24.086,
   "highest": {
    "value": 31.097,
    "period": "2024-11-25"
@@ -3836,7 +3844,7 @@
    "value": 6.868,
    "period": "2017-02-14"
   },
-  "median": 17.679,
+  "median": 17.68,
   "biggest_move": {
    "period": "2017-02-15",
    "pct_change": 141.74,
@@ -3850,11 +3858,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "EGP million",
-  "n": 2390,
+  "n": 2391,
   "first_period": "2014-01-06",
-  "last_period": "2026-09-13",
-  "last": 844.275,
-  "previous": 3662.075,
+  "last_period": "2026-09-14",
+  "last": 5169.525,
+  "previous": 844.275,
   "highest": {
    "value": 5763850000.0,
    "period": "2018-12-19"
@@ -3863,7 +3871,7 @@
    "value": 0.225,
    "period": "2016-12-19"
   },
-  "median": 2249.675,
+  "median": 2251.4,
   "biggest_move": {
    "period": "2018-12-19",
    "pct_change": 292365925.01,
@@ -3877,11 +3885,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2390,
+  "n": 2391,
   "first_period": "2014-01-06",
-  "last_period": "2026-09-13",
-  "last": 24.25,
-  "previous": 24.184,
+  "last_period": "2026-09-14",
+  "last": 24.285,
+  "previous": 24.25,
   "highest": {
    "value": 31.614,
    "period": "2024-12-11"
@@ -3890,7 +3898,7 @@
    "value": 6.461,
    "period": "2017-02-20"
   },
-  "median": 18.2715,
+  "median": 18.272,
   "biggest_move": {
    "period": "2017-02-21",
    "pct_change": 159.99,
@@ -3904,11 +3912,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "EGP million",
-  "n": 2389,
+  "n": 2390,
   "first_period": "2014-01-06",
-  "last_period": "2026-09-13",
-  "last": 830.65,
-  "previous": 2478.375,
+  "last_period": "2026-09-14",
+  "last": 3272.4,
+  "previous": 830.65,
   "highest": {
    "value": 1245900000.0,
    "period": "2018-12-19"
@@ -3917,7 +3925,7 @@
    "value": 0.4,
    "period": "2017-08-27"
   },
-  "median": 2225.625,
+  "median": 2225.9,
   "biggest_move": {
    "period": "2018-12-19",
    "pct_change": 214689944.37,
@@ -3931,11 +3939,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2389,
+  "n": 2390,
   "first_period": "2014-01-06",
-  "last_period": "2026-09-13",
-  "last": 24.397,
-  "previous": 25.018,
+  "last_period": "2026-09-14",
+  "last": 24.604,
+  "previous": 24.397,
   "highest": {
    "value": 31.544,
    "period": "2024-12-11"
@@ -3944,7 +3952,7 @@
    "value": 10.414,
    "period": "2014-01-06"
   },
-  "median": 18.242,
+  "median": 18.2435,
   "biggest_move": {
    "period": "2017-10-16",
    "pct_change": 56.31,
@@ -3958,11 +3966,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "EGP million",
-  "n": 2327,
+  "n": 2328,
   "first_period": "2014-01-06",
-  "last_period": "2026-09-13",
-  "last": 2756.425,
-  "previous": 5114.35,
+  "last_period": "2026-09-14",
+  "last": 31469.65,
+  "previous": 2756.425,
   "highest": {
    "value": 570225000.0,
    "period": "2018-12-19"
@@ -3971,7 +3979,7 @@
    "value": 0.025,
    "period": "2016-09-19"
   },
-  "median": 1141.05,
+  "median": 1141.8,
   "biggest_move": {
    "period": "2023-08-29",
    "pct_change": 64000300.0,
@@ -3985,11 +3993,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2327,
+  "n": 2328,
   "first_period": "2014-01-06",
-  "last_period": "2026-09-13",
-  "last": 25.271,
-  "previous": 24.934,
+  "last_period": "2026-09-14",
+  "last": 25.706,
+  "previous": 25.271,
   "highest": {
    "value": 34.502,
    "period": "2024-03-10"
@@ -3998,7 +4006,7 @@
    "value": 10.4,
    "period": "2016-04-04"
   },
-  "median": 18.135,
+  "median": 18.137,
   "biggest_move": {
    "period": "2022-12-22",
    "pct_change": 37.44,
@@ -4032,7 +4040,7 @@
    "change": 1191400000.0
   },
   "flags": [
-   "no new value in 104 days (discontinued?)"
+   "no new value in 105 days (discontinued?)"
   ]
  },
  {
@@ -4061,7 +4069,7 @@
    "change": 1225400000.0
   },
   "flags": [
-   "no new value in 104 days (discontinued?)"
+   "no new value in 105 days (discontinued?)"
   ]
  },
  {
@@ -4090,7 +4098,7 @@
    "change": 0.5613
   },
   "flags": [
-   "no new value in 104 days (discontinued?)"
+   "no new value in 105 days (discontinued?)"
   ]
  },
  {
@@ -4119,7 +4127,7 @@
    "change": 1.34
   },
   "flags": [
-   "no new value in 104 days (discontinued?)"
+   "no new value in 105 days (discontinued?)"
   ]
  },
  {
@@ -4148,7 +4156,7 @@
    "change": 1.34
   },
   "flags": [
-   "no new value in 104 days (discontinued?)"
+   "no new value in 105 days (discontinued?)"
   ]
  },
  {
@@ -4177,7 +4185,7 @@
    "change": 1.359
   },
   "flags": [
-   "no new value in 104 days (discontinued?)"
+   "no new value in 105 days (discontinued?)"
   ]
  },
  {
@@ -4206,7 +4214,7 @@
    "change": 88729.935707
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4235,7 +4243,7 @@
    "change": 214436.715963
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4264,7 +4272,7 @@
    "change": 329516.336952
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4293,7 +4301,7 @@
    "change": 121005.263564
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4322,7 +4330,7 @@
    "change": 215.161
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4351,7 +4359,7 @@
    "change": 401503.097784
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4380,7 +4388,7 @@
    "change": 1838.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4409,7 +4417,7 @@
    "change": 94657.222165
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4438,7 +4446,7 @@
    "change": 16689.048421
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4467,7 +4475,7 @@
    "change": 490233.140614
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4496,7 +4504,7 @@
    "change": 8066.234
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4525,7 +4533,7 @@
    "change": 91863.988128
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4554,7 +4562,7 @@
    "change": 101773.753685
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4583,7 +4591,7 @@
    "change": 266217.535506
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4612,7 +4620,7 @@
    "change": 486870.304324
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4641,7 +4649,7 @@
    "change": 3911.201764
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4670,7 +4678,7 @@
    "change": 167441.670948
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4699,7 +4707,7 @@
    "change": 28148.106875
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4728,7 +4736,7 @@
    "change": 29283.162941
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -4757,7 +4765,7 @@
    "change": 6775.366499
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -4786,7 +4794,7 @@
    "change": 5027.234
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -4815,7 +4823,7 @@
    "change": 24385.326265
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -4844,7 +4852,7 @@
    "change": 423657.71921
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4873,7 +4881,7 @@
    "change": 29283.168399
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -4902,7 +4910,7 @@
    "change": 4733.209977
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -4931,7 +4939,7 @@
    "change": -4850.908
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -4960,7 +4968,7 @@
    "change": 158758.623736
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -4989,7 +4997,7 @@
    "change": 20865.589
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -5018,7 +5026,7 @@
    "change": 12171.976638
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -5047,7 +5055,7 @@
    "change": 6990.43858
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -5076,7 +5084,7 @@
    "change": 287369.324737
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5105,7 +5113,7 @@
    "change": 24507.953685
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -5134,7 +5142,7 @@
    "change": 20522.416669
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -5163,7 +5171,7 @@
    "change": 16927.452
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -5192,7 +5200,7 @@
    "change": 8683.047212
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5221,7 +5229,7 @@
    "change": 402974.31907
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5250,7 +5258,7 @@
    "change": 15961.603309
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5279,7 +5287,7 @@
    "change": 42460.149229
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5308,7 +5316,7 @@
    "change": 423657.71921
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5337,7 +5345,7 @@
    "change": 402974.31907
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5366,7 +5374,7 @@
    "change": 71088.500384
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5395,7 +5403,7 @@
    "change": 254650.986539
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5424,7 +5432,7 @@
    "change": 21433.6
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5453,7 +5461,7 @@
    "change": 76411.378809
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5482,7 +5490,7 @@
    "change": 62246.81442
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5511,7 +5519,7 @@
    "change": 472424.069385
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5540,7 +5548,7 @@
    "change": -61358.417289
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5569,7 +5577,7 @@
    "change": 394828.351106
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5598,7 +5606,7 @@
    "change": -10011.150982
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5627,7 +5635,7 @@
    "change": 91481.7616
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5656,7 +5664,7 @@
    "change": 95474.62102
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5685,7 +5693,7 @@
    "change": 142049.070882
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5714,7 +5722,7 @@
    "change": -61358.417289
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5743,7 +5751,7 @@
    "change": -82014.042885
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5772,7 +5780,7 @@
    "change": 7152.2
   },
   "flags": [
-   "no new value in 6650 days (discontinued?)"
+   "no new value in 6651 days (discontinued?)"
   ]
  },
  {
@@ -5801,7 +5809,7 @@
    "change": -11835.240823
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5830,7 +5838,7 @@
    "change": 17921.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5859,7 +5867,7 @@
    "change": 62246.81442
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -5888,7 +5896,7 @@
    "change": 1462.4
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -5917,7 +5925,7 @@
    "change": -1398.1
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -6030,7 +6038,7 @@
   },
   "flags": [
    "2 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -6088,7 +6096,7 @@
    "change": -4800.1
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -6171,7 +6179,7 @@
    "change": -366.7
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -6308,7 +6316,7 @@
    "change": 2985.1
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -6445,7 +6453,7 @@
    "change": -1616.3
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -6555,7 +6563,7 @@
    "change": -133.9
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -6584,7 +6592,7 @@
    "change": 462.5
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -6613,7 +6621,7 @@
    "change": 332.6
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -6642,7 +6650,7 @@
    "change": -282.9
   },
   "flags": [
-   "no new value in 1902 days (discontinued?)"
+   "no new value in 1903 days (discontinued?)"
   ]
  },
  {
@@ -6671,7 +6679,7 @@
    "change": -426.5
   },
   "flags": [
-   "no new value in 1902 days (discontinued?)"
+   "no new value in 1903 days (discontinued?)"
   ]
  },
  {
@@ -6808,7 +6816,7 @@
    "change": 490.9
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -6918,7 +6926,7 @@
    "change": 1153.2
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -7028,7 +7036,7 @@
    "change": 486.0
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -7273,7 +7281,7 @@
    "change": 2125.0
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -7302,7 +7310,7 @@
    "change": -1063.8
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -7331,7 +7339,7 @@
    "change": 96.3
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -7414,7 +7422,7 @@
    "change": 1160.2
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -7524,7 +7532,7 @@
    "change": 3702.1
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -7607,7 +7615,7 @@
    "change": 487.1
   },
   "flags": [
-   "no new value in 1902 days (discontinued?)"
+   "no new value in 1903 days (discontinued?)"
   ]
  },
  {
@@ -7744,7 +7752,7 @@
    "change": 496.0
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -7773,7 +7781,7 @@
    "change": 4.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -7802,7 +7810,7 @@
    "change": 104841.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -7831,7 +7839,7 @@
    "change": -38970.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -7860,7 +7868,7 @@
    "change": -719477.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -7889,7 +7897,7 @@
    "change": -3.2
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -7918,7 +7926,7 @@
    "change": 18596.0
   },
   "flags": [
-   "no new value in 1902 days (discontinued?)"
+   "no new value in 1903 days (discontinued?)"
   ]
  },
  {
@@ -7947,7 +7955,7 @@
    "change": 2.4
   },
   "flags": [
-   "no new value in 1902 days (discontinued?)"
+   "no new value in 1903 days (discontinued?)"
   ]
  },
  {
@@ -7976,7 +7984,7 @@
    "change": -38502.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8005,7 +8013,7 @@
    "change": -7192.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8034,7 +8042,7 @@
    "change": 22190.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8063,7 +8071,7 @@
    "change": 73060.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8093,7 +8101,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8122,7 +8130,7 @@
    "change": 3.7
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -8151,7 +8159,7 @@
    "change": 1.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8180,7 +8188,7 @@
    "change": 743371.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -8209,7 +8217,7 @@
    "change": 203094.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8238,7 +8246,7 @@
    "change": 25155.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8267,7 +8275,7 @@
    "change": -48987.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -8292,7 +8300,7 @@
   "median": 0.0,
   "biggest_move": null,
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8322,7 +8330,7 @@
   },
   "flags": [
    "5 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8347,7 +8355,7 @@
   "median": 0.0,
   "biggest_move": null,
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8376,7 +8384,7 @@
    "change": 19731.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8405,7 +8413,7 @@
    "change": 83511.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8434,7 +8442,7 @@
    "change": 30196.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8463,7 +8471,7 @@
    "change": -532919.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8492,7 +8500,7 @@
    "change": 695048.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8521,7 +8529,7 @@
    "change": -743371.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -8550,7 +8558,7 @@
    "change": -13.2
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -8579,7 +8587,7 @@
    "change": 81164.0
   },
   "flags": [
-   "no new value in 1902 days (discontinued?)"
+   "no new value in 1903 days (discontinued?)"
   ]
  },
  {
@@ -8609,7 +8617,7 @@
   },
   "flags": [
    "6 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8638,7 +8646,7 @@
    "change": 3.833495
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -8663,7 +8671,7 @@
   "median": 0.0,
   "biggest_move": null,
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8692,7 +8700,7 @@
    "change": -12952.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8721,7 +8729,7 @@
    "change": 3634.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8750,7 +8758,7 @@
    "change": 878930.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -8779,7 +8787,7 @@
    "change": 993998.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -8808,7 +8816,7 @@
    "change": -1179.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -8837,7 +8845,7 @@
    "change": 26899.0
   },
   "flags": [
-   "no new value in 2998 days (discontinued?)"
+   "no new value in 2999 days (discontinued?)"
   ]
  },
  {
@@ -8866,7 +8874,7 @@
    "change": 43955.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -8895,7 +8903,7 @@
    "change": 18080.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -8924,7 +8932,7 @@
    "change": 469440.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -8953,7 +8961,7 @@
    "change": 19280.0
   },
   "flags": [
-   "no new value in 4459 days (discontinued?)"
+   "no new value in 4460 days (discontinued?)"
   ]
  },
  {
@@ -8982,7 +8990,7 @@
    "change": 33755.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9011,7 +9019,7 @@
    "change": 12608.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9040,7 +9048,7 @@
    "change": 1100.0
   },
   "flags": [
-   "no new value in 4459 days (discontinued?)"
+   "no new value in 4460 days (discontinued?)"
   ]
  },
  {
@@ -9069,7 +9077,7 @@
    "change": 4131.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9098,7 +9106,7 @@
    "change": 3528.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9127,7 +9135,7 @@
    "change": 549983.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9156,7 +9164,7 @@
    "change": 41930.0
   },
   "flags": [
-   "no new value in 4459 days (discontinued?)"
+   "no new value in 4460 days (discontinued?)"
   ]
  },
  {
@@ -9185,7 +9193,7 @@
    "change": 11480.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9214,7 +9222,7 @@
    "change": 16517.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9243,7 +9251,7 @@
    "change": 34962.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9272,7 +9280,7 @@
    "change": 29615.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9301,7 +9309,7 @@
    "change": 39956.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9330,7 +9338,7 @@
    "change": 22055.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -9359,7 +9367,7 @@
    "change": 15128.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9388,7 +9396,7 @@
    "change": 119811.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9417,7 +9425,7 @@
    "change": -26129.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9446,7 +9454,7 @@
    "change": 30246.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9475,7 +9483,7 @@
    "change": 185231.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9504,7 +9512,7 @@
    "change": 878930.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9533,7 +9541,7 @@
    "change": 15924.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9558,7 +9566,7 @@
   "median": 0.0,
   "biggest_move": null,
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9587,7 +9595,7 @@
    "change": 9103.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9616,7 +9624,7 @@
    "change": 40688.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9645,7 +9653,7 @@
    "change": 22055.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9674,7 +9682,7 @@
    "change": 26899.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9703,7 +9711,7 @@
    "change": 24743.0
   },
   "flags": [
-   "no new value in 1902 days (discontinued?)"
+   "no new value in 1903 days (discontinued?)"
   ]
  },
  {
@@ -9732,7 +9740,7 @@
    "change": 30770.0
   },
   "flags": [
-   "no new value in 1902 days (discontinued?)"
+   "no new value in 1903 days (discontinued?)"
   ]
  },
  {
@@ -9761,7 +9769,7 @@
    "change": 13109.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9790,7 +9798,7 @@
    "change": 8219.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9819,7 +9827,7 @@
    "change": 28110.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9849,7 +9857,7 @@
   },
   "flags": [
    "9 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9878,7 +9886,7 @@
    "change": 1681.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9907,7 +9915,7 @@
    "change": 8463.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9936,7 +9944,7 @@
    "change": 2565.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9965,7 +9973,7 @@
    "change": 50612.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -9994,7 +10002,7 @@
    "change": 18151.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10023,7 +10031,7 @@
    "change": 90648.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10052,7 +10060,7 @@
    "change": 562091.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10082,7 +10090,7 @@
   },
   "flags": [
    "2 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10111,7 +10119,7 @@
    "change": 621919.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10140,7 +10148,7 @@
    "change": 7726.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10169,7 +10177,7 @@
    "change": 43371.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10198,7 +10206,7 @@
    "change": 50313.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10227,7 +10235,7 @@
    "change": 29794.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10256,7 +10264,7 @@
    "change": 142425.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10285,7 +10293,7 @@
    "change": 130788.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10314,7 +10322,7 @@
    "change": 130199.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10343,7 +10351,7 @@
    "change": 17345.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10372,7 +10380,7 @@
    "change": 35295.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10401,7 +10409,7 @@
    "change": 4826.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10430,7 +10438,7 @@
    "change": 332905.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10459,7 +10467,7 @@
    "change": 512177.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -10488,7 +10496,7 @@
    "change": 318.0
   },
   "flags": [
-   "no new value in 7381 days (discontinued?)"
+   "no new value in 7382 days (discontinued?)"
   ]
  },
  {
@@ -10517,7 +10525,7 @@
    "change": 3294.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -10546,7 +10554,7 @@
    "change": 25486.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -10575,7 +10583,7 @@
    "change": 4466.92989
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -10604,7 +10612,7 @@
    "change": 3410.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -10633,7 +10641,7 @@
    "change": 558555.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -10662,7 +10670,7 @@
    "change": 33586.7
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -10988,7 +10996,7 @@
    "change": 6112.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11395,7 +11403,7 @@
    "change": 220000.0002
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11424,7 +11432,7 @@
    "change": 78826.2182
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11453,7 +11461,7 @@
    "change": 132217.233177
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11482,7 +11490,7 @@
    "change": 85818.0248
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11511,7 +11519,7 @@
    "change": 22861.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11540,7 +11548,7 @@
    "change": 56663.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11569,7 +11577,7 @@
    "change": -19018.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11598,7 +11606,7 @@
    "change": -16800.2448
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11627,7 +11635,7 @@
    "change": 25695.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11656,7 +11664,7 @@
    "change": 3817.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11685,7 +11693,7 @@
    "change": 91481.9519
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11715,7 +11723,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11744,7 +11752,7 @@
    "change": 85818.0248
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11773,7 +11781,7 @@
    "change": -7950.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -11802,7 +11810,7 @@
    "change": 72600.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -11831,7 +11839,7 @@
    "change": 196620.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -11887,7 +11895,7 @@
    "change": 5620.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -11943,7 +11951,7 @@
    "change": 74113.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -11999,7 +12007,7 @@
    "change": 67251.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -12056,7 +12064,7 @@
   },
   "flags": [
    "11 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -12762,7 +12770,7 @@
   "median": 0.0,
   "biggest_move": null,
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -12792,7 +12800,7 @@
   },
   "flags": [
    "26 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -12821,7 +12829,7 @@
    "change": 40500.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -12850,7 +12858,7 @@
    "change": -9155.0
   },
   "flags": [
-   "no new value in 4824 days (discontinued?)"
+   "no new value in 4825 days (discontinued?)"
   ]
  },
  {
@@ -12879,7 +12887,7 @@
    "change": 7364.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -12908,7 +12916,7 @@
    "change": 67115.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -12937,7 +12945,7 @@
    "change": -160.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -12966,7 +12974,7 @@
    "change": 40500.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -12995,7 +13003,7 @@
    "change": 10903.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13024,7 +13032,7 @@
    "change": 16477.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13053,7 +13061,7 @@
    "change": 220000.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13082,7 +13090,7 @@
    "change": 136744.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13111,7 +13119,7 @@
    "change": 3626.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13141,7 +13149,7 @@
   },
   "flags": [
    "26 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13170,7 +13178,7 @@
    "change": 41468.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13199,7 +13207,7 @@
    "change": 0.0
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -13228,7 +13236,7 @@
    "change": 14178.0
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -13257,7 +13265,7 @@
    "change": 9000.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -13286,7 +13294,7 @@
    "change": 210622.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13315,7 +13323,7 @@
    "change": 278724.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13340,7 +13348,7 @@
   "median": 0.0,
   "biggest_move": null,
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13369,7 +13377,7 @@
    "change": -12112.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13398,7 +13406,7 @@
    "change": -58856.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13427,7 +13435,7 @@
    "change": 12717.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13452,7 +13460,7 @@
   "median": 0.0,
   "biggest_move": null,
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13482,7 +13490,7 @@
   },
   "flags": [
    "6 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -13511,7 +13519,7 @@
    "change": -3218.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -13540,7 +13548,7 @@
    "change": 76286.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13570,7 +13578,7 @@
   },
   "flags": [
    "21 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13599,7 +13607,7 @@
    "change": -30.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13628,7 +13636,7 @@
    "change": 6056.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13653,7 +13661,7 @@
   "median": 0.0,
   "biggest_move": null,
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13683,7 +13691,7 @@
   },
   "flags": [
    "5 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13713,7 +13721,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13742,7 +13750,7 @@
    "change": 340810.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13771,7 +13779,7 @@
    "change": 1935.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -13800,7 +13808,7 @@
    "change": 16477.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -13829,7 +13837,7 @@
    "change": 5581.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -13859,7 +13867,7 @@
   },
   "flags": [
    "12 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14054,7 +14062,7 @@
    "change": -138407.0
   },
   "flags": [
-   "no new value in 4824 days (discontinued?)"
+   "no new value in 4825 days (discontinued?)"
   ]
  },
  {
@@ -14111,7 +14119,7 @@
   },
   "flags": [
    "20 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14136,7 +14144,7 @@
   "median": 0.0,
   "biggest_move": null,
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14165,7 +14173,7 @@
    "change": -55950.0
   },
   "flags": [
-   "no new value in 4824 days (discontinued?)"
+   "no new value in 4825 days (discontinued?)"
   ]
  },
  {
@@ -14194,7 +14202,7 @@
    "change": 4580.0
   },
   "flags": [
-   "no new value in 4824 days (discontinued?)"
+   "no new value in 4825 days (discontinued?)"
   ]
  },
  {
@@ -14223,7 +14231,7 @@
    "change": -110726.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14252,7 +14260,7 @@
    "change": 16477.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14281,7 +14289,7 @@
    "change": -198073.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14310,7 +14318,7 @@
    "change": 36150.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14339,7 +14347,7 @@
    "change": -52655.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -14368,7 +14376,7 @@
    "change": 39990.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14397,7 +14405,7 @@
    "change": 72551.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14454,7 +14462,7 @@
   },
   "flags": [
    "5 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14483,7 +14491,7 @@
    "change": 1521.0
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -14512,7 +14520,7 @@
    "change": 14707.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -14541,7 +14549,7 @@
    "change": 1226.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14570,7 +14578,7 @@
    "change": 4040.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14599,7 +14607,7 @@
    "change": -198073.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14655,7 +14663,7 @@
    "change": 50949.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14711,7 +14719,7 @@
    "change": 4020.0
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -14767,7 +14775,7 @@
    "change": -20000.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -14796,7 +14804,7 @@
    "change": 0.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -14825,7 +14833,7 @@
    "change": -10000.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -14854,7 +14862,7 @@
    "change": 155470.0
   },
   "flags": [
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -14884,7 +14892,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -14913,7 +14921,7 @@
    "change": -20000.0
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -14942,7 +14950,7 @@
    "change": 0.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -14972,7 +14980,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15002,7 +15010,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15032,7 +15040,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -15061,7 +15069,7 @@
    "change": 9000.0
   },
   "flags": [
-   "no new value in 4094 days (discontinued?)"
+   "no new value in 4095 days (discontinued?)"
   ]
  },
  {
@@ -15091,7 +15099,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15121,7 +15129,7 @@
   },
   "flags": [
    "9 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15150,7 +15158,7 @@
    "change": -21000.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15180,7 +15188,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15210,7 +15218,7 @@
   },
   "flags": [
    "3 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15240,7 +15248,7 @@
   },
   "flags": [
    "9 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -15269,7 +15277,7 @@
    "change": -8400.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15299,7 +15307,7 @@
   },
   "flags": [
    "3 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15329,7 +15337,7 @@
   },
   "flags": [
    "3 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -15358,7 +15366,7 @@
    "change": 281603.0
   },
   "flags": [
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -15388,7 +15396,7 @@
   },
   "flags": [
    "2 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -15417,7 +15425,7 @@
    "change": -18532.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15446,7 +15454,7 @@
    "change": -3500.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15475,7 +15483,7 @@
    "change": 15074.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15505,7 +15513,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15535,7 +15543,7 @@
   },
   "flags": [
    "2 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -15565,7 +15573,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15595,7 +15603,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15625,7 +15633,7 @@
   },
   "flags": [
    "2 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -15655,7 +15663,7 @@
   },
   "flags": [
    "2 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -15684,7 +15692,7 @@
    "change": -14274.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15714,7 +15722,7 @@
   },
   "flags": [
    "2 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -15744,7 +15752,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15773,7 +15781,7 @@
    "change": -5965.0
   },
   "flags": [
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -15803,7 +15811,7 @@
   },
   "flags": [
    "2 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -15833,7 +15841,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15862,7 +15870,7 @@
    "change": 0.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15892,7 +15900,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15922,7 +15930,7 @@
   },
   "flags": [
    "2 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -15951,7 +15959,7 @@
    "change": -9685.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -15980,7 +15988,7 @@
    "change": -2785.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -16009,7 +16017,7 @@
    "change": -10229.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -16039,7 +16047,7 @@
   },
   "flags": [
    "12 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -16069,7 +16077,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -16099,7 +16107,7 @@
   },
   "flags": [
    "4 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 1537 days (discontinued?)"
+   "no new value in 1538 days (discontinued?)"
   ]
  },
  {
@@ -16129,7 +16137,7 @@
   },
   "flags": [
    "4 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -16158,7 +16166,7 @@
    "change": -100145.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -16188,7 +16196,7 @@
   },
   "flags": [
    "3 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -16218,7 +16226,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -16247,7 +16255,7 @@
    "change": 567621.0
   },
   "flags": [
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -16276,7 +16284,7 @@
    "change": -3500.0
   },
   "flags": [
-   "no new value in 4094 days (discontinued?)"
+   "no new value in 4095 days (discontinued?)"
   ]
  },
  {
@@ -16305,7 +16313,7 @@
    "change": -6810.0
   },
   "flags": [
-   "no new value in 806 days (discontinued?)"
+   "no new value in 807 days (discontinued?)"
   ]
  },
  {
@@ -16334,7 +16342,7 @@
    "change": -11000.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -16363,7 +16371,7 @@
    "change": -7585.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -16392,7 +16400,7 @@
    "change": -11600.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -16422,7 +16430,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 349 days (discontinued?)"
+   "no new value in 350 days (discontinued?)"
   ]
  },
  {
@@ -16451,7 +16459,7 @@
    "change": -2998.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -16480,7 +16488,7 @@
    "change": -1100.0
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -16509,7 +16517,7 @@
    "change": 37892.6
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16538,7 +16546,7 @@
    "change": 148.9
   },
   "flags": [
-   "no new value in 7562 days (discontinued?)"
+   "no new value in 7563 days (discontinued?)"
   ]
  },
  {
@@ -16568,7 +16576,7 @@
   },
   "flags": [
    "7 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16598,7 +16606,7 @@
   },
   "flags": [
    "11 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16628,7 +16636,7 @@
   },
   "flags": [
    "2 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16658,7 +16666,7 @@
   },
   "flags": [
    "13 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16688,7 +16696,7 @@
   },
   "flags": [
    "39 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16717,7 +16725,7 @@
    "change": 2.0
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16747,7 +16755,7 @@
   },
   "flags": [
    "7 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16776,7 +16784,7 @@
    "change": 8.1
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16806,7 +16814,7 @@
   },
   "flags": [
    "7 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16836,7 +16844,7 @@
   },
   "flags": [
    "40 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16866,7 +16874,7 @@
   },
   "flags": [
    "11 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16896,7 +16904,7 @@
   },
   "flags": [
    "33 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16926,7 +16934,7 @@
   },
   "flags": [
    "13 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16955,7 +16963,7 @@
    "change": -0.2
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -16984,7 +16992,7 @@
    "change": 407.7
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17013,7 +17021,7 @@
    "change": -311.9
   },
   "flags": [
-   "no new value in 7562 days (discontinued?)"
+   "no new value in 7563 days (discontinued?)"
   ]
  },
  {
@@ -17043,7 +17051,7 @@
   },
   "flags": [
    "6 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17072,7 +17080,7 @@
    "change": 804.4
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17101,7 +17109,7 @@
    "change": 62.3
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17131,7 +17139,7 @@
   },
   "flags": [
    "7 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17161,7 +17169,7 @@
   },
   "flags": [
    "40 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17191,7 +17199,7 @@
   },
   "flags": [
    "9 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17220,7 +17228,7 @@
    "change": 1397.3
   },
   "flags": [
-   "no new value in 2083 days (discontinued?)"
+   "no new value in 2084 days (discontinued?)"
   ]
  },
  {
@@ -17250,7 +17258,7 @@
   },
   "flags": [
    "16 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17279,7 +17287,7 @@
    "change": 1619.8
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17309,7 +17317,7 @@
   },
   "flags": [
    "4 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17339,7 +17347,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17369,7 +17377,7 @@
   },
   "flags": [
    "22 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 3271 days (discontinued?)"
+   "no new value in 3272 days (discontinued?)"
   ]
  },
  {
@@ -17399,7 +17407,7 @@
   },
   "flags": [
    "2 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17428,7 +17436,7 @@
    "change": -0.4
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17458,7 +17466,7 @@
   },
   "flags": [
    "2 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17488,7 +17496,7 @@
   },
   "flags": [
    "8 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17517,7 +17525,7 @@
    "change": 2.0
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17547,7 +17555,7 @@
   },
   "flags": [
    "12 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17577,7 +17585,7 @@
   },
   "flags": [
    "31 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17606,7 +17614,7 @@
    "change": 26.0
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17635,7 +17643,7 @@
    "change": 1498.2
   },
   "flags": [
-   "no new value in 2083 days (discontinued?)"
+   "no new value in 2084 days (discontinued?)"
   ]
  },
  {
@@ -17665,7 +17673,7 @@
   },
   "flags": [
    "10 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17695,7 +17703,7 @@
   },
   "flags": [
    "10 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17724,7 +17732,7 @@
    "change": 225.8
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17753,7 +17761,7 @@
    "change": 215.1
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17783,7 +17791,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2083 days (discontinued?)"
+   "no new value in 2084 days (discontinued?)"
   ]
  },
  {
@@ -17813,7 +17821,7 @@
   },
   "flags": [
    "19 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17842,7 +17850,7 @@
    "change": 85.9
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17872,7 +17880,7 @@
   },
   "flags": [
    "2 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17902,7 +17910,7 @@
   },
   "flags": [
    "32 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17931,7 +17939,7 @@
    "change": 122.0
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17961,7 +17969,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -17991,7 +17999,7 @@
   },
   "flags": [
    "17 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18021,7 +18029,7 @@
   },
   "flags": [
    "10 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18051,7 +18059,7 @@
   },
   "flags": [
    "8 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18080,7 +18088,7 @@
    "change": -46.9
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18109,7 +18117,7 @@
    "change": -27.1
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18139,7 +18147,7 @@
   },
   "flags": [
    "6 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18169,7 +18177,7 @@
   },
   "flags": [
    "18 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18199,7 +18207,7 @@
   },
   "flags": [
    "12 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18228,7 +18236,7 @@
    "change": 65.4
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18258,7 +18266,7 @@
   },
   "flags": [
    "32 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18287,7 +18295,7 @@
    "change": 8.8
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18316,7 +18324,7 @@
    "change": 42294.8
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18346,7 +18354,7 @@
   },
   "flags": [
    "16 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18376,7 +18384,7 @@
   },
   "flags": [
    "6 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18406,7 +18414,7 @@
   },
   "flags": [
    "6 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18435,7 +18443,7 @@
    "change": 7.2
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18464,7 +18472,7 @@
    "change": 134.8
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18493,7 +18501,7 @@
    "change": 210.3
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -18523,7 +18531,7 @@
   },
   "flags": [
    "15 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -19123,7 +19131,7 @@
    "change": 10176.0
   },
   "flags": [
-   "no new value in 3363 days (discontinued?)"
+   "no new value in 3364 days (discontinued?)"
   ]
  },
  {
@@ -19287,7 +19295,7 @@
    "change": 15884.0
   },
   "flags": [
-   "no new value in 3363 days (discontinued?)"
+   "no new value in 3364 days (discontinued?)"
   ]
  },
  {
@@ -19343,7 +19351,7 @@
    "change": 156319.7
   },
   "flags": [
-   "no new value in 3363 days (discontinued?)"
+   "no new value in 3364 days (discontinued?)"
   ]
  },
  {
@@ -19509,7 +19517,7 @@
    "change": 9755.602554
   },
   "flags": [
-   "no new value in 3363 days (discontinued?)"
+   "no new value in 3364 days (discontinued?)"
   ]
  },
  {
@@ -20271,7 +20279,7 @@
    "change": 19.5
   },
   "flags": [
-   "no new value in 5736 days (discontinued?)"
+   "no new value in 5737 days (discontinued?)"
   ]
  },
  {
@@ -20327,7 +20335,7 @@
    "change": 1684.5
   },
   "flags": [
-   "no new value in 5736 days (discontinued?)"
+   "no new value in 5737 days (discontinued?)"
   ]
  },
  {
@@ -20547,7 +20555,7 @@
    "change": 103.9
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20576,7 +20584,7 @@
    "change": -92.3
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20605,7 +20613,7 @@
    "change": 170.1
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20634,7 +20642,7 @@
    "change": 434.4
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20663,7 +20671,7 @@
    "change": 444.0
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20692,7 +20700,7 @@
    "change": 110.3
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20721,7 +20729,7 @@
    "change": 199.7
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20750,7 +20758,7 @@
    "change": 18.8
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20779,7 +20787,7 @@
    "change": 888.6
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20808,7 +20816,7 @@
    "change": 428.4
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20837,7 +20845,7 @@
    "change": 4797.1
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20866,7 +20874,7 @@
    "change": 5535.7
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20895,7 +20903,7 @@
    "change": 5832.3
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20924,7 +20932,7 @@
    "change": 1016.2
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20953,7 +20961,7 @@
    "change": 1298.0
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -20982,7 +20990,7 @@
    "change": 296.6
   },
   "flags": [
-   "no new value in 1445 days (discontinued?)"
+   "no new value in 1446 days (discontinued?)"
   ]
  },
  {
@@ -21124,7 +21132,7 @@
   },
   "flags": [
    "5 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2083 days (discontinued?)"
+   "no new value in 2084 days (discontinued?)"
   ]
  },
  {
@@ -21239,7 +21247,7 @@
   },
   "flags": [
    "6 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 2083 days (discontinued?)"
+   "no new value in 2084 days (discontinued?)"
   ]
  },
  {
@@ -21295,7 +21303,7 @@
    "change": 1930.1
   },
   "flags": [
-   "no new value in 2083 days (discontinued?)"
+   "no new value in 2084 days (discontinued?)"
   ]
  },
  {
@@ -21437,7 +21445,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 3179 days (discontinued?)"
+   "no new value in 3180 days (discontinued?)"
   ]
  },
  {
@@ -21549,7 +21557,7 @@
    "change": -10000.0
   },
   "flags": [
-   "no new value in 2083 days (discontinued?)"
+   "no new value in 2084 days (discontinued?)"
   ]
  },
  {
@@ -21748,7 +21756,7 @@
    "change": 1.37775
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -21777,7 +21785,7 @@
    "change": 1.38775
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -21806,7 +21814,7 @@
    "change": 3.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -21835,7 +21843,7 @@
    "change": 3.5
   },
   "flags": [
-   "no new value in 3454 days (discontinued?)"
+   "no new value in 3455 days (discontinued?)"
   ]
  },
  {
@@ -21864,7 +21872,7 @@
    "change": -2.75
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -21893,7 +21901,7 @@
    "change": 1.5
   },
   "flags": [
-   "no new value in 3454 days (discontinued?)"
+   "no new value in 3455 days (discontinued?)"
   ]
  },
  {
@@ -21922,7 +21930,7 @@
    "change": 2.2
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -21951,7 +21959,7 @@
    "change": 1.8
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -21980,7 +21988,7 @@
    "change": 2.25
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -22009,7 +22017,7 @@
    "change": -3.75
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -22038,7 +22046,7 @@
    "change": -0.5
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -22067,7 +22075,7 @@
    "change": -3.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -22096,7 +22104,7 @@
    "change": 3.5
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -22125,7 +22133,7 @@
    "change": 69.9
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -22154,7 +22162,7 @@
    "change": 55.1
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -22183,7 +22191,7 @@
    "change": 40.3
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -22212,7 +22220,7 @@
    "change": 10.8
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -22241,7 +22249,7 @@
    "change": 92.1
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -22270,7 +22278,7 @@
    "change": -44.1
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -22299,7 +22307,7 @@
    "change": 90.7
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -22328,7 +22336,7 @@
    "change": 44.4
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -22357,7 +22365,7 @@
    "change": 41.3
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -22386,7 +22394,7 @@
    "change": 25.8
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -22415,7 +22423,7 @@
    "change": 38.7
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -22444,7 +22452,7 @@
    "change": 45.7
   },
   "flags": [
-   "no new value in 76 days (discontinued?)"
+   "no new value in 77 days (discontinued?)"
   ]
  },
  {
@@ -22473,7 +22481,7 @@
    "change": 84.6
   },
   "flags": [
-   "no new value in 76 days (discontinued?)"
+   "no new value in 77 days (discontinued?)"
   ]
  },
  {
@@ -22502,7 +22510,7 @@
    "change": 6.7
   },
   "flags": [
-   "no new value in 6650 days (discontinued?)"
+   "no new value in 6651 days (discontinued?)"
   ]
  },
  {
@@ -22531,7 +22539,7 @@
    "change": 55.0
   },
   "flags": [
-   "no new value in 76 days (discontinued?)"
+   "no new value in 77 days (discontinued?)"
   ]
  },
  {
@@ -22560,7 +22568,7 @@
    "change": 35.4
   },
   "flags": [
-   "no new value in 76 days (discontinued?)"
+   "no new value in 77 days (discontinued?)"
   ]
  },
  {
@@ -22589,7 +22597,7 @@
    "change": 100.6
   },
   "flags": [
-   "no new value in 76 days (discontinued?)"
+   "no new value in 77 days (discontinued?)"
   ]
  },
  {
@@ -22618,7 +22626,7 @@
    "change": 99.1
   },
   "flags": [
-   "no new value in 76 days (discontinued?)"
+   "no new value in 77 days (discontinued?)"
   ]
  },
  {
@@ -22647,7 +22655,7 @@
    "change": 57.3
   },
   "flags": [
-   "no new value in 76 days (discontinued?)"
+   "no new value in 77 days (discontinued?)"
   ]
  },
  {
@@ -22676,7 +22684,7 @@
    "change": 6.5
   },
   "flags": [
-   "no new value in 6650 days (discontinued?)"
+   "no new value in 6651 days (discontinued?)"
   ]
  },
  {
@@ -22705,7 +22713,7 @@
    "change": 6.6
   },
   "flags": [
-   "no new value in 6650 days (discontinued?)"
+   "no new value in 6651 days (discontinued?)"
   ]
  },
  {
@@ -22734,7 +22742,7 @@
    "change": 65.3
   },
   "flags": [
-   "no new value in 76 days (discontinued?)"
+   "no new value in 77 days (discontinued?)"
   ]
  },
  {
@@ -22763,7 +22771,7 @@
    "change": 0.0
   },
   "flags": [
-   "no new value in 6650 days (discontinued?)"
+   "no new value in 6651 days (discontinued?)"
   ]
  },
  {
@@ -22792,7 +22800,7 @@
    "change": 14.4
   },
   "flags": [
-   "no new value in 6650 days (discontinued?)"
+   "no new value in 6651 days (discontinued?)"
   ]
  },
  {
@@ -22821,7 +22829,7 @@
    "change": 48.8
   },
   "flags": [
-   "no new value in 76 days (discontinued?)"
+   "no new value in 77 days (discontinued?)"
   ]
  },
  {
@@ -22850,7 +22858,7 @@
    "change": -119.1
   },
   "flags": [
-   "no new value in 76 days (discontinued?)"
+   "no new value in 77 days (discontinued?)"
   ]
  },
  {
@@ -22879,7 +22887,7 @@
    "change": 37.6
   },
   "flags": [
-   "no new value in 76 days (discontinued?)"
+   "no new value in 77 days (discontinued?)"
   ]
  },
  {
@@ -22908,7 +22916,7 @@
    "change": 16.2
   },
   "flags": [
-   "no new value in 6650 days (discontinued?)"
+   "no new value in 6651 days (discontinued?)"
   ]
  },
  {
@@ -22937,7 +22945,7 @@
    "change": -64.4
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -22966,7 +22974,7 @@
    "change": 59.8
   },
   "flags": [
-   "no new value in 76 days (discontinued?)"
+   "no new value in 77 days (discontinued?)"
   ]
  },
  {
@@ -22995,7 +23003,7 @@
    "change": 146.4
   },
   "flags": [
-   "no new value in 76 days (discontinued?)"
+   "no new value in 77 days (discontinued?)"
   ]
  },
  {
@@ -23024,7 +23032,7 @@
    "change": 100.0
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -23080,7 +23088,7 @@
    "change": 256.506372
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -23109,7 +23117,7 @@
    "change": 147.474207
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -23219,7 +23227,7 @@
    "change": 118.8
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -23244,7 +23252,7 @@
   "median": 147.8,
   "biggest_move": null,
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -23269,7 +23277,7 @@
   "median": 160.9,
   "biggest_move": null,
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -23298,7 +23306,7 @@
    "change": 43.9
   },
   "flags": [
-   "no new value in 4824 days (discontinued?)"
+   "no new value in 4825 days (discontinued?)"
   ]
  },
  {
@@ -23327,7 +23335,7 @@
    "change": 10.5
   },
   "flags": [
-   "no new value in 4824 days (discontinued?)"
+   "no new value in 4825 days (discontinued?)"
   ]
  },
  {
@@ -23352,7 +23360,7 @@
   "median": 124.8,
   "biggest_move": null,
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -23381,7 +23389,7 @@
    "change": 13.8
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -23410,7 +23418,7 @@
    "change": 17.6
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -23439,7 +23447,7 @@
    "change": 1.0
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -23468,7 +23476,7 @@
    "change": 54.2
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -23497,7 +23505,7 @@
    "change": 4.0
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -23522,7 +23530,7 @@
   "median": 146.5,
   "biggest_move": null,
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -23551,7 +23559,7 @@
    "change": 0.0
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -23576,7 +23584,7 @@
   "median": 140.3,
   "biggest_move": null,
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -23605,7 +23613,7 @@
    "change": 4.7
   },
   "flags": [
-   "no new value in 4824 days (discontinued?)"
+   "no new value in 4825 days (discontinued?)"
   ]
  },
  {
@@ -23634,7 +23642,7 @@
    "change": 3.0
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -23663,7 +23671,7 @@
    "change": 1.1
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -23692,7 +23700,7 @@
    "change": 66.9
   },
   "flags": [
-   "no new value in 4824 days (discontinued?)"
+   "no new value in 4825 days (discontinued?)"
   ]
  },
  {
@@ -23721,7 +23729,7 @@
    "change": 10.8
   },
   "flags": [
-   "no new value in 4824 days (discontinued?)"
+   "no new value in 4825 days (discontinued?)"
   ]
  },
  {
@@ -23750,7 +23758,7 @@
    "change": 9.0
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -23779,7 +23787,7 @@
    "change": 17.8
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -23808,7 +23816,7 @@
    "change": 24.8
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -23837,7 +23845,7 @@
    "change": 27.1
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -23866,7 +23874,7 @@
    "change": 25.3
   },
   "flags": [
-   "no new value in 4824 days (discontinued?)"
+   "no new value in 4825 days (discontinued?)"
   ]
  },
  {
@@ -23895,7 +23903,7 @@
    "change": 18.2
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -23924,7 +23932,7 @@
    "change": 9.1
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -23953,7 +23961,7 @@
    "change": 13.3
   },
   "flags": [
-   "no new value in 4824 days (discontinued?)"
+   "no new value in 4825 days (discontinued?)"
   ]
  },
  {
@@ -23978,7 +23986,7 @@
   "median": 210.9,
   "biggest_move": null,
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -24003,7 +24011,7 @@
   "median": 112.5,
   "biggest_move": null,
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -24028,7 +24036,7 @@
   "median": 110.6,
   "biggest_move": null,
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -24057,7 +24065,7 @@
    "change": 72.5
   },
   "flags": [
-   "no new value in 4824 days (discontinued?)"
+   "no new value in 4825 days (discontinued?)"
   ]
  },
  {
@@ -24086,7 +24094,7 @@
    "change": 14.1
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -24115,7 +24123,7 @@
    "change": 7.6
   },
   "flags": [
-   "no new value in 7016 days (discontinued?)"
+   "no new value in 7017 days (discontinued?)"
   ]
  },
  {
@@ -24140,7 +24148,7 @@
   "median": 149.6,
   "biggest_move": null,
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -24169,7 +24177,7 @@
    "change": 25.0
   },
   "flags": [
-   "no new value in 4824 days (discontinued?)"
+   "no new value in 4825 days (discontinued?)"
   ]
  },
  {
@@ -24252,7 +24260,7 @@
    "change": 9270.0
   },
   "flags": [
-   "no new value in 1902 days (discontinued?)"
+   "no new value in 1903 days (discontinued?)"
   ]
  },
  {
@@ -24281,7 +24289,7 @@
    "change": -6035.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24310,7 +24318,7 @@
    "change": 188.18
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24339,7 +24347,7 @@
    "change": 29.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24369,7 +24377,7 @@
   },
   "flags": [
    "4 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24398,7 +24406,7 @@
    "change": 1131.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24427,7 +24435,7 @@
    "change": 102.07
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24456,7 +24464,7 @@
    "change": 150.91
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -24485,7 +24493,7 @@
    "change": 2164.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24514,7 +24522,7 @@
    "change": 222.54
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -24543,7 +24551,7 @@
    "change": -388.24
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24572,7 +24580,7 @@
    "change": 388.65
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24601,7 +24609,7 @@
    "change": 854.38
   },
   "flags": [
-   "no new value in 2267 days (discontinued?)"
+   "no new value in 2268 days (discontinued?)"
   ]
  },
  {
@@ -24630,7 +24638,7 @@
    "change": 853.72
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24659,7 +24667,7 @@
    "change": 2895.11
   },
   "flags": [
-   "no new value in 2998 days (discontinued?)"
+   "no new value in 2999 days (discontinued?)"
   ]
  },
  {
@@ -24688,7 +24696,7 @@
    "change": 940.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24717,7 +24725,7 @@
    "change": 3880.35
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24746,7 +24754,7 @@
    "change": 2332.5
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24775,7 +24783,7 @@
    "change": -166.77
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -24804,7 +24812,7 @@
    "change": 1474.6
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24833,7 +24841,7 @@
    "change": 1441.56
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -24862,7 +24870,7 @@
    "change": 549.01
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24891,7 +24899,7 @@
    "change": 62.22
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24920,7 +24928,7 @@
    "change": 47.51
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24949,7 +24957,7 @@
    "change": 58.58
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -24978,7 +24986,7 @@
    "change": 228.7
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25007,7 +25015,7 @@
    "change": -163.83
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25036,7 +25044,7 @@
    "change": -139.48
   },
   "flags": [
-   "no new value in 1506 days (discontinued?)"
+   "no new value in 1507 days (discontinued?)"
   ]
  },
  {
@@ -25065,7 +25073,7 @@
    "change": 139.42
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -25094,7 +25102,7 @@
    "change": 28325.807493
   },
   "flags": [
-   "no new value in 3454 days (discontinued?)"
+   "no new value in 3455 days (discontinued?)"
   ]
  },
  {
@@ -25123,7 +25131,7 @@
    "change": 279.47
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -25152,7 +25160,7 @@
    "change": -163.93
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25181,7 +25189,7 @@
    "change": 5991.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25210,7 +25218,7 @@
    "change": 615.83
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -25239,7 +25247,7 @@
    "change": -116.1
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25268,7 +25276,7 @@
    "change": 350.54
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -25297,7 +25305,7 @@
    "change": -1648.6
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25326,7 +25334,7 @@
    "change": 218.34
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25355,7 +25363,7 @@
    "change": 5922.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25384,7 +25392,7 @@
    "change": 17538.0
   },
   "flags": [
-   "no new value in 3454 days (discontinued?)"
+   "no new value in 3455 days (discontinued?)"
   ]
  },
  {
@@ -25413,7 +25421,7 @@
    "change": 2500.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25442,7 +25450,7 @@
    "change": -23.0
   },
   "flags": [
-   "no new value in 7746 days (discontinued?)"
+   "no new value in 7747 days (discontinued?)"
   ]
  },
  {
@@ -25471,7 +25479,7 @@
    "change": 1.0
   },
   "flags": [
-   "no new value in 1902 days (discontinued?)"
+   "no new value in 1903 days (discontinued?)"
   ]
  },
  {
@@ -25500,7 +25508,7 @@
    "change": 152771.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25525,7 +25533,7 @@
   "median": 0.0,
   "biggest_move": null,
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25554,7 +25562,7 @@
    "change": 494.51
   },
   "flags": [
-   "no new value in 1932 days (discontinued?)"
+   "no new value in 1933 days (discontinued?)"
   ]
  },
  {
@@ -25583,7 +25591,7 @@
    "change": -237.65
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25612,7 +25620,7 @@
    "change": 12.0
   },
   "flags": [
-   "no new value in 1902 days (discontinued?)"
+   "no new value in 1903 days (discontinued?)"
   ]
  },
  {
@@ -25641,7 +25649,7 @@
    "change": 5977.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25670,7 +25678,7 @@
    "change": 86629.0
   },
   "flags": [
-   "no new value in 2052 days (discontinued?)"
+   "no new value in 2053 days (discontinued?)"
   ]
  },
  {
@@ -25699,7 +25707,7 @@
    "change": 148.0
   },
   "flags": [
-   "no new value in 7746 days (discontinued?)"
+   "no new value in 7747 days (discontinued?)"
   ]
  },
  {
@@ -25728,7 +25736,7 @@
    "change": 258.36
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25758,7 +25766,7 @@
   },
   "flags": [
    "60 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25787,7 +25795,7 @@
    "change": 11.22
   },
   "flags": [
-   "no new value in 1902 days (discontinued?)"
+   "no new value in 1903 days (discontinued?)"
   ]
  },
  {
@@ -25816,7 +25824,7 @@
    "change": 5.61
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25845,7 +25853,7 @@
    "change": -202.52
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25874,7 +25882,7 @@
    "change": 466.5
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -25903,7 +25911,7 @@
    "change": 9269.0
   },
   "flags": [
-   "no new value in 1902 days (discontinued?)"
+   "no new value in 1903 days (discontinued?)"
   ]
  },
  {
@@ -25932,7 +25940,7 @@
    "change": 4620.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25962,7 +25970,7 @@
   },
   "flags": [
    "4 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -25991,7 +25999,7 @@
    "change": 338.21
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -26020,7 +26028,7 @@
    "change": 610.14
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -26049,7 +26057,7 @@
    "change": 101.38
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -26078,7 +26086,7 @@
    "change": 259.6
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -26107,7 +26115,7 @@
    "change": -736.031364
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -26136,7 +26144,7 @@
    "change": 80903.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -26165,7 +26173,7 @@
    "change": 18.0
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -26194,7 +26202,7 @@
    "change": 390.69
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -26223,7 +26231,7 @@
    "change": 7729.0
   },
   "flags": [
-   "no new value in 7746 days (discontinued?)"
+   "no new value in 7747 days (discontinued?)"
   ]
  },
  {
@@ -26252,7 +26260,7 @@
    "change": 274.22
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -26281,7 +26289,7 @@
    "change": 56.52
   },
   "flags": [
-   "no new value in 2633 days (discontinued?)"
+   "no new value in 2634 days (discontinued?)"
   ]
  },
  {
@@ -28724,7 +28732,7 @@
    "change": -38.8
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -28807,7 +28815,7 @@
    "change": -49.1
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -28836,7 +28844,7 @@
    "change": 1401.9
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29002,7 +29010,7 @@
    "change": -455.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29031,7 +29039,7 @@
    "change": -694.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29060,7 +29068,7 @@
    "change": 3552.3
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29089,7 +29097,7 @@
    "change": 2242.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29118,7 +29126,7 @@
    "change": -122.3
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29174,7 +29182,7 @@
    "change": -104.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29203,7 +29211,7 @@
    "change": 141.4
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29288,7 +29296,7 @@
    "change": -208.1
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29344,7 +29352,7 @@
    "change": -78.4
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29481,7 +29489,7 @@
    "change": 253.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29510,7 +29518,7 @@
    "change": -594.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29566,7 +29574,7 @@
    "change": -31.3
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29595,7 +29603,7 @@
    "change": -24.2
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29651,7 +29659,7 @@
    "change": -177.3
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29680,7 +29688,7 @@
    "change": -2054.2
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29736,7 +29744,7 @@
    "change": 40.8
   },
   "flags": [
-   "no new value in 3363 days (discontinued?)"
+   "no new value in 3364 days (discontinued?)"
   ]
  },
  {
@@ -29846,7 +29854,7 @@
    "change": -176.5
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29902,7 +29910,7 @@
    "change": -2152.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -29985,7 +29993,7 @@
    "change": -782.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -30041,7 +30049,7 @@
    "change": -1760.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -30178,7 +30186,7 @@
    "change": -343.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -30288,7 +30296,7 @@
    "change": -270.1
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -30344,7 +30352,7 @@
    "change": -532.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -30454,7 +30462,7 @@
    "change": 134.1
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30483,7 +30491,7 @@
    "change": -87.0
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30512,7 +30520,7 @@
    "change": -276.1
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30541,7 +30549,7 @@
    "change": -22.9
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30570,7 +30578,7 @@
    "change": -31.6
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30599,7 +30607,7 @@
    "change": -29.3
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30628,7 +30636,7 @@
    "change": -130.3
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -30657,7 +30665,7 @@
    "change": -31.9
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30686,7 +30694,7 @@
    "change": 23.5
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30715,7 +30723,7 @@
    "change": -38.6
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30744,7 +30752,7 @@
    "change": -232.8
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30773,7 +30781,7 @@
    "change": 31.6
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30802,7 +30810,7 @@
    "change": -112.1
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30831,7 +30839,7 @@
    "change": 425.5
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30860,7 +30868,7 @@
    "change": -54.0
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30889,7 +30897,7 @@
    "change": -273.6
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30918,7 +30926,7 @@
    "change": 376.5
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30947,7 +30955,7 @@
    "change": -34.4
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -30976,7 +30984,7 @@
    "change": 76.5
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31005,7 +31013,7 @@
    "change": -91.8
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31034,7 +31042,7 @@
    "change": 18.6
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -31063,7 +31071,7 @@
    "change": -67.6
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31092,7 +31100,7 @@
    "change": -15.8
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31121,7 +31129,7 @@
    "change": 523.4
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31150,7 +31158,7 @@
    "change": 75.7
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31179,7 +31187,7 @@
    "change": -73.0
   },
   "flags": [
-   "no new value in 5920 days (discontinued?)"
+   "no new value in 5921 days (discontinued?)"
   ]
  },
  {
@@ -31208,7 +31216,7 @@
    "change": -71.1
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31237,7 +31245,7 @@
    "change": -117.0
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31266,7 +31274,7 @@
    "change": -97.7
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31295,7 +31303,7 @@
    "change": -52.9
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31324,7 +31332,7 @@
    "change": -69.8
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31353,7 +31361,7 @@
    "change": -160.4
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31409,7 +31417,7 @@
    "change": 77.8
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -31438,7 +31446,7 @@
    "change": -14.0
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31467,7 +31475,7 @@
    "change": -44.8
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31496,7 +31504,7 @@
    "change": 1074.1
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31525,7 +31533,7 @@
    "change": -63.5
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31554,7 +31562,7 @@
    "change": -12.4
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31583,7 +31591,7 @@
    "change": 1462.0
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31612,7 +31620,7 @@
    "change": 211.3
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31641,7 +31649,7 @@
    "change": -91.5
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31670,7 +31678,7 @@
    "change": -160.2
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -31699,7 +31707,7 @@
    "change": -672.7
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31728,7 +31736,7 @@
    "change": -137.6
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31757,7 +31765,7 @@
    "change": -227.7
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31786,7 +31794,7 @@
    "change": -11.3
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31815,7 +31823,7 @@
    "change": -197.4
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31844,7 +31852,7 @@
    "change": -276.3
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31873,7 +31881,7 @@
    "change": -157.4
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31902,7 +31910,7 @@
    "change": -85.2
   },
   "flags": [
-   "no new value in 5189 days (discontinued?)"
+   "no new value in 5190 days (discontinued?)"
   ]
  },
  {
@@ -31960,7 +31968,7 @@
    "change": -68.4
   },
   "flags": [
-   "no new value in 3363 days (discontinued?)"
+   "no new value in 3364 days (discontinued?)"
   ]
  },
  {
@@ -32097,7 +32105,7 @@
    "change": -63.9
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -32126,7 +32134,7 @@
    "change": -54.4
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -32155,7 +32163,7 @@
    "change": -139.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -32238,7 +32246,7 @@
    "change": 45.5
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -32294,7 +32302,7 @@
    "change": 230.9
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -32404,7 +32412,7 @@
    "change": 129.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -32433,7 +32441,7 @@
    "change": 24.3
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -32489,7 +32497,7 @@
    "change": 105.5
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -32545,7 +32553,7 @@
    "change": 26.3
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -32574,7 +32582,7 @@
    "change": 14.1
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -32684,7 +32692,7 @@
    "change": 16.9
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -32740,7 +32748,7 @@
    "change": 104.7
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -32823,7 +32831,7 @@
    "change": 12.5
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -32852,7 +32860,7 @@
    "change": 6.5
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -32935,7 +32943,7 @@
    "change": 17.0
   },
   "flags": [
-   "no new value in 441 days (discontinued?)"
+   "no new value in 442 days (discontinued?)"
   ]
  },
  {
@@ -32964,7 +32972,7 @@
    "change": 514.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -33101,7 +33109,7 @@
    "change": 19.9
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -33184,7 +33192,7 @@
    "change": 341.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -33240,7 +33248,7 @@
    "change": 73.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -33296,7 +33304,7 @@
    "change": 103.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -33379,7 +33387,7 @@
    "change": 54.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -33435,7 +33443,7 @@
    "change": 913.8
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -33464,7 +33472,7 @@
    "change": 80.9
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -33520,7 +33528,7 @@
    "change": 143.5
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -33658,7 +33666,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -33687,7 +33695,7 @@
    "change": 31.9
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -33743,7 +33751,7 @@
    "change": 78.4
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -33853,7 +33861,7 @@
    "change": 69.2
   },
   "flags": [
-   "no new value in 1172 days (discontinued?)"
+   "no new value in 1173 days (discontinued?)"
   ]
  },
  {
@@ -33909,7 +33917,7 @@
    "change": 15.1
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -33965,7 +33973,7 @@
    "change": 47.5
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34048,7 +34056,7 @@
    "change": 9.4
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34104,7 +34112,7 @@
    "change": 114.8
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34160,7 +34168,7 @@
    "change": 36.8
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34189,7 +34197,7 @@
    "change": 9.5
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34272,7 +34280,7 @@
    "change": 142.5
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34328,7 +34336,7 @@
    "change": 7.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34384,7 +34392,7 @@
    "change": 19.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34440,7 +34448,7 @@
    "change": 14.7
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34469,7 +34477,7 @@
    "change": 8.5
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34525,7 +34533,7 @@
    "change": 36.5
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34554,7 +34562,7 @@
    "change": 143.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34583,7 +34591,7 @@
    "change": -30.7
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34639,7 +34647,7 @@
    "change": -17.6
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34668,7 +34676,7 @@
    "change": 143.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34698,7 +34706,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34727,7 +34735,7 @@
    "change": 5.4
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34783,7 +34791,7 @@
    "change": 126.7
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -34840,7 +34848,7 @@
   },
   "flags": [
    "2 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -35031,7 +35039,7 @@
    "change": 8.5
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -35168,7 +35176,7 @@
    "change": 91.1
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -35224,7 +35232,7 @@
    "change": 799.2
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -35253,7 +35261,7 @@
    "change": 214.9
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -35444,7 +35452,7 @@
    "change": 22.1
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -35527,7 +35535,7 @@
    "change": 50.0
   },
   "flags": [
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -35557,7 +35565,7 @@
   },
   "flags": [
    "4 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 3728 days (discontinued?)"
+   "no new value in 3729 days (discontinued?)"
   ]
  },
  {
@@ -35696,7 +35704,7 @@
    "change": 18085.0
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -35725,7 +35733,7 @@
    "change": 8440.1
   },
   "flags": [
-   "no new value in 1080 days (discontinued?)"
+   "no new value in 1081 days (discontinued?)"
   ]
  },
  {
@@ -35754,7 +35762,7 @@
    "change": 1332.3
   },
   "flags": [
-   "no new value in 3544 days (discontinued?)"
+   "no new value in 3545 days (discontinued?)"
   ]
  },
  {
@@ -35783,7 +35791,7 @@
    "change": 7249.0
   },
   "flags": [
-   "no new value in 3544 days (discontinued?)"
+   "no new value in 3545 days (discontinued?)"
   ]
  },
  {
@@ -35812,7 +35820,7 @@
    "change": 1048.2
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -35841,7 +35849,7 @@
    "change": 737.3
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -35871,7 +35879,7 @@
   },
   "flags": [
    "4 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -35900,7 +35908,7 @@
    "change": 1625.4
   },
   "flags": [
-   "no new value in 7927 days (discontinued?)"
+   "no new value in 7928 days (discontinued?)"
   ]
  },
  {
@@ -35929,7 +35937,7 @@
    "change": 15125.2
   },
   "flags": [
-   "no new value in 2449 days (discontinued?)"
+   "no new value in 2450 days (discontinued?)"
   ]
  },
  {
@@ -35958,7 +35966,7 @@
    "change": -63029.2
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -35988,7 +35996,7 @@
   },
   "flags": [
    "14 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -36017,7 +36025,7 @@
    "change": 19152.8
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -36046,7 +36054,7 @@
    "change": 4723.7
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -36075,7 +36083,7 @@
    "change": 1071.33
   },
   "flags": [
-   "no new value in 3544 days (discontinued?)"
+   "no new value in 3545 days (discontinued?)"
   ]
  },
  {
@@ -36104,7 +36112,7 @@
    "change": 4734.2
   },
   "flags": [
-   "no new value in 3544 days (discontinued?)"
+   "no new value in 3545 days (discontinued?)"
   ]
  },
  {
@@ -36133,7 +36141,7 @@
    "change": 1071.33
   },
   "flags": [
-   "no new value in 3544 days (discontinued?)"
+   "no new value in 3545 days (discontinued?)"
   ]
  },
  {
@@ -36163,7 +36171,7 @@
   },
   "flags": [
    "20 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 3544 days (discontinued?)"
+   "no new value in 3545 days (discontinued?)"
   ]
  },
  {
@@ -36192,7 +36200,7 @@
    "change": 13740.5
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -36222,7 +36230,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 3544 days (discontinued?)"
+   "no new value in 3545 days (discontinued?)"
   ]
  },
  {
@@ -36251,7 +36259,7 @@
    "change": 500.0
   },
   "flags": [
-   "no new value in 4275 days (discontinued?)"
+   "no new value in 4276 days (discontinued?)"
   ]
  },
  {
@@ -36280,7 +36288,7 @@
    "change": 1628.3
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -36309,7 +36317,7 @@
    "change": -2000.0
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -36338,7 +36346,7 @@
    "change": 2699.1
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -36396,7 +36404,7 @@
    "change": 867.8
   },
   "flags": [
-   "no new value in 3544 days (discontinued?)"
+   "no new value in 3545 days (discontinued?)"
   ]
  },
  {
@@ -36426,7 +36434,7 @@
   },
   "flags": [
    "1 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 3544 days (discontinued?)"
+   "no new value in 3545 days (discontinued?)"
   ]
  },
  {
@@ -36456,7 +36464,7 @@
   },
   "flags": [
    "6 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -36485,7 +36493,7 @@
    "change": 135635.0
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -36514,7 +36522,7 @@
    "change": 8440.1
   },
   "flags": [
-   "no new value in 1080 days (discontinued?)"
+   "no new value in 1081 days (discontinued?)"
   ]
  },
  {
@@ -36543,7 +36551,7 @@
    "change": 1248.3
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -36572,7 +36580,7 @@
    "change": 1000.1
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -36601,7 +36609,7 @@
    "change": 4379.68
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -36740,7 +36748,7 @@
    "change": 4259.4
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -36798,7 +36806,7 @@
    "change": 12930.8
   },
   "flags": [
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
@@ -37046,7 +37054,7 @@
   },
   "flags": [
    "15 zero values (CBE publishes 0 where no rate was set)",
-   "no new value in 257 days (discontinued?)"
+   "no new value in 258 days (discontinued?)"
   ]
  },
  {
