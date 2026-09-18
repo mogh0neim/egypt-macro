@@ -12,6 +12,16 @@
 const PALETTE_PAGES = [
   { label: "Overview", href: "#/", hint: "the front page",
     alt: "home start headline indicators dashboard" },
+  /* The synonyms here are doing more work than anywhere else in this list:
+   * nobody searches for "work it out". They type the question. */
+  { label: "Work it out", href: "#/tools", hint: "what your salary, your savings and the dollar are really worth",
+    alt: "calculator calculate inflation adjust salary wage raise pay savings money worth purchasing power real terms dollar exchange rate birthday convert" },
+  { label: "What is your salary worth?", href: "#/tools/salary", hint: "a salary from any month, in today's money",
+    alt: "calculator inflation adjusted wage pay raise income real terms purchasing power salary" },
+  { label: "What happened to your savings?", href: "#/tools/savings", hint: "pounds kept as pounds, against dollars",
+    alt: "calculator savings deposit cash inflation dollars usd swap devaluation lost value money" },
+  { label: "What was a dollar worth that day?", href: "#/tools/dollar", hint: "the CBE rate on any date since 2005",
+    alt: "calculator dollar exchange rate date birthday wedding anniversary on this day usd egp historical convert" },
   { label: "Series", href: "#/series", hint: "search all 1,317, or read down the subjects",
     alt: "browse topics subjects everything all series categories find search catalogue lookup" },
   { label: "Favourites", href: "#/favourites", hint: "the numbers you chose to keep",

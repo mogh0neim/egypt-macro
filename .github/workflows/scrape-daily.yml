@@ -42,6 +42,12 @@ jobs:
       - name: Derive auction series (yield curve, bid-to-cover)
         run: python ingest/derive_series.py
 
+      # Refuses to write if the chained index stops reproducing CBE's own
+      # year-on-year rate, which is the only way to notice that the source
+      # changed units under it.
+      - name: Chain the consumer price index
+        run: python ingest/derive_prices.py
+
       - name: Extract press-release series (reserves, remittances, MPC)
         run: python ingest/fetch_press.py --skip-cached --delay 1.5
 

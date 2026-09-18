@@ -36,6 +36,7 @@ async function viewMPC() {
   }
 
   await loadIndex();
+  const calendar = await loadMPCCalendar();
   const three = await Promise.all([
     loadSeries("EG.RATE.ON.DEP").catch(() => null),
     loadSeries("EG.RATE.ON.LEND").catch(() => null),
@@ -122,6 +123,7 @@ async function viewMPC() {
   app.innerHTML =
     '<div class="wrap">' +
     crumbs([{ label: "Rate decisions" }]) +
+    callPanel(nextMeeting(calendar), statements) +
     '<section class="section">' +
     '<p class="eyebrow">Monetary Policy Committee</p>' +
     "<h2>Every rate decision since June 2005</h2>" +
@@ -177,4 +179,106 @@ async function viewMPC() {
       );
     })
   );
+
+  wireCall(nextMeeting(calendar));
+}
+
+/* ---------- call it ----------
+ *
+ * The committee meets eight times a year on dates CBE publishes in advance,
+ * and this is the only thing on the site a reader can have an opinion about
+ * before it happens. Which makes it the only reason to come back on a
+ * particular day rather than whenever a number is needed.
+ *
+ * Calls live in localStorage and go nowhere: there is no server here to send
+ * them to and no account to attach them to. That rules out a leaderboard, and
+ * it also means nobody has to be told what happens to their guess. Scoring is
+ * a comparison against the archive, which arrives by itself the morning after
+ * the meeting, so the page can mark its own homework with no extra plumbing.
+ */
+
+const CALL_LABEL = { cut: "Cut", hold: "Hold", hike: "Raise" };
+
+const callsGet = () => store.get("calls", {});
+
+function scoreCalls(statements) {
+  const calls = callsGet();
+  const decided = {};
+  statements.forEach((s) => { if (s.decision) decided[s.date] = s.decision; });
+  let right = 0, judged = 0;
+  const settled = [];
+  Object.keys(calls).sort().forEach((date) => {
+    if (!decided[date]) return;
+    judged++;
+    const hit = decided[date] === calls[date];
+    if (hit) right++;
+    settled.push({ date: date, called: calls[date], actual: decided[date], hit: hit });
+  });
+  return { right: right, judged: judged, settled: settled.slice(-6).reverse() };
+}
+
+function callPanel(next, statements) {
+  if (!next) return "";
+  const called = callsGet()[next.date] || "";
+  const record = scoreCalls(statements);
+
+  return (
+    '<section class="section band-inset call"><div class="wrap-inner">' +
+    '<p class="eyebrow">Next rate decision</p>' +
+    "<h2>" + esc(niceDate(next.date)) + ", " + esc(countdownWords(next.days)) + "</h2>" +
+    '<p class="lede">Eight meetings a year, on dates the Central Bank publishes in advance. ' +
+    "What do you think they will do?</p>" +
+    '<div class="controls" id="call-controls">' +
+    ["cut", "hold", "hike"].map((d) =>
+      '<button class="chip' + (called === d ? " solid" : "") + '" data-call="' + d + '"' +
+      ' aria-pressed="' + (called === d ? "true" : "false") + '">' + CALL_LABEL[d] + "</button>").join("") +
+    "</div>" +
+    '<p class="foot-note" id="call-note">' + callNote(called, record) + "</p>" +
+    (record.settled.length
+      ? '<table class="indicators compact"><thead><tr><th>Meeting</th><th>You said</th>' +
+        "<th>They did</th></tr></thead><tbody>" +
+        record.settled.map((r) =>
+          "<tr><td class='name'>" + esc(niceDate(r.date)) + "</td>" +
+          "<td>" + esc(CALL_LABEL[r.called] || r.called) + "</td>" +
+          '<td class="' + (r.hit ? "up" : "down") + '">' + esc(CALL_LABEL[r.actual] || r.actual) +
+          (r.hit ? " ✓" : "") + "</td></tr>").join("") +
+        "</tbody></table>"
+      : "") +
+    '<p class="foot-note">Kept in this browser and nowhere else. There is no server behind ' +
+    "this site to send it to.</p>" +
+    "</div></section>"
+  );
+}
+
+function callNote(called, record) {
+  const history = record.judged
+    ? " You have called " + record.right + " of " + record.judged + "."
+    : "";
+  if (!called) return "Nothing called yet." + history;
+  return "You said <b>" + esc((CALL_LABEL[called] || called).toLowerCase()) +
+    "</b>. Scored here the morning after the meeting, once CBE publishes the statement." + history;
+}
+
+function wireCall(next) {
+  if (!next) return;
+  const controls = document.getElementById("call-controls");
+  if (!controls) return;
+  controls.addEventListener("click", (e) => {
+    const button = e.target.closest("[data-call]");
+    if (!button) return;
+    const calls = callsGet();
+    // Clicking the same one again takes it back, rather than trapping someone
+    // in a guess they changed their mind about.
+    if (calls[next.date] === button.dataset.call) delete calls[next.date];
+    else calls[next.date] = button.dataset.call;
+    store.set("calls", calls);
+
+    const now = calls[next.date] || "";
+    controls.querySelectorAll("[data-call]").forEach((b) => {
+      b.classList.toggle("solid", b.dataset.call === now);
+      b.setAttribute("aria-pressed", String(b.dataset.call === now));
+    });
+    const note = document.getElementById("call-note");
+    if (note) note.innerHTML = callNote(now, scoreCalls((state.mpc && state.mpc.statements) || []));
+  });
 }

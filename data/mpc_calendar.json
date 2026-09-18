@@ -1,0 +1,17 @@
+{
+ "note": "When the Monetary Policy Committee meets next. CBE publishes the year's schedule on the page named in source_url and does not serve it through any API this project could scrape: the page renders the dates client-side, and /api/sitecore/MPCMeetings/GetMPCMeetingsDetails returns 404 to anything outside the page. So this file is entered by hand, from that page, and every entry records the day it was checked. Nothing else on this site is hand-entered.",
+ "source_url": "https://www.cbe.org.eg/en/monetary-policy/mpc-meetings-schedule",
+ "checked_on": "2026-09-18",
+ "warn_below": 2,
+ "warning": "summarise.py --check fails when fewer than warn_below meetings are still in the future. CBE publishes the following year's schedule late in the preceding one, so this file expires quietly unless something shouts.",
+ "meetings": [
+  { "date": "2026-02-12", "year": 2026 },
+  { "date": "2026-04-02", "year": 2026 },
+  { "date": "2026-05-21", "year": 2026 },
+  { "date": "2026-07-09", "year": 2026 },
+  { "date": "2026-08-20", "year": 2026 },
+  { "date": "2026-09-24", "year": 2026 },
+  { "date": "2026-10-29", "year": 2026 },
+  { "date": "2026-12-17", "year": 2026 }
+ ]
+}

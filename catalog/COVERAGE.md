@@ -4,7 +4,7 @@ _Generated from `data/clean/series/`. See `catalog/last_run.json` for the
 run timestamp -- keeping it out of here means this file only changes when
 the coverage actually does._
 
-**1317 series, 425,890 observations.**
+**1318 series, 426,151 observations.**
 
 | Series | Coverage | n | Latest | Unit |
 |---|---|---|---|---|
@@ -18,6 +18,7 @@ the coverage actually does._
 | `EG.CPI.CORE.YOY` | 2005-01-01 to 2026-08-01 | 260 | 14.9 | percent |
 | `EG.CPI.FRVEG.MOM` | 2005-01-01 to 2026-08-01 | 260 | -5.5 | percent |
 | `EG.CPI.FRVEG.YOY` | 2005-01-01 to 2026-08-01 | 260 | 18.6 | percent |
+| `EG.CPI.HDL.INDEX` | 2004-12-01 to 2026-08-01 | 261 | 1418.05 | index |
 | `EG.CPI.HDL.MOM` | 2005-01-01 to 2026-08-01 | 260 | 0.1 | percent |
 | `EG.CPI.HDL.YOY` | 2000-01-01 to 2026-08-01 | 320 | 14.5 | percent |
 | `EG.CPI.REG.MOM` | 2005-01-01 to 2026-08-01 | 260 | 1 | percent |

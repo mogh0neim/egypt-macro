@@ -302,6 +302,14 @@ def main() -> int:
     if events.exists():
         shutil.copy(events, API / "events.json")
 
+    # The only forward-looking file on the site. mpc.json records what the
+    # committee has already decided; this says when it meets next, which is the
+    # one thing a reader can put in a diary.
+    calendar = ROOT / "data" / "mpc_calendar.json"
+    if calendar.exists():
+        shutil.copy(calendar, API / "mpc_calendar.json")
+        print("  api/v1/mpc_calendar.json")
+
     # ---- Bulk zips ----
     for name, folder in (("series", SERIES_DIR), ("records", RECORDS_DIR)):
         if not folder.exists():

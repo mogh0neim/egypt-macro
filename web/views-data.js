@@ -82,6 +82,7 @@ async function viewHome() {
   const sparks = await loadSparks();
   const fx = await loadSeries("EG.FX.OFF.USD.SELL").catch(() => null);
   const mpc = await loadMPC();
+  const calendar = await loadMPCCalendar();
 
   const first = fx && fx.observations[0];
   const last = fx && fx.observations[fx.observations.length - 1];
@@ -121,14 +122,24 @@ async function viewHome() {
   ).join("");
 
   const latestMPC = mpc && mpc.statements && mpc.statements[mpc.statements.length - 1];
+  /* The only forward-looking thing on the overview. Everything else here is a
+   * record of what already happened, which is why none of it is a reason to
+   * come back on any particular day. */
+  const next = nextMeeting(calendar);
   const mpcCard = latestMPC
     ? '<a class="wide-card" href="#/rates">' +
-      '<p class="eyebrow">Latest rate decision</p>' +
-      "<h3>" + niceDate(latestMPC.date) + ", the committee " +
-      ({ hold: "left rates unchanged", cut: "cut", hike: "raised" }[latestMPC.decision] || "met") + "</h3>" +
-      "<p>Overnight deposit " + esc(latestMPC.deposit_rate || "—") + "%, overnight lending " +
-      esc(latestMPC.lending_rate || "—") + "%. Every decision back to June 2005, with what changed in the wording each time.</p>" +
-      '<span class="go">See all ' + (mpc.count || 0) + " decisions →</span></a>"
+      '<p class="eyebrow">' + (next ? "Next rate decision" : "Latest rate decision") + "</p>" +
+      (next
+        ? "<h3>" + niceDate(next.date) + ", " + esc(countdownWords(next.days)) + "</h3>" +
+          "<p>Overnight deposit is " + esc(latestMPC.deposit_rate || "—") + "%, overnight lending " +
+          esc(latestMPC.lending_rate || "—") + "%, unchanged since " + niceDate(latestMPC.date) +
+          ". Call it before the committee does, and see every decision back to June 2005.</p>" +
+          '<span class="go">Call the next one →</span></a>'
+        : "<h3>" + niceDate(latestMPC.date) + ", the committee " +
+          ({ hold: "left rates unchanged", cut: "cut", hike: "raised" }[latestMPC.decision] || "met") + "</h3>" +
+          "<p>Overnight deposit " + esc(latestMPC.deposit_rate || "—") + "%, overnight lending " +
+          esc(latestMPC.lending_rate || "—") + "%. Every decision back to June 2005, with what changed in the wording each time.</p>" +
+          '<span class="go">See all ' + (mpc.count || 0) + " decisions →</span></a>")
     : "";
 
   app.innerHTML =
@@ -198,6 +209,13 @@ async function viewHome() {
     // these two, the archive and the downloads exist only in the navigation.
     '<section class="section"><div class="wrap">' +
     '<div class="pair">' +
+    '<a class="wide-card" href="#/tools">' +
+    '<p class="eyebrow">Work it out</p>' +
+    "<h3>What is your salary actually worth?</h3>" +
+    "<p>The same numbers, asked in the second person. A salary from a year you remember, " +
+    "priced in today's money. Savings kept as pounds against the same money swapped for " +
+    "dollars on day one. The dollar rate on any date since 2005.</p>" +
+    '<span class="go">Work it out →</span></a>' +
     '<a class="wide-card" href="#/docs">' +
     '<p class="eyebrow">Documents</p>' +
     "<h3>1,478 publications, read cover to cover</h3>" +

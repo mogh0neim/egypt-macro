@@ -90,6 +90,16 @@
   "source_url": "https://www.cbe.org.eg/en/economic-research/statistics/inflation-rates/historical-data"
  },
  {
+  "series_id": "EG.CPI.HDL.INDEX",
+  "title_en": "Consumer Price Index, chained (Dec 2004 = 100)",
+  "dataset": "derived_prices",
+  "family": "prices",
+  "freq": "M",
+  "unit": "index",
+  "derived": true,
+  "method": "CBE publishes inflation as a rate and never as a level. This chains EG.CPI.HDL.MOM, the published month-on-month headline rate, from a base of 100 in December 2004. Recomputing year-on-year inflation from it reproduces the published EG.CPI.HDL.YOY to a median of 0.001 percentage points. It does not reproduce 2009 and 2010, where CAPMAS rebased the basket and a chained index cannot see the link: a comparison spanning those two years carries roughly 1.5 percentage points of error in that one year."
+ },
+ {
   "series_id": "EG.CPI.HDL.MOM",
   "title_en": "Consumer Price Inflation - Headline (m/m)",
   "dataset": "inflation",

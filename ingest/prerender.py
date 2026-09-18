@@ -46,7 +46,7 @@ SITE_URL = "https://mogh0neim.github.io/egypt-macro/"
 
 # Written per build; every directory here is pruned before it is rewritten, so a
 # renamed series cannot leave a page behind that outlives it.
-OWNED = ("s", "topic", "docs", "series", "favourites", "rates", "money-market", "data", "about")
+OWNED = ("s", "topic", "docs", "series", "favourites", "rates", "money-market", "data", "about", "tools")
 
 MONTHS = ["January", "February", "March", "April", "May", "June",
           "July", "August", "September", "October", "November", "December"]
@@ -566,6 +566,18 @@ def main(template_html: str | None = None, assets: list[str] | None = None) -> i
          "One screen of the numbers you read every morning, with no prose in the way."),
         ("rates", "/rates", "Every CBE rate decision since 2005 | Miqyas",
          "172 Monetary Policy Committee decisions back to June 2005, with the corridor and what changed in the wording each time."),
+        ("tools", "/tools", "Egyptian inflation calculator: what is your money worth? | Miqyas",
+         "Three calculators on the Central Bank's own numbers: what a salary from any month is worth "
+         "today, what savings kept as pounds still buy, and the dollar rate on any date since 2005."),
+        ("tools/salary", "/tools/salary", "What is your Egyptian salary worth today? | Miqyas",
+         "A salary from any month since 2005, priced in today's money using the Central Bank's own "
+         "inflation. Free, and the answer is a link you can send."),
+        ("tools/savings", "/tools/savings", "What happened to your Egyptian pound savings? | Miqyas",
+         "What pounds set aside on any date since 2005 still buy, against what the same money would "
+         "be worth had it been swapped for dollars that day."),
+        ("tools/dollar", "/tools/dollar", "What was the dollar worth in Egypt on any date? | Miqyas",
+         "The Central Bank's official EGP/USD rate on any date since January 2005, and on the same "
+         "calendar day in every year since."),
         ("docs", "/docs", "Search 1,478 Central Bank of Egypt publications | Miqyas",
          "Every statistical bulletin, circular, annual report and press release CBE has put out as a PDF, "
          "53,006 pages of it, searchable in English and Arabic."),
@@ -577,8 +589,11 @@ def main(template_html: str | None = None, assets: list[str] | None = None) -> i
          "What is here, what is not, and how it is built. Miqyas is not affiliated with the Central Bank of Egypt."),
     ]
     for slug, page, title, description in fixed:
+        # "tools/salary" sits a directory deeper than "about", so the root it
+        # declares has to count the separators rather than assume one.
+        root = "/".join([".."] * (slug.count("/") + 1))
         write(DIST / slug / "index.html", template.render(
-            root="..", page=page, title=title, description=clamp(description),
+            root=root, page=page, title=title, description=clamp(description),
             url=f"{SITE_URL}{slug}/", image=f"{SITE_URL}og.png",
             image_alt="Miqyas: Egypt's economy in numbers",
             body='<div class="wrap"><section class="section">'

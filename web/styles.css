@@ -1261,6 +1261,61 @@ input.search::placeholder { color: var(--text-3); }
    plain .result stacks its two spans inline, which is right in the document
    results where the sub is a page reference and wrong here where it is an 88
    character id running into the title. */
+/* The next-decision panel, at the top of the rate decisions page. Gold, because
+   it is structure rather than measurement: it is the only thing on the site
+   that points at a date that has not happened. */
+.call h2 { margin-top: 0.2rem; }
+.call .controls { margin: 0.9rem 0 0.4rem; }
+.call .chip { min-height: 40px; padding-inline: 1.1rem; }
+.call table.indicators { margin-top: 0.9rem; max-width: 34rem; }
+
+/* ---------- the calculators ----------
+   The only form on the site that a reader types into and expects an answer
+   from, so the controls are sized for a thumb rather than for a table: 44px
+   tall everywhere, not only under the 820px block, because a number typed
+   wrong is the whole interaction wasted. */
+.tool-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.9rem 1.1rem;
+  margin: 1.25rem 0 0.75rem;
+}
+.tool-field { display: flex; flex-direction: column; gap: 0.3rem; min-width: 11rem; flex: 1 1 11rem; }
+.tool-field > span {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.tool-field input {
+  font: inherit;
+  font-family: var(--mono);
+  font-size: 1rem;
+  min-height: 44px;
+  padding: 0.4rem 0.6rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.tool-field input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+/* `button.chip` in the phone block is (0,1,1) and comes later in the file, so
+   a bare `.tool-form button` loses to it and the submit button came out at
+   38px. This is the primary action of the page and it gets the full 44. */
+.tool-form button.chip { min-height: 44px; padding-inline: 1.1rem; flex: 0 0 auto; }
+/* A date input's own picker button is drawn by the browser and is invisible on
+   a dark ground in Chrome, which is the one control here that cannot be
+   recovered by any other route. */
+:root[data-theme="dark"] .tool-field input::-webkit-calendar-picker-indicator { filter: invert(1) opacity(0.7); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tool-field input::-webkit-calendar-picker-indicator { filter: invert(1) opacity(0.7); }
+}
+.tool-note { margin-top: 1rem; }
+.tool-note p { margin: 0.5rem 0; max-width: 60ch; }
+.tool-note summary { cursor: pointer; color: var(--text-2); }
+
 /* The band that says where the name comes from. The gauge is sized up here,
    because on this one occasion it is the subject rather than a summary. */
 .nilometer .two-col { border-top: 0; }

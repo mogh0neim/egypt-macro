@@ -34,7 +34,8 @@ SITE_URL = "https://mogh0neim.github.io/egypt-macro/"
 # subjects and documents are enumerated from the catalogue instead. Keep this in
 # step with the `fixed` list in prerender.py: a slug here with no file written
 # for it is a sitemap entry pointing at a 404.
-PAGE_ROUTES = ["series", "favourites", "rates", "money-market", "docs", "data", "about"]
+PAGE_ROUTES = ["tools", "tools/salary", "tools/savings", "tools/dollar",
+               "series", "favourites", "rates", "money-market", "docs", "data", "about"]
 
 
 def copy_front_end() -> list[str]:

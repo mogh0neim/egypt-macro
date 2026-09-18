@@ -168,11 +168,45 @@ def main() -> int:
         for sid in uncatalogued[:10]:
             print(f"  {sid}", file=sys.stderr)
 
+    stale_calendar = check_mpc_calendar()
+
     if args.check:
         hard = [s for s in summaries if any(f.startswith("duplicate") for f in s["flags"])]
-        if hard or uncatalogued:
+        if hard or uncatalogued or stale_calendar:
             return 1
     return 0
+
+
+def check_mpc_calendar() -> bool:
+    """Shout before the meeting calendar runs out.
+
+    data/mpc_calendar.json is the one hand-entered file in the repository: CBE
+    publishes the year's meeting dates on a page that renders them client-side
+    and serves them through no endpoint this project can reach. Everything else
+    here fails loudly when it goes stale because a scrape stops returning rows.
+    This cannot. It just quietly stops having a next meeting to count down to,
+    and nobody notices until the countdown has been missing for a month.
+    """
+    path = ROOT / "data" / "mpc_calendar.json"
+    if not path.exists():
+        return False
+    try:
+        calendar = json.loads(path.read_text(encoding="utf-8"))
+    except ValueError as err:
+        print(f"\nWARNING: data/mpc_calendar.json is not valid JSON: {err}", file=sys.stderr)
+        return True
+
+    today = dt.date.today().isoformat()
+    ahead = [m["date"] for m in calendar.get("meetings", []) if m.get("date", "") >= today]
+    floor = calendar.get("warn_below", 2)
+    if len(ahead) < floor:
+        print(f"\nWARNING: only {len(ahead)} MPC meeting(s) left in data/mpc_calendar.json "
+              f"(want at least {floor}). Add next year's dates from "
+              f"{calendar.get('source_url', 'cbe.org.eg')} and update checked_on.",
+              file=sys.stderr)
+        return True
+    print(f"MPC calendar: {len(ahead)} meetings ahead, next {ahead[0]}")
+    return False
 
 
 if __name__ == "__main__":

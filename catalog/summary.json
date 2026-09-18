@@ -272,6 +272,33 @@
   "flags": []
  },
  {
+  "series_id": "EG.CPI.HDL.INDEX",
+  "title_en": "Consumer Price Index, chained (Dec 2004 = 100)",
+  "family": "prices",
+  "freq": "M",
+  "unit": "index",
+  "n": 261,
+  "first_period": "2004-12-01",
+  "last_period": "2026-08-01",
+  "last": 1418.0479,
+  "previous": 1416.6312,
+  "highest": {
+   "value": 1422.3205,
+   "period": "2026-05-01"
+  },
+  "lowest": {
+   "value": 99.792,
+   "period": "2005-02-01"
+  },
+  "median": 283.8158,
+  "biggest_move": {
+   "period": "2024-02-01",
+   "pct_change": 11.37,
+   "change": 107.0334
+  },
+  "flags": []
+ },
+ {
   "series_id": "EG.CPI.HDL.MOM",
   "title_en": "Consumer Price Inflation - Headline (m/m)",
   "family": "prices",

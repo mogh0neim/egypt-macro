@@ -17,6 +17,11 @@ const ROUTES = [
   { test: /^\/topic\/(.+)$/, view: (m) => viewTopic(decodeURIComponent(m[1])), nav: "series" },
   { test: /^\/s\/(.+)$/, view: (m) => viewSeries(decodeURIComponent(m[1])), nav: "series" },
   { test: /^\/money-market/, view: () => viewMoneyMarket(), nav: "series" },
+  /* The specific tools before the index, or /tools would swallow all of them. */
+  { test: /^\/tools\/salary\??(.*)$/, view: (m) => viewSalary(m[1] || ""), nav: "tools" },
+  { test: /^\/tools\/savings\??(.*)$/, view: (m) => viewSavings(m[1] || ""), nav: "tools" },
+  { test: /^\/tools\/dollar\??(.*)$/, view: (m) => viewDollarOn(m[1] || ""), nav: "tools" },
+  { test: /^\/tools/, view: () => viewTools(), nav: "tools" },
   { test: /^\/favourites\??(.*)$/, view: (m) => viewDesk(m[1] || ""), nav: "favourites" },
   { test: /^\/desk\??(.*)$/, view: (m) => viewDesk(m[1] || ""), nav: "favourites" },
   { test: /^\/docs\/(.+)$/, view: (m) => viewDocs(decodeURIComponent(m[1])), nav: "docs" },

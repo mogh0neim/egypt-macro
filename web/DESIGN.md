@@ -106,6 +106,8 @@ neighbours.
 | `.crumbs` | Mono breadcrumbs from `crumbs()`. |
 | `details.add-panel` | Search the whole catalogue from inside Favourites, so a list can be built without leaving the page it is on. Open by default until the list is the reader's own. |
 | `.near` | The "did you mean" list, on a missing series id and on an address nothing lives at. Plain `.result` stacks its two spans inline, which is right where the sub is a page reference and wrong where it is an 88-character id running into the title. |
+| `.tool-form` | The only form on the site a reader types into expecting an answer back. Native `number`, `month` and `date` inputs, 44px tall, labelled above rather than placeheld. Submitting writes the values into the hash rather than rendering in place: the answer becomes a link, the back button works, and there is one path into the render instead of two. Note `button.chip` in the phone block is (0,1,1) and later in the file, so the submit button needs `.tool-form button.chip` or it loses and comes out at 38px. |
+| `.call` | The next-decision panel at the top of `#/rates`. A `band-inset`, because it is a self-contained aside rather than a section of the page. The only thing on the site pointing at a date that has not happened yet. |
 | `.nilometer` | The band on the overview that says where the name comes from. Its gauge is the only one on the site that is the subject rather than a summary, so it is sized up to 260px and reads today's dollar rate against its own twenty-year range - which is what the column did. |
 
 ## Charts
@@ -363,6 +365,43 @@ per-page date would mean tracking one.
 Each series page also carries a **JSON-LD `Dataset`**. It is twenty lines, and
 it is a route into Google Dataset Search that essentially nobody competing for
 these queries has bothered with.
+
+## Asking the questions people actually have
+
+Everything above answers an analyst's question. Those are the right questions
+and they are nobody's first one. The first one is personal and it is always a
+version of the same thing: is this worth less than it used to be, and by how
+much. `web/views-tools.js` answers three of them, on data the site already had.
+
+**There was no price index, and there still is not one from CBE.** Inflation is
+published as a rate and never as a level, which is fine for the news and
+useless for "what is my salary worth". The 32 `EG.XL.PRICE.CPI.*` series in the
+Excel archive are not a substitute: annual June snapshots, three to eleven
+points each, two visible rebasings and a twelve-year hole. `ingest/derive_prices.py`
+chains `EG.CPI.HDL.MOM` instead, from 100 in December 2004, and **refuses to
+write if the result stops reproducing `EG.CPI.HDL.YOY`**. Today the median
+disagreement across 248 months is 0.001pp. That check is the whole warrant for
+putting a number about somebody's salary on a public page.
+
+It does disagree in 2009 and 2010, by up to 1.8pp. That is CAPMAS rebasing the
+basket, seen from the other side of the same event that drops
+`EG.XL.PRICE.CPI.ALL_ITEMS` from 133.6 to 102.4 between those two Junes. A
+chained index cannot see a rebasing and CBE never published the link, so the
+calculators say so rather than hiding it.
+
+**The MPC calendar is the one hand-entered file in the repository.**
+`data/mpc_calendar.json`. CBE renders the year's meeting dates client-side and
+`/api/sitecore/MPCMeetings/GetMPCMeetingsDetails` returns 404 to anything
+outside their page, so there is nothing to scrape. Everything else here fails
+loudly when it goes stale because a fetch stops returning rows; this cannot, it
+just quietly stops having a next meeting. So `summarise.py --check` fails when
+fewer than two meetings remain ahead, and every entry records the day it was
+checked.
+
+**Calls go nowhere.** The guess at the next decision lives in `localStorage`
+under `miqyas.calls` and is scored against the archive, which arrives by itself
+the morning after the meeting. No server, so no leaderboard, and also nothing
+to explain about what happens to it.
 
 ## Voice
 

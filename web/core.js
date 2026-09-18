@@ -29,6 +29,7 @@ const state = {
   events: null,
   sparks: null,
   mpc: null,
+  calendar: undefined, // when the MPC meets next; null once we know there is none
   status: null,     // built_at, last_scrape, and the headline counts
   cache: new Map(), // full observation arrays, by series id
 };
@@ -484,6 +485,45 @@ const fxEvents = () =>
  * are the difference between a chart of a line going up and a chart of four
  * distinct policy eras. */
 const fxRegimes = () => (state.events && state.events.fx_regimes) || [];
+
+/* ---------- the next rate decision ----------
+ *
+ * Everything else on this site is a record of something that already happened.
+ * This is the one file that points forward, and it is the only thing here a
+ * reader can put in a diary: eight dates a year, published by CBE, hand-entered
+ * because their page renders them client-side and serves them through nothing.
+ *
+ * Missing is a normal state, not an error. A clone with no build has no
+ * calendar, and the calendar runs out every December until next year's dates
+ * are added, so every caller must cope with null.
+ */
+async function loadMPCCalendar() {
+  if (state.calendar === undefined) {
+    state.calendar = await getJSON(API + "/mpc_calendar.json").catch(() => null);
+  }
+  return state.calendar;
+}
+
+function nextMeeting(calendar) {
+  if (!calendar || !calendar.meetings) return null;
+  const today = new Date().toISOString().slice(0, 10);
+  const ahead = calendar.meetings.filter((m) => m.date >= today).sort((a, b) => a.date.localeCompare(b.date));
+  if (!ahead.length) return null;
+  const date = ahead[0].date;
+  /* Both dates read as UTC midnight, so the difference is whole days and does
+   * not wobble by one either side of a timezone or a daylight-saving change. */
+  const days = Math.round((Date.parse(date + "T00:00:00Z") - Date.parse(today + "T00:00:00Z")) / 86400000);
+  return { date: date, days: days, remaining: ahead.length };
+}
+
+/* "in 6 days" is useful; "in 0 days" is not, and neither is "in 1 days". */
+function countdownWords(days) {
+  if (days <= 0) return "today";
+  if (days === 1) return "tomorrow";
+  if (days < 14) return "in " + days + " days";
+  if (days < 60) return "in " + Math.round(days / 7) + " weeks";
+  return "in " + Math.round(days / 30) + " months";
+}
 
 /* ---------- the gauge ----------
  * Where a value sits between its own record low and high. It answers "is

@@ -41,12 +41,17 @@
     </button>
     <button class="menu" id="menu" aria-label="Menu">≡</button>
     <nav>
+      <!-- Eight items now, where seven filled the row. "Rate decisions" and
+           "Get the data" are shortened to pay for the new one: the labels were
+           longer than they needed to be and the nav must never be what gives
+           way. The routes are unchanged. -->
       <a href="#/" data-route="home">Overview</a>
+      <a href="#/tools" data-route="tools">Work it out</a>
       <a href="#/series" data-route="series">Series</a>
       <a href="#/favourites" data-route="favourites">Favourites</a>
-      <a href="#/rates" data-route="rates">Rate decisions</a>
+      <a href="#/rates" data-route="rates">Rates</a>
       <a href="#/docs" data-route="docs">Documents</a>
-      <a href="#/data" data-route="data">Get the data</a>
+      <a href="#/data" data-route="data">Data</a>
       <a href="#/about" data-route="about">About</a>
       <button class="theme-toggle" id="theme" aria-label="Switch between light, dark and system theme">Auto</button>
     </nav>
@@ -77,6 +82,7 @@
       </div>
       <div>
         <p class="foot-head">Data</p>
+        <a href="#/tools">Work out what yours is worth</a>
         <a href="#/series">Find or browse series</a>
         <a href="#/favourites">Your favourites</a>
         <a href="#/rates">Rate decisions</a>
@@ -103,6 +109,7 @@
 <script src="views-meta.js"></script>
 <script src="views-desk.js"></script>
 <script src="views-mydesk.js"></script>
+<script src="views-tools.js"></script>
 <script src="palette.js"></script>
 <script src="app.js"></script>
 </body>
