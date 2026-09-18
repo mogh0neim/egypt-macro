@@ -99,6 +99,7 @@ const AR = {
   "This project": "عن المشروع",
   "What changed, and what CBE restated": "ما الذي تغيّر، وما الذي عدّله البنك المركزي",
   "What is and is not here": "ما هو موجود هنا وما هو غير موجود",
+  "What is and is not here →": "ما هو موجود هنا وما هو غير موجود ←",
   "Source on GitHub ↗": "الكود على GitHub ↗",
   "The Central Bank of Egypt ↗": "البنك المركزي المصري ↗",
   "Not affiliated with, endorsed by, or connected to the Central Bank of Egypt.":
