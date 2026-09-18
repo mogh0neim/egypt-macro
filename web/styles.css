@@ -1261,6 +1261,64 @@ input.search::placeholder { color: var(--text-3); }
    plain .result stacks its two spans inline, which is right in the document
    results where the sub is a page reference and wrong here where it is an 88
    character id running into the title. */
+/* ---------- what changed ----------
+   The link in the freshness strip is the only route to the change log: the nav
+   was full at eight items and the nav must never be what gives way. Gold,
+   because it is the one thing in that strip that goes somewhere. */
+.freshness .moved {
+  color: var(--gold);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.freshness .moved:hover { border-bottom-color: currentColor; }
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 1rem 1.5rem;
+  margin: 1.25rem 0 0.5rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.25rem;
+}
+.stat { display: flex; flex-direction: column; gap: 0.15rem; }
+.stat b {
+  font-family: var(--mono);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.stat span { font-size: 0.85rem; }
+.stat i { font-family: var(--mono); font-size: 0.7rem; color: var(--text-3); font-style: normal; }
+
+.change-day { margin-top: 0.4rem; }
+.change-day summary .quiet { font-family: var(--mono); font-size: 0.72rem; color: var(--text-3); }
+.change-head {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0.9rem 0 0.3rem;
+}
+.change-head.down { color: var(--down); }
+.change-head.quiet { color: var(--text-3); }
+.change-list { list-style: none; padding: 0; margin: 0; }
+.change-list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 0.9rem;
+  /* The fifth place to need this, and for the fifth time the same cause: a
+     series with no catalogue entry falls back to its id, and an unbroken
+     88-character CBE id pushes a phone sideways on its own. A renamed series
+     is exactly what a change log shows, so this page meets them more than
+     anywhere else does. */
+  overflow-wrap: anywhere;
+}
+.change-list li i { font-family: var(--mono); font-size: 0.72rem; color: var(--text-3); font-style: normal; }
+.change-list b { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
 /* The next-decision panel, at the top of the rate decisions page. Gold, because
    it is structure rather than measurement: it is the only thing on the site
    that points at a date that has not happened. */

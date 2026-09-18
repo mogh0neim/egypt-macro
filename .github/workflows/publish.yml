@@ -45,6 +45,10 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+        with:
+          # build_changes.py reads the repository's own history to find what
+          # CBE restated. The default depth of 1 shows it nothing at all.
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -63,6 +67,11 @@ jobs:
 
       - name: Publish the page text, so a search hit can quote what it found
         run: python ingest/build_pages.py
+
+      # Before build_site, which folds the last day's counts into status.json
+      # so the freshness strip can link to them without another fetch.
+      - name: Read the revision record out of the git history
+        run: python ingest/build_changes.py
 
       - name: Assemble the site root
         run: python ingest/build_site.py
@@ -84,8 +93,9 @@ jobs:
           for required in ("index.html", "styles.css", "core.js", "app.js",
                            "palette.js", "views-data.js", "views-docs.js",
                            "views-mpc.js", "views-meta.js", "views-desk.js",
-                           "views-mydesk.js",
+                           "views-mydesk.js", "views-tools.js", "views-changes.js",
                            "api/v1/series.json", "api/v1/sparks.json",
+                           "api/v1/changes.json", "changes.xml", "changes-revisions.xml",
                            "search/documents.json", "search/meta.json"):
               if not (dist / required).exists():
                   problems.append(f"missing {required}")

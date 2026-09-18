@@ -34,6 +34,8 @@ const PALETTE_PAGES = [
     alt: "pdf archive bulletin circular publications press release full text ocr scans" },
   { label: "Get the data", href: "#/data", hint: "Parquet, SQLite, CSV, and the API",
     alt: "download downloads bulk export api json parquet sqlite csv duckdb pandas mirror sha256" },
+  { label: "What changed", href: "#/changes", hint: "what CBE published, and what it quietly restated",
+    alt: "revisions revised restated changelog news feed rss updates diff history vintage corrections anomalies latest today" },
   { label: "About", href: "#/about", hint: "how this is built, and what is not in it",
     alt: "methodology provenance source disclaimer unofficial licence citation nilometer miqyas" },
 ];

@@ -34,7 +34,7 @@ SITE_URL = "https://mogh0neim.github.io/egypt-macro/"
 # subjects and documents are enumerated from the catalogue instead. Keep this in
 # step with the `fixed` list in prerender.py: a slug here with no file written
 # for it is a sitemap entry pointing at a 404.
-PAGE_ROUTES = ["tools", "tools/salary", "tools/savings", "tools/dollar",
+PAGE_ROUTES = ["tools", "tools/salary", "tools/savings", "tools/dollar", "changes",
                "series", "favourites", "rates", "money-market", "docs", "data", "about"]
 
 
@@ -210,6 +210,20 @@ def main() -> int:
         "source": "Central Bank of Egypt",
         "affiliation": "None. Miqyas is an unofficial mirror.",
     }
+
+    # The freshness strip is the entry point to the change log, because the nav
+    # was full at eight and the nav must never be what gives way. It already
+    # fetches this file, so the last day's counts ride along here rather than
+    # making every page on the site fetch a few hundred kilobytes of changes.
+    changes_path = DIST / "api" / "v1" / "changes.json"
+    if changes_path.exists():
+        days = json.loads(changes_path.read_text(encoding="utf-8")).get("days") or []
+        if days:
+            status["changed"] = {
+                "date": days[0]["date"],
+                "moved": days[0].get("moved_total", 0),
+                "revised": len(days[0].get("revised", [])),
+            }
     (DIST / "status.json").write_text(json.dumps(status, indent=1), encoding="utf-8")
 
     # build_exports wrote the manifest before the front end existed. Fold the

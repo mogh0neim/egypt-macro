@@ -216,6 +216,13 @@ async function viewHome() {
     "priced in today's money. Savings kept as pounds against the same money swapped for " +
     "dollars on day one. The dollar rate on any date since 2005.</p>" +
     '<span class="go">Work it out →</span></a>' +
+    '<a class="wide-card" href="#/changes">' +
+    '<p class="eyebrow">What changed</p>' +
+    "<h3>The Central Bank does not keep a changelog. This does.</h3>" +
+    "<p>CBE overwrites its files in place when it revises a figure, so there is no way to ask " +
+    "what a number read last month. Every copy fetched here is kept, which makes this the only " +
+    "record of what was quietly restated. It began on 20 August 2026 and fills up from there.</p>" +
+    '<span class="go">See what changed →</span></a>' +
     '<a class="wide-card" href="#/docs">' +
     '<p class="eyebrow">Documents</p>' +
     "<h3>1,478 publications, read cover to cover</h3>" +

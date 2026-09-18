@@ -403,6 +403,53 @@ under `miqyas.calls` and is scored against the archive, which arrives by itself
 the morning after the meeting. No server, so no leaderboard, and also nothing
 to explain about what happens to it.
 
+## The revision record
+
+`#/changes` is the one page here that no other source could publish even if it
+wanted to, and it took thirty lines of `git log` parsing that had been sitting
+unread since the first commit.
+
+CBE overwrites its files in place when it revises a figure. There is no
+changelog, no vintage, and no way to ask what a number read last month. This
+repository commits every clean file every morning, so its own history *is* the
+record of revisions. `ingest/build_changes.py` reads it.
+
+It works because `data/clean/series/*.csv` is tidy long (`series_id,period,value`)
+and `fetch_series.py` sorts by `(series_id, period)` before writing, so each
+series is a contiguous block and a new reading appends inside its own block.
+`git log -p --unified=0` then yields lone `+` lines for new readings and `-`/`+`
+pairs for restatements.
+
+**The thing that matters more than any of that: whose change was it.** A change
+in a scraper commit means CBE published something different, which is a
+revision. A change in a human commit means this project's parser changed and
+the *reading* changed, which is our correction. The first pass conflated them
+and reported **34,877 "CBE revisions" in one day**; they were commit `5ae8e0b`
+recovering units for the Excel archive. The two are now counted separately and
+never merged, because calling ours theirs is the one lie that would make the
+page worthless. A scraper commit restating more than 500 values is also treated
+as a reparse: CBE does not restate five hundred figures in a morning, and the
+alternative is trusting a parser change that landed on the wrong side of a
+commit boundary.
+
+Two consequences worth stating plainly:
+
+- **Publishing needs the full history.** `actions/checkout@v4` clones at depth 1
+  and this then sees nothing at all, so `publish.yml` sets `fetch-depth: 0`.
+- **The record is a month old and has caught no revisions yet.** The page says
+  so rather than padding itself. That is the proposition: it starts here, and
+  every morning the scrape does not run is a day that cannot be recovered.
+
+`data/clean/anomalies.csv` gives the page something real on day one: seven dates
+where CBE published two different values for the same figure *inside one file*,
+which needs no history to catch.
+
+**The entry point is the freshness strip, not the nav.** The nav was full at
+eight items and it must never be what gives way; the strip is already on every
+page and already about how fresh it is. The counts ride along in `status.json`,
+which `renderFreshness` already fetches, so no page that is not the change log
+pays for `changes.json`.
+
 ## Voice
 
 Short declaratives. Say the limitation rather than hiding it - "Honesty is

@@ -28,6 +28,7 @@ const ROUTES = [
   { test: /^\/docs/, view: () => viewDocs(), nav: "docs" },
   { test: /^\/rates/, view: () => viewMPC(), nav: "rates" },
   { test: /^\/data/, view: () => viewData(), nav: "data" },
+  { test: /^\/changes/, view: () => viewChanges(), nav: "changes" },
   { test: /^\/about/, view: () => viewAbout(), nav: "about" },
 ];
 
@@ -209,6 +210,22 @@ document.getElementById("app").addEventListener("click", (e) => {
  * first deploy; nothing had ever read it.
  */
 
+/* What the last scrape actually did, in six words for the strip. Silent when
+ * the change log has not been built, which is every clone that has not run
+ * build_changes.py and every shallow checkout. */
+function changedLine(changed) {
+  if (!changed || !changed.date) return "";
+  const bits = [];
+  if (changed.revised) bits.push(changed.revised + " restated by CBE");
+  if (changed.moved) bits.push(changed.moved.toLocaleString() + " numbers moved");
+  if (!bits.length) return "";
+  // niceDate, not shortDate: these are single days, and "12 numbers moved on
+  // Sep 2026" says the wrong thing about a daily figure.
+  const when = changed.date === new Date().toISOString().slice(0, 10)
+    ? "today" : "on " + niceDate(changed.date);
+  return bits.join(", ") + " " + when + " →";
+}
+
 async function renderFreshness() {
   const strip = document.getElementById("freshness");
   const foot = document.getElementById("foot-fresh");
@@ -236,11 +253,22 @@ async function renderFreshness() {
   if (s.observations) bits.push(s.observations.toLocaleString() + " observations");
   if (s.documents) bits.push(s.documents.toLocaleString() + " documents");
 
+  /* The change log gets its entry here rather than a ninth item in the nav.
+   * This strip is already about how fresh the page is, it is already on every
+   * page, and "what moved" is the question it half answers. The nav must never
+   * be what gives way, and it was full.
+   *
+   * The counts ride along in status.json, which this function already fetched.
+   * changes.json is a few hundred kilobytes and no page that is not the change
+   * log should be paying for it. */
+  const moved = changedLine(s.changed);
+
   if (strip) {
     strip.className = "freshness" + (stale ? " stale" : "");
     strip.innerHTML =
       '<div class="wrap">' +
       bits.map((b) => "<span>" + esc(b) + "</span>").join("") +
+      (moved ? '<a class="moved" href="#/changes">' + esc(moved) + "</a>" : "") +
       (stale ? '<span class="warn">the daily job may not have run</span>' : "") +
       "</div>";
     strip.hidden = false;

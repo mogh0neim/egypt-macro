@@ -46,7 +46,7 @@ SITE_URL = "https://mogh0neim.github.io/egypt-macro/"
 
 # Written per build; every directory here is pruned before it is rewritten, so a
 # renamed series cannot leave a page behind that outlives it.
-OWNED = ("s", "topic", "docs", "series", "favourites", "rates", "money-market", "data", "about", "tools")
+OWNED = ("s", "topic", "docs", "series", "favourites", "rates", "money-market", "data", "about", "tools", "changes")
 
 MONTHS = ["January", "February", "March", "April", "May", "June",
           "July", "August", "September", "October", "November", "December"]
@@ -578,6 +578,9 @@ def main(template_html: str | None = None, assets: list[str] | None = None) -> i
         ("tools/dollar", "/tools/dollar", "What was the dollar worth in Egypt on any date? | Miqyas",
          "The Central Bank's official EGP/USD rate on any date since January 2005, and on the same "
          "calendar day in every year since."),
+        ("changes", "/changes", "What the Central Bank of Egypt quietly restated | Miqyas",
+         "CBE overwrites its files when it revises a figure, with no changelog. This keeps every "
+         "copy, so it can say what a number read last month and what was changed after publication."),
         ("docs", "/docs", "Search 1,478 Central Bank of Egypt publications | Miqyas",
          "Every statistical bulletin, circular, annual report and press release CBE has put out as a PDF, "
          "53,006 pages of it, searchable in English and Arabic."),

@@ -21,6 +21,12 @@ hard to use: no API, no bulk download, no history you can load into anything, an
 files that get silently overwritten when figures are revised. This repository
 scrapes all of it once a day, cleans it, and commits the result.
 
+Because it commits every copy, the git history is a record of what CBE quietly
+restated, which exists nowhere else and cannot be reconstructed after the fact.
+[What changed](https://mogh0neim.github.io/egypt-macro/#/changes) reads it, with
+an [RSS feed](https://mogh0neim.github.io/egypt-macro/changes.xml) and a
+[revisions-only feed](https://mogh0neim.github.io/egypt-macro/changes-revisions.xml).
+
 ## What's in here
 
 | | |
@@ -37,6 +43,7 @@ scrapes all of it once a day, cleans it, and commits the result.
 | `corpus/pages/` | Every PDF page as text, gzipped. What search runs on, and what a search result quotes |
 | `corpus/extraction_report.json` | What extracted cleanly, what needed OCR, what failed |
 | `events.json` | Devaluations and MPC decisions, for annotating charts |
+| `data/mpc_calendar.json` | When the MPC meets next. The one hand-entered file here: CBE renders its schedule client-side and serves it through no endpoint |
 | `ingest/` | The scrapers, plus the site build: exports, search index, page text, share cards, pre-rendered pages |
 | `assets/fonts/` | Static IBM Plex and Almarai, so a CI runner draws the share cards in the site's own type |
 
