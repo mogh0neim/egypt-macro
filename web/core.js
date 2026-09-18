@@ -11,8 +11,15 @@
 /* The site is published with the API as a sibling of index.html. Served from
  * the repo root instead -- which is what `python -m http.server` at the top
  * of a clone gives you -- index.html sits in web/ and the API is one level
- * up. Detect rather than configure, so both work with no flag. */
-const ROOT = location.pathname.includes("/web/") ? ".." : ".";
+ * up. Detect rather than configure, so both work with no flag.
+ *
+ * The detection reads the path, so it cannot survive a pre-rendered page at a
+ * depth of its own: dist/s/EG.FX.OFF.USD.SELL/index.html would compute "." and
+ * fetch the API from three levels too shallow. Those pages declare MIQYAS_ROOT
+ * ahead of this script and it wins. Nothing else sets it, so the ordinary two
+ * cases are unchanged. */
+const ROOT = typeof MIQYAS_ROOT === "string" ? MIQYAS_ROOT
+  : location.pathname.includes("/web/") ? ".." : ".";
 const API = ROOT + "/api/v1";
 const SEARCH_BASE = ROOT + "/search";
 
@@ -319,6 +326,33 @@ function normaliseWithMap(input) {
     }
   }
   return { nfkc: nfkc, text: out.join(""), map: map };
+}
+
+/* ---------- nearest matches ----------
+ *
+ * For the states where something was asked for and is not there: a series id
+ * that no longer exists, or an address nothing lives at. `searchSeries` is the
+ * wrong tool for those, because it requires every term to match and the input
+ * here is usually a mangled or stale identifier rather than a query.
+ *
+ * So: split on anything that is not a letter or a digit -- which turns
+ * EG.FX.OFF.USD.SELL into five usable tokens -- and rank on how many of them
+ * land, longest token first, because "remittances" says far more than "eg".
+ * One match is enough to be worth offering; nothing matching returns nothing,
+ * and the caller falls back to the topics.
+ */
+function nearestSeries(text, limit) {
+  const tokens = [...new Set(normaliseQuery(text).split(/[^a-z0-9؀-ۿ]+/).filter((t) => t.length > 1))];
+  if (!tokens.length) return [];
+  const scored = [];
+  for (const s of state.index || []) {
+    const hay = normaliseQuery(s.series_id + " " + (s.title_en || "") + " " + (s.title_ar || ""));
+    let score = 0;
+    for (const t of tokens) if (hay.includes(t)) score += t.length;
+    if (score) scored.push({ s: s, score: score });
+  }
+  scored.sort((a, b) => b.score - a.score || (b.s.n || 0) - (a.s.n || 0));
+  return scored.slice(0, limit || 5).map((x) => x.s);
 }
 
 /* ---------- the topic taxonomy ----------

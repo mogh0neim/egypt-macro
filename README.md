@@ -7,7 +7,10 @@
 > error in the cleaning is ours, not theirs. For official figures, go to
 > [cbe.org.eg](https://www.cbe.org.eg/en/).
 
-Everything the Central Bank of Egypt publishes, as clean data.
+Egypt's economy in numbers. Free.
+
+Everything the Central Bank of Egypt publishes, as clean data: 1,317 series,
+charted, searchable and downloadable, with no key and no account.
 
 *Miqyas* is the Nilometer on Rhoda Island: the graduated marble column Cairo read
 the flood against to forecast the harvest and set the tax rate. Egypt's first
@@ -34,7 +37,8 @@ scrapes all of it once a day, cleans it, and commits the result.
 | `corpus/pages/` | Every PDF page as text, gzipped. What search runs on, and what a search result quotes |
 | `corpus/extraction_report.json` | What extracted cleanly, what needed OCR, what failed |
 | `events.json` | Devaluations and MPC decisions, for annotating charts |
-| `ingest/` | The scrapers |
+| `ingest/` | The scrapers, plus the site build: exports, search index, page text, share cards, pre-rendered pages |
+| `assets/fonts/` | Static IBM Plex and Almarai, so a CI runner draws the share cards in the site's own type |
 
 Nothing in `data/` or `catalog/` is hand-edited. Timestamps live only in
 `last_run.json`, so a diff anywhere else means a number actually moved.

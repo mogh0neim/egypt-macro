@@ -6,3 +6,6 @@ openpyxl>=3.1        # the .xlsx half of the Excel archive
 xlrd>=2.0            # the handful of files that are genuinely legacy BIFF
 PyMuPDF>=1.24        # PDF text extraction for the document corpus
 duckdb>=1.0          # Parquet writing in build_exports
+Pillow>=10.0         # the share card per series, in build_og
+arabic-reshaper>=3.0 # joins Arabic letters for those cards: Pillow here is
+python-bidi>=0.4     # built without Raqm, so it cannot shape a script itself

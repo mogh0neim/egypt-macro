@@ -5,3 +5,8 @@
 *.xlsx binary
 *.xls binary
 *.gz binary
+
+# Fonts are binary; without this they are line-ending normalised into rubble.
+*.ttf binary
+*.otf binary
+*.woff2 binary

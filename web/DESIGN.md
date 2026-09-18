@@ -105,6 +105,8 @@ neighbours.
 | `details.group` | Topic accordions, gold `▸` marker, first one open. |
 | `.crumbs` | Mono breadcrumbs from `crumbs()`. |
 | `details.add-panel` | Search the whole catalogue from inside Favourites, so a list can be built without leaving the page it is on. Open by default until the list is the reader's own. |
+| `.near` | The "did you mean" list, on a missing series id and on an address nothing lives at. Plain `.result` stacks its two spans inline, which is right where the sub is a page reference and wrong where it is an 88-character id running into the title. |
+| `.nilometer` | The band on the overview that says where the name comes from. Its gauge is the only one on the site that is the subject rather than a summary, so it is sized up to 260px and reads today's dollar rate against its own twenty-year range - which is what the column did. |
 
 ## Charts
 
@@ -294,6 +296,73 @@ Function declarations (`renderFreshness`, `route`) *are* window properties.
 - A snippet window goes where the **most distinct query terms fall together**,
   not at the first match. Search "reserve requirement ratio" and the first hit on
   a page is usually "ratio", in a sentence about something else.
+
+## Being found, and being shared
+
+Two things were true of this site for its first month, and both of them were
+fatal to anyone ever seeing it.
+
+**It was one URL.** Hash routing means every page is the same document, so the
+sitemap could only list eight fragments and a crawler collapsed all eight to the
+root. 1,317 series, 1,478 documents and 53,006 pages of extracted text were
+invisible: not ranked badly, absent. `ingest/prerender.py` now writes every
+route again as a real file - `dist/s/<id>/index.html`, `dist/topic/<key>/`,
+`dist/docs/<id>/` - with a head of its own and a body that carries the figure,
+the coverage and the last two dozen readings as ordinary HTML. The script then
+takes over and re-renders in place, so nothing a reader sees changes.
+
+Three things make that work, and each of them is load-bearing:
+
+- **`MIQYAS_ROOT`.** `ROOT` in `core.js` is detected from the path, which cannot
+  survive a page two directories down. Every pre-rendered document declares
+  `window.MIQYAS_ROOT` before the first script. `window.*` rather than a
+  `const`: a `const` in one script is a global binding but **not** a window
+  property, so `typeof` on it from a script that ran first is a temporal dead
+  zone throw rather than the `"undefined"` the fallback needs.
+- **`MIQYAS_PAGE`.** The route the page was rendered for. With no hash it routes
+  to itself; navigating anywhere else it `location.replace`s onto the real app
+  document. Without that a reader ends up at `/s/<id>/#/rates`, which renders
+  correctly and lies to the canonical link, the share card and everyone they
+  paste it to.
+- **The same stamp.** `stamp_html()` is split out of `version_assets()` so all
+  2,800 documents point at the same hashed assets. A pre-rendered page that
+  skipped it would reintroduce exactly the mixed-version breakage the stamp
+  exists to prevent.
+
+**Every link unfurled as the same picture.** One `og.png` of the dollar chart,
+hard-coded, whatever the link pointed at. `ingest/build_og.py` draws one
+1200x630 card per series and per subject, from `series.json` and `sparks.json`
+only - never the observation arrays, which is what keeps a full pass under a
+minute. Notes worth keeping:
+
+- The arrows are **drawn as polygons, not typed**. U+25B2 and U+25BC are not in
+  IBM Plex Mono, and a tofu box next to the number is the one thing on a share
+  card nobody can explain away.
+- Pillow here is built **without Raqm** (`PIL.features.check("raqm")` is False),
+  so it cannot shape Arabic. `arabic-reshaper` plus `python-bidi` do it in pure
+  Python, with no system dependency, which is what makes them safe on a runner.
+- `use_unshaped_instead_of_isolated` is not optional. The reshaper emits Arabic
+  Presentation Forms and **Almarai does not carry every isolated form in that
+  block**: `(أ+ب+ج+د+هـ+و)`, which is how CBE labels the parts of a total, came
+  out as six tofu boxes. Falling back to the plain letter is correct here
+  because these are single letters with no join to preserve.
+- **Wrap the logical string, shape each line.** Shaping first puts the text in
+  visual order, and breaking a visual-order line leaves the halves of an Arabic
+  title in the wrong sequence. Measure on the shaped form, though, or joined
+  Arabic wraps early.
+- The fonts are committed under `assets/fonts/`, about 560 KB of static IBM Plex
+  and Almarai, so a runner draws in the site's own type. The fallback chain is
+  still there and must stay: a card in DejaVu beats no card, and a missing image
+  library must never be why a publish fails.
+
+`sitemap.xml` is now an index over `sitemap-pages`, `sitemap-series` and
+`sitemap-docs`. `lastmod` is the build date on everything, which is honest: the
+archive rebuilds every morning whether a series moved or not, and inventing a
+per-page date would mean tracking one.
+
+Each series page also carries a **JSON-LD `Dataset`**. It is twenty lines, and
+it is a route into Google Dataset Search that essentially nobody competing for
+these queries has bothered with.
 
 ## Voice
 

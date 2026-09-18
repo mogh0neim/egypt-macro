@@ -92,6 +92,30 @@ jobs:
           pages = len(list((dist / "pages").glob("*.json.gz"))) if (dist / "pages").exists() else 0
           if pages < 1000:
               problems.append(f"only {pages} documents of page text")
+
+          # The pre-rendered pages are how this site is found at all, and a
+          # sitemap listing URLs that were never written is worse than no
+          # sitemap: it is 2,800 soft 404s reported to Google as content.
+          rendered = len(list((dist / "s").glob("*/index.html"))) if (dist / "s").exists() else 0
+          if rendered < 1000:
+              problems.append(f"only {rendered} pre-rendered series pages")
+          for required in ("sitemap.xml", "sitemap-series.xml", "sitemap-docs.xml",
+                           "sitemap-pages.xml", "s/EG.FX.OFF.USD.SELL/index.html"):
+              if not (dist / required).exists():
+                  problems.append(f"missing {required}")
+          if "og:url" not in (dist / "s/EG.FX.OFF.USD.SELL/index.html").read_text(encoding="utf-8", errors="ignore"):
+              problems.append("a pre-rendered page carries no og:url")
+
+          # Cards are allowed to be missing -- build_site skips them rather than
+          # failing when Pillow is not there -- but a partial set means every
+          # link without one unfurls as a broken image, which is worse than the
+          # site card. All or nothing.
+          cards = len(list((dist / "og").glob("*.png"))) if (dist / "og").exists() else 0
+          if cards and cards < status["series"]:
+              problems.append(f"only {cards} share cards for {status['series']} series")
+          if not cards:
+              print("note: no share cards in this build")
+
           if problems:
               sys.exit("refusing to deploy: " + "; ".join(problems))
           PY

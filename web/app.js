@@ -26,7 +26,35 @@ const ROUTES = [
   { test: /^\/about/, view: () => viewAbout(), nav: "about" },
 ];
 
+/* ---------- pre-rendered pages ----------
+ *
+ * Most of the site is also published as real files -- dist/s/<id>/index.html
+ * and so on -- so that a crawler, and anything that unfurls a link, meets the
+ * number rather than an empty shell. Those documents declare MIQYAS_PAGE, the
+ * hash route they were rendered for, next to MIQYAS_ROOT.
+ *
+ * Two things follow. Arriving with no hash, the page routes to itself rather
+ * than to the overview. Navigating anywhere else, it hands off to the real app
+ * document: staying put would leave a reader at /s/EG.FX.OFF.USD.SELL/#/rates,
+ * which renders correctly and then lies to everything that reads the address --
+ * the canonical link, the share card, and whoever they paste it to.
+ *
+ * `replace` rather than `assign`, so the back button returns to wherever they
+ * came from rather than to the page they just bounced off.
+ */
+const PAGE = typeof MIQYAS_PAGE === "string" ? MIQYAS_PAGE : null;
+const HOME_DOC = PAGE ? ROOT + "/" : "";
+
 async function route() {
+  if (PAGE) {
+    if (!location.hash || location.hash === "#") {
+      history.replaceState(null, "", "#" + PAGE);
+    } else if (location.hash.replace(/^#/, "") !== PAGE) {
+      location.replace(HOME_DOC + location.hash);
+      return;
+    }
+  }
+
   const hash = location.hash.replace(/^#/, "") || "/";
   document.querySelectorAll("nav [data-route]").forEach((a) => a.classList.remove("on"));
   document.body.classList.remove("nav-open");
@@ -35,10 +63,26 @@ async function route() {
 
   try {
     if (!match) {
+      /* An address that matches nothing is nearly always a link that has lost
+       * its tail or come from an older version, and the words left in it are
+       * usually enough to find what was meant. Load the catalogue -- no view
+       * has run, so nothing else has -- and offer the nearest series before
+       * offering the front door. */
+      await loadIndex().catch(() => null);
+      const near = nearestSeries(hash.replace(/[/?&=]+/g, " "), 5);
       document.getElementById("app").innerHTML =
         '<div class="wrap"><section class="section">' +
         "<h2>Nothing lives at that address</h2>" +
-        '<p class="lede">The link may be from an older version of the site.</p>' +
+        '<p class="lede">The link may be from an older version of the site.' +
+        (near.length ? " This is what it looks closest to." : "") + "</p>" +
+        (near.length
+          ? '<div class="near">' +
+            near.map((s) =>
+              '<a class="result" href="#/s/' + encodeURIComponent(s.series_id) + '">' +
+              '<span class="title">' + titleHTML(s) + "</span>" +
+              '<span class="sub">' + esc(s.series_id) + "</span></a>").join("") +
+            "</div>"
+          : "") +
         '<div class="controls">' +
         '<a class="chip solid" href="#/">Start over</a>' +
         '<a class="chip" href="#/series">Find or browse series</a>' +
@@ -50,13 +94,26 @@ async function route() {
       await match.r.view(match.m);
     }
   } catch (err) {
+    /* This used to lead with three python commands, which is the right answer
+     * for about four people and gibberish to everyone else. A reader on the
+     * published site who hits this is looking at a network failure, not a
+     * missing build, so say that first and keep the build instructions for
+     * whoever opens the details. */
     document.getElementById("app").innerHTML =
       '<div class="wrap"><section class="section">' +
       "<h2>Could not load the data</h2>" +
-      '<p class="lede">If you are running this from a clone, build the exports first:</p>' +
+      '<p class="lede">The numbers this page needs did not arrive. Reloading usually fixes it. ' +
+      'If it keeps happening, the rest of the site may still work: try the ' +
+      '<a href="#/">overview</a>.</p>' +
+      '<div class="controls"><button class="chip solid" id="retry">Try again</button>' +
+      '<a class="chip" href="#/">Overview</a></div>' +
+      '<details class="foot-note"><summary>Running this from a clone?</summary>' +
+      "<p>Build the exports first:</p>" +
       '<pre class="code"><code>python ingest/build_exports.py\npython ingest/build_search.py\npython ingest/build_site.py</code></pre>' +
-      '<p class="empty">' + String(err && err.message ? err.message : err) + "</p>" +
-      "</section></div>";
+      '<p class="empty">' + esc(String(err && err.message ? err.message : err)) + "</p>" +
+      "</details></section></div>";
+    const retry = document.getElementById("retry");
+    if (retry) retry.addEventListener("click", () => route());
   }
   window.scrollTo(0, 0);
 }
@@ -77,13 +134,28 @@ const applyTheme = (t) => {
   }
 };
 
-applyTheme(localStorage.getItem("theme") || "");
+/* Everything else the site remembers lives under `miqyas.`, through `store`.
+ * The theme was the one key written raw, which meant it threw uncaught in a
+ * private window and collided with anything else served from this origin.
+ * The old key is read once, so nobody loses the choice they already made. */
+const themeStored = () => {
+  const now = store.get("theme", null);
+  if (now !== null) return now;
+  let legacy = "";
+  try {
+    legacy = localStorage.getItem("theme") || "";
+    if (legacy) localStorage.removeItem("theme");
+  } catch (e) { /* private window: no preference to recover */ }
+  if (legacy) store.set("theme", legacy);
+  return legacy;
+};
+
+applyTheme(themeStored());
 document.getElementById("theme").addEventListener("click", () => {
   const order = ["", "light", "dark"];
-  const now = localStorage.getItem("theme") || "";
+  const now = store.get("theme", "");
   const next = order[(order.indexOf(now) + 1) % order.length];
-  if (next) localStorage.setItem("theme", next);
-  else localStorage.removeItem("theme");
+  store.set("theme", next);
   applyTheme(next);
 });
 

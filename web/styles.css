@@ -1257,6 +1257,21 @@ input.search::placeholder { color: var(--text-3); }
 }
 .result .sub .pagehit { color: var(--accent); font-weight: 500; }
 
+/* The "did you mean" list, on a missing series and on a missing address. The
+   plain .result stacks its two spans inline, which is right in the document
+   results where the sub is a page reference and wrong here where it is an 88
+   character id running into the title. */
+/* The band that says where the name comes from. The gauge is sized up here,
+   because on this one occasion it is the subject rather than a summary. */
+.nilometer .two-col { border-top: 0; }
+.nilo-mark { align-self: center; }
+.nilo-mark .gauge { width: 100%; height: auto; max-width: 260px; }
+.nilo-mark .foot-note { margin-top: 0.6rem; }
+
+.near { margin: 0.5rem 0 1.25rem; border-top: 1px solid var(--line-soft); }
+.near .result .title { display: block; }
+.near .result .sub { display: block; margin-top: 0.1rem; }
+
 /* The quote from the page. Not mono: it is prose CBE wrote, and it is set to be
    read rather than inspected. */
 .result .snip {

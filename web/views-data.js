@@ -132,14 +132,20 @@ async function viewHome() {
     : "";
 
   app.innerHTML =
+    /* The headline used to be "What the pound did, and everything underneath
+     * it", which is a better sentence and a worse headline: it tells a stranger
+     * nothing about what this is, and it is the first thing a search result, a
+     * share card and a first-time visitor all see. Say what it is, then earn
+     * the chart with the fact underneath. */
     '<section class="hero"><div class="wrap">' +
-    "<h1>What the pound did, and everything underneath it.</h1>" +
+    "<h1>Egypt's economy in numbers. Free.</h1>" +
     '<p class="standfirst">' +
+    index.length.toLocaleString() + " series from the Central Bank, cleaned, charted and " +
+    "searchable. Rebuilt every morning. No key, no account, no paywall." +
     (multiple
-      ? "The Central Bank's official dollar rate has moved <b>" + multiple +
-        "×</b> since January 2005. Every step of it, plus " + index.length.toLocaleString() +
-        " other series, rebuilt from CBE's own publications each morning."
-      : "Egypt's macroeconomic record, rebuilt from CBE's own publications each morning.") +
+      ? " Starting with the one everybody asks about: the official dollar rate has moved <b>" +
+        multiple + "×</b> since January 2005."
+      : "") +
     "</p>" +
     '<div class="hero-chart">' +
     (fx ? lineChart(fx.observations, { height: 300, events: fxEvents(), id: "hero", unit: fx.unit }) : "") +
@@ -181,6 +187,13 @@ async function viewHome() {
     '<div class="topic-grid">' + topicGrid + moneyMarketTopicCard() + "</div>" +
     "</div></section>" +
 
+    /* The name, on the page rather than three clicks away on About.
+     * It is the most memorable thing about the project and it was the one
+     * thing a visitor never saw. The gauge is not decoration here: it is the
+     * same instrument the rest of the site uses, reading today's rate against
+     * its own twenty-year range, which is exactly what the column did. */
+    nilometerBand(state.byId.get("EG.FX.OFF.USD.SELL")) +
+
     // The overview should be able to reach everything the site has. Without
     // these two, the archive and the downloads exist only in the navigation.
     '<section class="section"><div class="wrap">' +
@@ -205,6 +218,34 @@ async function viewHome() {
     armLines(document.getElementById("hero"));
     wireHover(document.getElementById("hero"), fx.observations, fx.unit, document.getElementById("hero-readout"));
   }
+}
+
+/* Where the name comes from, said once, on the page people actually land on. */
+function nilometerBand(fx) {
+  const mark = fx
+    ? gauge(fx.latest_value, fx.lowest && fx.lowest.value, fx.highest && fx.highest.value,
+            { w: 260, h: 40, median: fx.median })
+    : "";
+  return (
+    '<section class="section band nilometer"><div class="wrap">' +
+    '<div class="two-col">' +
+    "<div>" +
+    '<p class="eyebrow">The name</p>' +
+    "<h2>Cairo read the flood against a marble column</h2>" +
+    "<p class=\"lede\">The <i>miqyas</i> on Rhoda Island is a graduated shaft in a stone well, " +
+    "in service by 861 AD. The height the Nile reached against it forecast the harvest and set " +
+    "that year's tax rate: Egypt's first macroeconomic indicator, and the reason a graduated " +
+    "gauge runs through this site.</p>" +
+    '<p class="foot-note"><a href="#/about">What is and is not here →</a></p>' +
+    "</div>" +
+    (mark
+      ? '<div class="nilo-mark">' + mark +
+        '<p class="foot-note">Today\'s dollar rate, against every rate CBE has published since 2005. ' +
+        "Low " + fmt(fx.lowest.value, fx.unit) + " in " + shortDate(fx.lowest.period) +
+        ", high " + fmt(fx.highest.value, fx.unit) + " in " + shortDate(fx.highest.period) + ".</p></div>"
+      : "") +
+    "</div></div></section>"
+  );
 }
 
 /* The fourteenth card on the series grid. Gold-bordered, because it is not one
@@ -580,9 +621,35 @@ async function viewSeries(id) {
   try {
     data = await loadSeries(id);
   } catch (err) {
+    /* A series id travels by being pasted, and CBE's Excel-derived ids run to
+     * 88 characters, so this state gets reached by a link that lost its tail
+     * far more often than by a typo. The catalogue is already loaded above;
+     * offering what the id nearly matches is the difference between a dead end
+     * and one more click. */
+    const near = nearestSeries(id, 5);
     app.innerHTML =
-      '<div class="wrap"><p class="empty">There is no series called <code>' + esc(id) + "</code>. " +
-      '<a href="#/series">Find or browse series</a>.</p></div>';
+      '<div class="wrap">' +
+      crumbs([{ label: "Series", href: "#/series" }, { label: "Not found" }]) +
+      '<section class="section">' +
+      "<h2>There is no series with that id</h2>" +
+      '<p class="lede">Nothing here is called <code class="series-id">' + esc(id) + "</code>. " +
+      (near.length
+        ? "These are the closest things in the catalogue."
+        : "Nothing in the catalogue looks close to it, so it may be from an older version of the site.") +
+      "</p>" +
+      (near.length
+        ? '<div class="near">' +
+          near.map((s) =>
+            '<a class="result" href="#/s/' + encodeURIComponent(s.series_id) + '">' +
+            '<span class="title">' + titleHTML(s) + "</span>" +
+            '<span class="sub">' + esc(s.series_id) + " · " + (s.n || 0).toLocaleString() + " readings</span>" +
+            "</a>").join("") +
+          "</div>"
+        : "") +
+      '<div class="controls">' +
+      '<a class="chip solid" href="#/series">Find or browse series</a>' +
+      '<a class="chip" href="#/">Overview</a>' +
+      "</div></section></div>";
     return;
   }
 
