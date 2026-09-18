@@ -84,6 +84,24 @@ def main() -> int:
     catalog = json.loads((CATALOG / "series.json").read_text(encoding="utf-8"))
     summary = json.loads((CATALOG / "summary.json").read_text(encoding="utf-8"))
     by_id = {c["series_id"]: c for c in catalog}
+
+    # The Arabic titles this project wrote for the series CBE named only in
+    # English, which is every exchange rate, every policy rate, every treasury
+    # bill and all of inflation. Merged only where CBE gave nothing -- theirs
+    # always wins -- and marked, so the site can say the Arabic is ours rather
+    # than passing it off as the Bank's name for a figure.
+    titles_ar = CATALOG / "titles_ar.json"
+    ours = 0
+    if titles_ar.exists():
+        written = json.loads(titles_ar.read_text(encoding="utf-8")).get("titles", {})
+        for sid, arabic in written.items():
+            record = by_id.get(sid)
+            if record and not record.get("title_ar"):
+                record["title_ar"] = arabic
+                record["title_ar_source"] = "miqyas"
+                ours += 1
+        print(f"Arabic titles: {ours:,} supplied by Miqyas where CBE published none")
+
     print(f"{len(observations):,} observations across {len({o[0] for o in observations}):,} series")
 
     con = duckdb.connect()
@@ -210,8 +228,9 @@ def main() -> int:
                 {
                     "series_id": sid,
                     **{k: meta.get(k) for k in
-                       ("title_en", "title_ar", "unit", "freq", "family", "dataset",
-                        "source_url", "source_file", "derived", "method", "period_basis")},
+                       ("title_en", "title_ar", "title_ar_source", "unit", "freq", "family",
+                        "dataset", "source_url", "source_file", "derived", "method",
+                        "period_basis")},
                     "observations": points,
                     "count": len(points),
                     "attribution": "Source: Central Bank of Egypt. Republished by Miqyas, an unofficial mirror.",
@@ -226,6 +245,7 @@ def main() -> int:
                 "series_id": sid,
                 "title_en": meta.get("title_en"),
                 "title_ar": meta.get("title_ar"),
+                "title_ar_source": meta.get("title_ar_source"),
                 "family": meta.get("family"),
                 "freq": meta.get("freq"),
                 "unit": meta.get("unit"),

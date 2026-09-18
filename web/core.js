@@ -137,7 +137,17 @@ const titleHTML = (s) => {
 const titleAR = (s) => {
   const ar = s && s.title_ar;
   if (!ar || ar === s.title_en) return "";
-  return '<span class="ar" dir="rtl" lang="ar">' + esc(ar) + "</span>";
+  /* 223 of these are ours rather than CBE's: the Bank names the Excel archive
+   * in Arabic and nothing else, which leaves every exchange rate, every policy
+   * rate, every treasury bill and all of inflation unnamed. An Arabic site
+   * whose headline figures are labelled in English is not an Arabic site, so
+   * they are written here -- and marked, because passing our translation off
+   * as the Bank's name for a figure is exactly the kind of small lie this
+   * project cannot afford. */
+  const mine = s.title_ar_source === "miqyas";
+  return '<span class="ar' + (mine ? " ar-ours" : "") + '" dir="rtl" lang="ar"' +
+    (mine ? ' title="' + t("Translated by Miqyas. CBE publishes no Arabic name for this series.") + '"' : "") +
+    ">" + esc(ar) + "</span>";
 };
 
 const fmt = (v, unit) => {

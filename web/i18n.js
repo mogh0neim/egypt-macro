@@ -392,6 +392,8 @@ const AR = {
   "As published": "كما نُشرت",
   "Change on a year earlier": "التغيّر عن العام السابق",
   "Rebased, first reading = 100": "معادة الأساس، أول قراءة = 100",
+  "Translated by Miqyas. CBE publishes no Arabic name for this series.":
+    "ترجمة مقياس. البنك المركزي لا ينشر اسمًا عربيًا لهذه السلسلة.",
   "In your favourites": "في مفضلتك",
   "Add to your favourites": "أضف إلى مفضلتك",
   "Remove from favourites": "أزل من المفضلة",

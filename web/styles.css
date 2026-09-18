@@ -1823,3 +1823,8 @@ footer {
    third kind of control. */
 .lang-switch { font-family: var(--arabic); text-transform: none; letter-spacing: 0; }
 [dir="rtl"] .lang-switch { font-family: var(--mono); }
+
+/* An Arabic title this project wrote rather than one CBE published. A dotted
+   underline and a tooltip: enough to be honest without turning 223 series
+   titles into a page of disclaimers. */
+.ar-ours { border-bottom: 1px dotted var(--text-3); cursor: help; }
