@@ -98,8 +98,8 @@ const starButton = (id) => {
   const on = watchHas(id);
   return (
     '<button class="star' + (on ? " on" : "") + '" data-star="' + esc(id) +
-    '" aria-pressed="' + on + '" title="' + (on ? "In your favourites" : "Add to your favourites") +
-    '" aria-label="' + (on ? "Remove from favourites" : "Add to favourites") + '">' +
+    '" aria-pressed="' + on + '" title="' + t(on ? "In your favourites" : "Add to your favourites") +
+    '" aria-label="' + t(on ? "Remove from favourites" : "Add to favourites") + '">' +
     (on ? "★" : "☆") +
     "</button>"
   );
@@ -119,8 +119,8 @@ const esc = (s) =>
  * labelled only in Arabic. Rendering those left-to-right mangles them, so
  * anything with Arabic in it is marked up rather than silently broken. */
 const titleHTML = (s) => {
-  const t = (s && (s.title_en || s.series_id)) || "";
-  return ARABIC_RE.test(t) ? '<span dir="auto">' + esc(t) + "</span>" : esc(t);
+  const text = (s && (s.title_en || s.series_id)) || "";
+  return ARABIC_RE.test(text) ? '<span dir="auto">' + esc(text) + "</span>" : esc(text);
 };
 
 /* CBE holds an Arabic title for 1,095 of the 1,317 series, and the site has only
@@ -196,7 +196,7 @@ const changeCell = (c, unit) =>
   c === null || c === undefined || Number.isNaN(c)
     ? "—"
     : isFlat(c, unit)
-    ? "flat"
+    ? t("flat")
     : dirArrow(c, unit) + " " + fmtChange(c, unit);
 
 /* Short unit tag for places the full string will not fit. */
@@ -227,8 +227,8 @@ const unitTag = (u) => {
 };
 
 const FREQ_LABEL = {
-  A: "Yearly", Q: "Quarterly", M: "Monthly", W: "Weekly",
-  BW: "Every two weeks", D: "Daily", IRR: "Only when it changes",
+  A: t("Yearly"), Q: t("Quarterly"), M: t("Monthly"), W: t("Weekly"),
+  BW: t("Every two weeks"), D: t("Daily"), IRR: t("Only when it changes"),
 };
 
 /* What a change is actually measured against. "Since the previous reading" is
@@ -236,13 +236,17 @@ const FREQ_LABEL = {
  * daily fixing and an economist reading a quarterly account are being told
  * about very different spans of time. */
 const CHANGE_LABEL = {
-  A: "on the year", Q: "on the quarter", M: "on the month",
-  W: "on the week", BW: "on two weeks", D: "on the day",
-  IRR: "since it moved",
+  A: t("on the year"), Q: t("on the quarter"), M: t("on the month"),
+  W: t("on the week"), BW: t("on two weeks"), D: t("on the day"),
+  IRR: t("since it moved"),
 };
-const changeLabel = (freq) => CHANGE_LABEL[freq] || "on the previous reading";
+const changeLabel = (freq) => CHANGE_LABEL[freq] || t("on the previous reading");
 
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+/* Abbreviated in English, written out in Arabic: Arabic has no convention for
+ * a three-letter month, and the full names are short enough to set in a table. */
+const MONTHS = RTL
+  ? MONTHS_AR
+  : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const niceDate = (iso) => {
   if (!iso) return "—";
   const p = iso.split("-");
@@ -263,11 +267,11 @@ const shortDate = (iso) => {
 const staleness = (iso) => {
   if (!iso) return "";
   const days = Math.round((Date.now() - Date.parse(iso)) / 86400000);
-  if (days <= 1) return "today";
-  if (days < 14) return days + " days ago";
-  if (days < 60) return Math.round(days / 7) + " weeks ago";
-  if (days < 730) return Math.round(days / 30) + " months ago";
-  return Math.floor(days / 365) + " years ago";
+  if (days <= 1) return t("today");
+  if (days < 14) return days + " " + t("days ago");
+  if (days < 60) return Math.round(days / 7) + " " + t("weeks ago");
+  if (days < 730) return Math.round(days / 30) + " " + t("months ago");
+  return Math.floor(days / 365) + " " + t("years ago");
 };
 
 /* Arabic search matching. It lives here rather than beside the document search
@@ -365,45 +369,44 @@ function nearestSeries(text, limit) {
  */
 
 const TOPICS = [
-  { key: "money", name: "Foreign exchange", icon: "£",
-    blurb: "Official, market and interbank exchange rates, against the dollar and twelve other currencies.",
+  { key: "money", name: t("Foreign exchange"), icon: "£",
+    blurb: t("Official, market and interbank exchange rates, against the dollar and twelve other currencies."),
     families: ["fx"] },
-  { key: "rates", name: "Interest rates", icon: "%",
-    blurb: "The CBE corridor, overnight money, and what treasury bills pay at auction.",
+  { key: "rates", name: t("Interest rates"), icon: "%",
+    blurb: t("The CBE corridor, overnight money, and what treasury bills pay at auction."),
     families: ["policy", "rates", "govt", "interest_rates"] },
-  { key: "prices", name: "Inflation", icon: "↗",
-    blurb: "Headline and core inflation, the basket underneath them, and producer prices.",
+  { key: "prices", name: t("Inflation"), icon: "↗",
+    blurb: t("Headline and core inflation, the basket underneath them, and producer prices."),
     families: ["prices", "inflation"] },
-  { key: "reserves", name: "Reserves and remittances", icon: "◆",
-    blurb: "Two headline numbers, read out of CBE's monthly press release rather than " +
-      "published as a table: net international reserves, and what Egyptians abroad send home.",
+  { key: "reserves", name: t("Reserves and remittances"), icon: "◆",
+    blurb: t("Two headline numbers, read out of CBE's monthly press release rather than published as a table: net international reserves, and what Egyptians abroad send home."),
     families: ["external"] },
-  { key: "bop", name: "Balance of payments", icon: "⇄",
-    blurb: "The current account, trade in goods and services, and how the gap is financed.",
+  { key: "bop", name: t("Balance of payments"), icon: "⇄",
+    blurb: t("The current account, trade in goods and services, and how the gap is financed."),
     families: ["bop"] },
-  { key: "trade", name: "Foreign trade", icon: "⇢",
-    blurb: "Exports and imports, by commodity and by trading partner.",
+  { key: "trade", name: t("Foreign trade"), icon: "⇢",
+    blurb: t("Exports and imports, by commodity and by trading partner."),
     families: ["foreign_trade"] },
-  { key: "debt", name: "Debt", icon: "≡",
-    blurb: "Domestic and external debt, by holder, by instrument and by maturity.",
+  { key: "debt", name: t("Debt"), icon: "≡",
+    blurb: t("Domestic and external debt, by holder, by instrument and by maturity."),
     families: ["domestic_debt", "external_debt"] },
-  { key: "budget", name: "The state budget", icon: "▤",
-    blurb: "Revenue, spending, the deficit, and where the financing comes from.",
+  { key: "budget", name: t("The state budget"), icon: "▤",
+    blurb: t("Revenue, spending, the deficit, and where the financing comes from."),
     families: ["state_budget"] },
-  { key: "growth", name: "Growth and investment", icon: "▲",
-    blurb: "GDP by sector at current and constant prices, and investment by sector.",
+  { key: "growth", name: t("Growth and investment"), icon: "▲",
+    blurb: t("GDP by sector at current and constant prices, and investment by sector."),
     families: ["gdp", "investments"] },
-  { key: "banking", name: "Banks", icon: "▮",
-    blurb: "Deposits, lending, the banking survey, and the payment systems CBE runs.",
+  { key: "banking", name: t("Banks"), icon: "▮",
+    blurb: t("Deposits, lending, the banking survey, and the payment systems CBE runs."),
     families: ["banking_surveys", "cbe"] },
-  { key: "markets", name: "The stock market", icon: "◈",
-    blurb: "EGX indicators, turnover, and who is doing the buying.",
+  { key: "markets", name: t("The stock market"), icon: "◈",
+    blurb: t("EGX indicators, turnover, and who is doing the buying."),
     families: ["stocks"] },
-  { key: "fdi", name: "Foreign investment", icon: "⊕",
-    blurb: "Net foreign direct investment, by source country and by sector.",
+  { key: "fdi", name: t("Foreign investment"), icon: "⊕",
+    blurb: t("Net foreign direct investment, by source country and by sector."),
     families: ["net_foreign_direct_investment"] },
-  { key: "tourism", name: "Tourism", icon: "☀",
-    blurb: "Arrivals and nights, by nationality and by region.",
+  { key: "tourism", name: t("Tourism"), icon: "☀",
+    blurb: t("Arrivals and nights, by nationality and by region."),
     families: ["tourism"] },
 ];
 
@@ -518,11 +521,11 @@ function nextMeeting(calendar) {
 
 /* "in 6 days" is useful; "in 0 days" is not, and neither is "in 1 days". */
 function countdownWords(days) {
-  if (days <= 0) return "today";
-  if (days === 1) return "tomorrow";
-  if (days < 14) return "in " + days + " days";
-  if (days < 60) return "in " + Math.round(days / 7) + " weeks";
-  return "in " + Math.round(days / 30) + " months";
+  if (days <= 0) return t("today");
+  if (days === 1) return t("tomorrow");
+  if (days < 14) return t("in") + " " + days + " " + t("days");
+  if (days < 60) return t("in") + " " + Math.round(days / 7) + " " + t("weeks");
+  return t("in") + " " + Math.round(days / 30) + " " + t("months");
 }
 
 /* ---------- the gauge ----------
@@ -975,9 +978,9 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
 /* ---------- transformations offered on a series page ---------- */
 
 const TRANSFORMS = {
-  level: { label: "As published", fn: (p) => p },
+  level: { label: t("As published"), fn: (p) => p },
   yoy: {
-    label: "Change on a year earlier",
+    label: t("Change on a year earlier"),
     fn: (p) => {
       const out = [];
       for (let i = 0; i < p.length; i++) {
@@ -994,7 +997,7 @@ const TRANSFORMS = {
     },
   },
   index: {
-    label: "Rebased, first reading = 100",
+    label: t("Rebased, first reading = 100"),
     fn: (p) => (p.length && p[0][1] ? p.map((o) => [o[0], (o[1] / p[0][1]) * 100]) : p),
   },
 };
@@ -1070,10 +1073,10 @@ function vsMedian(latest, median) {
   if (median > 0 !== latest > 0) return "";
   const r = latest / median;
   return (
-    "Today's reading is " +
+    t("Today's reading is") + " " +
     (r >= 2
-      ? r.toFixed(1) + "× it."
-      : Math.abs((r - 1) * 100).toFixed(0) + "% " + (r >= 1 ? "above" : "below") + " it.")
+      ? r.toFixed(1) + "× " + t("the median.")
+      : Math.abs((r - 1) * 100).toFixed(0) + "% " + t(r >= 1 ? "above the median." : "below the median."))
   );
 }
 

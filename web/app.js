@@ -49,7 +49,11 @@ const ROUTES = [
  * came from rather than to the page they just bounced off.
  */
 const PAGE = typeof MIQYAS_PAGE === "string" ? MIQYAS_PAGE : null;
-const HOME_DOC = PAGE ? ROOT + "/" : "";
+/* The app document for THIS language. An Arabic series page that handed off
+ * to the English root would answer a click on an Arabic nav item by
+ * switching the reader to English, which is the worst possible reading of
+ * "go to rate decisions". */
+const HOME_DOC = PAGE ? ROOT + (RTL ? "/ar/" : "/") : "";
 
 async function route() {
   if (PAGE) {
@@ -78,9 +82,9 @@ async function route() {
       const near = nearestSeries(hash.replace(/[/?&=]+/g, " "), 5);
       document.getElementById("app").innerHTML =
         '<div class="wrap"><section class="section">' +
-        "<h2>Nothing lives at that address</h2>" +
-        '<p class="lede">The link may be from an older version of the site.' +
-        (near.length ? " This is what it looks closest to." : "") + "</p>" +
+        "<h2>" + t("Nothing lives at that address") + "</h2>" +
+        '<p class="lede">' + t("The link may be from an older version of the site.") +
+        (near.length ? " " + t("This is what it looks closest to.") : "") + "</p>" +
         (near.length
           ? '<div class="near">' +
             near.map((s) =>
@@ -90,9 +94,9 @@ async function route() {
             "</div>"
           : "") +
         '<div class="controls">' +
-        '<a class="chip solid" href="#/">Start over</a>' +
-        '<a class="chip" href="#/series">Find or browse series</a>' +
-        '<a class="chip" href="#/favourites">Your favourites</a>' +
+        '<a class="chip solid" href="#/">' + t("Start over") + "</a>" +
+        '<a class="chip" href="#/series">' + t("Find or browse series") + "</a>" +
+        '<a class="chip" href="#/favourites">' + t("Your favourites") + "</a>" +
         "</div></section></div>";
     } else {
       const active = document.querySelector('[data-route="' + match.r.nav + '"]');
@@ -107,12 +111,12 @@ async function route() {
      * whoever opens the details. */
     document.getElementById("app").innerHTML =
       '<div class="wrap"><section class="section">' +
-      "<h2>Could not load the data</h2>" +
-      '<p class="lede">The numbers this page needs did not arrive. Reloading usually fixes it. ' +
-      'If it keeps happening, the rest of the site may still work: try the ' +
-      '<a href="#/">overview</a>.</p>' +
-      '<div class="controls"><button class="chip solid" id="retry">Try again</button>' +
-      '<a class="chip" href="#/">Overview</a></div>' +
+      "<h2>" + t("Could not load the data") + "</h2>" +
+      '<p class="lede">' +
+      t("The numbers this page needs did not arrive. Reloading usually fixes it. If it keeps happening, the rest of the site may still work: try the") +
+      ' <a href="#/">' + t("overview") + "</a>.</p>" +
+      '<div class="controls"><button class="chip solid" id="retry">' + t("Try again") + "</button>" +
+      '<a class="chip" href="#/">' + t("Overview") + "</a></div>" +
       '<details class="foot-note"><summary>Running this from a clone?</summary>' +
       "<p>Build the exports first:</p>" +
       '<pre class="code"><code>python ingest/build_exports.py\npython ingest/build_search.py\npython ingest/build_site.py</code></pre>' +
@@ -130,13 +134,16 @@ async function route() {
  * wanted to override their system setting.
  */
 
-const applyTheme = (t) => {
-  if (t) document.documentElement.setAttribute("data-theme", t);
+/* The parameter is `mode`, not `t`: `t` is the translator now, and a local
+   binding of that name inside a function that has to call it is a bug waiting
+   for whoever adds the next string. */
+const applyTheme = (mode) => {
+  if (mode) document.documentElement.setAttribute("data-theme", mode);
   else document.documentElement.removeAttribute("data-theme");
   const btn = document.getElementById("theme");
   if (btn) {
-    btn.textContent = t === "dark" ? "Dark" : t === "light" ? "Light" : "Auto";
-    btn.title = "Theme: " + (t || "follows your system") + ". Click to change.";
+    btn.textContent = t(mode === "dark" ? "Dark" : mode === "light" ? "Light" : "Auto");
+    btn.title = t("Theme") + ": " + (mode || t("follows your system")) + ".";
   }
 };
 
@@ -216,14 +223,14 @@ document.getElementById("app").addEventListener("click", (e) => {
 function changedLine(changed) {
   if (!changed || !changed.date) return "";
   const bits = [];
-  if (changed.revised) bits.push(changed.revised + " restated by CBE");
-  if (changed.moved) bits.push(changed.moved.toLocaleString() + " numbers moved");
+  if (changed.revised) bits.push(changed.revised + " " + t("restated by CBE"));
+  if (changed.moved) bits.push(changed.moved.toLocaleString() + " " + t("numbers moved"));
   if (!bits.length) return "";
   // niceDate, not shortDate: these are single days, and "12 numbers moved on
   // Sep 2026" says the wrong thing about a daily figure.
   const when = changed.date === new Date().toISOString().slice(0, 10)
-    ? "today" : "on " + niceDate(changed.date);
-  return bits.join(", ") + " " + when + " →";
+    ? t("today") : t("on") + " " + niceDate(changed.date);
+  return bits.join(", ") + " " + when + " " + ARROW;
 }
 
 async function renderFreshness() {
@@ -245,13 +252,13 @@ async function renderFreshness() {
 
   const bits = [
     stale
-      ? "Last rebuilt " + staleness(day)
-      : "Rebuilt " + clock + " UTC " + (day === today ? "today" : "on " + niceDate(day)),
+      ? t("Last rebuilt") + " " + staleness(day)
+      : t("Rebuilt") + " " + clock + " UTC " + (day === today ? t("today") : t("on") + " " + niceDate(day)),
   ];
-  if (s.last_scrape) bits.push("CBE last read " + niceDate(s.last_scrape.slice(0, 10)));
-  if (s.series) bits.push(s.series.toLocaleString() + " series");
-  if (s.observations) bits.push(s.observations.toLocaleString() + " observations");
-  if (s.documents) bits.push(s.documents.toLocaleString() + " documents");
+  if (s.last_scrape) bits.push(t("CBE last read") + " " + niceDate(s.last_scrape.slice(0, 10)));
+  if (s.series) bits.push(s.series.toLocaleString() + " " + t("series"));
+  if (s.observations) bits.push(s.observations.toLocaleString() + " " + t("observations"));
+  if (s.documents) bits.push(s.documents.toLocaleString() + " " + t("documents"));
 
   /* The change log gets its entry here rather than a ninth item in the nav.
    * This strip is already about how fresh the page is, it is already on every
@@ -269,7 +276,7 @@ async function renderFreshness() {
       '<div class="wrap">' +
       bits.map((b) => "<span>" + esc(b) + "</span>").join("") +
       (moved ? '<a class="moved" href="#/changes">' + esc(moved) + "</a>" : "") +
-      (stale ? '<span class="warn">the daily job may not have run</span>' : "") +
+      (stale ? '<span class="warn">' + t("the daily job may not have run") + "</span>" : "") +
       "</div>";
     strip.hidden = false;
   }
@@ -277,6 +284,40 @@ async function renderFreshness() {
   // page with room, and it is where someone checks provenance.
   if (foot) foot.textContent = bits.join("  ·  ");
 }
+
+/* ---------- the language switch ----------
+ *
+ * English lives at the root and Arabic under /ar/, as two sets of real files
+ * rather than one document with a toggle, because a hash cannot be indexed and
+ * a reader who pastes an Arabic link expects Arabic to open.
+ *
+ * So switching is navigation, not state: same route, other directory. The
+ * route is carried across, so somebody reading the dollar series in English
+ * lands on the dollar series in Arabic rather than back at the front page,
+ * which is where a naive switch always drops people.
+ */
+function wireLanguage() {
+  const link = document.getElementById("lang");
+  if (!link) return;
+  const hash = location.hash || "";
+  if (RTL) {
+    link.textContent = "EN";
+    link.setAttribute("hreflang", "en");
+    link.setAttribute("lang", "en");
+    link.title = "Read this page in English";
+    /* ROOT already points at the site root from wherever this document sits --
+     * ".." from /ar/, "../../.." from /ar/s/<id>/ -- so the English site is
+     * ROOT itself. Adding another "../" walks out above the site, which is
+     * what the first version did. */
+    link.href = ROOT + "/" + hash;
+  } else {
+    link.textContent = "عربي";
+    link.title = "اقرأ هذه الصفحة بالعربية";
+    link.href = ROOT + "/ar/" + hash;
+  }
+}
+
+window.addEventListener("hashchange", wireLanguage);
 
 /* ---------- mobile navigation ---------- */
 
@@ -287,3 +328,4 @@ document.getElementById("menu").addEventListener("click", () => {
 window.addEventListener("hashchange", route);
 route();
 renderFreshness();
+wireLanguage();

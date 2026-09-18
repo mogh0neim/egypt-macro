@@ -109,13 +109,13 @@ a:hover { color: var(--accent); }
 
 .skip {
   position: absolute;
-  left: -9999px;
+  inset-inline-start: -9999px;
   background: var(--accent);
   color: #fff;
   padding: 0.6rem 1rem;
   z-index: 50;
 }
-.skip:focus { left: 1rem; top: 0.6rem; }
+.skip:focus { inset-inline-start: 1rem; top: 0.6rem; }
 
 .wrap {
   max-width: var(--measure);
@@ -422,7 +422,7 @@ body.palette-open { overflow: hidden; }
      and English-primary, so the Arabic starts where the English above it starts.
      Left to itself, `direction: rtl` right-aligns the line inside its own box
      and the title drifts away from the one it translates. */
-  text-align: left;
+  text-align: start;
   font-size: 0.95em;
   color: var(--text-2);
 }
@@ -585,7 +585,7 @@ body.palette-open { overflow: hidden; }
   font-family: var(--mono);
   font-size: 0.72rem;
   color: var(--text-3);
-  text-align: right;
+  text-align: end;
   white-space: nowrap;
 }
 /* A starter that opens a page rather than a series runs the full width of the
@@ -617,7 +617,7 @@ body.palette-open { overflow: hidden; }
   border-radius: var(--radius);
   padding: 1.1rem 1.15rem 1rem;
   transition: border-color 0.12s, transform 0.12s;
-  text-align: left;
+  text-align: start;
   font: inherit;
   color: inherit;
   cursor: pointer;
@@ -654,12 +654,12 @@ body.palette-open { overflow: hidden; }
 .wide-card {
   display: block;
   border: 1px solid var(--line);
-  border-left: 3px solid var(--gold);
+  border-inline-start: 3px solid var(--gold);
   border-radius: var(--radius);
   background: var(--surface);
   padding: 1.3rem 1.5rem;
 }
-.wide-card:hover { border-color: var(--accent); border-left-color: var(--gold); color: inherit; }
+.wide-card:hover { border-color: var(--accent); border-inline-start-color: var(--gold); color: inherit; }
 .wide-card h3 { font-family: var(--display); font-weight: 600; font-size: 1.2rem; margin: 0 0 0.4rem; }
 .wide-card p { margin: 0 0 0.6rem; color: var(--text-2); max-width: 70ch; }
 .pair {
@@ -685,7 +685,7 @@ body.palette-open { overflow: hidden; }
 table.indicators { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
 
 table.indicators th {
-  text-align: right;
+  text-align: end;
   font-family: var(--mono);
   font-weight: 400;
   font-size: 0.64rem;
@@ -696,18 +696,18 @@ table.indicators th {
   border-bottom: 1px solid var(--line);
   white-space: nowrap;
 }
-table.indicators th:first-child { text-align: left; }
+table.indicators th:first-child { text-align: start; }
 
 table.indicators td {
   padding: 0.6rem 0.7rem;
   border-bottom: 1px solid var(--line-soft);
-  text-align: right;
+  text-align: end;
   font-family: var(--mono);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 table.indicators td.name {
-  text-align: left;
+  text-align: start;
   font-family: var(--body);
   white-space: normal;
   min-width: 14rem;
@@ -741,7 +741,7 @@ table.compact td { padding-block: 0.42rem; font-size: 0.84rem; }
   color: var(--gold);
   padding-top: 1.5rem !important;
   border-bottom: 1px solid var(--line) !important;
-  text-align: left !important;
+  text-align: start !important;
 }
 
 /* ---------- topic accordions ---------- */
@@ -839,7 +839,7 @@ table.indicators th.star-col {
    as another section of the page. */
 details.add-panel {
   border: 1px solid var(--line);
-  border-left: 3px solid var(--gold);
+  border-inline-start: 3px solid var(--gold);
   border-radius: var(--radius);
   background: var(--surface);
   margin-block: 0.6rem 1.4rem;
@@ -1010,7 +1010,7 @@ details.add-panel .empty { padding: 1rem 0; }
 
 .notice {
   border: 1px solid var(--line);
-  border-left: 3px solid var(--gold);
+  border-inline-start: 3px solid var(--gold);
   border-radius: var(--radius);
   background: var(--surface);
   padding: 0.85rem 1.1rem;
@@ -1043,7 +1043,7 @@ details.add-panel .empty { padding: 1rem 0; }
   margin-inline-start: 0.3rem;
 }
 .gauge-ends i { font-style: normal; display: block; color: var(--text-3); }
-.gauge-ends .hi { text-align: right; }
+.gauge-ends .hi { text-align: end; }
 .where-note {
   font-family: var(--mono);
   font-size: 0.74rem;
@@ -1080,7 +1080,7 @@ details.obs > div { padding: 0 1.1rem 0.9rem; }
 details.obs .count-line { margin-top: 0; }
 /* A date is not a number to be right-aligned against other numbers. */
 table.indicators td.period {
-  text-align: left;
+  text-align: start;
   color: var(--text-2);
   white-space: nowrap;
 }
@@ -1414,7 +1414,7 @@ input.search::placeholder { color: var(--text-3); }
 .result.rich .spk { grid-area: spk; }
 .result.rich .v {
   grid-area: v;
-  text-align: right;
+  text-align: end;
   font-family: var(--mono);
   font-variant-numeric: tabular-nums;
   font-size: 0.9rem;
@@ -1501,7 +1501,7 @@ code { overflow-wrap: anywhere; }
 .dl:hover { border-color: var(--accent); color: inherit; }
 .dl .n { font-family: var(--mono); font-size: 0.86rem; font-weight: 500; }
 .dl:hover .n { color: var(--accent); }
-.dl .s { font-family: var(--mono); font-size: 0.72rem; color: var(--text-3); text-align: right; }
+.dl .s { font-family: var(--mono); font-size: 0.72rem; color: var(--text-3); text-align: end; }
 .dl .d { grid-column: 1 / -1; font-size: 0.8rem; color: var(--text-2); }
 
 pre.code {
@@ -1695,9 +1695,12 @@ footer {
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 0;
+    inset-inline-end: 0;
     width: 1.4rem;
     pointer-events: none;
+    /* The one gradient with a side of its own. `to right` is a physical
+       direction with no logical spelling, so it is flipped in the RTL block
+       at the end of this file rather than here. */
     background: linear-gradient(to right, transparent, var(--bg));
   }
   .section.band .table-scroll::after,
@@ -1748,3 +1751,75 @@ footer {
   .mpc-row .src { margin-inline-start: 0; }
   .mpc-row .when { min-width: 7.5rem; }
 }
+
+/* ---------- right to left ----------
+ *
+ * Almost nothing, because the stylesheet was already logical: zero
+ * margin-left, zero padding-left, no floats, and every text-align now
+ * start/end. What is left is the handful of things a logical property cannot
+ * express.
+ *
+ * Charts are deliberately not mirrored. Time runs left to right in every chart
+ * anyone reads, Arabic publications included, so flipping the axis would be
+ * localising the convention rather than the language. `lineChart`, `gauge` and
+ * `spark` keep their geometry, and `wireHover` keeps working because it maps a
+ * real clientX through the SVG's own box.
+ */
+
+[dir="rtl"] {
+  /* Almarai is the body face here, not an exception inside an English page.
+     It is also the typeface CBE sets its own Arabic in. */
+  --body: var(--arabic);
+  --display: var(--arabic);
+}
+
+/* The mono face carries no Arabic, so anything set in it falls back per
+   character and comes out mixed. Figures, dates and ids are Latin either way,
+   so mono stays for those; the eyebrow is words, and moves to the body face. */
+[dir="rtl"] .eyebrow,
+[dir="rtl"] .change-head,
+[dir="rtl"] .stat span,
+[dir="rtl"] .tool-field > span {
+  font-family: var(--arabic);
+  letter-spacing: 0;
+}
+
+/* The gradient that says "this table scrolls". `to right` has no logical
+   spelling, so it is the one declaration that needs restating. */
+[dir="rtl"] .table-scroll::after {
+  background: linear-gradient(to left, transparent, var(--bg));
+}
+
+/* An SVG's own coordinate system is not mirrored by `direction`, but the box
+   it sits in is, and a chart that keeps its geometry inside a mirrored
+   container needs saying explicitly or nothing changes. Left here for the
+   record: nothing to do. */
+
+/* The wordmark reads Arabic first on an Arabic page. */
+[dir="rtl"] .wordmark { flex-direction: row-reverse; }
+[dir="rtl"] .wordmark::before { order: 1; }
+
+/* Latin runs of text inside an Arabic page: a series id, a figure with a unit,
+   a URL. Isolating them stops a trailing full stop or bracket jumping to the
+   wrong end of the line, which is the single most common bidi artefact. */
+[dir="rtl"] .series-id,
+[dir="rtl"] code,
+[dir="rtl"] .mono,
+[dir="rtl"] .result .sub,
+[dir="rtl"] .change-list b,
+[dir="rtl"] .stat b {
+  unicode-bidi: isolate;
+}
+
+/* .ar exists to set an Arabic title inside an English page and carries
+   direction: rtl of its own. On an Arabic page it is simply the page. */
+[dir="rtl"] .ar {
+  font-size: 1em;
+  line-height: inherit;
+}
+
+/* The language switch sits next to the theme toggle and borrows its shape: both
+   are settings rather than destinations, and the nav row has no slack for a
+   third kind of control. */
+.lang-switch { font-family: var(--arabic); text-transform: none; letter-spacing: 0; }
+[dir="rtl"] .lang-switch { font-family: var(--mono); }

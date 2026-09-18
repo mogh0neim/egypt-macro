@@ -44,16 +44,16 @@ async function viewChanges() {
     crumbs([{ label: "What changed" }]) +
 
     '<section class="section">' +
-    '<p class="eyebrow">The revision record</p>' +
-    "<h2>What CBE published, and what it quietly restated</h2>" +
-    '<p class="lede">The Central Bank overwrites its files when it revises a figure. ' +
-    "There is no changelog and no way to ask what a number read last month. This site keeps " +
-    "every copy it has ever fetched, so its own history answers that question, and nothing " +
-    "else does.</p>" +
+    '<p class="eyebrow">' + t("The revision record") + "</p>" +
+    "<h2>" + t("What CBE published, and what it quietly restated") + "</h2>" +
+    '<p class="lede">' +
+    t("The Central Bank overwrites its files when it revises a figure. There is no changelog and no way to ask what a number read last month. This site keeps every copy it has ever fetched, so its own history answers that question, and nothing else does.") +
+    "</p>" +
     '<div class="stat-row">' +
-    stat(readings.toLocaleString(), "readings published", since ? "since " + niceDate(since) : "") +
-    stat(String(revisions), "figures CBE restated", "after first publishing them") +
-    stat(String(anomalies.length), "same-day conflicts", "two values for one date") +
+    stat(readings.toLocaleString(), t("readings published"),
+         since ? t("since") + " " + niceDate(since) : "") +
+    stat(String(revisions), t("figures CBE restated"), t("after first publishing them")) +
+    stat(String(anomalies.length), t("same-day conflicts"), t("two values for one date")) +
     "</div>" +
     '<p class="foot-note">' +
     (revisions === 0
@@ -67,12 +67,14 @@ async function viewChanges() {
 
     (anomalies.length
       ? '<section class="section band"><div class="wrap-inner">' +
-        '<p class="eyebrow">Caught in the act</p>' +
-        "<h2>Where CBE published two different values for one date</h2>" +
-        '<p class="lede">These do not need a history to find: the same figure appears twice, ' +
-        "differently, inside one of CBE's own files. The parser keeps one and records both.</p>" +
+        '<p class="eyebrow">' + t("Caught in the act") + "</p>" +
+        "<h2>" + t("Where CBE published two different values for one date") + "</h2>" +
+        '<p class="lede">' +
+        t("These do not need a history to find: the same figure appears twice, differently, inside one of CBE's own files. The parser keeps one and records both.") +
+        "</p>" +
         '<div class="table-scroll"><table class="indicators compact"><thead><tr>' +
-        "<th>Series</th><th>For</th><th>Kept</th><th>Discarded</th>" +
+        "<th>" + t("Series|one row of a table") + "</th><th>" + t("For") + "</th><th>" +
+        t("Kept") + "</th><th>" + t("Discarded") + "</th>" +
         "</tr></thead><tbody>" +
         anomalies.map((a) =>
           '<tr><td class="name"><a href="#/s/' + encodeURIComponent(a.series_id) + '">' +
@@ -85,7 +87,7 @@ async function viewChanges() {
 
     (days.length
       ? '<section class="section">' +
-        '<p class="eyebrow">Day by day</p>' +
+        '<p class="eyebrow">' + t("Day by day") + "</p>" +
         "<h2>" + days.length + " days on the record</h2>" +
         '<p class="lede">Every morning the scrape runs, whatever moved is committed. ' +
         "A day with nothing on it is a day CBE published nothing new.</p>" +

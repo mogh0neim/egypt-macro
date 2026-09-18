@@ -94,6 +94,7 @@ jobs:
                            "palette.js", "views-data.js", "views-docs.js",
                            "views-mpc.js", "views-meta.js", "views-desk.js",
                            "views-mydesk.js", "views-tools.js", "views-changes.js",
+                           "i18n.js",
                            "api/v1/series.json", "api/v1/sparks.json",
                            "api/v1/changes.json", "changes.xml", "changes-revisions.xml",
                            "search/documents.json", "search/meta.json"):
@@ -110,11 +111,18 @@ jobs:
           if rendered < 1000:
               problems.append(f"only {rendered} pre-rendered series pages")
           for required in ("sitemap.xml", "sitemap-series.xml", "sitemap-docs.xml",
-                           "sitemap-pages.xml", "s/EG.FX.OFF.USD.SELL/index.html"):
+                           "sitemap-pages.xml", "s/EG.FX.OFF.USD.SELL/index.html",
+                           # The Arabic site is half the reach and is written by
+                           # the same pass, so a build with no /ar/ is a build
+                           # where the second language silently failed.
+                           "ar/index.html", "ar/s/EG.FX.OFF.USD.SELL/index.html"):
               if not (dist / required).exists():
                   problems.append(f"missing {required}")
           if "og:url" not in (dist / "s/EG.FX.OFF.USD.SELL/index.html").read_text(encoding="utf-8", errors="ignore"):
               problems.append("a pre-rendered page carries no og:url")
+          arabic = (dist / "ar/index.html").read_text(encoding="utf-8", errors="ignore")
+          if 'dir="rtl"' not in arabic or "hreflang" not in arabic:
+              problems.append("the Arabic home page is not marked up as Arabic")
 
           # Cards are allowed to be missing -- build_site skips them rather than
           # failing when Pillow is not there -- but a partial set means every

@@ -6,7 +6,7 @@
  * but rewrites two paragraphs is telling you something a rate table cannot.
  */
 
-const DECISION_LABEL = { hold: "Held", cut: "Cut", hike: "Raised" };
+const DECISION_LABEL = { hold: t("Held"), cut: t("Cut"), hike: t("Raised") };
 
 /* A step function over an "only when it changes" series: what was the rate on
  * this date? Used to recover the decision for the statements whose PDF the
@@ -125,8 +125,8 @@ async function viewMPC() {
     crumbs([{ label: "Rate decisions" }]) +
     callPanel(nextMeeting(calendar), statements) +
     '<section class="section">' +
-    '<p class="eyebrow">Monetary Policy Committee</p>' +
-    "<h2>Every rate decision since June 2005</h2>" +
+    '<p class="eyebrow">' + t("Monetary Policy Committee") + "</p>" +
+    "<h2>" + t("Every rate decision since June 2005") + "</h2>" +
     '<p class="lede">' + mpc.count + " statements, continuous from " + niceDate(mpc.range[0]) +
     " to " + niceDate(mpc.range[1]) + ". " + tally.hike + " increases, " + tally.cut +
     " cuts, " + tally.hold + " meetings that changed nothing" +
@@ -197,7 +197,7 @@ async function viewMPC() {
  * the meeting, so the page can mark its own homework with no extra plumbing.
  */
 
-const CALL_LABEL = { cut: "Cut", hold: "Hold", hike: "Raise" };
+const CALL_LABEL = { cut: t("Cut"), hold: t("Hold"), hike: t("Raise") };
 
 const callsGet = () => store.get("calls", {});
 
@@ -224,10 +224,11 @@ function callPanel(next, statements) {
 
   return (
     '<section class="section band-inset call"><div class="wrap-inner">' +
-    '<p class="eyebrow">Next rate decision</p>' +
+    '<p class="eyebrow">' + t("Next rate decision") + "</p>" +
     "<h2>" + esc(niceDate(next.date)) + ", " + esc(countdownWords(next.days)) + "</h2>" +
-    '<p class="lede">Eight meetings a year, on dates the Central Bank publishes in advance. ' +
-    "What do you think they will do?</p>" +
+    '<p class="lede">' +
+    t("Eight meetings a year, on dates the Central Bank publishes in advance. What do you think they will do?") +
+    "</p>" +
     '<div class="controls" id="call-controls">' +
     ["cut", "hold", "hike"].map((d) =>
       '<button class="chip' + (called === d ? " solid" : "") + '" data-call="' + d + '"' +
@@ -235,8 +236,8 @@ function callPanel(next, statements) {
     "</div>" +
     '<p class="foot-note" id="call-note">' + callNote(called, record) + "</p>" +
     (record.settled.length
-      ? '<table class="indicators compact"><thead><tr><th>Meeting</th><th>You said</th>' +
-        "<th>They did</th></tr></thead><tbody>" +
+      ? '<table class="indicators compact"><thead><tr><th>' + t("Meeting") + "</th><th>" +
+        t("You said") + "</th><th>" + t("They did") + "</th></tr></thead><tbody>" +
         record.settled.map((r) =>
           "<tr><td class='name'>" + esc(niceDate(r.date)) + "</td>" +
           "<td>" + esc(CALL_LABEL[r.called] || r.called) + "</td>" +
@@ -244,8 +245,9 @@ function callPanel(next, statements) {
           (r.hit ? " ✓" : "") + "</td></tr>").join("") +
         "</tbody></table>"
       : "") +
-    '<p class="foot-note">Kept in this browser and nowhere else. There is no server behind ' +
-    "this site to send it to.</p>" +
+    '<p class="foot-note">' +
+    t("Kept in this browser and nowhere else. There is no server behind this site to send it to.") +
+    "</p>" +
     "</div></section>"
   );
 }
@@ -254,7 +256,7 @@ function callNote(called, record) {
   const history = record.judged
     ? " You have called " + record.right + " of " + record.judged + "."
     : "";
-  if (!called) return "Nothing called yet." + history;
+  if (!called) return t("Nothing called yet.") + history;
   return "You said <b>" + esc((CALL_LABEL[called] || called).toLowerCase()) +
     "</b>. Scored here the morning after the meeting, once CBE publishes the statement." + history;
 }

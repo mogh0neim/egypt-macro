@@ -450,6 +450,69 @@ page and already about how fresh it is. The counts ride along in `status.json`,
 which `renderFreshness` already fetches, so no page that is not the change log
 pays for `changes.json`.
 
+## Arabic
+
+Egypt reads Arabic. The data is Egyptian, the source is Egyptian, and every
+word of the site around it was English. That is not a localisation nicety, it
+is most of the audience.
+
+**`t()` is keyed on the English string itself**, not on an invented identifier.
+The views build their markup by string concatenation, so `home.hero.title`
+would replace readable prose with opaque tokens across five thousand readable
+lines; and, more importantly, a missing translation then falls back to correct
+English rather than to the word `home.hero.title`. On a site with 370 strings
+and one translator, failing soft in the right language beats tidiness. An
+untranslated string is English on an Arabic page: visibly unfinished, never
+broken.
+
+A key may carry a disambiguator after a pipe, because keying on the source
+collides two senses of one word. `t("Series|one row of a table")` is السلسلة
+where the nav item `t("Series")` is السلاسل, and both fall back to "Series".
+
+**`/ar/` is a directory of real files**, not a switch. A hash cannot be indexed
+and a query string is a different page to nobody, so `prerender.py` runs twice
+and writes 2,821 Arabic pages beside the English ones, each pair pointing at
+the other with `hreflang` plus an `x-default`. The language switch is
+navigation, and it carries the route across: somebody reading the dollar series
+in English lands on the dollar series in Arabic, not back at the front page.
+
+`ROOT` always points at the site root from wherever a document sits, so the
+English site is `ROOT + "/"` and the Arabic one is `ROOT + "/ar/"`. Adding
+another `../` for Arabic, which is the obvious-looking thing to do, walks out
+above the site.
+
+**What is not translated, on purpose:**
+
+- **Digits stay Western.** Egyptian financial media, CBE's own releases and
+  every bank statement in the country use 0-9. Arabic-Indic digits would also
+  break `font-variant-numeric: tabular-nums`, which is what keeps a column of
+  rates aligned.
+- **Charts stay left to right.** Time runs left to right in every chart anyone
+  reads, Arabic publications included. `lineChart`, `gauge` and `spark` keep
+  their geometry, and `wireHover` keeps working because it maps a real
+  `clientX` through the SVG's own box.
+- **Series titles are CBE's.** Where CBE published an Arabic title it is used;
+  `title_ar` exists for 1,164 series, all of them the Excel archive. Every FX,
+  price, policy rate and treasury bill series -- which is everything on the
+  front page -- has none, and falls back to English rather than being given an
+  invented name. An English title on an Arabic page is unfinished; a made-up
+  Arabic one is a claim about what the Bank called it.
+
+**The chrome is translated in Python**, by `translate_chrome()` reading the same
+`AR` dictionary out of `i18n.js`. The masthead, footer and palette are HTML
+before any script runs, so translating them in the front end would show a row
+of English nav items until the script caught up.
+
+**`t` is now a global**, so a local binding of that name inside a function that
+needs to translate is a bug waiting for whoever adds the next string.
+`applyTheme(t)` and `titleHTML`'s `const t` have been renamed. Roughly twenty
+`.map((t) => …)` callbacks remain: harmless today, and the reason not to call
+`t()` inside one without renaming it first.
+
+The CSS cost was almost nothing, because the stylesheet was already logical:
+twelve `text-align`, four `border-left`, the skip link and one gradient. The
+`[dir="rtl"]` block at the end of `styles.css` is the whole of the rest.
+
 ## Voice
 
 Short declaratives. Say the limitation rather than hiding it - "Honesty is

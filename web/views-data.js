@@ -15,30 +15,30 @@
  */
 
 const STARTERS = [
-  { id: "EG.FX.OFF.USD.SELL", q: "What is a dollar worth?",
-    note: "CBE's official selling rate, every business day since 2005." },
-  { id: "EG.RATE.ON.DEP", q: "Where are interest rates?", href: "#/rates",
-    note: "The overnight deposit rate, the floor of the CBE corridor." },
-  { id: "EG.CPI.HDL.YOY", q: "How fast are prices rising?",
-    note: "Headline consumer prices against the same month a year earlier." },
-  { id: "EG.RES.NIR", q: "How big are the reserves?",
-    note: "Net international reserves, read out of CBE's monthly press release." },
-  { id: "EG.TB.EGP.12M.YLD.WAVG", q: "What is the government paying to borrow?",
-    note: "Weighted average yield at the 12-month treasury bill auction." },
-  { id: "EG.EXT.REMIT.FYTD", q: "What are Egyptians abroad sending home?",
-    note: "Workers' remittances, cumulative across the fiscal year." },
-  { id: "EG.CONIA.ON.RATE", q: "What did overnight money actually cost?", href: "#/money-market", wide: true,
-    note: "CONIA, the overnight fixing. Opens the money market page: where the pound funded inside the CBE corridor, the interbank tenors with their volumes, and the EGP bill curve with bid to cover." },
+  { id: "EG.FX.OFF.USD.SELL", q: t("What is a dollar worth?"),
+    note: t("CBE's official selling rate, every business day since 2005.") },
+  { id: "EG.RATE.ON.DEP", q: t("Where are interest rates?"), href: "#/rates",
+    note: t("The overnight deposit rate, the floor of the CBE corridor.") },
+  { id: "EG.CPI.HDL.YOY", q: t("How fast are prices rising?"),
+    note: t("Headline consumer prices against the same month a year earlier.") },
+  { id: "EG.RES.NIR", q: t("How big are the reserves?"),
+    note: t("Net international reserves, read out of CBE's monthly press release.") },
+  { id: "EG.TB.EGP.12M.YLD.WAVG", q: t("What is the government paying to borrow?"),
+    note: t("Weighted average yield at the 12-month treasury bill auction.") },
+  { id: "EG.EXT.REMIT.FYTD", q: t("What are Egyptians abroad sending home?"),
+    note: t("Workers' remittances, cumulative across the fiscal year.") },
+  { id: "EG.CONIA.ON.RATE", q: t("What did overnight money actually cost?"), href: "#/money-market", wide: true,
+    note: t("CONIA, the overnight fixing. Opens the money market page: where the pound funded inside the CBE corridor, the interbank tenors with their volumes, and the EGP bill curve with bid to cover.") },
 ];
 
 /* The headline table on the overview. Order inside a group is deliberate. */
 const HEADLINE_GROUPS = [
-  { label: "Foreign exchange", ids: ["EG.FX.OFF.USD.SELL", "EG.FX.MKT.USD.SELL", "EG.FX.IBK.WAVG"] },
-  { label: "Policy rates", ids: ["EG.RATE.ON.DEP", "EG.RATE.ON.LEND", "EG.RATE.MAIN", "EG.RATE.DISCOUNT"] },
-  { label: "Prices", ids: ["EG.CPI.HDL.YOY", "EG.CPI.CORE.YOY"] },
-  { label: "External", ids: ["EG.RES.NIR", "EG.EXT.REMIT.FYTD"] },
-  { label: "Treasury bills", ids: ["EG.TB.EGP.3M.YLD.WAVG", "EG.TB.EGP.6M.YLD.WAVG", "EG.TB.EGP.12M.YLD.WAVG", "EG.TB.EGP.3M.BIDCOVER"] },
-  { label: "Money market", ids: ["EG.CONIA.ON.RATE", "EG.IBK.D.ON"] },
+  { label: t("Foreign exchange"), ids: ["EG.FX.OFF.USD.SELL", "EG.FX.MKT.USD.SELL", "EG.FX.IBK.WAVG"] },
+  { label: t("Policy rates"), ids: ["EG.RATE.ON.DEP", "EG.RATE.ON.LEND", "EG.RATE.MAIN", "EG.RATE.DISCOUNT"] },
+  { label: t("Prices"), ids: ["EG.CPI.HDL.YOY", "EG.CPI.CORE.YOY"] },
+  { label: t("External"), ids: ["EG.RES.NIR", "EG.EXT.REMIT.FYTD"] },
+  { label: t("Treasury bills"), ids: ["EG.TB.EGP.3M.YLD.WAVG", "EG.TB.EGP.6M.YLD.WAVG", "EG.TB.EGP.12M.YLD.WAVG", "EG.TB.EGP.3M.BIDCOVER"] },
+  { label: t("Money market"), ids: ["EG.CONIA.ON.RATE", "EG.IBK.D.ON"] },
 ];
 
 const changeOf = (s) =>
@@ -149,13 +149,13 @@ async function viewHome() {
      * share card and a first-time visitor all see. Say what it is, then earn
      * the chart with the fact underneath. */
     '<section class="hero"><div class="wrap">' +
-    "<h1>Egypt's economy in numbers. Free.</h1>" +
+    "<h1>" + t("Egypt's economy in numbers. Free.") + "</h1>" +
     '<p class="standfirst">' +
-    index.length.toLocaleString() + " series from the Central Bank, cleaned, charted and " +
-    "searchable. Rebuilt every morning. No key, no account, no paywall." +
+    index.length.toLocaleString() + " " +
+    t("series from the Central Bank, cleaned, charted and searchable. Rebuilt every morning. No key, no account, no paywall.") +
     (multiple
-      ? " Starting with the one everybody asks about: the official dollar rate has moved <b>" +
-        multiple + "×</b> since January 2005."
+      ? " " + t("Starting with the one everybody asks about: the official dollar rate has moved") +
+        " <b>" + multiple + "×</b> " + t("since January 2005.")
       : "") +
     "</p>" +
     '<div class="hero-chart">' +
@@ -164,37 +164,38 @@ async function viewHome() {
     '<div class="readout" id="hero-readout">' +
     '<span class="val">' + (last ? fmt(last[1], fx.unit) : "—") + "</span>" +
     '<span class="when">' + (last ? niceDate(last[0]) : "") + "</span>" +
-    "<span>EGP per US dollar, CBE selling rate</span></div>" +
+    "<span>" + t("EGP per US dollar, CBE selling rate") + "</span></div>" +
     "</div></section>" +
 
     '<section class="section band"><div class="wrap">' +
-    '<p class="eyebrow">Start here</p>' +
-    "<h2>Seven questions, already answered</h2>" +
-    '<p class="lede">Every number below is the latest CBE has published. Click one to see its whole history.</p>' +
+    '<p class="eyebrow">' + t("Start here") + "</p>" +
+    "<h2>" + t("Seven questions, already answered") + "</h2>" +
+    '<p class="lede">' + t("Every number below is the latest CBE has published. Click one to see its whole history.") + "</p>" +
     '<div class="starters">' + starters + "</div>" +
     "</div></section>" +
 
     '<section class="section"><div class="wrap">' +
-    '<p class="eyebrow">At a glance</p>' +
-    "<h2>Headline indicators</h2>" +
-    '<p class="lede">Latest reading, the change since the one before it, and where that sits between the series’ own record low and high.</p>' +
+    '<p class="eyebrow">' + t("At a glance") + "</p>" +
+    "<h2>" + t("Headline indicators") + "</h2>" +
+    '<p class="lede">' + t("Latest reading, the change since the one before it, and where that sits between the series' own record low and high.") + "</p>" +
     '<div class="table-scroll"><table class="indicators"><thead><tr>' +
     '<th class="star-col"><span class="sr-only">On your desk</span></th>' +
-    "<th>Series</th><th>Latest</th><th>Change</th>" +
-    '<th class="hide-sm">Lowest</th><th class="hide-sm">Highest</th>' +
-    "<th>Where it sits</th><th>As of</th>" +
+    "<th>" + t("Series|one row of a table") + "</th><th>" + t("Latest") + "</th><th>" + t("Change") + "</th>" +
+    '<th class="hide-sm">' + t("Lowest") + '</th><th class="hide-sm">' + t("Highest") + "</th>" +
+    "<th>" + t("Where it sits") + "</th><th>" + t("As of") + "</th>" +
     "</tr></thead><tbody>" + table + "</tbody></table></div>" +
-    '<p class="foot-note">Star any row to keep it on your desk: one screen of the ' +
-    'numbers you read every morning, with no prose in the way. <a href="#/favourites">Open your favourites →</a></p>' +
+    '<p class="foot-note">' +
+    t("Star any row to keep it on your desk: one screen of the numbers you read every morning, with no prose in the way.") +
+    ' <a href="#/favourites">' + t("Open your favourites →") + "</a></p>" +
     "</div></section>" +
 
     (mpcCard ? '<section class="section"><div class="wrap">' + mpcCard + "</div></section>" : "") +
 
     '<section class="section band"><div class="wrap">' +
-    '<p class="eyebrow">Browse</p>' +
-    "<h2>Everything, by subject</h2>" +
-    '<p class="lede">Thirteen topics over ' + index.length.toLocaleString() +
-    " series. No search box required. Pick a subject and read down.</p>" +
+    '<p class="eyebrow">' + t("Browse") + "</p>" +
+    "<h2>" + t("Everything, by subject") + "</h2>" +
+    '<p class="lede">' + t("Thirteen topics over") + " " + index.length.toLocaleString() +
+    " " + t("series. No search box required. Pick a subject and read down.") + "</p>" +
     '<div class="topic-grid">' + topicGrid + moneyMarketTopicCard() + "</div>" +
     "</div></section>" +
 
@@ -210,33 +211,26 @@ async function viewHome() {
     '<section class="section"><div class="wrap">' +
     '<div class="pair">' +
     '<a class="wide-card" href="#/tools">' +
-    '<p class="eyebrow">Work it out</p>' +
-    "<h3>What is your salary actually worth?</h3>" +
-    "<p>The same numbers, asked in the second person. A salary from a year you remember, " +
-    "priced in today's money. Savings kept as pounds against the same money swapped for " +
-    "dollars on day one. The dollar rate on any date since 2005.</p>" +
-    '<span class="go">Work it out →</span></a>' +
+    '<p class="eyebrow">' + t("Work it out") + "</p>" +
+    "<h3>" + t("What is your salary actually worth?") + "</h3>" +
+    "<p>" + t("The same numbers, asked in the second person. A salary from a year you remember, priced in today's money. Savings kept as pounds against the same money swapped for dollars on day one. The dollar rate on any date since 2005.") + "</p>" +
+    '<span class="go">' + t("Work it out →") + "</span></a>" +
     '<a class="wide-card" href="#/changes">' +
-    '<p class="eyebrow">What changed</p>' +
-    "<h3>The Central Bank does not keep a changelog. This does.</h3>" +
-    "<p>CBE overwrites its files in place when it revises a figure, so there is no way to ask " +
-    "what a number read last month. Every copy fetched here is kept, which makes this the only " +
-    "record of what was quietly restated. It began on 20 August 2026 and fills up from there.</p>" +
-    '<span class="go">See what changed →</span></a>' +
+    '<p class="eyebrow">' + t("What changed") + "</p>" +
+    "<h3>" + t("The Central Bank does not keep a changelog. This does.") + "</h3>" +
+    "<p>" + t("CBE overwrites its files in place when it revises a figure, so there is no way to ask what a number read last month. Every copy fetched here is kept, which makes this the only record of what was quietly restated. It began on 20 August 2026 and fills up from there.") + "</p>" +
+    '<span class="go">' + t("See what changed →") + "</span></a>" +
     '<a class="wide-card" href="#/docs">' +
-    '<p class="eyebrow">Documents</p>' +
-    "<h3>1,478 publications, read cover to cover</h3>" +
-    "<p>Every statistical bulletin, circular, annual report and press release CBE has " +
-    "put out as a PDF, 53,006 pages of it. Search inside the text and a result lands you " +
-    "on a page number, in English or Arabic.</p>" +
-    '<span class="go">Search the archive →</span></a>' +
+    '<p class="eyebrow">' + t("Documents") + "</p>" +
+    "<h3>" + t("1,478 publications, read cover to cover") + "</h3>" +
+    "<p>" + t("Every statistical bulletin, circular, annual report and press release CBE has put out as a PDF, 53,006 pages of it. Search inside the text and a result lands you on a page number, in English or Arabic.") + "</p>" +
+    '<span class="go">' + t("Search the archive →") + "</span></a>" +
     '<a class="wide-card" href="#/data">' +
-    '<p class="eyebrow">Take it with you</p>' +
-    "<h3>Parquet, SQLite, CSV, and a keyless API</h3>" +
-    "<p>All " + index.length.toLocaleString() + " series in whichever shape suits you, " +
-    "rebuilt every morning. No key, no account, no rate limit, and a SHA-256 for every " +
-    "file so a mirror can check itself.</p>" +
-    '<span class="go">Downloads and API →</span></a>' +
+    '<p class="eyebrow">' + t("Take it with you") + "</p>" +
+    "<h3>" + t("Parquet, SQLite, CSV, and a keyless API") + "</h3>" +
+    "<p>" + t("All") + " " + index.length.toLocaleString() + " " +
+    t("series in whichever shape suits you, rebuilt every morning. No key, no account, no rate limit, and a SHA-256 for every file so a mirror can check itself.") + "</p>" +
+    '<span class="go">' + t("Downloads and API →") + "</span></a>" +
     "</div></div></section>";
 
   if (fx) {
@@ -255,13 +249,12 @@ function nilometerBand(fx) {
     '<section class="section band nilometer"><div class="wrap">' +
     '<div class="two-col">' +
     "<div>" +
-    '<p class="eyebrow">The name</p>' +
-    "<h2>Cairo read the flood against a marble column</h2>" +
-    "<p class=\"lede\">The <i>miqyas</i> on Rhoda Island is a graduated shaft in a stone well, " +
-    "in service by 861 AD. The height the Nile reached against it forecast the harvest and set " +
-    "that year's tax rate: Egypt's first macroeconomic indicator, and the reason a graduated " +
-    "gauge runs through this site.</p>" +
-    '<p class="foot-note"><a href="#/about">What is and is not here →</a></p>' +
+    '<p class="eyebrow">' + t("The name") + "</p>" +
+    "<h2>" + t("Cairo read the flood against a marble column") + "</h2>" +
+    '<p class="lede">' +
+    t("The miqyas on Rhoda Island is a graduated shaft in a stone well, in service by 861 AD. The height the Nile reached against it forecast the harvest and set that year's tax rate: Egypt's first macroeconomic indicator, and the reason a graduated gauge runs through this site.") +
+    "</p>" +
+    '<p class="foot-note"><a href="#/about">' + t("What is and is not here →") + "</a></p>" +
     "</div>" +
     (mark
       ? '<div class="nilo-mark">' + mark +
@@ -278,9 +271,9 @@ function nilometerBand(fx) {
 const moneyMarketTopicCard = () =>
   '<a class="topic-card screen" href="#/money-market">' +
   '<span class="ico" aria-hidden="true">▩</span>' +
-  "<h3>The money market</h3><p>Overnight money inside the CBE corridor, the interbank " +
-  "tenors and their volumes, and the EGP bill curve with bid to cover.</p>" +
-  '<span class="count">A made-up screen, not a CBE table</span></a>';
+  "<h3>" + t("The money market") + "</h3><p>" +
+  t("Overnight money inside the CBE corridor, the interbank tenors and their volumes, and the EGP bill curve with bid to cover.") + "</p>" +
+  '<span class="count">' + t("A made-up screen, not a CBE table") + "</span></a>";
 
 /* ---------- series: search and browse, on one page ----------
  *

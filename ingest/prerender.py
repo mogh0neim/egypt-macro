@@ -46,10 +46,29 @@ SITE_URL = "https://mogh0neim.github.io/egypt-macro/"
 
 # Written per build; every directory here is pruned before it is rewritten, so a
 # renamed series cannot leave a page behind that outlives it.
-OWNED = ("s", "topic", "docs", "series", "favourites", "rates", "money-market", "data", "about", "tools", "changes")
+OWNED = ("ar", "s", "topic", "docs", "series", "favourites", "rates",
+         "money-market", "data", "about", "tools", "changes")
 
 MONTHS = ["January", "February", "March", "April", "May", "June",
           "July", "August", "September", "October", "November", "December"]
+
+# The month names CBE itself prints in Arabic. Written out rather than
+# abbreviated: Arabic has no convention for a three-letter month.
+MONTHS_AR = ["\u064a\u0646\u0627\u064a\u0631", "\u0641\u0628\u0631\u0627\u064a\u0631",
+             "\u0645\u0627\u0631\u0633", "\u0623\u0628\u0631\u064a\u0644",
+             "\u0645\u0627\u064a\u0648", "\u064a\u0648\u0646\u064a\u0648",
+             "\u064a\u0648\u0644\u064a\u0648", "\u0623\u063a\u0633\u0637\u0633",
+             "\u0633\u0628\u062a\u0645\u0628\u0631", "\u0623\u0643\u062a\u0648\u0628\u0631",
+             "\u0646\u0648\u0641\u0645\u0628\u0631", "\u062f\u064a\u0633\u0645\u0628\u0631"]
+
+# The language currently being rendered. Module state rather than an argument
+# on thirty call sites: this is a single-pass build script, and a date is
+# formatted in a dozen places that have no other reason to know the language.
+_LANG = "en"
+
+
+def months():
+    return MONTHS_AR if _LANG == "ar" else MONTHS
 
 ARABIC = re.compile(r"[؀-ۿ]")
 
@@ -140,8 +159,10 @@ def nice_date(iso: str | None) -> str:
     if not iso or len(iso) < 10:
         return ""
     y, m, d = iso[:4], iso[5:7], iso[8:10]
+    names = months()
     try:
-        return f"{int(d)} {MONTHS[int(m) - 1][:3]} {y}"
+        name = names[int(m) - 1]
+        return f"{int(d)} {name if _LANG == 'ar' else name[:3]} {y}"
     except (ValueError, IndexError):
         return iso
 
@@ -150,8 +171,10 @@ def short_date(iso: str | None) -> str:
     """Month and the year in full. `Aug 26` reads as the 26th of August."""
     if not iso or len(iso) < 7:
         return ""
+    names = months()
     try:
-        return f"{MONTHS[int(iso[5:7]) - 1][:3]} {iso[:4]}"
+        name = names[int(iso[5:7]) - 1]
+        return f"{name if _LANG == 'ar' else name[:3]} {iso[:4]}"
     except (ValueError, IndexError):
         return iso
 
@@ -191,8 +214,14 @@ def load_topics() -> list[dict]:
         raise SystemExit("prerender: could not find TOPICS in web/core.js")
 
     topics = []
-    for block in re.finditer(r"\{\s*key:\s*\"(.*?)\".*?name:\s*\"(.*?)\".*?"
-                             r"blurb:\s*\"(.*?)\".*?families:\s*\[(.*?)\]", match.group(1), re.S):
+    # `name` and `blurb` are wrapped in t() now, so the optional call is part
+    # of the shape. The English inside it is still the source of truth: the
+    # dictionary is keyed on it, so what is parsed here is also what looks the
+    # translation up.
+    for block in re.finditer(r"\{\s*key:\s*\"(.*?)\".*?"
+                             r"name:\s*(?:t\()?\"(.*?)\".*?"
+                             r"blurb:\s*(?:t\()?\"(.*?)\".*?"
+                             r"families:\s*\[(.*?)\]", match.group(1), re.S):
         key, name, blurb, families = block.groups()
         topics.append({
             "key": key,
@@ -212,6 +241,103 @@ def topic_of(series: dict, by_family: dict[str, str]) -> str | None:
 
 # ---------- the template ----------
 
+def load_ar() -> dict[str, str]:
+    """Read the Arabic dictionary out of web/i18n.js.
+
+    One dictionary, two readers. The front end uses it for everything it
+    renders; this uses it for the parts of the document that are already HTML
+    before any script runs -- the navigation, the footer, the skip link -- so an
+    Arabic page is Arabic in its first paint rather than flashing English while
+    the script catches up.
+
+    Parsed rather than duplicated, for the same reason TOPICS is: a second copy
+    in Python would drift, and it would drift silently.
+    """
+    source = (WEB / "i18n.js").read_text(encoding="utf-8")
+    start = source.find("const AR = {")
+    end = source.find("\n};", start)
+    if start < 0 or end < 0:
+        raise SystemExit("prerender: could not find the AR dictionary in web/i18n.js")
+    body = source[start:end]
+    pairs = re.findall(r'^  "((?:[^"\\]|\\.)*)":\s*\n?\s*"((?:[^"\\]|\\.)*)",\s*$',
+                       body, re.M)
+    out = {k.replace('\\"', '"'): v.replace('\\"', '"') for k, v in pairs}
+    if len(out) < 100:
+        raise SystemExit(f"prerender: only {len(out)} translations parsed from i18n.js; "
+                         "the file has changed shape")
+    return out
+
+
+_AR: dict[str, str] = {}
+
+
+def tr(text: str, lang: str) -> str:
+    """The Arabic for a string, or the string. Mirrors `t()` in i18n.js."""
+    if lang != "ar":
+        return text.split("|", 1)[0]
+    if text in _AR:
+        return _AR[text]
+    return text.split("|", 1)[0]
+
+
+# The parts of the document that are HTML before any script runs, and therefore
+# the parts the front end's own `t()` cannot reach in time. Ordered longest
+# first so "Rate decisions" is not half-replaced by "Rates".
+CHROME = [
+    "Search series, topics, documents and pages",
+    "Search series, topics, documents, pages…",
+    "Switch between light, dark and system theme",
+    "Egypt's macroeconomic record, rebuilt from the Central Bank's own publications every morning.",
+    "Not affiliated with, endorsed by, or connected to the Central Bank of Egypt.",
+    "What changed, and what CBE restated",
+    "Work out what yours is worth",
+    "What is and is not here",
+    "The Central Bank of Egypt ↗",
+    "↑ ↓ to move · return to open · esc to close",
+    "Find or browse series",
+    "Downloads and API",
+    "Source on GitHub ↗",
+    "Rate decisions",
+    "Your favourites",
+    "Skip to content",
+    "This project",
+    "Work it out",
+    "Favourites",
+    "Documents",
+    "Unofficial",
+    "Overview",
+    "Series",
+    "Search",
+    "Rates",
+    "About",
+    "Data",
+    "Auto",
+]
+
+
+def translate_chrome(html: str) -> str:
+    """Put the navigation, the footer and the skip link into Arabic.
+
+    The front end translates everything it renders, but the masthead, the
+    footer and the palette are already in the document before the first script
+    runs. Translating them here means an Arabic page is Arabic in its first
+    paint, rather than showing a row of English nav items until the script
+    catches up and swaps them.
+
+    Substring replacement on a whole document is normally a bad idea. It is
+    safe in this one because the strings are long, specific, and none of them
+    appears inside an attribute name, a class or a URL. The list is ordered
+    longest first so "Rates" cannot eat the tail of "Rate decisions".
+    """
+    for english in CHROME:
+        arabic = _AR.get(english)
+        if not arabic:
+            continue
+        html = html.replace(">" + english + "<", ">" + arabic + "<")
+        html = html.replace('="' + english + '"', '="' + arabic + '"')
+    return html
+
+
 class Template:
     """The stamped dist/index.html, with the places that change found once."""
 
@@ -229,8 +355,15 @@ class Template:
 
     def render(self, *, root: str, page: str, title: str, description: str,
                url: str, image: str, image_alt: str, body: str,
-               head_extra: str = "") -> str:
+               head_extra: str = "", lang: str = "en", alternate: str = "") -> str:
         html = self.html
+
+        if lang == "ar":
+            html = self._sub(r'<html lang="en">', '<html lang="ar" dir="rtl">',
+                             html, "the html element")
+            html = self._sub(r'<meta property="og:locale" content=".*?">',
+                             '<meta property="og:locale" content="ar_EG">', html, "og:locale")
+            html = translate_chrome(html)
 
         html = self._sub(r"<title>.*?</title>", f"<title>{esc(title)}</title>", html, "the title")
         html = self._sub(r'<meta name="description" content=".*?">',
@@ -258,6 +391,18 @@ class Template:
             f'<meta name="twitter:image" content="{esc(image)}">',
             html, "the twitter card")
 
+        # Each page names its counterpart in the other language, and the pair
+        # names an x-default, so a crawler reads them as one page in two
+        # languages rather than as two pages competing with each other.
+        if alternate:
+            other = "ar" if lang == "en" else "en"
+            default = url if lang == "en" else alternate
+            head_extra = (
+                f'<link rel="alternate" hreflang="{lang}" href="{esc(url)}">\n'
+                f'<link rel="alternate" hreflang="{other}" href="{esc(alternate)}">\n'
+                f'<link rel="alternate" hreflang="x-default" href="{esc(default)}">\n'
+            ) + head_extra
+
         if head_extra:
             html = self._sub(r"</head>", head_extra + "\n</head>", html, "the end of the head")
 
@@ -265,7 +410,10 @@ class Template:
         # one is not at the root.
         prefix = "" if root == "." else root + "/"
         if prefix:
-            for name in self.assets:
+            # The feeds are linked from the head relatively, exactly like the
+            # stylesheet, so they need the same treatment or every page below
+            # the root advertises an RSS feed that 404s.
+            for name in self.assets + ["changes.xml", "changes-revisions.xml"]:
                 html = html.replace(f'src="{name}', f'src="{prefix}{name}')
                 html = html.replace(f'href="{name}', f'href="{prefix}{name}')
 
@@ -277,7 +425,8 @@ class Template:
         html = self._sub(
             r'<script src="',
             "<script>window.MIQYAS_ROOT=" + json.dumps(root) +
-            ";window.MIQYAS_PAGE=" + json.dumps(page) + ";</script>\n<script src=\"",
+            ";window.MIQYAS_PAGE=" + json.dumps(page) +
+            ";window.MIQYAS_LANG=" + json.dumps(lang) + ";</script>\n<script src=\"",
             html, "the script block")
 
         html = self._sub(r'<main id="app">.*?</main>',
@@ -292,13 +441,16 @@ class Template:
 # are as public as the rest of the site and the disclaimer is a condition of
 # republishing rather than a footer decoration.
 
-ATTRIBUTION = (
-    '<p class="foot-note">Source: Central Bank of Egypt. Republished by Miqyas, an unofficial mirror, '
-    'which is not affiliated with, endorsed by, or connected to the Central Bank of Egypt.</p>'
-)
+def attribution(lang: str = "en") -> str:
+    return ('<p class="foot-note">'
+            + esc(tr("Source: Central Bank of Egypt. Republished by Miqyas, an unofficial mirror, "
+                     "which is not affiliated with, endorsed by, or connected to the Central Bank "
+                     "of Egypt.", lang))
+            + "</p>")
 
 
-def series_body(meta: dict, full: dict, topic: dict | None, root: str) -> str:
+
+def series_body(meta: dict, full: dict, topic: dict | None, root: str, lang: str = "en") -> str:
     obs = full.get("observations") or []
     unit = full.get("unit")
     latest = meta.get("latest_value")
@@ -316,17 +468,17 @@ def series_body(meta: dict, full: dict, topic: dict | None, root: str) -> str:
     arabic = full.get("title_ar")
 
     facts = [
-        ("Latest", f"{fmt(latest, unit)}{unit_tag(unit)} on {nice_date(meta.get('last'))}"),
-        ("Previous", fmt(previous, unit) if previous is not None else "-"),
-        ("Change", fmt_change(change, unit)),
-        ("Unit", unit or "not stated by CBE"),
-        ("Readings", f"{meta.get('n', 0):,}"),
-        ("Coverage", f"{nice_date(meta.get('first'))} to {nice_date(meta.get('last'))}"),
+        (tr("Latest", lang), f"{fmt(latest, unit)}{unit_tag(unit)} {tr('on', lang)} {nice_date(meta.get('last'))}"),
+        (tr("Previous", lang), fmt(previous, unit) if previous is not None else "-"),
+        (tr("Change", lang), fmt_change(change, unit)),
+        (tr("Unit", lang), unit or tr("not stated by CBE", lang)),
+        (tr("Readings", lang), f"{meta.get('n', 0):,}"),
+        (tr("Coverage", lang), f"{nice_date(meta.get('first'))} {tr('to', lang)} {nice_date(meta.get('last'))}"),
     ]
     if meta.get("highest"):
-        facts.append(("Highest", f"{fmt(meta['highest']['value'], unit)} ({short_date(meta['highest']['period'])})"))
+        facts.append((tr("Highest", lang), f"{fmt(meta['highest']['value'], unit)} ({short_date(meta['highest']['period'])})"))
     if meta.get("lowest"):
-        facts.append(("Lowest", f"{fmt(meta['lowest']['value'], unit)} ({short_date(meta['lowest']['period'])})"))
+        facts.append((tr("Lowest", lang), f"{fmt(meta['lowest']['value'], unit)} ({short_date(meta['lowest']['period'])})"))
 
     source = full.get("source_url")
     method = full.get("method")
@@ -350,7 +502,7 @@ def series_body(meta: dict, full: dict, topic: dict | None, root: str) -> str:
           f' · <a href="{root}/#/data">CSV, Parquet, SQLite and the API</a>'
         + (f' · <a href="{esc(source)}" rel="noopener">The CBE page this came from</a>' if source else "")
         + "</p>"
-        + ATTRIBUTION
+        + attribution(lang)
         + "</section></div>"
     )
 
@@ -395,7 +547,7 @@ def series_jsonld(meta: dict, full: dict, url: str) -> str:
     return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False) + "</script>"
 
 
-def topic_body(topic: dict, members: list[dict], root: str) -> str:
+def topic_body(topic: dict, members: list[dict], root: str, lang: str = "en") -> str:
     rows = "".join(
         f'<tr><td class="name"><a href="{root}/s/{esc(s["series_id"])}/"{dir_attr(s.get("title_en"))}>'
         f'{esc(s.get("title_en") or s["series_id"])}</a></td>'
@@ -412,11 +564,11 @@ def topic_body(topic: dict, members: list[dict], root: str) -> str:
         '<table class="indicators"><thead><tr><th>Series</th><th>Latest</th><th>As of</th></tr></thead>'
         f"<tbody>{rows}</tbody></table>"
         + (f'<p class="foot-note">Showing the first 400 of {len(members):,}.</p>' if len(members) > 400 else "")
-        + ATTRIBUTION + "</section></div>"
+        + attribution(lang) + "</section></div>"
     )
 
 
-def document_body(doc: dict, snippet: str, root: str) -> str:
+def document_body(doc: dict, snippet: str, root: str, lang: str = "en") -> str:
     bits = []
     if doc.get("date"):
         bits.append(nice_date(doc["date"]))
@@ -439,7 +591,7 @@ def document_body(doc: dict, snippet: str, root: str) -> str:
             "Its text was read by OCR and is not as reliable as the rest.</p>"
             if doc.get("ocr") or doc.get("needs_ocr") else ""
         )
-        + ATTRIBUTION + "</section></div>"
+        + attribution(lang) + "</section></div>"
     )
 
 
@@ -479,23 +631,82 @@ def snippet_for(doc_id: str, limit: int = 320) -> str:
     return ""
 
 
-def main(template_html: str | None = None, assets: list[str] | None = None) -> int:
-    if template_html is None:
-        template_html = (DIST / "index.html").read_text(encoding="utf-8")
-    if assets is None:
-        assets = [p.name for p in DIST.iterdir() if p.is_file() and p.suffix in {".js", ".css", ".svg", ".png"}]
+LANGS = ("en", "ar")
 
-    template = Template(template_html, assets)
-    index = json.loads((DIST / "api" / "v1" / "series.json").read_text(encoding="utf-8"))
-    topics = load_topics()
-    by_family = {f: t["key"] for t in topics for f in t["families"]}
-    by_key = {t["key"]: t for t in topics}
 
-    prune()
+def lang_prefix(lang: str) -> str:
+    """English at the root, Arabic under /ar/.
+
+    Two documents rather than one with a switch, because a hash cannot be
+    indexed and a query string is a different page to nobody. /ar/ is a real
+    directory with real files, so Google can index the Arabic site separately,
+    and an Arabic link pasted into a chat opens in Arabic.
+    """
+    return "" if lang == "en" else lang + "/"
+
+
+def other(lang: str) -> str:
+    return "ar" if lang == "en" else "en"
+
+
+# What index.html ships with: the loading state, replaced by the first view a
+# few hundred milliseconds later. The home page is the one page whose content
+# is genuinely not worth pre-rendering, because it is thirteen cards and a
+# chart that the script draws better.
+HOME_SKELETON = ('<div class="wrap"><div class="skeleton">'
+                 '<div class="sk-line"></div><div class="sk-line"></div>'
+                 '<div class="sk-line"></div></div></div>')
+
+
+def render_language(template, lang, *, index, topics, by_family, by_key, documents):
+    """Every page of the site, in one language."""
+    global _LANG
+    _LANG = lang
+    prefix = lang_prefix(lang)
+    # An Arabic page sits one directory deeper than its English counterpart, so
+    # everything it points at is one more level up.
+    extra = 0 if lang == "en" else 1
+
+    def up(depth):
+        return "/".join([".."] * (depth + extra)) or "."
+
+    def urls(path):
+        return (SITE_URL + prefix + path,
+                SITE_URL + lang_prefix(other(lang)) + path)
+
     written = 0
+    members = {t["key"]: [] for t in topics}
+
+    # --- the home document ---
+    #
+    # This is the one page that is not pre-rendered content: it is the app
+    # itself, and every hash route inside a language renders into it. So it
+    # deliberately carries no MIQYAS_PAGE. Setting one would make the Arabic
+    # home bounce to the English root the moment anybody clicked a nav item,
+    # because a pre-rendered page hands off to the app document and this *is*
+    # the app document.
+    #
+    # English keeps dist/index.html, which copy_front_end already wrote and
+    # version_assets already stamped, so only the head needs the hreflang pair.
+    # Arabic gets a whole document of its own at dist/ar/.
+    home_url, home_alt = urls("")
+    home = template.render(
+        root=up(0), page="", lang=lang, alternate=home_alt,
+        title=tr("Miqyas: Egypt's economy in numbers", lang),
+        description=tr("Every series the Central Bank of Egypt publishes, cleaned, charted "
+                       "and free to download. Exchange rates since 2005, treasury auctions "
+                       "since 2004, inflation since 2000, every rate decision since June 2005.",
+                       lang),
+        url=home_url, image=f"{SITE_URL}og.png",
+        image_alt=tr("Miqyas: Egypt's economy in numbers", lang),
+        body=HOME_SKELETON)
+    # render() injects MIQYAS_PAGE; an empty one has to go rather than be
+    # believed, or app.js treats the home page as a pre-rendered sub-page.
+    home = home.replace(';window.MIQYAS_PAGE="";', ";")
+    write(DIST / "ar" / "index.html" if lang == "ar" else DIST / "index.html", home)
+    written += 1
 
     # --- series ---
-    members: dict[str, list[dict]] = {t["key"]: [] for t in topics}
     for meta in index:
         sid = meta["series_id"]
         key = topic_of(meta, by_family)
@@ -505,57 +716,68 @@ def main(template_html: str | None = None, assets: list[str] | None = None) -> i
         if not full_path.exists():
             continue
         full = json.loads(full_path.read_text(encoding="utf-8"))
-        title = full.get("title_en") or sid
-        url = f"{SITE_URL}s/{sid}/"
+
+        # CBE's own Arabic title where there is one, which is the Excel archive
+        # and nothing else. Every FX, price, policy rate and treasury bill
+        # series -- which is to say everything on the front page -- has none,
+        # and falls back to the English rather than being given an invented
+        # name. An English title on an Arabic page is visibly unfinished; a
+        # made-up Arabic one is a claim about what the Bank called it.
+        title = (full.get("title_ar") if lang == "ar" else None) or full.get("title_en") or sid
+        url, alt = urls(f"s/{sid}/")
         unit = full.get("unit")
         reading = fmt(meta.get("latest_value"), unit) + unit_tag(unit)
-        # Search engines cut a description around 155 characters, and cut it
-        # mid-word. Say the number, the date and the span, in that order, so
-        # what survives the cut is the part someone searched for.
         description = clamp(
-            f"{title}: {reading} on {nice_date(meta.get('last'))}. "
-            f"{meta.get('n', 0):,} readings back to {short_date(meta.get('first'))}, "
-            "free to chart or download.")
-        write(DIST / "s" / sid / "index.html", template.render(
-            root="../..", page=f"/s/{sid}",
-            title=f"{title} | Miqyas",
-            description=description, url=url,
-            image=f"{SITE_URL}og/{sid}.png",
-            image_alt=f"{title}, {reading} on {nice_date(meta.get('last'))}",
-            body=series_body(meta, full, by_key.get(key or ""), "../.."),
-            head_extra=series_jsonld(meta, full, url)))
+            f"{title}: {reading} " + tr("on", lang) + f" {nice_date(meta.get('last'))}. "
+            f"{meta.get('n', 0):,} " + tr("readings back to", lang) +
+            f" {short_date(meta.get('first'))}.")
+        write(DIST / prefix.rstrip("/") / "s" / sid / "index.html" if prefix
+              else DIST / "s" / sid / "index.html",
+              template.render(
+                  root=up(2), page=f"/s/{sid}", lang=lang, alternate=alt,
+                  title=f"{title} | Miqyas",
+                  description=description, url=url,
+                  image=f"{SITE_URL}og/{sid}.png",
+                  image_alt=f"{title}, {reading}",
+                  body=series_body(meta, full, by_key.get(key or ""), up(2), lang),
+                  head_extra=series_jsonld(meta, full, url)))
         written += 1
 
     # --- topics ---
     for topic in topics:
         rows = sorted(members[topic["key"]], key=lambda s: -(s.get("n") or 0))
-        write(DIST / "topic" / topic["key"] / "index.html", template.render(
-            root="../..", page=f"/topic/{topic['key']}",
-            title=f"{topic['name']}: {len(rows):,} series from Egypt's central bank | Miqyas",
-            description=clamp(topic["blurb"] + f" {len(rows):,} series, rebuilt every morning."),
-            url=f"{SITE_URL}topic/{topic['key']}/",
-            image=f"{SITE_URL}og/topic-{topic['key']}.png",
-            image_alt=topic["name"] + ", on Miqyas",
-            body=topic_body(topic, rows, "../..")))
+        name = tr(topic["name"], lang)
+        blurb = tr(topic["blurb"], lang)
+        url, alt = urls(f"topic/{topic['key']}/")
+        write(DIST / prefix.rstrip("/") / "topic" / topic["key"] / "index.html" if prefix
+              else DIST / "topic" / topic["key"] / "index.html",
+              template.render(
+                  root=up(2), page=f"/topic/{topic['key']}", lang=lang, alternate=alt,
+                  title=f"{name}: {len(rows):,} " + tr("series from Egypt's central bank", lang) + " | Miqyas",
+                  description=clamp(blurb + f" {len(rows):,} " + tr("series, rebuilt every morning.", lang)),
+                  url=url,
+                  image=f"{SITE_URL}og/topic-{topic['key']}.png",
+                  image_alt=name + ", Miqyas",
+                  body=topic_body(topic, rows, up(2), lang)))
         written += 1
 
     # --- documents ---
-    docs_path = DIST / "search" / "documents.json"
-    documents = json.loads(docs_path.read_text(encoding="utf-8")) if docs_path.exists() else []
     for doc in documents:
         snippet = snippet_for(doc["id"])
         title = doc.get("title") or doc["id"]
-        write(DIST / "docs" / doc["id"] / "index.html", template.render(
-            root="../..", page=f"/docs/{doc['id']}",
-            title=f"{title} | Miqyas",
-            description=clamp(
-                f"{title}. {doc.get('pages', 0):,} pages from the Central Bank of Egypt, "
-                f"{nice_date(doc.get('date'))}, searchable in English and Arabic. "
-                + (snippet or "")),
-            url=f"{SITE_URL}docs/{doc['id']}/",
-            image=f"{SITE_URL}og.png",
-            image_alt="Miqyas: Egypt's economy in numbers",
-            body=document_body(doc, snippet, "../..")))
+        url, alt = urls(f"docs/{doc['id']}/")
+        write(DIST / prefix.rstrip("/") / "docs" / doc["id"] / "index.html" if prefix
+              else DIST / "docs" / doc["id"] / "index.html",
+              template.render(
+                  root=up(2), page=f"/docs/{doc['id']}", lang=lang, alternate=alt,
+                  title=f"{title} | Miqyas",
+                  description=clamp(
+                      f"{title}. {doc.get('pages', 0):,} " + tr("pages from the Central Bank of Egypt", lang) +
+                      f", {nice_date(doc.get('date'))}. " + (snippet or "")),
+                  url=url,
+                  image=f"{SITE_URL}og.png",
+                  image_alt="Miqyas",
+                  body=document_body(doc, snippet, up(2), lang)))
         written += 1
 
     # --- the fixed pages ---
@@ -592,21 +814,53 @@ def main(template_html: str | None = None, assets: list[str] | None = None) -> i
          "What is here, what is not, and how it is built. Miqyas is not affiliated with the Central Bank of Egypt."),
     ]
     for slug, page, title, description in fixed:
+        title = tr(title, lang)
+        description = tr(description, lang)
+        url, alt = urls(slug + "/")
         # "tools/salary" sits a directory deeper than "about", so the root it
-        # declares has to count the separators rather than assume one.
-        root = "/".join([".."] * (slug.count("/") + 1))
-        write(DIST / slug / "index.html", template.render(
-            root=root, page=page, title=title, description=clamp(description),
-            url=f"{SITE_URL}{slug}/", image=f"{SITE_URL}og.png",
-            image_alt="Miqyas: Egypt's economy in numbers",
+        # declares counts the separators rather than assuming one.
+        target = DIST / prefix.rstrip("/") / slug if prefix else DIST / slug
+        write(target / "index.html", template.render(
+            root=up(slug.count("/") + 1), page=page, lang=lang, alternate=alt,
+            title=title, description=clamp(description),
+            url=url, image=f"{SITE_URL}og.png",
+            image_alt="Miqyas",
             body='<div class="wrap"><section class="section">'
                  f"<h1>{esc(title.split(' | ')[0])}</h1>"
-                 f'<p class="lede">{esc(description)}</p>' + ATTRIBUTION + "</section></div>"))
+                 f'<p class="lede">{esc(description)}</p>' + attribution(lang) + "</section></div>"))
         written += 1
 
-    print(f"pre-rendered {written:,} pages: {len(index):,} series, {len(topics)} subjects, "
-          f"{len(documents):,} documents, {len(fixed)} fixed")
     return written
+
+
+def main(template_html: str | None = None, assets: list[str] | None = None) -> int:
+    global _AR
+    if template_html is None:
+        template_html = (DIST / "index.html").read_text(encoding="utf-8")
+    if assets is None:
+        assets = [p.name for p in DIST.iterdir()
+                  if p.is_file() and p.suffix in {".js", ".css", ".svg", ".png"}]
+
+    _AR = load_ar()
+    template = Template(template_html, assets)
+    index = json.loads((DIST / "api" / "v1" / "series.json").read_text(encoding="utf-8"))
+    topics = load_topics()
+    by_family = {f: t["key"] for t in topics for f in t["families"]}
+    by_key = {t["key"]: t for t in topics}
+    docs_path = DIST / "search" / "documents.json"
+    documents = json.loads(docs_path.read_text(encoding="utf-8")) if docs_path.exists() else []
+
+    prune()
+    total = 0
+    for lang in LANGS:
+        n = render_language(template, lang, index=index, topics=topics,
+                            by_family=by_family, by_key=by_key, documents=documents)
+        print(f"  {lang}: {n:,} pages")
+        total += n
+
+    print(f"pre-rendered {total:,} pages across {len(LANGS)} languages: "
+          f"{len(index):,} series, {len(topics)} subjects, {len(documents):,} documents")
+    return total
 
 
 if __name__ == "__main__":

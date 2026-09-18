@@ -123,13 +123,21 @@ def write_sitemaps() -> int:
     documents = json.loads(docs_path.read_text(encoding="utf-8")) if docs_path.exists() else []
     topics = sorted(p.name for p in (DIST / "topic").iterdir()) if (DIST / "topic").is_dir() else []
 
-    pages = [SITE_URL] + [SITE_URL + slug + "/" for slug in PAGE_ROUTES] \
-        + [f"{SITE_URL}topic/{k}/" for k in topics]
+    # Both languages. Arabic is a directory of real files rather than a switch,
+    # so it is indexed as its own site and has to be listed as one. The pages
+    # point at each other with hreflang, which is what stops the pair reading as
+    # duplicates competing with one another.
+    def pages_for(prefix):
+        return ([SITE_URL + prefix]
+                + [SITE_URL + prefix + slug + "/" for slug in PAGE_ROUTES]
+                + [f"{SITE_URL}{prefix}topic/{k}/" for k in topics])
 
     parts = {
-        "sitemap-pages.xml": pages,
-        "sitemap-series.xml": [f"{SITE_URL}s/{s['series_id']}/" for s in series],
-        "sitemap-docs.xml": [f"{SITE_URL}docs/{d['id']}/" for d in documents],
+        "sitemap-pages.xml": pages_for("") + pages_for("ar/"),
+        "sitemap-series.xml": [f"{SITE_URL}{p}s/{x['series_id']}/"
+                               for p in ("", "ar/") for x in series],
+        "sitemap-docs.xml": [f"{SITE_URL}{p}docs/{d['id']}/"
+                             for p in ("", "ar/") for d in documents],
     }
     for name, urls in parts.items():
         (DIST / name).write_text(urlset(urls), encoding="utf-8")
