@@ -1,5 +1,25 @@
 [
  {
+  "title": "MPC Press Release 24 September 2026",
+  "date": "24 Sep 2026",
+  "time": "18:44:00",
+  "customDate": "2026-09-24T18:44:00",
+  "url": "/en/news-publications/news/2026/09/24/15/38/mpc-press-release-24-september-2026",
+  "imageUrl": "/-/media/project/cbe/listing/news/featured-listing/mpc-press-release.png?h=236&w=372&hash=FE47D012E06818F218FC9E7AE736218F",
+  "categories": [
+   {
+    "key": "539f213545e64a9c90b390b6ad9f382f",
+    "value": "Monetary Policy"
+   },
+   {
+    "key": "7185e116d73040b78de697623070479e",
+    "value": "MPC Press Release"
+   }
+  ],
+  "itemId": "{7A31940A-CC01-4088-BD45-BAF934DB681A}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2026/09/24/15/38/MPC Press Release 24 September 2026"
+ },
+ {
   "title": "Remittances from Egyptians Working Abroad Recorded  USD 29.7 Billion During the First Seven Months of 2026",
   "date": "21 Sep 2026",
   "time": "13:24:00",
