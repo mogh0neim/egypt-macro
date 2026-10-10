@@ -40,6 +40,18 @@ BULK = DIST / "bulk"
 # Enough shape for a 90-pixel sparkline, and no more.
 SPARK_POINTS = 48
 
+# The one attribution sentence, carried by every file a reader takes away: the
+# per-series JSON, the Parquet metadata, an "about" table in SQLite and the zip
+# README. The same words are ATTRIBUTION in web/core.js (CSV downloads) and in
+# ingest/prerender.py (the pre-rendered pages); change all three together.
+ATTRIBUTION = ("Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by Miqyas, "
+               "an independent project not affiliated with, endorsed by, or connected to the "
+               "Central Bank of Egypt. Values are cleaned and dated by Miqyas; check against CBE "
+               "before citing.")
+# Written into every Parquet file's key-value metadata. The sentence has no
+# single quote in it, which is what lets it sit inside DuckDB's literal as is.
+PARQUET_META = f"KV_METADATA {{attribution: '{ATTRIBUTION}'}}"
+
 # 60 MB of observations does not need many partitions, but splitting by family
 # means a chart of the policy rate never downloads the FX series.
 FAMILIES = {
@@ -136,7 +148,7 @@ def main() -> int:
         con.execute(
             f"""COPY (SELECT * FROM obs WHERE {where} ORDER BY series_id, period)
                 TO '{out.as_posix()}'
-                (FORMAT PARQUET, COMPRESSION ZSTD, ROW_GROUP_SIZE 100000)"""
+                (FORMAT PARQUET, COMPRESSION ZSTD, ROW_GROUP_SIZE 100000, {PARQUET_META})"""
         )
         n = con.execute(f"SELECT count(*) FROM obs WHERE {where}").fetchone()[0]
         print(f"  parquet/{family}.parquet  {n:,} rows  {out.stat().st_size/1e6:.1f} MB")
@@ -144,11 +156,11 @@ def main() -> int:
     con.execute(
         f"""COPY (SELECT * FROM obs ORDER BY series_id, period)
             TO '{(PARQUET / "all.parquet").as_posix()}'
-            (FORMAT PARQUET, COMPRESSION ZSTD, ROW_GROUP_SIZE 100000)"""
+            (FORMAT PARQUET, COMPRESSION ZSTD, ROW_GROUP_SIZE 100000, {PARQUET_META})"""
     )
     con.execute(
         f"""COPY (SELECT * FROM series) TO '{(PARQUET / "series.parquet").as_posix()}'
-            (FORMAT PARQUET, COMPRESSION ZSTD)"""
+            (FORMAT PARQUET, COMPRESSION ZSTD, {PARQUET_META})"""
     )
 
     # ---- SQLite, for anyone who would rather just query it ----
@@ -171,8 +183,10 @@ def main() -> int:
                              method TEXT, period_basis TEXT);
         CREATE TABLE observations (series_id TEXT, period TEXT, value REAL,
                                   PRIMARY KEY (series_id, period));
+        CREATE TABLE about (key TEXT PRIMARY KEY, value TEXT);
         """
     )
+    db.execute("INSERT INTO about VALUES ('attribution', ?)", (ATTRIBUTION,))
     db.executemany(
         "INSERT INTO series VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
         [
@@ -233,7 +247,10 @@ def main() -> int:
                         "period_basis")},
                     "observations": points,
                     "count": len(points),
-                    "attribution": "Source: Central Bank of Egypt. Republished by Miqyas, an unofficial mirror.",
+                    # A computed series says so where it credits the source.
+                    "attribution": ATTRIBUTION + (
+                        f" Computed by Miqyas from CBE data: {meta.get('method') or ''}".rstrip()
+                        if meta.get("derived") else ""),
                 },
                 ensure_ascii=False,
             ),
@@ -341,10 +358,10 @@ def main() -> int:
             z.writestr(
                 "README.txt",
                 "Miqyas bulk export -- Egypt's macroeconomic record\n\n"
-                "Source: Central Bank of Egypt (cbe.org.eg).\n"
-                "Not affiliated with or endorsed by the CBE.\n\n"
-                "Cite the Central Bank of Egypt as the source. Any transformation\n"
-                "applied here is recorded in catalog/series.json under 'method'.\n",
+                + ATTRIBUTION + "\n\n"
+                "Cite the Central Bank of Egypt as the source. Series computed by\n"
+                "Miqyas are marked derived in catalog/series.json, with their method;\n"
+                "Excel-archive series are dated by Miqyas from the sheets' period labels.\n",
             )
         print(f"  bulk/{name}-csv.zip")
 
