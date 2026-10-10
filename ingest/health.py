@@ -93,6 +93,18 @@ def last_change(path: str) -> tuple[str, dt.datetime, str] | None:
     return parts[0], dt.datetime.fromtimestamp(int(parts[1]), dt.timezone.utc), parts[2]
 
 
+def code_changed(sha: str, rel: str) -> bool:
+    """Whether ingest/ changed between the previous version of `rel` and `sha`.
+
+    A table that shrinks because the code that builds it was rewritten is
+    explained, not a fault: the Excel date fix of 10 October 2026 collapsed
+    1,927 misdated rows on purpose, and would otherwise have emailed an alarm
+    for something already known. It is still recorded in health.json.
+    """
+    prev = git("log", "-1", "--format=%H", f"{sha}^", "--", rel).strip()
+    return bool(prev) and bool(git("log", "--format=%H", f"{prev}..{sha}", "--", "ingest/").strip())
+
+
 def tables(now: dt.datetime) -> tuple[dict, list[str]]:
     """Rows per clean table, and any that fell in a recent scraper commit."""
     out: dict[str, dict] = {}
@@ -110,7 +122,9 @@ def tables(now: dt.datetime) -> tuple[dict, list[str]]:
                     before = git("show", f"{sha}^:{rel}")
                     if before:
                         entry["previous"] = count_rows(before)
-                        if author == SCRAPER and rows < entry["previous"]:
+                        if author == SCRAPER and rows < entry["previous"] and code_changed(sha, rel):
+                            entry["explained"] = "the code that builds this table changed"
+                        elif author == SCRAPER and rows < entry["previous"]:
                             problems.append(
                                 f"`{rel}` fell from {entry['previous']:,} to {rows:,} rows in "
                                 f"{sha[:10]} ({entry['changed_at']}).")
@@ -130,7 +144,9 @@ def quarantine(now: dt.datetime) -> tuple[dict, list[str]]:
         except ValueError:
             before = {}
         entry["previous"] = before.get("count", 0)
-        if entry["count"] > entry["previous"]:
+        if entry["count"] > entry["previous"] and code_changed(change[0], rel):
+            entry["explained"] = "the parser changed; see catalog/excel_quarantine.json"
+        elif entry["count"] > entry["previous"]:
             problems.append(f"Quarantined Excel files grew from {entry['previous']} to "
                             f"{entry['count']} in {change[0][:10]}.")
     return entry, problems
