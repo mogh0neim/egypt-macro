@@ -5,7 +5,13 @@
 # morning would mean ~3,000 requests a day at CBE for almost no new data. The
 # manifests carry content hashes, so a run only downloads what is new.
 #
-# The daily job stays lean: 30 endpoints, a few minutes, every morning.
+# It does check every file it already holds, with a one-byte request for its
+# Last-Modified date and size: CBE replaces a file in place when it revises it,
+# and takes files down without notice. A replaced file is downloaded again and
+# dated; a withdrawn one keeps its entry with the date it went
+# (ingest/remote_files.py).
+#
+# The daily job stays lean: 30 endpoints, a few minutes, once a day.
 
 name: scrape-weekly
 
@@ -17,24 +23,26 @@ on:
         type: boolean
         default: false
   schedule:
-    # 03:40 UTC Sunday — well clear of the daily run.
+    # 03:40 UTC Sunday, well clear of the daily run.
     - cron: "40 3 * * 0"
 
 concurrency:
   group: scrape
   cancel-in-progress: false
 
-permissions:
-  contents: write
+permissions: {}
 
 jobs:
   archive:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 240
+    # It commits and pushes what it fetched, and needs nothing else.
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
           cache: pip
@@ -45,13 +53,13 @@ jobs:
         if: inputs.force_redownload
         run: rm -f catalog/excel_manifest.json corpus/manifest.json
 
-      - name: Excel time-series archive
+      - name: Excel time-series archive (new, replaced and withdrawn files)
         run: python ingest/fetch_excel.py --download --delay 1.0
 
       - name: Parse the Excel archive
         run: python ingest/parse_excel.py
 
-      - name: Document corpus
+      - name: Document corpus (new, replaced and withdrawn files)
         run: python ingest/fetch_docs.py --download --delay 1.0
 
       - name: Extract document text
@@ -72,7 +80,14 @@ jobs:
             echo "Archive and corpus unchanged this week."
             exit 0
           fi
-          git commit -m "archive: $(date -u +%Y-%m-%d) weekly refresh"
+          # catalog/weekly_run.json changes on every run by design: it is the
+          # heartbeat the watchdog reads. A commit touching only that says so.
+          OTHER=$(git diff --staged --name-only | grep -v '^catalog/weekly_run\.json$' | head -1)
+          if [ -z "$OTHER" ]; then
+            git commit -m "check: $(date -u +%Y-%m-%d) weekly, no change in the archive or corpus"
+          else
+            git commit -m "archive: $(date -u +%Y-%m-%d) weekly refresh"
+          fi
           # A long job can finish behind commits that landed while it ran, and a
           # rejected push throws the whole run's work away. Rebase and retry.
           for attempt in 1 2 3; do

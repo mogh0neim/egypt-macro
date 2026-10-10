@@ -17,6 +17,12 @@ The endpoint answers in whichever language the session last visited, so an
 English page is fetched first. Arabic labels are collected in a second pass,
 because both are wanted: the Arabic ones are free bilingual metadata.
 
+CBE replaces these files in place when it revises them. With --download every
+listed file's Last-Modified and size are checked (remote_files.py), a file
+that has moved is fetched again and dated `changed_on`, and a file CBE no
+longer lists keeps its entry with `withdrawn_on`. The old copy of a replaced
+file stays in git history.
+
 Run:  python ingest/fetch_excel.py --manifest-only
       python ingest/fetch_excel.py --download
 """
@@ -25,7 +31,6 @@ from __future__ import annotations
 
 import argparse
 import collections
-import datetime as dt
 import hashlib
 import html
 import json
@@ -35,7 +40,8 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 
-from cbe_client import CBEClient, looks_blocked  # noqa: E402
+from cbe_client import CBEClient, WAFRejected, looks_blocked  # noqa: E402
+from remote_files import CARRIED, heartbeat, probe, replaced, today, withdrawn  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FILES = ROOT / "data" / "raw" / "excel"
@@ -141,16 +147,46 @@ def main() -> int:
         entry["id"] = hashlib.sha1(entry["url"].encode()).hexdigest()[:16]
         prev = previous.get(entry["url"])
         if prev:
-            for key in ("sha256", "bytes", "local"):
+            for key in CARRIED:
                 if prev.get(key):
                     entry[key] = prev[key]
+    # A file CBE stopped listing keeps its entry, dated, and its copy stays
+    # parsed: CBE taking a file down is news, not a reason to forget it.
+    gone = withdrawn(previous, {e["url"] for e in ordered}, today())
+    n_gone = sum(1 for e in gone if e.get("withdrawn_on"))
 
     failed = attempted = 0
+    check_failed = checked = 0
+    renewed: list[str] = []
     if args.download and not args.manifest_only:
         FILES.mkdir(parents=True, exist_ok=True)
-        todo = [e for e in ordered if not e.get("sha256")]
+        # Has CBE replaced a file it already published? One byte of each says.
+        refetch: set[str] = set()
+        stamps: dict[str, str | None] = {}
+        checked = len(ordered)
+        print(f"\nchecking {checked} files for replacements ...")
+        for i, entry in enumerate(ordered, 1):
+            try:
+                seen = probe(client, entry["url"])
+            except WAFRejected:
+                raise
+            except Exception as exc:  # noqa: BLE001
+                print(f"  CHECK FAIL {entry['url'][-70:]}: {type(exc).__name__}", file=sys.stderr)
+                check_failed += 1
+                continue
+            # Recorded now only for a file that is not being fetched again, so a
+            # download that fails is retried next week rather than forgotten.
+            if entry.get("sha256") and replaced(entry, seen):
+                refetch.add(entry["url"])
+                stamps[entry["url"]] = seen.get("last_modified")
+            elif seen.get("last_modified"):
+                entry["last_modified"] = seen["last_modified"]
+            if i % 100 == 0:
+                print(f"  [{i}/{checked}] {len(refetch)} replaced so far")
+
+        todo = [e for e in ordered if not e.get("sha256") or e["url"] in refetch]
         attempted = len(todo)
-        print(f"\ndownloading {len(todo)} files ...")
+        print(f"\ndownloading {len(todo)} files ({len(refetch)} replaced by CBE) ...")
         for i, entry in enumerate(todo, 1):
             ext = pathlib.Path(entry["url"].split("?")[0]).suffix.lower() or ".xlsx"
             name = f"{entry['id']}{ext}"
@@ -160,24 +196,39 @@ def main() -> int:
                 print(f"  FAIL {entry['url'][-70:]}: {type(exc).__name__}", file=sys.stderr)
                 failed += 1
                 continue
+            digest = hashlib.sha256(blob).hexdigest()
+            if entry.get("sha256") and digest != entry["sha256"]:
+                # The old copy stays in git history; this is the date it changed.
+                entry["changed_on"] = today()
+                renewed.append(entry["url"])
             (FILES / name).write_bytes(blob)
             entry["local"] = f"data/raw/excel/{name}"
-            entry["sha256"] = hashlib.sha256(blob).hexdigest()
+            entry["sha256"] = digest
             entry["bytes"] = len(blob)
+            if stamps.get(entry["url"]):
+                entry["last_modified"] = stamps[entry["url"]]
             if i % 50 == 0:
                 print(f"  [{i}/{len(todo)}]")
-        print(f"downloaded {len(todo) - failed}, failed {failed}")
+        print(f"downloaded {len(todo) - failed}, failed {failed}; "
+              f"{len(renewed)} replaced by CBE with different content")
+        for url in renewed:
+            print(f"  replaced: {url}")
+        heartbeat("excel", {"files": len(ordered), "replaced": len(renewed),
+                            "withdrawn": n_gone, "check_failed": check_failed})
 
     MANIFEST.parent.mkdir(exist_ok=True)
+    # No timestamp in here, and keys in a fixed order: a manifest that did not
+    # change must come out byte for byte the same, or every week is a commit.
     MANIFEST.write_text(
         json.dumps(
             {
-                "generated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
                 "count": len(ordered),
-                "files": ordered,
+                "withdrawn": n_gone,
+                "files": sorted(ordered + gone, key=lambda d: (d["category"], d["url"])),
             },
             indent=1,
             ensure_ascii=False,
+            sort_keys=True,
         ),
         encoding="utf-8",
     )
@@ -185,13 +236,13 @@ def main() -> int:
     by_cat = collections.Counter(e["category"] for e in ordered)
     by_freq = collections.Counter(e.get("frequency") or "?" for e in ordered)
     have = sum(1 for e in ordered if e.get("sha256"))
-    print(f"\n{len(ordered)} files | mirrored {have}")
+    print(f"\n{len(ordered)} files | mirrored {have} | withdrawn by CBE {n_gone}")
     print(f"by frequency: {dict(by_freq)}")
     for cat, n in by_cat.most_common():
         subs = len({e["subcategory"] for e in ordered if e["category"] == cat})
         print(f"  {cat:32s} {n:4d} files  {subs} subcategories")
     print(f"wrote {MANIFEST.relative_to(ROOT)}")
-    return 1 if looks_blocked(failed, attempted) else 0
+    return 1 if looks_blocked(failed, attempted) or looks_blocked(check_failed, checked) else 0
 
 
 if __name__ == "__main__":

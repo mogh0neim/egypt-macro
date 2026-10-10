@@ -21,7 +21,6 @@ from __future__ import annotations
 
 import argparse
 import collections
-import datetime as dt
 import hashlib
 import json
 import pathlib
@@ -30,11 +29,13 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 
-from cbe_client import CBEClient, looks_blocked  # noqa: E402
+from cbe_client import CBEClient, WAFRejected, looks_blocked  # noqa: E402
+from remote_files import CARRIED, heartbeat, probe, replaced, today, withdrawn  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CORPUS = ROOT / "corpus"
 FILES = CORPUS / "files"
+PAGES = CORPUS / "pages"
 MANIFEST = CORPUS / "manifest.json"
 
 SOURCES = [
@@ -107,14 +108,46 @@ def enumerate_all(client: CBEClient) -> list[dict]:
     return sorted(seen.values(), key=lambda d: (d["date"], d["title"]), reverse=True)
 
 
-def download(client: CBEClient, docs: list[dict], limit: int | None) -> tuple[int, int]:
+def check(client: CBEClient, docs: list[dict]) -> tuple[set[str], int, int]:
+    """-> (ids CBE replaced since they were mirrored, checks failed, checked).
+
+    One byte of each file, for its Last-Modified and size (remote_files.py).
+    """
+    files = [d for d in docs if d["is_file"]]
+    print(f"\nchecking {len(files)} files for replacements ...")
+    refetch: set[str] = set()
+    failed = 0
+    for i, doc in enumerate(files, 1):
+        try:
+            seen = probe(client, doc["url"])
+        except WAFRejected:
+            raise
+        except Exception as exc:  # noqa: BLE001
+            print(f"  CHECK FAIL {doc['url'][:80]}: {type(exc).__name__}", file=sys.stderr)
+            failed += 1
+            continue
+        # Recorded now only for a file that is not being fetched again, so a
+        # download that fails is retried next week rather than forgotten.
+        if doc.get("sha256") and replaced(doc, seen):
+            refetch.add(doc["id"])
+            doc["_last_modified"] = seen.get("last_modified")
+        elif seen.get("last_modified"):
+            doc["last_modified"] = seen["last_modified"]
+        if i % 100 == 0:
+            print(f"  [{i}/{len(files)}] {len(refetch)} replaced so far")
+    return refetch, failed, len(files)
+
+
+def download(client: CBEClient, docs: list[dict], limit: int | None,
+             refetch: set[str] = frozenset()) -> tuple[int, int, list[str]]:
     FILES.mkdir(parents=True, exist_ok=True)
-    todo = [d for d in docs if d["is_file"] and not d.get("sha256")]
+    todo = [d for d in docs if d["is_file"] and (not d.get("sha256") or d["id"] in refetch)]
     if limit:
         todo = todo[:limit]
-    print(f"\ndownloading {len(todo)} files ...")
+    print(f"\ndownloading {len(todo)} files ({len(refetch)} replaced by CBE) ...")
 
     ok = failed = 0
+    renewed: list[str] = []
     for i, doc in enumerate(todo, 1):
         name = local_name(doc["url"], doc["id"])
         target = FILES / name
@@ -124,15 +157,27 @@ def download(client: CBEClient, docs: list[dict], limit: int | None) -> tuple[in
             print(f"  [{i}/{len(todo)}] FAIL {doc['url'][:80]}: {type(exc).__name__}", file=sys.stderr)
             failed += 1
             continue
+        digest = hashlib.sha256(blob).hexdigest()
+        if doc.get("sha256") and digest != doc["sha256"]:
+            doc["changed_on"] = today()
+            renewed.append(doc["url"])
+            # Its text was extracted from the old file. Removing it here is
+            # what makes extract_text.py read the new one; the old text stays
+            # in git history.
+            (PAGES / f"{doc['id']}.json.gz").unlink(missing_ok=True)
         target.write_bytes(blob)
         doc["local"] = f"corpus/files/{name}"
-        doc["sha256"] = hashlib.sha256(blob).hexdigest()
+        doc["sha256"] = digest
         doc["bytes"] = len(blob)
+        if doc.get("_last_modified"):
+            doc["last_modified"] = doc["_last_modified"]
         ok += 1
         if i % 25 == 0:
             print(f"  [{i}/{len(todo)}] {ok} ok, {failed} failed")
-    print(f"downloaded {ok}, failed {failed}")
-    return failed, len(todo)
+    print(f"downloaded {ok}, failed {failed}; {len(renewed)} replaced by CBE with different content")
+    for url in renewed:
+        print(f"  replaced: {url}")
+    return failed, len(todo), renewed
 
 
 def main() -> int:
@@ -150,18 +195,27 @@ def main() -> int:
     docs = enumerate_all(client)
 
     # Carry forward hashes from a previous manifest so we do not re-download.
+    old: dict[str, dict] = {}
     if MANIFEST.exists():
         old = {d["id"]: d for d in json.loads(MANIFEST.read_text(encoding="utf-8"))["documents"]}
         for doc in docs:
             prev = old.get(doc["id"])
             if prev and prev.get("sha256"):
-                doc.update(
-                    {k: prev[k] for k in ("local", "sha256", "bytes") if prev.get(k)}
-                )
+                doc.update({k: prev[k] for k in CARRIED if prev.get(k)})
+    # A document CBE stopped listing keeps its entry, dated, and its text stays
+    # searchable.
+    gone = withdrawn(old, {d["id"] for d in docs}, today())
+    n_gone = sum(1 for d in gone if d.get("withdrawn_on"))
 
     failed = attempted = 0
+    check_failed = checked = 0
     if args.download and not args.manifest_only:
-        failed, attempted = download(client, docs, args.limit)
+        refetch, check_failed, checked = check(client, docs)
+        failed, attempted, renewed = download(client, docs, args.limit, refetch)
+        for doc in docs:
+            doc.pop("_last_modified", None)
+        heartbeat("documents", {"files": checked, "replaced": len(renewed),
+                                "withdrawn": n_gone, "check_failed": check_failed})
 
     by_source = collections.Counter(d["source"] for d in docs)
     by_ext = collections.Counter(
@@ -169,28 +223,32 @@ def main() -> int:
     )
     dates = sorted(d["date"] for d in docs if d["date"])
 
+    # No timestamp in here, and keys in a fixed order: a manifest that did not
+    # change must come out byte for byte the same, or every week is a commit.
     MANIFEST.write_text(
         json.dumps(
             {
-                "generated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
                 "count": len(docs),
-                "by_source": dict(by_source),
+                "withdrawn": n_gone,
+                "by_source": dict(sorted(by_source.items())),
                 "date_range": [dates[0], dates[-1]] if dates else None,
-                "documents": docs,
+                "documents": sorted(docs + gone, key=lambda d: (d["date"], d["title"], d["id"]),
+                                    reverse=True),
             },
             indent=1,
+            sort_keys=True,
         ),
         encoding="utf-8",
     )
 
-    print(f"\n{len(docs)} documents  {dict(by_source)}")
+    print(f"\n{len(docs)} documents  {dict(by_source)}  withdrawn by CBE {n_gone}")
     print(f"formats: {dict(by_ext)}")
     if dates:
         print(f"dates: {dates[0]} to {dates[-1]}")
     have = sum(1 for d in docs if d.get("sha256"))
     print(f"mirrored locally: {have}/{sum(1 for d in docs if d['is_file'])} files")
     print(f"wrote {MANIFEST.relative_to(ROOT)}")
-    return 1 if looks_blocked(failed, attempted) else 0
+    return 1 if looks_blocked(failed, attempted) or looks_blocked(check_failed, checked) else 0
 
 
 if __name__ == "__main__":
