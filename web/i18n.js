@@ -413,6 +413,10 @@ const AR = {
 
   /* ---------- the charts ---------- */
   "in force since": "سارٍ منذ",
+  "No year-on-year or rebased view: this series is already a rate, so either would be a percentage of a percentage.":
+    "لا نعرض التغيّر عن العام السابق ولا إعادة الأساس: هذه السلسلة معدّل في الأصل، فيكون أيٌّ منهما نسبة مئوية من نسبة مئوية.",
+  "No year-on-year or rebased view: this series goes below zero, where a percentage of an earlier reading means nothing.":
+    "لا نعرض التغيّر عن العام السابق ولا إعادة الأساس: هذه السلسلة تنزل تحت الصفر، وعندها لا معنى لنسبة مئوية من قراءة سابقة.",
 
   /* ---------- the pre-rendered pages ----------
    * Read by prerender.py as well as by the front end. These are the titles and

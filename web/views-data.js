@@ -689,6 +689,8 @@ async function viewSeries(id) {
       : "Everything";
   let transform = "level";
   let compareId = "";
+  // Year-on-year and rebased only where dividing by an earlier reading means something.
+  const offered = transformsFor(data.unit, data.observations);
 
   // What the export buttons and the table are currently looking at, kept in one
   // place so "this range" cannot drift from what is on the screen.
@@ -794,11 +796,12 @@ async function viewSeries(id) {
     Object.keys(ranges).map((k) => '<button class="chip" data-range="' + esc(k) + '">' + esc(k) + "</button>").join("") +
     "</div>" +
     '<div class="controls">' +
-    Object.keys(TRANSFORMS).map((k) => '<button class="chip" data-transform="' + k + '">' + esc(TRANSFORMS[k].label) + "</button>").join("") +
+    offered.keys.map((k) => '<button class="chip" data-transform="' + k + '">' + esc(TRANSFORMS[k].label) + "</button>").join("") +
     '<span class="spacer"></span>' +
     '<select class="chip" id="cmp">' +
     compareOptions.map((o) => '<option value="' + esc(o.id) + '">' + esc(o.label) + "</option>").join("") +
     "</select></div>" +
+    (offered.why ? '<p class="foot-note transform-note">' + esc(offered.why) + "</p>" : "") +
 
     '<div id="chart-slot"></div>' +
     '<div class="legend" id="legend"></div>' +

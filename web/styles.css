@@ -1188,6 +1188,9 @@ table.indicators td.period {
 .controls .spacer { flex: 1; }
 .controls .hint { font-family: var(--mono); font-size: 0.7rem; color: var(--text-3); }
 .controls.suggest { padding-top: 0.6rem; }
+/* Why a transformation is not on offer: one line under the buttons it explains,
+   not a footer. */
+.foot-note.transform-note { margin: -0.3rem 0 0.4rem; border-top: 0; padding-top: 0; }
 
 .chip {
   font-family: var(--mono);

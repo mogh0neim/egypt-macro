@@ -1047,6 +1047,28 @@ const TRANSFORMS = {
   },
 };
 
+/* Both transformations divide by an earlier reading, and that only means
+ * something for a level that stays on one side of zero. Inflation is already a
+ * change on a year earlier, so taking its change on a year earlier gave 20.83%
+ * against a published 14.5%; the current account goes negative, so rebasing it
+ * gave -250 and its yearly change an axis to -2,400%. Decided from the unit and
+ * the values rather than from a list of ids, so a new series is judged the same
+ * way, and a withheld button says why rather than just not being there. */
+function transformsFor(unit, observations) {
+  let lo = Infinity, hi = -Infinity;
+  (observations || []).forEach((o) => {
+    if (o[1] < lo) lo = o[1];
+    if (o[1] > hi) hi = o[1];
+  });
+  if (/percent/i.test(unit || "")) {
+    return { keys: ["level"], why: t("No year-on-year or rebased view: this series is already a rate, so either would be a percentage of a percentage.") };
+  }
+  if (lo < 0 && hi > 0) {
+    return { keys: ["level"], why: t("No year-on-year or rebased view: this series goes below zero, where a percentage of an earlier reading means nothing.") };
+  }
+  return { keys: Object.keys(TRANSFORMS), why: "" };
+}
+
 /* The range buttons used to be one fixed list for all 1,300 series, which
  * served a daily FX series well and everything else badly. "1 year" on a
  * quarterly series is four points, and "Since March 2024" is a button that does
