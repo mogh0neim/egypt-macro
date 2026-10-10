@@ -99,8 +99,8 @@ async function viewMoneyMarket() {
 
     corridorLegend =
       '<div class="legend">' +
-      '<span class="key"></span>CONIA, the overnight fixing' +
-      '<span class="key band"></span>the CBE corridor, overnight deposit to overnight lending' +
+      '<span class="key"></span>' + t("CONIA, the overnight fixing") +
+      '<span class="key band"></span>' + t("the CBE corridor, overnight deposit to overnight lending") +
       "</div>";
 
     corridorReadout =
@@ -149,11 +149,11 @@ async function viewMoneyMarket() {
   const slope =
     tb3 && tb12
       ? '<div id="billc-slot"></div>' +
-        '<div class="legend"><span class="key"></span>3 month' +
-        '<span class="key s1"></span>12 month</div>' +
+        '<div class="legend"><span class="key"></span>' + t("3 month") +
+        '<span class="key s1"></span>' + t("12 month") + "</div>" +
         '<div class="readout" id="bill-readout">' +
-        "<span>Both weighted average accepted yields, as published, with no rebasing. " +
-        "Where the two cross, the curve inverted.</span></div>"
+        "<span>" + t("Both weighted average accepted yields, as published, with no rebasing. Where the two cross, the curve inverted.") +
+        "</span></div>"
       : "";
 
   /* ---------- latest decision ---------- */
@@ -291,7 +291,7 @@ async function viewMoneyMarket() {
         [coniaObs, floorObs, ceilObs],
         ["percent per annum", "percent per annum", "percent per annum"],
         readout,
-        ["CONIA", "floor", "ceiling"],
+        [t("CONIA"), t("floor"), t("ceiling")],
         { bandMid: [1, 2] }
       ));
   }
@@ -309,7 +309,7 @@ async function viewMoneyMarket() {
         [tb3.observations, tb12.observations],
         ["percent per annum", "percent per annum"],
         readout,
-        ["3 month", "12 month"]
+        [t("3 month"), t("12 month")]
       ));
   }
 }

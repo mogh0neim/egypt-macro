@@ -234,7 +234,8 @@ const UNIT_SHORT = {
   number: "count",
   EGP: "EGP",
 };
-const unitShort = (u) => (u ? UNIT_SHORT[u] || u : "");
+// Through t(), so an Arabic page says مليون جنيه rather than "EGP mn".
+const unitShort = (u) => (u ? t(UNIT_SHORT[u] || u) : "");
 
 /* The unit as a tag to set beside a formatted figure. Empty when fmt() has
  * already said it: "14.90%" needs no "%" after it. */
@@ -504,6 +505,7 @@ const fxEvents = () =>
       return {
         date: e.date,
         label: e.label || move,
+        size: Math.abs(e.evidence.pct_change),
         note: (e.label ? e.label + ": " : "") + t("Official dollar rate") + " ⁦" + move + "⁩ " +
           t("in one business day") + ": " + fmt(e.evidence.from) + " " + t("to") + " " +
           fmt(e.evidence.to) + " " + t("on") + " " + niceDate(e.date),
@@ -514,7 +516,8 @@ const fxEvents = () =>
  * ranges since it was first generated, and nothing has ever drawn them. They
  * are the difference between a chart of a line going up and a chart of four
  * distinct policy eras. */
-const fxRegimes = () => (state.events && state.events.fx_regimes) || [];
+const fxRegimes = () =>
+  ((state.events && state.events.fx_regimes) || []).map((r) => Object.assign({}, r, { label: t(r.label) }));
 
 /* ---------- the next rate decision ----------
  *
@@ -804,21 +807,26 @@ function lineChart(series, opts) {
   // the label's own width: a fixed 42 units let two "+16%" seven months apart
   // in 2022 print over each other on a phone. The rule stays either way, and
   // the readout says what it marks when the crosshair reaches it.
+  // The biggest move is placed first, so the 2016 float's +67% is never the
+  // label that loses its place to a +14% from eight months before it.
   const inRange = events
     .filter((e) => { const t = Date.parse(e.date); return t >= x0 && t <= x1; })
-    .map((e) => { const o = { date: e.date, label: e.label, note: e.note, x: px(Date.parse(e.date)) }; return o; })
+    .map((e) => { const o = { date: e.date, label: e.label, note: e.note, size: e.size || 0, x: px(Date.parse(e.date)) }; return o; })
     .sort((a, b) => a.x - b.x);
-  let labelEnd = -Infinity;
+  const taken = [];
+  inRange.slice().sort((a, b) => b.size - a.size).forEach((e) => {
+    const label = (e.label || "").slice(0, 22);
+    const w = label.length * LABEL_CH, l = e.x - w / 2, r = e.x + w / 2;
+    if (!label || l < 0 || r > W || taken.some((s) => l < s[1] + 4 && s[0] < r + 4)) return;
+    taken.push([l, r]);
+    e.text = label;
+  });
   const marks = inRange
     .map((e) => {
       const x = e.x.toFixed(1);
-      const label = (e.label || "").slice(0, 22);
-      const w = label.length * LABEL_CH;
-      const room = label && e.x - w / 2 >= labelEnd + 4 && e.x - w / 2 >= 0 && e.x + w / 2 <= W;
-      if (room) labelEnd = e.x + w / 2;
       return (
         '<line class="event" x1="' + x + '" y1="' + m.t + '" x2="' + x + '" y2="' + (m.t + ih) + '"/>' +
-        (room ? chartText(x, m.t - 5, "event-label", "middle", label) : "")
+        (e.text ? chartText(x, m.t - 5, "event-label", "middle", e.text) : "")
       );
     })
     .join("");
@@ -1094,7 +1102,7 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
    * appends "pp" for a percent unit; anything else needs its unit said once,
    * or "13.62" reads as a real quantity when it is really index points. */
   const gapUnit = (unit) =>
-    /percent/i.test(unit || "") ? "" : unit === "index" ? " pts" : unitTag(unit) ? " " + unitTag(unit) : "";
+    /percent/i.test(unit || "") ? "" : unit === "index" ? " " + t("pts") : unitTag(unit) ? " " + unitTag(unit) : "";
   const gapLine = (picks) => {
     if (picks.some((p) => !p)) return "";
     if (opts && opts.bandMid && picks.length > opts.bandMid[1]) {
@@ -1103,17 +1111,17 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
       const unit = unitList[0];
       const l0 = esc((labels && labels[0]) || "");
       return isFlat(off, unit)
-        ? l0 + " on the midpoint"
-        : l0 + " " + fmtChange(off, unit) + gapUnit(unit) + (off > 0 ? " above" : " below") + " the midpoint";
+        ? l0 + " " + t("on the midpoint")
+        : l0 + " " + fmtChange(off, unit) + gapUnit(unit) + " " + t(off > 0 ? "above the midpoint" : "below the midpoint");
     }
     if (picks.length === 2 && unitList[0] === unitList[1]) {
       const diff = picks[1][1] - picks[0][1];
       const unit = unitList[0];
-      const l0 = esc((labels && labels[0]) || "the first");
-      const l1 = esc((labels && labels[1]) || "the second");
+      const l0 = esc((labels && labels[0]) || t("the first"));
+      const l1 = esc((labels && labels[1]) || t("the second"));
       return isFlat(diff, unit)
-        ? "about even"
-        : l1 + " " + fmtChange(diff, unit) + gapUnit(unit) + (diff > 0 ? " above " : " below ") + l0;
+        ? t("about even")
+        : l1 + " " + fmtChange(diff, unit) + gapUnit(unit) + " " + t(diff > 0 ? "above|one line against another" : "below|one line against another") + " " + l0;
     }
     return "";
   };

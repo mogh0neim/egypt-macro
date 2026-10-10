@@ -92,9 +92,9 @@ async function viewMPC() {
   rows.forEach((r) => (r.decision ? tally[r.decision]++ : tally.unknown++));
 
   const sets = [], labels = [], units = [];
-  if (disc) { sets.push(disc.observations); labels.push("Discount rate"); units.push("percent per annum"); }
-  if (dep) { sets.push(dep.observations); labels.push("Overnight deposit rate"); units.push("percent per annum"); }
-  if (lend) { sets.push(lend.observations); labels.push("Overnight lending rate"); units.push("percent per annum"); }
+  if (disc) { sets.push(disc.observations); labels.push(t("Discount rate")); units.push("percent per annum"); }
+  if (dep) { sets.push(dep.observations); labels.push(t("Overnight deposit rate")); units.push("percent per annum"); }
+  if (lend) { sets.push(lend.observations); labels.push(t("Overnight lending rate")); units.push("percent per annum"); }
 
   const card = (r) => {
     const s = r.s;
@@ -139,9 +139,9 @@ async function viewMPC() {
         '<div class="legend">' +
         labels.map((l, i) => '<span class="key s' + i + '"></span>' + esc(l)).join("") +
         "</div>" +
-        '<div class="readout" id="mpc-readout"><span>The discount rate runs back to 1991. ' +
-        "The corridor is only published from July 2014, which is why the older statements " +
-        "below carry no rate.</span></div>"
+        '<div class="readout" id="mpc-readout"><span>' +
+        t("The discount rate runs back to 1991. The corridor is only published from July 2014, which is why the older statements below carry no rate.") +
+        "</span></div>"
       : "") +
     '<div class="controls">' +
     '<button class="chip" data-dec="" aria-pressed="true">All ' + rows.length + "</button>" +

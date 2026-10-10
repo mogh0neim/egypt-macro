@@ -1801,10 +1801,13 @@ footer {
   background: linear-gradient(to left, transparent, var(--bg));
 }
 
-/* An SVG's own coordinate system is not mirrored by `direction`, but the box
-   it sits in is, and a chart that keeps its geometry inside a mirrored
-   container needs saying explicitly or nothing changes. Left here for the
-   record: nothing to do. */
+/* An SVG's own coordinate system is not mirrored by `direction`, but its text
+   anchors are: a label inherits the page's direction, and on /ar/ "start"
+   meant the right-hand end, so "Managed peg" ran off the left of the dollar
+   chart and "+16%" printed as "16%+". `.chart` is pinned to ltr above, and
+   chartText() marks an Arabic label direction="rtl" on its own, which also
+   gives it the face that carries Arabic. */
+[dir="rtl"] .chart text[direction="rtl"] { font-family: var(--arabic); }
 
 /* The wordmark reads Arabic first on an Arabic page. */
 [dir="rtl"] .wordmark { flex-direction: row-reverse; }

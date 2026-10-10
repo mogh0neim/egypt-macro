@@ -740,7 +740,7 @@ async function viewSeries(id) {
     readoutSlot().innerHTML = last
       ? '<span class="val">' + fmt(last[1], shown.unit) + "</span>" +
         '<span class="when">' + niceDate(last[0]) + "</span>" +
-        "<span>" + esc(compareId ? "Both rebased to 100 at the start of the range" : TRANSFORMS[transform].label) + "</span>"
+        "<span>" + esc(compareId ? t("Both rebased to 100 at the start of the range") : TRANSFORMS[transform].label) + "</span>"
       : '<span class="empty">Nothing in this range.</span>';
     armLines(document.getElementById("sc"));
     wireHover(document.getElementById("sc"), sets, units, readoutSlot(), labels);
@@ -795,7 +795,7 @@ async function viewSeries(id) {
     whereItSits(meta, data.unit) +
 
     '<div class="controls">' +
-    Object.keys(ranges).map((k) => '<button class="chip" data-range="' + esc(k) + '">' + esc(k) + "</button>").join("") +
+    Object.keys(ranges).map((k) => '<button class="chip" data-range="' + esc(k) + '">' + esc(t(k)) + "</button>").join("") +
     "</div>" +
     '<div class="controls">' +
     offered.keys.map((k) => '<button class="chip" data-transform="' + k + '">' + esc(TRANSFORMS[k].label) + "</button>").join("") +
