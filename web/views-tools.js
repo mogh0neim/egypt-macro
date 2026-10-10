@@ -67,7 +67,7 @@ function otherTools(current) {
   return (
     '<div class="pair">' +
     TOOLS.filter((tool) => tool.key !== current).map((tool) =>
-      '<a class="wide-card" href="#/tools/' + t.key + '">' +
+      '<a class="wide-card" href="#/tools/' + tool.key + '">' +
       '<p class="eyebrow">' + t("Work it out") + "</p>" +
       "<h3>" + esc(t(tool.nav)) + "</h3><p>" + esc(t(tool.blurb)) + "</p>" +
       '<span class="go">' + t("Try it →") + "</span></a>").join("") +
