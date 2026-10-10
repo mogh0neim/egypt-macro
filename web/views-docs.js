@@ -413,7 +413,7 @@ async function viewDocs(presetCategory) {
     }
 
     if (mode === "full") {
-      out.innerHTML = '<p class="empty">Reading 53,000 pages…</p>';
+      out.innerHTML = '<p class="empty">' + t("Searching inside the documents…") + "</p>";
       const found = await fullText(query);
       // Typing runs a search per pause, and an older one can finish last.
       if (mine !== runs) return;

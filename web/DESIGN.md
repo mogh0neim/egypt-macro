@@ -551,9 +551,10 @@ keeps a few bytes nobody looks at.
 
 ## The revision record
 
-`#/changes` is the one page here that no other source could publish even if it
-wanted to, and it took thirty lines of `git log` parsing that had been sitting
-unread since the first commit.
+`#/changes` reads the dated copy of CBE's tables that every run commits, and it
+took thirty lines of `git log` parsing that had been sitting unread since the
+first commit. Say what it covers and no more: the daily tables from 20 August
+2026, the auction tables, and the weekly archive checked by Last-Modified.
 
 CBE overwrites its files in place when it revises a figure. There is no
 changelog, no vintage, and no way to ask what a number read last month. This

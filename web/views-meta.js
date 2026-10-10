@@ -47,9 +47,11 @@ async function viewData() {
     '<div class="dl-grid">' +
     file(ROOT + "/parquet/all.parquet", "all.parquet", "Every observation. Opens in DuckDB, pandas, Polars, R.", sizeOf("parquet/all.parquet")) +
     file(ROOT + "/parquet/series.parquet", "series.parquet", "The catalogue: titles, units, frequency, provenance.", sizeOf("parquet/series.parquet")) +
-    (sqliteName ? file(ROOT + "/" + sqliteName.path, sqliteName.path, "One SQLite file with both tables and an index on period.", MB(sqliteName.bytes)) : "") +
+    (sqliteName ? file(ROOT + "/" + sqliteName.path, sqliteName.path, "One SQLite file: series, observations and a revisions table.", MB(sqliteName.bytes)) : "") +
     file(ROOT + "/bulk/series-csv.zip", "series-csv.zip", "Plain CSV, one file per dataset, plus the catalogue.", sizeOf("bulk/series-csv.zip")) +
     file(ROOT + "/bulk/records-csv.zip", "records-csv.zip", "The record-level tables behind the derived series.", sizeOf("bulk/records-csv.zip")) +
+    file(ROOT + "/parquet/revisions.parquet", "revisions.parquet", "Every value each series has held, with the first and last day it was held.", sizeOf("parquet/revisions.parquet")) +
+    file(ROOT + "/bulk/revisions-csv.zip", "revisions-csv.zip", "The same record as CSV: series_id, period, value, first_seen, last_seen.", sizeOf("bulk/revisions-csv.zip")) +
     file(ROOT + "/manifest.json", "manifest.json", "Every published file with its SHA-256, so any copy can be checked against it.", sizeOf("manifest.json")) +
     "</div>" +
 

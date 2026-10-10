@@ -423,6 +423,7 @@ const AR = {
    * numbers, because Arabic puts the count after the noun, and a number with a
    * colon before it needs no agreement with "صفحة". */
   "Ignored:": "تم تجاهل:",
+  "Searching inside the documents…": "جارٍ البحث داخل المستندات…",
   "too common to narrow a search": "كلمات شائعة جدًا لا تضيّق البحث",
   "Top {shown} of {total} pages contain every searched word":
     "عدد الصفحات التي تحتوي على كل كلمات البحث: {total}، تظهر أفضل {shown} منها",
