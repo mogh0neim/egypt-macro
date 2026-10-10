@@ -99,6 +99,9 @@ function paletteSearch(raw) {
     pool.push({ label: c.name, sub: c.blurb, href: "#/docs/" + encodeURIComponent(c.cat), kind: "Documents", hay: normaliseQuery(c.name + " " + c.blurb), weight: 30 })
   );
 
+  // Series are scored by rankSeries's rules in core.js, so this box and the
+  // Series page agree, and a headline series outranks a page that merely
+  // mentions the word.
   (state.index || []).forEach((s) =>
     pool.push({
       label: s.title_en || s.series_id,
@@ -106,14 +109,18 @@ function paletteSearch(raw) {
       ar: s.title_ar || "",
       href: "#/s/" + encodeURIComponent(s.series_id),
       kind: "Series",
-      hay: normaliseQuery(s.series_id + " " + (s.title_en || "") + " " + (s.title_ar || "")),
-      weight: 0,
+      series: s,
       stale: !!s.stale_days,
     })
   );
 
+  const sTerms = seriesTerms(raw);
   return pool
     .map((row) => {
+      if (row.series) {
+        const sc = seriesScore(row.series, sTerms);
+        return sc === null ? null : { ...row, score: sc };
+      }
       let total = row.weight;
       for (const t of terms) {
         const sc = matchScore(row.hay, t);

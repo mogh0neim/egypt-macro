@@ -289,17 +289,10 @@ const FIND_SUGGESTIONS = [
 ];
 
 /* Shared by this page and by the panel on the favourites page, so a search for
- * something to look at and a search for something to keep behave identically. */
+ * something to look at and a search for something to keep behave identically.
+ * The ranking is rankSeries in core.js, which the palette uses too. */
 function searchSeries(query, limit) {
-  const q = normaliseQuery(query);
-  const terms = q.split(/\s+/).filter(Boolean);
-  if (!terms.length) return [];
-  return (state.index || [])
-    .filter((s) => {
-      const hay = normaliseQuery(s.series_id + " " + (s.title_en || "") + " " + (s.title_ar || ""));
-      return terms.every((t) => hay.includes(t));
-    })
-    .slice(0, limit || 100);
+  return rankSeries(query).slice(0, limit || 100);
 }
 
 function seriesResultRow(s, sparks) {

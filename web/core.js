@@ -399,6 +399,121 @@ const indexTerms = (query) =>
     .filter((w) => w.length >= 2 && w.length <= 28)
     .map((w) => ({ word: w, key: stemArabic(w) }));
 
+/* ---------- finding a series ----------
+ *
+ * The catalogue is in CBE's order, and CBE files "CPI - Tobacco" ahead of the
+ * headline rate, so a list of matches in catalogue order buried the number
+ * people came for: headline CPI was 27th for "cpi", total external debt last of
+ * 54. Matches are ranked instead, the same way in the Series page, the
+ * favourites panel and the palette: how well the words land, then whether the
+ * series is one of the few everybody wants, then whether it is still updated,
+ * then how much history it has.
+ */
+
+/* The numbers people come for. Daily series by id; the Excel archive by what
+ * the catalogue says, because its ids are still being reworked. The first entry
+ * that fits wins, so the headline rate outranks its siblings. */
+const SERIES_HEADLINE = [
+  { tier: 3, test: (s) => s.series_id === "EG.CPI.HDL.YOY" },
+  { tier: 2, test: (s) => /^EG\.CPI\.HDL\./.test(s.series_id) },
+  { tier: 3, test: (s) => s.series_id === "EG.FX.OFF.USD.SELL" },
+  { tier: 2, test: (s) => s.series_id === "EG.FX.OFF.USD.BUY" },
+  { tier: 3, test: (s) => /^EG\.RATE\.ON\.(DEP|LEND)$/.test(s.series_id) },
+  { tier: 2, test: (s) => s.series_id === "EG.RATE.MAIN" || s.series_id === "EG.RATE.DISCOUNT" },
+  { tier: 3, test: (s) => s.series_id === "EG.RES.NIR" },
+  { tier: 3, test: (s) => s.family === "external_debt" && /total external debt\s*$/i.test(s.title_en || "") },
+  { tier: 3, test: (s) => s.family === "gdp" && /gdp at market prices\s*$/i.test(s.title_en || "") },
+  { tier: 2, test: (s) => /^EG\.TB\.EGP\.\d+M\.YLD\.WAVG$/.test(s.series_id) },
+];
+
+/* The words the market uses where CBE's titles use others. Matched as if they
+ * were in the title, Arabic included. */
+const SERIES_WORDS = [
+  { test: (s) => /treasury bill|t-bill/i.test(s.title_en || ""), words: "t-bill t-bills tbill tbills" },
+  { test: (s) => /\b12[- ]month/i.test(s.title_en || ""), words: "364 365 1y one-year" },
+  { test: (s) => /\b9[- ]month/i.test(s.title_en || ""), words: "273 9m" },
+  { test: (s) => /\b6[- ]month/i.test(s.title_en || ""), words: "182 6m" },
+  { test: (s) => /\b3[- ]month/i.test(s.title_en || ""), words: "91 3m" },
+  { test: (s) => s.family === "policy",
+    words: "policy rate mpc corridor interest key rate سعر الفائدة الكوريدور لجنة السياسة النقدية" },
+  { test: (s) => /\(\s*M2\s*\)/i.test(s.title_en || ""), words: "money supply broad money عرض النقود" },
+  { test: (s) => /\.USD\./.test(s.series_id) || /us dollar/i.test(s.title_en || ""), words: "usd us$ dollar دولار" },
+  { test: (s) => s.family === "fx", words: "egp pound جنيه" },
+  { test: (s) => s.series_id === "EG.RES.NIR", words: "nir fx foreign reserves الاحتياطي النقدي" },
+  { test: (s) => s.family === "gdp" && /gdp at market prices/i.test(s.title_en || ""), words: "growth output" },
+];
+
+/* Broken plurals in CBE's Arabic titles, folded, with the singular a reader
+ * types. No ending comes off "أسعار" to leave "سعر", so "سعر الصرف" found
+ * nothing until the title carried both. */
+const AR_PLURALS = [
+  ["اسعار", "سعر"], ["ودايع", "وديعه"], ["قروض", "قرض"], ["اصول", "اصل"],
+  ["ديون", "دين"], ["بنوك", "بنك"], ["اوراق", "ورقه"], ["عملاء", "عميل"],
+];
+
+const SERIES_HAY = new WeakMap();
+function seriesHay(s) {
+  let h = SERIES_HAY.get(s);
+  if (!h) {
+    const words = SERIES_WORDS.filter((w) => w.test(s)).map((w) => w.words).join(" ");
+    const head = SERIES_HEADLINE.find((x) => x.test(s));
+    let text = normaliseQuery(s.series_id + " " + (s.title_en || "") + " " + (s.title_ar || "") + " " + words);
+    AR_PLURALS.forEach((p) => { if (text.indexOf(p[0]) !== -1) text += " " + p[1]; });
+    h = { text: text, tier: head ? head.tier : 0 };
+    SERIES_HAY.set(s, h);
+  }
+  return h;
+}
+
+/* Query words for the series boxes. Matching is by substring, so a stem finds
+ * every form of the word: the Arabic article and sound plural come off ("التضخم"
+ * finds تضخم, "الاحتياطيات" finds الاحتياطي), and so does an English plural s
+ * ("rates" finds Rate). */
+const seriesTerms = (query) =>
+  normaliseQuery(query).split(/\s+/).filter(Boolean).map((w) =>
+    /^[ء-ۓ]/.test(w) ? stemArabic(w)
+      : w.length > 3 && /s$/.test(w) && !/(ss|us|is)$/.test(w) ? w.slice(0, -1) : w);
+
+/* Where a match starts a word, it is a real match; one in the middle of a token
+ * is usually a coincidence. In Arabic a word can also start after the article. */
+function startsWord(hay, at) {
+  const edge = (i) => i <= 0 || /[\s\-./(,:+]/.test(hay[i - 1]);
+  if (edge(at)) return true;
+  if (hay.slice(at - 2, at) !== "ال") return false;
+  return edge(at - 2) || (/[وبفكل]/.test(hay[at - 3] || "") && edge(at - 3));
+}
+
+/* A score, or null when some word is missing. */
+function seriesScore(s, terms) {
+  const h = seriesHay(s);
+  let score = 0;
+  for (const term of terms) {
+    let best = 0;
+    for (let at = h.text.indexOf(term), n = 0; at !== -1 && n < 20 && best < 20; n++) {
+      best = Math.max(best, startsWord(h.text, at) ? 20 : 8);
+      at = h.text.indexOf(term, at + 1);
+    }
+    if (!best) return null;
+    score += best;
+  }
+  return score +
+    h.tier * 40 +
+    (s.stale_days ? 0 : 25) +
+    Math.min(15, 5 * Math.log10((s.n || 0) + 1)) -
+    // An Arabic line label in the English title is a sub-line CBE left untranslated.
+    (ARABIC_RE.test(s.title_en || "") ? 10 : 0);
+}
+
+function rankSeries(query) {
+  const terms = seriesTerms(query);
+  if (!terms.length) return [];
+  return (state.index || [])
+    .map((s, i) => ({ s: s, i: i, score: seriesScore(s, terms) }))
+    .filter((x) => x.score !== null)
+    .sort((a, b) => b.score - a.score || a.i - b.i)
+    .map((x) => x.s);
+}
+
 /* ---------- nearest matches ----------
  *
  * For the states where something was asked for and is not there: a series id

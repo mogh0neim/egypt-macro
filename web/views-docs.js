@@ -429,7 +429,9 @@ async function viewDocs(presetCategory) {
       return;
     }
 
-    const terms = normaliseQuery(query).split(/\s+/);
+    // Titles match the way series do: by stretch of text, with the Arabic
+    // article and plural endings off the words typed.
+    const terms = seriesTerms(query);
     const hits = filtered.filter((d) => {
       const hay = normaliseQuery((d.title || "") + " " + d.categories.join(" "));
       return terms.every((t) => hay.indexOf(t) !== -1);
