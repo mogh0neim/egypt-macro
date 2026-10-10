@@ -1528,10 +1528,15 @@ function rangesFor(meta) {
   const years = first === null ? 0 : (last - first) / 31536000000;
   const perYear = years > 0 && meta.n ? meta.n / years : 0;
   const worth = (y) => y < years && perYear * y >= 4;
+  /* A window is the last y years of the series itself, given as the date it
+   * starts, so applyRange cuts from there. Counted back from today, "1 year"
+   * on a series that stopped in 2023 cut nothing, fell back to everything, and
+   * still exported the file as "Range: 1 year". */
+  const back = (y) => new Date(last - y * 31536000000).toISOString().slice(0, 10);
 
-  if (worth(1)) out["1 year"] = 1;
-  if (worth(5)) out["5 years"] = 5;
-  if (worth(10)) out["10 years"] = 10;
+  if (worth(1)) out["1 year"] = back(1);
+  if (worth(5)) out["5 years"] = back(5);
+  if (worth(10)) out["10 years"] = back(10);
   out.Everything = null;
 
   // Only offer this year if the series has actually reached this year.
