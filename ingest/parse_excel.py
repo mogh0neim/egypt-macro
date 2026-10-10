@@ -91,7 +91,9 @@ def month_of(value) -> int | None:
 def year_of(value) -> int | None:
     if value is None:
         return None
-    m = re.search(r"(19|20)\d{2}", str(value).translate(ARABIC_INDIC))
+    # Not inside a longer number. A data cell of 120913 contains "2091", and
+    # reading it as a year dated 37 quarterly files to 1901-2099.
+    m = re.search(r"(?<!\d)(19|20)\d{2}(?!\d)", str(value).translate(ARABIC_INDIC))
     return int(m.group(0)) if m else None
 
 
@@ -188,6 +190,8 @@ def load_grid(path: pathlib.Path) -> list[list]:
 # Balance-of-payments files skip the month row entirely and put fiscal years
 # straight in the header: "2004/2005", "2005/06". Both widths occur.
 _RE_FY = re.compile(r"\b((?:19|20)\d{2})\s*/\s*((?:19|20)?\d{2})\b")
+# "2020-2021", as two of the quarterly GDP files print the fiscal year.
+_RE_FY_DASH = re.compile(r"\b(?:19|20)\d{2}\s*-\s*(?:19|20)\d{2}\b")
 
 
 def fy_of(value) -> tuple[int, str] | None:
@@ -312,28 +316,39 @@ def build_periods(
         # the range printed below ("July/Sep 2023", balance of payments). Look
         # both ways rather than assuming, then carry the last known year
         # forward across columns that only inherit it.
-        years: dict[int, int] = {}
+        years: dict[int, tuple[int, bool]] = {}
         candidates = [period_row + 1, period_row + 2] + list(range(period_row - 1, max(-1, period_row - 4), -1))
         for c in quarters:
             for r in candidates:
                 if 0 <= r < len(grid) and c < len(grid[r]):
+                    # Below the quarter row only a printed range like
+                    # "July/Sep 2023" is a year; a number there is data.
+                    if r > period_row and not isinstance(grid[r][c], str):
+                        continue
                     y = year_of(grid[r][c])
                     if y:
-                        years[c] = y
+                        fiscal = bool(fy_of(grid[r][c]) or _RE_FY_DASH.search(str(grid[r][c])))
+                        years[c] = (y, fiscal)
                         break
 
-        # Egypt's fiscal quarters end Sep, Dec, Mar, Jun. The printed year is
-        # the calendar year the quarter falls in, so Q1/Q2 open a fiscal year
-        # and Q3/Q4 close the one before.
+        # Egypt's fiscal quarters end Sep, Dec, Mar, Jun. A plain year or a
+        # printed range ("Jan./Mar. 2024") is the calendar year the quarter
+        # falls in, so Q1/Q2 open a fiscal year and Q3/Q4 close the one before.
+        # A fiscal label ("2016/2017") reads as the year the fiscal year opens
+        # in, so its Q3 and Q4 fall a year later. Missing that dated every Q3
+        # and Q4 of GDP, external debt, FDI and investment a year early.
         ENDS = {1: (9, 30), 2: (12, 31), 3: (3, 31), 4: (6, 30)}
         out = {}
-        last_year = None
+        last = None
         for c in sorted(quarters):
             q = quarters[c]
-            year = years.get(c) or last_year
-            if year is None:
+            found = years.get(c) or last
+            if found is None:
                 continue
-            last_year = year
+            last = found
+            year, fiscal = found
+            if fiscal and q in (3, 4):
+                year += 1
             month, day = ENDS[q]
             fy = f"FY{year}/{str(year + 1)[2:]}" if q in (1, 2) else f"FY{year - 1}/{str(year)[2:]}"
             out[c] = {"period": f"{year}-{month:02d}-{day:02d}", "fy": fy, "basis": "end"}
