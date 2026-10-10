@@ -37,6 +37,7 @@ import math
 import pathlib
 import re
 import shutil
+import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 WEB = ROOT / "web"
@@ -912,9 +913,47 @@ def main(template_html: str | None = None, assets: list[str] | None = None) -> i
         print(f"  {lang}: {n:,} pages")
         total += n
 
+    write_not_found(template)
+
     print(f"pre-rendered {total:,} pages across {len(LANGS)} languages: "
           f"{len(index):,} series, {len(topics)} subjects, {len(documents):,} documents")
     return total
+
+
+def write_not_found(template: Template) -> None:
+    """dist/404.html, which GitHub Pages serves for any address with no file.
+
+    It used to be a copy of index.html, whose asset links are relative. At
+    /s/NOPE/ the browser asked for /s/NOPE/styles.css and every script, got a
+    404 for each, and drew a blank page in Times New Roman with no way back.
+    This one names its assets, the API and the way home from the site root,
+    so it works at any depth, and it declares MIQYAS_MISSING so app.js reads
+    the address that was asked for rather than showing the overview under it.
+
+    The root is the path part of SITE_URL, so a move to the site's own domain
+    changes nothing here.
+    """
+    global _LANG
+    _LANG = "en"
+    site_path = urllib.parse.urlsplit(SITE_URL).path.rstrip("/")
+    html = template.render(
+        root=site_path, page="", lang="en",
+        title="Page not found | Miqyas",
+        description=tr("Central Bank of Egypt statistics as one clean dataset: exchange rates, "
+                       "treasury auctions, inflation, policy rates and the CBE Excel archive, with "
+                       "a free API, bulk files and a daily record of changes. Independent; not "
+                       "affiliated with CBE.", "en"),
+        url=SITE_URL, image=f"{SITE_URL}og.png", image_alt="Miqyas",
+        head_extra='<meta name="robots" content="noindex">',
+        # What a reader with no script sees; app.js replaces it with the
+        # nearest series to whatever the address carried.
+        body='<div class="wrap"><section class="section">'
+             "<h1>Nothing lives at that address</h1>"
+             '<p class="lede">The link may be from an older version of the site. '
+             f'<a href="{esc(site_path)}/">Start from the overview</a>.</p>'
+             + attribution("en") + "</section></div>")
+    html = html.replace(';window.MIQYAS_PAGE="";', ";window.MIQYAS_MISSING=true;")
+    write(DIST / "404.html", html)
 
 
 if __name__ == "__main__":

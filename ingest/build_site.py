@@ -28,7 +28,9 @@ WEB = ROOT / "web"
 DIST = ROOT / "dist"
 CATALOG = ROOT / "catalog"
 
-SITE_URL = "https://mogh0neim.github.io/egypt-macro/"
+# The site's address is set once, in prerender.py, because a domain move is
+# coming and three copies of it would drift.
+SITE_URL = prerender.SITE_URL
 
 # The routes that exist as pages of their own rather than per entity. Series,
 # subjects and documents are enumerated from the catalogue instead. Keep this in
@@ -196,10 +198,9 @@ def main() -> int:
 
     write_sitemaps()
 
-    # A wrong path on a static host serves 404.html. Serving the app itself
-    # means a stale or mistyped deep link still lands somewhere useful rather
-    # than on the host's default page.
-    shutil.copy2(DIST / "index.html", DIST / "404.html")
+    # A wrong path on a static host serves 404.html. prerender.py writes it,
+    # with asset paths from the site root so it is styled at any depth, and
+    # the app shows the nearest series to whatever the address carried.
 
     # A tiny status file, so anyone can check how fresh the site is without
     # reading the commit log.

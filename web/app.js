@@ -49,11 +49,27 @@ const ROUTES = [
  * came from rather than to the page they just bounced off.
  */
 const PAGE = typeof MIQYAS_PAGE === "string" ? MIQYAS_PAGE : null;
+/* 404.html declares MIQYAS_MISSING. GitHub Pages serves it for any address
+ * with no file behind it, at any depth, and like a pre-rendered page it hands
+ * off to the app document as soon as the reader goes anywhere. */
+const MISSING = typeof MIQYAS_MISSING === "boolean" && MIQYAS_MISSING;
 /* The app document for THIS language. An Arabic series page that handed off
  * to the English root would answer a click on an Arabic nav item by
  * switching the reader to English, which is the worst possible reading of
  * "go to rate decisions". */
-const HOME_DOC = PAGE ? ROOT + (RTL ? "/ar/" : "/") : "";
+const HOME_DOC = PAGE || MISSING ? ROOT + (RTL ? "/ar/" : "/") : "";
+
+/* On the not-found page, the address that was asked for, read as a route.
+ * /s/EG.FX.OFF.USD.SEL/ becomes /s/EG.FX.OFF.USD.SEL, so a series id that
+ * lost its tail gets the series view's own nearest matches; anything else
+ * gets the not-found screen with the words the address carried. */
+function missingRoute() {
+  let path = location.pathname;
+  try { path = decodeURIComponent(path); } catch (e) { /* keep it encoded */ }
+  const base = new URL(ROOT + "/", location.href).pathname;
+  if (path.indexOf(base) === 0) path = path.slice(base.length - 1);
+  return path.replace(/^\/ar(?=\/)/, "").replace(/\/(index\.html?)?$/, "") || "/";
+}
 
 async function route() {
   if (PAGE) {
@@ -63,9 +79,12 @@ async function route() {
       location.replace(HOME_DOC + location.hash);
       return;
     }
+  } else if (MISSING && location.hash && location.hash !== "#") {
+    location.replace(HOME_DOC + location.hash);
+    return;
   }
 
-  const hash = location.hash.replace(/^#/, "") || "/";
+  const hash = location.hash.replace(/^#/, "") || (MISSING ? missingRoute() : "/");
   document.querySelectorAll("nav [data-route]").forEach((a) => a.classList.remove("on"));
   document.body.classList.remove("nav-open");
 
