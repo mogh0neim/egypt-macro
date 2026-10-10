@@ -319,25 +319,59 @@ class Fetcher:
 
         CBE occasionally lists two different values for the same date -- the
         interbank weighted average has four such days, and on 2017-08-07 the
-        two differ by 1.7%. We keep the first as served and write the conflict
-        to data/clean/anomalies.csv rather than silently picking one.
+        two differ by 1.7%. Both go to data/clean/anomalies.csv rather than one
+        being silently picked.
+
+        Which one is kept must not depend on the order CBE lists them in. CBE
+        has reordered a table before (tbills_secondary, 9 October 2026), and a
+        kept value that flips with the order would show up as a revision CBE
+        never made. So the value already held for that date is kept while it is
+        still one of those served, and otherwise the lower one.
         """
-        first: dict[tuple[str, str], float] = {}
-        conflicts: list[tuple] = []
+        served: dict[tuple[str, str], list[float]] = {}
         for sid, period, value in observations:
-            key = (sid, period)
-            if key not in first:
-                first[key] = value
-            elif first[key] != value:
-                conflicts.append((sid, period, first[key], value, ds["key"]))
+            values = served.setdefault((sid, period), [])
+            if value not in values:
+                values.append(value)
+
+        clashing = {key for key, values in served.items() if len(values) > 1}
+        held = self._held(ds, clashing) if clashing else {}
+        kept: list[tuple] = []
+        conflicts: list[tuple] = []
+        for (sid, period), values in served.items():
+            choice = values[0]
+            if len(values) > 1:
+                choice = held.get((sid, period))
+                if choice not in values:
+                    choice = min(values)
+                conflicts.extend((sid, period, choice, other, ds["key"])
+                                 for other in sorted(values) if other != choice)
+            kept.append((sid, period, choice))
 
         if conflicts:
             self.anomalies.extend(conflicts)
             print(
                 f"       {ds['key']}: {len(conflicts)} conflicting duplicate(s), "
-                "kept first, logged to data/clean/anomalies.csv"
+                "kept the value already held (or the lower), logged to data/clean/anomalies.csv"
             )
-        return [(sid, period, value) for (sid, period), value in first.items()]
+        return kept
+
+    @staticmethod
+    def _held(ds: dict, keys: set[tuple[str, str]]) -> dict[tuple[str, str], float]:
+        """The values the committed CSV holds now, for just these keys."""
+        path = CLEAN_SERIES / f"{ds['key']}.csv"
+        held: dict[tuple[str, str], float] = {}
+        if not path.exists():
+            return held
+        with path.open(encoding="utf-8") as fh:
+            for row in csv.DictReader(fh):
+                key = (row["series_id"], row["period"])
+                if key in keys:
+                    try:
+                        held[key] = float(row["value"])
+                    except ValueError:
+                        continue
+        return held
 
 
 def main() -> int:
