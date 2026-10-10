@@ -32,6 +32,14 @@ const ROUTES = [
   { test: /^\/about/, view: () => viewAbout(), nav: "about" },
 ];
 
+/* The browser tab for each part of the site, by its nav key. Every route used
+ * to keep the home page's title, so saved tabs and bookmarks all read alike. */
+const TAB_TITLES = {
+  home: "", series: "Series", tools: "Work it out", favourites: "Your favourites",
+  docs: "Documents", rates: "Rate decisions", data: "Downloads and API",
+  changes: "What changed", about: "About",
+};
+
 /* ---------- pre-rendered pages ----------
  *
  * Most of the site is also published as real files -- dist/s/<id>/index.html
@@ -89,6 +97,9 @@ async function route() {
   document.body.classList.remove("nav-open");
 
   const match = ROUTES.map((r) => ({ r: r, m: hash.match(r.test) })).find((x) => x.m);
+  /* The tab says which page this is. A view that knows better, a series or a
+   * subject, names itself once its data has arrived. */
+  pageTitle(match ? t(TAB_TITLES[match.r.nav] || "") : t("Nothing lives at that address"));
 
   try {
     if (!match) {
