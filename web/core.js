@@ -518,7 +518,7 @@ const fxEvents = () =>
         date: e.date,
         label: e.label || move,
         size: Math.abs(e.evidence.pct_change),
-        note: (e.label ? e.label + ": " : "") + t("Official dollar rate") + " ⁦" + move + "⁩ " +
+        note: (e.label ? e.label + ": " : "") + t("Official dollar rate") + " \u2066" + move + "\u2069 " +
           t("in one business day") + ": " + fmt(e.evidence.from) + " " + t("to") + " " +
           fmt(e.evidence.to) + " " + t("on") + " " + niceDate(e.date),
       };
