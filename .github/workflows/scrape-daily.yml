@@ -98,3 +98,9 @@ jobs:
       - name: Fail loudly on a short fetch
         if: failure()
         run: echo "::error::Ingest failed. Check whether CBE changed an endpoint or started blocking us."
+
+      # Last, and after the commit, on purpose. A calendar running out is a
+      # reminder to copy next year's dates in, never a reason to lose a day of
+      # data. It warns below warn_below and turns the run red once none is left.
+      - name: Check the MPC calendar
+        run: python ingest/summarise.py --calendar

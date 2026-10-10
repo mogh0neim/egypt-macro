@@ -10,8 +10,10 @@ Product -- `catalog/summary.json` is exactly the Last / Previous / Highest /
 Lowest table the homepage needs, precomputed at build time so the browser
 never has to scan a series to render a tile.
 
-Run:  python ingest/summarise.py [--check]
+Run:  python ingest/summarise.py [--check | --calendar]
       --check exits non-zero if any series trips a hard quality rule.
+      --calendar checks only the MPC calendar, and exits non-zero once no
+      meeting is left in it.
 """
 
 from __future__ import annotations
@@ -107,7 +109,15 @@ def summarise(sid: str, points: list[tuple[str, float]], meta: dict) -> dict:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true", help="exit 1 on a hard failure")
+    ap.add_argument("--calendar", action="store_true",
+                    help="check only the MPC calendar; exit 1 when no meeting is left")
     args = ap.parse_args()
+
+    # Kept out of --check on purpose. The daily workflow runs --check before it
+    # commits, and a calendar running low there stopped every day's data being
+    # saved until somebody typed next year's dates in. It runs after the commit.
+    if args.calendar:
+        return 0 if check_mpc_calendar() else 1
 
     catalog_path = CATALOG / "series.json"
     catalog = (
@@ -168,17 +178,17 @@ def main() -> int:
         for sid in uncatalogued[:10]:
             print(f"  {sid}", file=sys.stderr)
 
-    stale_calendar = check_mpc_calendar()
+    check_mpc_calendar()
 
     if args.check:
         hard = [s for s in summaries if any(f.startswith("duplicate") for f in s["flags"])]
-        if hard or uncatalogued or stale_calendar:
+        if hard or uncatalogued:
             return 1
     return 0
 
 
-def check_mpc_calendar() -> bool:
-    """Shout before the meeting calendar runs out.
+def check_mpc_calendar() -> int:
+    """Shout before the meeting calendar runs out. Returns the meetings left.
 
     data/mpc_calendar.json is the one hand-entered file in the repository: CBE
     publishes the year's meeting dates on a page that renders them client-side
@@ -189,12 +199,13 @@ def check_mpc_calendar() -> bool:
     """
     path = ROOT / "data" / "mpc_calendar.json"
     if not path.exists():
-        return False
+        print("\nWARNING: data/mpc_calendar.json is missing", file=sys.stderr)
+        return 0
     try:
         calendar = json.loads(path.read_text(encoding="utf-8"))
     except ValueError as err:
         print(f"\nWARNING: data/mpc_calendar.json is not valid JSON: {err}", file=sys.stderr)
-        return True
+        return 0
 
     today = dt.date.today().isoformat()
     ahead = [m["date"] for m in calendar.get("meetings", []) if m.get("date", "") >= today]
@@ -204,9 +215,9 @@ def check_mpc_calendar() -> bool:
               f"(want at least {floor}). Add next year's dates from "
               f"{calendar.get('source_url', 'cbe.org.eg')} and update checked_on.",
               file=sys.stderr)
-        return True
+        return len(ahead)
     print(f"MPC calendar: {len(ahead)} meetings ahead, next {ahead[0]}")
-    return False
+    return len(ahead)
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@
  "source_url": "https://www.cbe.org.eg/en/monetary-policy/mpc-meetings-schedule",
  "checked_on": "2026-09-18",
  "warn_below": 2,
- "warning": "summarise.py --check fails when fewer than warn_below meetings are still in the future. CBE publishes the following year's schedule late in the preceding one, so this file expires quietly unless something shouts.",
+ "warning": "summarise.py warns when fewer than warn_below meetings are still in the future, and the daily run turns red, after it has saved the day's data, once none is left. CBE publishes the following year's schedule late in the preceding one, so this file expires quietly unless something shouts.",
  "meetings": [
   { "date": "2026-02-12", "year": 2026 },
   { "date": "2026-04-02", "year": 2026 },

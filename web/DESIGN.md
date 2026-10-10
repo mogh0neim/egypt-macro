@@ -394,9 +394,12 @@ calculators say so rather than hiding it.
 `/api/sitecore/MPCMeetings/GetMPCMeetingsDetails` returns 404 to anything
 outside their page, so there is nothing to scrape. Everything else here fails
 loudly when it goes stale because a fetch stops returning rows; this cannot, it
-just quietly stops having a next meeting. So `summarise.py --check` fails when
-fewer than two meetings remain ahead, and every entry records the day it was
-checked.
+just quietly stops having a next meeting. So `summarise.py` warns when fewer
+than two meetings remain ahead, `summarise.py --calendar` turns the daily run
+red once none is left, and every entry records the day it was checked. That
+step runs after the commit: it used to sit inside `--check`, before the commit,
+which would have stopped the daily data being saved from 30 October 2026 until
+someone typed in the 2027 dates.
 
 **Calls go nowhere.** The guess at the next decision lives in `localStorage`
 under `miqyas.calls` and is scored against the archive, which arrives by itself
