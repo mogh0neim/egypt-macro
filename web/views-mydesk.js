@@ -170,6 +170,8 @@ async function viewDesk(query) {
   await loadIndex();
   const sparks = await loadSparks();
   const status = await loadStatus();
+  // A newer navigation took the page while this was loading (see route()).
+  if (!app.isConnected) return;
 
   const asked = (new URLSearchParams(query || "").get("s") || "")
     .split(",")

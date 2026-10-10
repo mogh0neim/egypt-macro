@@ -71,6 +71,17 @@ function missingRoute() {
   return path.replace(/^\/ar(?=\/)/, "").replace(/\/(index\.html?)?$/, "") || "/";
 }
 
+/* Each navigation gets a number, and only the newest may write to the page.
+ *
+ * Views fetch before they draw, so two quick taps used to race: whichever view
+ * finished last drew, and that could be the older one, leaving the Rates page
+ * under an address and a highlighted nav item that said About. So every
+ * navigation also gets a fresh <main>. A view keeps the element it found when
+ * it started, which means an older view that finishes late draws into a node
+ * that is no longer in the page; and the error screen, the scroll and the
+ * visit count all check the number before they act. */
+let routeSeq = 0;
+
 async function route() {
   if (PAGE) {
     if (!location.hash || location.hash === "#") {
@@ -84,9 +95,16 @@ async function route() {
     return;
   }
 
+  const seq = ++routeSeq;
   const hash = location.hash.replace(/^#/, "") || (MISSING ? missingRoute() : "/");
   document.querySelectorAll("nav [data-route]").forEach((a) => a.classList.remove("on"));
   document.body.classList.remove("nav-open");
+
+  // What is on screen moves across, so nothing blanks before the view draws.
+  const old = document.getElementById("app");
+  const app = old.cloneNode(false);
+  app.append(...old.childNodes);
+  old.replaceWith(app);
 
   const match = ROUTES.map((r) => ({ r: r, m: hash.match(r.test) })).find((x) => x.m);
 
@@ -98,8 +116,9 @@ async function route() {
        * has run, so nothing else has -- and offer the nearest series before
        * offering the front door. */
       await loadIndex().catch(() => null);
+      if (seq !== routeSeq) return;
       const near = nearestSeries(hash.replace(/[/?&=]+/g, " "), 5);
-      document.getElementById("app").innerHTML =
+      app.innerHTML =
         '<div class="wrap"><section class="section">' +
         "<h2>" + t("Nothing lives at that address") + "</h2>" +
         '<p class="lede">' + t("The link may be from an older version of the site.") +
@@ -123,12 +142,14 @@ async function route() {
       await match.r.view(match.m);
     }
   } catch (err) {
+    // An older navigation failing is not this page's news.
+    if (seq !== routeSeq) return;
     /* This used to lead with three python commands, which is the right answer
      * for about four people and gibberish to everyone else. A reader on the
      * published site who hits this is looking at a network failure, not a
      * missing build, so say that first and keep the build instructions for
      * whoever opens the details. */
-    document.getElementById("app").innerHTML =
+    app.innerHTML =
       '<div class="wrap"><section class="section">' +
       "<h2>" + t("Could not load the data") + "</h2>" +
       '<p class="lede">' +
@@ -144,6 +165,7 @@ async function route() {
     const retry = document.getElementById("retry");
     if (retry) retry.addEventListener("click", () => route());
   }
+  if (seq !== routeSeq) return;
   window.scrollTo(0, 0);
 }
 
@@ -193,15 +215,16 @@ document.getElementById("theme").addEventListener("click", () => {
 
 /* ---------- the star ----------
  *
- * Delegated once at the root rather than wired per view, because every table on
- * the site rewrites its own rows and a per-row listener would be lost on each
- * render. A single id can appear more than once on a page -- the overview and
- * the money market both list CONIA -- so all of its buttons are updated
+ * Delegated once at the document rather than wired per view, because every
+ * table on the site rewrites its own rows and a per-row listener would be lost
+ * on each render; and not at #app, because route() gives every navigation a
+ * fresh one. A single id can appear more than once on a page -- the overview
+ * and the money market both list CONIA -- so all of its buttons are updated
  * together, or one would silently disagree with the other.
  */
 
-document.getElementById("app").addEventListener("click", (e) => {
-  const button = e.target.closest("[data-star]");
+document.addEventListener("click", (e) => {
+  const button = e.target.closest && e.target.closest("[data-star]");
   if (!button) return;
   e.preventDefault();
   const id = button.dataset.star;

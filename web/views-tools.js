@@ -126,6 +126,8 @@ async function viewSalary(query) {
   const from = monthStart(params.get("from") || "");
 
   const cpi = await loadSeries(CPI).catch(() => null);
+  // A newer navigation took the page while this was loading (see route()).
+  if (!app.isConnected) return;
   if (!cpi) return toolUnavailable("the price index");
 
   const obs = cpi.observations;
@@ -212,6 +214,7 @@ async function viewSavings(query) {
     loadSeries(CPI).catch(() => null),
     loadSeries(USD).catch(() => null),
   ]);
+  if (!app.isConnected) return;
   if (!cpi || !fx) return toolUnavailable("the price index and the dollar rate");
 
   const firstDay = fx.observations[0][0];
@@ -293,6 +296,7 @@ async function viewDollarOn(query) {
     loadIndex().catch(() => null),
     loadSeries(USD).catch(() => null),
   ]);
+  if (!app.isConnected) return;
   if (!fx) return toolUnavailable("the dollar rate");
 
   const obs = fx.observations;
