@@ -143,8 +143,10 @@ async function viewHome() {
       (latestMPC.decision === "hold" && (!setBy || latestMPC.date > setBy.date)
         ? " and held at the " + niceDate(latestMPC.date) + " meeting"
         : "") + "."
-    : "Overnight deposit " + esc(latestMPC ? latestMPC.deposit_rate || "—" : "—") + "%, overnight lending " +
-      esc(latestMPC ? latestMPC.lending_rate || "—" : "—") + "%.";
+    : latestMPC && latestMPC.deposit_rate && latestMPC.lending_rate
+    ? "Overnight deposit " + esc(latestMPC.deposit_rate) + "%, overnight lending " +
+      esc(latestMPC.lending_rate) + "%."
+    : "";
   const mpcCard = latestMPC
     ? '<a class="wide-card" href="#/rates">' +
       '<p class="eyebrow">' + (next ? "Next rate decision" : "Latest rate decision") + "</p>" +
