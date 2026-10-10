@@ -283,25 +283,113 @@ const AR = {
   /* ---------- what changed ---------- */
   "What changed": "ما الذي تغيّر",
   "The revision record": "سجل التعديلات",
-  "What CBE published, and what it quietly restated":
-    "ما نشره البنك المركزي، وما عدّله في صمت",
-  "readings published": "قراءة منشورة",
-  "figures CBE restated": "رقمًا عدّله البنك المركزي",
+  "What CBE published, and what was revised":
+    "ما نشره البنك المركزي، وما جرى تعديله",
+  "Miqyas keeps a dated copy of the daily tables from 20 August 2026. If CBE changes a figure it has already published, the change appears here.":
+    "يحتفظ مقياس بنسخة مؤرَّخة من الجداول اليومية منذ 20 أغسطس 2026. إذا غيّر البنك المركزي رقمًا سبق نشره فسيظهر التغيير هنا.",
+  "new readings": "قراءة جديدة",
+  "figures revised": "رقمًا جرى تعديله",
   "after first publishing them": "بعد نشرها أول مرة",
-  "same-day conflicts": "تعارضات في اليوم نفسه",
-  "two values for one date": "قيمتان لتاريخ واحد",
-  "The Central Bank overwrites its files when it revises a figure. There is no changelog and no way to ask what a number read last month. This site keeps every copy it has ever fetched, so its own history answers that question, and nothing else does.":
-    "يستبدل البنك المركزي ملفاته عند تعديل أي رقم. لا سجل للتغييرات ولا وسيلة لمعرفة ماذا كان الرقم الشهر الماضي. هذا الموقع يحتفظ بكل نسخة جلبها، فيجيب تاريخه هو عن هذا السؤال، ولا يجيب عنه شيء آخر.",
-  "These do not need a history to find: the same figure appears twice, differently, inside one of CBE's own files. The parser keeps one and records both.":
-    "هذه لا تحتاج تاريخًا لاكتشافها: الرقم نفسه يظهر مرتين، مختلفًا، داخل ملف واحد من ملفات البنك المركزي. المعالج يحتفظ بواحد ويسجّل كليهما.",
+  "Two values for one date": "قيمتان لتاريخ واحد",
+  "inside one CBE table": "داخل جدول واحد للبنك المركزي",
+  "No revisions recorded since {d}.": "لم يُسجَّل أي تعديل منذ {d}.",
+  "Each is a figure CBE published and later changed.":
+    "كلٌّ منها رقم نشره البنك المركزي ثم غيّره لاحقًا.",
+  "Daily feed": "الخلاصة اليومية",
+  "Revisions only": "التعديلات فقط",
+  ", low volume.": "، قليلة التحديث.",
+  "What is checked": "ما الذي يُفحص",
+  "Which sources are checked for revisions": "أي المصادر تُفحص بحثًا عن تعديلات",
+  "Daily tables": "الجداول اليومية",
+  "Exchange rates, interest rates, CONIA, inflation and T-bill yields. Read every day; a changed or withdrawn figure counts as a revision.":
+    "أسعار الصرف وأسعار الفائدة وكونيا والتضخم وعوائد أذون الخزانة. تُقرأ كل يوم، وأي رقم تغيّر أو سُحب يُحتسب تعديلًا.",
+  "Auction results": "نتائج المزادات",
+  "The auction tables. Read every day; a changed or withdrawn result counts as a revision.":
+    "جداول المزادات. تُقرأ كل يوم، وأي نتيجة تغيّرت أو سُحبت تُحتسب تعديلًا.",
+  "Excel archive": "أرشيف Excel",
+  "Read weekly and checked for files CBE replaced or withdrew. A figure that changes in a replaced file counts as a revision.":
+    "يُقرأ أسبوعيًا ويُفحص بحثًا عن ملفات استبدلها البنك المركزي أو سحبها. أي رقم يتغيّر في ملف مُستبدَل يُحتسب تعديلًا.",
+  "Read weekly and checked for files CBE replaced or withdrew. Changes are listed as archive updates and not yet counted as revisions.":
+    "يُقرأ أسبوعيًا ويُفحص بحثًا عن ملفات استبدلها البنك المركزي أو سحبها. تُدرج التغييرات تحديثاتٍ للأرشيف ولا تُحتسب تعديلات بعد.",
+  "Read weekly. Not yet checked for changes: new readings are listed as archive updates.":
+    "يُقرأ أسبوعيًا. لا يُفحص بحثًا عن تغييرات بعد، وتُدرج القراءات الجديدة تحديثاتٍ للأرشيف.",
+  "Not counted": "لا تُحتسب",
+  "The series Miqyas computes or parses from press releases, such as reserves, remittances and the yield curve. They move when their sources move.":
+    "السلاسل التي يحسبها مقياس أو يستخرجها من البيانات الصحفية، مثل الاحتياطيات والتحويلات ومنحنى العائد. تتحرك حين تتحرك مصادرها.",
+  "Every value Miqyas has held, with the first and last day it was held:":
+    "كل قيمة احتفظ بها مقياس، مع أول يوم وآخر يوم احتفظ بها فيه:",
+  "the revisions table in miqyas.sqlite": "جدول revisions في miqyas.sqlite",
   "since": "منذ",
-  "Caught in the act": "بالدليل",
   "Where CBE published two different values for one date":
     "حيث نشر البنك المركزي قيمتين مختلفتين لتاريخ واحد",
+  "These do not need a history to find: the same figure appears twice, differently, inside one of CBE's own tables. Miqyas keeps one, the same one every day, and records both.":
+    "هذه لا تحتاج تاريخًا لاكتشافها: الرقم نفسه يظهر مرتين، مختلفًا، داخل جدول واحد من جداول البنك المركزي. يحتفظ مقياس بواحد، هو نفسه كل يوم، ويسجّل كليهما.",
   "Day by day": "يومًا بيوم",
+  "{n} days on the record": "{n} يومًا في السجل",
+  "The tables are read once a day and any change is saved. Days with no change are not listed.":
+    "تُقرأ الجداول مرة كل يوم ويُحفظ أي تغيير. الأيام التي لم يتغيّر فيها شيء لا تظهر هنا.",
+  "How this is built": "كيف بُني هذا",
+  "Read out of the git history, with each change put down to CBE or to Miqyas":
+    "مقروء من سجل git، وكل تغيير منسوب إلى البنك المركزي أو إلى مقياس",
+  "A change counts as a CBE revision only when the file CBE served changed: a different value for the same date, in the same table, than the one Miqyas saved before. When Miqyas reads the same files differently, after a parser fix or a new way of dating a quarter, the change is listed as re-read by Miqyas. Series Miqyas computes are never counted as revisions. More than 500 changes in one go are held back for a check rather than reported.":
+    "لا يُحتسب التغيير تعديلًا من البنك المركزي إلا إذا تغيّر الملف الذي قدّمه البنك: قيمة مختلفة للتاريخ نفسه، في الجدول نفسه، عن تلك التي حفظها مقياس من قبل. وحين يقرأ مقياس الملفات نفسها قراءة مختلفة، بعد إصلاح في المعالج أو طريقة جديدة لتأريخ ربع السنة، يُدرج التغيير على أنه إعادة قراءة من مقياس. ولا تُحتسب السلاسل التي يحسبها مقياس تعديلات أبدًا. وأكثر من 500 تغيير دفعة واحدة تُحجز للمراجعة بدل نشرها.",
+  "{n} commits of history.": "عدد الإيداعات في السجل: {n}.",
+  "Up to {n} new readings shown per day, biggest move against each series' usual level first; the totals count all of them.":
+    "تُعرض حتى {n} قراءة جديدة في اليوم، الأكبر تحركًا قياسًا إلى المستوى المعتاد لكل سلسلة أولًا، والمجاميع تشمل الجميع.",
+  "The change log has not been built yet": "لم يُبنَ سجل التغييرات بعد",
+  "It is read out of this repository's own git history. Run this after the exports:":
+    "يُقرأ من سجل git لهذا المستودع نفسه. شغّل هذا بعد التصدير:",
+  "A shallow clone has no history to read. Clone the full history, or set this in the workflow:":
+    "النسخة المستنسخة جزئيًا لا تاريخ فيها لقراءته. استنسخ التاريخ كاملًا، أو اضبط هذا في سير العمل:",
   "For": "عن",
   "Kept": "المحفوظة",
   "Discarded": "المستبعدة",
+  "The record begins": "بداية السجل",
+  "{s} series and {r} readings, as first read.": "{s} سلسلة و{r} قراءة، كما قُرئت أول مرة.",
+  "Revised after publication: {n}": "عُدِّل بعد النشر: {n}",
+  "for|a date": "بتاريخ",
+  "no longer published, was": "لم يعد منشورًا، وكان",
+  "revised to": "عُدِّل إلى",
+  "New series: {n}": "سلاسل جديدة: {n}",
+  "{n} readings from {d}": "{n} قراءة منذ {d}",
+  "New readings: {n}": "قراءات جديدة: {n}",
+  ", the {n} that moved most": "، وهذه أكثر {n} منها تحركًا",
+  "{n} earlier readings added to series already held.": "أُضيفت {n} قراءة سابقة إلى سلاسل موجودة.",
+  "Auction results: {n}": "نتائج المزادات: {n}",
+  "Excel archive update": "تحديث أرشيف Excel",
+  "{n} readings added across {s} series": "أُضيفت {n} قراءة في {s} سلسلة",
+  ", newest for {d}": "، أحدثها بتاريخ {d}",
+  "{n} values changed or removed; not counted as revisions.":
+    "تغيّرت أو حُذفت {n} قيمة، ولا تُحتسب تعديلات.",
+  "Re-read by Miqyas": "أعاد مقياس قراءتها",
+  "The Excel archive was read again after a change to the parser.":
+    "أُعيدت قراءة أرشيف Excel بعد تغيير في المعالج.",
+  "Changed by Miqyas in the repository: a parser fix, a new series or a correction.":
+    "غيّرها مقياس في المستودع: إصلاح في المعالج أو سلسلة جديدة أو تصحيح.",
+  "A table changed although the file CBE served behind it did not.":
+    "تغيّر جدول مع أن الملف الذي قدّمه البنك المركزي وراءه لم يتغيّر.",
+  "A date where CBE published two values; the one kept changed.":
+    "تاريخ نشر له البنك المركزي قيمتين، وتغيّرت القيمة المحفوظة.",
+  "Series Miqyas computes were recomputed from their sources.":
+    "أُعيد حساب سلاسل يحسبها مقياس من مصادرها.",
+  "{c} values changed, {a} added and {r} removed.": "تغيّرت {c} قيمة، وأُضيفت {a}، وحُذفت {r}.",
+  "Series under new ids: {n}.": "سلاسل بمعرّفات جديدة: {n}.",
+  "Series added: {n}. Series dropped: {g}.": "سلاسل أُضيفت: {n}. سلاسل أُزيلت: {g}.",
+  "Not counted as revisions.": "لا تُحتسب تعديلات.",
+  "For example {t} for {d}, read as {a} and now as {b}.":
+    "مثال: {t} بتاريخ {d}، قُرئت {a} وتُقرأ الآن {b}.",
+  "Held back": "محجوزة للمراجعة",
+  "{n} changes in one go, too many to treat as revisions without a check.":
+    "{n} تغييرًا دفعة واحدة، وهو عدد أكبر من أن يُعامل تعديلات دون مراجعة.",
+  "record begins": "بداية السجل",
+  "{n} new": "{n} جديدة",
+  "{n} revised": "{n} معدَّلة",
+  "{n} new series": "{n} سلسلة جديدة",
+  "{n} auction result": "{n} نتيجة مزاد",
+  "{n} auction results": "{n} نتيجة مزاد",
+  "archive update": "تحديث الأرشيف",
+  "{n} re-read by Miqyas": "{n} أعاد مقياس قراءتها",
+  "{n} held back": "{n} محجوزة",
 
   /* ---------- the workhorse table ---------- */
   "Latest": "الأحدث",
@@ -511,10 +599,10 @@ const AR = {
     "بكم كان الدولار في مصر في أي تاريخ؟ | مقياس",
   "The Central Bank's official EGP/USD rate on any date since January 2005, and on the same calendar day in every year since.":
     "سعر الدولار الرسمي لدى البنك المركزي في أي تاريخ منذ يناير 2005، وفي اليوم نفسه من كل عام منذ ذلك الحين.",
-  "What the Central Bank of Egypt quietly restated | Miqyas":
-    "ما عدّله البنك المركزي المصري في صمت | مقياس",
-  "CBE overwrites its files when it revises a figure, with no changelog. This keeps every copy, so it can say what a number read last month and what was changed after publication.":
-    "يستبدل البنك المركزي ملفاته عند تعديل أي رقم، بلا سجل للتغييرات. هذا الموقع يحتفظ بكل نسخة، فيستطيع أن يقول ماذا كان الرقم الشهر الماضي وما الذي تغيّر بعد النشر.",
+  "Revisions to published figures | Miqyas":
+    "التعديلات على الأرقام المنشورة | مقياس",
+  "Daily record of CBE figures as published, and any revisions to figures already published. Independent; not affiliated with CBE.":
+    "سجل يومي لأرقام البنك المركزي كما نُشرت، وأي تعديلات على أرقام سبق نشرها. موقع مستقل غير تابع للبنك المركزي.",
   "Search 1,478 Central Bank of Egypt publications | Miqyas":
     "ابحث في 1,478 منشورًا للبنك المركزي المصري | مقياس",
   "Every statistical bulletin, circular, annual report and press release CBE has put out as a PDF, 53,006 pages of it, searchable in English and Arabic.":
