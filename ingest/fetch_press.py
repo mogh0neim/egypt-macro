@@ -1,9 +1,9 @@
 """Extract series and statement text from CBE press releases.
 
-CBE publishes net international reserves and remittances only as prose inside
-press releases -- there is no downloadable series for either, anywhere. Both
-are among the most-watched numbers in the Egyptian economy. Parsing them out
-makes this the only machine-readable source.
+CBE announces net international reserves and remittances each month in press
+releases. Both are among the most-watched numbers in the Egyptian economy.
+Reading them out of the release text puts them beside everything else here,
+dated by the day the release was published.
 
 Also captures MPC statements. Of the 178 MPC releases going back to June 2005,
 only 28 are HTML pages -- the other 150 link straight to a PDF and are picked
@@ -16,7 +16,12 @@ Outputs:
   corpus/mpc/<date>.json               statement text plus parsed rates
   corpus/news_index.json               all 782 items with categories
 
-Run:  python ingest/fetch_press.py [--limit N] [--skip-cached]
+Run:  python ingest/fetch_press.py [--limit N] [--skip-cached] [--refresh N]
+
+`--skip-cached` reuses releases already in data/raw/press, which would leave a
+release CBE corrects after publishing it unseen for good. `--refresh N` reads
+the N newest releases again anyway; a cached copy is replaced only when the
+text a reader sees has changed, so a correction is committed and nothing else.
 """
 
 from __future__ import annotations
@@ -187,6 +192,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, help="only the N most recent items")
     ap.add_argument("--skip-cached", action="store_true", help="reuse data/raw/press")
+    ap.add_argument("--refresh", type=int, default=0, metavar="N",
+                    help="with --skip-cached, still read the N newest releases again")
     ap.add_argument("--delay", type=float, default=1.0)
     args = ap.parse_args()
 
@@ -223,12 +230,14 @@ def main() -> int:
     misses: list[dict] = []
     dead: list[dict] = []
     mpc_count = 0
+    refresh = {it["url"] for it in wanted[: max(args.refresh, 0)]}
+    corrected = 0
 
     for item in wanted:
         url = item["url"]
         cache = RAW / f"{slugify(url)}.html.gz"
 
-        if args.skip_cached and cache.exists():
+        if args.skip_cached and cache.exists() and url not in refresh:
             with gzip.open(cache, "rt", encoding="utf-8") as fh:
                 page = fh.read()
         else:
@@ -238,9 +247,24 @@ def main() -> int:
                 print(f"  skip {url}: {type(exc).__name__}", file=sys.stderr)
                 continue
             page = blob.decode("utf-8", "replace")
-            # mtime=0 and raw bytes, so an unchanged page compresses to
-            # identical output on any machine. See fetch_series for why.
-            cache.write_bytes(gzip.compress(blob, compresslevel=9, mtime=0))
+            # The page around a release changes on every request; the release
+            # does not. Keep the old copy unless the text itself changed, so a
+            # new file under data/raw/press always means CBE changed what it says.
+            old = None
+            if cache.exists():
+                try:
+                    old = gzip.decompress(cache.read_bytes()).decode("utf-8", "replace")
+                except (OSError, EOFError):
+                    old = None
+            if old is not None and page_text(old) == page_text(page):
+                page = old
+            else:
+                if old is not None:
+                    corrected += 1
+                    print(f"  changed since last read: {url}")
+                # mtime=0 and raw bytes, so an unchanged page compresses to
+                # identical output on any machine. See fetch_series for why.
+                cache.write_bytes(gzip.compress(blob, compresslevel=9, mtime=0))
 
         text = page_text(page)
         period = item["customDate"][:10]
@@ -302,8 +326,8 @@ def main() -> int:
                 "unit": "USD million",
                 "derived": True,
                 "method": (
-                    "Parsed from the monthly CBE press release text. CBE does not "
-                    "publish this as a downloadable series."
+                    "Parsed by Miqyas from the text of CBE's monthly reserves press "
+                    "release. Each value is dated by the day the release was published."
                 ),
             },
             {
@@ -359,6 +383,8 @@ def main() -> int:
     print(f"\nNIR         {len(nir):3d} points  {nir[0][1] if nir else '-'} to {nir[-1][1] if nir else '-'}")
     print(f"remittances {len(rem):3d} points")
     print(f"MPC         {mpc_count:3d} statements -> corpus/mpc/")
+    if refresh:
+        print(f"read again  {len(refresh):3d} newest releases, {corrected} changed since last read")
     if misses:
         (CORPUS / "unparsed_releases.json").write_text(
             json.dumps(misses, indent=1, ensure_ascii=False), encoding="utf-8"
