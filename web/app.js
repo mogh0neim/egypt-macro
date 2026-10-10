@@ -222,10 +222,15 @@ document.getElementById("app").addEventListener("click", (e) => {
  * build_changes.py and every shallow checkout. */
 function changedLine(changed) {
   if (!changed || !changed.date) return "";
-  const bits = [];
-  if (changed.revised) bits.push(changed.revised + " " + t("restated by CBE"));
-  if (changed.moved) bits.push(changed.moved.toLocaleString() + " " + t("numbers moved"));
-  if (!bits.length) return "";
+  /* New readings and revisions, named apart and both always said. "Numbers
+   * moved" read as values that changed when it counted values that were new,
+   * and a revision count of zero is itself the news on most days. */
+  if (!changed.moved && !changed.revised) return "";
+  const revised = changed.revised || 0;
+  const bits = [
+    (changed.moved || 0).toLocaleString("en-US") + " " + t("new readings") + ", " +
+    revised + " " + t(revised === 1 ? "revision" : "revisions"),
+  ];
   // niceDate, not shortDate: these are single days, and "12 numbers moved on
   // Sep 2026" says the wrong thing about a daily figure.
   const when = changed.date === new Date().toISOString().slice(0, 10)

@@ -70,8 +70,8 @@ const AR = {
    * On every page, and the only route to the change log, so it is the one
    * piece of chrome that cannot be left in English. */
   "Miqyas: Egypt's economy in numbers": "مقياس: اقتصاد مصر بالأرقام",
-  "Every series the Central Bank of Egypt publishes, cleaned, charted and free to download. Exchange rates since 2005, treasury auctions since 2004, inflation since 2000, every rate decision since June 2005.":
-    "كل سلسلة ينشرها البنك المركزي المصري، منقّاة ومرسومة ومتاحة للتحميل مجانًا. أسعار الصرف منذ 2005، وعطاءات الخزانة منذ 2004، والتضخم منذ 2000، وكل قرار فائدة منذ يونيو 2005.",
+  "Central Bank of Egypt statistics as one clean dataset: exchange rates, treasury auctions, inflation, policy rates and the CBE Excel archive, with a free API, bulk files and a daily record of changes. Independent; not affiliated with CBE.":
+    "إحصاءات البنك المركزي المصري في مجموعة بيانات واحدة منظمة: أسعار الصرف وعطاءات الخزانة والتضخم وأسعار الفائدة وأرشيف ملفات Excel، مع واجهة مجانية وملفات تحميل وسجل يومي للتغييرات. موقع مستقل غير تابع للبنك المركزي.",
   "Rebuilt": "أُعيد البناء",
   "Last rebuilt": "آخر إعادة بناء",
   "CBE last read": "آخر قراءة من البنك المركزي",
@@ -79,8 +79,9 @@ const AR = {
   "observations": "مشاهدة",
   "documents": "وثيقة",
   "the daily job may not have run": "ربما لم تُشغَّل المهمة اليومية",
-  "restated by CBE": "عدّلها البنك المركزي",
-  "numbers moved": "رقمًا تحرّك",
+  "new readings": "قراءة جديدة",
+  "revisions": "تعديلات",
+  "revision": "تعديل",
   "This is what it looks closest to.": "هذا أقرب ما يشبهه.",
   "The numbers this page needs did not arrive. Reloading usually fixes it. If it keeps happening, the rest of the site may still work: try the":
     "لم تصل الأرقام التي تحتاجها هذه الصفحة. غالبًا ما يحلّ التحديث المشكلة. وإن تكرّر الأمر فقد يعمل باقي الموقع: جرّب",
@@ -89,15 +90,15 @@ const AR = {
   "follows your system": "يتبع إعداد نظامك",
 
   /* ---------- footer ---------- */
-  "Egypt's macroeconomic record, rebuilt from the Central Bank's own publications every morning.":
-    "سجل الاقتصاد الكلي المصري، يُعاد بناؤه من منشورات البنك المركزي نفسها كل صباح.",
+  "Egypt's macroeconomic record from the Central Bank's own publications, updated daily.":
+    "سجل الاقتصاد الكلي المصري من منشورات البنك المركزي نفسها، يُحدَّث يوميًا.",
   "Work out what yours is worth": "احسب قيمة أموالك",
   "Find or browse series": "ابحث في السلاسل أو تصفّحها",
   "Your favourites": "مفضلتك",
   "Rate decisions": "قرارات أسعار الفائدة",
   "Downloads and API": "التنزيلات وواجهة البيانات",
   "This project": "عن المشروع",
-  "What changed, and what CBE restated": "ما الذي تغيّر، وما الذي عدّله البنك المركزي",
+  "Revisions to published figures": "التعديلات على الأرقام المنشورة",
   "What is and is not here": "ما هو موجود هنا وما هو غير موجود",
   "What is and is not here →": "ما هو موجود هنا وما هو غير موجود ←",
   "Source on GitHub ↗": "الكود على GitHub ↗",
@@ -159,8 +160,8 @@ const AR = {
 
   "Latest reading, the change since the one before it, and where that sits between the series' own record low and high.":
     "آخر قراءة، والتغيّر عن القراءة السابقة، وموقع ذلك بين أدنى وأعلى مستوى سجّلته السلسلة نفسها.",
-  "Star any row to keep it on your desk: one screen of the numbers you read every morning, with no prose in the way.":
-    "ضع نجمة على أي صف لتبقيه على مكتبك: شاشة واحدة بالأرقام التي تقرؤها كل صباح، بلا كلام يعترض الطريق.",
+  "Star any row to keep it on your desk: one screen of the numbers you check most, with no prose in the way.":
+    "ضع نجمة على أي صف لتبقيه على مكتبك: شاشة واحدة بالأرقام التي تتابعها أكثر من غيرها، بلا كلام يعترض الطريق.",
   "Thirteen topics over": "ثلاثة عشر موضوعًا تغطي",
   "series. No search box required. Pick a subject and read down.":
     "سلسلة. لا حاجة لمربع بحث. اختر موضوعًا واقرأ من أعلى لأسفل.",
@@ -173,17 +174,16 @@ const AR = {
   "Take it with you": "خذها معك",
   "Parquet, SQLite, CSV, and a keyless API": "Parquet وSQLite وCSV وواجهة بلا مفتاح",
   "All": "كل",
-  "series in whichever shape suits you, rebuilt every morning. No key, no account, no rate limit, and a SHA-256 for every file so a mirror can check itself.":
-    "سلسلة بالشكل الذي يناسبك، يُعاد بناؤها كل صباح. بلا مفتاح ولا حساب ولا حدّ للاستخدام، ومع بصمة SHA-256 لكل ملف حتى تتحقق أي نسخة من نفسها.",
-  "1,478 publications, read cover to cover": "1,478 منشورًا، مقروءة من الغلاف إلى الغلاف",
-  "Every statistical bulletin, circular, annual report and press release CBE has put out as a PDF, 53,006 pages of it. Search inside the text and a result lands you on a page number, in English or Arabic.":
-    "كل نشرة إحصائية ومنشور دوري وتقرير سنوي وبيان صحفي أصدره البنك المركزي بصيغة PDF، 53,006 صفحة. ابحث داخل النص لتصل النتيجة إلى رقم الصفحة، بالعربية أو الإنجليزية.",
+  "series in whichever shape suits you, updated daily. No key and no account, and a SHA-256 for every file so any copy can be checked against it.":
+    "سلسلة بالشكل الذي يناسبك، تُحدَّث يوميًا. بلا مفتاح ولا حساب، ومع بصمة SHA-256 لكل ملف حتى يمكن مطابقة أي نسخة بها.",
+  "CBE publications, indexed for search": "منشورات البنك المركزي، مفهرسة للبحث",
+  "Statistical bulletins, circulars, annual reports and press releases CBE has published as PDFs, indexed so you can search inside them. A result lands you on a page number, in English or Arabic, and links to the original on cbe.org.eg.":
+    "نشرات إحصائية ومنشورات دورية وتقارير سنوية وبيانات صحفية أصدرها البنك المركزي بصيغة PDF، مفهرسة لتبحث داخلها. تصل النتيجة إلى رقم الصفحة، بالعربية أو الإنجليزية، وترتبط بالأصل على موقع البنك المركزي.",
   "The same numbers, asked in the second person. A salary from a year you remember, priced in today's money. Savings kept as pounds against the same money swapped for dollars on day one. The dollar rate on any date since 2005.":
     "الأرقام نفسها، مطروحة بصيغة المخاطب. راتب من عام تتذكره، مُقوَّم بنقود اليوم. مدخرات بقيت بالجنيه مقابل المال نفسه لو حُوِّل إلى دولار من اليوم الأول. وسعر الدولار في أي تاريخ منذ 2005.",
-  "The Central Bank does not keep a changelog. This does.":
-    "البنك المركزي لا يحتفظ بسجل للتغييرات. هذا الموقع يحتفظ.",
-  "CBE overwrites its files in place when it revises a figure, so there is no way to ask what a number read last month. Every copy fetched here is kept, which makes this the only record of what was quietly restated. It began on 20 August 2026 and fills up from there.":
-    "يستبدل البنك المركزي ملفاته عند تعديل أي رقم، فلا سبيل لمعرفة ماذا كان الرقم الشهر الماضي. كل نسخة جُلبت هنا محفوظة، وهو ما يجعل هذا السجل الوحيد لما عُدّل في صمت. بدأ في 20 أغسطس 2026 ويمتلئ من هناك.",
+  "A dated record of what CBE published": "سجل مؤرَّخ لما نشره البنك المركزي",
+  "Miqyas keeps a dated copy of the daily tables from 20 August 2026. If CBE changes a figure it has already published, the change appears on the What changed page, which also counts the revisions recorded so far. The weekly Excel archive is not yet checked for changes.":
+    "يحتفظ مقياس بنسخة مؤرَّخة من الجداول اليومية منذ 20 أغسطس 2026. إذا غيّر البنك المركزي رقمًا سبق نشره فسيظهر التغيير في صفحة «ما الذي تغيّر»، التي تعرض أيضًا عدد التعديلات المرصودة حتى الآن. ولا يُفحص أرشيف Excel الأسبوعي بحثًا عن تغييرات بعد.",
 
   /* ---------- the calculators ---------- */
   "Three questions about your own money": "ثلاثة أسئلة عن أموالك أنت",
@@ -328,8 +328,8 @@ const AR = {
    * The labels a reader picks a direction from, so the most load-bearing
    * prose on the site after the hero. */
   "Foreign exchange": "الصرف الأجنبي",
-  "Official, market and interbank exchange rates, against the dollar and twelve other currencies.":
-    "أسعار الصرف الرسمية والسوقية وبين البنوك، مقابل الدولار واثنتي عشرة عملة أخرى.",
+  "Official, market and interbank exchange rates for the dollar and other major currencies.":
+    "أسعار الصرف الرسمية والسوقية وبين البنوك للدولار وعملات رئيسية أخرى.",
   "Interest rates": "أسعار الفائدة",
   "The CBE corridor, overnight money, and what treasury bills pay at auction.":
     "كوريدور البنك المركزي، وسوق ما بين البنوك ليوم واحد، وعائد أذون الخزانة في العطاءات.",
@@ -337,8 +337,8 @@ const AR = {
   "Headline and core inflation, the basket underneath them, and producer prices.":
     "التضخم العام والأساسي، ومكوّنات السلة تحتهما، وأسعار المنتجين.",
   "Reserves and remittances": "الاحتياطي والتحويلات",
-  "Two headline numbers, read out of CBE's monthly press release rather than published as a table: net international reserves, and what Egyptians abroad send home.":
-    "رقمان رئيسيان يُستخرجان من البيان الصحفي الشهري للبنك المركزي لا من جدول منشور: صافي الاحتياطي الأجنبي، وما يرسله المصريون بالخارج.",
+  "Two headline numbers, read by Miqyas from CBE's press releases: net international reserves, and what Egyptians abroad send home.":
+    "رقمان رئيسيان يستخرجهما مقياس من البيانات الصحفية للبنك المركزي: صافي الاحتياطي الأجنبي، وما يرسله المصريون بالخارج.",
   "Balance of payments": "ميزان المدفوعات",
   "The current account, trade in goods and services, and how the gap is financed.":
     "الحساب الجاري، وتجارة السلع والخدمات، وكيف تُموَّل الفجوة.",
@@ -460,13 +460,13 @@ const AR = {
    * Read by prerender.py as well as by the front end. These are the titles and
    * descriptions a search result shows and a crawler indexes, so they are the
    * first Arabic anybody sees. */
-  "Source: Central Bank of Egypt. Republished by Miqyas, an unofficial mirror, which is not affiliated with, endorsed by, or connected to the Central Bank of Egypt.":
-    "المصدر: البنك المركزي المصري. أعاد نشرها مقياس، وهو مرآة غير رسمية غير تابعة للبنك المركزي المصري ولا معتمدة منه ولا مرتبطة به.",
+  "Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by Miqyas, an independent project not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Values are cleaned and dated by Miqyas; check against CBE before citing.":
+    "المصدر: البنك المركزي المصري (https://www.cbe.org.eg). أعاد نشرها مقياس، وهو مشروع مستقل غير تابع للبنك المركزي المصري ولا معتمد منه ولا مرتبط به. تنقية القيم وتأريخها من عمل مقياس؛ راجع البنك المركزي قبل الاستشهاد.",
   "on": "في",
   "to": "إلى",
   "readings back to": "قراءة تعود إلى",
   "series from Egypt's central bank": "سلسلة من البنك المركزي المصري",
-  "series, rebuilt every morning.": "سلسلة، يُعاد بناؤها كل صباح.",
+  "series, updated daily.": "سلسلة، تُحدَّث يوميًا.",
   "pages from the Central Bank of Egypt": "صفحة من البنك المركزي المصري",
   "Previous": "السابقة",
   "Unit": "الوحدة",
@@ -474,17 +474,17 @@ const AR = {
   "Readings": "عدد القراءات",
   "Coverage": "الفترة المغطاة",
 
-  "Find or browse 1,317 Egyptian economic series | Miqyas":
-    "ابحث أو تصفّح 1,317 سلسلة اقتصادية مصرية | مقياس",
-  "Every series the Central Bank of Egypt publishes, in thirteen subjects, searchable in English and Arabic.":
-    "كل سلسلة ينشرها البنك المركزي المصري، في ثلاثة عشر موضوعًا، قابلة للبحث بالعربية والإنجليزية.",
+  "Find or browse {series} Egyptian economic series | Miqyas":
+    "ابحث أو تصفّح {series} سلسلة اقتصادية مصرية | مقياس",
+  "Central Bank of Egypt statistics in thirteen subjects, searchable in English and Arabic.":
+    "إحصاءات البنك المركزي المصري في ثلاثة عشر موضوعًا، قابلة للبحث بالعربية والإنجليزية.",
   "Your favourites | Miqyas": "مفضلتك | مقياس",
-  "One screen of the numbers you read every morning, with no prose in the way.":
-    "شاشة واحدة تضم الأرقام التي تقرؤها كل صباح، بلا كلام يعترض الطريق.",
+  "One screen of the numbers you check most, with no prose in the way.":
+    "شاشة واحدة تضم الأرقام التي تتابعها أكثر من غيرها، بلا كلام يعترض الطريق.",
   "Every CBE rate decision since 2005 | Miqyas":
     "كل قرارات الفائدة للبنك المركزي منذ 2005 | مقياس",
-  "172 Monetary Policy Committee decisions back to June 2005, with the corridor and what changed in the wording each time.":
-    "172 قرارًا للجنة السياسة النقدية تعود إلى يونيو 2005، مع الكوريدور وما تغيّر في الصياغة كل مرة.",
+  "{decisions} Monetary Policy Committee statements back to June 2005, with the corridor and what changed in the wording each time.":
+    "{decisions} بيانًا للجنة السياسة النقدية تعود إلى يونيو 2005، مع الكوريدور وما تغيّر في الصياغة كل مرة.",
   "Egyptian inflation calculator: what is your money worth? | Miqyas":
     "حاسبة التضخم في مصر: كم تساوي أموالك؟ | مقياس",
   "Three calculators on the Central Bank's own numbers: what a salary from any month is worth today, what savings kept as pounds still buy, and the dollar rate on any date since 2005.":
@@ -501,26 +501,26 @@ const AR = {
     "بكم كان الدولار في مصر في أي تاريخ؟ | مقياس",
   "The Central Bank's official EGP/USD rate on any date since January 2005, and on the same calendar day in every year since.":
     "سعر الدولار الرسمي لدى البنك المركزي في أي تاريخ منذ يناير 2005، وفي اليوم نفسه من كل عام منذ ذلك الحين.",
-  "What the Central Bank of Egypt quietly restated | Miqyas":
-    "ما عدّله البنك المركزي المصري في صمت | مقياس",
-  "CBE overwrites its files when it revises a figure, with no changelog. This keeps every copy, so it can say what a number read last month and what was changed after publication.":
-    "يستبدل البنك المركزي ملفاته عند تعديل أي رقم، بلا سجل للتغييرات. هذا الموقع يحتفظ بكل نسخة، فيستطيع أن يقول ماذا كان الرقم الشهر الماضي وما الذي تغيّر بعد النشر.",
-  "Search 1,478 Central Bank of Egypt publications | Miqyas":
-    "ابحث في 1,478 منشورًا للبنك المركزي المصري | مقياس",
-  "Every statistical bulletin, circular, annual report and press release CBE has put out as a PDF, 53,006 pages of it, searchable in English and Arabic.":
-    "كل نشرة إحصائية ومنشور دوري وتقرير سنوي وبيان صحفي أصدره البنك المركزي بصيغة PDF، 53,006 صفحة، قابلة للبحث بالعربية والإنجليزية.",
+  "Revisions to published figures | Miqyas":
+    "التعديلات على الأرقام المنشورة | مقياس",
+  "Daily record of CBE figures as published, and any revisions to figures already published. Independent; not affiliated with CBE.":
+    "سجل يومي لأرقام البنك المركزي كما نُشرت، وأي تعديلات على أرقام سبق نشرها. موقع مستقل غير تابع للبنك المركزي.",
+  "Search {documents} Central Bank of Egypt publications | Miqyas":
+    "ابحث في {documents} منشورًا للبنك المركزي المصري | مقياس",
+  "CBE publications in PDF, {pages} pages of text indexed so you can search inside them in English and Arabic. Each result links to the original on cbe.org.eg.":
+    "منشورات البنك المركزي بصيغة PDF، {pages} صفحة من النصوص مفهرسة لتبحث داخلها بالعربية والإنجليزية. كل نتيجة ترتبط بالأصل على موقع البنك المركزي.",
   "Egypt's money market: the corridor, the tenors, the bill curve | Miqyas":
     "سوق النقد المصري: الكوريدور والآجال ومنحنى الأذون | مقياس",
   "Where the pound funded inside the CBE corridor, the interbank tenors with their volumes, and the EGP bill curve with bid to cover.":
     "أين تموّل الجنيه داخل كوريدور البنك المركزي، وآجال ما بين البنوك بأحجامها، ومنحنى أذون الخزانة بالجنيه مع نسبة التغطية.",
   "Download Egypt's macroeconomic data: Parquet, SQLite, CSV and a keyless API | Miqyas":
     "حمّل بيانات الاقتصاد الكلي المصري: Parquet وSQLite وCSV وواجهة بلا مفتاح | مقياس",
-  "All 1,317 series in whichever shape suits you, rebuilt every morning. No key, no account, no rate limit.":
-    "كل السلاسل الـ1,317 بالشكل الذي يناسبك، يُعاد بناؤها كل صباح. بلا مفتاح ولا حساب ولا حدّ للاستخدام.",
-  "About Miqyas: an unofficial mirror of Egypt's central bank data":
-    "عن مقياس: مرآة غير رسمية لبيانات البنك المركزي المصري",
-  "What is here, what is not, and how it is built. Miqyas is not affiliated with the Central Bank of Egypt.":
-    "ما هو موجود وما هو غير موجود، وكيف بُني هذا الموقع. مقياس غير تابع للبنك المركزي المصري.",
+  "All {series} series in whichever shape suits you, updated daily. No key and no account.":
+    "كل السلاسل الـ{series} بالشكل الذي يناسبك، تُحدَّث يوميًا. بلا مفتاح ولا حساب.",
+  "About Miqyas: an independent dataset of Egyptian central bank data":
+    "عن مقياس: مجموعة بيانات مستقلة من بيانات البنك المركزي المصري",
+  "Who made Miqyas and why, what is here and what is not, and the terms. Miqyas is an independent project, not affiliated with the Central Bank of Egypt.":
+    "من صنع مقياس ولماذا، وما هو موجود وما هو غير موجود، وشروط الاستخدام. مقياس مشروع مستقل غير تابع للبنك المركزي المصري.",
 
   /* ---------- error and empty states ---------- */
   "Nothing lives at that address": "لا يوجد شيء على هذا العنوان",

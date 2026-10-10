@@ -188,7 +188,7 @@ def base() -> tuple[Image.Image, ImageDraw.ImageDraw]:
     column(draw)
     draw.text((110, 44), "MIQYAS", font=font("display", 44), fill=MARBLE)
     draw.text((110, H - 58),
-              "UNOFFICIAL MIRROR  \u00b7  CENTRAL BANK OF EGYPT DATA  \u00b7  REBUILT EVERY MORNING",
+              "INDEPENDENT  \u00b7  NOT AFFILIATED WITH THE CENTRAL BANK OF EGYPT  \u00b7  UPDATED DAILY",
               font=font("mono", 19), fill=MUTED)
     return img, draw
 
@@ -205,7 +205,7 @@ def site_card(fx_spark: list[float] | None) -> Image.Image:
     d.text((110, 150), "Egypt's economy", font=font("display", 96), fill=MARBLE)
     d.text((110, 248), "in numbers. Free.", font=font("display", 96), fill=MARBLE)
     d.text((112, 376),
-           "Every series the Central Bank publishes, cleaned, charted and searchable.",
+           "Central Bank of Egypt data, cleaned and charted.",
            font=font("body", 30), fill=MUTED)
     if fx_spark:
         sparkline(d, fx_spark, (110, 440, W - 90, 552))

@@ -39,7 +39,7 @@ async function viewData() {
     "<h2>Take all of it</h2>" +
     '<p class="lede">' + index.length.toLocaleString() + " series and " + totalObs.toLocaleString() +
     " observations, in whichever shape suits you. Everything here is rebuilt from CBE's own " +
-    "publications every morning, so a bookmark stays current.</p>" +
+    "publications and updated daily, so a bookmark stays current.</p>" +
 
     '<h3 class="sub-head">Whole-archive downloads</h3>' +
     '<div class="dl-grid">' +
@@ -48,7 +48,7 @@ async function viewData() {
     (sqliteName ? file(ROOT + "/" + sqliteName.path, sqliteName.path, "One SQLite file with both tables and an index on period.", MB(sqliteName.bytes)) : "") +
     file(ROOT + "/bulk/series-csv.zip", "series-csv.zip", "Plain CSV, one file per dataset, plus the catalogue.", sizeOf("bulk/series-csv.zip")) +
     file(ROOT + "/bulk/records-csv.zip", "records-csv.zip", "The record-level tables behind the derived series.", sizeOf("bulk/records-csv.zip")) +
-    file(ROOT + "/manifest.json", "manifest.json", "Every published file with its SHA-256, so a mirror can check itself.", sizeOf("manifest.json")) +
+    file(ROOT + "/manifest.json", "manifest.json", "Every published file with its SHA-256, so any copy can be checked against it.", sizeOf("manifest.json")) +
     "</div>" +
 
     '<h3 class="sub-head">By topic</h3>' +
@@ -62,9 +62,9 @@ async function viewData() {
 
     '<section class="section band-inset"><div class="wrap-inner">' +
     '<p class="eyebrow">API</p>' +
-    "<h2>Static JSON, no key, no rate limit</h2>" +
-    '<p class="lede">There is no server. Every endpoint is a file on a CDN, which is why it ' +
-    "cannot go down, cannot rate-limit you, and costs nothing to run.</p>" +
+    "<h2>Static JSON, no key</h2>" +
+    '<p class="lede">There is no server. Every endpoint is a static file on GitHub Pages, ' +
+    "with no key and no rate limit that we set.</p>" +
     '<pre class="code"><code># the catalogue: one light record per series\n' +
     'curl ' + location.origin + location.pathname.replace(/[^/]*$/, "") + 'api/v1/series.json\n\n' +
     "# one series, with every observation\n" +

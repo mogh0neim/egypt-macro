@@ -216,7 +216,8 @@ def main() -> int:
         "observations": sum(s.get("n", 0) for s in series),
         "documents": len(documents),
         "source": "Central Bank of Egypt",
-        "affiliation": "None. Miqyas is an unofficial mirror.",
+        "affiliation": "None. Miqyas is an independent project, not affiliated with, endorsed by, "
+                       "or connected to the Central Bank of Egypt.",
     }
 
     # The freshness strip is the entry point to the change log, because the nav

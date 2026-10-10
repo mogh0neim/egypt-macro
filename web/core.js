@@ -23,6 +23,12 @@ const ROOT = typeof MIQYAS_ROOT === "string" ? MIQYAS_ROOT
 const API = ROOT + "/api/v1";
 const SEARCH_BASE = ROOT + "/search";
 
+/* The one attribution sentence, in every file a reader takes away. The same
+ * words are in ingest/build_exports.py (JSON, Parquet, SQLite, the zip README)
+ * and ingest/prerender.py (the pre-rendered pages); change all three together. */
+const ATTRIBUTION =
+  "Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by Miqyas, an independent project not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Values are cleaned and dated by Miqyas; check against CBE before citing.";
+
 const state = {
   index: null,      // catalogue: one light record per series
   byId: null,
@@ -400,7 +406,7 @@ function nearestSeries(text, limit) {
 
 const TOPICS = [
   { key: "money", name: t("Foreign exchange"), icon: "£",
-    blurb: t("Official, market and interbank exchange rates, against the dollar and twelve other currencies."),
+    blurb: t("Official, market and interbank exchange rates for the dollar and other major currencies."),
     families: ["fx"] },
   { key: "rates", name: t("Interest rates"), icon: "%",
     blurb: t("The CBE corridor, overnight money, and what treasury bills pay at auction."),
@@ -409,7 +415,7 @@ const TOPICS = [
     blurb: t("Headline and core inflation, the basket underneath them, and producer prices."),
     families: ["prices", "inflation"] },
   { key: "reserves", name: t("Reserves and remittances"), icon: "◆",
-    blurb: t("Two headline numbers, read out of CBE's monthly press release rather than published as a table: net international reserves, and what Egyptians abroad send home."),
+    blurb: t("Two headline numbers, read by Miqyas from CBE's press releases: net international reserves, and what Egyptians abroad send home."),
     families: ["external"] },
   { key: "bop", name: t("Balance of payments"), icon: "⇄",
     blurb: t("The current account, trade in goods and services, and how the gap is financed."),
@@ -1384,7 +1390,10 @@ const crumbs = (parts) =>
 function downloadCSV(id, observations, meta, note) {
   const head =
     "# " + ((meta && meta.title_en) || id) + "\n" +
-    "# Source: Central Bank of Egypt. Republished by Miqyas, an unofficial mirror.\n" +
+    "# " + ATTRIBUTION + "\n" +
+    // A computed series is Miqyas's arithmetic, and the file says so where it
+    // credits the source, not only on the page it was downloaded from.
+    (meta && meta.derived ? "# Computed by Miqyas from CBE data: " + (meta.method || "") + "\n" : "") +
     "# Unit: " + ((meta && meta.unit) || "not stated") + "\n" +
     // What the reader was looking at when they asked for it. A file of 1,200
     // rows out of 5,172 with nothing saying which 1,200 is a trap.

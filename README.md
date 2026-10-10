@@ -9,20 +9,22 @@
 
 Egypt's economy in numbers. Free.
 
-Everything the Central Bank of Egypt publishes, as clean data: 1,317 series,
-charted, searchable and downloadable, with no key and no account.
+Central Bank of Egypt statistics as clean data: more than 1,300 series,
+charted, searchable and downloadable, with no key and no account. Coverage is
+listed on the Data page; some series stop earlier than CBE's own.
 
 *Miqyas* is the Nilometer on Rhoda Island: the graduated marble column Cairo read
 the flood against to forecast the harvest and set the tax rate. Egypt's first
 macroeconomic indicator, in service by 861 AD.
 
-The CBE puts a genuinely valuable body of statistics on its website and makes it
-hard to use: no API, no bulk download, no history you can load into anything, and
-files that get silently overwritten when figures are revised. This repository
-scrapes all of it once a day, cleans it, and commits the result.
+The CBE puts a genuinely valuable body of statistics on its website, spread
+across live tables, Excel files and PDFs. This repository copies CBE's live
+tables once a day and its Excel archive and publications once a week, cleans
+them into one dataset, and commits the result.
 
-Because it commits every copy, the git history is a record of what CBE quietly
-restated, which exists nowhere else and cannot be reconstructed after the fact.
+Because every copy is committed, the git history is a dated record of what CBE
+published, and of any later revisions, from 20 August 2026. So far it covers
+the daily tables; the weekly Excel archive is not yet checked for changes.
 [What changed](https://mogh0neim.github.io/egypt-macro/#/changes) reads it, with
 an [RSS feed](https://mogh0neim.github.io/egypt-macro/changes.xml) and a
 [revisions-only feed](https://mogh0neim.github.io/egypt-macro/changes-revisions.xml).
@@ -48,14 +50,16 @@ an [RSS feed](https://mogh0neim.github.io/egypt-macro/changes.xml) and a
 | `assets/fonts/` | Static IBM Plex and Almarai, so a CI runner draws the share cards in the site's own type |
 
 Nothing in `data/` or `catalog/` is hand-edited. Timestamps live only in
-`last_run.json`, so a diff anywhere else means a number actually moved.
+`last_run.json`; a diff in `data/clean/` means a value was added, changed or
+removed.
 
 ### Coverage
 
-**1,300 series, 420,000 observations**, from three sources: 30 live endpoints,
-981 Excel files, and figures that exist only inside press-release prose. On top
-of that, 1,478 documents with 53,006 pages of searchable text, quoted back with
-the match highlighted, and every MPC rate decision since June 2005.
+**More than 1,300 series and 420,000 observations**, from three sources: 30
+live endpoints, 981 Excel files, and figures read from press-release text. On
+top of that, about 1,500 documents with more than 50,000 pages of searchable
+text, quoted back with the match highlighted, and every MPC rate decision since
+June 2005. The exact counts for each build are in `status.json`.
 
 - **Exchange rates**: CBE official rates for 18 currencies (buy and sell), daily
   since January 2005. Market rates for 9 currencies since 2014. Interbank
@@ -71,9 +75,10 @@ the match highlighted, and every MPC rate decision since June 2005.
 - **Prices**: headline, core, regulated-item and fresh-produce inflation, both
   year-on-year and month-on-month, back to January 2000.
 - **Auctions**: repo, deposit and foreign-exchange auctions.
-- **Reserves and remittances**: parsed out of press-release text, because CBE
-  publishes neither as a series anywhere.
-- **Rate decisions**: all 169 MPC statements back to June 2005, with a diff
+- **Reserves and remittances**: read from press-release text and dated by the
+  day of the release. CBE also publishes reserves monthly on its own site, and
+  that series can differ from the first print kept here.
+- **Rate decisions**: every MPC statement back to June 2005, with a diff
   against the previous one. Where CBE's own archive records no decision, it is
   recovered from the published corridor series.
 
@@ -90,13 +95,13 @@ From the Excel archive, which is where the rest of Egypt's macro record lives:
 
 ## Why the git history matters
 
-CBE overwrites its files in place when it revises a figure. There is no public
-record anywhere of what a number said before it was revised.
+CBE updates its files in place, so a file downloaded today does not say what it
+said last month. CBE's own press releases keep many first prints, but there is
+no single dated history of its tables.
 
-Because every run commits the raw response, this repository accumulates one. Ask
-what CBE was publishing on any past date and `git log` can answer it. That record
-only exists from the day the scraper started, and it cannot be reconstructed
-afterwards.
+Because every run commits the raw response, this repository keeps one for the
+daily tables from 20 August 2026. Ask what those tables said on any later date
+and `git log` can answer it.
 
 ## Using it
 
@@ -198,14 +203,24 @@ forward-filled - a gap is a gap.
 
 ## Attribution
 
-The CBE's [disclaimer](https://www.cbe.org.eg/en/disclaimer) permits reuse of
-information obtained from its website, on two conditions: that the Central Bank
-of Egypt is cited as the source, and that any transformation of the data is
-stated explicitly. Both are honoured here - the raw responses sit alongside the
-cleaned output so any transformation can be checked against what CBE actually
-served.
+CBE's [disclaimer](https://www.cbe.org.eg/en/disclaimer) allows reuse of
+information from its website if CBE is cited as the source, any transformation
+is stated explicitly, and the information appears accurately. Miqyas cites CBE
+on every page and file, states per series whether a value is reproduced, dated
+by Miqyas or computed, and links each series to its CBE source where it has one.
+Errors in cleaning or dating are ours: check against CBE before you cite. Raw
+responses are kept in this repository under `data/raw/`.
 
-If you use this data, cite the Central Bank of Egypt as the source.
+If you use this data, cite the Central Bank of Egypt as the source. Every file
+carries the same line:
+
+> Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by Miqyas,
+> an independent project not affiliated with, endorsed by, or connected to the
+> Central Bank of Egypt. Values are cleaned and dated by Miqyas; check against
+> CBE before citing.
+
+If anything here should not be, [open an issue](https://github.com/mogh0neim/egypt-macro/issues)
+and it will be removed.
 
 The scraper requests each dataset once per day, one request at a time.
 

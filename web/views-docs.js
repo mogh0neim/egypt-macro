@@ -246,8 +246,8 @@ async function viewDocs(presetCategory) {
     '<p class="eyebrow">' + docs.length.toLocaleString() + " documents · " +
     ((docState.meta && docState.meta.pages) || 0).toLocaleString() + " pages of text</p>" +
     "<h2>The archive</h2>" +
-    '<p class="lede">Everything CBE has published as a PDF, mirrored and read. ' +
-    "Search inside the text and a result lands you on a page number, not on a 200-page file.</p>" +
+    '<p class="lede">CBE publications in PDF, indexed so you can search inside them. ' +
+    "A result lands you on a page number, not on a 200-page file, and links to the original on cbe.org.eg.</p>" +
     '<div class="topic-grid tight">' + collectionCards + "</div>" +
     "</section>" +
 

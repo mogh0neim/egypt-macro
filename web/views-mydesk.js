@@ -77,7 +77,7 @@ function deskGroups(ids) {
 function deskCSV(rows) {
   const head =
     "# Miqyas desk, " + new Date().toISOString().slice(0, 10) + "\n" +
-    "# Source: Central Bank of Egypt. Republished by Miqyas, an unofficial mirror.\n" +
+    "# " + ATTRIBUTION + "\n" +
     "series_id,title,unit,period,value,previous,change\n";
   const csv = (v) => {
     const t = v === null || v === undefined ? "" : String(v);

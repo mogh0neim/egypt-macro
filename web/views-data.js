@@ -181,7 +181,7 @@ async function viewHome() {
     '<section class="section band"><div class="wrap">' +
     '<p class="eyebrow">' + t("Start here") + "</p>" +
     "<h2>" + t("Seven questions, already answered") + "</h2>" +
-    '<p class="lede">' + t("Every number below is the latest CBE has published. Click one to see its whole history.") + "</p>" +
+    '<p class="lede">' + t("Every number below is the latest Miqyas holds. Click one to see its whole history.") + "</p>" +
     '<div class="starters">' + starters + "</div>" +
     "</div></section>" +
 
@@ -196,7 +196,7 @@ async function viewHome() {
     "<th>" + t("Where it sits") + "</th><th>" + t("As of") + "</th>" +
     "</tr></thead><tbody>" + table + "</tbody></table></div>" +
     '<p class="foot-note">' +
-    t("Star any row to keep it on your desk: one screen of the numbers you read every morning, with no prose in the way.") +
+    t("Star any row to keep it on your desk: one screen of the numbers you check most, with no prose in the way.") +
     ' <a href="#/favourites">' + t("Open your favourites →") + "</a></p>" +
     "</div></section>" +
 
@@ -228,19 +228,19 @@ async function viewHome() {
     '<span class="go">' + t("Work it out →") + "</span></a>" +
     '<a class="wide-card" href="#/changes">' +
     '<p class="eyebrow">' + t("What changed") + "</p>" +
-    "<h3>" + t("The Central Bank does not keep a changelog. This does.") + "</h3>" +
-    "<p>" + t("CBE overwrites its files in place when it revises a figure, so there is no way to ask what a number read last month. Every copy fetched here is kept, which makes this the only record of what was quietly restated. It began on 20 August 2026 and fills up from there.") + "</p>" +
+    "<h3>" + t("A dated record of what CBE published") + "</h3>" +
+    "<p>" + t("Miqyas keeps a dated copy of the daily tables from 20 August 2026. If CBE changes a figure it has already published, the change appears on the What changed page, which also counts the revisions recorded so far. The weekly Excel archive is not yet checked for changes.") + "</p>" +
     '<span class="go">' + t("See what changed →") + "</span></a>" +
     '<a class="wide-card" href="#/docs">' +
     '<p class="eyebrow">' + t("Documents") + "</p>" +
-    "<h3>" + t("1,478 publications, read cover to cover") + "</h3>" +
-    "<p>" + t("Every statistical bulletin, circular, annual report and press release CBE has put out as a PDF, 53,006 pages of it. Search inside the text and a result lands you on a page number, in English or Arabic.") + "</p>" +
+    "<h3>" + t("CBE publications, indexed for search") + "</h3>" +
+    "<p>" + t("Statistical bulletins, circulars, annual reports and press releases CBE has published as PDFs, indexed so you can search inside them. A result lands you on a page number, in English or Arabic, and links to the original on cbe.org.eg.") + "</p>" +
     '<span class="go">' + t("Search the archive →") + "</span></a>" +
     '<a class="wide-card" href="#/data">' +
     '<p class="eyebrow">' + t("Take it with you") + "</p>" +
     "<h3>" + t("Parquet, SQLite, CSV, and a keyless API") + "</h3>" +
     "<p>" + t("All") + " " + index.length.toLocaleString() + " " +
-    t("series in whichever shape suits you, rebuilt every morning. No key, no account, no rate limit, and a SHA-256 for every file so a mirror can check itself.") + "</p>" +
+    t("series in whichever shape suits you, updated daily. No key and no account, and a SHA-256 for every file so any copy can be checked against it.") + "</p>" +
     '<span class="go">' + t("Downloads and API →") + "</span></a>" +
     "</div></div></section>";
 
@@ -326,7 +326,7 @@ function seriesResultRow(s, sparks) {
     titleAR(s) +
     '<span class="sub">' + esc(s.series_id) + " · " + (s.n || 0).toLocaleString() + " readings · " +
     shortDate(s.first) + " – " + shortDate(s.last) + (s.unit ? " · " + esc(unitShort(s.unit)) : "") +
-    (s.stale_days ? " · no longer updated" : "") +
+    (s.stale_days ? " · no newer data held" : "") +
     "</span></a></div>"
   );
 }
@@ -364,7 +364,7 @@ async function viewSeriesIndex(preset) {
     '<p class="eyebrow">By subject</p>' +
     "<h2>All of it, in thirteen subjects</h2>" +
     '<p class="lede">The last card is not a subject: it is a screen assembled out of ' +
-    "several of them, for a desk that reads the same numbers every morning.</p>" +
+    "several of them, for a desk that reads the same numbers every day.</p>" +
     '<div class="topic-grid">' +
     TOPICS.filter((t) => counts[t.key]).map((t) =>
       '<a class="topic-card" href="#/topic/' + t.key + '">' +
@@ -536,13 +536,18 @@ function qualityNotice(meta, data) {
   if (!meta) return "";
   const out = [];
   if (meta.stale_days) {
+    /* What Miqyas holds, not what CBE has done. The flag measures the age of
+     * the newest stored reading, so it cannot tell a source that stopped from
+     * a newer release Miqyas has not picked up, and it must not pretend to. */
     const cadence = (FREQ_LABEL[data.freq] || "").toLowerCase();
     out.push(
-      '<div class="notice"><h3>This series looks discontinued</h3>' +
-      "<p>CBE has published nothing new here since " + niceDate(meta.last) + ": " +
+      '<div class="notice"><h3>No newer reading here</h3>' +
+      "<p>Miqyas holds no value for this series after " + niceDate(meta.last) + ": " +
       meta.stale_days.toLocaleString() + " days without a new " +
       (cadence ? esc(cadence) + " reading" : "reading") +
-      ". What is below is complete as far as it goes, and it is not current.</p></div>"
+      ". The source may have stopped, or Miqyas may not have picked up a newer release" +
+      (data.source_url || data.source_file ? ". Check the CBE source linked below." : ".") +
+      "</p></div>"
     );
   }
   if (meta.zero_values) {
@@ -770,6 +775,9 @@ async function viewSeries(id) {
 
   const stats = meta || {};
   const change = changeOf(stats);
+  // The Excel archive is CBE's numbers on dates Miqyas reads off the sheet, so
+  // it is neither "as published" nor computed, and says so.
+  const isExcel = data.dataset === "excel_archive";
 
   // Comparison candidates: siblings first, then the headline series, so the
   // dropdown is useful whether you want context inside the same table or
@@ -801,7 +809,11 @@ async function viewSeries(id) {
     "<span><b>Published</b> " + esc(FREQ_LABEL[data.freq] || data.freq || "—") + "</span>" +
     "<span><b>Readings</b> " + data.count.toLocaleString() + "</span>" +
     "<span><b>Covers</b> " + (stats.first ? niceDate(stats.first) + " to " + niceDate(stats.last) : "—") + "</span>" +
-    (data.derived ? "<span><b>Computed by us</b> yes</span>" : "<span><b>Reproduced as published</b> yes</span>") +
+    (data.derived
+      ? "<span><b>Computed by Miqyas</b> from CBE data</span>"
+      : isExcel
+      ? "<span><b>Dates assigned by Miqyas</b> from the sheet</span>"
+      : "<span><b>Reproduced as published</b> yes</span>") +
     "</div></div>" +
 
     qualityNotice(meta, data) +
@@ -842,8 +854,14 @@ async function viewSeries(id) {
     "<h2>Provenance</h2>" +
     '<p class="lede">' +
     (data.derived
-      ? "This series is computed, not reproduced. " + esc(data.method || "")
-      : "Reproduced from the Central Bank of Egypt with no transformation.") +
+      ? "Computed by Miqyas from CBE data: " + esc(data.method || "")
+      : isExcel
+      ? "Source: Central Bank of Egypt, Excel time-series archive. Miqyas reads the sheet and " +
+        "assigns each value to a date from the sheet's own period labels. Fiscal-year quarters " +
+        "follow Egypt's July to June year. Dates are our reading of the sheet and can be wrong; " +
+        "check the linked CBE file before citing."
+      : "Reproduced as published from the Central Bank of Egypt's daily tables. Where CBE printed " +
+        "two values for one date, Miqyas keeps one and lists both on the What changed page.") +
     (data.period_basis === "end" ? " Values are dated to the end of the period they describe." : "") +
     (data.unit
       ? ""
@@ -862,8 +880,13 @@ async function viewSeries(id) {
       : "") +
     (data.dataset ? "<span><b>Dataset</b> " + esc(data.dataset) + "</span>" : "") +
     "</div>" +
-    '<p class="cite">Suggested citation: Central Bank of Egypt, <i>' + esc(data.title_en || id) +
-    "</i>, retrieved from Miqyas on " + niceDate(new Date().toISOString().slice(0, 10)) + ".</p>" +
+    // A computed series is Miqyas's arithmetic on CBE's numbers, and crediting
+    // it to CBE would put words in the Bank's mouth.
+    '<p class="cite">Suggested citation: ' +
+    (data.derived
+      ? "Miqyas, <i>" + esc(data.title_en || id) + "</i>, computed from Central Bank of Egypt data"
+      : "Central Bank of Egypt, <i>" + esc(data.title_en || id) + "</i>, via Miqyas") +
+    ", retrieved " + niceDate(new Date().toISOString().slice(0, 10)) + ".</p>" +
     "</div>" +
     "<div>" +
     '<p class="eyebrow">Same table</p>' +
@@ -905,7 +928,7 @@ async function viewSeries(id) {
   document.getElementById("dl-range").addEventListener("click", () =>
     downloadCSV(id, shown.points, data, shown.note));
   document.getElementById("dl-all").addEventListener("click", () =>
-    downloadCSV(id, data.observations, data, "Every observation, as published."));
+    downloadCSV(id, data.observations, data, "Every observation."));
   document.getElementById("copy-tsv").addEventListener("click", (e) =>
     copyTSV(e.target, shown.points, ["period", data.series_id]));
   document.getElementById("share").addEventListener("click", (e) => copyLink(e.target));
