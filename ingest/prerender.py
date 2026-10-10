@@ -1,8 +1,8 @@
 """Publish every page of the site as a real file, not just a hash.
 
 The front end is one document and a hash router, which is the right shape for a
-static archive and the wrong shape for being found. A crawler asking for
-`/egypt-macro/` is handed one page whose body is a loading skeleton; everything
+static archive and the wrong shape for being found. A crawler asking for the
+site root is handed one page whose body is a loading skeleton; everything
 that matters -- 1,317 series, 1,478 documents, 53,006 pages of extracted text --
 lives behind a fragment, and a fragment is not a URL as far as an index is
 concerned. The sitemap could only ever list the eight routes, and those eight
@@ -43,7 +43,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 WEB = ROOT / "web"
 DIST = ROOT / "dist"
 
-SITE_URL = "https://mogh0neim.github.io/egypt-macro/"
+# The public address, from site.toml, the one place it is set.
+from site_config import SITE_URL  # noqa: E402  (same directory; not a package)
 
 # The one attribution sentence. The same words are ATTRIBUTION in web/core.js
 # and in ingest/build_exports.py; change all three together. The Arabic is in

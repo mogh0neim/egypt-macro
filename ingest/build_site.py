@@ -28,9 +28,9 @@ WEB = ROOT / "web"
 DIST = ROOT / "dist"
 CATALOG = ROOT / "catalog"
 
-# The site's address is set once, in prerender.py, because a domain move is
-# coming and three copies of it would drift.
-SITE_URL = prerender.SITE_URL
+# The site's address and the GoatCounter code are set once, in site.toml,
+# because a domain move is coming and copies of them would drift.
+from site_config import GOATCOUNTER, SITE_URL  # noqa: E402
 
 # The routes that exist as pages of their own rather than per entity. Series,
 # subjects and documents are enumerated from the catalogue instead. Keep this in
@@ -47,6 +47,23 @@ def copy_front_end() -> list[str]:
             shutil.copy2(path, DIST / path.name)
             copied.append(path.name)
     return copied
+
+
+def apply_settings() -> None:
+    """Write site.toml's values into dist/index.html.
+
+    web/index.html carries {{SITE_URL}} and {{GOATCOUNTER}} where the address
+    and the counter code go, so neither is typed in the source. Every
+    pre-rendered page, /ar/ and 404.html are written from this file, so they
+    all inherit what is filled in here.
+    """
+    path = DIST / "index.html"
+    html = (path.read_text(encoding="utf-8")
+            .replace("{{SITE_URL}}", SITE_URL)
+            .replace("{{GOATCOUNTER}}", GOATCOUNTER))
+    if "{{" in html:
+        raise SystemExit("build_site: index.html has a {{setting}} this script does not fill")
+    path.write_text(html, encoding="utf-8")
 
 
 def stamp_html(html: str, assets: list[str], stamp: str) -> str:
@@ -164,6 +181,7 @@ def main() -> int:
     DIST.mkdir(parents=True, exist_ok=True)
 
     copied = copy_front_end()
+    apply_settings()
     stamp = version_assets(copied)
     print(f"front end: {len(copied)} files -> dist/, versioned {stamp}")
 

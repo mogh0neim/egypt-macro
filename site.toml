@@ -1,0 +1,11 @@
+# Settings for the published site. Change a value here, commit it, and the
+# next publish uses it everywhere. README.md, "Moving to a domain of its own",
+# walks through both.
+
+# The site's public address, ending in a slash. Every canonical link, share
+# card, sitemap entry and feed link is built from this one line.
+url = "https://mogh0neim.github.io/egypt-macro/"
+
+# The GoatCounter site code, e.g. "miqyas" for miqyas.goatcounter.com.
+# Empty means no visit is counted and no request goes to GoatCounter.
+goatcounter = ""

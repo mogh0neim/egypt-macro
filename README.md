@@ -197,6 +197,46 @@ steps and deploys `dist/` to GitHub Pages after every scrape. Nothing in `dist/`
 is committed; it is derived in full from `data/`, `catalog/` and `corpus/`, which
 are.
 
+### Moving to a domain of its own
+
+The site's address is one line, `url` in [`site.toml`](site.toml). Every
+canonical link, share card, sitemap entry and feed link is built from it, so
+nothing else in the code needs changing. The rest is done in GitHub and at
+whoever sold the domain. Say the domain is `miqyas.org`:
+
+1. **Tell GitHub the domain is yours.** On github.com, your profile picture,
+   Settings, Pages, "Add a domain", type `miqyas.org`. GitHub shows a TXT
+   record; add it at the domain seller (step 3) and press Verify. This stops
+   anyone else pointing the domain at their own GitHub site.
+2. **Point the repository at it.** In this repository: Settings, Pages, Custom
+   domain, type `miqyas.org`, Save. No `CNAME` file is needed: the site is
+   published by a workflow, and GitHub ignores that file for those.
+3. **Point the domain at GitHub.** In the domain seller's DNS settings, add:
+   - four `A` records for `miqyas.org` (the host is often written `@`):
+     `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - four `AAAA` records for `@`: `2606:50c0:8000::153`, `2606:50c0:8001::153`,
+     `2606:50c0:8002::153`, `2606:50c0:8003::153`
+   - one `CNAME` record for `www`, pointing at `mogh0neim.github.io`
+
+   These are GitHub's published addresses; check them against GitHub's page
+   "Managing a custom domain for your GitHub Pages site" on the day.
+4. **Wait, then turn on HTTPS.** DNS takes from minutes to a day. When
+   Settings, Pages shows the domain as checked, tick "Enforce HTTPS" (the
+   certificate can take up to an hour to appear).
+5. **Change the one line.** In `site.toml`, set `url = "https://miqyas.org/"`
+   (with the slash at the end), commit and push. The publish workflow rebuilds
+   every page with the new address.
+6. **Check it.** Open `https://miqyas.org/`, view the page source and look for
+   `rel="canonical"`: it should show the new address. The old address,
+   `mogh0neim.github.io/egypt-macro/`, forwards to the new one by itself.
+
+One thing does not move: favourites are kept in each reader's browser, under
+the address they were saved on, so anyone who starred series on the old
+address will find an empty list on the new one. Nobody outside has used the
+site yet, so this is the time to move.
+
+Update the links at the top of this README in the same commit.
+
 ### The API
 
 `build_exports.py` writes `dist/` - static JSON, no key, no rate limit:

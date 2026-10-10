@@ -491,12 +491,17 @@ that was asked for as a route: a series id that lost its tail gets the series
 view's nearest matches, anything else the not-found screen, and a click on
 anything hands off to the app document as a pre-rendered page does.
 
-**The site's address is set once**, as `SITE_URL` in `prerender.py`;
-`build_site.py` reads it from there, and the front end works out its own from
-`ROOT` (`siteBase()`), which is what the copy-paste API examples are built
-from. The canonical and share-card addresses in `web/index.html` are rewritten
-from `SITE_URL` at build time. A domain move changes that one line, plus
-`ingest/build_changes.py`, which keeps its own copy for the feeds.
+**The site's address is set once**, as `url` in `site.toml` at the top of the
+repository. `ingest/site_config.py` reads it, checks it and always gives it a
+trailing slash, and every script that needs it imports `SITE_URL` from there:
+`prerender.py` (canonical, `og:url`, share cards, hreflang, JSON-LD, the
+not-found page's root), `build_site.py` (sitemaps and `robots.txt`) and the
+feeds in `build_changes.py`. `web/index.html` carries `{{SITE_URL}}` where the
+canonical and share-card addresses go, and `build_site.py` fills it in before
+anything is written from that template, so the source has no address typed in
+it at all. The front end works out its own from `ROOT` (`siteBase()`), which is
+what the copy-paste API examples are built from. A domain move is that one
+line; README.md has the steps around it.
 
 **Counts are never typed.** The pre-rendered titles fill `{series}`,
 `{documents}`, `{pages}` and `{decisions}` from the build's own files, and the
