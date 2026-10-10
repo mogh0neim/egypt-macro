@@ -492,13 +492,23 @@ async function loadStatus() {
   return state.status;
 }
 
+/* A bare "+16%" above a chart says nothing about what moved or when, so each
+ * marker also carries a sentence for the readout to show when the crosshair
+ * reaches it. The figure is isolated so an Arabic sentence cannot turn it into
+ * "16%+". */
 const fxEvents = () =>
   ((state.events && state.events.events) || [])
     .filter((e) => e.type === "fx_move" && Math.abs((e.evidence && e.evidence.pct_change) || 0) >= 8)
-    .map((e) => ({
-      date: e.date,
-      label: e.label || (e.evidence.pct_change > 0 ? "+" : "") + Math.round(e.evidence.pct_change) + "%",
-    }));
+    .map((e) => {
+      const move = (e.evidence.pct_change > 0 ? "+" : "") + Math.round(e.evidence.pct_change) + "%";
+      return {
+        date: e.date,
+        label: e.label || move,
+        note: (e.label ? e.label + ": " : "") + t("Official dollar rate") + " ⁦" + move + "⁩ " +
+          t("in one business day") + ": " + fmt(e.evidence.from) + " " + t("to") + " " +
+          fmt(e.evidence.to) + " " + t("on") + " " + niceDate(e.date),
+      };
+    });
 
 /* events.json has carried four named exchange-rate regimes with their date
  * ranges since it was first generated, and nothing has ever drawn them. They
@@ -636,6 +646,8 @@ const chartWidth = () => Math.min(1000, Math.max(340, Math.round(window.innerWid
 // The advance of one character of a 10px IBM Plex Mono axis label, in SVG
 // units: 0.6em, and a little over so an estimate errs towards room.
 const TICK_CH = 6.2;
+// The same for the 9.5px regime and event labels.
+const LABEL_CH = 5.9;
 
 /* A label on a chart. Charts run left to right in both languages (the
  * stylesheet pins .chart to ltr), so a label that is itself Arabic, a month or
@@ -721,24 +733,25 @@ function lineChart(series, opts) {
    * the band, deliberately at a different visual scale from the event markers:
    * an event is a dashed vertical rule with a figure above the frame, a regime
    * is a wide field with a name in it, so the two can share a chart without
-   * competing. A band too narrow to letter keeps the wash and loses the name. */
-  const regimes = (opts.regimes || [])
+   * competing. A band too narrow to letter keeps the wash and loses the name.
+   * "Too narrow" is measured against the name itself: a fixed 150 units let
+   * "Post-float managed rate" print across the next band on a phone. The name
+   * of whichever regime is under the crosshair is in the readout either way. */
+  const shownRegimes = (opts.regimes || [])
     .map((r) => {
       const a = Math.max(x0, Date.parse(r.from));
       const b = Math.min(x1, r.to ? Date.parse(r.to) : x1);
-      return b > a ? { a: px(a), b: px(b), label: r.label || "" } : null;
+      return b > a ? { a: px(a), b: px(b), label: r.label || "", from: r.from, to: r.to || null } : null;
     })
-    .filter(Boolean)
+    .filter(Boolean);
+  const regimes = shownRegimes
     .map((r, i) => {
       const w = r.b - r.a;
-      const room = w > (W / 1000) * 150;
+      const room = 6 + r.label.length * LABEL_CH + 4 <= w;
       return (
         '<rect class="regime' + (i % 2 ? " alt" : "") + '" x="' + r.a.toFixed(1) +
         '" y="' + m.t + '" width="' + w.toFixed(1) + '" height="' + ih + '"/>' +
-        (r.label && room
-          ? '<text class="regime-label" x="' + (r.a + 6).toFixed(1) + '" y="' + (m.t + 12) + '">' +
-            esc(r.label) + "</text>"
-          : "")
+        (r.label && room ? chartText((r.a + 6).toFixed(1), m.t + 12, "regime-label", "start", r.label) : "")
       );
     })
     .join("");
@@ -787,23 +800,25 @@ function lineChart(series, opts) {
   });
 
   // Devaluations cluster -- November 2016 had three inside three weeks -- so
-  // labels are dropped rather than allowed to overprint each other.
+  // labels are dropped rather than allowed to overprint each other. Room is
+  // the label's own width: a fixed 42 units let two "+16%" seven months apart
+  // in 2022 print over each other on a phone. The rule stays either way, and
+  // the readout says what it marks when the crosshair reaches it.
   const inRange = events
     .filter((e) => { const t = Date.parse(e.date); return t >= x0 && t <= x1; })
-    .map((e) => { const o = { date: e.date, label: e.label, x: px(Date.parse(e.date)) }; return o; })
+    .map((e) => { const o = { date: e.date, label: e.label, note: e.note, x: px(Date.parse(e.date)) }; return o; })
     .sort((a, b) => a.x - b.x);
-  let lastLabelX = -Infinity;
+  let labelEnd = -Infinity;
   const marks = inRange
     .map((e) => {
       const x = e.x.toFixed(1);
       const label = (e.label || "").slice(0, 22);
-      const room = e.x - lastLabelX > (W / 1000) * 42;
-      if (label && room) lastLabelX = e.x;
+      const w = label.length * LABEL_CH;
+      const room = label && e.x - w / 2 >= labelEnd + 4 && e.x - w / 2 >= 0 && e.x + w / 2 <= W;
+      if (room) labelEnd = e.x + w / 2;
       return (
         '<line class="event" x1="' + x + '" y1="' + m.t + '" x2="' + x + '" y2="' + (m.t + ih) + '"/>' +
-        (label && room
-          ? '<text class="event-label" x="' + x + '" y="' + (m.t - 5) + '" text-anchor="middle">' + esc(label) + "</text>"
-          : "")
+        (room ? chartText(x, m.t - 5, "event-label", "middle", label) : "")
       );
     })
     .join("");
@@ -882,6 +897,13 @@ function lineChart(series, opts) {
     'data-y0="' + y0 + '" data-y1="' + y1 + '" ' +
     'data-w="' + W + '" data-l="' + m.l + '" ' +
     'data-step="' + sets.map((s, i) => (stepped(i) ? 1 : 0)).join(",") + '" ' +
+    // What the markers and the regime washes are, for the readout to say.
+    (inRange.some((e) => e.note)
+      ? 'data-events="' + esc(JSON.stringify(inRange.filter((e) => e.note).map((e) => [e.date, e.note]))) + '" '
+      : "") +
+    (shownRegimes.length
+      ? 'data-regimes="' + esc(JSON.stringify(shownRegimes.map((r) => [r.from, r.to, r.label]))) + '" '
+      : "") +
     'role="img" tabindex="0" ' +
     'aria-label="Time series chart, ' + sets[0].length +
     ' points. Use the arrow keys to read values.">' +
@@ -994,6 +1016,9 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
 
   // Which sets the chart drew as steps, read back like the margins are.
   const steps = (svg.dataset.step || "").split(",").map((s) => s === "1");
+  // The markers ([date, what it was]) and regimes ([from, to, name]) it drew.
+  const marked = JSON.parse(svg.dataset.events || "[]");
+  const eras = JSON.parse(svg.dataset.regimes || "[]");
 
   /* What each set read at a moment in time. A stepped set holds its value
    * until the next decision, so the honest answer is the last observation on
@@ -1068,6 +1093,14 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
     const since = steps[0] && picks.length === 1 && picks[0] && picks[0][0] !== day
       ? '<span class="when">' + t("in force since") + " " + niceDate(picks[0][0]) + "</span>"
       : "";
+    /* A regime's name, whether or not its band had room to print it, and what
+     * any marker within a few units of the crosshair records. A marker label
+     * dropped for room, or a bare "+16%", is otherwise unexplained. */
+    const era = eras.find((r) => day >= r[0] && (!r[1] || day <= r[1]));
+    const near = marked.filter((e) => Math.abs(px(Date.parse(e[0])) - bx) <= 6).slice(0, 3);
+    const context =
+      (era ? '<span class="when">' + esc(era[2]) + "</span>" : "") +
+      (near.length ? '<span class="mark-note">' + near.map((e) => esc(e[1])).join("; ") + "</span>" : "");
     g.innerHTML =
       '<line class="hover-line" x1="' + bx.toFixed(1) + '" y1="' + m.t + '" x2="' + bx.toFixed(1) + '" y2="' + (vbH - m.b) + '"/>' +
       dots;
@@ -1087,7 +1120,7 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
         })
         .join("") +
       (gap ? '<span class="gap">' + gap + "</span>" : "") +
-      '<span class="when">' + niceDate(day) + "</span>" + since;
+      '<span class="when">' + niceDate(day) + "</span>" + since + context;
   };
 
   const clear = () => { g.innerHTML = ""; readoutEl.innerHTML = base; };

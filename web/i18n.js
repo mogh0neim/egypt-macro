@@ -415,6 +415,8 @@ const AR = {
   "in force since": "سارٍ منذ",
   "One reading only, so there is no line to draw.": "قراءة واحدة فقط، فلا يوجد خط يُرسم.",
   "Two readings only: too few to show a trend.": "قراءتان فقط: أقل من أن تُظهرا اتجاهًا.",
+  "Official dollar rate": "سعر الدولار الرسمي",
+  "in one business day": "في يوم عمل واحد",
   "No year-on-year or rebased view: this series is already a rate, so either would be a percentage of a percentage.":
     "لا نعرض التغيّر عن العام السابق ولا إعادة الأساس: هذه السلسلة معدّل في الأصل، فيكون أيٌّ منهما نسبة مئوية من نسبة مئوية.",
   "No year-on-year or rebased view: this series goes below zero, where a percentage of an earlier reading means nothing.":

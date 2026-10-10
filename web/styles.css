@@ -982,6 +982,8 @@ details.add-panel .empty { padding: 1rem 0; }
 /* The one number a comparison is for -- neutral, because a gap between two
    series is not itself a rise or a fall. */
 .readout .gap { color: var(--text-2); }
+/* What a chart marker records, in the marker's own gold: structure, not data. */
+.readout .mark-note { color: var(--gold); }
 
 .legend {
   display: flex;
