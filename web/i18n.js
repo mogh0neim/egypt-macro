@@ -422,6 +422,20 @@ const AR = {
   "on the year": "خلال العام",
   "since it moved": "منذ آخر تحرّك",
 
+  /* ---------- document search ----------
+   * The count lines carry {placeholders} rather than being cut around the
+   * numbers, because Arabic puts the count after the noun, and a number with a
+   * colon before it needs no agreement with "صفحة". */
+  "Ignored:": "تم تجاهل:",
+  "too common to narrow a search": "كلمات شائعة جدًا لا تضيّق البحث",
+  "Top {shown} of {total} pages contain every searched word":
+    "عدد الصفحات التي تحتوي على كل كلمات البحث: {total}، تظهر أفضل {shown} منها",
+  "{n} pages contain every searched word": "عدد الصفحات التي تحتوي على كل كلمات البحث: {n}",
+  "1 page contains every searched word": "صفحة واحدة تحتوي على كل كلمات البحث",
+  ", showing the matching text for the first {n}": "، مع النص المطابق لأول {n}",
+  "Every word there is too common to search on. Add a less common one, or match titles instead.":
+    "كل الكلمات المكتوبة شائعة جدًا فلا يُبحث بها. أضف كلمة أقل شيوعًا، أو ابحث في العناوين.",
+
   /* ---------- the thirteen subjects ----------
    * The labels a reader picks a direction from, so the most load-bearing
    * prose on the site after the hero. */

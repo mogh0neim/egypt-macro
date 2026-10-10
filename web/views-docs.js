@@ -171,12 +171,19 @@ function shardFor(term, shards) {
   return h % shards;
 }
 
-const queryTerms = (query) =>
-  normaliseQuery(query).split(/\s+/).filter((t) => t.length >= 2);
-
+/* Every page with all the searched words, best first, with no cap: the year and
+ * topic filters run on this whole list, and the count line states its length.
+ *
+ * Words the index does not hold, because they are stop words or are on more
+ * than a quarter of all pages, are listed in meta.json. They are skipped and
+ * reported rather than required: requiring "net" in "net international
+ * reserves" used to make the whole search answer that no page had those words. */
 async function fullText(query) {
-  const terms = queryTerms(query);
-  if (!terms.length) return [];
+  const ignored = new Set((docState.meta && docState.meta.ignored) || []);
+  const typed = indexTerms(query);
+  const skipped = [...new Set(typed.filter((x) => ignored.has(x.key)).map((x) => x.word))];
+  const terms = [...new Set(typed.filter((x) => !ignored.has(x.key)).map((x) => x.key))];
+  if (!terms.length) return { hits: [], terms: terms, skipped: skipped };
 
   const perTerm = [];
   for (const term of terms) {
@@ -190,21 +197,36 @@ async function fullText(query) {
   // Require every term on the same page and score by summed term frequency.
   // An AND at page level is what keeps results precise on a corpus where
   // "inflation" alone appears on thousands of pages.
+  //
+  // A term's postings are flat triples of gaps (see build_search.py packed):
+  // documents on from the last one, then the page, or pages on within the same
+  // document, then the count.
   const scored = new Map();
-  for (const postings of perTerm) {
-    for (const p of postings) {
-      const key = p[0] + ":" + p[1];
-      const entry = scored.get(key) || { docIdx: p[0], page: p[1], score: 0, hits: 0 };
-      entry.score += p[2];
+  for (const packed of perTerm) {
+    let doc = 0;
+    let page = 0;
+    for (let i = 0; i + 2 < packed.length; i += 3) {
+      if (packed[i]) {
+        doc += packed[i];
+        page = packed[i + 1];
+      } else {
+        page += packed[i + 1];
+      }
+      const key = doc * 100000 + page;
+      const entry = scored.get(key) || { docIdx: doc, page: page, score: 0, hits: 0 };
+      entry.score += packed[i + 2];
       entry.hits += 1;
       scored.set(key, entry);
     }
   }
-  return [...scored.values()]
+  const hits = [...scored.values()]
     .filter((e) => e.hits === terms.length)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 60);
+    .sort((a, b) => b.score - a.score);
+  return { hits: hits, terms: terms, skipped: skipped };
 }
+
+/* How many hits are listed. The count line gives the rest as a number. */
+const RESULT_LIMIT = 60;
 
 const SOURCE_LABEL = { publications: "Publication", circulars: "Circular", News: "Press release" };
 
@@ -260,8 +282,8 @@ async function viewDocs(presetCategory) {
     DOC_SUGGESTIONS.map((s) => '<button class="chip" data-sug="' + esc(s) + '">' + esc(s) + "</button>").join("") +
     "</div>" +
     '<div class="controls">' +
-    '<button class="chip" data-mode="title" aria-pressed="true">Match titles</button>' +
-    '<button class="chip" data-mode="full" aria-pressed="false">Search inside the text</button>' +
+    '<button class="chip" data-mode="title" aria-pressed="false">Match titles</button>' +
+    '<button class="chip" data-mode="full" aria-pressed="true">Search inside the text</button>' +
     '<span class="spacer"></span>' +
     '<select class="chip" id="dsrc"><option value="">Any kind</option>' +
     sources.map((s) => '<option value="' + esc(s) + '">' + esc(SOURCE_LABEL[s] || s) + "</option>").join("") +
@@ -295,7 +317,11 @@ async function viewDocs(presetCategory) {
   const q = document.getElementById("dq");
   const out = document.getElementById("dresults");
   const pick = (id) => document.getElementById(id).value;
-  let mode = "title";
+  // Inside the text by default: that is what the page offers, and a title
+  // search answering "no title matches" read as "not in the archive".
+  let mode = "full";
+  let runs = 0;
+  let pause = 0;
 
   const passesFacets = (d) =>
     (!pick("dsrc") || d.source === pick("dsrc")) &&
@@ -317,7 +343,7 @@ async function viewDocs(presetCategory) {
    * answer and the quotes are detail, so a reader gets the answer while 3 KB per
    * document is still in flight. Deduplicated by document, because one bulletin
    * often supplies several of the hits. */
-  const fillSnippets = async (hits, terms) => {
+  const fillSnippets = async (hits, terms, mine) => {
     const byDoc = new Map();
     hits.forEach((h, i) => {
       const id = docs[h.docIdx].id;
@@ -327,6 +353,8 @@ async function viewDocs(presetCategory) {
     await Promise.all(
       [...byDoc.entries()].map(async (entry) => {
         const pages = await loadPageText(entry[0]);
+        // A newer search has reused these slots since this one asked.
+        if (mine !== runs) return;
         entry[1].forEach((want) => {
           const el = document.getElementById("snip-" + want.slot);
           if (!el) return;
@@ -345,6 +373,7 @@ async function viewDocs(presetCategory) {
   };
 
   const run = async () => {
+    const mine = ++runs;
     const query = q.value.trim();
     const filtered = docs.filter(passesFacets);
 
@@ -367,19 +396,36 @@ async function viewDocs(presetCategory) {
 
     if (mode === "full") {
       out.innerHTML = '<p class="empty">Reading 53,000 pages…</p>';
-      const fullTerms = queryTerms(query);
-      const hits = await fullText(query);
+      const found = await fullText(query);
+      // Typing runs a search per pause, and an older one can finish last.
+      if (mine !== runs) return;
+      // The filters run on every hit, then the list is cut. Cutting first made
+      // a year filter choose among the best 60 pages of all years, so
+      // "inflation" in 2024 found nothing.
       const allowed = new Set(filtered.map((d) => d.i));
-      const rows = hits.filter((h) => allowed.has(h.docIdx));
-      out.innerHTML = rows.length
-        ? '<p class="count-line">' + rows.length + " pages contain every one of those words" +
-          (rows.length > SNIPPET_LIMIT
-            ? ", showing the matching text for the first " + SNIPPET_LIMIT
+      const rows = found.hits.filter((h) => allowed.has(h.docIdx));
+      const shown = rows.slice(0, RESULT_LIMIT);
+      const fill = (s, vals) => s.replace(/\{(\w+)\}/g, (m, k) => vals[k].toLocaleString("en-US"));
+      const skipped = found.skipped.length
+        ? '<p class="count-line">' + t("Ignored:") + " " + esc(found.skipped.join(", ")) +
+          " (" + t("too common to narrow a search") + ")</p>"
+        : "";
+      out.innerHTML = skipped + (rows.length
+        ? '<p class="count-line">' +
+          (rows.length > shown.length
+            ? fill(t("Top {shown} of {total} pages contain every searched word"), { shown: shown.length, total: rows.length })
+            : rows.length === 1
+              ? t("1 page contains every searched word")
+              : fill(t("{n} pages contain every searched word"), { n: rows.length })) +
+          (shown.length > SNIPPET_LIMIT
+            ? fill(t(", showing the matching text for the first {n}"), { n: SNIPPET_LIMIT })
             : "") + "</p>" +
-          rows.map((h, i) => card(docs[h.docIdx], h.page, i < SNIPPET_LIMIT ? i : undefined)).join("")
-        : '<p class="empty">No single page contains all of those words. ' +
-          "Try fewer words, or switch to matching titles.</p>";
-      if (rows.length) fillSnippets(rows.slice(0, SNIPPET_LIMIT), fullTerms);
+          shown.map((h, i) => card(docs[h.docIdx], h.page, i < SNIPPET_LIMIT ? i : undefined)).join("")
+        : found.terms.length
+          ? '<p class="empty">No single page contains all of those words. ' +
+            "Try fewer words, or switch to matching titles.</p>"
+          : '<p class="empty">' + t("Every word there is too common to search on. Add a less common one, or match titles instead.") + "</p>");
+      if (shown.length) fillSnippets(shown.slice(0, SNIPPET_LIMIT), found.terms, mine);
       return;
     }
 
@@ -405,12 +451,18 @@ async function viewDocs(presetCategory) {
   const clearAll = () => {
     q.value = "";
     ["dsrc", "dcat", "dyear"].forEach((id) => (document.getElementById(id).value = ""));
-    setMode("title");
+    setMode("full");
     run();
   };
 
-  q.addEventListener("input", () => { if (mode === "title") run(); });
-  q.addEventListener("keydown", (e) => { if (e.key === "Enter") run(); });
+  // Titles are in memory, so they follow every keystroke. The text search
+  // fetches index shards, so it waits for a pause in the typing.
+  q.addEventListener("input", () => {
+    clearTimeout(pause);
+    if (mode === "title") run();
+    else pause = setTimeout(run, 350);
+  });
+  q.addEventListener("keydown", (e) => { if (e.key === "Enter") { clearTimeout(pause); run(); } });
   ["dsrc", "dcat", "dyear"].forEach((id) => document.getElementById(id).addEventListener("change", run));
   document.getElementById("dclear").addEventListener("click", clearAll);
   app.querySelectorAll("[data-mode]").forEach((b) => b.addEventListener("click", () => { setMode(b.dataset.mode); run(); }));

@@ -308,18 +308,30 @@ const staleness = (iso) => {
  * because three separate searches need it: document titles, full text, and the
  * command palette.
  *
- * Must match the normalisation in ingest/build_search.py exactly. If the two
- * drift apart, Arabic queries silently return nothing. */
+ * Must match normalise() in ingest/extract_text.py exactly. If the two drift
+ * apart, Arabic queries silently return nothing. The table and the dropped
+ * marks below are that function's, character for character: Persian letter
+ * forms fold to Arabic ones, Arabic punctuation becomes a space, and the Arabic
+ * decimal separator becomes a point, so "9٫5" and "9.5" are one number. */
+const SEARCH_DROP = /[ؐ-ؚ؜ً-ٰٟۖ-ۭـ​-‏]/g;
+const SEARCH_DROP_ONE = new RegExp(SEARCH_DROP.source);
+const SEARCH_FOLD = {
+  "أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا",
+  "ى": "ي", "ة": "ه", "ؤ": "و", "ئ": "ي",
+  "ی": "ي", "ې": "ي", "ے": "ي", "ک": "ك", "گ": "ك",
+  "ھ": "ه", "ہ": "ه", "ۀ": "ه", "ە": "ه",
+  "،": " ", "؛": " ", "؟": " ", "۔": " ",
+  "٫": ".", "٬": ",", "٪": "%",
+};
+const SEARCH_FOLD_RE = new RegExp("[" + Object.keys(SEARCH_FOLD).join("") + "]", "g");
+const foldDigit = (d) => String(d.charCodeAt(0) - (d >= "۰" ? 0x06f0 : 0x0660));
+
 const normaliseQuery = (s) =>
   s
     .normalize("NFKC")
-    .replace(/[ً-ْٰـ]/g, "")
-    .replace(/[أإآٱ]/g, "ا")
-    .replace(/ى/g, "ي")
-    .replace(/ة/g, "ه")
-    .replace(/ؤ/g, "و")
-    .replace(/ئ/g, "ي")
-    .replace(/[٠-٩]/g, (d) => String(d.charCodeAt(0) - 0x0660))
+    .replace(SEARCH_DROP, "")
+    .replace(SEARCH_FOLD_RE, (c) => SEARCH_FOLD[c])
+    .replace(/[٠-٩۰-۹]/g, foldDigit)
     .toLowerCase()
     .trim();
 
@@ -343,15 +355,12 @@ function normaliseWithMap(input) {
   const map = [];
   for (let i = 0; i < nfkc.length; i++) {
     const c = nfkc[i];
-    // Harakat, superscript alef and tatweel are dropped, not replaced.
-    if (/[ً-ْٰـ]/.test(c)) continue;
+    // Harakat, superscript alef, tatweel and the invisible marks are dropped,
+    // not replaced.
+    if (SEARCH_DROP_ONE.test(c)) continue;
     let r;
-    if (/[أإآٱ]/.test(c)) r = "ا";
-    else if (c === "ى") r = "ي";
-    else if (c === "ة") r = "ه";
-    else if (c === "ؤ") r = "و";
-    else if (c === "ئ") r = "ي";
-    else if (c >= "٠" && c <= "٩") r = String(c.charCodeAt(0) - 0x0660);
+    if (Object.prototype.hasOwnProperty.call(SEARCH_FOLD, c)) r = SEARCH_FOLD[c];
+    else if ((c >= "٠" && c <= "٩") || (c >= "۰" && c <= "۹")) r = foldDigit(c);
     else r = c.toLowerCase();
     // toLowerCase can lengthen a character. Keep one map entry per output
     // character or the two fall out of step and every offset after it is wrong.
@@ -362,6 +371,33 @@ function normaliseWithMap(input) {
   }
   return { nfkc: nfkc, text: out.join(""), map: map };
 }
+
+/* From folded text to index terms, as ingest/build_search.py does it: numbers
+ * whole, decimals included and thousands commas dropped, then words; Arabic
+ * words lose the article and a sound-plural ending. Both sides must agree, or a
+ * term is looked up in a shard it was never written to. */
+const SEARCH_TOKEN = /[0-9]+(?:,[0-9]{3})+(?:\.[0-9]+)?(?![0-9])|[0-9]+\.[0-9]+|[a-z0-9ء-غف-يٱ-ۓ]+/g;
+const AR_PREFIXES = ["وال", "بال", "كال", "فال", "لل", "ال"];
+const AR_SUFFIXES = ["ات", "ون", "ين"];
+
+function stemArabic(term) {
+  if (!(term[0] >= "ء" && term[0] <= "ۓ")) return term;
+  for (const p of AR_PREFIXES) {
+    if (term.startsWith(p) && term.length - p.length >= 2) { term = term.slice(p.length); break; }
+  }
+  for (const s of AR_SUFFIXES) {
+    if (term.endsWith(s) && term.length - s.length >= 4) { term = term.slice(0, -s.length); break; }
+  }
+  return term;
+}
+
+/* A query as the document index would have stored it: [{ word, key }], where
+ * the word is what the reader typed (folded) and the key is the index term. */
+const indexTerms = (query) =>
+  (normaliseQuery(query).match(SEARCH_TOKEN) || [])
+    .map((w) => w.replace(/,/g, ""))
+    .filter((w) => w.length >= 2 && w.length <= 28)
+    .map((w) => ({ word: w, key: stemArabic(w) }));
 
 /* ---------- nearest matches ----------
  *
