@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-10T19:37:09+00:00",
+ "generated": "2026-10-10T19:57:44+00:00",
  "count": 981,
  "files": [
   {
@@ -6337,9 +6337,9 @@
    "frequency_ar": "ربع سنوي",
    "period_label_ar": "2025/2026",
    "id": "39de53681575e892",
-   "local": "data/raw/excel/39de53681575e892.xlsx",
    "sha256": "04bfa90be35568971bc5ee2d649df15a8873be26f3d8892012505b2152d48a91",
-   "bytes": 40365
+   "bytes": 40365,
+   "local": "data/raw/excel/39de53681575e892.xlsx"
   },
   {
    "url": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-and-indicators/external___debt_quarters,-d-,xls.xlsx",
@@ -6351,9 +6351,9 @@
    "frequency_ar": "ربع سنوي",
    "period_label_ar": "جميع السنوات",
    "id": "32d08e9698993892",
-   "local": "data/raw/excel/32d08e9698993892.xlsx",
    "sha256": "a444fc4663143128ca8868c049858809f7ab83bd970393e1433dcc99e36f549e",
-   "bytes": 140721
+   "bytes": 140721,
+   "local": "data/raw/excel/32d08e9698993892.xlsx"
   },
   {
    "url": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-and-indicators/external_debt-2004-2005.xlsx",
@@ -6659,9 +6659,9 @@
    "frequency_ar": "ربع سنوي",
    "period_label_ar": "2025/2026",
    "id": "6bf7872594ba5241",
-   "local": "data/raw/excel/6bf7872594ba5241.xlsx",
    "sha256": "67e9fb18559b4b139077ef1c1006c267c2957aa99e5c451af643eca6276f8f44",
-   "bytes": 47228
+   "bytes": 47228,
+   "local": "data/raw/excel/6bf7872594ba5241.xlsx"
   },
   {
    "url": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external-_debt-_by-_debtor-2004-2005.xlsx",
@@ -6967,9 +6967,9 @@
    "frequency_ar": "ربع سنوي",
    "period_label_ar": "جميع السنوات",
    "id": "acf987ee11f51be5",
-   "local": "data/raw/excel/acf987ee11f51be5.xlsx",
    "sha256": "a50b509f8ccbe46f0a9f3eecad663f0f429bb79cb65d9ea926b04499538bc1f8",
-   "bytes": 1762989
+   "bytes": 1762989,
+   "local": "data/raw/excel/acf987ee11f51be5.xlsx"
   },
   {
    "url": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx",
@@ -11965,9 +11965,9 @@
    "frequency_ar": "ربع سنوي",
    "period_label_ar": "جميع السنوات",
    "id": "b7a1a902c4b999e4",
-   "local": "data/raw/excel/b7a1a902c4b999e4.xlsx",
    "sha256": "1abd3b742c6c9f193c763732da6e31c5b7c129095ef86d8c2cc8f76ee8e5f556",
-   "bytes": 167294
+   "bytes": 167294,
+   "local": "data/raw/excel/b7a1a902c4b999e4.xlsx"
   },
   {
    "url": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/net_foreign_direct_investment_in_egypt_(fdi)_by_country-2021-2022.xlsx",
@@ -12035,9 +12035,9 @@
    "frequency_ar": "ربع سنوي",
    "period_label_ar": "2025/2026",
    "id": "b6e6255295acfd14",
-   "local": "data/raw/excel/b6e6255295acfd14.xlsx",
    "sha256": "01e03e00ba1b14ca6a1553501e63289205a56056c728cb39190867f33360666a",
-   "bytes": 21535
+   "bytes": 21535,
+   "local": "data/raw/excel/b6e6255295acfd14.xlsx"
   },
   {
    "url": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/net_foreign_direct_investment_in_egypt_(fdi)_by_country_new-annual,-d-,xls.xlsx",

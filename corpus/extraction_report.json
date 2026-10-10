@@ -1,11 +1,7 @@
 {
- "extracted": 19,
- "pages": 358,
- "by_language": {
-  "ar": 6,
-  "mixed": 9,
-  "en": 4
- },
+ "extracted": 0,
+ "pages": 0,
+ "by_language": {},
  "needs_ocr_count": 0,
  "needs_ocr": [],
  "failed": []
