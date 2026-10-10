@@ -47,7 +47,11 @@
 :root {
   --ink: #101b33;
   --marble-2: #f4f4f1;
-  --brass: #a8823a;
+  /* Darker than the #a8823a it was, because gold is also the colour of every
+     eyebrow and group heading, and #a8823a was 3.2:1 on the page: under the
+     4.5:1 small text needs. #7e6024 is 5.3:1 on the page and 4.5:1 even on the
+     stale strip's tint. */
+  --brass: #7e6024;
   --faience: #1f6f6b;
   --clay: #a6412e;
 
@@ -58,9 +62,15 @@
   --line-soft: #e6e6e0;
   --text: var(--ink);
   --text-2: #56607a;
-  --text-3: #8b93a7;
+  /* The quiet grey. It was #8b93a7, 2.8:1 on the page, and it colours a few
+     thousand things: units, dates, column heads, axis labels, notes. #646c82
+     is 4.75:1 on the page and 5.2:1 on white. */
+  --text-3: #646c82;
   --accent: var(--faience);
   --accent-quiet: #d7e5e3;
+  /* Text set on a teal fill: selected chips, the solid buttons, the skip
+     link. White on the light teal; the dark theme's lighter teal needs ink. */
+  --on-accent: #ffffff;
   --gold: var(--brass);
   --down: var(--clay);
 
@@ -94,9 +104,10 @@
     --line-soft: #1d2942;
     --text: #e7e9ef;
     --text-2: #9aa3bb;
-    --text-3: #6c7691;
+    --text-3: #8a94ae;
     --accent: #3f9c96;
-    --accent-quiet: #17322f;
+    --accent-quiet: #12292a;
+    --on-accent: #0b1426;
     --gold: #c79f57;
     --down: #cf6a53;
   }
@@ -110,9 +121,10 @@
   --line-soft: #1d2942;
   --text: #e7e9ef;
   --text-2: #9aa3bb;
-  --text-3: #6c7691;
+  --text-3: #8a94ae;
   --accent: #3f9c96;
-  --accent-quiet: #17322f;
+  --accent-quiet: #12292a;
+  --on-accent: #0b1426;
   --gold: #c79f57;
   --down: #cf6a53;
 }
@@ -138,7 +150,7 @@ a:hover { color: var(--accent); }
   position: absolute;
   inset-inline-start: -9999px;
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   padding: 0.6rem 1rem;
   z-index: 50;
 }
@@ -340,7 +352,7 @@ a:hover { color: var(--accent); }
 
 /* Volunteering a stale build is worth more than hiding one: a reader who can
    see the mirror admit it is behind can trust it when it says it is current. */
-.freshness.stale { background: var(--accent-quiet); border-bottom-color: var(--gold); }
+.freshness.stale { background: var(--accent-quiet); border-bottom-color: var(--gold); color: var(--text-2); }
 .freshness.stale .wrap > span:first-child { color: var(--gold); }
 .freshness.stale .wrap > span:first-child::before {
   background: repeating-linear-gradient(to bottom, var(--gold) 0 1px, transparent 1px 3px);
@@ -994,7 +1006,7 @@ details.add-panel .empty { padding: 1rem 0; }
    chart without competing. */
 .chart .regime { fill: var(--gold); opacity: 0.045; }
 .chart .regime.alt { opacity: 0.1; }
-.chart .regime-label { font-family: var(--mono); font-size: 9.5px; fill: var(--gold); opacity: 0.8; }
+.chart .regime-label { font-family: var(--mono); font-size: 9.5px; fill: var(--gold); }
 .chart .event { stroke: var(--gold); stroke-width: 1; stroke-dasharray: 2 3; }
 .chart .event-label { font-family: var(--mono); font-size: 9.5px; fill: var(--gold); }
 /* A series of one or two readings: marked points, never a line between them. */
@@ -1292,9 +1304,9 @@ table.indicators td.period {
   white-space: nowrap;
 }
 .chip:hover { border-color: var(--accent); color: var(--accent); }
-.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
-.chip.solid { background: var(--accent); border-color: var(--accent); color: #fff; }
-.chip.solid:hover { opacity: 0.88; color: #fff; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.chip.solid { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.chip.solid:hover { opacity: 0.88; color: var(--on-accent); }
 select.chip { padding-inline-end: 1.4rem; max-width: min(22rem, 100%); }
 
 .linkish {
