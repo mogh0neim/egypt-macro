@@ -202,7 +202,11 @@ async function viewSavings(query) {
 
   const params = new URLSearchParams(query || "");
   const amount = parseFloat(params.get("amount") || "") || null;
-  const from = params.get("from") || "";
+  /* A link can carry a month, "2015-01", the way the salary tool's does. The
+   * date input takes nothing but a whole yyyy-mm-dd and logged an error for it,
+   * so a month is read as its first day and anything else as no date. */
+  const asked = params.get("from") || "";
+  const from = /^\d{4}-\d{2}$/.test(asked) ? asked + "-01" : /^\d{4}-\d{2}-\d{2}$/.test(asked) ? asked : "";
 
   const [cpi, fx] = await Promise.all([
     loadSeries(CPI).catch(() => null),
