@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Miqyas: Egypt's economy in numbers</title>
-<meta name="description" content="Every series the Central Bank of Egypt publishes, cleaned, charted and free to download. Exchange rates since 2005, treasury auctions since 2004, inflation since 2000, every rate decision since June 2005.">
+<meta name="description" content="Central Bank of Egypt statistics as one clean dataset: exchange rates, treasury auctions, inflation, policy rates and the CBE Excel archive, with a free API, bulk files and a daily record of changes. Independent; not affiliated with CBE.">
 <meta name="theme-color" content="#101b33">
 <link rel="canonical" href="https://mogh0neim.github.io/egypt-macro/">
 <meta property="og:title" content="Miqyas: Egypt's economy in numbers">
-<meta property="og:description" content="Every series the Central Bank of Egypt publishes, cleaned, charted and free to download. An unofficial mirror, rebuilt every morning.">
+<meta property="og:description" content="Central Bank of Egypt statistics as one clean dataset: exchange rates, treasury auctions, inflation, policy rates and the CBE Excel archive, with a free API, bulk files and a daily record of changes. Independent; not affiliated with CBE.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mogh0neim.github.io/egypt-macro/">
 <meta property="og:image" content="https://mogh0neim.github.io/egypt-macro/og.png">
@@ -35,7 +35,7 @@
 <header class="masthead">
   <div class="wrap">
     <a class="wordmark" href="#/">Miqyas<span class="mark-ar" aria-hidden="true">مقياس</span></a>
-    <span class="unofficial">Unofficial</span>
+    <span class="unofficial">Independent</span>
     <button class="quick" id="quick" aria-label="Search series, topics, documents and pages">
       <span class="q-ico" aria-hidden="true">⌕</span>
       <span class="q-label">Search</span>
@@ -43,23 +43,29 @@
     </button>
     <button class="menu" id="menu" aria-label="Menu">≡</button>
     <nav>
-      <!-- Eight items now, where seven filled the row. "Rate decisions" and
-           "Get the data" are shortened to pay for the new one: the labels were
-           longer than they needed to be and the nav must never be what gives
-           way. The routes are unchanged. -->
+      <!-- The dataset and the revision record lead, because they are what the
+           site is for: "What changed" and "Data" sit in the first three slots.
+           The calculators and Favourites are off the row but not gone; the
+           footer, the overview and the search box all reach them, and every
+           star still adds to Favourites. Seven items, where eight filled it. -->
       <a href="#/" data-route="home">Overview</a>
-      <a href="#/tools" data-route="tools">Work it out</a>
+      <a href="#/changes" data-route="changes">What changed</a>
+      <a href="#/data" data-route="data">Data</a>
       <a href="#/series" data-route="series">Series</a>
-      <a href="#/favourites" data-route="favourites">Favourites</a>
       <a href="#/rates" data-route="rates">Rates</a>
       <a href="#/docs" data-route="docs">Documents</a>
-      <a href="#/data" data-route="data">Data</a>
       <a href="#/about" data-route="about">About</a>
       <a class="theme-toggle lang-switch" id="lang" href="#" hreflang="ar" lang="ar">عربي</a>
       <button class="theme-toggle" id="theme" aria-label="Switch between light, dark and system theme">Auto</button>
     </nav>
   </div>
 </header>
+
+<!-- On every page. It is in the template every pre-rendered page, the Arabic
+     site and the not-found page are written from, and prerender.py translates
+     it with the rest of the chrome. The sentence is its own span so that it
+     can be matched and replaced whole. -->
+<div class="independence" role="note"><div class="wrap"><p><span>Independent project. Not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Official figures:</span> <a href="https://www.cbe.org.eg/en/" rel="noopener">cbe.org.eg</a>.</p></div></div>
 
 <!-- Filled from status.json by app.js. Stays hidden if that fetch fails, so a
      clone with no build does not show an empty bar. -->
@@ -81,7 +87,7 @@
     <div class="foot-cols">
       <div>
         <p class="foot-mark">Miqyas</p>
-        <p>Egypt's macroeconomic record, rebuilt from the Central Bank's own publications every morning.</p>
+        <p>Egypt's macroeconomic record from the Central Bank's own publications, updated daily.</p>
       </div>
       <div>
         <p class="foot-head">Data</p>
@@ -93,7 +99,7 @@
       </div>
       <div>
         <p class="foot-head">This project</p>
-        <a href="#/changes">What changed, and what CBE restated</a>
+        <a href="#/changes">Revisions to published figures</a>
         <a href="#/about">What is and is not here</a>
         <a href="https://github.com/mogh0neim/egypt-macro" target="_blank" rel="noopener">Source on GitHub ↗</a>
         <a href="https://www.cbe.org.eg/en/" target="_blank" rel="noopener">The Central Bank of Egypt ↗</a>

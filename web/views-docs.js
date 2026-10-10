@@ -280,8 +280,8 @@ async function viewDocs(presetCategory) {
     '<p class="eyebrow">' + docs.length.toLocaleString() + " documents · " +
     ((docState.meta && docState.meta.pages) || 0).toLocaleString() + " pages of text</p>" +
     "<h2>The archive</h2>" +
-    '<p class="lede">Everything CBE has published as a PDF, mirrored and read. ' +
-    "Search inside the text and a result lands you on a page number, not on a 200-page file.</p>" +
+    '<p class="lede">CBE publications in PDF, indexed so you can search inside them. ' +
+    "A result lands you on a page number, not on a 200-page file, and links to the original on cbe.org.eg.</p>" +
     '<div class="topic-grid tight">' + collectionCards + "</div>" +
     "</section>" +
 
@@ -310,8 +310,9 @@ async function viewDocs(presetCategory) {
     '<button class="chip" id="dclear">Clear</button>' +
     "</div>" +
     '<div class="results" id="dresults"></div>' +
-    '<p class="foot-note">' + t("If anything here should not be,") + ' <a href="' + REMOVAL_URL +
-    '" target="_blank" rel="noopener">' + t("contact me") + "</a> " + t("and it will be removed.") + "</p>" +
+    // The text quoted here is CBE's, so the way to have it taken down is said
+    // where it is shown.
+    '<p class="foot-note">' + removalLine() + "</p>" +
     (ocred
       ? '<p class="foot-note">' + ocred + " of these are scans of paper with no text layer of their own. " +
         "They have been read by OCR in Arabic and English, so their text is searchable. Expect the odd " +

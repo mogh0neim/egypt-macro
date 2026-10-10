@@ -37,12 +37,21 @@ import math
 import pathlib
 import re
 import shutil
+import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 WEB = ROOT / "web"
 DIST = ROOT / "dist"
 
 SITE_URL = "https://mogh0neim.github.io/egypt-macro/"
+
+# The one attribution sentence. The same words are ATTRIBUTION in web/core.js
+# and in ingest/build_exports.py; change all three together. The Arabic is in
+# the dictionary in web/i18n.js, keyed on this.
+ATTRIBUTION = ("Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by Miqyas, "
+               "an independent project not affiliated with, endorsed by, or connected to the "
+               "Central Bank of Egypt. Values are cleaned and dated by Miqyas; check against CBE "
+               "before citing.")
 
 # Written per build; every directory here is pruned before it is rewritten, so a
 # renamed series cannot leave a page behind that outlives it.
@@ -284,12 +293,13 @@ def tr(text: str, lang: str) -> str:
 # the parts the front end's own `t()` cannot reach in time. Ordered longest
 # first so "Rate decisions" is not half-replaced by "Rates".
 CHROME = [
+    "Independent project. Not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Official figures:",
     "Search series, topics, documents and pages",
     "Search series, topics, documents, pages…",
     "Switch between light, dark and system theme",
-    "Egypt's macroeconomic record, rebuilt from the Central Bank's own publications every morning.",
+    "Egypt's macroeconomic record from the Central Bank's own publications, updated daily.",
     "Not affiliated with, endorsed by, or connected to the Central Bank of Egypt.",
-    "What changed, and what CBE restated",
+    "Revisions to published figures",
     "Work out what yours is worth",
     "What is and is not here",
     "The Central Bank of Egypt ↗",
@@ -301,10 +311,11 @@ CHROME = [
     "Your favourites",
     "Skip to content",
     "This project",
+    "What changed",
     "Work it out",
     "Favourites",
     "Documents",
-    "Unofficial",
+    "Independent",
     "Overview",
     "Series",
     "Search",
@@ -442,11 +453,7 @@ class Template:
 # republishing rather than a footer decoration.
 
 def attribution(lang: str = "en") -> str:
-    return ('<p class="foot-note">'
-            + esc(tr("Source: Central Bank of Egypt. Republished by Miqyas, an unofficial mirror, "
-                     "which is not affiliated with, endorsed by, or connected to the Central Bank "
-                     "of Egypt.", lang))
-            + "</p>")
+    return '<p class="foot-note">' + esc(tr(ATTRIBUTION, lang)) + "</p>"
 
 
 
@@ -512,8 +519,17 @@ def series_jsonld(meta: dict, full: dict, url: str) -> str:
 
     Worth the twenty lines: it is a route to this data that almost nobody
     competing for these queries has bothered with, and the fields it wants --
-    temporal coverage, creator, distribution, licence -- are ones this
-    catalogue already carries honestly.
+    temporal coverage, creator, distribution -- are ones this catalogue
+    already carries honestly.
+
+    No `license`. The repository's MIT licence covers the code, and putting it
+    here told every dataset catalogue that CBE's numbers were Mo's to license.
+    `usageInfo` points at the terms on the About page instead, which say the
+    code is MIT and the data is CBE's.
+
+    The JSON is escaped for a script element: json.dumps leaves "<" alone, so a
+    title containing "</script>" would have closed the block and run whatever
+    followed it on every series page.
     """
     data = {
         "@context": "https://schema.org",
@@ -528,7 +544,7 @@ def series_jsonld(meta: dict, full: dict, url: str) -> str:
         "url": url,
         "temporalCoverage": f"{meta.get('first', '')}/{meta.get('last', '')}",
         "isAccessibleForFree": True,
-        "license": "https://github.com/mogh0neim/egypt-macro/blob/main/LICENSE",
+        "usageInfo": f"{SITE_URL}about/",
         "creator": {"@type": "Organization", "name": "Central Bank of Egypt",
                     "url": "https://www.cbe.org.eg/en/"},
         "publisher": {"@type": "Organization", "name": "Miqyas", "url": SITE_URL},
@@ -544,7 +560,9 @@ def series_jsonld(meta: dict, full: dict, url: str) -> str:
                                     "name": full.get("title_en"), "unitText": full["unit"]}
     if full.get("source_url"):
         data["isBasedOn"] = full["source_url"]
-    return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False) + "</script>"
+    payload = (json.dumps(data, ensure_ascii=False)
+               .replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e"))
+    return '<script type="application/ld+json">' + payload + "</script>"
 
 
 def topic_body(topic: dict, members: list[dict], root: str, lang: str = "en") -> str:
@@ -560,7 +578,7 @@ def topic_body(topic: dict, members: list[dict], root: str, lang: str = "en") ->
         '<p class="eyebrow">Subject</p>'
         f'<h1>{esc(topic["name"])}</h1>'
         f'<p class="lede">{esc(topic["blurb"])} {len(members):,} series, '
-        "from the Central Bank of Egypt, rebuilt every morning.</p>"
+        "from the Central Bank of Egypt, updated daily.</p>"
         '<table class="indicators"><thead><tr><th>Series</th><th>Latest</th><th>As of</th></tr></thead>'
         f"<tbody>{rows}</tbody></table>"
         + (f'<p class="foot-note">Showing the first 400 of {len(members):,}.</p>' if len(members) > 400 else "")
@@ -584,7 +602,7 @@ def document_body(doc: dict, snippet: str, root: str, lang: str = "en") -> str:
         "indexed here so its text can be searched and quoted.</p>"
         + (f'<p{dir_attr(snippet)}>{esc(snippet)}</p>' if snippet else "")
         + (f'<p><a href="{esc(doc["url"])}" rel="noopener">The document on cbe.org.eg</a>'
-           f' · <a href="{root}/#/docs">Search inside all 1,478 documents</a></p>'
+           f' · <a href="{root}/#/docs">Search the whole archive</a></p>'
            if doc.get("url") else "")
         + (
             '<p class="foot-note">This document is a scan with no text layer of its own. '
@@ -658,7 +676,7 @@ HOME_SKELETON = ('<div class="wrap"><div class="skeleton">'
                  '<div class="sk-line"></div></div></div>')
 
 
-def render_language(template, lang, *, index, topics, by_family, by_key, documents):
+def render_language(template, lang, *, index, topics, by_family, by_key, documents, counts):
     """Every page of the site, in one language."""
     global _LANG
     _LANG = lang
@@ -693,10 +711,10 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
     home = template.render(
         root=up(0), page="", lang=lang, alternate=home_alt,
         title=tr("Miqyas: Egypt's economy in numbers", lang),
-        description=tr("Every series the Central Bank of Egypt publishes, cleaned, charted "
-                       "and free to download. Exchange rates since 2005, treasury auctions "
-                       "since 2004, inflation since 2000, every rate decision since June 2005.",
-                       lang),
+        description=tr("Central Bank of Egypt statistics as one clean dataset: exchange rates, "
+                       "treasury auctions, inflation, policy rates and the CBE Excel archive, with "
+                       "a free API, bulk files and a daily record of changes. Independent; not "
+                       "affiliated with CBE.", lang),
         url=home_url, image=f"{SITE_URL}og.png",
         image_alt=tr("Miqyas: Egypt's economy in numbers", lang),
         body=HOME_SKELETON)
@@ -754,7 +772,7 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
               template.render(
                   root=up(2), page=f"/topic/{topic['key']}", lang=lang, alternate=alt,
                   title=f"{name}: {len(rows):,} " + tr("series from Egypt's central bank", lang) + " | Miqyas",
-                  description=clamp(blurb + f" {len(rows):,} " + tr("series, rebuilt every morning.", lang)),
+                  description=clamp(blurb + f" {len(rows):,} " + tr("series, updated daily.", lang)),
                   url=url,
                   image=f"{SITE_URL}og/topic-{topic['key']}.png",
                   image_alt=name + ", Miqyas",
@@ -781,13 +799,18 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
         written += 1
 
     # --- the fixed pages ---
+    #
+    # Counts are filled from this build's own files, never typed: typed ones
+    # went stale within weeks and four different page counts were live at once.
+    # The {placeholders} sit inside the dictionary keys, so the Arabic carries
+    # them too and both languages are filled the same way.
     fixed = [
-        ("series", "/series", "Find or browse 1,317 Egyptian economic series | Miqyas",
-         "Every series the Central Bank of Egypt publishes, in thirteen subjects, searchable in English and Arabic."),
+        ("series", "/series", "Find or browse {series} Egyptian economic series | Miqyas",
+         "Central Bank of Egypt statistics in thirteen subjects, searchable in English and Arabic."),
         ("favourites", "/favourites", "Your favourites | Miqyas",
-         "One screen of the numbers you read every morning, with no prose in the way."),
+         "One screen of the numbers you check most, with no prose in the way."),
         ("rates", "/rates", "Every CBE rate decision since 2005 | Miqyas",
-         "172 Monetary Policy Committee decisions back to June 2005, with the corridor and what changed in the wording each time."),
+         "{decisions} Monetary Policy Committee statements back to June 2005, with the corridor and what changed in the wording each time."),
         ("tools", "/tools", "Egyptian inflation calculator: what is your money worth? | Miqyas",
          "Three calculators on the Central Bank's own numbers: what a salary from any month is worth "
          "today, what savings kept as pounds still buy, and the dollar rate on any date since 2005."),
@@ -800,22 +823,29 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
         ("tools/dollar", "/tools/dollar", "What was the dollar worth in Egypt on any date? | Miqyas",
          "The Central Bank's official EGP/USD rate on any date since January 2005, and on the same "
          "calendar day in every year since."),
-        ("changes", "/changes", "What the Central Bank of Egypt quietly restated | Miqyas",
-         "CBE overwrites its files when it revises a figure, with no changelog. This keeps every "
-         "copy, so it can say what a number read last month and what was changed after publication."),
-        ("docs", "/docs", "Search 1,478 Central Bank of Egypt publications | Miqyas",
-         "Every statistical bulletin, circular, annual report and press release CBE has put out as a PDF, "
-         "53,006 pages of it, searchable in English and Arabic."),
+        ("changes", "/changes", "Revisions to published figures | Miqyas",
+         "Daily record of CBE figures as published, and any revisions to figures already published. "
+         "Independent; not affiliated with CBE."),
+        ("docs", "/docs", "Search {documents} Central Bank of Egypt publications | Miqyas",
+         "CBE publications in PDF, {pages} pages of text indexed so you can search inside them in "
+         "English and Arabic. Each result links to the original on cbe.org.eg."),
         ("money-market", "/money-market", "Egypt's money market: the corridor, the tenors, the bill curve | Miqyas",
          "Where the pound funded inside the CBE corridor, the interbank tenors with their volumes, and the EGP bill curve with bid to cover."),
         ("data", "/data", "Download Egypt's macroeconomic data: Parquet, SQLite, CSV and a keyless API | Miqyas",
-         "All 1,317 series in whichever shape suits you, rebuilt every morning. No key, no account, no rate limit."),
-        ("about", "/about", "About Miqyas: an unofficial mirror of Egypt's central bank data",
-         "What is here, what is not, and how it is built. Miqyas is not affiliated with the Central Bank of Egypt."),
+         "All {series} series in whichever shape suits you, updated daily. No key and no account."),
+        ("about", "/about", "About Miqyas: an independent dataset of Egyptian central bank data",
+         "Who made Miqyas and why, what is here and what is not, and the terms. Miqyas is an "
+         "independent project, not affiliated with the Central Bank of Egypt."),
     ]
+
+    def filled(text):
+        for name, value in counts.items():
+            text = text.replace("{" + name + "}", value)
+        return text
+
     for slug, page, title, description in fixed:
-        title = tr(title, lang)
-        description = tr(description, lang)
+        title = filled(tr(title, lang))
+        description = filled(tr(description, lang))
         url, alt = urls(slug + "/")
         # "tools/salary" sits a directory deeper than "about", so the root it
         # declares counts the separators rather than assuming one.
@@ -827,10 +857,26 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
             image_alt="Miqyas",
             body='<div class="wrap"><section class="section">'
                  f"<h1>{esc(title.split(' | ')[0])}</h1>"
-                 f'<p class="lede">{esc(description)}</p>' + attribution(lang) + "</section></div>"))
+                 f'<p class="lede">{esc(description)}</p>'
+                 + (about_lines(lang) if slug == "about" else "")
+                 + attribution(lang) + "</section></div>"))
         written += 1
 
     return written
+
+
+# Who made it and on what terms, readable on the pre-rendered About page before
+# any script runs. The Dataset markup on every series page points its
+# usageInfo here, so the terms have to be in the HTML a crawler reads.
+ABOUT_LINES = (
+    "Miqyas is made by Mohamed Ghoneim, as an independent project.",
+    "The code is MIT-licensed. The data is the Central Bank of Egypt's, and Miqyas claims no "
+    "rights in it: cite CBE as the source, and check against CBE before citing.",
+)
+
+
+def about_lines(lang: str) -> str:
+    return "".join(f"<p>{esc(tr(line, lang))}</p>" for line in ABOUT_LINES)
 
 
 def main(template_html: str | None = None, assets: list[str] | None = None) -> int:
@@ -849,18 +895,65 @@ def main(template_html: str | None = None, assets: list[str] | None = None) -> i
     by_key = {t["key"]: t for t in topics}
     docs_path = DIST / "search" / "documents.json"
     documents = json.loads(docs_path.read_text(encoding="utf-8")) if docs_path.exists() else []
+    mpc_path = DIST / "api" / "v1" / "mpc.json"
+    decisions = json.loads(mpc_path.read_text(encoding="utf-8")).get("count") if mpc_path.exists() else None
+    counts = {
+        "series": f"{len(index):,}",
+        "documents": f"{len(documents):,}",
+        "pages": f"{sum(d.get('pages') or 0 for d in documents):,}",
+        "decisions": f"{decisions:,}" if decisions else "All",
+    }
 
     prune()
     total = 0
     for lang in LANGS:
         n = render_language(template, lang, index=index, topics=topics,
-                            by_family=by_family, by_key=by_key, documents=documents)
+                            by_family=by_family, by_key=by_key, documents=documents,
+                            counts=counts)
         print(f"  {lang}: {n:,} pages")
         total += n
+
+    write_not_found(template)
 
     print(f"pre-rendered {total:,} pages across {len(LANGS)} languages: "
           f"{len(index):,} series, {len(topics)} subjects, {len(documents):,} documents")
     return total
+
+
+def write_not_found(template: Template) -> None:
+    """dist/404.html, which GitHub Pages serves for any address with no file.
+
+    It used to be a copy of index.html, whose asset links are relative. At
+    /s/NOPE/ the browser asked for /s/NOPE/styles.css and every script, got a
+    404 for each, and drew a blank page in Times New Roman with no way back.
+    This one names its assets, the API and the way home from the site root,
+    so it works at any depth, and it declares MIQYAS_MISSING so app.js reads
+    the address that was asked for rather than showing the overview under it.
+
+    The root is the path part of SITE_URL, so a move to the site's own domain
+    changes nothing here.
+    """
+    global _LANG
+    _LANG = "en"
+    site_path = urllib.parse.urlsplit(SITE_URL).path.rstrip("/")
+    html = template.render(
+        root=site_path, page="", lang="en",
+        title="Page not found | Miqyas",
+        description=tr("Central Bank of Egypt statistics as one clean dataset: exchange rates, "
+                       "treasury auctions, inflation, policy rates and the CBE Excel archive, with "
+                       "a free API, bulk files and a daily record of changes. Independent; not "
+                       "affiliated with CBE.", "en"),
+        url=SITE_URL, image=f"{SITE_URL}og.png", image_alt="Miqyas",
+        head_extra='<meta name="robots" content="noindex">',
+        # What a reader with no script sees; app.js replaces it with the
+        # nearest series to whatever the address carried.
+        body='<div class="wrap"><section class="section">'
+             "<h1>Nothing lives at that address</h1>"
+             '<p class="lede">The link may be from an older version of the site. '
+             f'<a href="{esc(site_path)}/">Start from the overview</a>.</p>'
+             + attribution("en") + "</section></div>")
+    html = html.replace(';window.MIQYAS_PAGE="";', ";window.MIQYAS_MISSING=true;")
+    write(DIST / "404.html", html)
 
 
 if __name__ == "__main__":

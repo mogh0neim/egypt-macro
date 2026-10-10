@@ -172,7 +172,7 @@ async function viewMoneyMarket() {
 
   /* ---------- the page ---------- */
 
-  const site = location.origin + location.pathname.replace(/[^/]*$/, "");
+  const site = siteBase();
 
   app.innerHTML =
     '<section class="hero"><div class="wrap">' +
@@ -185,7 +185,7 @@ async function viewMoneyMarket() {
     '<p class="standfirst">The floor, the ceiling, and where the pound actually funded ' +
     "between them. Underneath it: the interbank tenors with the volumes behind them, and " +
     "what the government paid at every EGP bill auction. All of it CBE's own numbers, " +
-    "rebuilt every morning.</p>" +
+    "updated daily.</p>" +
     corridor + corridorLegend + corridorReadout +
     "</div></section>" +
 
@@ -225,9 +225,9 @@ async function viewMoneyMarket() {
 
     '<section class="section"><div class="wrap"><div class="band-inset">' +
     '<p class="eyebrow">Take it to your desk</p>' +
-    "<h2>Every series on this page, without the page</h2>" +
-    '<p class="lede">No key, no account, no rate limit. Every endpoint is a static file, ' +
-    "so it cannot throttle you and cannot go down separately from the site.</p>" +
+    "<h2>All the series on this page, without the page</h2>" +
+    '<p class="lede">No key and no account. Every endpoint is a static file on the same host ' +
+    "as this page, with no rate limit that we set.</p>" +
     '<pre class="code"><code># the overnight fixing, every observation\n' +
     "curl " + site + "api/v1/series/EG.CONIA.ON.RATE.json\n\n" +
     "# the whole money market, straight into Python\n" +
@@ -245,10 +245,10 @@ async function viewMoneyMarket() {
     '<h3 class="sub-head">Open market operations</h3>' +
     '<p class="lede">The liquidity management CBE does itself is published as auction tables ' +
     "rather " +
-    "than as series, so it is not charted here, but it is in the record-level download: 294 " +
-    "deposit auctions at the corridor rate, 600 fixed-rate and 544 variable-rate deposit " +
-    "auctions, 116 fixed-rate and 54 variable-rate repo auctions, and all 4,037 EGP bill " +
-    "auctions with their ISINs. One CSV per table, inside " +
+    "than as series, so it is not charted here, but it is in the record-level download: " +
+    "deposit auctions at the corridor rate, fixed-rate and variable-rate deposit auctions, " +
+    "fixed-rate and variable-rate repo auctions, and every EGP bill auction with its ISIN. " +
+    "One CSV per table, inside " +
     "<code>records-csv.zip</code>.</p>" +
     '<div class="controls">' +
     '<a class="chip solid" href="' + ROOT + '/bulk/records-csv.zip" download>records-csv.zip</a>' +
@@ -264,9 +264,9 @@ async function viewMoneyMarket() {
     "<h2>Two prints for the same day</h2>" +
     '<p class="lede">On 27 November 2023 CBE published two different interbank overnight ' +
     "rates for the same session, 19.395 and 19.404, and two different overnight volumes 21 " +
-    "billion pounds apart, 264,437 and 243,187 million. Both are kept. The site shows one " +
-    "and records the other rather than picking quietly, and the same is true of every other " +
-    "conflict found across 424,000 observations.</p>" +
+    "billion pounds apart, 264,437 and 243,187 million. Both are kept: the site shows one " +
+    "and records the other, and the same is true of every other conflict of this kind in " +
+    "the archive.</p>" +
     '<p class="foot-note">The full list is <code>data/clean/anomalies.csv</code> in the ' +
     'repository. <a href="#/about">How this is built, and what is not in it →</a></p>' +
     "</div></section>";

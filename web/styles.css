@@ -246,6 +246,25 @@ a:hover { color: var(--accent); }
 }
 .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
+/* ---------- the independence line ----------
+ *
+ * Under the masthead on every page, at every width, in the darker of the two
+ * secondary text colours: 6:1 or better on its ground in both themes, where
+ * the footer line it replaces as the first notice sat at 3:1. It scrolls away
+ * with the page; the footer repeats it.
+ */
+
+.independence {
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--line);
+  color: var(--text-2);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+.independence p { margin: 0; padding-block: 0.45rem; }
+.independence a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
+.independence a:hover { color: var(--accent); }
+
 /* ---------- freshness strip ----------
  *
  * Under the masthead rather than in it. That row has no slack left to give
@@ -452,6 +471,18 @@ body.palette-open { overflow: hidden; }
   font-size: 1.02rem;
 }
 .hero .standfirst b { font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
+/* The overview's hero is one sentence saying what the site is, not a slogan,
+   so it is set below headline size and given a longer line. Its two buttons
+   are the two things the site is for, and are thumb-sized at every width. */
+.hero h1.hero-line {
+  font-size: clamp(1.55rem, 4vw, 2.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  max-width: 34ch;
+  margin-bottom: 0.3rem;
+}
+.hero-actions { padding-block: 0.6rem 1.5rem; gap: 0.6rem; }
+.hero-actions .chip { min-height: 44px; padding-inline: 1.1rem; font-size: 0.8rem; }
 .hero-chart { margin: 0 calc(var(--gutter) * -1); }
 
 /* ---------- section furniture ---------- */
@@ -1339,11 +1370,8 @@ input.search::placeholder { color: var(--text-3); }
 
 /* The next-decision panel, at the top of the rate decisions page. Gold, because
    it is structure rather than measurement: it is the only thing on the site
-   that points at a date that has not happened. */
+   that points at a date that has not happened. A date and nothing to press. */
 .call h2 { margin-top: 0.2rem; }
-.call .controls { margin: 0.9rem 0 0.4rem; }
-.call .chip { min-height: 40px; padding-inline: 1.1rem; }
-.call table.indicators { margin-top: 0.9rem; max-width: 34rem; }
 
 /* ---------- the calculators ----------
    The only form on the site that a reader types into and expects an answer
@@ -1595,7 +1623,8 @@ footer {
   color: var(--text-3);
   margin: 0 0 0.9rem;
 }
-.disclaimer { max-width: 78ch; margin: 0; }
+/* The footer's grey is too faint for the one line that has to be read. */
+.disclaimer { max-width: 78ch; margin: 0; color: var(--text-2); }
 .disclaimer a { color: var(--text-2); text-decoration: underline; text-underline-offset: 2px; }
 
 /* ---------- responsive ---------- */

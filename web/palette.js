@@ -22,7 +22,7 @@ const PALETTE_PAGES = [
     alt: "calculator savings deposit cash inflation dollars usd swap devaluation lost value money" },
   { label: "What was a dollar worth that day?", href: "#/tools/dollar", hint: "the CBE rate on any date since 2005",
     alt: "calculator dollar exchange rate date birthday wedding anniversary on this day usd egp historical convert" },
-  { label: "Series", href: "#/series", hint: "search all 1,317, or read down the subjects",
+  { label: "Series", href: "#/series", hint: "search all of them, or read down the subjects",
     alt: "browse topics subjects everything all series categories find search catalogue lookup" },
   { label: "Favourites", href: "#/favourites", hint: "the numbers you chose to keep",
     alt: "desk watchlist saved starred pinned my series shortlist morning" },
@@ -30,11 +30,11 @@ const PALETTE_PAGES = [
     alt: "mpc monetary policy committee corridor hike cut hold discount rate statements" },
   { label: "The money market", href: "#/money-market", hint: "the corridor, the tenors, the bill curve",
     alt: "conia interbank overnight liquidity repo deposit auction treasury bills yield curve bid to cover desk" },
-  { label: "Documents", href: "#/docs", hint: "1,478 publications, searchable",
+  { label: "Documents", href: "#/docs", hint: "CBE publications, searchable inside",
     alt: "pdf archive bulletin circular publications press release full text ocr scans" },
   { label: "Get the data", href: "#/data", hint: "Parquet, SQLite, CSV, and the API",
     alt: "download downloads bulk export api json parquet sqlite csv duckdb pandas mirror sha256" },
-  { label: "What changed", href: "#/changes", hint: "what CBE published, and what it quietly restated",
+  { label: "What changed", href: "#/changes", hint: "revisions to published figures",
     alt: "revisions revised restated changelog news feed rss updates diff history vintage corrections anomalies latest today" },
   { label: "About", href: "#/about", hint: "how this is built, and what is not in it",
     alt: "methodology provenance source disclaimer unofficial licence citation nilometer miqyas" },
@@ -148,7 +148,7 @@ function paletteRender() {
         '" role="option" aria-selected="' + (i === paletteState.cursor) + '" data-i="' + i + '">' +
         '<span class="pkind">' + esc(r.kind || "") + "</span>" +
         '<span class="plabel">' + esc(r.label) +
-        (r.stale ? '<i class="pstale" title="CBE has stopped updating this">quiet</i>' : "") +
+        (r.stale ? '<i class="pstale" title="No newer data held">quiet</i>' : "") +
         (r.ar ? '<span class="ar" dir="rtl" lang="ar">' + esc(r.ar) + "</span>" : "") +
         "</span>" +
         (r.sub ? '<span class="psub">' + esc(r.sub) + "</span>" : "") +

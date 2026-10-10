@@ -77,7 +77,7 @@ function deskGroups(ids) {
 function deskCSV(rows) {
   const head =
     "# Miqyas desk, " + new Date().toISOString().slice(0, 10) + "\n" +
-    "# Source: Central Bank of Egypt. Republished by Miqyas, an unofficial mirror.\n" +
+    "# " + ATTRIBUTION + "\n" +
     "series_id,title,unit,period,value,previous,change\n";
   const csv = (v) => {
     const t = v === null || v === undefined ? "" : String(v);
@@ -116,7 +116,7 @@ function addPanel(mode) {
   return (
     '<details class="add-panel"' + (mode === "mine" ? "" : " open") + ">" +
     '<summary><span class="g-name">Add anything from the archive</span>' +
-    '<span class="g-meta">all 1,317 series</span></summary>' +
+    '<span class="g-meta">all ' + (state.index || []).length.toLocaleString("en-US") + " series</span></summary>" +
     "<div>" +
     '<input class="search" id="add-q" autocomplete="off" ' +
     'placeholder="dollar, CONIA, treasury bill, تحويلات…">' +

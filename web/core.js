@@ -23,6 +23,28 @@ const ROOT = typeof MIQYAS_ROOT === "string" ? MIQYAS_ROOT
 const API = ROOT + "/api/v1";
 const SEARCH_BASE = ROOT + "/search";
 
+/* The site's own address, absolute, from wherever this document sits. A
+ * pre-rendered page two directories down built its copy-paste API examples
+ * from its own path, so /data/ offered /data/api/v1/series.json, which is a
+ * 404. ROOT already knows the way up. */
+const siteBase = () => new URL(ROOT + "/", location.href).href;
+
+/* The one attribution sentence, in every file a reader takes away. The same
+ * words are in ingest/build_exports.py (JSON, Parquet, SQLite, the zip README)
+ * and ingest/prerender.py (the pre-rendered pages); change all three together. */
+const ATTRIBUTION =
+  "Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by Miqyas, an independent project not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Values are cleaned and dated by Miqyas; check against CBE before citing.";
+
+/* Where a reader reaches the person behind the site: questions, corrections,
+ * and requests to take something down. Set here and nowhere else, because it
+ * changes when the site gets an address of its own. */
+const CONTACT_URL = "https://github.com/mogh0neim/egypt-macro/issues";
+
+/* The removal line, said the same way wherever it is said. */
+const removalLine = () =>
+  t("If anything here should not be,") + ' <a href="' + CONTACT_URL + '" target="_blank" rel="noopener">' +
+  t("contact me") + "</a> " + t("and it will be removed.");
+
 const state = {
   index: null,      // catalogue: one light record per series
   byId: null,
@@ -551,7 +573,7 @@ function nearestSeries(text, limit) {
 
 const TOPICS = [
   { key: "money", name: t("Foreign exchange"), icon: "£",
-    blurb: t("Official, market and interbank exchange rates, against the dollar and twelve other currencies."),
+    blurb: t("Official, market and interbank exchange rates for the dollar and other major currencies."),
     families: ["fx"] },
   { key: "rates", name: t("Interest rates"), icon: "%",
     blurb: t("The CBE corridor, overnight money, and what treasury bills pay at auction."),
@@ -560,7 +582,7 @@ const TOPICS = [
     blurb: t("Headline and core inflation, the basket underneath them, and producer prices."),
     families: ["prices", "inflation"] },
   { key: "reserves", name: t("Reserves and remittances"), icon: "◆",
-    blurb: t("Two headline numbers, read out of CBE's monthly press release rather than published as a table: net international reserves, and what Egyptians abroad send home."),
+    blurb: t("Two headline numbers, read by Miqyas from CBE's press releases: net international reserves, and what Egyptians abroad send home."),
     families: ["external"] },
   { key: "bop", name: t("Balance of payments"), icon: "⇄",
     blurb: t("The current account, trade in goods and services, and how the gap is financed."),
@@ -836,8 +858,9 @@ function chartText(x, y, cls, anchor, text) {
   );
 }
 
-/* One or two series on shared axes. Comparison always rebases both to 100
- * before it gets here, because putting a level in pounds and a level in
+/* One or two series on shared axes. Comparison has already rebased both to
+ * 100 at one date, or kept two series that share a unit as published, before
+ * it gets here (comparePair), because putting a level in pounds and a level in
  * dollars on one axis would be a lie told with a straight line. */
 function lineChart(series, opts) {
   opts = opts || {};
@@ -1438,6 +1461,52 @@ function transformsFor(unit, observations) {
   return { keys: Object.keys(TRANSFORMS), why: "" };
 }
 
+/* Two series on one axis, for Compare on a series page.
+ *
+ * Levels in different units on one axis are a lie told with a straight line,
+ * so levels are rebased to 100, and both at the same moment: the first date
+ * both have a reading, or failing that the later of the two starts, with the
+ * earlier series taken at its last reading on or before that day. Each line
+ * used to be rebased at its own first point, which put two bases years apart
+ * under one label saying they shared one.
+ *
+ * The rule transformsFor applies holds here too: a rate, or anything that
+ * crosses zero, is never rebased. Two such series in the same unit are drawn
+ * as published; anything else is not drawn together, and the readout says
+ * why. Returns { sets, units, note }, with sets null when there is no honest
+ * way to draw the pair. */
+function comparePair(a, unitA, b, unitB) {
+  if (!a.length || !b.length) return { sets: null, units: null, note: t("Nothing to compare in this range.") };
+  const rebaseable = (p, unit) => {
+    if (/percent/i.test(unit || "")) return false;
+    let lo = Infinity, hi = -Infinity;
+    p.forEach((o) => { if (o[1] < lo) lo = o[1]; if (o[1] > hi) hi = o[1]; });
+    return !(lo < 0 && hi > 0);
+  };
+  if (rebaseable(a, unitA) && rebaseable(b, unitB)) {
+    const inA = new Set(a.map((o) => o[0]));
+    const start = a[0][0] > b[0][0] ? a[0][0] : b[0][0];
+    const shared = b.find((o) => o[0] >= start && inA.has(o[0]));
+    const on = shared ? shared[0] : start;
+    const held = (p) => {
+      let v = null;
+      for (const o of p) { if (o[0] > on) break; v = o[1]; }
+      return v;
+    };
+    const baseA = held(a), baseB = held(b);
+    if (baseA && baseB) {
+      const rebase = (p, base) => p.filter((o) => o[0] >= on).map((o) => [o[0], (o[1] / base) * 100]);
+      return { sets: [rebase(a, baseA), rebase(b, baseB)], units: ["index", "index"],
+               note: t("Both rebased to 100 on") + " " + niceDate(on) };
+    }
+  }
+  if ((unitA || "") === (unitB || "")) {
+    return { sets: [a, b], units: [unitA, unitB], note: t("Both as published, in the same unit, with no rebasing") };
+  }
+  return { sets: null, units: null,
+           note: t("Not drawn together: one of these is a rate or goes below zero, so it cannot be rebased, and the two are in different units.") };
+}
+
 /* The range buttons used to be one fixed list for all 1,300 series, which
  * served a daily FX series well and everything else badly. "1 year" on a
  * quarterly series is four points, and "Since March 2024" is a button that does
@@ -1535,7 +1604,10 @@ const crumbs = (parts) =>
 function downloadCSV(id, observations, meta, note) {
   const head =
     "# " + ((meta && meta.title_en) || id) + "\n" +
-    "# Source: Central Bank of Egypt. Republished by Miqyas, an unofficial mirror.\n" +
+    "# " + ATTRIBUTION + "\n" +
+    // A computed series is Miqyas's arithmetic, and the file says so where it
+    // credits the source, not only on the page it was downloaded from.
+    (meta && meta.derived ? "# Computed by Miqyas from CBE data: " + (meta.method || "") + "\n" : "") +
     "# Unit: " + ((meta && meta.unit) || "not stated") + "\n" +
     // What the reader was looking at when they asked for it. A file of 1,200
     // rows out of 5,172 with nothing saying which 1,200 is a trap.

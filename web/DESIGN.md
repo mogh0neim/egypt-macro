@@ -87,9 +87,10 @@ neighbours.
 
 | | |
 |---|---|
-| `.masthead` | Sticky, 62px, `--surface`. **The nav must never be what gives way** - it is the only route to most pages. `.quick` is the flexible item and disappears at 1150px; the nav keeps its width. |
+| `.masthead` | Sticky, 62px, `--surface`. **The nav must never be what gives way** - it is the only route to most pages. `.quick` is the flexible item and disappears at 1150px; the nav keeps its width. Seven items, led by Overview, What changed and Data, because the dataset and the revision record are what the site is for. The calculators and Favourites are off the row on purpose and reached from the overview, the footer and the search box. |
+| `.independence` | One line under the masthead on every page: "Independent project. Not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Official figures: cbe.org.eg." It is in `index.html`, so every pre-rendered page, `/ar/` and `404.html` inherit it, and `prerender.py` translates it with the chrome. `--text-2` on `--surface-2`, 6:1 or better in both themes; never `--text-3`, which is how the footer version ended up at 3:1. |
 | `.freshness` | Thin strip under the masthead, from `status.json`. Turns gold and warns when the build is over 36h old. Scrolls away; the footer repeats it permanently. |
-| `.hero` | `--surface`, bottom border, headline + `.standfirst` + a full-bleed chart (`.hero-chart` negates the gutter) + `.readout`. |
+| `.hero` | `--surface`, bottom border, headline + `.standfirst` + a full-bleed chart (`.hero-chart` negates the gutter) + `.readout`. On the overview the headline is one sentence saying what the site is (`h1.hero-line`, set below headline size) with two `.hero-actions` buttons, Download the data and See what changed, both above the fold at 360 by 780. |
 | `.section` / `.section.band` | Alternating page bands. `.band` is `--surface` with rules top and bottom. |
 | `.band-inset` | A bordered card *inside* a section, for a self-contained aside (the API block). |
 | `.eyebrow` | Mono, gold, uppercase, tracked. Labels a section above its `h2`. |
@@ -107,7 +108,7 @@ neighbours.
 | `details.add-panel` | Search the whole catalogue from inside Favourites, so a list can be built without leaving the page it is on. Open by default until the list is the reader's own. |
 | `.near` | The "did you mean" list, on a missing series id and on an address nothing lives at. Plain `.result` stacks its two spans inline, which is right where the sub is a page reference and wrong where it is an 88-character id running into the title. |
 | `.tool-form` | The only form on the site a reader types into expecting an answer back. Native `number`, `month` and `date` inputs, 44px tall, labelled above rather than placeheld. Submitting writes the values into the hash rather than rendering in place: the answer becomes a link, the back button works, and there is one path into the render instead of two. Note `button.chip` in the phone block is (0,1,1) and later in the file, so the submit button needs `.tool-form button.chip` or it loses and comes out at 38px. |
-| `.call` | The next-decision panel at the top of `#/rates`. A `band-inset`, because it is a self-contained aside rather than a section of the page. The only thing on the site pointing at a date that has not happened yet. |
+| `.call` | The next-decision panel at the top of `#/rates`: the date and how far off it is, nothing to press. A `band-inset`, because it is a self-contained aside rather than a section of the page. The only thing on the site pointing at a date that has not happened yet. |
 | `.nilometer` | The band on the overview that says where the name comes from. Its gauge is the only one on the site that is the subject rather than a summary, so it is sized up to 260px and reads today's dollar rate against its own twenty-year range - which is what the column did. |
 
 ## Charts
@@ -130,8 +131,16 @@ first:
   set, because the corridor chart puts stepped policy rates and a daily
   benchmark on one frame.
 - **A rate still in force reaches today**, not the day it last moved.
-- **Two series on one axis are always rebased to 100 first.** A level in pounds
-  and a level in dollars on one axis is a lie told with a straight line.
+- **Two levels on one axis are rebased to 100 at one shared date, and the
+  readout names it** (`comparePair`). A level in pounds and a level in dollars
+  on one axis is a lie told with a straight line. Each line used to be rebased
+  at its own first reading, years apart, under a label saying they shared a
+  base. The date is the first both series have a reading, or the later of the
+  two starts with the earlier series read at its value in force that day. A
+  rate, or anything that crosses zero, is never rebased (the rule
+  `transformsFor` applies): two of those in one unit are drawn as published,
+  and a pair that cannot share an axis honestly is not drawn together, with one
+  line saying why.
 - **Two sets that bound a third are a band**, not two lines (`opts.band`).
 - **Event labels are dropped rather than allowed to overprint.** November 2016
   had three devaluations in three weeks. Room is the label's own width, never a
@@ -310,8 +319,9 @@ Function declarations (`renderFreshness`, `route`) *are* window properties.
   pasted into a chat window, which is how most of these links travel.
 - **`ROOT` is detected, not configured** (`core.js`), so serving the repo root
   and serving `dist/` both work with no flag.
-- **The nav has no room for an eighth item.** Seven links plus the theme toggle
-  already fill the row at 1150px.
+- **The nav has no room for an eighth item.** Seven links plus the language
+  switch and the theme toggle fill the row at 1150px. Adding one means taking
+  one off, as Work it out and Favourites were to make room for What changed.
 - **The wrap caps at 1180px** and widening it has not been tried. Tables that
   need more room scroll inside `.table-scroll`.
 - **Every animation sits behind `prefers-reduced-motion`.** The chart draw-on is
@@ -461,7 +471,39 @@ per-page date would mean tracking one.
 
 Each series page also carries a **JSON-LD `Dataset`**. It is twenty lines, and
 it is a route into Google Dataset Search that essentially nobody competing for
-these queries has bothered with.
+these queries has bothered with. Two rules for it:
+
+- **No `license`.** It used to point at the repository's MIT licence, which
+  told every dataset catalogue that CBE's numbers were licensed by Mo. The code
+  is MIT; the data is CBE's. `usageInfo` points at the About page, whose terms
+  say exactly that, and the pre-rendered About page carries those terms in its
+  HTML so a crawler reads them.
+- **Escaped for a script element.** `json.dumps` leaves `<` alone, so a title
+  containing `</script>` would have closed the block and run whatever came
+  next. `<`, `>` and `&` go out as `\u003c`, `\u003e` and `\u0026`.
+
+**The not-found page is written, not copied.** `404.html` used to be a copy of
+`index.html`, whose asset links are relative, so at `/s/NOPE/` every stylesheet
+and script 404'd and the page was blank. `prerender.py` writes it with every
+asset, `MIQYAS_ROOT` and the way home taken from the site root, which it reads
+off `SITE_URL`, and with `MIQYAS_MISSING` set. `app.js` then reads the address
+that was asked for as a route: a series id that lost its tail gets the series
+view's nearest matches, anything else the not-found screen, and a click on
+anything hands off to the app document as a pre-rendered page does.
+
+**The site's address is set once**, as `SITE_URL` in `prerender.py`;
+`build_site.py` reads it from there, and the front end works out its own from
+`ROOT` (`siteBase()`), which is what the copy-paste API examples are built
+from. The canonical and share-card addresses in `web/index.html` are rewritten
+from `SITE_URL` at build time. A domain move changes that one line, plus
+`ingest/build_changes.py`, which keeps its own copy for the feeds.
+
+**Counts are never typed.** The pre-rendered titles fill `{series}`,
+`{documents}`, `{pages}` and `{decisions}` from the build's own files, and the
+placeholders sit inside the dictionary keys so the Arabic carries them too. The
+front end reads counts from the catalogue it has loaded. Prose that cannot do
+either says "about one in twenty" or nothing. Four different page counts were
+live at once before this.
 
 ## Asking the questions people actually have
 
@@ -498,10 +540,14 @@ step runs after the commit: it used to sit inside `--check`, before the commit,
 which would have stopped the daily data being saved from 30 October 2026 until
 someone typed in the 2027 dates.
 
-**Calls go nowhere.** The guess at the next decision lives in `localStorage`
-under `miqyas.calls` and is scored against the archive, which arrives by itself
-the morning after the meeting. No server, so no leaderboard, and also nothing
-to explain about what happens to it.
+**No guessing game.** The Rates page used to invite a Cut / Hold / Raise guess
+at the next decision, kept in `localStorage` under `miqyas.calls` and scored
+against the archive. It was removed on 10 October 2026: a vote on what the
+committee will do is commentary, not record, it sat above the history the page
+exists for, and a neutral archive of a central bank's decisions should not be
+asking its readers to bet on them. The next meeting date stays, as a plain
+fact. Nothing reads `miqyas.calls` any more; a browser that still holds it
+keeps a few bytes nobody looks at.
 
 ## The revision record
 
@@ -544,11 +590,13 @@ Two consequences worth stating plainly:
 where CBE published two different values for the same figure *inside one file*,
 which needs no history to catch.
 
-**The entry point is the freshness strip, not the nav.** The nav was full at
-eight items and it must never be what gives way; the strip is already on every
-page and already about how fresh it is. The counts ride along in `status.json`,
-which `renderFreshness` already fetches, so no page that is not the change log
-pays for `changes.json`.
+**The nav and the freshness strip both lead here.** What changed is the second
+item in the nav, because the dated archive is one of the two things the site is
+for. The strip on every page also links to it, counting new readings and
+revisions apart ("159 new readings, 0 revisions"): "numbers moved" read as
+values that had changed when it counted values that were new. The counts ride
+along in `status.json`, which `renderFreshness` already fetches, so no page
+that is not the change log pays for `changes.json`.
 
 ## Arabic
 
@@ -615,10 +663,28 @@ twelve `text-align`, four `border-left`, the skip link and one gradient. The
 
 ## Voice
 
-Short declaratives. Say the limitation rather than hiding it - "Honesty is
-cheaper than a footnote later" is the About page and also the rule. Name the
-source. Never claim more than the data supports: the site is rebuilt every
-morning, but 961 of 1,317 series are quarterly, so *most numbers do not move
-daily* and the copy should not imply they do.
+Short declaratives. Say the limitation rather than hiding it, under a plain
+heading ("Known limits"). Name the source. Never claim more than the data
+supports: the site is updated daily, but most series are quarterly, so *most
+numbers do not move daily* and the copy should not imply they do.
+
+**Neutral about CBE** (decided 10 October 2026). The record is "revisions to
+published figures". Never "quietly restated", "caught in the act", "kept
+honest", "the only record", "nothing else does", or "mirror": each says
+something about CBE's intent, or about completeness, that the site cannot
+back. Say what Miqyas holds, not what CBE did: "No newer reading here. Miqyas
+holds no value after...", not "CBE has published nothing new". Excel series
+are "dated by Miqyas", computed series "computed by Miqyas", and only the daily
+tables are "reproduced as published". Say "updated daily", never a clock time:
+the job is scheduled in the morning and GitHub often starts it hours late.
+
+**Who runs it, and how to reach him.** About names Mohamed Ghoneim and carries
+the removal line, "If anything here should not be, contact me and it will be
+removed.", which is also under the document search results. The contact is
+`CONTACT_URL` in `core.js`, the GitHub issues page for now, and nowhere else.
+The one attribution sentence ("Source: Central Bank of Egypt
+(https://www.cbe.org.eg). Republished by Miqyas, an independent project...")
+is `ATTRIBUTION` in `core.js`, `build_exports.py` and `prerender.py`, and goes
+in every file a reader takes away.
 
 **No em dashes.** Use a spaced hyphen. Grep before declaring anything done.
