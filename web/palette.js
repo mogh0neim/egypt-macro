@@ -59,8 +59,18 @@ function matchScore(hay, term) {
 
 const paletteState = { open: false, rows: [], cursor: 0 };
 
+/* Read back from storage, which anything else on this origin can write, so a
+ * row has to look like one this palette wrote: a hash route of plain address
+ * characters and text labels. paletteRender escapes the address as well. */
+const RECENT_HREF = /^#\/[\w\-.~/?=&,%+:!*'()]*$/;
+
 function paletteRecents() {
-  return store.get("recent", []).filter((r) => r && r.href && r.label);
+  const raw = store.get("recent", []);
+  return (Array.isArray(raw) ? raw : []).filter((r) =>
+    r && typeof r.href === "string" && RECENT_HREF.test(r.href) &&
+    typeof r.label === "string" && r.label &&
+    (r.kind === undefined || typeof r.kind === "string"))
+    .map((r) => ({ href: r.href, label: r.label, kind: r.kind }));
 }
 
 function paletteRemember(row) {
@@ -144,7 +154,7 @@ function paletteRender() {
   out.innerHTML = rows
     .map(
       (r, i) =>
-        '<a class="prow' + (i === paletteState.cursor ? " on" : "") + '" href="' + r.href +
+        '<a class="prow' + (i === paletteState.cursor ? " on" : "") + '" href="' + esc(r.href) +
         '" role="option" aria-selected="' + (i === paletteState.cursor) + '" data-i="' + i + '">' +
         '<span class="pkind">' + esc(r.kind || "") + "</span>" +
         '<span class="plabel">' + esc(r.label) +
