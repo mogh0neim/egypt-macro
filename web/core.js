@@ -164,11 +164,18 @@ const fmt = (v, unit) => {
 };
 
 /* Axis labels are a different problem from values: they should carry exactly
- * as many decimals as the gap between them needs, and never render as "-0". */
-const fmtTick = (v, step, unit) => {
-  const digits = step >= 10 ? 0 : step >= 1 ? 1 : step >= 0.1 ? 2 : 3;
-  let s = v.toLocaleString("en-US", { minimumFractionDigits: digits, maximumFractionDigits: digits });
+ * as many decimals as the gap between them needs, and never render as "-0".
+ * A scale of 1e6 or 1e9 counts the axis in millions or billions, with the same
+ * mn and bn the unit tags use; zero needs neither. They stay Latin on an Arabic
+ * page, like % and pp: a figure and its multiplier are one token, and an
+ * Arabic word inside a left-to-right axis label reads back to front. */
+const fmtTick = (v, step, unit, scale) => {
+  const k = scale || 1;
+  const s0 = step / k;
+  const digits = s0 >= 10 ? 0 : s0 >= 1 ? 1 : s0 >= 0.1 ? 2 : 3;
+  let s = (v / k).toLocaleString("en-US", { minimumFractionDigits: digits, maximumFractionDigits: digits });
   if (/^-0(\.0*)?$/.test(s)) s = s.slice(1);
+  if (k > 1 && /[1-9]/.test(s)) s += k === 1e9 ? "bn" : "mn";
   return /percent/i.test(unit || "") ? s + "%" : s;
 };
 
@@ -623,6 +630,13 @@ function decimate(points, target) {
 
 const isMulti = (series) => Array.isArray(series[0]) && Array.isArray(series[0][0]);
 
+// The viewBox width a chart is drawn at on this screen (see lineChart).
+const chartWidth = () => Math.min(1000, Math.max(340, Math.round(window.innerWidth * 0.9)));
+
+// The advance of one character of a 10px IBM Plex Mono axis label, in SVG
+// units: 0.6em, and a little over so an estimate errs towards room.
+const TICK_CH = 6.2;
+
 /* One or two series on shared axes. Comparison always rebases both to 100
  * before it gets here, because putting a level in pounds and a level in
  * dollars on one axis would be a lie told with a straight line. */
@@ -641,11 +655,10 @@ function lineChart(series, opts) {
   // unit is about one screen pixel and a 10px axis label renders at 10px. A
   // fixed 1000-unit box looks right on a desktop and shrinks the type to
   // three pixels on a phone, which is the same as not drawing it.
-  const W = opts.width || Math.min(1000, Math.max(340, Math.round(window.innerWidth * 0.9)));
+  const W = opts.width || chartWidth();
   const narrow = W < 700;
   const H = narrow ? Math.round(height * 0.78) : height;
   const m = { t: 18, r: 14, b: 26, l: narrow ? 42 : 58 };
-  const iw = W - m.l - m.r, ih = H - m.t - m.b;
 
   const allX = sets.reduce((a, s) => a.concat(s.map((p) => Date.parse(p[0]))), []);
   const allY = sets.reduce((a, s) => a.concat(s.map((p) => p[1])), []);
@@ -654,23 +667,37 @@ function lineChart(series, opts) {
   const padY = (y1 - y0) * 0.08 || Math.abs(y1) * 0.1 || 1;
   y0 -= padY; y1 += padY;
 
-  const px = (t) => m.l + ((t - x0) / (x1 - x0 || 1)) * iw;
-  const py = (v) => m.t + ih - ((v - y0) / (y1 - y0 || 1)) * ih;
-
   // Guides land on round numbers off a 1/2/5 ladder. Dividing the range into
   // fifths gives labels like 57.566, which reads as noise on a chart frame.
   const rawStep = (y1 - y0) / 5;
   const mag = Math.pow(10, Math.floor(Math.log10(Math.abs(rawStep) || 1)));
   const step =
     [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10].map((s) => s * mag).find((s) => s >= rawStep) || mag * 10;
-  const guides = [];
-  for (let v = Math.ceil(y0 / step) * step; v <= y1; v += step) {
+  const ticks = [];
+  for (let v = Math.ceil(y0 / step) * step; v <= y1; v += step) ticks.push(v);
+
+  /* Treasury bill auctions are counted in whole pounds, and "180,000,000,000"
+   * does not fit a phone's 42-unit margin: it printed as "0,000,000" with the
+   * rest off the screen. Past a million the axis counts in mn or bn, and the
+   * margin is measured from the widest label actually drawn rather than
+   * assumed, so nothing an axis says is ever cut off. */
+  const top = Math.max.apply(null, ticks.map(Math.abs).concat([0]));
+  const scale = top >= 1e9 && step >= 1e6 ? 1e9 : top >= 1e6 && step >= 1e3 ? 1e6 : 1;
+  const tickText = ticks.map((v) => fmtTick(v, step, unit, scale));
+  const widest = Math.max.apply(null, tickText.map((s) => s.length).concat([0]));
+  m.l = Math.max(m.l, Math.ceil(widest * TICK_CH) + 12);
+  const iw = W - m.l - m.r, ih = H - m.t - m.b;
+
+  const px = (t) => m.l + ((t - x0) / (x1 - x0 || 1)) * iw;
+  const py = (v) => m.t + ih - ((v - y0) / (y1 - y0 || 1)) * ih;
+
+  const guides = ticks.map((v, i) => {
     const y = py(v).toFixed(1);
-    guides.push(
+    return (
       '<line class="grid" x1="' + m.l + '" y1="' + y + '" x2="' + (W - m.r) + '" y2="' + y + '"/>' +
-      '<text class="tick" x="' + (m.l - 8) + '" y="' + (+y + 3) + '" text-anchor="end">' + fmtTick(v, step, unit) + "</text>"
+      '<text class="tick" x="' + (m.l - 8) + '" y="' + (+y + 3) + '" text-anchor="end">' + tickText[i] + "</text>"
     );
-  }
+  });
   // A zero line matters on anything that can go negative -- a trade balance
   // crossing it is the whole story -- and is clutter otherwise.
   /* Regimes are a wash behind the plot with their name set inside the top of
