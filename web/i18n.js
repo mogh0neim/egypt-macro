@@ -411,6 +411,9 @@ const AR = {
   "Since the 2016 float": "منذ تعويم 2016",
   "Since March 2024": "منذ مارس 2024",
 
+  /* ---------- the charts ---------- */
+  "in force since": "سارٍ منذ",
+
   /* ---------- the pre-rendered pages ----------
    * Read by prerender.py as well as by the front end. These are the titles and
    * descriptions a search result shows and a crawler indexes, so they are the

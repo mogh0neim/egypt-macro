@@ -813,6 +813,7 @@ function lineChart(series, opts) {
     'style="--len:' + Math.round(iw * 1.6) + '" data-x0="' + x0 + '" data-x1="' + x1 + '" ' +
     'data-y0="' + y0 + '" data-y1="' + y1 + '" ' +
     'data-w="' + W + '" data-l="' + m.l + '" ' +
+    'data-step="' + sets.map((s, i) => (stepped(i) ? 1 : 0)).join(",") + '" ' +
     'role="img" tabindex="0" ' +
     'aria-label="Time series chart, ' + sets[0].length +
     ' points. Use the arrow keys to read values.">' +
@@ -880,9 +881,23 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
   const base = readoutEl.innerHTML;
   const unitList = Array.isArray(units) ? units : [units];
 
-  // Nearest observation in each set to a moment in time.
+  // Which sets the chart drew as steps, read back like the margins are.
+  const steps = (svg.dataset.step || "").split(",").map((s) => s === "1");
+
+  /* What each set read at a moment in time. A stepped set holds its value
+   * until the next decision, so the honest answer is the last observation on
+   * or before the moment: the rate in force, which is what the square-cornered
+   * line already draws. Taking the nearest in time instead showed the next
+   * decision's rate, dated weeks ahead, for the second half of every gap. A
+   * stepped set that had not started yet has no value at all, rather than its
+   * first one. Everything else keeps the nearest reading. */
   const nearest = (t) =>
-    data.map((sr) => {
+    data.map((sr, k) => {
+      if (steps[k]) {
+        let held = null;
+        for (let i = 0; i < sr.length && Date.parse(sr[i][0]) <= t; i++) held = sr[i];
+        return held;
+      }
       let best = sr[0], bestD = Infinity;
       for (let i = 0; i < sr.length; i++) {
         const d = Math.abs(Date.parse(sr[i][0]) - t);
@@ -899,6 +914,7 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
   const gapUnit = (unit) =>
     /percent/i.test(unit || "") ? "" : unit === "index" ? " pts" : unitTag(unit) ? " " + unitTag(unit) : "";
   const gapLine = (picks) => {
+    if (picks.some((p) => !p)) return "";
     if (opts && opts.bandMid && picks.length > opts.bandMid[1]) {
       const mid = (picks[opts.bandMid[0]][1] + picks[opts.bandMid[1]][1]) / 2;
       const off = picks[0][1] - mid;
@@ -920,15 +936,27 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
     return "";
   };
 
-  const paint = (picks) => {
-    const bx = px(Date.parse(picks[0][0]));
+  const paint = (picks, at) => {
+    // A stepped set is read at the moment itself, so the crosshair stays where
+    // it was put rather than jumping back to the decision that set the level.
+    const when = Math.max(x0, Math.min(x1, at));
+    const bx = steps[0] || !picks[0] ? px(when) : px(Date.parse(picks[0][0]));
     // Each dot uses its own point's date, not the crosshair's shared x -- the
     // corridor's daily benchmark and stepped floor/ceiling do not share dates.
+    // A stepped dot sits on its line at the crosshair, where the level is drawn.
     const dots = picks
       .map((p, i) =>
-        '<circle class="hover-dot s' + i + '" cx="' + px(Date.parse(p[0])).toFixed(1) +
-        '" cy="' + py(p[1]).toFixed(1) + '" r="3.5"/>')
+        p
+          ? '<circle class="hover-dot s' + i + '" cx="' + (steps[i] ? px(when) : px(Date.parse(p[0]))).toFixed(1) +
+            '" cy="' + py(p[1]).toFixed(1) + '" r="3.5"/>'
+          : "")
       .join("");
+    // The date the reading is for. On a stepped set that is the moment under
+    // the crosshair, with the day the level was set when that is a different day.
+    const day = steps[0] || !picks[0] ? new Date(when).toISOString().slice(0, 10) : picks[0][0];
+    const since = steps[0] && picks.length === 1 && picks[0] && picks[0][0] !== day
+      ? '<span class="when">' + t("in force since") + " " + niceDate(picks[0][0]) + "</span>"
+      : "";
     g.innerHTML =
       '<line class="hover-line" x1="' + bx.toFixed(1) + '" y1="' + m.t + '" x2="' + bx.toFixed(1) + '" y2="' + (vbH - m.b) + '"/>' +
       dots;
@@ -941,14 +969,14 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
           // out of view.
           const tag = unitTag(unitList[i]);
           return (
-            '<span class="val' + (i ? " alt" : "") + '">' + fmt(p[1], unitList[i]) +
-            (tag ? ' <i class="u">' + esc(tag) + "</i>" : "") + "</span>" +
+            '<span class="val' + (i ? " alt" : "") + '">' + fmt(p ? p[1] : null, unitList[i]) +
+            (tag && p ? ' <i class="u">' + esc(tag) + "</i>" : "") + "</span>" +
             (labels && labels[i] ? '<span class="when">' + esc(labels[i]) + "</span>" : "")
           );
         })
         .join("") +
       (gap ? '<span class="gap">' + gap + "</span>" : "") +
-      '<span class="when">' + niceDate(picks[0][0]) + "</span>";
+      '<span class="when">' + niceDate(day) + "</span>" + since;
   };
 
   const clear = () => { g.innerHTML = ""; readoutEl.innerHTML = base; };
@@ -956,9 +984,15 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
   const move = (ev) => {
     const box = svg.getBoundingClientRect();
     const rel = ((ev.clientX - box.left) / box.width) * W;
-    paint(nearest(x0 + ((rel - m.l) / iw) * (x1 - x0)));
+    const at = x0 + ((rel - m.l) / iw) * (x1 - x0);
+    paint(nearest(at), at);
   };
   svg.addEventListener("pointermove", move);
+  /* A finger that taps and lifts sends no move at all, so on a phone the chart
+   * only answered a sideways drag. The press reads it too. Nothing here calls
+   * preventDefault, and the chart's touch-action leaves vertical panning to
+   * the browser, so a swipe that starts on a chart still scrolls the page. */
+  svg.addEventListener("pointerdown", move);
   // A mouse or pen clears the reading on leave, as before. A touch does not:
   // the moment a finger lifts is the moment it stops covering the chart, and
   // that is exactly when a phone reader wants the number to still be there.
@@ -980,7 +1014,8 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
     ev.preventDefault();
     // Anchor on set 0 and take whatever the other sets had at that moment, so a
     // comparison reads at one date rather than at two.
-    paint(nearest(Date.parse(data[0][idx][0])));
+    const at = Date.parse(data[0][idx][0]);
+    paint(nearest(at), at);
   });
   svg.addEventListener("blur", clear);
 }
