@@ -134,7 +134,57 @@ first:
   and a level in dollars on one axis is a lie told with a straight line.
 - **Two sets that bound a third are a band**, not two lines (`opts.band`).
 - **Event labels are dropped rather than allowed to overprint.** November 2016
-  had three devaluations in three weeks.
+  had three devaluations in three weeks. Room is the label's own width, never a
+  fixed allowance (a fixed 42 units let two "+16%" overprint on a phone), and
+  the biggest move is placed first, so the 2016 float's +67% never loses its
+  label to a +14% that came earlier. Regime names are measured the same way.
+- **A marker says what it marks.** A bare "+16%" told nobody what moved or when.
+  When the crosshair is within a few units of a marker the readout gives its
+  sentence ("Official dollar rate +16% in one business day: 19.77 to 23.00 on
+  27 Oct 2022"), and it always names the regime under the crosshair, so a label
+  dropped for room is still one tap away.
+- **A stepped series reads the level in force.** The crosshair on a policy rate
+  takes the last observation on or before the moment, with the day it was set,
+  because that is what the square corners draw. Nearest-in-time showed the next
+  decision's rate for the second half of every gap: 20 September 2022 read
+  13.25% when 11.25% was in force. Before its first reading a stepped set has no
+  value, not its first one. Smooth series keep the nearest reading.
+- **A tap reads the chart.** A finger that taps and lifts sends no pointermove,
+  so `pointerdown` reads it too. Nothing calls `preventDefault` and `.chart` keeps
+  `touch-action: pan-y`, so a vertical swipe that starts on a chart still scrolls.
+- **The axis is measured, not assumed.** Past a million the y axis counts in mn
+  or bn (T-bill amounts are whole pounds and printed "0,000,000" off the left of
+  a phone), and the left margin is sized from the widest label drawn. The
+  multipliers stay Latin on `/ar/`, like `%` and `pp`.
+- **Months under two years.** Below that span the x axis counts months off a
+  ladder that always keeps January, with the year at January and on the first
+  tick; "1 year" used to carry one label and "This year" none. Any x label that
+  would touch its neighbour or leave the frame is dropped.
+- **One or two readings are points, not a line** (`sparseChart`). One reading
+  drew an empty frame with an invented axis; two drew a diagonal that reads as a
+  trend. Each reading is a marked point with its value and date, and one line
+  says why there is nothing more.
+- **Redrawn when the width changes**, which follows from the viewBox rule: a
+  phone turned on its side otherwise stretches a 340-unit chart to 718 pixels
+  and 10px labels to 28. `mountChart()` draws, arms, wires and registers a chart
+  with `keepSized()`; only a change in the width a chart would be drawn at
+  redraws it, because a phone's address bar fires resize on every scroll.
+- **Charts are pinned left to right**, and `chartText()` sets an Arabic label
+  right to left on its own with its anchor swapped. An SVG label inherits the
+  page's direction, and under rtl "start" is the right-hand end: "Managed peg"
+  ran off the left of the dollar chart on `/ar/` and "+16%" printed as "16%+".
+- **Only transformations that mean something are offered** (`transformsFor`).
+  Year-on-year and rebased both divide by an earlier reading, which is nonsense
+  for a rate (inflation's year-on-year change read 20.83% against 14.5%) and for
+  anything that crosses zero. Decided from the unit and the values, and a
+  withheld button gets one line saying why rather than just not being there.
+- **One precision per series in a readout** (`digitsFor`), from its largest
+  reading, so a value does not gain and lose decimals as the crosshair moves.
+- **The corridor is a band wherever it is drawn**: on the Rates page too, with
+  the discount rate as the one line through it, because three step lines a
+  point apart overprinted. A legend key and its name are one `.item`, so a
+  wrapping legend never strands a key at the end of a line. Sparklines of
+  stepped series step as well.
 - **`armLines()` measures the real path length** for the draw-on animation. The
   stylesheet can only guess it from the chart width, which is fine for a smooth
   line and badly wrong for a spiky one - CONIA's overnight volume covers 19,838
