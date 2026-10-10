@@ -21,8 +21,8 @@ hard to use: no API, no bulk download, no history you can load into anything, an
 files that get silently overwritten when figures are revised. This repository
 scrapes all of it once a day, cleans it, and commits the result.
 
-Because it commits every copy, the git history is a record of what CBE quietly
-restated, which exists nowhere else and cannot be reconstructed after the fact.
+Because every copy is committed, the git history is a dated record of what CBE
+published, and of any later revisions.
 [What changed](https://mogh0neim.github.io/egypt-macro/#/changes) reads it, with
 an [RSS feed](https://mogh0neim.github.io/egypt-macro/changes.xml) and a
 [revisions-only feed](https://mogh0neim.github.io/egypt-macro/changes-revisions.xml).
@@ -38,7 +38,8 @@ an [RSS feed](https://mogh0neim.github.io/egypt-macro/changes.xml) and a
 | `catalog/series.json` | Every series: id, title, unit, frequency, source URL |
 | `catalog/summary.json` | Latest, previous, highest, lowest and coverage per series |
 | `catalog/COVERAGE.md` | The same thing, readable |
-| `catalog/last_run.json` | When the scrape last ran |
+| `catalog/last_run.json` | When the daily scrape last ran |
+| `catalog/weekly_run.json` | When the weekly archive job last ran, and how many files CBE replaced or withdrew |
 | `corpus/mpc/` | MPC statements as text, with the rate decision parsed out |
 | `corpus/pages/` | Every PDF page as text, gzipped. What search runs on, and what a search result quotes |
 | `corpus/extraction_report.json` | What extracted cleanly, what needed OCR, what failed |
@@ -48,7 +49,8 @@ an [RSS feed](https://mogh0neim.github.io/egypt-macro/changes.xml) and a
 | `assets/fonts/` | Static IBM Plex and Almarai, so a CI runner draws the share cards in the site's own type |
 
 Nothing in `data/` or `catalog/` is hand-edited. Timestamps live only in
-`last_run.json`, so a diff anywhere else means a number actually moved.
+`last_run.json` and `weekly_run.json`, so a diff anywhere else means the
+content changed.
 
 ### Coverage
 
@@ -88,15 +90,53 @@ From the Excel archive, which is where the rest of Egypt's macro record lives:
 - **State budget**: revenue, expenditure, deficit and financing
 - **FDI, tourism, stock market indicators**
 
-## Why the git history matters
+## The revision record
 
-CBE overwrites its files in place when it revises a figure. There is no public
-record anywhere of what a number said before it was revised.
+CBE overwrites its files in place when it revises a figure. Miqyas keeps a dated
+copy of the daily tables from 20 August 2026: every run commits the raw response
+and the cleaned table, so `git log` can say what a figure read on any day since.
 
-Because every run commits the raw response, this repository accumulates one. Ask
-what CBE was publishing on any past date and `git log` can answer it. That record
-only exists from the day the scraper started, and it cannot be reconstructed
-afterwards.
+What is checked for revisions:
+
+- **Daily tables** (exchange rates, interest rates, CONIA, inflation, T-bill
+  yields) and the **auction tables**: read every day. A changed or withdrawn
+  figure counts as a revision.
+- **The Excel archive and the documents**: read weekly. Each file's
+  Last-Modified date and size are checked, a file CBE replaced is downloaded
+  again and dated `changed_on` in its manifest, and a file CBE no longer lists
+  keeps its entry with `withdrawn_on`. A changed archive figure counts as a
+  revision only when a replaced file is behind it and the parser carries a
+  `PARSER_VERSION`.
+- **Press releases**: the newest are read again each day (`fetch_press.py
+  --refresh N`). Reserves and remittances parsed from them, and every other
+  series Miqyas computes, are never counted as revisions.
+
+`ingest/build_changes.py` decides whose change each one was. A commit by a
+person, a change in `PARSER_VERSION`, a clean table that changed when CBE's raw
+file did not, or a date where CBE published two values, is re-read by Miqyas,
+not revised by CBE. More than 500 changes in one scraper commit are held back
+rather than reported.
+
+**Every value as of any day.** `build_exports.py` turns the history into a
+table with one row per value a series has held: `series_id, period, value,
+first_seen, last_seen` (UTC days; `last_seen` is empty while the value is still
+held). It is published as `parquet/revisions.parquet`, `bulk/revisions-csv.zip`
+and the `revisions` table in `miqyas.sqlite`. What a series read on a day:
+
+```sql
+SELECT period, value FROM revisions
+WHERE series_id = 'EG.FX.OFF.USD.SELL'
+  AND first_seen <= '2026-09-01' AND (last_seen IS NULL OR last_seen >= '2026-09-01');
+```
+
+**A watchdog.** `.github/workflows/watchdog.yml` runs `ingest/health.py` every
+night and opens a GitHub issue when the daily job is more than 30 hours old,
+the weekly job more than 9 days old, the quarantined Excel files grow, or a
+table loses rows.
+
+The record only exists from the day the scraper started, and it cannot be
+reconstructed afterwards. Building it needs the full history:
+`fetch-depth: 0` in a workflow, no `--depth` on a clone.
 
 ## Using it
 
@@ -166,8 +206,9 @@ dist/api/v1/mpc.json                 every rate decision, with statement diffs
 dist/search/                         sharded full-text index over the corpus
 dist/status.json                     when it was built and how much is in it
 dist/parquet/*.parquet               partitioned, sorted for DuckDB range reads
-dist/miqyas.sqlite                   the whole thing, queryable
-dist/bulk/*.zip                      CSV bundles
+dist/parquet/revisions.parquet       every value each series has held, with first and last day
+dist/miqyas.sqlite                   the whole thing, queryable, with a revisions table
+dist/bulk/*.zip                      CSV bundles, including revisions-csv.zip
 ```
 
 Datasets are declared in [`ingest/datasets.yaml`](ingest/datasets.yaml) - path,
