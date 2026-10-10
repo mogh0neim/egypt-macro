@@ -313,7 +313,7 @@ const staleness = (iso) => {
  * marks below are that function's, character for character: Persian letter
  * forms fold to Arabic ones, Arabic punctuation becomes a space, and the Arabic
  * decimal separator becomes a point, so "9٫5" and "9.5" are one number. */
-const SEARCH_DROP = /[ؐ-ؚ؜ً-ٰٟۖ-ۭـ​-‏]/g;
+const SEARCH_DROP = /[\u0610-\u061a\u061c\u064b-\u065f\u0670\u06d6-\u06ed\u0640\u200b-\u200f]/g;
 const SEARCH_DROP_ONE = new RegExp(SEARCH_DROP.source);
 const SEARCH_FOLD = {
   "أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا",
@@ -376,12 +376,12 @@ function normaliseWithMap(input) {
  * whole, decimals included and thousands commas dropped, then words; Arabic
  * words lose the article and a sound-plural ending. Both sides must agree, or a
  * term is looked up in a shard it was never written to. */
-const SEARCH_TOKEN = /[0-9]+(?:,[0-9]{3})+(?:\.[0-9]+)?(?![0-9])|[0-9]+\.[0-9]+|[a-z0-9ء-غف-يٱ-ۓ]+/g;
+const SEARCH_TOKEN = /[0-9]+(?:,[0-9]{3})+(?:\.[0-9]+)?(?![0-9])|[0-9]+\.[0-9]+|[a-z0-9\u0621-\u063a\u0641-\u064a\u0671-\u06d3]+/g;
 const AR_PREFIXES = ["وال", "بال", "كال", "فال", "لل", "ال"];
 const AR_SUFFIXES = ["ات", "ون", "ين"];
 
 function stemArabic(term) {
-  if (!(term[0] >= "ء" && term[0] <= "ۓ")) return term;
+  if (!(term[0] >= "\u0621" && term[0] <= "\u06d3")) return term;
   for (const p of AR_PREFIXES) {
     if (term.startsWith(p) && term.length - p.length >= 2) { term = term.slice(p.length); break; }
   }
@@ -471,7 +471,7 @@ function seriesHay(s) {
  * ("rates" finds Rate). */
 const seriesTerms = (query) =>
   normaliseQuery(query).split(/\s+/).filter(Boolean).map((w) =>
-    /^[ء-ۓ]/.test(w) ? stemArabic(w)
+    /^[\u0621-\u06d3]/.test(w) ? stemArabic(w)
       : w.length > 3 && /s$/.test(w) && !/(ss|us|is)$/.test(w) ? w.slice(0, -1) : w);
 
 /* Where a match starts a word, it is a real match; one in the middle of a token

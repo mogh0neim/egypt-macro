@@ -51,7 +51,7 @@ ARABIC = re.compile(r"[؀-ۿ]")
 # Harakat, Quranic marks, superscript alef, tatweel, the Arabic letter mark and
 # the zero-width and direction marks. None of them is a letter, and left in
 # they split a word in two.
-_TASHKEEL = re.compile(r"[ؐ-ؚ؜ً-ٰٟۖ-ۭـ​-‏]")
+_TASHKEEL = re.compile(r"[\u0610-\u061a\u061c\u064b-\u065f\u0670\u06d6-\u06ed\u0640\u200b-\u200f]")
 _ARABIC_INDIC = str.maketrans("٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹", "01234567890123456789")
 _FOLD = str.maketrans({
     "أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا",
@@ -104,10 +104,10 @@ def normalise(text: str) -> str:
 # build_pages.py, over the text already in corpus/pages. Nothing has to be
 # extracted again for it to take effect.
 
-_AR_LETTERS = "ء-غف-يٱ-ۓ"
+_AR_LETTERS = "\u0621-\u063a\u0641-\u064a\u0671-\u06d3"
 _AR_WORD = re.compile(f"[{_AR_LETTERS}]+")
 # A display word: letters plus the marks normalise() drops.
-_AR_DISPLAY_WORD = re.compile(f"[{_AR_LETTERS}ؐ-ًؚ-ٰٟە-ۭـ]+")
+_AR_DISPLAY_WORD = re.compile(f"[{_AR_LETTERS}\u0610-\u061a\u064b-\u065f\u0670\u06d5-\u06ed\u0640]+")
 _DAMAGED_START, _INTACT_START = "اال", "الا"
 # A repair needs the intact spelling this many times in undamaged documents,
 # and this many times more often than the spelling it replaces.

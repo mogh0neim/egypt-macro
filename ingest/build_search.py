@@ -71,7 +71,7 @@ MAX_DOC_FRACTION = 0.28
 _TOKEN = re.compile(
     r"[0-9]+(?:,[0-9]{3})+(?:\.[0-9]+)?(?![0-9])"
     r"|[0-9]+\.[0-9]+"
-    r"|[a-z0-9ء-غف-يٱ-ۓ]+"
+    r"|[a-z0-9\u0621-\u063a\u0641-\u064a\u0671-\u06d3]+"
 )
 
 # Light Arabic stemming: the article, with the one-letter words that fuse to
@@ -94,7 +94,7 @@ STOP_WORDS = {
 
 
 def stem(term: str) -> str:
-    if not "ء" <= term[0] <= "ۓ":
+    if not "\u0621" <= term[0] <= "\u06d3":
         return term
     for p in _AR_PREFIXES:
         if term.startswith(p) and len(term) - len(p) >= 2:
