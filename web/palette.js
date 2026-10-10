@@ -22,7 +22,7 @@ const PALETTE_PAGES = [
     alt: "calculator savings deposit cash inflation dollars usd swap devaluation lost value money" },
   { label: "What was a dollar worth that day?", href: "#/tools/dollar", hint: "the CBE rate on any date since 2005",
     alt: "calculator dollar exchange rate date birthday wedding anniversary on this day usd egp historical convert" },
-  { label: "Series", href: "#/series", hint: "search every series, or read down the subjects",
+  { label: "Series", href: "#/series", hint: "search all of them, or read down the subjects",
     alt: "browse topics subjects everything all series categories find search catalogue lookup" },
   { label: "Favourites", href: "#/favourites", hint: "the numbers you chose to keep",
     alt: "desk watchlist saved starred pinned my series shortlist morning" },

@@ -247,7 +247,7 @@ function changedLine(changed) {
   if (!changed.moved && !changed.revised) return "";
   const revised = changed.revised || 0;
   const bits = [
-    (changed.moved || 0).toLocaleString("en-US") + " " + t("new readings") + ", " +
+    (changed.moved || 0).toLocaleString("en-US") + " " + t("new readings") + (RTL ? "، " : ", ") +
     revised + " " + t(revised === 1 ? "revision" : "revisions"),
   ];
   // niceDate, not shortDate: these are single days, and "12 numbers moved on

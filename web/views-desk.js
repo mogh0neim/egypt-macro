@@ -225,7 +225,7 @@ async function viewMoneyMarket() {
 
     '<section class="section"><div class="wrap"><div class="band-inset">' +
     '<p class="eyebrow">Take it to your desk</p>' +
-    "<h2>Every series on this page, without the page</h2>" +
+    "<h2>All the series on this page, without the page</h2>" +
     '<p class="lede">No key and no account. Every endpoint is a static file on the same host ' +
     "as this page, with no rate limit that we set.</p>" +
     '<pre class="code"><code># the overnight fixing, every observation\n' +

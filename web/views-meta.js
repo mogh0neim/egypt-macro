@@ -133,7 +133,7 @@ function viewAbout() {
     "numbers. Errors in cleaning or dating are ours, not CBE's: check against CBE before you " +
     "cite.</p>" +
     "<p>To cite a figure, name the Central Bank of Egypt as the source and Miqyas as where you " +
-    "found it. Every series page suggests a citation for its own series.</p>" +
+    "found it. Each series page suggests a citation for its own series.</p>" +
 
     "<h3>The name</h3>" +
     "<p><i>Miqyas</i> is the Nilometer on Rhoda Island: the graduated marble column Cairo read " +

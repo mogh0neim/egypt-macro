@@ -315,7 +315,7 @@ CHROME = [
     "Work it out",
     "Favourites",
     "Documents",
-    "Unofficial",
+    "Independent",
     "Overview",
     "Series",
     "Search",

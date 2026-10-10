@@ -44,7 +44,7 @@ const RTL = LANG === "ar";
 
 const AR = {
   /* ---------- chrome ---------- */
-  "Unofficial": "غير رسمي",
+  "Independent": "مستقل",
   "Search": "بحث",
   "Menu": "القائمة",
   "Skip to content": "تخطَّ إلى المحتوى",
