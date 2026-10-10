@@ -103,10 +103,16 @@ const AR = {
   "What is and is not here →": "ما هو موجود هنا وما هو غير موجود ←",
   "Source on GitHub ↗": "الكود على GitHub ↗",
   "The Central Bank of Egypt ↗": "البنك المركزي المصري ↗",
+  "Independent project. Not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Official figures:":
+    "مشروع مستقل. غير تابع للبنك المركزي المصري ولا معتمد منه ولا مرتبط به. للأرقام الرسمية:",
   "Not affiliated with, endorsed by, or connected to the Central Bank of Egypt.":
     "هذا الموقع غير تابع للبنك المركزي المصري ولا معتمد منه ولا مرتبط به.",
   "The CBE is the source of every number here. Any error in the cleaning is ours. For official figures go to":
     "البنك المركزي المصري هو مصدر كل رقم هنا. أي خطأ في المعالجة مسؤوليتنا. للأرقام الرسمية انتقل إلى",
+  /* The removal line, in three pieces around its link. */
+  "If anything here should not be,": "إن كان هناك ما لا ينبغي أن يكون هنا،",
+  "contact me": "فراسلني",
+  "and it will be removed.": "وسيُزال.",
 
   /* ---------- the overview ---------- */
   "Egypt's economy in numbers. Free.": "اقتصاد مصر بالأرقام. مجانًا.",
@@ -517,6 +523,10 @@ const AR = {
     "حمّل بيانات الاقتصاد الكلي المصري: Parquet وSQLite وCSV وواجهة بلا مفتاح | مقياس",
   "All {series} series in whichever shape suits you, updated daily. No key and no account.":
     "كل السلاسل الـ{series} بالشكل الذي يناسبك، تُحدَّث يوميًا. بلا مفتاح ولا حساب.",
+  "Miqyas is made by Mohamed Ghoneim, as an independent project.":
+    "مقياس مشروع مستقل من إعداد محمد غنيم.",
+  "The code is MIT-licensed. The data is the Central Bank of Egypt's, and Miqyas claims no rights in it: cite CBE as the source, and check against CBE before citing.":
+    "الكود مرخّص برخصة MIT. أما البيانات فملك للبنك المركزي المصري، ولا يدّعي مقياس أي حق فيها: استشهد بالبنك المركزي مصدرًا، وراجعه قبل الاستشهاد.",
   "About Miqyas: an independent dataset of Egyptian central bank data":
     "عن مقياس: مجموعة بيانات مستقلة من بيانات البنك المركزي المصري",
   "Who made Miqyas and why, what is here and what is not, and the terms. Miqyas is an independent project, not affiliated with the Central Bank of Egypt.":

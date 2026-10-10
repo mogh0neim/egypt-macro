@@ -61,6 +61,12 @@
   </div>
 </header>
 
+<!-- On every page. It is in the template every pre-rendered page, the Arabic
+     site and the not-found page are written from, and prerender.py translates
+     it with the rest of the chrome. The sentence is its own span so that it
+     can be matched and replaced whole. -->
+<div class="independence" role="note"><div class="wrap"><p><span>Independent project. Not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Official figures:</span> <a href="https://www.cbe.org.eg/en/" rel="noopener">cbe.org.eg</a>.</p></div></div>
+
 <!-- Filled from status.json by app.js. Stays hidden if that fetch fails, so a
      clone with no build does not show an empty bar. -->
 <div class="freshness" id="freshness" hidden></div>

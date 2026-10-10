@@ -29,6 +29,16 @@ const SEARCH_BASE = ROOT + "/search";
 const ATTRIBUTION =
   "Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by Miqyas, an independent project not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Values are cleaned and dated by Miqyas; check against CBE before citing.";
 
+/* Where a reader reaches the person behind the site: questions, corrections,
+ * and requests to take something down. Set here and nowhere else, because it
+ * changes when the site gets an address of its own. */
+const CONTACT_URL = "https://github.com/mogh0neim/egypt-macro/issues";
+
+/* The removal line, said the same way wherever it is said. */
+const removalLine = () =>
+  t("If anything here should not be,") + ' <a href="' + CONTACT_URL + '" target="_blank" rel="noopener">' +
+  t("contact me") + "</a> " + t("and it will be removed.");
+
 const state = {
   index: null,      // catalogue: one light record per series
   byId: null,

@@ -276,6 +276,9 @@ async function viewDocs(presetCategory) {
     '<button class="chip" id="dclear">Clear</button>' +
     "</div>" +
     '<div class="results" id="dresults"></div>' +
+    // The text quoted here is CBE's, so the way to have it taken down is said
+    // where it is shown.
+    '<p class="foot-note">' + removalLine() + "</p>" +
     (ocred
       ? '<p class="foot-note">' + ocred + " of these are scans of paper with no text layer of their own. " +
         "They have been read by OCR in Arabic and English, so their text is searchable. Expect the odd " +

@@ -292,6 +292,7 @@ def tr(text: str, lang: str) -> str:
 # the parts the front end's own `t()` cannot reach in time. Ordered longest
 # first so "Rate decisions" is not half-replaced by "Rates".
 CHROME = [
+    "Independent project. Not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Official figures:",
     "Search series, topics, documents and pages",
     "Search series, topics, documents, pages…",
     "Switch between light, dark and system theme",
@@ -517,8 +518,17 @@ def series_jsonld(meta: dict, full: dict, url: str) -> str:
 
     Worth the twenty lines: it is a route to this data that almost nobody
     competing for these queries has bothered with, and the fields it wants --
-    temporal coverage, creator, distribution, licence -- are ones this
-    catalogue already carries honestly.
+    temporal coverage, creator, distribution -- are ones this catalogue
+    already carries honestly.
+
+    No `license`. The repository's MIT licence covers the code, and putting it
+    here told every dataset catalogue that CBE's numbers were Mo's to license.
+    `usageInfo` points at the terms on the About page instead, which say the
+    code is MIT and the data is CBE's.
+
+    The JSON is escaped for a script element: json.dumps leaves "<" alone, so a
+    title containing "</script>" would have closed the block and run whatever
+    followed it on every series page.
     """
     data = {
         "@context": "https://schema.org",
@@ -533,7 +543,7 @@ def series_jsonld(meta: dict, full: dict, url: str) -> str:
         "url": url,
         "temporalCoverage": f"{meta.get('first', '')}/{meta.get('last', '')}",
         "isAccessibleForFree": True,
-        "license": "https://github.com/mogh0neim/egypt-macro/blob/main/LICENSE",
+        "usageInfo": f"{SITE_URL}about/",
         "creator": {"@type": "Organization", "name": "Central Bank of Egypt",
                     "url": "https://www.cbe.org.eg/en/"},
         "publisher": {"@type": "Organization", "name": "Miqyas", "url": SITE_URL},
@@ -549,7 +559,9 @@ def series_jsonld(meta: dict, full: dict, url: str) -> str:
                                     "name": full.get("title_en"), "unitText": full["unit"]}
     if full.get("source_url"):
         data["isBasedOn"] = full["source_url"]
-    return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False) + "</script>"
+    payload = (json.dumps(data, ensure_ascii=False)
+               .replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e"))
+    return '<script type="application/ld+json">' + payload + "</script>"
 
 
 def topic_body(topic: dict, members: list[dict], root: str, lang: str = "en") -> str:
@@ -844,10 +856,26 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
             image_alt="Miqyas",
             body='<div class="wrap"><section class="section">'
                  f"<h1>{esc(title.split(' | ')[0])}</h1>"
-                 f'<p class="lede">{esc(description)}</p>' + attribution(lang) + "</section></div>"))
+                 f'<p class="lede">{esc(description)}</p>'
+                 + (about_lines(lang) if slug == "about" else "")
+                 + attribution(lang) + "</section></div>"))
         written += 1
 
     return written
+
+
+# Who made it and on what terms, readable on the pre-rendered About page before
+# any script runs. The Dataset markup on every series page points its
+# usageInfo here, so the terms have to be in the HTML a crawler reads.
+ABOUT_LINES = (
+    "Miqyas is made by Mohamed Ghoneim, as an independent project.",
+    "The code is MIT-licensed. The data is the Central Bank of Egypt's, and Miqyas claims no "
+    "rights in it: cite CBE as the source, and check against CBE before citing.",
+)
+
+
+def about_lines(lang: str) -> str:
+    return "".join(f"<p>{esc(tr(line, lang))}</p>" for line in ABOUT_LINES)
 
 
 def main(template_html: str | None = None, assets: list[str] | None = None) -> int:
