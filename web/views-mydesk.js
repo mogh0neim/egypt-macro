@@ -116,7 +116,7 @@ function addPanel(mode) {
   return (
     '<details class="add-panel"' + (mode === "mine" ? "" : " open") + ">" +
     '<summary><span class="g-name">Add anything from the archive</span>' +
-    '<span class="g-meta">all 1,317 series</span></summary>' +
+    '<span class="g-meta">all ' + (state.index || []).length.toLocaleString("en-US") + " series</span></summary>" +
     "<div>" +
     '<input class="search" id="add-q" autocomplete="off" ' +
     'placeholder="dollar, CONIA, treasury bill, تحويلات…">' +

@@ -245,10 +245,10 @@ async function viewMoneyMarket() {
     '<h3 class="sub-head">Open market operations</h3>' +
     '<p class="lede">The liquidity management CBE does itself is published as auction tables ' +
     "rather " +
-    "than as series, so it is not charted here, but it is in the record-level download: 294 " +
-    "deposit auctions at the corridor rate, 600 fixed-rate and 544 variable-rate deposit " +
-    "auctions, 116 fixed-rate and 54 variable-rate repo auctions, and all 4,037 EGP bill " +
-    "auctions with their ISINs. One CSV per table, inside " +
+    "than as series, so it is not charted here, but it is in the record-level download: " +
+    "deposit auctions at the corridor rate, fixed-rate and variable-rate deposit auctions, " +
+    "fixed-rate and variable-rate repo auctions, and every EGP bill auction with its ISIN. " +
+    "One CSV per table, inside " +
     "<code>records-csv.zip</code>.</p>" +
     '<div class="controls">' +
     '<a class="chip solid" href="' + ROOT + '/bulk/records-csv.zip" download>records-csv.zip</a>' +
