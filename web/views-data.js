@@ -124,20 +124,36 @@ async function viewHome() {
    * record of what already happened, which is why none of it is a reason to
    * come back on any particular day. */
   const next = nextMeeting(calendar);
+  /* Since when the corridor has been where it is, which is not the date of the
+   * latest meeting: that meeting may have been a hold. This said "unchanged
+   * since 24 Sep 2026" of a deposit rate that had been 19% since February.
+   * The rate series records a reading only when the level changes, so its last
+   * reading is the day the level in force took effect, and the decision behind
+   * it is the last statement in the three weeks before that day. */
+  const dep = state.byId.get("EG.RATE.ON.DEP");
+  const lend = state.byId.get("EG.RATE.ON.LEND");
+  const statements = latestMPC ? mpc.statements.slice().sort((a, b) => a.date.localeCompare(b.date)) : [];
+  const setBy = dep && dep.last
+    ? statements.filter((s) => s.date <= dep.last && Date.parse(dep.last) - Date.parse(s.date) <= 21 * 86400000).pop()
+    : null;
+  const level = dep && lend
+    ? "Overnight deposit " + esc(String(dep.latest_value)) + "%, overnight lending " +
+      esc(String(lend.latest_value)) + "%, in force since " +
+      (setBy ? "the " + niceDate(setBy.date) + " decision" : niceDate(dep.last)) +
+      (latestMPC.decision === "hold" && (!setBy || latestMPC.date > setBy.date)
+        ? " and held at the " + niceDate(latestMPC.date) + " meeting"
+        : "") + "."
+    : "Overnight deposit " + esc(latestMPC ? latestMPC.deposit_rate || "—" : "—") + "%, overnight lending " +
+      esc(latestMPC ? latestMPC.lending_rate || "—" : "—") + "%.";
   const mpcCard = latestMPC
     ? '<a class="wide-card" href="#/rates">' +
       '<p class="eyebrow">' + (next ? "Next rate decision" : "Latest rate decision") + "</p>" +
       (next
-        ? "<h3>" + niceDate(next.date) + ", " + esc(countdownWords(next.days)) + "</h3>" +
-          "<p>Overnight deposit is " + esc(latestMPC.deposit_rate || "—") + "%, overnight lending " +
-          esc(latestMPC.lending_rate || "—") + "%, unchanged since " + niceDate(latestMPC.date) +
-          ". Every decision back to June 2005, with what changed in the wording each time.</p>" +
-          '<span class="go">See all ' + (mpc.count || 0) + " decisions →</span></a>"
+        ? "<h3>" + niceDate(next.date) + ", " + esc(countdownWords(next.days)) + "</h3>"
         : "<h3>" + niceDate(latestMPC.date) + ", the committee " +
-          ({ hold: "left rates unchanged", cut: "cut", hike: "raised" }[latestMPC.decision] || "met") + "</h3>" +
-          "<p>Overnight deposit " + esc(latestMPC.deposit_rate || "—") + "%, overnight lending " +
-          esc(latestMPC.lending_rate || "—") + "%. Every decision back to June 2005, with what changed in the wording each time.</p>" +
-          '<span class="go">See all ' + (mpc.count || 0) + " decisions →</span></a>")
+          ({ hold: "left rates unchanged", cut: "cut", hike: "raised" }[latestMPC.decision] || "met") + "</h3>") +
+      "<p>" + level + " Every decision back to June 2005, with what changed in the wording each time.</p>" +
+      '<span class="go">See all ' + (mpc.count || 0) + " decisions →</span></a>"
     : "";
 
   app.innerHTML =
