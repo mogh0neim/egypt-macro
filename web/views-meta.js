@@ -24,6 +24,8 @@ async function viewData() {
   };
   const totalObs = index.reduce((a, s) => a + (s.n || 0), 0);
   const sqliteName = manifest.find((m) => /\.sqlite$/.test(m.path));
+  // The examples are for copying, so they name the site root, not this page.
+  const site = siteBase();
 
   const file = (href, name, note, size) =>
     '<a class="dl" href="' + href + '" download>' +
@@ -66,14 +68,14 @@ async function viewData() {
     '<p class="lede">There is no server. Every endpoint is a static file on GitHub Pages, ' +
     "with no key and no rate limit that we set.</p>" +
     '<pre class="code"><code># the catalogue: one light record per series\n' +
-    'curl ' + location.origin + location.pathname.replace(/[^/]*$/, "") + 'api/v1/series.json\n\n' +
+    'curl ' + site + 'api/v1/series.json\n\n' +
     "# one series, with every observation\n" +
-    "curl " + location.origin + location.pathname.replace(/[^/]*$/, "") + "api/v1/series/EG.FX.OFF.USD.SELL.json\n\n" +
+    "curl " + site + "api/v1/series/EG.FX.OFF.USD.SELL.json\n\n" +
     "# the rate decisions\n" +
-    "curl " + location.origin + location.pathname.replace(/[^/]*$/, "") + "api/v1/mpc.json\n\n" +
+    "curl " + site + "api/v1/mpc.json\n\n" +
     "# query the whole archive from Python, no download\n" +
     "import duckdb\n" +
-    "duckdb.sql(&quot;SELECT * FROM &#39;" + location.origin + location.pathname.replace(/[^/]*$/, "") +
+    "duckdb.sql(&quot;SELECT * FROM &#39;" + site +
     "parquet/all.parquet&#39; WHERE series_id = &#39;EG.CPI.HDL.YOY&#39;&quot;)" +
     "</code></pre>" +
     "</div></section>" +

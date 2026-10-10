@@ -172,7 +172,7 @@ async function viewMoneyMarket() {
 
   /* ---------- the page ---------- */
 
-  const site = location.origin + location.pathname.replace(/[^/]*$/, "");
+  const site = siteBase();
 
   app.innerHTML =
     '<section class="hero"><div class="wrap">' +

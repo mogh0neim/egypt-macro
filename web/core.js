@@ -23,6 +23,12 @@ const ROOT = typeof MIQYAS_ROOT === "string" ? MIQYAS_ROOT
 const API = ROOT + "/api/v1";
 const SEARCH_BASE = ROOT + "/search";
 
+/* The site's own address, absolute, from wherever this document sits. A
+ * pre-rendered page two directories down built its copy-paste API examples
+ * from its own path, so /data/ offered /data/api/v1/series.json, which is a
+ * 404. ROOT already knows the way up. */
+const siteBase = () => new URL(ROOT + "/", location.href).href;
+
 /* The one attribution sentence, in every file a reader takes away. The same
  * words are in ingest/build_exports.py (JSON, Parquet, SQLite, the zip README)
  * and ingest/prerender.py (the pre-rendered pages); change all three together. */
