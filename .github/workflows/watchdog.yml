@@ -1,0 +1,67 @@
+# Nightly: is the data still arriving?
+#
+# The weekly job failed seven Sundays running in August and September 2026 and
+# nothing said so. This reads the repository (ingest/health.py) and opens a
+# GitHub issue, which emails the repository owner, when:
+#
+#   - the daily job last saved data more than 30 hours ago
+#   - the weekly archive job last ran more than 9 days ago
+#   - the count of quarantined Excel files grew
+#   - a clean table lost rows in a scraper commit
+#
+# One open watchdog issue at a time. Closing it is the acknowledgement; if the
+# problem is still there the next night, a new one opens.
+
+name: watchdog
+
+on:
+  schedule:
+    # 23:15 UTC: after the daily job, which has been landing between 12:00 and
+    # 20:00 UTC, so a late run is not mistaken for a missing one.
+    - cron: "15 23 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: watchdog
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          # health.py compares each table with its version before the last
+          # change, which needs the history.
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+
+      # Standard library only: nothing to install.
+      - name: Read the health of the data jobs
+        run: python ingest/health.py --out health.json --problems problems.md
+
+      - name: Open an issue if something is wrong
+        if: hashFiles('problems.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          open=$(gh issue list --state open --search "Watchdog in:title" --json number --jq 'length')
+          if [ "$open" != "0" ]; then
+            echo "A watchdog issue is already open; not opening another."
+            cat problems.md
+            exit 0
+          fi
+          printf '\n@%s\n' "$OWNER" >> problems.md
+          gh issue create --title "Watchdog: a data job needs a look" --body-file problems.md
