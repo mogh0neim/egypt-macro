@@ -237,6 +237,24 @@ site yet, so this is the time to move.
 
 Update the links at the top of this README in the same commit.
 
+### Counting visits (off until you switch it on)
+
+The site can count visits with [GoatCounter](https://www.goatcounter.com),
+which sets no cookies. It is off: `goatcounter` in `site.toml` is empty, and
+while it is empty no page contacts GoatCounter at all. To switch it on:
+
+1. Make a free account at goatcounter.com. The "code" you pick is the first
+   part of your dashboard address: `miqyas` for `miqyas.goatcounter.com`.
+2. In `site.toml`, set `goatcounter = "miqyas"`, commit and push.
+3. Open the site, click around, and check the dashboard a minute later.
+
+Each page a reader opens then sends GoatCounter its name only, such as
+`/tools/salary` or `/s/EG.FX.OFF.USD.SELL` (Arabic pages start `/ar`), never
+what was typed into a search box or a calculator, and on arrival the address
+of the site that linked there, without the rest of the link. The privacy
+paragraph on the About page switches with the setting, so it is true either
+way. Visits from `localhost` are never counted.
+
 ### The API
 
 `build_exports.py` writes `dist/` - static JSON, no key, no rate limit:

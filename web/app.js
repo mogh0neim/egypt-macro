@@ -167,6 +167,8 @@ async function route() {
   }
   if (seq !== routeSeq) return;
   window.scrollTo(0, 0);
+  // The route's name and nothing typed into it; off unless site.toml says.
+  if (typeof countPage === "function") countPage(hash);
 }
 
 /* ---------- theme ----------
