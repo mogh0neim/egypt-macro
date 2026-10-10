@@ -244,13 +244,13 @@ async function viewSavings(query) {
       Math.round(dollars).toLocaleString("en-US") + "</b>, " + t("which is") + " " +
       esc(money(inDollarsNow)) + " " + t("today, and buys") + " " +
       esc(money(inDollarsReal)) + " " + t("of that same shopping.") + "</p>" +
-      '<table class="indicators"><thead><tr><th>' + t("What you did with it") + "</th>" +
+      '<div class="table-scroll"><table class="indicators"><thead><tr><th>' + t("What you did with it") + "</th>" +
       "<th>" + t("Pounds today") + "</th><th>" + t("What it buys") + "</th></tr></thead><tbody>" +
       "<tr><td class='name'>" + t("Kept it as pounds") + "</td><td>" + esc(money(amount)) + "</td><td>" +
       esc(money(keptReal)) + "</td></tr>" +
       "<tr><td class='name'>" + t("Swapped it for dollars on day one") + "</td><td>" +
       esc(money(inDollarsNow)) + "</td><td>" + esc(money(inDollarsReal)) + "</td></tr>" +
-      "</tbody></table>" +
+      "</tbody></table></div>" +
       '<p class="foot-note">' + t("“What it buys” is in the money of") + " " + esc(niceDate(from)) +
       ", " + t("so both rows can be compared with the number you started from. The dollar row is the CBE official selling rate on both dates and ignores what a bank would have charged you on either side of it.") +
       "</p>" +
