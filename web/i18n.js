@@ -262,20 +262,11 @@ const AR = {
   "Latest rate decision": "آخر قرار للفائدة",
   "Monetary Policy Committee": "لجنة السياسة النقدية",
   "Every rate decision since June 2005": "كل قرارات الفائدة منذ يونيو 2005",
-  "Eight meetings a year, on dates the Central Bank publishes in advance. What do you think they will do?":
-    "ثماني اجتماعات في العام، بمواعيد يعلنها البنك المركزي مسبقًا. برأيك ماذا سيقرّرون؟",
+  "The committee meets eight times a year, on dates the Central Bank publishes in advance.":
+    "تجتمع اللجنة ثماني مرات في العام، في مواعيد يعلنها البنك المركزي مسبقًا.",
   "Cut": "خفض",
-  "Hold": "تثبيت",
-  "Raise": "رفع",
   "Held": "ثبّتت",
   "Raised": "رفعت",
-  "Nothing called yet.": "لم تتوقّع بعد.",
-  "Meeting": "الاجتماع",
-  "You said": "توقّعك",
-  "They did": "القرار",
-  "Kept in this browser and nowhere else. There is no server behind this site to send it to.":
-    "محفوظ في هذا المتصفح فقط. لا يوجد خادم خلف هذا الموقع لإرساله إليه.",
-  "Call the next one →": "توقّع القرار القادم ←",
   "today": "اليوم",
   "tomorrow": "غدًا",
 

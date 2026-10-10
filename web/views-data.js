@@ -131,8 +131,8 @@ async function viewHome() {
         ? "<h3>" + niceDate(next.date) + ", " + esc(countdownWords(next.days)) + "</h3>" +
           "<p>Overnight deposit is " + esc(latestMPC.deposit_rate || "—") + "%, overnight lending " +
           esc(latestMPC.lending_rate || "—") + "%, unchanged since " + niceDate(latestMPC.date) +
-          ". Call it before the committee does, and see every decision back to June 2005.</p>" +
-          '<span class="go">Call the next one →</span></a>'
+          ". Every decision back to June 2005, with what changed in the wording each time.</p>" +
+          '<span class="go">See all ' + (mpc.count || 0) + " decisions →</span></a>"
         : "<h3>" + niceDate(latestMPC.date) + ", the committee " +
           ({ hold: "left rates unchanged", cut: "cut", hike: "raised" }[latestMPC.decision] || "met") + "</h3>" +
           "<p>Overnight deposit " + esc(latestMPC.deposit_rate || "—") + "%, overnight lending " +

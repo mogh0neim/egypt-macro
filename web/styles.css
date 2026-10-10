@@ -1351,11 +1351,8 @@ input.search::placeholder { color: var(--text-3); }
 
 /* The next-decision panel, at the top of the rate decisions page. Gold, because
    it is structure rather than measurement: it is the only thing on the site
-   that points at a date that has not happened. */
+   that points at a date that has not happened. A date and nothing to press. */
 .call h2 { margin-top: 0.2rem; }
-.call .controls { margin: 0.9rem 0 0.4rem; }
-.call .chip { min-height: 40px; padding-inline: 1.1rem; }
-.call table.indicators { margin-top: 0.9rem; max-width: 34rem; }
 
 /* ---------- the calculators ----------
    The only form on the site that a reader types into and expects an answer

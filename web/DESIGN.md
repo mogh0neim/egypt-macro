@@ -107,7 +107,7 @@ neighbours.
 | `details.add-panel` | Search the whole catalogue from inside Favourites, so a list can be built without leaving the page it is on. Open by default until the list is the reader's own. |
 | `.near` | The "did you mean" list, on a missing series id and on an address nothing lives at. Plain `.result` stacks its two spans inline, which is right where the sub is a page reference and wrong where it is an 88-character id running into the title. |
 | `.tool-form` | The only form on the site a reader types into expecting an answer back. Native `number`, `month` and `date` inputs, 44px tall, labelled above rather than placeheld. Submitting writes the values into the hash rather than rendering in place: the answer becomes a link, the back button works, and there is one path into the render instead of two. Note `button.chip` in the phone block is (0,1,1) and later in the file, so the submit button needs `.tool-form button.chip` or it loses and comes out at 38px. |
-| `.call` | The next-decision panel at the top of `#/rates`. A `band-inset`, because it is a self-contained aside rather than a section of the page. The only thing on the site pointing at a date that has not happened yet. |
+| `.call` | The next-decision panel at the top of `#/rates`: the date and how far off it is, nothing to press. A `band-inset`, because it is a self-contained aside rather than a section of the page. The only thing on the site pointing at a date that has not happened yet. |
 | `.nilometer` | The band on the overview that says where the name comes from. Its gauge is the only one on the site that is the subject rather than a summary, so it is sized up to 260px and reads today's dollar rate against its own twenty-year range - which is what the column did. |
 
 ## Charts
@@ -451,10 +451,14 @@ step runs after the commit: it used to sit inside `--check`, before the commit,
 which would have stopped the daily data being saved from 30 October 2026 until
 someone typed in the 2027 dates.
 
-**Calls go nowhere.** The guess at the next decision lives in `localStorage`
-under `miqyas.calls` and is scored against the archive, which arrives by itself
-the morning after the meeting. No server, so no leaderboard, and also nothing
-to explain about what happens to it.
+**No guessing game.** The Rates page used to invite a Cut / Hold / Raise guess
+at the next decision, kept in `localStorage` under `miqyas.calls` and scored
+against the archive. It was removed on 10 October 2026: a vote on what the
+committee will do is commentary, not record, it sat above the history the page
+exists for, and a neutral archive of a central bank's decisions should not be
+asking its readers to bet on them. The next meeting date stays, as a plain
+fact. Nothing reads `miqyas.calls` any more; a browser that still holds it
+keeps a few bytes nobody looks at.
 
 ## The revision record
 
