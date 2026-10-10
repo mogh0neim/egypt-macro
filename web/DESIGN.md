@@ -340,7 +340,54 @@ Function declarations (`renderFreshness`, `route`) *are* window properties.
   folded copy of it. Both must match `normalise()` in `ingest/extract_text.py`
   and `shard_of()` in `ingest/build_search.py`, or Arabic queries silently return
   nothing. The fast one exists because it runs over the whole catalogue; the slow
-  one because it runs over a handful of pages.
+  one because it runs over a handful of pages. Since October 2026 there are four
+  pairs, not two: `normalise()` / `normaliseQuery` and `normaliseWithMap`
+  (Persian letter forms folded, Arabic punctuation a space, "٫" a decimal
+  point), `_TOKEN` / `SEARCH_TOKEN` (numbers whole, decimals included,
+  thousands commas dropped), `stem()` / `stemArabic` and `shard_of()` /
+  `shardFor`. Checked by running both sides, Python and a headless browser,
+  over 1,308 corpus pages: zero differences in index terms or shard numbers.
+  Compare them on real pages again after touching any of them.
+- **Light Arabic stemming, on both sides.** The article (with و ب ف ك before
+  it, or as لل) and the sound plurals ات ون ين come off an Arabic term in the
+  document index and in every query. A stem is always a stretch of the printed
+  word, which is what lets the snippet still find and mark it. Broken plurals
+  ("أسعار" for "سعر") cannot be stemmed that way; the series boxes carry a
+  short table of them, the document index does not.
+- **The search skips what the index cannot have, and says so.** Stop words and
+  terms on more than 28% of pages are not indexed; `meta.json` lists them as
+  `ignored`, and the documents page drops them from a query and prints
+  "Ignored: net". Requiring them made "net international reserves" answer that
+  no page had those words.
+- **Numbers are terms, and no term is capped.** The 4,000-page cap kept a
+  third of the pages for "external", "debt", "exchange" out of the index, and
+  every number was dropped, so "18136.2" and "MPC July 2024" found nothing.
+  Both changes took the index from 47.5 MB to 116.6 MB written plainly; postings
+  packed as gaps (`packed()` in build_search.py) and 512 shards instead of 256
+  bring it to 74.8 MB, with a median shard of 135 KB against 172 KB before.
+  One shard is what a query term costs, so a search downloads less than it did.
+- **Filter, then cut, then count.** The year, topic and kind filters run on
+  every hit before the list is cut to 60, and the count line gives the real
+  total: "Top 60 of 4,579".
+- **The documents box searches inside the text by default,** after a 350 ms
+  pause in typing. A title search answering "no title matches" read as "not in
+  the archive".
+- **The split lam-alef is repaired by vocabulary, at build time.** PyMuPDF
+  reverses the لا ligature in 370 of the documents ("خالل" for "خلال"). The
+  damaged pair also spells the article, so it is undone word by word against
+  how the undamaged documents spell it (`LamAlef` in extract_text.py).
+  build_search.py indexes the repaired words and build_pages.py publishes the
+  repaired text, from the text already in `corpus/pages`, so no PDF has to be
+  extracted again and the stored corpus keeps what the extractor produced.
+- **Series are ranked, not listed.** `rankSeries` in core.js, used by the
+  Series page, the favourites panel and the palette: words landing at the
+  start of a word, then a short headline list (headline CPI, the official
+  dollar rate, the corridor, net international reserves, total external debt,
+  GDP at market prices, the treasury bill yields), then active over stale, then
+  length of history. The headline list names daily series by id and Excel
+  series by family and title, never by an `EG.XL.*` id, because those ids are
+  being rebuilt. Market words CBE does not use (T-bill, 364, MPC, policy rate,
+  USD, money supply, and their Arabic) are matched as if they were in the title.
 - **Page text is published, gzipped, and inflated in the browser.** GitHub Pages
   serves a `.gz` as an opaque binary rather than sending `Content-Encoding:
   gzip`, so `DecompressionStream` does the work. Where it is missing, a result
