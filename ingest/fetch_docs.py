@@ -30,7 +30,7 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 
-from cbe_client import CBEClient  # noqa: E402
+from cbe_client import CBEClient, looks_blocked  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CORPUS = ROOT / "corpus"
@@ -107,7 +107,7 @@ def enumerate_all(client: CBEClient) -> list[dict]:
     return sorted(seen.values(), key=lambda d: (d["date"], d["title"]), reverse=True)
 
 
-def download(client: CBEClient, docs: list[dict], limit: int | None) -> int:
+def download(client: CBEClient, docs: list[dict], limit: int | None) -> tuple[int, int]:
     FILES.mkdir(parents=True, exist_ok=True)
     todo = [d for d in docs if d["is_file"] and not d.get("sha256")]
     if limit:
@@ -132,7 +132,7 @@ def download(client: CBEClient, docs: list[dict], limit: int | None) -> int:
         if i % 25 == 0:
             print(f"  [{i}/{len(todo)}] {ok} ok, {failed} failed")
     print(f"downloaded {ok}, failed {failed}")
-    return failed
+    return failed, len(todo)
 
 
 def main() -> int:
@@ -159,9 +159,9 @@ def main() -> int:
                     {k: prev[k] for k in ("local", "sha256", "bytes") if prev.get(k)}
                 )
 
-    failed = 0
+    failed = attempted = 0
     if args.download and not args.manifest_only:
-        failed = download(client, docs, args.limit)
+        failed, attempted = download(client, docs, args.limit)
 
     by_source = collections.Counter(d["source"] for d in docs)
     by_ext = collections.Counter(
@@ -190,7 +190,7 @@ def main() -> int:
     have = sum(1 for d in docs if d.get("sha256"))
     print(f"mirrored locally: {have}/{sum(1 for d in docs if d['is_file'])} files")
     print(f"wrote {MANIFEST.relative_to(ROOT)}")
-    return 1 if failed else 0
+    return 1 if looks_blocked(failed, attempted) else 0
 
 
 if __name__ == "__main__":

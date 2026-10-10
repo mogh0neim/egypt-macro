@@ -35,7 +35,7 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 
-from cbe_client import CBEClient  # noqa: E402
+from cbe_client import CBEClient, looks_blocked  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FILES = ROOT / "data" / "raw" / "excel"
@@ -145,10 +145,11 @@ def main() -> int:
                 if prev.get(key):
                     entry[key] = prev[key]
 
-    failed = 0
+    failed = attempted = 0
     if args.download and not args.manifest_only:
         FILES.mkdir(parents=True, exist_ok=True)
         todo = [e for e in ordered if not e.get("sha256")]
+        attempted = len(todo)
         print(f"\ndownloading {len(todo)} files ...")
         for i, entry in enumerate(todo, 1):
             ext = pathlib.Path(entry["url"].split("?")[0]).suffix.lower() or ".xlsx"
@@ -190,7 +191,7 @@ def main() -> int:
         subs = len({e["subcategory"] for e in ordered if e["category"] == cat})
         print(f"  {cat:32s} {n:4d} files  {subs} subcategories")
     print(f"wrote {MANIFEST.relative_to(ROOT)}")
-    return 1 if failed else 0
+    return 1 if looks_blocked(failed, attempted) else 0
 
 
 if __name__ == "__main__":

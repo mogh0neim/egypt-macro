@@ -285,6 +285,18 @@ class CBEClient:
         ).decode("utf-8", "replace")
 
 
+def looks_blocked(failed: int, attempted: int) -> bool:
+    """Whether a batch of file downloads failed badly enough to fail the job.
+
+    A few failures are CBE's broken links, not ours: two Economic Review PDFs
+    have carried a stray "#" in their address since August 2026 and return 403
+    even in a browser. Failing on those stopped every weekly run before it
+    saved anything, seven weeks running. More than five failures that are also
+    more than a tenth of the batch looks like being blocked, and that fails.
+    """
+    return failed > max(5, attempted // 10)
+
+
 def probe() -> tuple[bool, str]:
     """Phase 0 gate: can this host reach CBE at all?
 
