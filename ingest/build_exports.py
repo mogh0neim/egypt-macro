@@ -24,6 +24,7 @@ import pathlib
 import re
 import shutil
 import sqlite3
+import sys
 import zipfile
 
 import duckdb
@@ -69,6 +70,87 @@ def load_observations() -> list[tuple[str, str, float]]:
                 except (KeyError, ValueError):
                     continue
     return rows
+
+
+REVISIONS_README = """\
+Miqyas revision record: every value the clean series have held
+
+Source: Central Bank of Egypt (cbe.org.eg). Not affiliated with or endorsed by the CBE.
+
+One row per value a series held for a period, with the days it was held:
+
+  series_id   the series, under the id it had on the day. Where an Excel
+              archive id changed, catalog/id_map.json in the repository
+              maps the old id to the new one
+  period      the date the value is for
+  value       the value
+  first_seen  the first day (UTC) Miqyas held this value
+  last_seen   the last day it held it; empty while it still does
+
+What a series read on day D:
+  first_seen <= D and (last_seen is empty or last_seen >= D)
+
+Built from the git history of data/clean/series, which starts on 20 August 2026.
+A value written and overwritten within one day is left out. The table records
+what Miqyas held, which includes values that changed because Miqyas re-read
+CBE's files, not only revisions by CBE: the What changed page and
+changes-revisions.xml say which is which.
+"""
+
+
+def write_revisions(con, sqlite_path: pathlib.Path) -> None:
+    """The revision record as a table: Parquet, CSV, and in the SQLite file.
+
+    Append-only in the sense that matters: a value, once held, keeps its row
+    for good. Only `last_seen` moves, from empty to the day before it changed.
+    """
+    sys.path.insert(0, str(pathlib.Path(__file__).parent))
+    from build_changes import read_commits, vintages  # noqa: E402
+
+    rows = vintages(read_commits())
+    if not rows:
+        print("  revisions: no git history to read (a shallow clone?); skipped")
+        return
+    tmp = DIST / "revisions.csv"
+    with tmp.open("w", newline="", encoding="utf-8") as fh:
+        w = csv.writer(fh)
+        w.writerow(["series_id", "period", "value", "first_seen", "last_seen"])
+        w.writerows((sid, period, repr(value), first, last or "")
+                    for sid, period, value, first, last in rows)
+    with zipfile.ZipFile(BULK / "revisions-csv.zip", "w", zipfile.ZIP_DEFLATED) as z:
+        z.write(tmp, "revisions.csv")
+        z.writestr("README.txt", REVISIONS_README)
+    con.execute(
+        f"""COPY (SELECT series_id, CAST(period AS DATE) AS period, value,
+                         CAST(first_seen AS DATE) AS first_seen,
+                         CAST(NULLIF(last_seen, '') AS DATE) AS last_seen
+                  FROM read_csv('{tmp.as_posix()}', header=true,
+                                columns={{'series_id':'VARCHAR','period':'VARCHAR','value':'DOUBLE',
+                                          'first_seen':'VARCHAR','last_seen':'VARCHAR'}})
+                  ORDER BY series_id, period, first_seen)
+            TO '{(PARQUET / "revisions.parquet").as_posix()}'
+            (FORMAT PARQUET, COMPRESSION ZSTD, ROW_GROUP_SIZE 100000)"""
+    )
+    tmp.unlink()
+
+    db = sqlite3.connect(sqlite_path, isolation_level=None)
+    db.execute("PRAGMA journal_mode=OFF")
+    db.execute("PRAGMA synchronous=OFF")
+    # Keyed on what a lookup asks for, with no rowid beside it: a separate
+    # index would add as much again to a file people download whole.
+    db.execute("CREATE TABLE revisions (series_id TEXT, period TEXT, first_seen TEXT, "
+               "value REAL, last_seen TEXT, PRIMARY KEY (series_id, period, first_seen)) "
+               "WITHOUT ROWID")
+    db.execute("BEGIN")
+    db.executemany("INSERT INTO revisions (series_id, period, value, first_seen, last_seen) "
+                   "VALUES (?,?,?,?,?)", rows)
+    db.execute("COMMIT")
+    db.execute("VACUUM")
+    db.close()
+    current = sum(1 for r in rows if r[4] is None)
+    print(f"  revisions  {len(rows):,} rows ({len(rows) - current:,} no longer held)  "
+          f"parquet/revisions.parquet {(PARQUET / 'revisions.parquet').stat().st_size/1e6:.1f} MB, "
+          f"bulk/revisions-csv.zip, miqyas.sqlite {sqlite_path.stat().st_size/1e6:.1f} MB")
 
 
 def main() -> int:
@@ -192,6 +274,8 @@ def main() -> int:
     db.commit()
     db.close()
     print(f"  miqyas.sqlite  {sqlite_path.stat().st_size/1e6:.1f} MB")
+
+    write_revisions(con, sqlite_path)
 
     # ---- Static API ----
     (API / "series").mkdir(parents=True, exist_ok=True)
