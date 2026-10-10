@@ -126,7 +126,10 @@ function snippetFor(pageText, terms) {
 const COLLECTIONS = [
   { cat: "Monthly Statistical Bulletins", name: "Monthly statistical bulletin",
     blurb: "The big one. Every monthly table CBE publishes, bound together." },
-  { cat: "MPC Press Release", name: "Rate decisions",
+  /* CBE has published its rate statements as web pages, not PDFs, since
+   * February 2023, so this collection stops there. The card says so and where
+   * the rest are, rather than looking like the current record. */
+  { cat: "MPC Press Release", name: "Rate decisions", stopsEarly: true,
     blurb: "What the Monetary Policy Committee decided, and why it says it decided it." },
   { cat: "Monetary Policy Inflation Note", name: "Inflation notes",
     blurb: "CBE's read on each month's inflation print, usually within days of it." },
@@ -228,6 +231,9 @@ async function fullText(query) {
 /* How many hits are listed. The count line gives the rest as a number. */
 const RESULT_LIMIT = 60;
 
+/* Where a request to take something down goes, printed under the results. */
+const REMOVAL_URL = "https://github.com/mogh0neim/egypt-macro/issues";
+
 const SOURCE_LABEL = { publications: "Publication", circulars: "Circular", News: "Press release" };
 
 async function viewDocs(presetCategory) {
@@ -255,10 +261,16 @@ async function viewDocs(presetCategory) {
   const counts = {};
   docs.forEach((d) => d.categories.forEach((c) => (counts[c] = (counts[c] || 0) + 1)));
 
+  const newest = (cat) => docs.filter((d) => d.categories.indexOf(cat) !== -1)
+    .reduce((a, d) => ((d.date || "") > a ? d.date : a), "");
   const collectionCards = COLLECTIONS.filter((c) => counts[c.cat]).map((c) =>
     '<button class="topic-card as-button" data-collection="' + esc(c.cat) + '">' +
     "<h3>" + esc(c.name) + "</h3><p>" + esc(c.blurb) + "</p>" +
-    '<span class="count">' + counts[c.cat].toLocaleString() + " documents</span></button>"
+    '<span class="count">' + counts[c.cat].toLocaleString() + " documents" +
+    (c.stopsEarly && newest(c.cat)
+      ? " · " + t("to|up to a date") + " " + shortDate(newest(c.cat)) + t("; later statements on the Rate decisions page")
+      : "") +
+    "</span></button>"
   ).join("");
 
   app.innerHTML =
@@ -298,6 +310,8 @@ async function viewDocs(presetCategory) {
     '<button class="chip" id="dclear">Clear</button>' +
     "</div>" +
     '<div class="results" id="dresults"></div>' +
+    '<p class="foot-note">' + t("If anything here should not be,") + ' <a href="' + REMOVAL_URL +
+    '" target="_blank" rel="noopener">' + t("contact me") + "</a> " + t("and it will be removed.") + "</p>" +
     (ocred
       ? '<p class="foot-note">' + ocred + " of these are scans of paper with no text layer of their own. " +
         "They have been read by OCR in Arabic and English, so their text is searchable. Expect the odd " +
@@ -332,7 +346,10 @@ async function viewDocs(presetCategory) {
     '<a class="result" href="' + esc(d.url) + (page ? "#page=" + page : "") + '" target="_blank" rel="noopener">' +
     '<div class="title">' + (ARABIC_RE.test(d.title || "") ? '<span dir="auto">' + esc(d.title || d.id) + "</span>" : esc(d.title || d.id)) + "</div>" +
     (slot === undefined ? "" : '<div class="snip" id="snip-' + slot + '"></div>') +
-    '<div class="sub">' + niceDate(d.date) + " · " + esc(SOURCE_LABEL[d.source] || d.source) +
+    // The date is the one CBE's listing gives, which for many documents is a
+    // placeholder (the first of a month, or of January) or earlier than what
+    // the document reports. Said on every card, because it is what gets cited.
+    '<div class="sub">' + niceDate(d.date) + " (" + t("as listed by CBE") + ") · " + esc(SOURCE_LABEL[d.source] || d.source) +
     (page ? ' · <b class="pagehit">page ' + page + "</b>" : "") +
     (d.pages ? " · " + d.pages + (d.pages === 1 ? " page" : " pages") : "") +
     (d.needs_ocr ? (d.ocr ? " · scan, read by OCR" : " · scan, no text layer") : "") +

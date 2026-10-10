@@ -435,6 +435,12 @@ const AR = {
   ", showing the matching text for the first {n}": "، مع النص المطابق لأول {n}",
   "Every word there is too common to search on. Add a less common one, or match titles instead.":
     "كل الكلمات المكتوبة شائعة جدًا فلا يُبحث بها. أضف كلمة أقل شيوعًا، أو ابحث في العناوين.",
+  "as listed by CBE": "كما أدرجه البنك المركزي",
+  "to|up to a date": "حتى",
+  "; later statements on the Rate decisions page": "؛ البيانات اللاحقة في صفحة قرارات أسعار الفائدة",
+  "If anything here should not be,": "إن كان هنا ما لا ينبغي أن يكون،",
+  "contact me": "راسلني",
+  "and it will be removed.": "وسيُحذف.",
 
   /* ---------- the thirteen subjects ----------
    * The labels a reader picks a direction from, so the most load-bearing
