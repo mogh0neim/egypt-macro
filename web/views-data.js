@@ -56,7 +56,7 @@ function indicatorRow(s, opts) {
     '<td class="star-col">' + starButton(s.series_id) + "</td>" +
     '<td class="name"><a href="#/s/' + encodeURIComponent(s.series_id) + '">' + titleHTML(s) + "</a>" +
     '<span class="unit">' + esc(unitShort(s.unit)) + "</span></td>" +
-    (opts.spark ? '<td class="sparkcell hide-sm">' + spark(opts.spark, { w: 82, h: 22 }) + "</td>" : "") +
+    (opts.spark ? '<td class="sparkcell hide-sm">' + spark(opts.spark, { w: 82, h: 22, step: s.freq === "IRR" }) + "</td>" : "") +
     "<td>" + fmt(s.latest_value, s.unit) + "</td>" +
     '<td class="' + dirClass(c, s.unit) + '">' + changeCell(c, s.unit) + "</td>" +
     (opts.spark
@@ -97,7 +97,7 @@ async function viewHome() {
       '<span class="q">' + esc(c.q) + "</span>" +
       '<span class="answer"><b>' + fmt(s.latest_value, s.unit) + "</b>" +
       '<i class="u">' + esc(unitTag(s.unit)) + "</i></span>" +
-      '<span class="spark-wrap">' + spark(sparks[c.id], { w: 120, h: 30 }) + "</span>" +
+      '<span class="spark-wrap">' + spark(sparks[c.id], { w: 120, h: 30, step: s.freq === "IRR" }) + "</span>" +
       '<span class="delta ' + dirClass(ch, s.unit) + '">' + changeCell(ch, s.unit) +
       "<i> " + esc(changeLabel(s.freq)) + "</i></span>" +
       '<span class="asof">latest ' + shortDate(s.last) + "</span>" +
@@ -308,7 +308,7 @@ function seriesResultRow(s, sparks) {
     starButton(s.series_id) +
     '<a class="result rich" href="#/s/' + encodeURIComponent(s.series_id) + '">' +
     '<span class="title">' + titleHTML(s) + "</span>" +
-    '<span class="spk">' + spark(sparks[s.series_id], { w: 70, h: 20 }) + "</span>" +
+    '<span class="spk">' + spark(sparks[s.series_id], { w: 70, h: 20, step: s.freq === "IRR" }) + "</span>" +
     '<span class="v">' + fmt(s.latest_value, s.unit) + "</span>" +
     titleAR(s) +
     '<span class="sub">' + esc(s.series_id) + " · " + (s.n || 0).toLocaleString() + " readings · " +
@@ -428,7 +428,7 @@ async function viewTopic(key) {
       '<td class="name"><a href="#/s/' + encodeURIComponent(s.series_id) + '">' +
       (ARABIC_RE.test(lineOf(s)) ? '<span dir="auto">' + esc(lineOf(s)) + "</span>" : esc(lineOf(s))) +
       "</a></td>" +
-      '<td class="sparkcell">' + spark(sparks[s.series_id], { w: 82, h: 22 }) + "</td>" +
+      '<td class="sparkcell">' + spark(sparks[s.series_id], { w: 82, h: 22, step: s.freq === "IRR" }) + "</td>" +
       "<td>" + fmt(s.latest_value, s.unit) + '<i class="u">' + esc(unitTag(s.unit)) + "</i></td>" +
       '<td class="' + dirClass(c, s.unit) + ' hide-sm">' + changeCell(c, s.unit) + "</td>" +
       '<td class="asof">' + shortDate(s.first) + " – " + shortDate(s.last) + "</td>" +
@@ -738,7 +738,7 @@ async function viewSeries(id) {
       animate: !again,
     });
     readoutSlot().innerHTML = last
-      ? '<span class="val">' + fmt(last[1], shown.unit) + "</span>" +
+      ? '<span class="val">' + fmt(last[1], shown.unit, digitsFor(shown.points)) + "</span>" +
         '<span class="when">' + niceDate(last[0]) + "</span>" +
         "<span>" + esc(compareId ? t("Both rebased to 100 at the start of the range") : TRANSFORMS[transform].label) + "</span>"
       : '<span class="empty">Nothing in this range.</span>';

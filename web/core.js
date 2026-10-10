@@ -150,17 +150,29 @@ const titleAR = (s) => {
     ">" + esc(ar) + "</span>";
 };
 
-const fmt = (v, unit) => {
+/* digits, when given, overrides the magnitude rule: see digitsFor. */
+const fmt = (v, unit, digits) => {
   if (v === null || v === undefined || Number.isNaN(v)) return "—";
   const abs = Math.abs(v);
   // Exact zero gets no decimals at all. "0.0000%" is four digits of precision
   // spent saying nothing, and it appears wherever CBE publishes a zero.
-  const digits = v === 0 ? 0 : abs >= 1000 ? 0 : abs >= 100 ? 1 : abs >= 1 ? 2 : 4;
+  if (v === 0) digits = 0;
+  else if (digits === undefined) digits = abs >= 1000 ? 0 : abs >= 100 ? 1 : abs >= 1 ? 2 : 4;
   const s = v.toLocaleString("en-US", {
     minimumFractionDigits: digits,
     maximumFractionDigits: digits,
   });
   return /percent/i.test(unit || "") ? s + "%" : s;
+};
+
+/* One precision for a whole series, set by its largest reading, for places
+ * that show one reading after another: a crosshair moving along the current
+ * account read "-3,711" and then "349.7", as if the second were measured more
+ * finely than the first. */
+const digitsFor = (points) => {
+  let top = 0;
+  for (let i = 0; i < points.length; i++) top = Math.max(top, Math.abs(points[i][1]) || 0);
+  return top >= 1000 ? 0 : top >= 100 ? 1 : top >= 1 ? 2 : 4;
 };
 
 /* Axis labels are a different problem from values: they should carry exactly
@@ -621,9 +633,14 @@ function spark(values, opts) {
   const pts = values.map((v, i) => (1.5 + i * step).toFixed(1) + "," + (h - 2 - ((v - lo) / span) * (h - 4)).toFixed(1));
   const last = pts[pts.length - 1].split(",");
   const rising = values[values.length - 1] >= values[0];
+  // A policy rate holds until the next decision, here as on the full chart:
+  // each new level is reached by a riser at its own point, not by a slope.
+  const line = opts.step
+    ? pts.map((p, i) => (i ? pts[i].split(",")[0] + "," + pts[i - 1].split(",")[1] + " " : "") + p)
+    : pts;
   return (
     '<svg class="spark ' + (rising ? "up" : "down") + '" viewBox="0 0 ' + w + " " + h + '" aria-hidden="true">' +
-    '<polyline points="' + pts.join(" ") + '"/>' +
+    '<polyline points="' + line.join(" ") + '"/>' +
     '<circle cx="' + last[0] + '" cy="' + last[1] + '" r="1.8"/></svg>'
   );
 }
@@ -1070,6 +1087,8 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
 
   // Which sets the chart drew as steps, read back like the margins are.
   const steps = (svg.dataset.step || "").split(",").map((s) => s === "1");
+  // One precision per set, so a value does not change its decimals as you move.
+  const digits = data.map(digitsFor);
   // The markers ([date, what it was]) and regimes ([from, to, name]) it drew.
   const marked = JSON.parse(svg.dataset.events || "[]");
   const eras = JSON.parse(svg.dataset.regimes || "[]");
@@ -1167,7 +1186,7 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
           // out of view.
           const tag = unitTag(unitList[i]);
           return (
-            '<span class="val' + (i ? " alt" : "") + '">' + fmt(p ? p[1] : null, unitList[i]) +
+            '<span class="val' + (i ? " alt" : "") + '">' + fmt(p ? p[1] : null, unitList[i], digits[i]) +
             (tag && p ? ' <i class="u">' + esc(tag) + "</i>" : "") + "</span>" +
             (labels && labels[i] ? '<span class="when">' + esc(labels[i]) + "</span>" : "")
           );
