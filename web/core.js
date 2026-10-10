@@ -707,8 +707,9 @@ function chartText(x, y, cls, anchor, text) {
   );
 }
 
-/* One or two series on shared axes. Comparison always rebases both to 100
- * before it gets here, because putting a level in pounds and a level in
+/* One or two series on shared axes. Comparison has already rebased both to
+ * 100 at one date, or kept two series that share a unit as published, before
+ * it gets here (comparePair), because putting a level in pounds and a level in
  * dollars on one axis would be a lie told with a straight line. */
 function lineChart(series, opts) {
   opts = opts || {};
@@ -1307,6 +1308,52 @@ function transformsFor(unit, observations) {
     return { keys: ["level"], why: t("No year-on-year or rebased view: this series goes below zero, where a percentage of an earlier reading means nothing.") };
   }
   return { keys: Object.keys(TRANSFORMS), why: "" };
+}
+
+/* Two series on one axis, for Compare on a series page.
+ *
+ * Levels in different units on one axis are a lie told with a straight line,
+ * so levels are rebased to 100, and both at the same moment: the first date
+ * both have a reading, or failing that the later of the two starts, with the
+ * earlier series taken at its last reading on or before that day. Each line
+ * used to be rebased at its own first point, which put two bases years apart
+ * under one label saying they shared one.
+ *
+ * The rule transformsFor applies holds here too: a rate, or anything that
+ * crosses zero, is never rebased. Two such series in the same unit are drawn
+ * as published; anything else is not drawn together, and the readout says
+ * why. Returns { sets, units, note }, with sets null when there is no honest
+ * way to draw the pair. */
+function comparePair(a, unitA, b, unitB) {
+  if (!a.length || !b.length) return { sets: null, units: null, note: t("Nothing to compare in this range.") };
+  const rebaseable = (p, unit) => {
+    if (/percent/i.test(unit || "")) return false;
+    let lo = Infinity, hi = -Infinity;
+    p.forEach((o) => { if (o[1] < lo) lo = o[1]; if (o[1] > hi) hi = o[1]; });
+    return !(lo < 0 && hi > 0);
+  };
+  if (rebaseable(a, unitA) && rebaseable(b, unitB)) {
+    const inA = new Set(a.map((o) => o[0]));
+    const start = a[0][0] > b[0][0] ? a[0][0] : b[0][0];
+    const shared = b.find((o) => o[0] >= start && inA.has(o[0]));
+    const on = shared ? shared[0] : start;
+    const held = (p) => {
+      let v = null;
+      for (const o of p) { if (o[0] > on) break; v = o[1]; }
+      return v;
+    };
+    const baseA = held(a), baseB = held(b);
+    if (baseA && baseB) {
+      const rebase = (p, base) => p.filter((o) => o[0] >= on).map((o) => [o[0], (o[1] / base) * 100]);
+      return { sets: [rebase(a, baseA), rebase(b, baseB)], units: ["index", "index"],
+               note: t("Both rebased to 100 on") + " " + niceDate(on) };
+    }
+  }
+  if ((unitA || "") === (unitB || "")) {
+    return { sets: [a, b], units: [unitA, unitB], note: t("Both as published, in the same unit, with no rebasing") };
+  }
+  return { sets: null, units: null,
+           note: t("Not drawn together: one of these is a rate or goes below zero, so it cannot be rebased, and the two are in different units.") };
 }
 
 /* The range buttons used to be one fixed list for all 1,300 series, which

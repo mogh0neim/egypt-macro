@@ -721,18 +721,22 @@ async function viewSeries(id) {
     const base = TRANSFORMS[transform].fn(applyRange(data.observations, range, ranges));
     const unit = transform === "level" ? data.unit : transform === "yoy" ? "percent" : "index";
     let sets = base, units = unit, labels = null;
+    // What a comparison did, or why it was not drawn. Empty with no comparison.
+    let compared = "";
 
     if (compareId) {
       const other = await loadSeries(compareId).catch(() => null);
       if (other) {
-        // Two units on one axis is a lie. Both get rebased to 100 so the
-        // comparison is about shape, which is the only honest question.
-        const rebase = (p) => (p.length && p[0][1] ? p.map((o) => [o[0], (o[1] / p[0][1]) * 100]) : p);
-        const a = rebase(applyRange(data.observations, range, ranges));
-        const b = rebase(applyRange(other.observations, range, ranges));
-        sets = [a, b];
-        units = ["index", "index"];
-        labels = [data.title_en || id, other.title_en || compareId];
+        // Rebased at one shared date, or as published when neither can be
+        // rebased and they share a unit, or not drawn together at all.
+        const pair = comparePair(applyRange(data.observations, range, ranges), data.unit,
+                                 applyRange(other.observations, range, ranges), other.unit);
+        compared = pair.note;
+        if (pair.sets) {
+          sets = pair.sets;
+          units = pair.units;
+          labels = [data.title_en || id, other.title_en || compareId];
+        }
       }
     }
 
@@ -740,7 +744,7 @@ async function viewSeries(id) {
     shown.unit = Array.isArray(units) ? units[0] : units;
     shown.note =
       "Range: " + range + ". " +
-      (compareId ? "Rebased to 100 at the start of the range." : TRANSFORMS[transform].label + ".");
+      (labels ? compared + "." : TRANSFORMS[transform].label + ".");
 
     const last = shown.points.slice(-1)[0];
     document.getElementById("chart-slot").innerHTML = lineChart(sets, {
@@ -758,7 +762,7 @@ async function viewSeries(id) {
     readoutSlot().innerHTML = last
       ? '<span class="val">' + fmt(last[1], shown.unit, digitsFor(shown.points)) + "</span>" +
         '<span class="when">' + niceDate(last[0]) + "</span>" +
-        "<span>" + esc(compareId ? t("Both rebased to 100 at the start of the range") : TRANSFORMS[transform].label) + "</span>"
+        "<span>" + esc(compared || TRANSFORMS[transform].label) + "</span>"
       : '<span class="empty">Nothing in this range.</span>';
     armLines(document.getElementById("sc"));
     wireHover(document.getElementById("sc"), sets, units, readoutSlot(), labels);
@@ -767,7 +771,7 @@ async function viewSeries(id) {
 
     document.querySelectorAll("[data-range]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.range === range)));
     document.querySelectorAll("[data-transform]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.transform === transform)));
-    document.getElementById("legend").innerHTML = compareId
+    document.getElementById("legend").innerHTML = labels
       ? '<span class="item"><span class="key s0"></span>' + titleHTML(data) + "</span>" +
         '<span class="item"><span class="key s1"></span>' + esc((state.byId.get(compareId) || {}).title_en || compareId) + "</span>"
       : "";

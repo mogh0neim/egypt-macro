@@ -413,7 +413,11 @@ const AR = {
   "Two readings only: too few to show a trend.": "قراءتان فقط: أقل من أن تُظهرا اتجاهًا.",
   "Official dollar rate": "سعر الدولار الرسمي",
   "in one business day": "في يوم عمل واحد",
-  "Both rebased to 100 at the start of the range": "كلتاهما معادة الأساس إلى 100 في بداية الفترة",
+  "Both rebased to 100 on": "كلتاهما معادة الأساس إلى 100 في",
+  "Both as published, in the same unit, with no rebasing": "كلتاهما كما نُشرت، بالوحدة نفسها، دون إعادة أساس",
+  "Not drawn together: one of these is a rate or goes below zero, so it cannot be rebased, and the two are in different units.":
+    "لا تُرسمان معًا: إحداهما معدّل أو تنزل تحت الصفر فلا يمكن إعادة أساسها، والوحدتان مختلفتان.",
+  "Nothing to compare in this range.": "لا شيء للمقارنة في هذه الفترة.",
   /* The four exchange-rate regimes in events.json, drawn behind the dollar. */
   "Managed peg": "ربط مُدار",
   "Post-float managed rate": "سعر مُدار بعد التعويم",
