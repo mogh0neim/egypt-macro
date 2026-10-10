@@ -45,8 +45,54 @@ function valueAt(observations, iso) {
   return found;
 }
 
-const monthStart = (ym) => (ym && ym.length >= 7 ? ym.slice(0, 7) + "-01" : "");
 const todayISO = () => new Date().toISOString().slice(0, 10);
+
+/* ---------- reading what was typed ----------
+ *
+ * Strictly, and out loud. These used to answer whatever they were given: a
+ * month of "garbage" or one after the data ran out compared the last month with
+ * itself and printed a confident 0% loss, a date before the data printed
+ * nothing at all, and parseFloat read "8,000" as 8. Each reader returns
+ * { value } for something usable, {} for nothing typed, and { bad: true } for
+ * something that cannot be read, so the page can say which. */
+function readAmount(raw) {
+  if (raw === null || raw === undefined || String(raw).trim() === "") return {};
+  const n = Number(String(raw).replace(/[,\s]/g, ""));
+  return Number.isFinite(n) && n > 0 && n < 1e12 ? { value: n } : { bad: true };
+}
+
+const realDay = (iso) => !isNaN(Date.parse(iso)) && new Date(iso).toISOString().slice(0, 10) === iso;
+
+/* A month, or a whole date read as its month, as the first day of it. */
+function readMonth(raw) {
+  if (!raw) return {};
+  const m = String(raw).trim().match(/^(\d{4}-\d{2})(-\d{2})?$/);
+  return m && realDay(m[1] + "-01") ? { value: m[1] + "-01" } : { bad: true };
+}
+
+/* A date, or a month read as its first day, the way a salary link carries one. */
+function readDay(raw) {
+  if (!raw) return {};
+  const s = String(raw).trim();
+  const iso = /^\d{4}-\d{2}$/.test(s) ? s + "-01" : s;
+  return /^\d{4}-\d{2}-\d{2}$/.test(iso) && realDay(iso) ? { value: iso } : { bad: true };
+}
+
+/* The last day of the month a monthly reading is dated by. */
+const monthEnd = (iso) => {
+  const d = new Date(iso.slice(0, 7) + "-01T00:00:00Z");
+  return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 0)).toISOString().slice(0, 10);
+};
+
+const fillIn = (text, values) => text.replace(/\{(\w+)\}/g, (m, k) => (k in values ? values[k] : m));
+
+const AMOUNT_PROBLEM = () => t("That is not an amount this can work with. Put in a number of pounds, more than zero.");
+const MONTH_PROBLEM = () => t("Could not read that month. Write it as year and month, for example 2016-11.");
+const DAY_PROBLEM = () => t("Could not read that date. Write it as year, month and day, for example 2016-11-03.");
+const RANGE_PROBLEM = (from, to) =>
+  fillIn(t("Miqyas holds no figure for that date. Pick one from {from} to {to}."), { from: from, to: to });
+
+const toolProblem = (text) => (text ? '<p class="tool-problem" role="alert">' + esc(text) + "</p>" : "");
 
 /* A percentage that is a loss reads better as a loss. "Down 82%" is a sentence
  * about the money; "worth 18% of what it was" is a sentence about arithmetic. */
@@ -122,8 +168,10 @@ async function viewSalary(query) {
   app.innerHTML = skeleton(5);
 
   const params = new URLSearchParams(query || "");
-  const amount = parseFloat(params.get("amount") || "") || null;
-  const from = monthStart(params.get("from") || "");
+  const amountRead = readAmount(params.get("amount"));
+  const fromRead = readMonth(params.get("from"));
+  const amount = amountRead.value || null;
+  const from = fromRead.value || "";
 
   const cpi = await loadSeries(CPI).catch(() => null);
   // A newer navigation took the page while this was loading (see route()).
@@ -133,9 +181,17 @@ async function viewSalary(query) {
   const obs = cpi.observations;
   const firstMonth = obs[0][0].slice(0, 7);
   const lastMonth = obs[obs.length - 1][0].slice(0, 7);
-
-  const then = from ? valueAt(obs, from) : null;
   const now = obs[obs.length - 1];
+  const monthOf = (iso) => niceDate(iso).replace(/^\d+ /, "");
+
+  // A month after the index ends used to be read as its last month, and
+  // compared with itself: "EGP 8,000 then is EGP 8,000 now".
+  const problem = amountRead.bad ? AMOUNT_PROBLEM()
+    : fromRead.bad ? MONTH_PROBLEM()
+    : from && (from.slice(0, 7) < firstMonth || from.slice(0, 7) > lastMonth)
+      ? RANGE_PROBLEM(monthOf(obs[0][0]), monthOf(now[0]))
+      : "";
+  const then = from && !problem ? valueAt(obs, from) : null;
 
   let answer = "";
   // What the salary buys, month by month, from the month it was earned.
@@ -178,9 +234,12 @@ async function viewSalary(query) {
     toolForm([
       { id: "amount", label: t("Monthly salary, in pounds"), type: "number", value: amount || "",
         placeholder: "8000", min: "1", step: "any" },
+      // The placeholder shows where a month box is plain text (Firefox and
+      // Safari on a desktop), and says what form the month takes.
       { id: "from", label: t("Which month"), type: "month", value: from ? from.slice(0, 7) : "",
-        min: firstMonth, max: lastMonth },
+        placeholder: "2016-11", min: firstMonth, max: lastMonth },
     ], t("Work it out")) +
+    toolProblem(problem) +
     '<p class="foot-note">' + t("The index runs from") + " " + esc(niceDate(obs[0][0])) +
     " " + t("to") + " " + esc(niceDate(now[0])) + ".</p>" +
     "</section>" + answer +
@@ -203,12 +262,13 @@ async function viewSavings(query) {
   app.innerHTML = skeleton(5);
 
   const params = new URLSearchParams(query || "");
-  const amount = parseFloat(params.get("amount") || "") || null;
+  const amountRead = readAmount(params.get("amount"));
   /* A link can carry a month, "2015-01", the way the salary tool's does. The
    * date input takes nothing but a whole yyyy-mm-dd and logged an error for it,
-   * so a month is read as its first day and anything else as no date. */
-  const asked = params.get("from") || "";
-  const from = /^\d{4}-\d{2}$/.test(asked) ? asked + "-01" : /^\d{4}-\d{2}-\d{2}$/.test(asked) ? asked : "";
+   * so a month is read as its first day. */
+  const fromRead = readDay(params.get("from"));
+  const amount = amountRead.value || null;
+  const from = fromRead.value || "";
 
   const [cpi, fx] = await Promise.all([
     loadSeries(CPI).catch(() => null),
@@ -217,13 +277,24 @@ async function viewSavings(query) {
   if (!app.isConnected) return;
   if (!cpi || !fx) return toolUnavailable("the price index and the dollar rate");
 
-  const firstDay = fx.observations[0][0];
-  const lastDay = fx.observations[fx.observations.length - 1][0];
-
-  const priceThen = from ? valueAt(cpi.observations, from) : null;
   const priceNow = cpi.observations[cpi.observations.length - 1];
-  const fxThen = from ? valueAt(fx.observations, from) : null;
   const fxNow = fx.observations[fx.observations.length - 1];
+  /* Both series have to cover the day. Prices stop at the last month CBE's
+   * index reaches, which is usually a month or two before the dollar rate; a
+   * day after that has no inflation to measure, and used to be told prices had
+   * risen 1x. */
+  const firstDay = [fx.observations[0][0], cpi.observations[0][0]].sort()[1];
+  const lastDay = [fxNow[0], monthEnd(priceNow[0])].sort()[0];
+
+  const problem = amountRead.bad ? AMOUNT_PROBLEM()
+    : fromRead.bad ? DAY_PROBLEM()
+    : from && (from < firstDay || from > lastDay) ? RANGE_PROBLEM(niceDate(firstDay), niceDate(lastDay))
+    : "";
+  const priceThen = from && !problem ? valueAt(cpi.observations, from) : null;
+  const fxThen = from && !problem ? valueAt(fx.observations, from) : null;
+  // The dollar series has holes of several weeks in 2014 and 2015. The rate
+  // used for a day inside one is the last one before it, and now says so.
+  const fxStale = fxThen && (Date.parse(from) - Date.parse(fxThen[0])) / 86400000 > 4;
 
   let answer = "";
   if (amount && priceThen && fxThen) {
@@ -256,6 +327,12 @@ async function viewSavings(query) {
       "</tbody></table></div>" +
       '<p class="foot-note">' + t("“What it buys” is in the money of") + " " + esc(niceDate(from)) +
       ", " + t("so both rows can be compared with the number you started from. The dollar row is the CBE official selling rate on both dates and ignores what a bank would have charged you on either side of it.") +
+      " " + fillIn(t("Prices are to {prices}, the latest month in the index; the dollar rate is to {dollar}."),
+                   { prices: esc(niceDate(priceNow[0]).replace(/^\d+ /, "")), dollar: esc(niceDate(fxNow[0])) }) +
+      (fxStale
+        ? " " + fillIn(t("The dollar rate used for {asked} is from {held}, the last one Miqyas holds before it."),
+                       { asked: esc(niceDate(from)), held: esc(niceDate(fxThen[0])) })
+        : "") +
       "</p>" +
       '<div class="controls"><button class="chip solid" id="tool-share">' + t("Copy a link to this answer") + "</button></div>" +
       "</div></section>";
@@ -275,6 +352,7 @@ async function viewSavings(query) {
       { id: "from", label: t("Set aside on"), type: "date", value: from,
         min: firstDay, max: lastDay },
     ], t("Work it out")) +
+    toolProblem(problem) +
     '<p class="foot-note">' + t("Any date from") + " " + esc(niceDate(firstDay)) + " " + t("onwards.") + "</p>" +
     "</section>" + answer +
     '<section class="section"><div class="band-inset">' + CPI_CAVEAT + "</div>" +
@@ -304,11 +382,21 @@ async function viewDollarOn(query) {
   const lastDay = obs[obs.length - 1][0];
   /* With no date this is "on this day": the same calendar day in every year
    * the archive covers. It is the one thing on the site that is different
-   * every morning without anybody publishing anything. */
-  const on = params.get("on") || todayISO();
+   * every morning without anybody publishing anything. A date somebody typed
+   * is checked instead of being quietly moved to the nearest end. */
+  const typed = params.get("on");
+  const onRead = typed ? readDay(typed) : { value: todayISO() };
+  const problem = onRead.bad ? DAY_PROBLEM()
+    : typed && (onRead.value < firstDay || onRead.value > lastDay)
+      ? RANGE_PROBLEM(niceDate(firstDay), niceDate(lastDay))
+      : "";
+  const on = problem ? todayISO() : onRead.value;
   const asked = on > lastDay ? lastDay : on < firstDay ? firstDay : on;
 
-  const hit = valueAt(obs, asked);
+  const hit = problem ? null : valueAt(obs, asked);
+  // A weekend or a holiday is a gap of a few days; the archive also has holes
+  // of seven and eight weeks in 2014 and 2015, which are not CBE's doing.
+  const gap = hit ? Math.round((Date.parse(asked) - Date.parse(hit[0])) / 86400000) : 0;
   const now = obs[obs.length - 1];
   const regime = (fxRegimes() || []).find((r) => r.from <= asked && asked <= r.to);
 
@@ -330,8 +418,9 @@ async function viewDollarOn(query) {
     '<p class="lede">' +
     t("A birthday, a wedding, the day you started a job. CBE has published an official rate every business day since January 2005.") +
     "</p>" +
-    toolForm([{ id: "on", label: t("Pick a date"), type: "date", value: asked,
+    toolForm([{ id: "on", label: t("Pick a date"), type: "date", value: problem ? "" : asked,
                 min: firstDay, max: lastDay }], t("Look it up")) +
+    toolProblem(problem) +
     "</section>" +
 
     (hit
@@ -339,7 +428,10 @@ async function viewDollarOn(query) {
         '<p class="eyebrow">' + esc(regime ? regime.label : "CBE official selling rate") + "</p>" +
         "<h2>" + esc(fmt(hit[1], fx.unit)) + " " + t("on") + " " + esc(niceDate(hit[0])) + "</h2>" +
         '<p class="lede">' +
-        (hit[0] !== asked
+        (hit[0] !== asked && gap > 4
+          ? fillIn(t("Miqyas holds no rate for {asked}. This is the last one before it, {days} days earlier."),
+                   { asked: esc(niceDate(asked)), days: gap }) + " "
+          : hit[0] !== asked
           ? "CBE published no rate on " + esc(niceDate(asked)) +
             ", so this is the last one before it. "
           : "") +
