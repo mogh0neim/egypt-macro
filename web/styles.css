@@ -903,7 +903,10 @@ details.add-panel .empty { padding: 1rem 0; }
 
 /* Vertical drag reads the chart; horizontal drag should still scroll the
    page, not fight it, on a touch screen. */
-.chart { display: block; width: 100%; overflow: visible; touch-action: pan-y; }
+/* direction: time runs left to right on an Arabic page too, and an SVG label
+   inherits the page's direction, which swaps what its start and end anchors
+   mean. chartText() sets an Arabic label right to left on its own. */
+.chart { display: block; width: 100%; overflow: visible; touch-action: pan-y; direction: ltr; }
 .chart .grid { stroke: var(--line-soft); stroke-width: 1; }
 .chart .zero { stroke: var(--text-3); stroke-width: 1; }
 .chart .line { fill: none; stroke: var(--accent); stroke-width: 1.75; }

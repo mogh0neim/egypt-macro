@@ -637,6 +637,22 @@ const chartWidth = () => Math.min(1000, Math.max(340, Math.round(window.innerWid
 // units: 0.6em, and a little over so an estimate errs towards room.
 const TICK_CH = 6.2;
 
+/* A label on a chart. Charts run left to right in both languages (the
+ * stylesheet pins .chart to ltr), so a label that is itself Arabic, a month or
+ * a regime, is set right to left inside it, with its anchor swapped so it
+ * still lands on the same side of x. Left to inherit the page's direction,
+ * a regime name anchored at its band's left edge ran leftwards off the chart. */
+function chartText(x, y, cls, anchor, text) {
+  const rtl = ARABIC_RE.test(text);
+  let a = anchor || "start";
+  if (rtl && a !== "middle") a = a === "start" ? "end" : "start";
+  return (
+    '<text class="' + cls + '" x="' + x + '" y="' + y + '"' +
+    (a !== "start" ? ' text-anchor="' + a + '"' : "") + (rtl ? ' direction="rtl"' : "") + ">" +
+    esc(text) + "</text>"
+  );
+}
+
 /* One or two series on shared axes. Comparison always rebases both to 100
  * before it gets here, because putting a level in pounds and a level in
  * dollars on one axis would be a lie told with a straight line. */
@@ -731,19 +747,43 @@ function lineChart(series, opts) {
       ? '<line class="zero" x1="' + m.l + '" y1="' + py(0).toFixed(1) + '" x2="' + (W - m.r) + '" y2="' + py(0).toFixed(1) + '"/>'
       : "";
 
-  const years = [];
+  let xTicks = [];
   const span = (x1 - x0) / 31536000000;
   // Roughly one label per 90 units of width, rounded up the 1/2/5/10 ladder,
   // so the year axis does not overprint itself on a narrow screen.
   const wantYears = Math.max(2, Math.floor(iw / (narrow ? 60 : 90)));
-  const stepY = [1, 2, 5, 10, 25].find((k) => span / k <= wantYears) || 50;
-  const startY = new Date(x0).getUTCFullYear();
-  for (let y = Math.ceil(startY / stepY) * stepY; ; y += stepY) {
-    const t = Date.UTC(y, 0, 1);
-    if (t > x1) break;
-    if (t < x0) continue;
-    years.push('<text class="tick" x="' + px(t).toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle">' + y + "</text>");
+  if (span >= 2) {
+    const stepY = [1, 2, 5, 10, 25].find((k) => span / k <= wantYears) || 50;
+    const startY = new Date(x0).getUTCFullYear();
+    for (let y = Math.ceil(startY / stepY) * stepY; Date.UTC(y, 0, 1) <= x1; y += stepY) {
+      if (Date.UTC(y, 0, 1) >= x0) xTicks.push([Date.UTC(y, 0, 1), String(y)]);
+    }
+  } else {
+    /* Under two years the axis counts months, or "1 year" on a daily series
+     * carried a single label and "This year" none at all. The ladder keeps
+     * January on it, and the year is written there and on the first tick, so
+     * every label can be placed in time without the year repeated on each. */
+    const stepM = [1, 2, 3, 4, 6, 12].find((k) => (span * 12) / k <= wantYears) || 12;
+    const d = new Date(x0);
+    for (let y = d.getUTCFullYear(), mo = d.getUTCMonth(); Date.UTC(y, mo, 1) <= x1; mo = (mo + 1) % 12, y += mo ? 0 : 1) {
+      const at = Date.UTC(y, mo, 1);
+      if (at >= x0 && mo % stepM === 0) xTicks.push([at, MONTHS[mo] + (!xTicks.length || !mo ? " " + y : "")]);
+    }
+    // Too short to hold two month starts: date its two ends instead.
+    if (xTicks.length < 2) {
+      const day = (at) => { const p = new Date(at).toISOString().slice(0, 10).split("-"); return +p[2] + " " + MONTHS[+p[1] - 1]; };
+      xTicks = [[x0, day(x0) + " " + new Date(x0).getUTCFullYear(), "start"], [x1, day(x1), "end"]];
+    }
   }
+  // Anything that would still touch its neighbour or leave the frame is dropped.
+  let tickEnd = -Infinity;
+  const years = xTicks.map((k) => {
+    const x = px(k[0]), w = k[1].length * TICK_CH, anchor = k[2] || "middle";
+    const left = anchor === "start" ? x : anchor === "end" ? x - w : x - w / 2;
+    if (left < tickEnd + 8 || left < 0 || left + w > W) return "";
+    tickEnd = left + w;
+    return chartText(x.toFixed(1), H - 8, "tick", anchor, k[1]);
+  });
 
   // Devaluations cluster -- November 2016 had three inside three weeks -- so
   // labels are dropped rather than allowed to overprint each other.
