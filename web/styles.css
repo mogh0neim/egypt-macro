@@ -452,6 +452,18 @@ body.palette-open { overflow: hidden; }
   font-size: 1.02rem;
 }
 .hero .standfirst b { font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
+/* The overview's hero is one sentence saying what the site is, not a slogan,
+   so it is set below headline size and given a longer line. Its two buttons
+   are the two things the site is for, and are thumb-sized at every width. */
+.hero h1.hero-line {
+  font-size: clamp(1.55rem, 4vw, 2.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  max-width: 34ch;
+  margin-bottom: 0.3rem;
+}
+.hero-actions { padding-block: 0.6rem 1.5rem; gap: 0.6rem; }
+.hero-actions .chip { min-height: 44px; padding-inline: 1.1rem; font-size: 0.8rem; }
 .hero-chart { margin: 0 calc(var(--gutter) * -1); }
 
 /* ---------- section furniture ---------- */

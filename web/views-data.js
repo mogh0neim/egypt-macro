@@ -84,9 +84,7 @@ async function viewHome() {
   const mpc = await loadMPC();
   const calendar = await loadMPCCalendar();
 
-  const first = fx && fx.observations[0];
   const last = fx && fx.observations[fx.observations.length - 1];
-  const multiple = first && last ? (last[1] / first[1]).toFixed(1) : null;
 
   const starters = STARTERS.map((c) => {
     const s = state.byId.get(c.id);
@@ -143,21 +141,18 @@ async function viewHome() {
     : "";
 
   app.innerHTML =
-    /* The headline used to be "What the pound did, and everything underneath
-     * it", which is a better sentence and a worse headline: it tells a stranger
-     * nothing about what this is, and it is the first thing a search result, a
-     * share card and a first-time visitor all see. Say what it is, then earn
-     * the chart with the fact underneath. */
+    /* One sentence saying what this is, and the two things it is for. The
+     * people this is built for come to take the data away or to see what
+     * moved, so those are the two buttons, both above the fold on a phone.
+     * The calculators are a card further down and a link in the footer. */
     '<section class="hero"><div class="wrap">' +
-    "<h1>" + t("Egypt's economy in numbers. Free.") + "</h1>" +
-    '<p class="standfirst">' +
-    index.length.toLocaleString() + " " +
-    t("series from the Central Bank, cleaned, charted and searchable. Rebuilt every morning. No key, no account, no paywall.") +
-    (multiple
-      ? " " + t("Starting with the one everybody asks about: the official dollar rate has moved") +
-        " <b>" + multiple + "×</b> " + t("since January 2005.")
-      : "") +
-    "</p>" +
+    '<h1 class="hero-line">' +
+    t("Central Bank of Egypt statistics as one clean dataset, with a dated daily archive of its live tables.") +
+    "</h1>" +
+    '<div class="controls hero-actions">' +
+    '<a class="chip solid" href="#/data">' + t("Download the data") + "</a>" +
+    '<a class="chip" href="#/changes">' + t("See what changed") + "</a>" +
+    "</div>" +
     '<div class="hero-chart" id="hero-slot"></div>' +
     '<div class="readout" id="hero-readout">' +
     '<span class="val">' + (last ? fmt(last[1], fx.unit) : "—") + "</span>" +

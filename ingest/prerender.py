@@ -301,6 +301,7 @@ CHROME = [
     "Your favourites",
     "Skip to content",
     "This project",
+    "What changed",
     "Work it out",
     "Favourites",
     "Documents",

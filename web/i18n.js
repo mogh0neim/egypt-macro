@@ -109,11 +109,10 @@ const AR = {
 
   /* ---------- the overview ---------- */
   "Egypt's economy in numbers. Free.": "اقتصاد مصر بالأرقام. مجانًا.",
-  "series from the Central Bank, cleaned, charted and searchable. Rebuilt every morning. No key, no account, no paywall.":
-    "سلسلة من البنك المركزي، منقّاة ومرسومة وقابلة للبحث. يُعاد بناؤها كل صباح. بلا مفتاح ولا حساب ولا اشتراك.",
-  "Starting with the one everybody asks about: the official dollar rate has moved":
-    "ونبدأ بالسؤال الذي يطرحه الجميع: سعر الدولار الرسمي تحرّك",
-  "since January 2005.": "منذ يناير 2005.",
+  "Central Bank of Egypt statistics as one clean dataset, with a dated daily archive of its live tables.":
+    "إحصاءات البنك المركزي المصري في مجموعة بيانات واحدة منظمة، مع أرشيف يومي مؤرَّخ لجداوله الحية.",
+  "Download the data": "حمّل البيانات",
+  "See what changed": "شاهد ما تغيّر",
   "EGP per US dollar, CBE selling rate": "جنيه مقابل الدولار، سعر بيع البنك المركزي",
   "Start here": "ابدأ من هنا",
   "Seven questions, already answered": "سبعة أسئلة، أُجيب عنها بالفعل",
