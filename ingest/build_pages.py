@@ -25,6 +25,10 @@ What goes out is deliberately less than what is stored:
     the readable fragments is better than showing the noise between them.
   - whitespace collapsed. PDF extraction leaves text full of single newlines
     mid-sentence, which is fine for an index and unreadable in a quote.
+  - the split lam-alef put back, in the documents where extraction reversed it
+    ("خالل" back to "خلال"), by the same LamAlef repair build_search.py
+    indexes with. The search page finds a hit's words in this text to quote
+    and highlight them, so the two must hold the same words.
   - nothing else. No title, no date, no language: documents.json already
     carries all of that and the front end has it in memory.
 
@@ -42,6 +46,9 @@ import re
 import shutil
 import sys
 import unicodedata
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from extract_text import LamAlef  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PAGES = ROOT / "corpus" / "pages"
@@ -88,6 +95,7 @@ def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
 
     files = sorted(PAGES.glob("*.json.gz"))
+    lam_alef = LamAlef(PAGES)
     written = pages_out = skipped = truncated = 0
     counted = unreadable = 0
     total_bytes = 0
@@ -101,6 +109,7 @@ def main() -> int:
             text, lost_share = readable_text(page.get("text") or "")
             if not text:
                 continue
+            text = lam_alef.display(doc["id"], text)
             counted += 1
             if lost_share >= DAMAGED_AT:
                 unreadable += 1
