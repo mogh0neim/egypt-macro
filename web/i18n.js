@@ -664,12 +664,16 @@ const AR = {
  * of them, and Arabic does not use the same word for both: السلاسل against
  * السلسلة. `t("Series|one row of a table")` keeps them apart and still falls
  * back to "Series" when there is no Arabic for it.
+ *
+ * Only a pipe with no space before it is a disambiguator. " | Miqyas" in a
+ * page title is part of the text, and cutting there left every pre-rendered
+ * English title ending in a space with the site's name gone.
  */
 function t(english) {
-  const cut = english.indexOf("|");
-  if (!RTL) return cut < 0 ? english : english.slice(0, cut);
+  const cut = english.search(/[^ ]\|/) + 1;
+  if (!RTL) return cut < 1 ? english : english.slice(0, cut);
   if (Object.prototype.hasOwnProperty.call(AR, english)) return AR[english];
-  return cut < 0 ? english : english.slice(0, cut);
+  return cut < 1 ? english : english.slice(0, cut);
 }
 
 /* Months, because a date is the one piece of formatting that cannot survive

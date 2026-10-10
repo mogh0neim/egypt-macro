@@ -280,13 +280,21 @@ def load_ar() -> dict[str, str]:
 _AR: dict[str, str] = {}
 
 
+def _bare(text: str) -> str:
+    """The text without its disambiguator. Only a pipe with no space before it
+    is one: " | Miqyas" in a page title is part of the title, and cutting there
+    left every English title ending in a space with the site's name gone."""
+    m = re.search(r"[^ ]\|", text)
+    return text[:m.start() + 1] if m else text
+
+
 def tr(text: str, lang: str) -> str:
     """The Arabic for a string, or the string. Mirrors `t()` in i18n.js."""
     if lang != "ar":
-        return text.split("|", 1)[0]
+        return _bare(text)
     if text in _AR:
         return _AR[text]
-    return text.split("|", 1)[0]
+    return _bare(text)
 
 
 # The parts of the document that are HTML before any script runs, and therefore
