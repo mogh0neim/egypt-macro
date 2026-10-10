@@ -95,6 +95,14 @@ async function viewMPC() {
   if (disc) { sets.push(disc.observations); labels.push(t("Discount rate")); units.push("percent per annum"); }
   if (dep) { sets.push(dep.observations); labels.push(t("Overnight deposit rate")); units.push("percent per annum"); }
   if (lend) { sets.push(lend.observations); labels.push(t("Overnight lending rate")); units.push("percent per annum"); }
+  /* Three step lines a point apart overprinted each other from 2014 on, and the
+   * dashed grey one nearly vanished. The deposit and lending rates are the two
+   * edges of one object, so they are drawn as the corridor band, as on the
+   * money market page, with the discount rate as the one line through it. The
+   * readout still gives all three. */
+  const corridorBand = dep && lend ? [sets.length - 2, sets.length - 1] : null;
+  const legendItem = (cls, label) =>
+    '<span class="item"><span class="key ' + cls + '"></span>' + esc(label) + "</span>";
 
   const card = (r) => {
     const s = r.s;
@@ -137,7 +145,11 @@ async function viewMPC() {
     (sets.length
       ? '<div id="mpc-chart"></div>' +
         '<div class="legend">' +
-        labels.map((l, i) => '<span class="key s' + i + '"></span>' + esc(l)).join("") +
+        labels.map((l, i) =>
+          !corridorBand ? legendItem("s" + i, l)
+          : i === corridorBand[0] ? legendItem("band", t("the CBE corridor, overnight deposit to overnight lending"))
+          : i === corridorBand[1] ? ""
+          : legendItem("s" + i, l)).join("") +
         "</div>" +
         '<div class="readout" id="mpc-readout"><span>' +
         t("The discount rate runs back to 1991. The corridor is only published from July 2014, which is why the older statements below carry no rate.") +
@@ -162,7 +174,7 @@ async function viewMPC() {
   if (sets.length) {
     const readout = document.getElementById("mpc-readout");
     mountChart(document.getElementById("mpc-chart"), readout,
-      (animate) => lineChart(sets, { height: 320, id: "mpcc", unit: "percent per annum", step: true, animate: animate }),
+      (animate) => lineChart(sets, { height: 320, id: "mpcc", unit: "percent per annum", step: true, band: corridorBand, animate: animate }),
       (svg) => wireHover(svg, sets.length > 1 ? sets : sets[0], units, readout, labels));
   }
 

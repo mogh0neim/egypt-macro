@@ -998,16 +998,23 @@ details.add-panel .empty { padding: 1rem 0; }
 .legend .key.s1 { background: var(--gold); margin-inline-start: 1rem; }
 .legend .key.s2 { background: var(--text-3); margin-inline-start: 1rem; }
 .legend .key.band { height: 9px; background: var(--gold); opacity: 0.4; margin-inline-start: 1rem; }
+/* A key and its name are one item, so a legend that wraps on a phone never
+   leaves a key at the end of one line and its name at the start of the next.
+   Items carry their own spacing; the key margins above are for bare keys. */
+.legend .item { display: inline-flex; align-items: center; gap: 0.5rem; margin-inline-end: 1rem; }
+.legend .item .key { margin-inline-start: 0; flex: none; }
 
 /* On the corridor chart the floor and the ceiling are two edges of one object,
    so they are drawn as one thing. The benchmark inside them is the line that
    carries the eye. */
-#corridor .line.s1, #corridor .line.s2 {
+#corridor .line.s1, #corridor .line.s2,
+#mpcc .line.s1, #mpcc .line.s2 {
   stroke: var(--gold);
   stroke-width: 1.1;
   stroke-dasharray: none;
 }
-#corridor .hover-dot.s1, #corridor .hover-dot.s2 { fill: var(--gold); }
+#corridor .hover-dot.s1, #corridor .hover-dot.s2,
+#mpcc .hover-dot.s1, #mpcc .hover-dot.s2 { fill: var(--gold); }
 
 /* ---------- notices ----------
  *

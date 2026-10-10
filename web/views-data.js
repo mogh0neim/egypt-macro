@@ -750,8 +750,8 @@ async function viewSeries(id) {
     document.querySelectorAll("[data-range]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.range === range)));
     document.querySelectorAll("[data-transform]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.transform === transform)));
     document.getElementById("legend").innerHTML = compareId
-      ? '<span class="key s0"></span>' + titleHTML(data) +
-        '<span class="key s1"></span>' + esc((state.byId.get(compareId) || {}).title_en || compareId)
+      ? '<span class="item"><span class="key s0"></span>' + titleHTML(data) + "</span>" +
+        '<span class="item"><span class="key s1"></span>' + esc((state.byId.get(compareId) || {}).title_en || compareId) + "</span>"
       : "";
   };
 

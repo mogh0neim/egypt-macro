@@ -99,8 +99,8 @@ async function viewMoneyMarket() {
 
     corridorLegend =
       '<div class="legend">' +
-      '<span class="key"></span>' + t("CONIA, the overnight fixing") +
-      '<span class="key band"></span>' + t("the CBE corridor, overnight deposit to overnight lending") +
+      '<span class="item"><span class="key"></span>' + t("CONIA, the overnight fixing") + "</span>" +
+      '<span class="item"><span class="key band"></span>' + t("the CBE corridor, overnight deposit to overnight lending") + "</span>" +
       "</div>";
 
     corridorReadout =
@@ -149,8 +149,8 @@ async function viewMoneyMarket() {
   const slope =
     tb3 && tb12
       ? '<div id="billc-slot"></div>' +
-        '<div class="legend"><span class="key"></span>' + t("3 month") +
-        '<span class="key s1"></span>' + t("12 month") + "</div>" +
+        '<div class="legend"><span class="item"><span class="key"></span>' + t("3 month") + "</span>" +
+        '<span class="item"><span class="key s1"></span>' + t("12 month") + "</span></div>" +
         '<div class="readout" id="bill-readout">' +
         "<span>" + t("Both weighted average accepted yields, as published, with no rebasing. Where the two cross, the curve inverted.") +
         "</span></div>"
