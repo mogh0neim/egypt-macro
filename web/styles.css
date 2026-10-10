@@ -315,6 +315,15 @@ a:hover { color: var(--accent); }
   flex-wrap: wrap;
   padding-block: 0.4rem;
 }
+/* The strip fills in when status.json arrives, a few hundred milliseconds into
+   the page. Until then its one line is held open but not drawn, so its arrival
+   does not push the whole page down; with no status.json the line stays
+   empty space rather than an empty bar. */
+.freshness[hidden] {
+  display: block;
+  visibility: hidden;
+  height: calc(0.68rem * 1.55 + 0.8rem + 1px);
+}
 /* The leading item carries a graduation in miniature, the same five-notch mark
    as the wordmark, so the strip reads as a reading taken off the column rather
    than as a browser status bar. */
@@ -571,6 +580,12 @@ body.palette-open { overflow: hidden; }
 }
 
 /* ---------- loading skeleton ---------- */
+
+/* The page area starts a screen tall. The footer used to sit right under a
+   three-line skeleton and jump a screen down when the view arrived, which
+   measured 0.5 to 0.9 of layout shift on every page; now it is below the fold
+   before, during and after, and nothing above it moves. */
+#app { min-height: 100vh; }
 
 .skeleton { padding-block: 3rem; display: grid; gap: 0.9rem; }
 .sk-line {
