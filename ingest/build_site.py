@@ -46,6 +46,15 @@ def copy_front_end() -> list[str]:
         if path.is_file() and path.suffix in {".html", ".css", ".js", ".svg", ".png", ".ico", ".webmanifest"}:
             shutil.copy2(path, DIST / path.name)
             copied.append(path.name)
+    # The fonts are served from the site itself, so no page load asks Google
+    # for anything. styles.css names them relative to itself, as fonts/<name>,
+    # which holds at every depth because every page loads the one stylesheet.
+    fonts = DIST / "fonts"
+    if fonts.is_dir():
+        shutil.rmtree(fonts)
+    fonts.mkdir(parents=True)
+    for path in sorted((WEB / "fonts").glob("*.woff2")):
+        shutil.copy2(path, fonts / path.name)
     return copied
 
 
@@ -283,7 +292,7 @@ def main() -> int:
     # manifest.json stays complete, because "every published file with its
     # SHA-256, so a mirror can check itself" has to remain true. This is the
     # same data with the bulk left out, at 4 KB.
-    BULK_PREFIXES = ("api/v1/series/", "pages/", "search/", "og/")
+    BULK_PREFIXES = ("api/v1/series/", "pages/", "search/", "og/", "fonts/")
     downloads = [m for m in manifest if not m["path"].startswith(BULK_PREFIXES)]
     # Pre-rendering adds 2,800 index.html files, which are pages rather than
     # anything anyone downloads. Leaving them in put downloads.json back to

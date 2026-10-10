@@ -47,7 +47,16 @@ three do not cover it, use weight, size or dash pattern instead - `--text-3` wit
 
 ## Type
 
-Three faces, from Google Fonts, one `@import` at the top of `styles.css`:
+Three faces, served from the site itself: `web/fonts/` holds the woff2 files
+Google Fonts served for these families and weights, in the Latin, Latin
+Extended and (for Almarai) Arabic subsets, and the `@font-face` rules at the top
+of `styles.css` carry Google's own `unicode-range`s, so a browser fetches only
+the subsets a page uses and the type looks exactly as it did. They used to come
+from Google on every page load, which handed Google every reader's address and
+was a second host to wait for. **No page load may ask any other host for
+anything** (GoatCounter, when switched on, is the one exception, and About
+says so). `build_site.py` copies the folder to `dist/fonts/`; the stylesheet
+names the files relative to itself, so they resolve at any depth.
 
 - `--display` **IBM Plex Sans Condensed** 600/700. Headlines, card titles,
   wordmark, accordion names. Condensed because the headlines are long sentences
