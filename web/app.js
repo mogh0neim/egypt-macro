@@ -231,6 +231,11 @@ document.addEventListener("click", (e) => {
   e.preventDefault();
   const id = button.dataset.star;
   const on = watchToggle(id);
+  /* The same words as starButton() in core.js, plus the series, so a screen
+   * reader tabbing down a table hears which one each star is for rather than
+   * "Add to favourites" sixty times over. */
+  const s = state.byId && state.byId.get(id);
+  const name = (s && ((RTL && s.title_ar) || s.title_en)) || id;
 
   document.querySelectorAll('[data-star="' + id + '"]').forEach((el) => {
     el.classList.toggle("on", on);
@@ -239,8 +244,8 @@ document.addEventListener("click", (e) => {
       el.textContent = on ? "★ On your desk" : "☆ Keep on your desk";
     } else {
       el.textContent = on ? "★" : "☆";
-      el.title = on ? "On your desk" : "Keep this on your desk";
-      el.setAttribute("aria-label", on ? "Remove from your desk" : "Keep on your desk");
+      el.title = t(on ? "In your favourites" : "Add to your favourites");
+      el.setAttribute("aria-label", t(on ? "Remove from favourites" : "Add to favourites") + ": " + name);
     }
   });
 
