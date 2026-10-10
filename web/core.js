@@ -666,6 +666,7 @@ function lineChart(series, opts) {
 
   const sets = (isMulti(series) ? series : [series]).map((p) => decimate(p)).filter((p) => p.length);
   if (!sets.length) return '<p class="empty">No observations in this range.</p>';
+  if (sets.length === 1 && sets[0].length <= 2) return sparseChart(sets[0], opts);
 
   // The viewBox is sized to roughly the CSS pixels it will occupy, so one SVG
   // unit is about one screen pixel and a 10px axis label renders at 10px. A
@@ -889,6 +890,49 @@ function lineChart(series, opts) {
   );
 }
 
+/* One reading is not a line. Drawn as one it was an empty frame with five
+ * guides invented around a single number, and two readings joined by a line
+ * read as a trend that two numbers cannot show (26 series have one or two).
+ * So each reading is a marked point with its value above and its date below,
+ * nothing is drawn between them, there is no axis to invent, and one line says
+ * why there is nothing more. Two points still sit higher and lower as their
+ * values do. */
+function sparseChart(data, opts) {
+  const unit = opts.unit || "";
+  const W = opts.width || chartWidth();
+  const H = W < 700 ? 150 : 170;
+  const side = data.length === 2 ? Math.round(Math.max(70, W * 0.2)) : Math.round(W / 2);
+  const m = { t: 40, r: side, b: 46, l: side };
+  const iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const x0 = Date.parse(data[0][0]), x1 = Date.parse(data[data.length - 1][0]);
+  let y0 = Math.min(data[0][1], data[data.length - 1][1]), y1 = Math.max(data[0][1], data[data.length - 1][1]);
+  const pad = (y1 - y0) * 0.5 || Math.abs(y1) * 0.1 || 1;
+  y0 -= pad; y1 += pad;
+  const px = (at) => m.l + ((at - x0) / (x1 - x0 || 1)) * iw;
+  const py = (v) => m.t + ih - ((v - y0) / (y1 - y0 || 1)) * ih;
+  const points = data
+    .map((p) => {
+      const x = px(Date.parse(p[0])).toFixed(1), y = py(p[1]);
+      return (
+        '<circle class="point" cx="' + x + '" cy="' + y.toFixed(1) + '" r="4.5"/>' +
+        chartText(x, (y - 11).toFixed(1), "point-label", "middle", fmt(p[1], unit)) +
+        chartText(x, (y + 19).toFixed(1), "tick", "middle", niceDate(p[0]))
+      );
+    })
+    .join("");
+  const note = data.length === 2
+    ? t("Two readings only: too few to show a trend.")
+    : t("One reading only, so there is no line to draw.");
+  return (
+    '<svg class="chart sparse" id="' + (opts.id || "c") + '" viewBox="0 0 ' + W + " " + H + '" ' +
+    'data-x0="' + x0 + '" data-x1="' + x1 + '" data-y0="' + y0 + '" data-y1="' + y1 + '" ' +
+    'data-w="' + W + '" data-l="' + m.l + '" data-r="' + m.r + '" data-t="' + m.t + '" data-b="' + m.b + '" ' +
+    'role="img" tabindex="0" aria-label="' + esc(note) + '">' +
+    points + chartText((W / 2).toFixed(1), H - 6, "tick", "middle", note) +
+    '<g class="hover"></g></svg>'
+  );
+}
+
 /* The draw-on animation reveals the line by pulling a dash the length of the
  * whole path off it. It needs that length, and the stylesheet can only guess at
  * it from the width of the chart -- which is close enough for a smooth line and
@@ -938,7 +982,7 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
   // rather than assume, or the crosshair and its markers land in the wrong
   // place. Same px()/py() as lineChart(), so a dot lands exactly on the line.
   const W = +svg.dataset.w || 1000;
-  const m = { l: +svg.dataset.l || 58, r: 14, t: 18, b: 26 };
+  const m = { l: +svg.dataset.l || 58, r: +svg.dataset.r || 14, t: +svg.dataset.t || 18, b: +svg.dataset.b || 26 };
   const iw = W - m.l - m.r;
   const vbH = +(svg.getAttribute("viewBox") || "0 0 1000 300").split(/\s+/)[3];
   const ih = vbH - m.t - m.b;
@@ -1051,7 +1095,8 @@ function wireHover(svg, series, units, readoutEl, labels, opts) {
   const move = (ev) => {
     const box = svg.getBoundingClientRect();
     const rel = ((ev.clientX - box.left) / box.width) * W;
-    const at = x0 + ((rel - m.l) / iw) * (x1 - x0);
+    // A single reading has no width to map across.
+    const at = iw > 0 ? x0 + ((rel - m.l) / iw) * (x1 - x0) : x0;
     paint(nearest(at), at);
   };
   svg.addEventListener("pointermove", move);

@@ -413,6 +413,8 @@ const AR = {
 
   /* ---------- the charts ---------- */
   "in force since": "سارٍ منذ",
+  "One reading only, so there is no line to draw.": "قراءة واحدة فقط، فلا يوجد خط يُرسم.",
+  "Two readings only: too few to show a trend.": "قراءتان فقط: أقل من أن تُظهرا اتجاهًا.",
   "No year-on-year or rebased view: this series is already a rate, so either would be a percentage of a percentage.":
     "لا نعرض التغيّر عن العام السابق ولا إعادة الأساس: هذه السلسلة معدّل في الأصل، فيكون أيٌّ منهما نسبة مئوية من نسبة مئوية.",
   "No year-on-year or rebased view: this series goes below zero, where a percentage of an earlier reading means nothing.":

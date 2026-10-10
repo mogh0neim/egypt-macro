@@ -924,6 +924,9 @@ details.add-panel .empty { padding: 1rem 0; }
 .chart .regime-label { font-family: var(--mono); font-size: 9.5px; fill: var(--gold); opacity: 0.8; }
 .chart .event { stroke: var(--gold); stroke-width: 1; stroke-dasharray: 2 3; }
 .chart .event-label { font-family: var(--mono); font-size: 9.5px; fill: var(--gold); }
+/* A series of one or two readings: marked points, never a line between them. */
+.chart .point { fill: var(--accent); }
+.chart .point-label { font-family: var(--mono); font-size: 12px; fill: var(--text); }
 .chart .hover-line { stroke: var(--text-3); stroke-width: 1; }
 /* Which line the readout number belongs to, where the crosshair alone
    cannot say -- the same colours as the lines themselves. */
