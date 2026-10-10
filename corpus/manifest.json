@@ -1,16 +1,517 @@
 {
- "generated": "2026-08-20T13:14:14+00:00",
- "count": 2557,
+ "generated": "2026-10-10T19:39:31+00:00",
+ "count": 2598,
  "by_source": {
-  "News": 778,
-  "publications": 1383,
-  "circulars": 396
+  "News": 797,
+  "circulars": 402,
+  "publications": 1399
  },
  "date_range": [
   "2002-04-01",
-  "2026-08-19"
+  "2026-10-09"
  ],
  "documents": [
+  {
+   "id": "ce3f3605c6421880",
+   "source": "News",
+   "title": "Governor of the Central Bank of Egypt Participates in the Launch of the Africa Credit Rating Agency (AfCRA) in Mauritius",
+   "date": "2026-10-09",
+   "url": "/en/news-publications/news/2026/10/09/09/10/afcra-2026",
+   "is_file": false,
+   "categories": [
+    "African Cooperation",
+    "Press Release"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "217669d2b7078dfb",
+   "source": "News",
+   "title": "Net International Reserves reached US$ 57,348.2 mn at the end of September 2026 (Provisional)",
+   "date": "2026-10-07",
+   "url": "/en/news-publications/news/2026/10/07/06/03/net-international-reserves-at-the-end-of-september-2026",
+   "is_file": false,
+   "categories": [
+    "International Reserves"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "d395e5f58f709c54",
+   "source": "News",
+   "title": "Governor of the Central Bank of Egypt Attends the \u201cAlamein Africa\u201d Forum and Participates as a Keynote Speaker in a High-Level Session Titled \u201cAfrica\u2019s New Growth Compact in a Turbulent World\u201d",
+   "date": "2026-10-04",
+   "url": "/en/news-publications/news/2026/10/04/08/28/alamein-africa-2026",
+   "is_file": false,
+   "categories": [
+    "African Cooperation",
+    "Press Release"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "0f5739fe771073ec",
+   "source": "News",
+   "title": "Governor of the Central Bank of Egypt and Minister of Industry Launch the \u201cDistressed Factories Restructuring Fund\u201d With EGP 1 Billion in Capital",
+   "date": "2026-10-01",
+   "url": "/en/news-publications/news/2026/10/01/16/13/distressed-factories-restructuring-fund",
+   "is_file": false,
+   "categories": [
+    "Press Release"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "0ccfd115b6301e70",
+   "source": "News",
+   "title": "Governor of the Central Bank of Egypt Participates in the 50th Annual Meeting of the Council of Arab Central Banks and Monetary Authorities Governors, Middle East and North Africa Leaders Summit on Financial Health, and the Arab Monetary Fund\u2019s Golden Jubilee Celebration in Abu Dhabi",
+   "date": "2026-10-01",
+   "url": "/en/news-publications/news/2026/10/01/08/19/the-50th-annual-meeting-of-the-council-of-arab-central-banks",
+   "is_file": false,
+   "categories": [
+    "Press Release"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "ae6e2f738adc30c0",
+   "source": "News",
+   "title": "Governor of the Central Bank of Egypt Discusses Joint Cooperation with the New IFC Regional Director for North Africa and the Horn of Africa",
+   "date": "2026-10-01",
+   "url": "/en/news-publications/news/2026/10/04/07/58/ifc-meeting-1-10-26",
+   "is_file": false,
+   "categories": [
+    "African Cooperation",
+    "Press Release"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "3dae8d50da55d4a9",
+   "source": "News",
+   "title": "Central Bank of the UAE and the Central Bank of Egypt Sign an Agreement to Renew the AED 5 billion Currency Swap",
+   "date": "2026-09-29",
+   "url": "/en/news-publications/news/2026/09/29/14/28/cbuae-and-central-bank-of-egypt-renew-aed-5-billion",
+   "is_file": false,
+   "categories": [
+    "Press Release"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "9a91995d5a5fcb1b",
+   "source": "circulars",
+   "title": "Circular dated 28 September 2026 regarding KYCs of banks\u2019 customers",
+   "date": "2026-09-28",
+   "url": "/-/media/project/cbe/listing/circulars/2026/september/circular-dated-28-september-2026-regarding-kycs-of-banks\u2019-customers.pdf",
+   "is_file": true,
+   "categories": [
+    "AML and CFT  "
+   ],
+   "local": "corpus/files/9a91995d5a5fcb1b.pdf",
+   "sha256": "a3f3b9921d18864e431823b2511d7ffa48219171ebd35306ddd2b3a955ed1f5a",
+   "bytes": 149447
+  },
+  {
+   "id": "65ca036614b05053",
+   "source": "circulars",
+   "title": "Circular dated 28 September 2026 regarding KYC for Foreign Exchange Companies",
+   "date": "2026-09-28",
+   "url": "/-/media/project/cbe/listing/circulars/2026/september/circular-dated-28-september-2026-regarding-kyc-for-foreign-exchange-companies.pdf",
+   "is_file": true,
+   "categories": [
+    "AML and CFT  "
+   ],
+   "local": "corpus/files/65ca036614b05053.pdf",
+   "sha256": "399261f865d8fbc785a9d14e8878765a489c4c09d26e23efdb0d52a27979b732",
+   "bytes": 119397
+  },
+  {
+   "id": "d7dea54637a6370d",
+   "source": "circulars",
+   "title": "Circular dated 28 September 2026 regarding KYC  for Money transfer Companies",
+   "date": "2026-09-28",
+   "url": "/-/media/project/cbe/listing/circulars/2026/september/circular-dated-28-september-2026-regarding-kyc-for-money-transfer-companies.pdf",
+   "is_file": true,
+   "categories": [
+    "AML and CFT  "
+   ],
+   "local": "corpus/files/d7dea54637a6370d.pdf",
+   "sha256": "7963632d4faeb8b993402ade10c7a973a3780826da725a078a05ac3cf1a58134",
+   "bytes": 119641
+  },
+  {
+   "id": "1c68cd4f1b277d68",
+   "source": "News",
+   "title": "MPC Press Release 24 September 2026",
+   "date": "2026-09-24",
+   "url": "/en/news-publications/news/2026/09/24/15/38/mpc-press-release-24-september-2026",
+   "is_file": false,
+   "categories": [
+    "MPC Press Release",
+    "Monetary Policy"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "fb8392291a3dd76e",
+   "source": "circulars",
+   "title": "Circular dated 24 September 2026 regarding the licensing and regulatory framework of Credit Guarantee Companies",
+   "date": "2026-09-24",
+   "url": "/-/media/project/cbe/listing/circulars/2026/september/circular-dated-24-september-2026-regarding-the-licensing-and-regulatory-framework-of-credit-guarante.pdf",
+   "is_file": true,
+   "categories": [
+    "Licensing and Regulatory Framework for Other Licensed Entities"
+   ],
+   "local": "corpus/files/fb8392291a3dd76e.pdf",
+   "sha256": "c972fa6bc900443e4242fb2e90da16a5397186da2bfc0bc644071c0bfeac37af",
+   "bytes": 837751
+  },
+  {
+   "id": "69a3c0f46cf72a1e",
+   "source": "circulars",
+   "title": "Circular dated 24 September 2026 regarding amending the rules of introducing commercial registry & documenting services through banks",
+   "date": "2026-09-24",
+   "url": "/-/media/project/cbe/listing/circulars/2026/september/circular-dated-24-september-2026-regarding-amending-the-rules-of-introducing-commercial-registry--do.pdf",
+   "is_file": true,
+   "categories": [
+    "Banking Practices"
+   ],
+   "local": "corpus/files/69a3c0f46cf72a1e.pdf",
+   "sha256": "c8b4f149fe2f4acff0d626b398521ebbd635a014b244650ae64f02fb98fddc18",
+   "bytes": 84724
+  },
+  {
+   "id": "23e13ed932400241",
+   "source": "publications",
+   "title": "Number of Debit - Credit Cards and ATM POS Machines - Top 5",
+   "date": "2026-09-23",
+   "url": "/-/media/project/cbe/listing/publication/reports-fsi/june-2026/number-of-debit---credit-cards-and-atm-pos-machines---top-5.pdf",
+   "is_file": true,
+   "categories": [
+    "Financial Soundness Indicators"
+   ],
+   "local": "corpus/files/23e13ed932400241.pdf",
+   "sha256": "9147b89753e06c15805fe8b7b12d5c86b5c6bd6abfbadf915c02018ebd3d69a4",
+   "bytes": 265893
+  },
+  {
+   "id": "b20369fa5c98eba1",
+   "source": "publications",
+   "title": "Number of Debit - Credit Cards and ATM POS Machines - Top 10",
+   "date": "2026-09-23",
+   "url": "/-/media/project/cbe/listing/publication/reports-fsi/june-2026/number-of-debit---credit-cards-and-atm-pos-machines---top-10.pdf",
+   "is_file": true,
+   "categories": [
+    "Financial Soundness Indicators"
+   ],
+   "local": "corpus/files/b20369fa5c98eba1.pdf",
+   "sha256": "e910ea08eb08675cb8ffb43ddf8b9c1d18b728adadfe944daef98c35718b4f07",
+   "bytes": 318543
+  },
+  {
+   "id": "cfb5f07b7002ea75",
+   "source": "publications",
+   "title": "Number of Debit - Credit Cards and ATM POS Machines - Banking Sector",
+   "date": "2026-09-23",
+   "url": "/-/media/project/cbe/listing/publication/reports-fsi/june-2026/number-of-debit---credit-cards-and-atm-pos-machines---banking-sector.pdf",
+   "is_file": true,
+   "categories": [
+    "Financial Soundness Indicators"
+   ],
+   "local": "corpus/files/cfb5f07b7002ea75.pdf",
+   "sha256": "dff1eb0551a19d851173562a0785da86f953d1e7bec612ca3eff975132536177",
+   "bytes": 330560
+  },
+  {
+   "id": "d1c6794a153ac7d3",
+   "source": "publications",
+   "title": "Financial Soundness Indicators-Top 5",
+   "date": "2026-09-23",
+   "url": "/-/media/project/cbe/listing/publication/reports-fsi/june-2026/financial-soundness-indicators-top-5.pdf",
+   "is_file": true,
+   "categories": [
+    "Financial Soundness Indicators"
+   ],
+   "local": "corpus/files/d1c6794a153ac7d3.pdf",
+   "sha256": "a84595d7b72205d088db8a1908a69874c7d47c1b4237ffedf077b03d5dbaee0d",
+   "bytes": 479319
+  },
+  {
+   "id": "a61fb951074becf7",
+   "source": "publications",
+   "title": "Financial Soundness Indicators- Top 10",
+   "date": "2026-09-23",
+   "url": "/-/media/project/cbe/listing/publication/reports-fsi/june-2026/financial-soundness-indicators---top-10.pdf",
+   "is_file": true,
+   "categories": [
+    "Financial Soundness Indicators"
+   ],
+   "local": "corpus/files/a61fb951074becf7.pdf",
+   "sha256": "5c5ac65cdf3697ff7b20ea411ea928d5f3b0278b263b0216688feec443ddc923",
+   "bytes": 530719
+  },
+  {
+   "id": "5b7509db627b546f",
+   "source": "publications",
+   "title": "Financial Soundness Indicators- Banking sector",
+   "date": "2026-09-23",
+   "url": "/-/media/project/cbe/listing/publication/reports-fsi/june-2026/financial-soundness-indicators--banking-sector.pdf",
+   "is_file": true,
+   "categories": [
+    "Financial Soundness Indicators"
+   ],
+   "local": "corpus/files/5b7509db627b546f.pdf",
+   "sha256": "934927be41bc2e2943ebb4fbbcf932184dce0fa093830d75c8d5a17931e8e557",
+   "bytes": 478902
+  },
+  {
+   "id": "fd19f7cdbf8b23bd",
+   "source": "publications",
+   "title": "Balance Sheet and Income St. - Top 5",
+   "date": "2026-09-23",
+   "url": "/-/media/project/cbe/listing/publication/reports-fsi/june-2026/balance-sheet-and-income-st,-d-,---top-5.pdf",
+   "is_file": true,
+   "categories": [
+    "Financial Soundness Indicators"
+   ],
+   "local": "corpus/files/fd19f7cdbf8b23bd.pdf",
+   "sha256": "e4c27d9dc8c823c683df82ec2a6983ca533ab2fb6cc7f73c60562723a028fc46",
+   "bytes": 536481
+  },
+  {
+   "id": "9835bf3ab419dac7",
+   "source": "publications",
+   "title": "Balance Sheet and Income St. - Top 10",
+   "date": "2026-09-23",
+   "url": "/-/media/project/cbe/listing/publication/reports-fsi/june-2026/balance-sheet-and-income-st---top-10.pdf",
+   "is_file": true,
+   "categories": [
+    "Financial Soundness Indicators"
+   ],
+   "local": "corpus/files/9835bf3ab419dac7.pdf",
+   "sha256": "70f83936641e412237059f489aea55aaf0b6c9e20804cc1698b7cbb98877b2ad",
+   "bytes": 479172
+  },
+  {
+   "id": "ef2641b1ac9c657c",
+   "source": "publications",
+   "title": "Balance Sheet and Income St. - Banking Sector",
+   "date": "2026-09-23",
+   "url": "/-/media/project/cbe/listing/publication/reports-fsi/june-2026/balance-sheet-and-income-st,-d-,---banking-sector.pdf",
+   "is_file": true,
+   "categories": [
+    "Financial Soundness Indicators"
+   ],
+   "local": "corpus/files/ef2641b1ac9c657c.pdf",
+   "sha256": "5841438302e6ceb13823c9d94c19f6e009f18a4cd41cfd14bc73b43576f5ca81",
+   "bytes": 532822
+  },
+  {
+   "id": "74e9195e455a0136",
+   "source": "News",
+   "title": "Remittances from Egyptians Working Abroad Recorded  USD 29.7 Billion During the First Seven Months of 2026",
+   "date": "2026-09-21",
+   "url": "/en/news-publications/news/2026/09/21/10/22/remittances-july-2026",
+   "is_file": false,
+   "categories": [
+    "Press Release",
+    "Remittances"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "4cc332b15f404dc8",
+   "source": "News",
+   "title": "Governor of the Central Bank of Egypt Participates in the Annual Symposium of the AACB Assembly of Governors in the Presence of the Kenyan President",
+   "date": "2026-09-20",
+   "url": "/en/news-publications/news/2026/09/20/11/18/aacb-assembly-of-governors-sep-20",
+   "is_file": false,
+   "categories": [
+    "African Cooperation",
+    "Press Release"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "2cf1721acbeb51cc",
+   "source": "News",
+   "title": "Governor of the Central Bank of Egypt Participates in the 14th Meeting of the Governing Council of the Pan-African Payment and Settlement System (PGC PAPSS)",
+   "date": "2026-09-19",
+   "url": "/en/news-publications/news/2026/09/19/14/20/pgc-papss-2026",
+   "is_file": false,
+   "categories": [
+    "African Cooperation",
+    "Press Release"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "8560e34bfc6219e4",
+   "source": "News",
+   "title": "Governor of the Central Bank of Egypt Participates in a High-Level Artificial Intelligence Conference, Held on the Sidelines of the 48th Annual Meetings of the Association of African Central Banks in Nairobi",
+   "date": "2026-09-17",
+   "url": "/en/news-publications/news/2026/09/17/12/39/governor-of-cbe-participates-in-a-high-level-artificial-intelligence-conference-17-sep",
+   "is_file": false,
+   "categories": [
+    "Press Release"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "7d905643eb05d7ee",
+   "source": "publications",
+   "title": "Monetary Policy Inflation Note August 2026",
+   "date": "2026-09-16",
+   "url": "/-/media/project/cbe/listing/publication/2026/august/inf_august_2026-en.pdf",
+   "is_file": true,
+   "categories": [
+    "Monetary Policy",
+    "Monetary Policy Inflation Note"
+   ],
+   "local": "corpus/files/7d905643eb05d7ee.pdf",
+   "sha256": "da759a329e4520793642213ae74dc5e0da1aa731cf6e19505abf4560179e44f1",
+   "bytes": 1154037
+  },
+  {
+   "id": "44edea6e17f9839d",
+   "source": "News",
+   "title": "Central Bank of Egypt Launches the Fourth Edition of FinTech Got Talent 2026 Competition for University Students",
+   "date": "2026-09-13",
+   "url": "/en/news-publications/news/2026/09/13/09/12/fintech-got-talent-2026",
+   "is_file": false,
+   "categories": [
+    "Press Release"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "b04ae4eb4bf01cb8",
+   "source": "News",
+   "title": "CPI Press Release August 2026",
+   "date": "2026-09-10",
+   "url": "/en/news-publications/news/2026/09/10/12/29/cpi-press-release-august-2026",
+   "is_file": false,
+   "categories": [
+    "CPI Press Release",
+    "Monetary Policy"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "af15e9111b4b0034",
+   "source": "News",
+   "title": "Net International Reserves reached US$ 57,214.5 mn at the end of August 2026 (Provisional)",
+   "date": "2026-09-07",
+   "url": "/en/news-publications/news/2026/09/07/07/24/net-international-reserves-at-the-end-of-august-2026",
+   "is_file": false,
+   "categories": [
+    "International Reserves"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "ff428962e890b432",
+   "source": "News",
+   "title": "Joint Statement Release by the Central Bank of Egypt and the Central Bank of the UAE",
+   "date": "2026-08-30",
+   "url": "/en/news-publications/news/2026/08/30/16/10/the-central-bank-of-egypt-and-the-central-bank-of-the-uae",
+   "is_file": false,
+   "categories": [
+    "Press Release"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "4617ee73db3f25c2",
+   "source": "News",
+   "title": "The Central Bank of Egypt Issues Regulations Governing the Services of the Digital Financial Identity Platform for Identifying Bank Customers and Verifying their Identities Electronically (eKYC)",
+   "date": "2026-08-23",
+   "url": "/en/news-publications/news/2026/08/24/09/40/ekyc-2026",
+   "is_file": false,
+   "categories": [
+    "Press Release"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "52e8a34927bde3c2",
+   "source": "circulars",
+   "title": "Circular dated 23 August 2026 regarding the Rules of Digital Financial Identity system for the EKYC of banks\u2019 customers",
+   "date": "2026-08-23",
+   "url": "/-/media/project/cbe/listing/circulars/2026/august/circular-dated-23-august-2026--regarding-the-rules-of-digital-financial-identity-system-for-the-ekyc.pdf",
+   "is_file": true,
+   "categories": [
+    "AML and CFT  "
+   ],
+   "local": "corpus/files/52e8a34927bde3c2.pdf",
+   "sha256": "4e975310abc7ef384d8ced0f7216032b78b78614561b81fb466c76a0ccdf05b2",
+   "bytes": 530624
+  },
+  {
+   "id": "7745e2ef189a3019",
+   "source": "News",
+   "title": "Remittances from Egyptians Working Abroad Record USD 47.3 Billion During FY 2025/2026",
+   "date": "2026-08-20",
+   "url": "/en/news-publications/news/2026/08/20/12/09/remittances-20aug-26",
+   "is_file": false,
+   "categories": [
+    "Press Release",
+    "Remittances"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
+  {
+   "id": "05a23560aca72c3d",
+   "source": "News",
+   "title": "MPC Press Release 20 August 2026",
+   "date": "2026-08-20",
+   "url": "/en/news-publications/news/2026/08/20/15/17/mpc-press-release-20-august-2026",
+   "is_file": false,
+   "categories": [
+    "MPC Press Release",
+    "Monetary Policy"
+   ],
+   "local": null,
+   "sha256": null,
+   "bytes": null
+  },
   {
    "id": "2512acfae03f9f46",
    "source": "News",
@@ -348,6 +849,62 @@
    "bytes": null
   },
   {
+   "id": "2043fb14559ff3ff",
+   "source": "publications",
+   "title": "Monthly Statistical Bulletin 352",
+   "date": "2026-07-05",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/bulletin/july/monthly-statistical-bulletin-352.pdf",
+   "is_file": true,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "local": "corpus/files/2043fb14559ff3ff.pdf",
+   "sha256": "b382207c83e14260873169e5e5ff32fc468111dc45c7af6822f8f67f548d2728",
+   "bytes": 7728598
+  },
+  {
+   "id": "4bca26e6b2f3d78f",
+   "source": "publications",
+   "title": "Financial and Monetary Sector 352",
+   "date": "2026-07-04",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/financial/financial-and-monetary-sector-352.xlsx",
+   "is_file": true,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "local": "corpus/files/4bca26e6b2f3d78f.xlsx",
+   "sha256": "55ecb2d4e931e83e2ebfa6b88acd06bf2585d43044dc1fcaa01d3f0d61cffcec",
+   "bytes": 1319700
+  },
+  {
+   "id": "fe71045eebabc20b",
+   "source": "publications",
+   "title": "External Sector 352",
+   "date": "2026-07-03",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/external/external-sector-352.xlsx",
+   "is_file": true,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "local": "corpus/files/fe71045eebabc20b.xlsx",
+   "sha256": "7b068e9d71aa2726a327357cf1709f55423335c267a2d4ddf2a417701ec9c4ac",
+   "bytes": 702467
+  },
+  {
+   "id": "f7f769981911437a",
+   "source": "publications",
+   "title": "Fiscal Sector 352",
+   "date": "2026-07-02",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/fiscal/fiscal-sector-352.xlsx",
+   "is_file": true,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "local": "corpus/files/f7f769981911437a.xlsx",
+   "sha256": "3a4b6c0a30e43541ebba0223f9fd73699b92a5608fea52a75339c192b2ba9863",
+   "bytes": 111089
+  },
+  {
    "id": "549c1a688eae766c",
    "source": "publications",
    "title": "Volume No. 92",
@@ -362,46 +919,18 @@
    "bytes": 17808194
   },
   {
-   "id": "a738f4656bd66202",
+   "id": "4c6015dc2890f005",
    "source": "publications",
-   "title": "Financial Soundness Indicators-Top 5",
+   "title": "Real Sector 352",
    "date": "2026-07-01",
-   "url": "/-/media/project/cbe/listing/publication/reports-fsi/march-2026/financial-soundness-indicators-top-5.pdf",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/real/real-sector-352.xlsx",
    "is_file": true,
    "categories": [
-    "Financial Soundness Indicators"
+    "Monthly Statistical Bulletins"
    ],
-   "local": "corpus/files/a738f4656bd66202.pdf",
-   "sha256": "5e853b4d8a3e9f0320b59d0f404a784bee1c7a46a5352f4802e5d192d5f5ad0d",
-   "bytes": 529123
-  },
-  {
-   "id": "4e4fdedac23a8638",
-   "source": "publications",
-   "title": "Financial Soundness Indicators- Top 10",
-   "date": "2026-07-01",
-   "url": "/-/media/project/cbe/listing/publication/reports-fsi/march-2026/financial-soundness-indicators---top-10.pdf",
-   "is_file": true,
-   "categories": [
-    "Financial Soundness Indicators"
-   ],
-   "local": "corpus/files/4e4fdedac23a8638.pdf",
-   "sha256": "97efbb010f2d2c13269914973d0eb68f28af192e6f302007b2a1238c66bbda85",
-   "bytes": 579982
-  },
-  {
-   "id": "a26ea17c78f64c5b",
-   "source": "publications",
-   "title": "Financial Soundness Indicators- Banking sector",
-   "date": "2026-07-01",
-   "url": "/-/media/project/cbe/listing/publication/reports-fsi/march-2026/financial-soundness-indicators--banking-sector.pdf",
-   "is_file": true,
-   "categories": [
-    "Financial Soundness Indicators"
-   ],
-   "local": "corpus/files/a26ea17c78f64c5b.pdf",
-   "sha256": "60cd09f8cfbb2606da5e447b3019affba80c697ec9b33f473e7d5824bce7338b",
-   "bytes": 529018
+   "local": "corpus/files/4c6015dc2890f005.xlsx",
+   "sha256": "fab5f14cefe4c1d3868fdafef9e2dac81936354afcb7b7e4d1811e6bbd17c559",
+   "bytes": 226801
   },
   {
    "id": "4547692fa0ea5a52",
@@ -430,48 +959,6 @@
    "local": null,
    "sha256": null,
    "bytes": null
-  },
-  {
-   "id": "84cb5c6e0a89eed0",
-   "source": "publications",
-   "title": "Balance Sheet and Income St. - Top 5",
-   "date": "2026-07-01",
-   "url": "/-/media/project/cbe/listing/publication/reports-fsi/march-2026/balance-sheet-and-income-st,-d-,---top-5.pdf",
-   "is_file": true,
-   "categories": [
-    "Financial Soundness Indicators"
-   ],
-   "local": "corpus/files/84cb5c6e0a89eed0.pdf",
-   "sha256": "e14d65ff4a013bea251cf30f121c41460a1f70071490e4d12f201982079d11a7",
-   "bytes": 630180
-  },
-  {
-   "id": "4aefd3e4ef7aa310",
-   "source": "publications",
-   "title": "Balance Sheet and Income St. - Top 10",
-   "date": "2026-07-01",
-   "url": "/-/media/project/cbe/listing/publication/reports-fsi/march-2026/balance-sheet-and-income-st---top-10.pdf",
-   "is_file": true,
-   "categories": [
-    "Financial Soundness Indicators"
-   ],
-   "local": "corpus/files/4aefd3e4ef7aa310.pdf",
-   "sha256": "66c066f076303c1d112e0339b8e6a57b8ddda8f76ffa1d2d7672f57d0913ec5d",
-   "bytes": 573199
-  },
-  {
-   "id": "1430505202ef95d6",
-   "source": "publications",
-   "title": "Balance Sheet and Income St. - Banking Sector",
-   "date": "2026-07-01",
-   "url": "/-/media/project/cbe/listing/publication/reports-fsi/march-2026/balance-sheet-and-income-st,-d-,---banking-sector.pdf",
-   "is_file": true,
-   "categories": [
-    "Financial Soundness Indicators"
-   ],
-   "local": "corpus/files/1430505202ef95d6.pdf",
-   "sha256": "c9bbf0e634cc25a08b5258a18f28b86ffc1a55bea8ddb788db4bca41c2196e9a",
-   "bytes": 575346
   },
   {
    "id": "30bba973ba46a3ce",
@@ -689,6 +1176,62 @@
    "bytes": null
   },
   {
+   "id": "11bbb44dbd50f6c6",
+   "source": "publications",
+   "title": "Monthly Statistical Bulletin 351",
+   "date": "2026-06-05",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/bulletin/june/monthly-statistical-bulletin-351.pdf",
+   "is_file": true,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "local": "corpus/files/11bbb44dbd50f6c6.pdf",
+   "sha256": "3c93811bd0507b352a271f55198c186e73bd0643de9a44e0b432fc2455ceca2b",
+   "bytes": 7910979
+  },
+  {
+   "id": "116fe7a835c06978",
+   "source": "publications",
+   "title": "Financial and Monetary Sector 351",
+   "date": "2026-06-04",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/financial/financial-and-monetary-sector-351.xlsx",
+   "is_file": true,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "local": "corpus/files/116fe7a835c06978.xlsx",
+   "sha256": "150c17b5c31b14ef15a34bcce7280710e0fe6b3880ec439edf4af647328f9a86",
+   "bytes": 1318997
+  },
+  {
+   "id": "8fd054c116509d09",
+   "source": "publications",
+   "title": "External Sector 351",
+   "date": "2026-06-03",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/external/external-sector-351.xlsx",
+   "is_file": true,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "local": "corpus/files/8fd054c116509d09.xlsx",
+   "sha256": "7b068e9d71aa2726a327357cf1709f55423335c267a2d4ddf2a417701ec9c4ac",
+   "bytes": 702467
+  },
+  {
+   "id": "864ae9b576fa2785",
+   "source": "publications",
+   "title": "Fiscal Sector 351",
+   "date": "2026-06-02",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/fiscal/fiscal-sector-351.xlsx",
+   "is_file": true,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "local": "corpus/files/864ae9b576fa2785.xlsx",
+   "sha256": "84aa25ee6454f9334936854d577db8e76655b0438f0911d579c25b623bd32bf8",
+   "bytes": 110087
+  },
+  {
    "id": "98ba222292a95df3",
    "source": "News",
    "title": "USD 34.9 Billion in Remittances from Egyptians Working Abroad during the First 9 months of FY 2025/2026",
@@ -702,6 +1245,20 @@
    "local": null,
    "sha256": null,
    "bytes": null
+  },
+  {
+   "id": "c96ba531bc422d40",
+   "source": "publications",
+   "title": "Real Sector 351",
+   "date": "2026-06-01",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/real/real-sector-351.xlsx",
+   "is_file": true,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "local": "corpus/files/c96ba531bc422d40.xlsx",
+   "sha256": "713cc400258f258e18287cd3f8c33a51efb2e4b46cc4d718283da4585cff97d7",
+   "bytes": 226537
   },
   {
    "id": "56e0e9cf6eb6be33",
@@ -892,6 +1449,34 @@
    "bytes": null
   },
   {
+   "id": "21b0f0046a4cf082",
+   "source": "publications",
+   "title": "Monthly Statistical Bulletin 350",
+   "date": "2026-05-05",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/bulletin/may/monthly-statistical-bulletin-350.pdf",
+   "is_file": true,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "local": "corpus/files/21b0f0046a4cf082.pdf",
+   "sha256": "f871056467759ad57d15b4fdee5d242e22973919120bef72585ddb80173f0f5d",
+   "bytes": 7322267
+  },
+  {
+   "id": "dc41e9b238ff0819",
+   "source": "publications",
+   "title": "Financial and Monetary Sector 350",
+   "date": "2026-05-04",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/financial/financial-and-monetary-sector-350.xlsx",
+   "is_file": true,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "local": "corpus/files/dc41e9b238ff0819.xlsx",
+   "sha256": "5ba7ff9b5cb9ede1389019c67f2d5e073c783447a981d13825a13727faacb372",
+   "bytes": 1320781
+  },
+  {
    "id": "70b8be391524ece9",
    "source": "publications",
    "title": "Volume No. 91",
@@ -919,6 +1504,48 @@
    "local": null,
    "sha256": null,
    "bytes": null
+  },
+  {
+   "id": "54cf6900d7c4d73d",
+   "source": "publications",
+   "title": "External Sector 350",
+   "date": "2026-05-03",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/external/external-sector-350.xlsx",
+   "is_file": true,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "local": "corpus/files/54cf6900d7c4d73d.xlsx",
+   "sha256": "f251d7f0ae9015e9292fbc0b38d64d1f42ff279392cbc957b9f1a676aa4b4f0b",
+   "bytes": 716465
+  },
+  {
+   "id": "cbbfd64e20f31631",
+   "source": "publications",
+   "title": "Fiscal Sector 350",
+   "date": "2026-05-02",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/fiscal/fiscal-sector-350.xlsx",
+   "is_file": true,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "local": "corpus/files/cbbfd64e20f31631.xlsx",
+   "sha256": "2e07bc870b534b110608716cd406fc0244c43344d3a36bba66b8767f21b49e8c",
+   "bytes": 111187
+  },
+  {
+   "id": "36813072f7719dad",
+   "source": "publications",
+   "title": "Real Sector 350",
+   "date": "2026-05-01",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/real/real-sector-350.xlsx",
+   "is_file": true,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "local": "corpus/files/36813072f7719dad.xlsx",
+   "sha256": "2e4d2bf9440aab182dc2f6098f38f9ac00c2e58253c3d547b9f251638770697a",
+   "bytes": 228976
   },
   {
    "id": "a73e5717aa0a6cdb",
@@ -1043,7 +1670,7 @@
    "url": "/-/media/project/cbe/listing/circulars/2026/april/circular-dated-16-april-2026-regarding-obliging-foreign-exchange-companies-to-implement--goaml-syste.pdf",
    "is_file": true,
    "categories": [
-    "Banking Practices"
+    "AML and CFT  "
    ],
    "local": "corpus/files/ad71374e12a6c6af.pdf",
    "sha256": "9b11102f64104288ca6747b58b8c6509236701ea75d1401dcb79b75b81782309",
@@ -1290,48 +1917,6 @@
    "local": null,
    "sha256": null,
    "bytes": null
-  },
-  {
-   "id": "e8635f4c06e9360b",
-   "source": "publications",
-   "title": "Number of Debit - Credit Cards and ATM POS Machines - Top 5",
-   "date": "2026-03-24",
-   "url": "/-/media/project/cbe/listing/publication/reports-fsi/december-2025/number-of-debit---credit-cards-and-atm-pos-machines---top-5.pdf",
-   "is_file": true,
-   "categories": [
-    "Financial Soundness Indicators"
-   ],
-   "local": "corpus/files/e8635f4c06e9360b.pdf",
-   "sha256": "451eeccdc4ab772a7ee26e8d131025e323193ec30519191856fce93e82b25abe",
-   "bytes": 265703
-  },
-  {
-   "id": "576efcead4528302",
-   "source": "publications",
-   "title": "Number of Debit - Credit Cards and ATM POS Machines - Top 10",
-   "date": "2026-03-24",
-   "url": "/-/media/project/cbe/listing/publication/reports-fsi/december-2025/number-of-debit---credit-cards-and-atm-pos-machines---top-10.pdf",
-   "is_file": true,
-   "categories": [
-    "Financial Soundness Indicators"
-   ],
-   "local": "corpus/files/576efcead4528302.pdf",
-   "sha256": "68107585065fe0cd66d2b25a38c24399e98f2151d6dd35a002e3b737067b2bde",
-   "bytes": 318122
-  },
-  {
-   "id": "f3e0b9ad08a4456e",
-   "source": "publications",
-   "title": "Number of Debit - Credit Cards and ATM POS Machines - Banking Sector",
-   "date": "2026-03-24",
-   "url": "/-/media/project/cbe/listing/publication/reports-fsi/december-2025/number-of-debit---credit-cards-and-atm-pos-machines---banking-sector.pdf",
-   "is_file": true,
-   "categories": [
-    "Financial Soundness Indicators"
-   ],
-   "local": "corpus/files/f3e0b9ad08a4456e.pdf",
-   "sha256": "888140baa86d64ce44ee62a0eb73ca5b0a16233e8d34726694cb5177b04129be",
-   "bytes": 331225
   },
   {
    "id": "f84b00195d86edc5",
@@ -3364,7 +3949,7 @@
    "url": "/-/media/project/cbe/listing/circulars/2025/september-2025/circular-dated-1-september-2025-regarding-aml-and-cft-regulations-for-foreign-exchange-companies.pdf",
    "is_file": true,
    "categories": [
-    "Banking Practices"
+    "AML and CFT  "
    ],
    "local": "corpus/files/a796e4ecd1722c1e.pdf",
    "sha256": "7758cbcc35d81f6e09781499a1136105c356d80c4d8bb070c37176cba1de696f",
@@ -5587,7 +6172,7 @@
    "url": "/-/media/project/cbe/listing/circulars/january/circular-dated-8-january-2025-regarding-the-guidelines-for-identifying-the-ultimate-beneficiary-for.pdf",
    "is_file": true,
    "categories": [
-    "Banking Practices"
+    "AML and CFT  "
    ],
    "local": "corpus/files/7ba5a74e98ccc704.pdf",
    "sha256": "9e657368feadaa25041ee5634a42233ee26aecf45dabf130a6e3c3f557f3d688",
@@ -8353,7 +8938,7 @@
    "url": "/-/media/project/cbe/listing/circulars/march/circular-dated-28-march-2024-regarding-kyc-updates-procedures.pdf",
    "is_file": true,
    "categories": [
-    "Banking Practices"
+    "AML and CFT  "
    ],
    "local": "corpus/files/69fd693392b708e5.pdf",
    "sha256": "47ac063c37b602c80303fc5b645e3702238c84aa1fe5724386411471daca114c",
@@ -9081,7 +9666,7 @@
    "url": "/-/media/project/cbe/listing/circulars/dec/circular-dated-24-december-2023--regarding-aml-and-cft-regulations-for-banks.pdf",
    "is_file": true,
    "categories": [
-    "Banking Practices"
+    "AML and CFT  "
    ],
    "local": "corpus/files/d5fade2c46d8d120.pdf",
    "sha256": "021535738a2e72e07049dcfb146d7bb896c9e5a5f7197e24659d7090de149999",

@@ -7150,12 +7150,12 @@
   "title_ar": "شيلى",
   "dataset": "excel_archive",
   "family": "net_foreign_direct_investment",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/net_foreign_direct_investment_in_egypt_fdi_by_country-2025-2026-q2.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/net_foreign_direct_investment_in_egypt_(fdi)_by_country_new-annual,-d-,xls.xlsx"
  },
  {
   "series_id": "EG.XL.FDI.NET_FOREIGN_DIRECT_INVESTMENT.CHINA",
@@ -7514,12 +7514,12 @@
   "title_ar": "المغرب",
   "dataset": "excel_archive",
   "family": "net_foreign_direct_investment",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/net_foreign_direct_investment_in_egypt_fdi_by_country-2025-2026-q2.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/net_foreign_direct_investment_in_egypt_(fdi)_by_country_new-annual,-d-,xls.xlsx"
  },
  {
   "series_id": "EG.XL.FDI.NET_FOREIGN_DIRECT_INVESTMENT.NET_FOREIGN_DIRECT_INVESTMENT",
@@ -7657,12 +7657,12 @@
   "title_ar": "روسيا",
   "dataset": "excel_archive",
   "family": "net_foreign_direct_investment",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/net_foreign_direct_investment_in_egypt_fdi_by_country-2025-2026-q2.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/net_foreign_direct_investment_in_egypt_(fdi)_by_country_new-annual,-d-,xls.xlsx"
  },
  {
   "series_id": "EG.XL.FDI.NET_FOREIGN_DIRECT_INVESTMENT.SAUDI_ARABIA",
@@ -7722,12 +7722,12 @@
   "title_ar": "جنوب افريقيا",
   "dataset": "excel_archive",
   "family": "net_foreign_direct_investment",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/net_foreign_direct_investment_in_egypt_fdi_by_country-2025-2026-q2.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/net_foreign_direct_investment_in_egypt_(fdi)_by_country_new-annual,-d-,xls.xlsx"
  },
  {
   "series_id": "EG.XL.FDI.NET_FOREIGN_DIRECT_INVESTMENT.SOUTH_KOREA",
@@ -7822,16 +7822,16 @@
  },
  {
   "series_id": "EG.XL.FDI.NET_FOREIGN_DIRECT_INVESTMENT.TOTAL_FLOWS",
-  "title_en": "Net Foreign Direct Investment - Total flows",
-  "title_ar": "اجمالى التدفقات",
+  "title_en": "Net Foreign Direct Investment - Total flows(+)",
+  "title_ar": "اجمالى التدفقات(+)",
   "dataset": "excel_archive",
   "family": "net_foreign_direct_investment",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/net_foreign_direct_investment_in_egypt_fdi_by_country-2025-2026-q2.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/net_foreign_direct_investment_in_egypt_(fdi)_by_country_new-annual,-d-,xls.xlsx"
  },
  {
   "series_id": "EG.XL.FDI.NET_FOREIGN_DIRECT_INVESTMENT.TUNISIA",
@@ -7878,12 +7878,12 @@
   "title_ar": "أوكرانيا",
   "dataset": "excel_archive",
   "family": "net_foreign_direct_investment",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/net_foreign_direct_investment_in_egypt_fdi_by_country-2025-2026-q2.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/net_foreign_direct_investment_in_egypt_(fdi)_by_country_new-annual,-d-,xls.xlsx"
  },
  {
   "series_id": "EG.XL.FDI.NET_FOREIGN_DIRECT_INVESTMENT.UNITED_ARAB_EMIRATES",
@@ -15860,12 +15860,12 @@
   "title_ar": "البنوك",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_quarters.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.BONDS",
@@ -15912,25 +15912,25 @@
   "title_ar": "البنك المركزي",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_quarters.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.CURRENCY_AND_DEPOSITS",
-  "title_en": "External Debt by Debtor Sector - Currency and Deposits",
+  "title_en": "External Debt by Debtor Sector - Currency and deposits",
   "title_ar": "العملة والودائع",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
-  "level": 5,
+  "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_quarters.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.DEBT_SECURITIES",
@@ -15938,12 +15938,12 @@
   "title_ar": "سندات الدين",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
-  "level": 12,
+  "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_quarters.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.EXTERNAL_DEBT",
@@ -15977,12 +15977,12 @@
   "title_ar": "الحكومة",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_quarters.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.LOANS",
@@ -15990,12 +15990,12 @@
   "title_ar": "القروض",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 6,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_quarters.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.LONG_TERM_DEBT",
@@ -16003,25 +16003,25 @@
   "title_ar": "الدين طويل الأجل",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_quarters.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.LONG_TERM_DEBT_LOANS",
-  "title_en": "External Debt by Debtor Sector - Long-term Debt (Loans)",
+  "title_en": "External Debt by Debtor Sector - Long-term  Debt (Loans)",
   "title_ar": "الدين طويل الأجل (قروض)",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_quarters.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.MEDIUM_AND_LONG_TERM",
@@ -16081,12 +16081,12 @@
   "title_ar": "القطاعات الأخرى",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_quarters.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.SHORT_TERM",
@@ -16116,29 +16116,29 @@
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.SHORT_TERM_DEBT",
-  "title_en": "External Debt by Debtor Sector - Short-term  Debt",
+  "title_en": "External Debt by Debtor Sector - Short-term Debt",
   "title_ar": "الدين قصير الأجل",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_quarters.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.SHORT_TERM_DEBT_LOANS",
   "title_en": "External Debt by Debtor Sector - Short-term Debt (Loans)",
-  "title_ar": "الدين قصير الأجل (القروض)",
+  "title_ar": "الدين قصير الأجل ( القروض )",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
-  "level": 1,
+  "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_quarters.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.SHORT_TERM_DEBT_TRADE_CREDIT_ADVANCES",
@@ -16151,7 +16151,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_quarters.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_____quarters.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.SHORT_TERM_DEBT_TRADE_CREDIT_AND_ADVANCES",
@@ -16195,15 +16195,15 @@
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.SPECIAL_DRAWING_RIGHTS",
   "title_en": "External Debt by Debtor Sector - Special Drawing Rights **",
-  "title_ar": "حقوق السحب الخاصة **",
+  "title_ar": "حقوق السحب الخاصة**",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
-  "level": 5,
+  "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_quarters.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_DEBTOR_SECTOR.TOTAL_EXTERNAL_DEBT",
@@ -16211,12 +16211,12 @@
   "title_ar": "إجمالى الدين الخارجى",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor_quarters.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-by-debtor/external_debt_by_debtor___annual-new.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_TYPE.BONDS",
@@ -16237,25 +16237,25 @@
   "title_ar": "سندات وصكوك",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-and-indicators/external_debt_quarters,-d-,xls.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-and-indicators/external_debt______annual.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_TYPE.BUYERS_SUPPLIERS_CREDIT",
-  "title_en": "External debt by type - Buyers' & Suppliers' credit",
-  "title_ar": "تسهيلات المشترين والموردين",
+  "title_en": "External debt by type - Buyers' &Suppliers' credit",
+  "title_ar": "تسهيلات الموردين  والمشترين",
   "dataset": "excel_archive",
   "family": "external_debt",
-  "freq": "Q",
+  "freq": "A",
   "unit": "USD million",
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-and-indicators/external_debt_quarters,-d-,xls.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-and-indicators/external_debt______annual.xlsx"
  },
  {
   "series_id": "EG.XL.XDEBT.EXTERNAL_DEBT_BY_TYPE.CURRENCY_DEPOSITS",
