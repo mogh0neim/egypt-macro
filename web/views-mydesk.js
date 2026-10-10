@@ -220,8 +220,8 @@ async function viewDesk(query) {
       "The numbers you chose to keep, in one place. Saved in this browser only: nothing " +
       "is sent anywhere, and clearing your site data clears it.",
     shared:
-      "A list someone sent you. Save it to make it yours, or just read it and leave your " +
-      "own untouched.",
+      "A list someone sent you. Add it to your own favourites, or just read it and leave " +
+      "yours as it is. Adding keeps everything already in yours.",
   }[mode];
 
   const table = groups
@@ -247,7 +247,7 @@ async function viewDesk(query) {
     (mode === "mine"
       ? '<span class="spacer"></span><button class="chip" id="d-clear">Remove all</button>'
       : '<span class="spacer"></span><button class="chip" id="d-save">' +
-        (mode === "shared" ? "Save these as mine" : "Keep all sixteen") + "</button>") +
+        (mode === "shared" ? "Add these to your favourites" : "Keep all sixteen") + "</button>") +
     "</div>" +
     addPanel(mode) +
     (missing > 0
@@ -305,10 +305,14 @@ async function viewDesk(query) {
   }
   const save = document.getElementById("d-save");
   if (save) {
+    /* Added to the reader's own list, never in place of it: a shared link
+     * used to replace a list someone had built, with no way back. The hash
+     * change re-routes by itself; calling route() as well drew the page twice. */
     save.addEventListener("click", () => {
-      watchSet(rows.map((s) => s.series_id));
-      location.hash = "#/favourites";
-      route();
+      const kept = watchGet();
+      watchSet(kept.concat(rows.map((s) => s.series_id).filter((id) => kept.indexOf(id) === -1)));
+      if (location.hash === "#/favourites") route();
+      else location.hash = "#/favourites";
     });
   }
 }
