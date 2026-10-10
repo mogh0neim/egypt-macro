@@ -136,14 +136,15 @@ async function viewSalary(query) {
   const now = obs[obs.length - 1];
 
   let answer = "";
+  // What the salary buys, month by month, from the month it was earned.
+  const line = amount && then
+    ? obs.filter(([p]) => p >= then[0]).map(([p, v]) => [p, amount * (then[1] / v)])
+    : [];
   if (amount && then) {
     const ratio = now[1] / then[1];
     const needed = amount * ratio;
     const worth = amount / ratio;
     const lost = (1 - 1 / ratio) * 100;
-    const line = obs
-      .filter(([p]) => p >= then[0])
-      .map(([p, v]) => [p, amount * (then[1] / v)]);
 
     answer =
       '<section class="section band"><div class="wrap-inner">' +
@@ -154,9 +155,7 @@ async function viewSalary(query) {
       t("that never changed has lost") + " <b>" + pct(lost) + "%</b> " +
       t("of what it could buy. To be worth what it was, it would have to be") + " <b>" +
       esc(money(needed)) + "</b> " + t("today.") + "</p>" +
-      '<div class="hero-chart">' +
-      lineChart(line, { height: 260, id: "salary-chart", unit: "EGP", animate: true }) +
-      "</div>" +
+      '<div class="hero-chart" id="salary-slot"></div>' +
       '<div class="readout" id="salary-readout">' +
       '<span class="val">' + esc(money(worth)) + "</span>" +
       '<span class="when">' + esc(niceDate(now[0])) + "</span>" +
@@ -188,10 +187,10 @@ async function viewSalary(query) {
 
   wireToolForm("salary", ["amount", "from"]);
   if (amount && then) {
-    const svg = document.getElementById("salary-chart");
-    armLines(svg);
-    wireHover(svg, obs.filter(([p]) => p >= then[0]).map(([p, v]) => [p, amount * (then[1] / v)]),
-              "EGP", document.getElementById("salary-readout"));
+    const readout = document.getElementById("salary-readout");
+    mountChart(document.getElementById("salary-slot"), readout,
+      (animate) => lineChart(line, { height: 260, id: "salary-chart", unit: "EGP", animate: animate }),
+      (svg) => wireHover(svg, line, "EGP", readout));
   }
 }
 

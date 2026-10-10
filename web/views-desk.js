@@ -95,18 +95,7 @@ async function viewMoneyMarket() {
     const mid = (lo + hi) / 2;
     const off = lastC[1] - mid;
 
-    corridor =
-      '<div class="hero-chart">' +
-      lineChart([coniaObs, floorObs, ceilObs], {
-        height: 320,
-        id: "corridor",
-        unit: "percent per annum",
-        // The benchmark is a daily fixing. The two corridor rates hold at the
-        // level the committee set them to, so they step.
-        step: [false, true, true],
-        band: [1, 2],
-      }) +
-      "</div>";
+    corridor = '<div class="hero-chart" id="corridor-slot"></div>';
 
     corridorLegend =
       '<div class="legend">' +
@@ -159,11 +148,7 @@ async function viewMoneyMarket() {
 
   const slope =
     tb3 && tb12
-      ? lineChart([tb3.observations, tb12.observations], {
-          height: 300,
-          id: "billc",
-          unit: "percent per annum",
-        }) +
+      ? '<div id="billc-slot"></div>' +
         '<div class="legend"><span class="key"></span>3 month' +
         '<span class="key s1"></span>12 month</div>' +
         '<div class="readout" id="bill-readout">' +
@@ -289,26 +274,42 @@ async function viewMoneyMarket() {
   /* ---------- wiring ---------- */
 
   if (corridor) {
-    const svg = document.getElementById("corridor");
-    armLines(svg);
-    wireHover(
-      svg,
-      [coniaObs, floorObs, ceilObs],
-      ["percent per annum", "percent per annum", "percent per annum"],
-      document.getElementById("corridor-readout"),
-      ["CONIA", "floor", "ceiling"],
-      { bandMid: [1, 2] }
-    );
+    const readout = document.getElementById("corridor-readout");
+    mountChart(document.getElementById("corridor-slot"), readout,
+      (animate) => lineChart([coniaObs, floorObs, ceilObs], {
+        height: 320,
+        id: "corridor",
+        unit: "percent per annum",
+        // The benchmark is a daily fixing. The two corridor rates hold at the
+        // level the committee set them to, so they step.
+        step: [false, true, true],
+        band: [1, 2],
+        animate: animate,
+      }),
+      (svg) => wireHover(
+        svg,
+        [coniaObs, floorObs, ceilObs],
+        ["percent per annum", "percent per annum", "percent per annum"],
+        readout,
+        ["CONIA", "floor", "ceiling"],
+        { bandMid: [1, 2] }
+      ));
   }
   if (slope) {
-    const svg = document.getElementById("billc");
-    armLines(svg);
-    wireHover(
-      svg,
-      [tb3.observations, tb12.observations],
-      ["percent per annum", "percent per annum"],
-      document.getElementById("bill-readout"),
-      ["3 month", "12 month"]
-    );
+    const readout = document.getElementById("bill-readout");
+    mountChart(document.getElementById("billc-slot"), readout,
+      (animate) => lineChart([tb3.observations, tb12.observations], {
+        height: 300,
+        id: "billc",
+        unit: "percent per annum",
+        animate: animate,
+      }),
+      (svg) => wireHover(
+        svg,
+        [tb3.observations, tb12.observations],
+        ["percent per annum", "percent per annum"],
+        readout,
+        ["3 month", "12 month"]
+      ));
   }
 }

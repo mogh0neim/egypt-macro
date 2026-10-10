@@ -982,6 +982,52 @@ function armLines(svg) {
   });
 }
 
+/* ---------- drawn again when the width changes ----------
+ *
+ * A chart's viewBox is sized to the screen it is drawn on, so a phone turned on
+ * its side stretched a 340-unit chart across 718 pixels and its 10px axis
+ * labels came out at 28. Each view hands over how to draw its chart, and when
+ * the width a chart would be drawn at changes it is drawn again, without the
+ * draw-on animation. Only the width counts: a phone's address bar showing and
+ * hiding fires resize on every scroll and changes nothing but the height.
+ */
+const sized = [];
+let sizedTimer = 0;
+
+function keepSized(slot, draw) {
+  if (slot) sized.push({ slot: slot, draw: draw, w: chartWidth() });
+}
+
+window.addEventListener("resize", () => {
+  clearTimeout(sizedTimer);
+  sizedTimer = setTimeout(() => {
+    const w = chartWidth();
+    for (let i = sized.length - 1; i >= 0; i--) {
+      const s = sized[i];
+      if (!s.slot.isConnected) sized.splice(i, 1);
+      else if (s.w !== w) { s.w = w; s.draw(); }
+    }
+  }, 150);
+});
+
+/* The usual case in one call: draw a chart into its slot, arm and wire it, and
+ * keep it sized. chart(animate) returns the markup and wire(svg) hooks up its
+ * readout, which is put back as it was before every redraw so a reading left
+ * on screen by a tap does not become the resting state. */
+function mountChart(slot, readout, chart, wire) {
+  if (!slot) return;
+  const base = readout ? readout.innerHTML : "";
+  const draw = (animate) => {
+    slot.innerHTML = chart(animate);
+    if (readout) readout.innerHTML = base;
+    const svg = slot.querySelector("svg.chart");
+    armLines(svg);
+    if (svg && wire) wire(svg);
+  };
+  draw(true);
+  keepSized(slot, () => draw(false));
+}
+
 /* Crosshair, per-line markers and readout. A touch counts as a pointer, so a
  * phone gets this without a second code path.
  *

@@ -135,7 +135,7 @@ async function viewMPC() {
       : "") +
     ". Each one links back to CBE's own copy.</p>" +
     (sets.length
-      ? '<div id="mpc-chart">' + lineChart(sets, { height: 320, id: "mpcc", unit: "percent per annum", step: true }) + "</div>" +
+      ? '<div id="mpc-chart"></div>' +
         '<div class="legend">' +
         labels.map((l, i) => '<span class="key s' + i + '"></span>' + esc(l)).join("") +
         "</div>" +
@@ -160,14 +160,10 @@ async function viewMPC() {
     "</section></div>";
 
   if (sets.length) {
-    armLines(document.getElementById("mpcc"));
-    wireHover(
-      document.getElementById("mpcc"),
-      sets.length > 1 ? sets : sets[0],
-      units,
-      document.getElementById("mpc-readout"),
-      labels
-    );
+    const readout = document.getElementById("mpc-readout");
+    mountChart(document.getElementById("mpc-chart"), readout,
+      (animate) => lineChart(sets, { height: 320, id: "mpcc", unit: "percent per annum", step: true, animate: animate }),
+      (svg) => wireHover(svg, sets.length > 1 ? sets : sets[0], units, readout, labels));
   }
 
   app.querySelectorAll("[data-dec]").forEach((b) =>

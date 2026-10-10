@@ -158,9 +158,7 @@ async function viewHome() {
         " <b>" + multiple + "×</b> " + t("since January 2005.")
       : "") +
     "</p>" +
-    '<div class="hero-chart">' +
-    (fx ? lineChart(fx.observations, { height: 300, events: fxEvents(), id: "hero", unit: fx.unit }) : "") +
-    "</div>" +
+    '<div class="hero-chart" id="hero-slot"></div>' +
     '<div class="readout" id="hero-readout">' +
     '<span class="val">' + (last ? fmt(last[1], fx.unit) : "—") + "</span>" +
     '<span class="when">' + (last ? niceDate(last[0]) : "") + "</span>" +
@@ -234,8 +232,10 @@ async function viewHome() {
     "</div></div></section>";
 
   if (fx) {
-    armLines(document.getElementById("hero"));
-    wireHover(document.getElementById("hero"), fx.observations, fx.unit, document.getElementById("hero-readout"));
+    const readout = document.getElementById("hero-readout");
+    mountChart(document.getElementById("hero-slot"), readout,
+      (animate) => lineChart(fx.observations, { height: 300, events: fxEvents(), id: "hero", unit: fx.unit, animate: animate }),
+      (svg) => wireHover(svg, fx.observations, fx.unit, readout));
   }
 }
 
@@ -698,7 +698,8 @@ async function viewSeries(id) {
 
   const readoutSlot = () => document.getElementById("s-readout");
 
-  const render = async () => {
+  // again: drawn a second time for a new screen width, so not animated.
+  const render = async (again) => {
     const base = TRANSFORMS[transform].fn(applyRange(data.observations, range, ranges));
     const unit = transform === "level" ? data.unit : transform === "yoy" ? "percent" : "index";
     let sets = base, units = unit, labels = null;
@@ -734,6 +735,7 @@ async function viewSeries(id) {
       unit: shown.unit,
       // A rate that only moves when someone decides it should is a step.
       step: data.freq === "IRR",
+      animate: !again,
     });
     readoutSlot().innerHTML = last
       ? '<span class="val">' + fmt(last[1], shown.unit) + "</span>" +
@@ -867,6 +869,7 @@ async function viewSeries(id) {
     "</div></section></div>";
 
   await render();
+  keepSized(document.getElementById("chart-slot"), () => render(true));
 
   app.querySelectorAll("[data-range]").forEach((b) =>
     b.addEventListener("click", () => {
