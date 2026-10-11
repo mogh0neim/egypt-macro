@@ -26,6 +26,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        # A queued run would otherwise check out the commit it was triggered at,
+        # which a run ahead of it in the "scrape" group may already have moved
+        # past; its commit then collides with the newer data and nothing is saved
+        # (seen 11 October 2026). Take main as it stands when this run starts.
+        with:
+          ref: main
 
       - uses: actions/setup-python@v5
         with:

@@ -46,6 +46,12 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        # A queued run would otherwise check out the commit it was triggered at,
+        # which a run ahead of it in the "scrape" group may already have moved
+        # past; its commit then collides with the newer data and nothing is saved
+        # (seen 11 October 2026). Take main as it stands when this run starts.
+        with:
+          ref: main
 
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
