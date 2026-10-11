@@ -558,6 +558,24 @@ function qualityNotice(meta, data) {
       "</p></div>"
     );
   }
+  /* The latest months CBE marks "Preliminary" or "Provisional" in its own
+   * file (the SDDS series). The values are CBE's as printed; the mark is the
+   * warning that they can still move. */
+  const marked = data.marked && data.marked.periods && data.marked.periods.length ? data.marked : null;
+  if (marked) {
+    const ps = marked.periods;
+    const span = ps.length > 1
+      ? tf("{from} to {to}", { from: periodLabel(ps[0], data), to: periodLabel(ps[ps.length - 1], data) })
+      : periodLabel(ps[0], data);
+    const provisional = marked.as === "provisional";
+    out.push(
+      '<div class="notice"><h3>' + t(provisional ? "The latest figures are provisional" : "The latest figures are preliminary") + "</h3>" +
+      "<p>" + tf(provisional
+        ? "CBE marks {span} as provisional in its file. These figures can still be revised; if they are, the What changed page shows it."
+        : "CBE marks {span} as preliminary in its file. These figures can still be revised; if they are, the What changed page shows it.",
+        { span: span }) + "</p></div>"
+    );
+  }
   if (meta.zero_values) {
     out.push(
       '<div class="notice"><h3>' + tf("{n} of these readings are exactly zero", { n: num(meta.zero_values) }) + "</h3>" +
@@ -796,6 +814,8 @@ async function viewSeries(id) {
   // The Excel archive is CBE's numbers on dates Miqyas reads off the sheet, so
   // it is neither "as published" nor computed, and says so.
   const isExcel = data.dataset === "excel_archive";
+  // The same holds for the files on CBE's SDDS page, which are read the same way.
+  const isSDDS = data.dataset === "sdds";
   const cite = citation(data, meta, status);
 
   // Comparison candidates: siblings first, then the headline series, so the
@@ -811,6 +831,9 @@ async function viewSeries(id) {
   // English, held left to right.
   const method = esc(t(data.method || ""));
   const methodHTML = RTL && !ARABIC_RE.test(method) ? '<span dir="ltr" lang="en">' + method + "</span>" : method;
+  // A series' own note, worded the same way: how it differs from a near twin.
+  const note = esc(t(data.note || ""));
+  const noteHTML = RTL && !ARABIC_RE.test(note) ? '<span dir="ltr" lang="en">' + note + "</span>" : note;
 
   app.innerHTML =
     '<div class="wrap">' +
@@ -841,7 +864,7 @@ async function viewSeries(id) {
     (stats.first ? tf("{from} to {to}", { from: periodLabel(stats.first, data), to: periodLabel(stats.last, data) }) : "—") + "</span>" +
     (data.derived
       ? "<span><b>" + t("Computed by Miqyas") + "</b> " + t("from CBE data") + "</span>"
-      : isExcel
+      : isExcel || isSDDS
       ? "<span><b>" + t("Dates assigned by Miqyas") + "</b> " + t("from the sheet") + "</span>"
       : "<span><b>" + t("Reproduced as published") + "</b> " + t("yes") + "</span>") +
     "</div></div>" +
@@ -887,7 +910,10 @@ async function viewSeries(id) {
       ? t("Computed by Miqyas from CBE data:") + " " + methodHTML
       : isExcel
       ? t("Source: Central Bank of Egypt, Excel time-series archive. Miqyas reads the sheet and assigns each value to a date from the sheet's own period labels. Fiscal-year quarters follow Egypt's July to June year. Dates are our reading of the sheet and can be wrong; check the linked CBE file before citing.")
+      : isSDDS
+      ? t("Source: Central Bank of Egypt, the Excel files on its SDDS page, where CBE keeps money, banking and reserves up to the latest month. Miqyas reads the file and dates each value to the last day of its month from the sheet's own month labels. Check the linked CBE file before citing.")
       : t("Reproduced as published from the Central Bank of Egypt's daily tables. Where CBE printed two values for one date, Miqyas keeps one and lists both on the What changed page.")) +
+    (data.note ? " " + noteHTML : "") +
     (data.period_basis === "end" ? " " + t("Values are dated to the end of the period they describe.") : "") +
     (data.unit
       ? ""

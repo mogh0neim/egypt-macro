@@ -62,6 +62,7 @@ FAMILIES = {
     "prices": ["EG.CPI."],
     "external": ["EG.RES.", "EG.EXT."],
     "excel": ["EG.XL."],
+    "sdds": ["EG.SDDS."],
 }
 
 
@@ -328,7 +329,7 @@ def main() -> int:
                     **{k: meta.get(k) for k in
                        ("title_en", "title_ar", "title_ar_source", "unit", "freq", "family",
                         "dataset", "source_url", "source_file", "derived", "method",
-                        "period_basis")},
+                        "period_basis", "provenance", "note", "marked")},
                     "observations": points,
                     "count": len(points),
                     # A computed series says so where it credits the source.
@@ -445,7 +446,8 @@ def main() -> int:
                 + ATTRIBUTION + "\n\n"
                 "Cite the Central Bank of Egypt as the source. Series computed by\n"
                 "Miqyas are marked derived in catalog/series.json, with their method;\n"
-                "Excel-archive series are dated by Miqyas from the sheets' period labels.\n",
+                "Excel-archive series are dated by Miqyas from the sheets' period labels,\n"
+                "and EG.SDDS series from the month labels of the files on CBE's SDDS page.\n",
             )
         print(f"  bulk/{name}-csv.zip")
 

@@ -309,6 +309,9 @@ const AR = {
     "يُقرأ أسبوعيًا ويُفحص بحثًا عن ملفات استبدلها البنك المركزي أو سحبها. تُدرج التغييرات تحديثاتٍ للأرشيف ولا تُحتسب تعديلات بعد.",
   "Read weekly. Not yet checked for changes: new readings are listed as archive updates.":
     "يُقرأ أسبوعيًا. لا يُفحص بحثًا عن تغييرات بعد، وتُدرج القراءات الجديدة تحديثاتٍ للأرشيف.",
+  "SDDS files": "ملفات SDDS",
+  "Money, banking and reserves to the latest month, from CBE's SDDS page. Read weekly; a new month is listed as an SDDS update, and a figure that changes in a file CBE replaced counts as a revision.":
+    "النقود والبنوك والاحتياطيات حتى أحدث شهر، من صفحة SDDS لدى البنك المركزي. تُقرأ أسبوعيًا، ويُدرج الشهر الجديد تحديثًا لملفات SDDS، وأي رقم يتغيّر في ملف استبدله البنك المركزي يُحتسب تعديلًا.",
   "Not counted": "لا تُحتسب",
   "The series Miqyas computes or parses from press releases, such as reserves, remittances and the yield curve. They move when their sources move.":
     "السلاسل التي يحسبها مقياس أو يستخرجها من البيانات الصحفية، مثل الاحتياطيات والتحويلات ومنحنى العائد. تتحرك حين تتحرك مصادرها.",
@@ -353,6 +356,7 @@ const AR = {
   "{n} earlier readings added to series already held.": "أُضيفت {n} قراءة سابقة إلى سلاسل موجودة.",
   "Auction results: {n}": "نتائج المزادات: {n}",
   "Excel archive update": "تحديث أرشيف Excel",
+  "SDDS update": "تحديث ملفات SDDS",
   "{n} readings added across {s} series": "أُضيفت {n} قراءة في {s} سلسلة",
   ", newest for {d}": "، أحدثها بتاريخ {d}",
   "{n} values changed or removed; not counted as revisions.":
@@ -360,6 +364,8 @@ const AR = {
   "Re-read by Miqyas": "أعاد مقياس قراءتها",
   "The Excel archive was read again after a change to the parser.":
     "أُعيدت قراءة أرشيف Excel بعد تغيير في المعالج.",
+  "The SDDS files were read again after a change to their parser.":
+    "أُعيدت قراءة ملفات SDDS بعد تغيير في معالجها.",
   "Changed by Miqyas in the repository: a parser fix, a new series or a correction.":
     "غيّرها مقياس في المستودع: إصلاح في المعالج أو سلسلة جديدة أو تصحيح.",
   "A table changed although the file CBE served behind it did not.":
@@ -452,8 +458,8 @@ const AR = {
   "Headline and core inflation, the basket underneath them, and producer prices.":
     "التضخم العام والأساسي، ومكوّنات السلة تحتهما، وأسعار المنتجين.",
   "Reserves and remittances": "الاحتياطي والتحويلات",
-  "Two headline numbers, read by Miqyas from CBE's press releases: net international reserves, and what Egyptians abroad send home.":
-    "رقمان رئيسيان يستخرجهما مقياس من البيانات الصحفية للبنك المركزي: صافي الاحتياطي الأجنبي، وما يرسله المصريون بالخارج.",
+  "Net international reserves and what they hold, month by month from CBE's own file, and what Egyptians abroad send home, read from CBE's press releases.":
+    "صافي الاحتياطيات الدولية ومكوّناتها شهرًا بشهر من ملف البنك المركزي نفسه، وما يرسله المصريون بالخارج كما يرد في البيانات الصحفية للبنك المركزي.",
   "Balance of payments": "ميزان المدفوعات",
   "The current account, trade in goods and services, and how the gap is financed.":
     "الحساب الجاري، وتجارة السلع والخدمات، وكيف تُموَّل الفجوة.",
@@ -790,6 +796,12 @@ const AR = {
   "CBE publishes a zero where no rate was set rather than leaving the cell empty, and they are reproduced here as published rather than treated as missing. An average taken across this series will be pulled toward zero.":
     "ينشر البنك المركزي صفرًا حيث لم يُحدَّد سعر بدل أن يترك الخانة فارغة، وتُعرض هذه الأصفار هنا كما نُشرت لا بوصفها قيمًا مفقودة. وأي متوسط يؤخذ على هذه السلسلة سينجذب نحو الصفر.",
   "A note on this series": "ملاحظة على هذه السلسلة",
+  "The latest figures are preliminary": "أحدث الأرقام أولية",
+  "The latest figures are provisional": "أحدث الأرقام مؤقتة",
+  "CBE marks {span} as preliminary in its file. These figures can still be revised; if they are, the What changed page shows it.":
+    "يصف البنك المركزي أرقام {span} في ملفه بأنها أولية. وقد تُعدَّل هذه الأرقام، وإن عُدِّلت ظهر ذلك في صفحة «ما الذي تغيّر».",
+  "CBE marks {span} as provisional in its file. These figures can still be revised; if they are, the What changed page shows it.":
+    "يصف البنك المركزي أرقام {span} في ملفه بأنها مؤقتة. وقد تُعدَّل هذه الأرقام، وإن عُدِّلت ظهر ذلك في صفحة «ما الذي تغيّر».",
   "Biggest single move {size}{pct} on {d}.": "أكبر تحرّك منفرد {size}{pct} في {d}.",
   "The gold mark is the median of {n} readings, {m}.": "العلامة الذهبية هي وسيط كل القراءات ({n})، وقيمته {m}.",
   "Where this sits in its own record": "موقعها في سجلها الخاص",
@@ -830,6 +842,8 @@ const AR = {
   "Computed by Miqyas from CBE data:": "حسبها مقياس من بيانات البنك المركزي:",
   "Source: Central Bank of Egypt, Excel time-series archive. Miqyas reads the sheet and assigns each value to a date from the sheet's own period labels. Fiscal-year quarters follow Egypt's July to June year. Dates are our reading of the sheet and can be wrong; check the linked CBE file before citing.":
     "المصدر: البنك المركزي المصري، أرشيف السلاسل الزمنية بصيغة Excel. يقرأ مقياس الملف وينسب كل قيمة إلى تاريخ استنادًا إلى تسميات الفترات في الملف نفسه. وتتبع الأرباع المالية السنة المالية المصرية من يوليو إلى يونيو. والتواريخ قراءتنا للملف وقد تكون خاطئة، فراجع ملف البنك المركزي المرتبط قبل الاستشهاد.",
+  "Source: Central Bank of Egypt, the Excel files on its SDDS page, where CBE keeps money, banking and reserves up to the latest month. Miqyas reads the file and dates each value to the last day of its month from the sheet's own month labels. Check the linked CBE file before citing.":
+    "المصدر: البنك المركزي المصري، ملفات Excel على صفحة SDDS لديه، حيث يُبقي أرقام النقود والبنوك والاحتياطيات حتى أحدث شهر. يقرأ مقياس الملف ويؤرّخ كل قيمة بآخر يوم في شهرها استنادًا إلى تسميات الأشهر في الملف نفسه. فراجع ملف البنك المركزي المرتبط قبل الاستشهاد.",
   "Reproduced as published from the Central Bank of Egypt's daily tables. Where CBE printed two values for one date, Miqyas keeps one and lists both on the What changed page.":
     "منقولة كما نُشرت من الجداول اليومية للبنك المركزي المصري. وحيث نشر البنك قيمتين لتاريخ واحد، يحتفظ مقياس بإحداهما ويدرج الاثنتين في صفحة «ما الذي تغيّر».",
   "Values are dated to the end of the period they describe.": "تُؤرَّخ القيم بنهاية الفترة التي تصفها.",
@@ -851,6 +865,11 @@ const AR = {
     "مستخرجة من البيانات الصحفية للبنك المركزي عن التحويلات، التي تذكر مجموعًا تراكميًا منذ بداية السنة المالية (1 يوليو). والفترة هي آخر يوم في النافذة التراكمية، لا تدفقًا شهريًا.",
   "Parsed from the monthly CBE press release text. CBE does not publish this as a downloadable series.":
     "مستخرجة من نص البيان الصحفي الشهري للبنك المركزي. ولا ينشرها البنك سلسلةً قابلة للتنزيل.",
+  "Parsed by Miqyas from the text of CBE's monthly reserves press release. Each value is CBE's first figure for the month before, dated by the day the release was published. CBE's current monthly series, dated to the end of each month and revised since, is EG.SDDS.RES.NIR.":
+    "استخرجها مقياس من نص البيان الصحفي الشهري للبنك المركزي عن الاحتياطيات. وكل قيمة هي أول رقم أعلنه البنك عن الشهر السابق، مؤرّخة بيوم نشر البيان. أما السلسلة الشهرية الحالية للبنك، المؤرّخة بنهاية كل شهر والمعدّلة منذ ذلك الحين، فهي EG.SDDS.RES.NIR.",
+  /* The notes on the SDDS series, keyed the same way. */
+  "CBE's current monthly series, dated to the last day of each month, from the International Reserves file on its SDDS page. CBE marks the latest months provisional and revises them. EG.RES.NIR keeps instead the first figure from each month's press release, dated by the day the release came out.":
+    "السلسلة الشهرية الحالية للبنك المركزي، مؤرّخة بآخر يوم في كل شهر، من ملف الاحتياطيات الدولية على صفحة SDDS لديه. ويصف البنك أحدث الأشهر بأنها مؤقتة ويعدّلها. أما EG.RES.NIR فتحتفظ بأول رقم في البيان الصحفي لكل شهر، مؤرّخًا بيوم صدور البيان.",
   "Auctions with tenor in [60, 120] days, grouped as 3M.": "العطاءات التي يقع أجلها بين 60 و120 يومًا، مجمّعة تحت أجل 3 أشهر.",
   "Auctions with tenor in [150, 200] days, grouped as 6M.": "العطاءات التي يقع أجلها بين 150 و200 يوم، مجمّعة تحت أجل 6 أشهر.",
   "Auctions with tenor in [240, 290] days, grouped as 9M.": "العطاءات التي يقع أجلها بين 240 و290 يومًا، مجمّعة تحت أجل 9 أشهر.",
@@ -929,6 +948,8 @@ const AR = {
     "القيمة true حيث حسب مقياس السلسلة من أرقام البنك المركزي، مع وصف الطريقة بالكلمات.",
   "\"end\" where each value is dated to the last day of the period it describes.":
     "القيمة \"end\" حيث تُؤرَّخ كل قيمة بآخر يوم في الفترة التي تصفها.",
+  "For the SDDS series: how the dates were found, a note where a near twin exists, and the latest periods CBE marks preliminary or provisional in its own file.":
+    "لسلاسل SDDS: كيف عُرفت التواريخ، وملاحظة حيث توجد سلسلة شبيهة، وأحدث الفترات التي يصفها البنك المركزي في ملفه بأنها أولية أو مؤقتة.",
   "Egypt's fiscal year, 1 July to 30 June, for the series that follow it.":
     "السنة المالية المصرية، من 1 يوليو إلى 30 يونيو، للسلاسل التي تتبعها.",
   "Frequency codes": "رموز الدورية",
@@ -955,6 +976,8 @@ const AR = {
     "التحويلات: آخر يوم في الفترة التي يغطيها المجموع التراكمي. والقيمة هي المجموع منذ 1 يوليو، بداية السنة المالية.",
   "The Excel archive: the last day of the period. A month ends on its last day, a quarter on 31 March, 30 June, 30 September or 31 December, and a fiscal year on 30 June.":
     "أرشيف Excel: آخر يوم في الفترة. فالشهر ينتهي بآخر أيامه، والربع في 31 مارس أو 30 يونيو أو 30 سبتمبر أو 31 ديسمبر، والسنة المالية في 30 يونيو.",
+  "Money, banking and reserves from CBE's SDDS page (ids starting EG.SDDS.): the last day of the month, as in the Excel archive. So net international reserves for September 2026 is 2026-09-30 there and 2026-10-07, the day of the press release, in EG.RES.NIR.":
+    "النقود والبنوك والاحتياطيات من صفحة SDDS لدى البنك المركزي (المعرّفات التي تبدأ بـ EG.SDDS.): آخر يوم في الشهر، كما في أرشيف Excel. فصافي الاحتياطيات الدولية عن سبتمبر 2026 مسجّل هناك تحت 2026-09-30، وفي EG.RES.NIR تحت 2026-10-07، يوم البيان الصحفي.",
   "So the same month can carry two different dates. Inflation for August 2026 is filed under 2026-08-01, and a monthly Excel series for August 2026 under 2026-08-31. To put the two side by side, join on the year and the month, not on the date.":
     "لذلك قد يحمل الشهر نفسه تاريخين مختلفين. فتضخم أغسطس 2026 مسجّل تحت 2026-08-01، وسلسلة شهرية من أرشيف Excel عن أغسطس 2026 تحت 2026-08-31. ولوضعهما جنبًا إلى جنب، اربطهما بالسنة والشهر لا بالتاريخ.",
   "How the site writes a period": "كيف يكتب الموقع الفترة",
@@ -1001,8 +1024,8 @@ const AR = {
   "is the Nilometer on Rhoda Island: the graduated marble column Cairo read the flood against to forecast the harvest and set the tax rate. Egypt's first macroeconomic indicator, in service by 861 AD, and the reason the graduated gauge recurs through this site.":
     "هو مقياس النيل في جزيرة الروضة: العمود الرخامي المدرّج الذي كانت القاهرة تقرأ عليه الفيضان لتتنبأ بالمحصول وتحدّد الضريبة. أول مؤشر اقتصادي كلي في مصر، دخل الخدمة قبل عام 861 ميلاديًا، وهو سبب تكرار المقياس المدرّج في هذا الموقع.",
   "Known limits": "حدود معروفة",
-  "Some series stop earlier than CBE's own. Money and banking figures from the Excel archive end in mid-2023, where CBE stopped extending those files; CBE publishes newer figures elsewhere on its site that Miqyas does not yet read.":
-    "بعض السلاسل تتوقف قبل سلاسل البنك المركزي نفسه. فأرقام النقود والبنوك من أرشيف Excel تنتهي في منتصف 2023، حيث توقف البنك عن تمديد تلك الملفات، وهو ينشر أرقامًا أحدث في مواضع أخرى من موقعه لا يقرؤها مقياس بعد.",
+  "Some series stop earlier than CBE's own. Money and banking figures from the Excel archive end in mid-2023, where CBE stopped extending those files. The newer months of reserve money, M2, deposits, domestic credit, foreign assets and international reserves are read weekly from the files on CBE's SDDS page instead, as their own series, whose ids start EG.SDDS.":
+    "بعض السلاسل تتوقف قبل سلاسل البنك المركزي نفسه. فأرقام النقود والبنوك من أرشيف Excel تنتهي في منتصف 2023، حيث توقف البنك عن تمديد تلك الملفات. أما الأشهر الأحدث من نقود الاحتياطي وM2 والودائع والائتمان المحلي والأصول الأجنبية والاحتياطيات الدولية فتُقرأ أسبوعيًا من الملفات المنشورة على صفحة SDDS لدى البنك المركزي، سلاسلَ مستقلة تبدأ معرّفاتها بـ EG.SDDS.",
   "Some documents are scans of paper with no text layer of their own. They are read by OCR, using Tesseract in Arabic and English, so their text is searchable. It is not as good as a real text layer: the odd word comes out wrong, and Arabic in a scan often comes back with its letters in visual rather than logical order, so searching inside these particular documents works better in English than in Arabic. The Documents page counts and labels every one of them.":
     "بعض الوثائق صور ممسوحة ضوئيًا لأوراق لا تحمل طبقة نصية خاصة بها. تُقرأ بالتعرّف الضوئي على الحروف (OCR) باستخدام Tesseract بالعربية والإنجليزية، فيصبح نصها قابلًا للبحث. لكنه أقل جودة من طبقة نصية حقيقية: تخرج بعض الكلمات خاطئة، وكثيرًا ما يعود النص العربي في المسح بحروف مرتبة ترتيبًا بصريًا لا منطقيًا، ولذلك يعمل البحث داخل هذه الوثائق تحديدًا بالإنجليزية أفضل منه بالعربية. وتعدّ صفحة الوثائق كل واحدة منها وتشير إليها.",
   "About one page of text in twenty lost at least a sixth of its characters on the way out of the PDF. Those files embed a font with no Unicode mapping, so the text layer holds glyph indices rather than letters and nothing short of OCR can recover the words. Those pages are still searched and quoted on whatever could be read, which is why a quote from one can have words missing from the middle.":

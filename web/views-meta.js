@@ -63,7 +63,7 @@ async function viewData() {
     '<h3 class="sub-head">' + t("By topic") + "</h3>" +
     '<p class="lede">' + t("Smaller files if you only want one part of it.") + "</p>" +
     '<div class="dl-grid">' +
-    ["fx", "rates", "govt", "prices", "external", "excel"].map((f) =>
+    ["fx", "rates", "govt", "prices", "external", "excel", "sdds"].map((f) =>
       file(ROOT + "/parquet/" + f + ".parquet", f + ".parquet", "", sizeOf("parquet/" + f + ".parquet"))
     ).join("") +
     "</div>" +
@@ -142,6 +142,7 @@ function viewGuide() {
       row("source_url, source_file", esc(t("The CBE page or Excel file the series was read from. source_file is a path on www.cbe.org.eg."))),
       row("derived, method", esc(t("true where Miqyas computed the series from CBE's numbers, with the method in words."))),
       row("period_basis", esc(t("\"end\" where each value is dated to the last day of the period it describes."))),
+      row("provenance, note, marked", esc(t("For the SDDS series: how the dates were found, a note where a near twin exists, and the latest periods CBE marks preliminary or provisional in its own file."))),
       row("fiscal_year_basis", esc(t("Egypt's fiscal year, 1 July to 30 June, for the series that follow it."))),
     ]) +
 
@@ -165,6 +166,7 @@ function viewGuide() {
     "<li>" + t("Net international reserves: the day of CBE's press release, not the month the figure describes.") + "</li>" +
     "<li>" + t("Remittances: the last day of the window the running total covers. The value is the total since 1 July, the start of the fiscal year.") + "</li>" +
     "<li>" + t("The Excel archive: the last day of the period. A month ends on its last day, a quarter on 31 March, 30 June, 30 September or 31 December, and a fiscal year on 30 June.") + "</li>" +
+    "<li>" + t("Money, banking and reserves from CBE's SDDS page (ids starting EG.SDDS.): the last day of the month, as in the Excel archive. So net international reserves for September 2026 is 2026-09-30 there and 2026-10-07, the day of the press release, in EG.RES.NIR.") + "</li>" +
     "</ul>" +
     "<p>" + t("So the same month can carry two different dates. Inflation for August 2026 is filed under 2026-08-01, and a monthly Excel series for August 2026 under 2026-08-31. To put the two side by side, join on the year and the month, not on the date.") + "</p>" +
 
@@ -221,7 +223,7 @@ function viewAbout() {
 
     "<h3>" + t("Known limits") + "</h3>" +
     "<ul>" +
-    "<li>" + t("Some series stop earlier than CBE's own. Money and banking figures from the Excel archive end in mid-2023, where CBE stopped extending those files; CBE publishes newer figures elsewhere on its site that Miqyas does not yet read.") + "</li>" +
+    "<li>" + t("Some series stop earlier than CBE's own. Money and banking figures from the Excel archive end in mid-2023, where CBE stopped extending those files. The newer months of reserve money, M2, deposits, domestic credit, foreign assets and international reserves are read weekly from the files on CBE's SDDS page instead, as their own series, whose ids start EG.SDDS.") + "</li>" +
     "<li>" + t("Some documents are scans of paper with no text layer of their own. They are read by OCR, using Tesseract in Arabic and English, so their text is searchable. It is not as good as a real text layer: the odd word comes out wrong, and Arabic in a scan often comes back with its letters in visual rather than logical order, so searching inside these particular documents works better in English than in Arabic. The Documents page counts and labels every one of them.") + "</li>" +
     "<li>" + t("About one page of text in twenty lost at least a sixth of its characters on the way out of the PDF. Those files embed a font with no Unicode mapping, so the text layer holds glyph indices rather than letters and nothing short of OCR can recover the words. Those pages are still searched and quoted on whatever could be read, which is why a quote from one can have words missing from the middle.") + "</li>" +
     "<li>" + t("The Financial Soundness Indicator tables are extracted as text but not yet parsed into series.") + "</li>" +

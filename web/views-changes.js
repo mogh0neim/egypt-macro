@@ -78,6 +78,10 @@ async function viewChanges() {
     "<li><strong>" + t("Auction results") + "</strong>: " +
     t("The auction tables. Read every day; a changed or withdrawn result counts as a revision.") + "</li>" +
     "<li><strong>" + t("Excel archive") + "</strong>: " + excel + "</li>" +
+    (cover.sdds_files_checked
+      ? "<li><strong>" + t("SDDS files") + "</strong>: " +
+        t("Money, banking and reserves to the latest month, from CBE's SDDS page. Read weekly; a new month is listed as an SDDS update, and a figure that changes in a file CBE replaced counts as a revision.") + "</li>"
+      : "") +
     "<li><strong>" + t("Not counted") + "</strong>: " +
     t("The series Miqyas computes or parses from press releases, such as reserves, remittances and the yield curve. They move when their sources move.") + "</li>" +
     "</ul>" +
@@ -146,6 +150,7 @@ const changeValue = (v, unit) => (typeof v === "number" ? fmt(v, unit) : esc(v))
 
 const REREAD_WHY = {
   parser: "The Excel archive was read again after a change to the parser.",
+  sdds_parser: "The SDDS files were read again after a change to their parser.",
   miqyas: "Changed by Miqyas in the repository: a parser fix, a new series or a correction.",
   no_source_change: "A table changed although the file CBE served behind it did not.",
   conflict: "A date where CBE published two values; the one kept changed.",
@@ -211,10 +216,11 @@ function dayCard(day) {
       day.records.examples.map((r) =>
         "<li>" + esc(r.title) + " <i>" + esc(r.detail) + "</i></li>").join("") + "</ul>");
   }
-  if (day.archive) {
-    const a = day.archive;
+  [["archive", "Excel archive update"], ["sdds", "SDDS update"]].forEach(([bucket, label]) => {
+    if (!day[bucket]) return;
+    const a = day[bucket];
     parts.push(
-      '<p class="change-head">' + t("Excel archive update") + "</p>" +
+      '<p class="change-head">' + t(label) + "</p>" +
       "<p class='foot-note'>" +
       esc(tsub("{n} readings added across {s} series", { n: a.added.toLocaleString(), s: a.series.toLocaleString() })) +
       (a.latest ? esc(tsub(", newest for {d}", { d: niceDate(a.latest) })) : "") + "." +
@@ -229,7 +235,7 @@ function dayCard(day) {
             "<li>" + changeTitle(e) + ": <b>" + fmt(e.value, e.unit) + "</b> <i>" +
             esc(niceDate(e.period)) + "</i></li>").join("") + "</ul>"
         : ""));
-  }
+  });
   if (day.reread) {
     const r = day.reread;
     const ex = r.examples && r.examples[0];
@@ -281,6 +287,7 @@ function daySummary(day) {
                    { n: day.records.added }));
   }
   if (day.archive) bits.push(t("archive update"));
+  if (day.sdds) bits.push(t("SDDS update"));
   if (day.reparsed) bits.push(tsub("{n} re-read by Miqyas", { n: day.reparsed.toLocaleString() }));
   if (day.held_back) bits.push(tsub("{n} held back", { n: day.held_back.toLocaleString() }));
   return bits.join(" · ");

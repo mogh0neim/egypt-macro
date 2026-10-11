@@ -553,6 +553,21 @@ def series_body(meta: dict, full: dict, topic: dict | None, root: str, lang: str
     method_html = esc(tr(method, lang)) if method else ""
     if method and lang == "ar" and not ARABIC.search(method_html):
         method_html = f'<span dir="ltr" lang="en">{method_html}</span>'
+    # The SDDS series: how one differs from a near twin, and the months CBE
+    # marks preliminary or provisional in its own file.
+    note = full.get("note")
+    note_html = esc(tr(note, lang)) if note else ""
+    if note and lang == "ar" and not ARABIC.search(note_html):
+        note_html = f'<span dir="ltr" lang="en">{note_html}</span>'
+    marked = full.get("marked") or {}
+    marked_html = ""
+    if marked.get("periods"):
+        ps = marked["periods"]
+        span = (tr("{from} to {to}", lang).replace("{from}", nice_date(ps[0])).replace("{to}", nice_date(ps[-1]))
+                if len(ps) > 1 else nice_date(ps[0]))
+        word = "provisional" if marked.get("as") == "provisional" else "preliminary"
+        marked_html = esc(tr(f"CBE marks {{span}} as {word} in its file. These figures can still be revised; "
+                             "if they are, the What changed page shows it.", lang).replace("{span}", span))
 
     return (
         '<div class="wrap"><section class="section">'
@@ -563,6 +578,8 @@ def series_body(meta: dict, full: dict, topic: dict | None, root: str, lang: str
         + "".join(f"<tr><td class='name'>{esc(k)}</td><td>{esc(v)}</td></tr>" for k, v in facts)
         + "</tbody></table>"
         + (f'<p class="foot-note">{esc(tr("How this is worked out:", lang))} {method_html}</p>' if method else "")
+        + (f'<p class="foot-note">{note_html}</p>' if note else "")
+        + (f'<p class="foot-note">{marked_html}</p>' if marked_html else "")
         + f'<h2>{esc(tr("The last two dozen readings", lang))}</h2>'
         + f'<table class="indicators"><thead><tr><th>{esc(tr("Period", lang))}</th>'
           f'<th>{esc(unit or tr("Value", lang))}</th></tr></thead>'

@@ -327,7 +327,10 @@ def main() -> int:
                 "derived": True,
                 "method": (
                     "Parsed by Miqyas from the text of CBE's monthly reserves press "
-                    "release. Each value is dated by the day the release was published."
+                    "release. Each value is CBE's first figure for the month before, "
+                    "dated by the day the release was published. CBE's current monthly "
+                    "series, dated to the end of each month and revised since, is "
+                    "EG.SDDS.RES.NIR."
                 ),
             },
             {
