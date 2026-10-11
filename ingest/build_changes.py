@@ -40,6 +40,12 @@ archive update, kept apart from the day's new readings, because its readings
 are for quarters long past and ranking them beside today's exchange rate is how
 "FDI Chile: -8.7 from 3.6e-16" once led the feed.
 
+The files on CBE's SDDS page (money, banking and reserves to the latest month,
+read weekly by parse_sdds.py) are treated the same way, under their own name:
+new readings are an SDDS update, and a changed figure counts as a revision only
+when a file CBE replaced is behind it and parse_sdds.py's PARSER_VERSION did
+not move.
+
 `vintages()` turns the same history into a table of every value the clean
 series have held, with the first and last day each was held. build_exports.py
 publishes it.
@@ -98,6 +104,14 @@ REPARSE_SUSPECT = 500
 
 EXCEL = "excel_archive"
 EXCEL_PARSER = "ingest/parse_excel.py"
+SDDS = "sdds"
+SDDS_PARSER = "ingest/parse_sdds.py"
+# The two weekly file sources: the clean table, its parser, where its raw
+# files live, the day's bucket for its updates, and its name on the page.
+FILE_SOURCES = {
+    EXCEL: (EXCEL_PARSER, "data/raw/excel/", "archive", "Excel archive"),
+    SDDS: (SDDS_PARSER, "data/raw/sdds/", "sdds", "SDDS files"),
+}
 # Read out of the parser's source at each commit rather than imported, so the
 # history can be replayed: `PARSER_VERSION = "2"` or `PARSER_VERSION: str = "2"`.
 PARSER_VERSION = re.compile(r"""^PARSER_VERSION\s*(?::[^=\n]+)?=\s*['"]?([^'"#\s]+)""", re.M)
@@ -222,16 +236,28 @@ def read_commits() -> list[dict]:
             "series": series, "records": records, "raw": raw.get(sha, {}),
         })
 
-    # The Excel parser as it stood at each commit that rewrote the archive.
-    specs = [f"{c['sha']}:{EXCEL_PARSER}" for c in commits if EXCEL in c["series"]]
+    # Each file parser as it stood at each commit that rewrote its table:
+    # c["parser"] for the Excel archive, as before, and c["parsers"] by source.
+    specs = [f"{c['sha']}:{FILE_SOURCES[name][0]}" for c in commits
+             for name in FILE_SOURCES if name in c["series"]]
     sources = cat_files(specs)
     for c in commits:
-        source = sources.get(f"{c['sha']}:{EXCEL_PARSER}")
-        if source is not None:
-            m = PARSER_VERSION.search(source)
-            c["parser"] = (m.group(1) if m else None,
-                           hashlib.sha1(source.encode("utf-8")).hexdigest())
+        for name, (parser, *_rest) in FILE_SOURCES.items():
+            source = sources.get(f"{c['sha']}:{parser}")
+            if source is not None:
+                m = PARSER_VERSION.search(source)
+                c.setdefault("parsers", {})[name] = (
+                    m.group(1) if m else None, hashlib.sha1(source.encode("utf-8")).hexdigest())
+        if EXCEL in c.get("parsers", {}):
+            c["parser"] = c["parsers"][EXCEL]
     return commits
+
+
+def parser_at(commit: dict, name: str) -> tuple | None:
+    """One file source's parser at this commit: (PARSER_VERSION, hash of its source)."""
+    if name == EXCEL and "parser" in commit:
+        return commit["parser"]
+    return (commit.get("parsers") or {}).get(name)
 
 
 def parser_changed(before: tuple | None, now: tuple | None) -> bool:
@@ -250,8 +276,8 @@ def parser_changed(before: tuple | None, now: tuple | None) -> bool:
 
 def raw_behind(commit: dict, name: str, *, modified_only: bool = False) -> bool:
     """Whether CBE served something new behind a clean file in this commit."""
-    if name == EXCEL:
-        prefix, match = "data/raw/excel/", None
+    if name in FILE_SOURCES:
+        prefix, match = FILE_SOURCES[name][1], None
     elif name == "press_derived":
         prefix, match = "data/raw/press/", None
     else:
@@ -305,6 +331,8 @@ def new_day(date: str) -> dict:
         "records": {"added": 0, "examples": []},
         "archive": {"added": 0, "series": [], "latest": None, "changed": 0, "removed": 0,
                     "examples": []},
+        "sdds": {"added": 0, "series": [], "latest": None, "changed": 0, "removed": 0,
+                 "examples": []},
         "reread": {"changed": 0, "added": 0, "removed": 0, "series_new": 0,
                    "series_gone": 0, "renamed": 0, "why": [], "examples": [],
                    "_new": [], "_gone": []},
@@ -329,14 +357,15 @@ def close_day(day: dict, state: dict, ts: int, id_map: dict[str, list[str]]) -> 
     day["moved"] = day["moved"][:MOVED_PER_DAY]
     for m in day["moved"]:
         m.pop("_size", None)
-    archive = day["archive"]
-    archive["series"] = len(set(archive["series"]))
-    held = sorted((e for e in archive["examples"] if still_held(state, e)),
-                  key=lambda e: (e["period"], abs(e["value"])), reverse=True)
-    archive["latest"] = held[0]["period"] if held else None
-    archive["examples"] = held[:10]
-    if not (archive["added"] or archive["changed"] or archive["removed"]):
-        day.pop("archive")
+    for bucket in ("archive", "sdds"):
+        archive = day[bucket]
+        archive["series"] = len(set(archive["series"]))
+        held = sorted((e for e in archive["examples"] if still_held(state, e)),
+                      key=lambda e: (e["period"], abs(e["value"])), reverse=True)
+        archive["latest"] = held[0]["period"] if held else None
+        archive["examples"] = held[:10]
+        if not (archive["added"] or archive["changed"] or archive["removed"]):
+            day.pop(bucket)
     if not day["records"]["added"]:
         day.pop("records")
     reread = day["reread"]
@@ -363,7 +392,7 @@ def classify(commits: list[dict], catalogue: dict[str, dict],
     headers = record_headers()
     titles = record_titles()
     computed = {sid for sid, meta in catalogue.items() if meta.get("derived")}
-    last_parser = None
+    last_parser: dict[str, tuple | None] = {}
     days: list[dict] = []
     id_map = id_map or {}
 
@@ -390,19 +419,19 @@ def classify(commits: list[dict], catalogue: dict[str, dict],
         starting = index == 0
 
         # ---- series: whose change is it ----
-        if EXCEL in commit["series"]:
-            parser_moved = parser_changed(last_parser, commit.get("parser"))
-            last_parser = commit.get("parser")
-        else:
-            parser_moved = False
+        parser_moved: dict[str, bool] = {}
+        for name in FILE_SOURCES:
+            if name in commit["series"]:
+                parser_moved[name] = parser_changed(last_parser.get(name), parser_at(commit, name))
+                last_parser[name] = parser_at(commit, name)
         cause: dict[str, str] = {}
         for name in commit["series"]:
             if starting:
                 cause[name] = "start"
             elif not commit["by_scraper"]:
                 cause[name] = "miqyas"
-            elif name == EXCEL and parser_moved:
-                cause[name] = "parser"
+            elif parser_moved.get(name):
+                cause[name] = "parser" if name == EXCEL else "sdds_parser"
             elif not name.startswith("derived") and not raw_behind(commit, name):
                 cause[name] = "no_source_change"
             else:
@@ -447,8 +476,8 @@ def classify(commits: list[dict], catalogue: dict[str, dict],
                 continue
             if sid not in ever:
                 continue  # a new series, listed once below
-            if name == EXCEL:
-                archive = day["archive"]
+            if name in FILE_SOURCES:
+                archive = day[FILE_SOURCES[name][2]]
                 archive["added"] += 1
                 archive["series"].append(sid)
                 archive["examples"].append({"series_id": sid, "title": title_of(sid),
@@ -461,21 +490,21 @@ def classify(commits: list[dict], catalogue: dict[str, dict],
 
         # More than CBE restates in a day, whoever committed it.
         held = len(candidates) > REPARSE_SUSPECT
-        excel_trusted = (bool((commit.get("parser") or (None,))[0])
-                         and raw_behind(commit, EXCEL, modified_only=True))
+        trusted = {name: bool((parser_at(commit, name) or (None,))[0])
+                   and raw_behind(commit, name, modified_only=True) for name in FILE_SOURCES}
         for sid, period, before, after, name in candidates:
             if held:
                 day["held_back"] += 1
-            elif name == EXCEL and not excel_trusted:
+            elif name in FILE_SOURCES and not trusted[name]:
                 # Until the archive parser carries a PARSER_VERSION it keeps
                 # whichever of two values lands last, so a value can change
                 # because a new file arrived. Listed, never counted, until then;
                 # and only ever counted when a file CBE replaced is behind it.
-                day["archive"]["changed" if after is not None else "removed"] += 1
+                day[FILE_SOURCES[name][2]]["changed" if after is not None else "removed"] += 1
             else:
                 entry = {"series_id": sid, "title": title_of(sid), "unit": unit_of(sid),
                          "period": period, "was": tidy(before),
-                         "source": "Excel archive" if name == EXCEL else "daily tables"}
+                         "source": FILE_SOURCES[name][3] if name in FILE_SOURCES else "daily tables"}
                 if after is None:
                     entry.update(now=None, withdrawn=True)
                 else:
@@ -507,7 +536,8 @@ def classify(commits: list[dict], catalogue: dict[str, dict],
                 day["new_series"].append({
                     "series_id": sid, "title": title_of(sid), "n": len(periods),
                     "first": periods[0], "last": periods[-1],
-                    "source": "Excel archive" if file_of[sid] == EXCEL else "daily tables"})
+                    "source": FILE_SOURCES[file_of[sid]][3] if file_of[sid] in FILE_SOURCES
+                    else "daily tables"})
             for sid in sorted(had_rows):
                 if not state[sid] and cause[file_of[sid]] != "cbe":
                     reread(day, "series_gone", cause[file_of[sid]])
@@ -663,6 +693,8 @@ def headline(day: dict) -> str:
         bits.append(plural(day["records"]["added"], "auction result"))
     if day.get("archive"):
         bits.append("Excel archive update, " + plural(day["archive"]["added"], "reading") + " added")
+    if day.get("sdds"):
+        bits.append("SDDS update, " + plural(day["sdds"]["added"], "reading") + " added")
     if day.get("reread"):
         bits.append(f"{day['reparsed']:,} re-read by Miqyas")
     if day["held_back"]:
@@ -721,14 +753,15 @@ def rss(days: list[dict], *, path: pathlib.Path, title: str, description: str,
                     + f" ({nice(m['period'])})</li>" for m in day["moved"][:20]) + "</ul>")
             if day.get("records"):
                 body.append(f"<p><b>Auction results</b>: {day['records']['added']:,} new</p>")
-            if day.get("archive"):
-                a = day["archive"]
-                body.append(f"<p><b>Excel archive update</b>: {a['added']:,} readings added "
-                            f"across {a['series']:,} series"
-                            + (f", newest for {nice(a['latest'])}" if a.get("latest") else "")
-                            + (f"; {a['changed'] + a['removed']:,} values changed or removed, "
-                               "not counted as revisions" if a["changed"] or a["removed"] else "")
-                            + ".</p>")
+            for bucket, label in (("archive", "Excel archive update"), ("sdds", "SDDS update")):
+                if day.get(bucket):
+                    a = day[bucket]
+                    body.append(f"<p><b>{label}</b>: {a['added']:,} readings added "
+                                f"across {a['series']:,} series"
+                                + (f", newest for {nice(a['latest'])}" if a.get("latest") else "")
+                                + (f"; {a['changed'] + a['removed']:,} values changed or removed, "
+                                   "not counted as revisions" if a["changed"] or a["removed"] else "")
+                                + ".</p>")
             if day.get("reread"):
                 r = day["reread"]
                 body.append(f"<p><b>Re-read by Miqyas, not changed by CBE</b>: "
@@ -793,6 +826,7 @@ def coverage(commits: list[dict]) -> dict:
         "since": commits[0]["date"] if commits else None,
         "excel_files_checked": excel_checked,
         "excel_revisions_counted": bool(PARSER_VERSION.search(parser)),
+        "sdds_files_checked": (ROOT / "catalog" / "sdds_manifest.json").exists(),
     }
 
 
@@ -866,7 +900,7 @@ def main() -> int:
     reread = sum(d.get("reparsed", 0) for d in days)
     held = sum(d["held_back"] for d in days)
     moved = sum(d["moved_total"] for d in days)
-    archive = sum(d.get("archive", {}).get("added", 0) for d in days)
+    archive = sum(d.get(b, {}).get("added", 0) for d in days for b in ("archive", "sdds"))
     print(f"changes: {len(days)} days over {WINDOW_DAYS}, {moved:,} new readings, "
           f"{archive:,} added by archive updates, {revisions} revised by CBE, "
           f"{reread:,} re-read by Miqyas, {held:,} held back, "

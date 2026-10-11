@@ -20,7 +20,7 @@ DAY = 86400
 T0 = 1787227200  # 20 Aug 2026 12:00 UTC
 
 
-def commit(n, author, subject, series=None, records=None, raw=None, parser=None):
+def commit(n, author, subject, series=None, records=None, raw=None, parser=None, sdds=None):
     c = {
         "sha": f"{n:040x}", "ts": T0 + n * DAY, "date": bc.utc_day(T0 + n * DAY),
         "author": author, "subject": subject,
@@ -29,6 +29,8 @@ def commit(n, author, subject, series=None, records=None, raw=None, parser=None)
     }
     if parser is not None:
         c["parser"] = parser
+    if sdds is not None:
+        c["parsers"] = {"sdds": sdds}
     return c
 
 
@@ -128,6 +130,50 @@ def test_archive_revision_needs_a_replaced_file_and_a_versioned_parser():
                             parser=("2", "p3"))
     day = run(history()[:7] + [only_new_files])[bc.utc_day(T0 + 7 * DAY)]
     assert not day["revised"] and day["archive"]["changed"] == 1
+
+
+def sdds_history():
+    """The SDDS files arrive, then CBE brings them up to date a month later."""
+    first = {("EG.SDDS.M2.TOTAL", f"2026-0{m}-{d}"): 100.0 + m for m, d in ((5, 31), (6, 30), (7, 31))}
+    return [
+        commit(0, MO, "first", {"fx_official": rows({("EG.FX.A", "2026-08-01"): 1.0})}),
+        commit(1, BOT, "archive: x", {"sdds": rows(first)},
+               raw={"data/raw/sdds/domestic-liquidity-m2.xlsx": "A"}, sdds=("1", "s1")),
+    ]
+
+
+def test_sdds_files_arrive_as_new_series():
+    day = run(sdds_history())[bc.utc_day(T0 + DAY)]
+    assert [(n["series_id"], n["source"]) for n in day["new_series"]] == [("EG.SDDS.M2.TOTAL", "SDDS files")]
+
+
+def test_sdds_new_month_and_revised_preliminary_month():
+    # CBE replaces the file: July's preliminary figure moves and August arrives.
+    update = commit(2, BOT, "archive: x", {"sdds": rows(
+        {("EG.SDDS.M2.TOTAL", "2026-07-31"): 108.0, ("EG.SDDS.M2.TOTAL", "2026-08-31"): 109.0},
+        {("EG.SDDS.M2.TOTAL", "2026-07-31"): 107.0})},
+        raw={"data/raw/sdds/domestic-liquidity-m2.xlsx": "M"}, sdds=("1", "s1"))
+    day = run(sdds_history() + [update])[bc.utc_day(T0 + 2 * DAY)]
+    assert [(r["period"], r["was"], r["now"], r["source"]) for r in day["revised"]] == [
+        ("2026-07-31", 107.0, 108.0, "SDDS files")]
+    assert day["sdds"]["added"] == 1 and day["moved_total"] == 0 and "archive" not in day
+
+
+def test_sdds_parser_change_is_ours():
+    reread = commit(2, BOT, "archive: x", {"sdds": rows(
+        {("EG.SDDS.M2.TOTAL", "2026-07-31"): 108.0}, {("EG.SDDS.M2.TOTAL", "2026-07-31"): 107.0})},
+        raw={"data/raw/sdds/domestic-liquidity-m2.xlsx": "M"}, sdds=("2", "s2"))
+    day = run(sdds_history() + [reread])[bc.utc_day(T0 + 2 * DAY)]
+    assert not day["revised"] and day["reread"]["why"] == ["sdds_parser"]
+
+
+def test_sdds_change_without_a_replaced_file_is_not_counted():
+    # A file under a new name (CBE retitled the link) is new, not replaced.
+    renamed = commit(2, BOT, "archive: x", {"sdds": rows(
+        {("EG.SDDS.M2.TOTAL", "2026-07-31"): 108.0}, {("EG.SDDS.M2.TOTAL", "2026-07-31"): 107.0})},
+        raw={"data/raw/sdds/domestic-liquidity-m2-new.xlsx": "A"}, sdds=("1", "s1"))
+    day = run(sdds_history() + [renamed])[bc.utc_day(T0 + 2 * DAY)]
+    assert not day["revised"] and day["sdds"]["changed"] == 1
 
 
 def test_id_map_turns_new_and_dropped_into_renamed():
