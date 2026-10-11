@@ -222,7 +222,31 @@ All in `core.js`, and all of it is about not spending precision on nothing:
   series and therefore tells you nothing.
 - `titleHTML` - a few hundred CBE rows are labelled only in Arabic; rendering
   those left-to-right mangles them, so anything containing Arabic is wrapped in
-  `dir="auto"`.
+  `dir="auto"`. On `/ar/` it returns the Arabic title (see Arabic, below).
+- `periodLabel` - **a reading is written at the size of its period.** A day for
+  daily, weekly and irregular series, "Jun 2026" for a monthly one, "Q2 2026"
+  (the calendar quarter, whatever fiscal year it falls in) for a quarterly one,
+  and "FY2019/20" for a year dated 30 June. "1 Jun 2026" read as a day and
+  "30 Jun 2020" read as calendar 2020. Decided from the date as well as the
+  frequency: a date that is not a period end keeps its day, which catches the
+  series filed as quarterly that carry month-end readings. `RELEASE_DATED`
+  (net international reserves) keeps its day too, because its date is the
+  press release's, not the month's.
+- `whenLabel` - the newest reading on a home tile: the period it is for, or
+  what kind of date it is ("released", "in force since", "issued"). Miqyas
+  does not record CBE's release dates for monthly and quarterly series, so
+  those say the period only, and a tile whose series has gone quiet says "no
+  newer reading held" under it.
+- `num` - **every count goes through it.** A bare `toLocaleString()` follows the
+  browser, and a browser set to Egyptian Arabic printed "١٬٣١٨" beside "52.46".
+- `isoLTR` / `bdiLTR` - a signed figure or a Latin run held left to right inside
+  an Arabic line. `fmt` isolates its own negatives on `/ar/`, which is what keeps
+  "-5,554" from printing as "5,554-".
+- `tf` - `t()` with `{placeholders}`, so an Arabic sentence is translated whole
+  and the figure goes where Arabic grammar wants it. Counts in Arabic are said
+  with a colon ("القراءات: 93") wherever the noun would otherwise have to agree
+  with a number the code does not know; `countWords` does the four Arabic forms
+  for days, weeks, months and years.
 
 ## Responsive
 
@@ -617,6 +641,8 @@ broken.
 A key may carry a disambiguator after a pipe, because keying on the source
 collides two senses of one word. `t("Series|one row of a table")` is السلسلة
 where the nav item `t("Series")` is السلاسل, and both fall back to "Series".
+Only a pipe with no space before it is a disambiguator: `tr()` in
+`prerender.py` used to cut " | Miqyas" off every English page title too.
 
 **`/ar/` is a directory of real files**, not a switch. A hash cannot be indexed
 and a query string is a different page to nobody, so `prerender.py` runs twice
@@ -640,12 +666,22 @@ above the site.
   reads, Arabic publications included. `lineChart`, `gauge` and `spark` keep
   their geometry, and `wireHover` keeps working because it maps a real
   `clientX` through the SVG's own box.
-- **Series titles are CBE's.** Where CBE published an Arabic title it is used;
-  `title_ar` exists for 1,164 series, all of them the Excel archive. Every FX,
-  price, policy rate and treasury bill series -- which is everything on the
-  front page -- has none, and falls back to English rather than being given an
-  invented name. An English title on an Arabic page is unfinished; a made-up
-  Arabic one is a claim about what the Bank called it.
+- **The Arabic title leads on `/ar/`, and the ones Miqyas wrote say so**
+  (decided 11 October 2026, replacing "series titles are CBE's"). Every series
+  now has an Arabic title: CBE's for the Excel archive, where it names the line
+  of the table only, and Miqyas's own for the 223 FX, price, policy rate and
+  treasury bill series CBE names in English alone (`title_ar_source:
+  "miqyas"`). `titleHTML`, `titleText`, `lineHTML` and `tableText` give the
+  Arabic in headings, tables, search results, the tab and the citation; CBE's
+  English title is the second line (`titleAlt`, `.alt-en`), because it is the
+  name the Bank publishes. A title Miqyas wrote carries a dotted underline and
+  a tooltip wherever it appears, a visible sentence under the series heading,
+  and a sentence in the citation. The Excel tables have no Arabic name, so a
+  table heading stays English on `/ar/`, held left to right.
+- **What stays English says so.** CBE publishes the rate statements and lists
+  its documents in English only: the statement links on `/ar/` read "البيان
+  بالإنجليزية" and a pre-rendered Arabic document page says its title is
+  available in English only. Neither is half translated.
 
 **The chrome is translated in Python**, by `translate_chrome()` reading the same
 `AR` dictionary out of `i18n.js`. The masthead, footer and palette are HTML
@@ -661,6 +697,33 @@ needs to translate is a bug waiting for whoever adds the next string.
 The CSS cost was almost nothing, because the stylesheet was already logical:
 twelve `text-align`, four `border-left`, the skip link and one gradient. The
 `[dir="rtl"]` block at the end of `styles.css` is the whole of the rest.
+
+## Citing it, and finding the page again
+
+Decided 11 October 2026, for the people who save and cite pages.
+
+- **One series, one address.** `seriesURL(id)` is the pre-rendered page,
+  `/s/<id>/` (or `/ar/s/<id>/`), which carries the series' own title and share
+  card. "Copy a link" copies that, never the hash route or the
+  `/s/<id>/#/s/<id>` a pre-rendered page ends up at. The CSV header names it.
+- **The citation can be followed and checked.** `citation()` gives the source,
+  the title, the series id, "data to" the newest period, the address and the
+  build date from `status.json`. It used to end with the reader's own clock,
+  so two readers on the same day cited different things. A computed series is
+  credited to Miqyas, computed from CBE data. "Copy the citation" copies the
+  plain text.
+- **Every page names its tab.** `pageTitle()`; `app.js` sets one per nav key
+  (`TAB_TITLES`) and the series, subject and money market views name
+  themselves once their data has arrived.
+- **Rate decisions carry a download and source block**: every decision as CSV,
+  written in the browser from the rows the list is drawn from, the JSON, the
+  corridor as a series, where the rates come from, and a citation.
+- **The field and date guide is `#/data/guide`**, rendered by `viewData`, which
+  reads the hash, so the router needed no new route and the nav keeps Data lit.
+  It says what each column means and how each family is dated: CBE's monthly
+  tables by the 1st, the Excel archive by the period end, policy rates by the
+  day a level took effect, auctions by issue date, reserves by the press
+  release. A join on the date column between two of those matches nothing.
 
 ## Voice
 
