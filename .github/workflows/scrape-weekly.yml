@@ -11,6 +11,11 @@
 # dated; a withdrawn one keeps its entry with the date it went
 # (ingest/remote_files.py).
 #
+# It also reads the 15 Excel files on CBE's SDDS page, where money, banking and
+# reserves run to the latest month. CBE brings them up to date once a month
+# (Last-Modified on 1 and 7 October 2026 for the current ones), so weekly is
+# soon enough and the daily job does not need them.
+#
 # The daily job stays lean: 30 endpoints, a few minutes, once a day.
 
 name: scrape-weekly
@@ -64,9 +69,23 @@ jobs:
         continue-on-error: true
         run: python ingest/parse_excel.py
 
+      # Fifteen files, one at a time. Allowed to fail, like the parse, so that
+      # a bad week on the SDDS page never costs the archive or the corpus.
+      - name: SDDS files (money, banking and reserves to the latest month)
+        id: sdds_fetch
+        continue-on-error: true
+        run: python ingest/fetch_sdds.py --delay 1.0
+
+      # Refuses a sheet whose lines, unit or months are not what it names, and
+      # a published id dropped. The downloads are committed either way.
+      - name: Parse the SDDS files
+        id: sdds_parse
+        continue-on-error: true
+        run: python ingest/parse_sdds.py
+
       # Arabic titles are keyed by series id, so they follow every parse.
       - name: Arabic titles for the archive series
-        if: steps.parse.outcome == 'success'
+        if: steps.parse.outcome == 'success' || steps.sdds_parse.outcome == 'success'
         run: python ingest/build_titles_ar.py
 
       - name: Document corpus (new, replaced and withdrawn files)
@@ -125,4 +144,10 @@ jobs:
         if: steps.parse.outcome == 'failure'
         run: |
           echo "::error::parse_excel.py stopped; the downloads were committed, the archive tables were not rebuilt. See the Parse step."
+          exit 1
+
+      - name: Fail the run if the SDDS files could not be read
+        if: steps.sdds_fetch.outcome == 'failure' || steps.sdds_parse.outcome == 'failure'
+        run: |
+          echo "::error::fetch_sdds.py or parse_sdds.py stopped; whatever was downloaded was committed. See the SDDS steps."
           exit 1

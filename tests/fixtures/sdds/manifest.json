@@ -1,0 +1,32 @@
+{
+ "note": "Real CBE files from the SDDS page, frozen here so that CBE bringing its files up to date cannot move the expected numbers. Entries copied from catalog/sdds_manifest.json on 2026-10-11.",
+ "files": [
+  {
+   "key": "deposits-in-foreign-currencies",
+   "title": "Deposits in Foreign Currencies",
+   "section": "Domestic Liquidity (M2) & Reserve Money (MO)",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/deposit-in-foreign-currencies-aug,-d-,-2026.xlsx",
+   "last_modified": "Thu, 01 Oct 2026 09:45:39 GMT",
+   "bytes": 79469,
+   "sha256": "38297781b645ac762d7ba047d3952e47950c57af2f085b0f531301671ea2766a"
+  },
+  {
+   "key": "domestic-liquidity-m2",
+   "title": "Domestic Liquidity (M2)",
+   "section": "Domestic Liquidity (M2) & Reserve Money (MO)",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/domestic-liquidity(m2)-aug,-d-,-2026.xlsx",
+   "last_modified": "Thu, 01 Oct 2026 09:45:37 GMT",
+   "bytes": 85536,
+   "sha256": "751fd6d23b8337fe1d919b35bcdbebc1643cbdd3bf8584131fb21bcf6624f3c8"
+  },
+  {
+   "key": "international-reserves",
+   "title": "International Reserves",
+   "section": "International Reserves",
+   "url": "/-/media/project/cbe/listing/sdds/nir/group-one/files-to-process/internationalreserves-sept-2026.xlsx",
+   "last_modified": "Wed, 07 Oct 2026 06:13:57 GMT",
+   "bytes": 53469,
+   "sha256": "29fdbbe9636b19311c750fcbe6b81f637182f9ae25fd7a875d66448963dd714c"
+  }
+ ]
+}

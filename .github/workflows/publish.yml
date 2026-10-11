@@ -64,6 +64,9 @@ jobs:
       - name: Golden-file tests for the Excel parser
         run: python tests/test_parse_excel.py
 
+      - name: Golden-file tests for the SDDS parser
+        run: python tests/test_parse_sdds.py
+
       - name: Tests for the revision record
         run: python tests/test_build_changes.py
 
