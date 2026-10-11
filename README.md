@@ -35,6 +35,7 @@ an [RSS feed](https://mogh0neim.github.io/egypt-macro/changes.xml) and a
 | `data/clean/series/` | Tidy long format: `series_id,period,value` |
 | `data/clean/records/` | Auction results, one row per auction |
 | `data/clean/anomalies.csv` | Dates where CBE published two conflicting values for the same series |
+| `data/clean/excel_conflicts.csv` | Excel-archive slots where two files disagree: the value kept (newest file), the one set aside, and both files |
 | `catalog/series.json` | Every series: id, title, unit, frequency, source URL |
 | `catalog/summary.json` | Latest, previous, highest, lowest and coverage per series |
 | `catalog/COVERAGE.md` | The same thing, readable |
@@ -43,7 +44,8 @@ an [RSS feed](https://mogh0neim.github.io/egypt-macro/changes.xml) and a
 | `corpus/pages/` | Every PDF page as text, gzipped. What search runs on, and what a search result quotes |
 | `corpus/extraction_report.json` | What extracted cleanly, what needed OCR, what failed |
 | `events.json` | Devaluations and MPC decisions, for annotating charts |
-| `data/mpc_calendar.json` | When the MPC meets next. The one hand-entered file here: CBE renders its schedule client-side and serves it through no endpoint |
+| `data/mpc_calendar.json` | When the MPC meets next, read daily from CBE's schedule endpoint by `fetch_mpc_calendar.py`. If CBE cannot be read, the dates already there stay, and can be typed in by hand |
+| `catalog/id_map.json` | Where every retired series id now points, or `null`. Kept by hand: the parser refuses to drop a published id that is not listed here |
 | `ingest/` | The scrapers, plus the site build: exports, search index, page text, share cards, pre-rendered pages |
 | `assets/fonts/` | Static IBM Plex and Almarai, so a CI runner draws the share cards in the site's own type |
 
@@ -110,6 +112,7 @@ python ingest/fetch_series.py
 python ingest/derive_series.py          # yield curve, bid-to-cover
 python ingest/fetch_press.py            # reserves, remittances, MPC text
 python ingest/detect_events.py          # chart annotations
+python ingest/fetch_mpc_calendar.py     # MPC meeting dates from CBE's schedule
 python ingest/summarise.py              # coverage and quality flags
 
 # weekly: the archive and the corpus
@@ -176,7 +179,7 @@ loudly rather than commit a truncated series.
 
 ### Series IDs
 
-Dotted and stable. Once published, an ID never changes.
+Dotted and upper-case, one id per measure.
 
 ```
 EG.FX.OFF.USD.SELL      CBE official USD selling rate
@@ -185,6 +188,75 @@ EG.CPI.HDL.YOY          headline inflation, year on year
 EG.CONIA.ON.RATE        CONIA overnight rate
 EG.TB.SEC.3M.YLD        3-month T-bill secondary market yield
 ```
+
+Excel-archive ids read `EG.XL.<family>.<table>.<base>.<heading>.<line>.<column>.<kind>`,
+with each part present only when it is needed to tell two series apart:
+
+```
+EG.XL.TRADE.BALANCES.OIL_MERCHANDISE_BALANCE.EXPORTS.A     oil exports, fiscal-year total
+EG.XL.GDP.FCK.B2016_17.SUEZ_CANAL.TOTAL                    Suez Canal GDP, constant 2016/17 prices, quarterly
+EG.XL.BANK.CREDIT.DOMESTIC_CREDIT.CLAIMS_PRIVATE.LENDING   lending to the private business sector, all currencies
+```
+
+- **table**: one short code per CBE table (`BALANCES`, `FCK`, `CREDIT`), left out
+  where the family has one table.
+- **base**: the base year of constant prices or of a price index, `B2016_17` or
+  `BJAN2010`. Different bases are different series and are never joined.
+- **heading**: added only where a line's label repeats in the table, such as
+  "Lending and discount" under each sector and currency.
+- **column**: where CBE puts several columns under one period (`EXPORTS`,
+  `PUBLIC`, `GENERAL_GOVT`, `INFLOWS`).
+- **kind**: `.A` for a fiscal-year figure, `.YTD` for a figure cumulated from
+  July. Monthly and quarterly series carry no suffix; `freq` in the catalogue
+  says which, measured from the spacing of the data.
+
+**Ids do not change.** From 11 October 2026 every series id is fixed: a
+published id keeps naming the same measure, and is not reused for anything
+else. If CBE renames a line or table so a series must take a new id, the old
+one is added to [`catalog/id_map.json`](catalog/id_map.json) with its successor
+(or `null` if the series ended), and `parse_excel.py` refuses to drop a
+published id until that entry exists. The Excel-archive ids changed once, on
+11 October 2026, when the parser was rebuilt; every id from before that date is
+in the same file.
+
+### The Excel archive
+
+981 CBE workbooks, read weekly by `parse_excel.py` into
+`data/clean/series/excel_archive.csv`. The rule it keeps is one number per
+series and date:
+
+- Each column is dated from all the header cells above it read together, and
+  of the rows that could hold the periods, the one whose dates differ column to
+  column wins. That is what keeps twelve months under one "2015/2016" label
+  apart, and keeps "at 2001/2002 prices" from being read as a date.
+- Units are read per line: a ratio, an index, a count ("No. of") or a percent
+  never takes the sheet's currency unit.
+- Values are rounded to six significant figures, except that whole numbers of
+  a million or more keep every digit CBE prints.
+- Two different values for one series and date in one file stop the run.
+  Between files the newest file wins, and every difference is listed in
+  `data/clean/excel_conflicts.csv`.
+- An annual series that only repeats the June readings of its own monthly or
+  quarterly series is dropped; fiscal-year totals of flows are kept as `.A`.
+- A file that cannot be read is listed in `catalog/excel_quarantine.json` with
+  its table and fiscal year, which names the gap it leaves.
+- `PARSER_VERSION` in `parse_excel.py` changes whenever its output does, so a
+  re-read of the same files is put down to Miqyas, not to CBE.
+
+`python tests/test_parse_excel.py` (or `python -m pytest tests`) checks the
+parser against 15 real CBE workbooks kept in `tests/fixtures/excel/`, with the
+numbers read off the sheets; the publish job runs it before every deploy.
+
+### Guards
+
+- The daily job saves whatever it fetched even when a later step fails, then
+  turns the run red.
+- `summarise.py --shrink --restore` compares every clean table with the last
+  commit. A table that lost rows or series keeps its committed copy and the
+  run turns red, so a short CBE response is never saved over the record.
+- `summarise.py --dates`, run before every deploy, fails on any observation
+  dated after the build day or before 1950.
+- The workflows install `requirements.lock`: exact versions with hashes.
 
 ## Two things to know about the data
 
