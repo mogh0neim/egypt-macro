@@ -700,6 +700,8 @@ async function viewSeries(id) {
   // The build the page is from, for the citation. Already fetched by the
   // freshness strip, so this is normally a cache hit.
   const status = await loadStatus();
+  // A newer navigation has replaced this page while it loaded; it draws itself.
+  if (!app.isConnected) return;
   pageTitle(titleText(data));
 
   const topicKey = topicOf(data);
@@ -853,7 +855,7 @@ async function viewSeries(id) {
     '<div class="controls">' +
     offered.keys.map((k) => '<button class="chip" data-transform="' + k + '">' + esc(TRANSFORMS[k].label) + "</button>").join("") +
     '<span class="spacer"></span>' +
-    '<select class="chip" id="cmp">' +
+    '<select class="chip" id="cmp" aria-label="' + t("Compare with another series") + '">' +
     compareOptions.map((o) => '<option value="' + esc(o.id) + '">' + esc(o.label) + "</option>").join("") +
     "</select></div>" +
     (offered.why ? '<p class="foot-note transform-note">' + esc(offered.why) + "</p>" : "") +

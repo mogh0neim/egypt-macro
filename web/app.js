@@ -252,7 +252,7 @@ document.addEventListener("click", (e) => {
     el.classList.toggle("on", on);
     el.setAttribute("aria-pressed", String(on));
     if (el.classList.contains("star-chip")) {
-      el.textContent = on ? "★ On your desk" : "☆ Keep on your desk";
+      el.textContent = t(on ? "★ On your desk" : "☆ Keep on your desk");
     } else {
       el.textContent = on ? "★" : "☆";
       el.title = t(on ? "In your favourites" : "Add to your favourites");
@@ -321,9 +321,9 @@ async function renderFreshness() {
       : t("Rebuilt") + " " + clock + " UTC " + (day === today ? t("today") : t("on") + " " + niceDate(day)),
   ];
   if (s.last_scrape) bits.push(t("CBE last read") + " " + niceDate(s.last_scrape.slice(0, 10)));
-  if (s.series) bits.push(s.series.toLocaleString() + " " + t("series"));
-  if (s.observations) bits.push(s.observations.toLocaleString() + " " + t("observations"));
-  if (s.documents) bits.push(s.documents.toLocaleString() + " " + t("documents"));
+  if (s.series) bits.push(num(s.series) + " " + t("series"));
+  if (s.observations) bits.push(num(s.observations) + " " + t("observations"));
+  if (s.documents) bits.push(num(s.documents) + " " + t("documents"));
 
   /* The change log gets its entry here rather than a ninth item in the nav.
    * This strip is already about how fresh the page is, it is already on every

@@ -987,8 +987,8 @@ const AR = {
   "What it does": "ماذا يفعل",
   "Miqyas copies CBE's live tables once a day and its Excel archive and publications once a week, and saves each copy. It keeps a dated copy of the daily tables from 20 August 2026, so past values can be looked up. If CBE changes a figure it has already published, the change appears on the":
     "ينسخ مقياس الجداول الحية للبنك المركزي مرة كل يوم، وأرشيف Excel والمنشورات مرة كل أسبوع، ويحفظ كل نسخة. ويحتفظ بنسخة مؤرَّخة من الجداول اليومية منذ 20 أغسطس 2026، فيمكن الرجوع إلى القيم السابقة. وإذا غيّر البنك المركزي رقمًا سبق نشره، يظهر التغيير في صفحة",
-  "page. The weekly Excel archive is not yet checked for changes.":
-    "المخصصة لذلك. ولا يُفحص أرشيف Excel الأسبوعي بحثًا عن تغييرات بعد.",
+  "page. Each week the Excel archive and the publications are also checked for files CBE has replaced or withdrawn.":
+    "المخصصة لذلك. ويُفحص أرشيف Excel والمنشورات كل أسبوع أيضًا بحثًا عن ملفات استبدلها البنك المركزي أو سحبها.",
   "Each series page says how its numbers got here: reproduced as published from one of CBE's daily tables, dated by Miqyas from the period labels in a CBE Excel sheet, or computed by Miqyas (a bid-to-cover ratio, a yield-curve bucket, reserves read from a press release), with the method named.":
     "تذكر كل صفحة سلسلة كيف وصلت أرقامها إلى هنا: منقولة كما نُشرت من أحد الجداول اليومية للبنك المركزي، أو مؤرَّخة من مقياس استنادًا إلى تسميات الفترات في ملف Excel للبنك المركزي، أو محسوبة من مقياس (نسبة تغطية، أو شريحة من منحنى العائد، أو احتياطيات مستخرجة من بيان صحفي)، مع تسمية الطريقة.",
   "The code is MIT-licensed. The data is the Central Bank of Egypt's, and Miqyas claims no rights in it. CBE's":

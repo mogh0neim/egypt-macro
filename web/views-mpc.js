@@ -37,6 +37,8 @@ async function viewMPC() {
 
   await loadIndex();
   const calendar = await loadMPCCalendar();
+  // A newer navigation has replaced this page while it loaded; it draws itself.
+  if (!app.isConnected) return;
   const three = await Promise.all([
     loadSeries("EG.RATE.ON.DEP").catch(() => null),
     loadSeries("EG.RATE.ON.LEND").catch(() => null),

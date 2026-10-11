@@ -207,7 +207,7 @@ function viewAbout() {
 
     "<h3>" + t("What it does") + "</h3>" +
     "<p>" + t("Miqyas copies CBE's live tables once a day and its Excel archive and publications once a week, and saves each copy. It keeps a dated copy of the daily tables from 20 August 2026, so past values can be looked up. If CBE changes a figure it has already published, the change appears on the") +
-    ' <a href="#/changes">' + t("What changed") + "</a> " + t("page. The weekly Excel archive is not yet checked for changes.") + "</p>" +
+    ' <a href="#/changes">' + t("What changed") + "</a> " + t("page. Each week the Excel archive and the publications are also checked for files CBE has replaced or withdrawn.") + "</p>" +
     "<p>" + t("Each series page says how its numbers got here: reproduced as published from one of CBE's daily tables, dated by Miqyas from the period labels in a CBE Excel sheet, or computed by Miqyas (a bid-to-cover ratio, a yield-curve bucket, reserves read from a press release), with the method named.") + "</p>" +
 
     '<h3 id="terms">' + t("Terms") + "</h3>" +
@@ -230,6 +230,7 @@ function viewAbout() {
     "<li>" + t("Around one series in eight carries no unit, because CBE's own sheet did not state one anywhere the parser could find it.") + "</li>" +
     "</ul>" +
 
+    privacyNote() +
     "<h3>" + t("How it is built") + "</h3>" +
     "<p>" + t("Python for the ingest, static JSON and Parquet for the output, and a front end with no framework and no build step. Two scheduled jobs, the live tables once a day and the Excel archive and document corpus once a week, plus a publish step that rebuilds this site after each of them, and an OCR pass run by hand when new scans turn up. The daily job often starts hours after its scheduled time; the status line on every page says when CBE was last read. The whole thing is a repository, and the repository is the archive.") + "</p>" +
     "<p><a href=\"https://github.com/mogh0neim/egypt-macro\" target=\"_blank\" rel=\"noopener\">" +

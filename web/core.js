@@ -118,10 +118,13 @@ function watchToggle(id) {
  * inside a row that is itself a link would be unclickable. */
 const starButton = (id) => {
   const on = watchHas(id);
+  // Named for its series, so a screen reader going down a table hears which.
+  const s = state.byId && state.byId.get(id);
+  const name = (s && ((RTL && s.title_ar) || s.title_en)) || id;
   return (
     '<button class="star' + (on ? " on" : "") + '" data-star="' + esc(id) +
     '" aria-pressed="' + on + '" title="' + t(on ? "In your favourites" : "Add to your favourites") +
-    '" aria-label="' + t(on ? "Remove from favourites" : "Add to favourites") + '">' +
+    '" aria-label="' + esc(t(on ? "Remove from favourites" : "Add to favourites") + ": " + name) + '">' +
     (on ? "★" : "☆") +
     "</button>"
   );

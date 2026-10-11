@@ -1248,7 +1248,9 @@ table.indicators td.period {
 .meta-row span b, .meta-col span b { color: var(--text-3); font-weight: 400; }
 .meta-col { display: grid; gap: 0.35rem; font-family: var(--mono); font-size: 0.72rem; color: var(--text-2); }
 .meta-col a { text-decoration: underline; text-underline-offset: 2px; word-break: break-all; }
-.cite { font-size: 0.78rem; color: var(--text-3); margin-top: 1.2rem; max-width: 60ch; }
+/* The citation now carries the series address, and an Excel-archive id makes it
+ * one 80-character word; without anywhere it pushed a phone page 175px wide. */
+.cite { font-size: 0.78rem; color: var(--text-3); margin-top: 1.2rem; max-width: 60ch; overflow-wrap: anywhere; }
 
 .two-col {
   display: grid;
