@@ -297,14 +297,14 @@ async function viewDocs(presetCategory) {
     '<button class="chip" data-mode="title" aria-pressed="false">Match titles</button>' +
     '<button class="chip" data-mode="full" aria-pressed="true">Search inside the text</button>' +
     '<span class="spacer"></span>' +
-    '<select class="chip" id="dsrc"><option value="">Any kind</option>' +
+    '<select class="chip" id="dsrc" aria-label="' + t("Kind of document") + '"><option value="">Any kind</option>' +
     sources.map((s) => '<option value="' + esc(s) + '">' + esc(SOURCE_LABEL[s] || s) + "</option>").join("") +
     "</select>" +
-    '<select class="chip" id="dcat"><option value="">Any topic</option>' +
+    '<select class="chip" id="dcat" aria-label="' + t("Document topic") + '"><option value="">Any topic</option>' +
     cats.map((c) => '<option value="' + esc(c) + '"' + (c === presetCategory ? " selected" : "") + ">" +
       esc(c.trim()) + " (" + counts[c] + ")</option>").join("") +
     "</select>" +
-    '<select class="chip" id="dyear"><option value="">Any year</option>' +
+    '<select class="chip" id="dyear" aria-label="' + t("Year published") + '"><option value="">Any year</option>' +
     years.map((y) => '<option>' + y + "</option>").join("") +
     "</select>" +
     '<button class="chip" id="dclear">Clear</button>' +

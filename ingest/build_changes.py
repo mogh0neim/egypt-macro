@@ -71,7 +71,7 @@ RECORDS_DIR = ROOT / "data" / "clean" / "records"
 DIST = ROOT / "dist"
 API = DIST / "api" / "v1"
 
-SITE_URL = "https://mogh0neim.github.io/egypt-macro/"
+from site_config import SITE_URL  # noqa: E402  (one setting: site.toml)
 
 WINDOW_DAYS = 180
 # A day's new readings run to a few hundred. The forty that moved most and an
