@@ -32,7 +32,7 @@
 
 <header class="masthead">
   <div class="wrap">
-    <a class="wordmark" href="#/">Miqyas<span class="mark-ar" aria-hidden="true">مقياس</span></a>
+    <a class="wordmark" href="./">Miqyas<span class="mark-ar" aria-hidden="true">مقياس</span></a>
     <span class="unofficial">Independent</span>
     <button class="quick" id="quick" aria-label="Search series, topics, documents and pages">
       <span class="q-ico" aria-hidden="true">⌕</span>
@@ -45,14 +45,17 @@
            site is for: "What changed" and "Data" sit in the first three slots.
            The calculators and Favourites are off the row but not gone; the
            footer, the overview and the search box all reach them, and every
-           star still adds to Favourites. Seven items, where eight filled it. -->
-      <a href="#/" data-route="home">Overview</a>
-      <a href="#/changes" data-route="changes">What changed</a>
-      <a href="#/data" data-route="data">Data</a>
-      <a href="#/series" data-route="series">Series</a>
-      <a href="#/rates" data-route="rates">Rates</a>
-      <a href="#/docs" data-route="docs">Documents</a>
-      <a href="#/about" data-route="about">About</a>
+           star still adds to Favourites. Seven items, where eight filled it.
+           The links are real paths, as in the footer, because a crawler follows
+           a path and ignores a hash; prerender.py has written a page at each,
+           and app.js turns a click on one into the hash route. -->
+      <a href="./" data-route="home">Overview</a>
+      <a href="changes/" data-route="changes">What changed</a>
+      <a href="data/" data-route="data">Data</a>
+      <a href="series/" data-route="series">Series</a>
+      <a href="rates/" data-route="rates">Rates</a>
+      <a href="docs/" data-route="docs">Documents</a>
+      <a href="about/" data-route="about">About</a>
       <a class="theme-toggle lang-switch" id="lang" href="#" hreflang="ar" lang="ar">عربي</a>
       <button class="theme-toggle" id="theme" aria-label="Switch between light, dark and system theme">Auto</button>
     </nav>
@@ -89,16 +92,16 @@
       </div>
       <div>
         <p class="foot-head">Data</p>
-        <a href="#/tools">Work out what yours is worth</a>
-        <a href="#/series">Find or browse series</a>
-        <a href="#/favourites">Your favourites</a>
-        <a href="#/rates">Rate decisions</a>
-        <a href="#/data">Downloads and API</a>
+        <a href="tools/">Work out what yours is worth</a>
+        <a href="series/">Find or browse series</a>
+        <a href="favourites/">Your favourites</a>
+        <a href="rates/">Rate decisions</a>
+        <a href="data/">Downloads and API</a>
       </div>
       <div>
         <p class="foot-head">This project</p>
-        <a href="#/changes">Revisions to published figures</a>
-        <a href="#/about">What is and is not here</a>
+        <a href="changes/">Revisions to published figures</a>
+        <a href="about/">What is and is not here</a>
         <a href="https://github.com/mogh0neim/egypt-macro" target="_blank" rel="noopener">Source on GitHub ↗</a>
         <a href="https://www.cbe.org.eg/en/" target="_blank" rel="noopener">The Central Bank of Egypt ↗</a>
       </div>

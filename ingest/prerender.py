@@ -350,6 +350,11 @@ def translate_chrome(html: str) -> str:
     return html
 
 
+# The real paths the navigation and the footer in web/index.html link to. Each
+# is a page this script writes, in both languages.
+NAV_PATHS = ("changes/", "data/", "series/", "rates/", "docs/", "about/", "tools/", "favourites/")
+
+
 class Template:
     """The stamped dist/index.html, with the places that change found once."""
 
@@ -417,6 +422,17 @@ class Template:
 
         if head_extra:
             html = self._sub(r"</head>", head_extra + "\n</head>", html, "the end of the head")
+
+        # The navigation and the footer link to real paths, changes/ and the
+        # rest, written relative to a home page. This document may be deeper,
+        # and an Arabic one links to the Arabic pages, so each is pointed at
+        # this language's home from here. Done before the body goes in, so
+        # nothing in the body can match.
+        nav = ("" if root == "." else root + "/") + lang_prefix(lang)
+        if nav:
+            for path in NAV_PATHS:
+                html = html.replace(f'href="{path}"', f'href="{nav}{path}"')
+            html = html.replace('href="./"', f'href="{nav}"')
 
         # The template's asset URLs are relative to a document at the root. This
         # one is not at the root.
@@ -668,13 +684,28 @@ def other(lang: str) -> str:
     return "ar" if lang == "en" else "en"
 
 
-# What index.html ships with: the loading state, replaced by the first view a
-# few hundred milliseconds later. The home page is the one page whose content
-# is genuinely not worth pre-rendering, because it is thirteen cards and a
-# chart that the script draws better.
-HOME_SKELETON = ('<div class="wrap"><div class="skeleton">'
-                 '<div class="sk-line"></div><div class="sk-line"></div>'
-                 '<div class="sk-line"></div></div></div>')
+# What the home page carries before the script draws it. The cards and the
+# chart are the script's to draw, but a crawler that never runs it used to find
+# a loading skeleton and no heading or link at all. So it gets the overview's
+# own heading and two buttons, and a plain link to each subject, as real paths
+# from the language's home.
+def home_body(topics: list[dict], lang: str) -> str:
+    subjects = "".join(f'<li><a href="topic/{esc(t["key"])}/">{esc(tr(t["name"], lang))}</a></li>'
+                       for t in topics)
+    return (
+        '<section class="hero"><div class="wrap">'
+        '<h1 class="hero-line">'
+        + esc(tr("Central Bank of Egypt statistics as one clean dataset, with a dated daily "
+                 "archive of its live tables.", lang)) + "</h1>"
+        '<div class="controls hero-actions">'
+        f'<a class="chip solid" href="data/">{esc(tr("Download the data", lang))}</a>'
+        f'<a class="chip" href="changes/">{esc(tr("See what changed", lang))}</a>'
+        "</div></div></section>"
+        '<section class="section"><div class="wrap">'
+        f'<h2>{esc(tr("Everything, by subject", lang))}</h2>'
+        f"<ul>{subjects}</ul>"
+        "</div></section>"
+    )
 
 
 def render_language(template, lang, *, index, topics, by_family, by_key, documents, counts):
@@ -718,7 +749,7 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
                        "affiliated with CBE.", lang),
         url=home_url, image=f"{SITE_URL}og.png",
         image_alt=tr("Miqyas: Egypt's economy in numbers", lang),
-        body=HOME_SKELETON)
+        body=home_body(topics, lang))
     # render() injects MIQYAS_PAGE; an empty one has to go rather than be
     # believed, or app.js treats the home page as a pre-rendered sub-page.
     home = home.replace(';window.MIQYAS_PAGE="";', ";")

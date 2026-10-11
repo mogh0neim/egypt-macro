@@ -237,6 +237,20 @@ site yet, so this is the time to move.
 
 Update the links at the top of this README in the same commit.
 
+**After the move, tell Google.** Do this once the new address works, not
+before: on `github.io` the site's `robots.txt` sits under `/egypt-macro/`, where
+search engines do not look for it, and submitting now would point Google at
+addresses that are about to change.
+
+1. Go to [Search Console](https://search.google.com/search-console), "Add
+   property", choose "Domain" and type `miqyas.org`. Google shows a TXT record:
+   add it at the domain seller, as in step 3 above, and press Verify.
+2. In Search Console, open "Sitemaps", type `sitemap.xml` and Submit. It
+   lists every page of the site in both languages. Its status should read
+   "Success" within a day; the pages themselves are taken in over weeks.
+3. Optionally, at [Bing Webmaster Tools](https://www.bing.com/webmasters),
+   choose "Import from Google Search Console".
+
 ### Counting visits (off until you switch it on)
 
 The site can count visits with [GoatCounter](https://www.goatcounter.com),

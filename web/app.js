@@ -373,6 +373,46 @@ function wireLanguage() {
 
 window.addEventListener("hashchange", wireLanguage);
 
+/* ---------- real links, hash navigation ----------
+ *
+ * The navigation, the footer and the home page's own HTML link to real paths
+ * -- changes/, data/, topic/fx/ -- because a crawler follows a path and
+ * ignores a hash, and prerender.py has written a page at each of them. A
+ * reader clicking one should not wait for a whole new document, though, so a
+ * plain click on a link to a route of this language's site becomes that hash
+ * route, exactly as the old #/ links behaved. A download, the other language,
+ * another site, or a click meant for a new tab is left to the browser.
+ *
+ * The paths are relative to the language's home: this document's own folder
+ * for the app document (which is web/ when a clone is served from its top),
+ * and the folder the hand-off goes to for a pre-rendered page.
+ */
+const LINK_HOME = PAGE || MISSING
+  ? new URL(HOME_DOC, location.href).pathname
+  : location.pathname.replace(/[^/]*$/, "");
+
+function routeOfLink(a) {
+  if (!a || a.target || a.hasAttribute("download")) return null;
+  const href = a.getAttribute("href") || "";
+  if (!href || href.charAt(0) === "#") return null;
+  let url;
+  try { url = new URL(a.href, location.href); } catch (e) { return null; }
+  if (url.origin !== location.origin || url.search || url.pathname.indexOf(LINK_HOME) !== 0) return null;
+  const rest = url.pathname.slice(LINK_HOME.length);
+  if (rest && rest.slice(-1) !== "/") return null; // a file, not a page
+  const path = "/" + rest.replace(/\/$/, "");
+  return ROUTES.some((r) => r.test.test(path)) ? path : null;
+}
+
+document.addEventListener("click", (e) => {
+  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  const path = routeOfLink(e.target.closest && e.target.closest("a[href]"));
+  if (path === null) return;
+  e.preventDefault();
+  document.body.classList.remove("nav-open");
+  location.hash = path;
+});
+
 /* ---------- mobile navigation ---------- */
 
 document.getElementById("menu").addEventListener("click", () => {
