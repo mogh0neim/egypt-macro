@@ -31,40 +31,77 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: requirements.lock
 
-      - run: pip install -r requirements.txt
+      # Exact versions and hashes: this job holds a token that can push to main.
+      - run: pip install --require-hashes -r requirements.lock
 
+      # Every step up to the commit may fail without costing the day: each is
+      # allowed to fail, the commit runs regardless and saves whatever was
+      # fetched, and the last step turns the run red if any of them failed.
       # Order matters: derive reads the auction records fetch_series wrote,
       # summarise reads everything, and detect_events reads the FX series.
       - name: Fetch all datasets
+        id: fetch
+        continue-on-error: true
         run: python ingest/fetch_series.py --delay 1.5
 
       - name: Derive auction series (yield curve, bid-to-cover)
+        id: derive
+        continue-on-error: true
         run: python ingest/derive_series.py
 
       # Refuses to write if the chained index stops reproducing CBE's own
       # year-on-year rate, which is the only way to notice that the source
       # changed units under it.
       - name: Chain the consumer price index
+        id: prices
+        continue-on-error: true
         run: python ingest/derive_prices.py
 
+      # --refresh reads the newest releases again even when cached, so a
+      # release CBE corrects after publishing it is not missed for good.
       - name: Extract press-release series (reserves, remittances, MPC)
-        run: python ingest/fetch_press.py --skip-cached --delay 1.5
+        id: press
+        continue-on-error: true
+        run: python ingest/fetch_press.py --skip-cached --refresh 5 --delay 1.5
 
       # Reads only what fetch_press just wrote plus the already-extracted page
       # text, with no network of its own, so there is no reason for the site's
       # rate-decision history to wait for Sunday. Left in the weekly run too,
       # where it gets to see newly extracted PDF statements.
       - name: MPC statement archive and diffs
+        id: mpc
+        continue-on-error: true
         run: python ingest/mpc_archive.py
 
       - name: Rebuild event annotations
+        id: events
+        continue-on-error: true
         run: python ingest/detect_events.py
 
+      # Two requests to CBE's schedule endpoint. It does not fail when CBE
+      # cannot be read: it warns and the dates already in the file stay.
+      - name: Read the MPC meeting schedule from CBE
+        id: calendar
+        continue-on-error: true
+        run: python ingest/fetch_mpc_calendar.py
+
+      # A table that lost rows or series against yesterday's commit gets
+      # yesterday's copy back, so a short CBE response is flagged and never
+      # saved over the record. Everything else is still committed.
+      - name: Keep any table that shrank as it was
+        id: shrink
+        continue-on-error: true
+        run: python ingest/summarise.py --shrink --restore
+
       - name: Summarise and check
+        id: check
+        continue-on-error: true
         run: python ingest/summarise.py --check
 
       - name: Commit any changes
+        if: always()
         run: |
           git config user.name  "egypt-macro-bot"
           git config user.email "actions@github.com"
@@ -95,12 +132,26 @@ jobs:
           echo "::error::could not push after three attempts"
           exit 1
 
-      - name: Fail loudly on a short fetch
-        if: failure()
-        run: echo "::error::Ingest failed. Check whether CBE changed an endpoint or started blocking us."
-
-      # Last, and after the commit, on purpose. A calendar running out is a
-      # reminder to copy next year's dates in, never a reason to lose a day of
-      # data. It warns below warn_below and turns the run red once none is left.
+      # After the commit, and warning only. A calendar running out is a
+      # reminder, never a reason to lose a day of data or turn the run red.
       - name: Check the MPC calendar
+        if: always()
         run: python ingest/summarise.py --calendar
+
+      - name: Mark the run red if any step failed
+        if: >-
+          always() && (steps.fetch.outcome == 'failure' || steps.derive.outcome == 'failure'
+          || steps.prices.outcome == 'failure' || steps.press.outcome == 'failure'
+          || steps.mpc.outcome == 'failure' || steps.events.outcome == 'failure'
+          || steps.calendar.outcome == 'failure' || steps.shrink.outcome == 'failure'
+          || steps.check.outcome == 'failure')
+        env:
+          OUTCOMES: >-
+            fetch=${{ steps.fetch.outcome }} derive=${{ steps.derive.outcome }}
+            prices=${{ steps.prices.outcome }} press=${{ steps.press.outcome }}
+            mpc=${{ steps.mpc.outcome }} events=${{ steps.events.outcome }}
+            calendar=${{ steps.calendar.outcome }} shrink=${{ steps.shrink.outcome }}
+            check=${{ steps.check.outcome }}
+        run: |
+          echo "::error::Saved what was fetched, but a step failed ($OUTCOMES). Check whether CBE changed an endpoint or started blocking us."
+          exit 1
