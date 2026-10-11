@@ -954,7 +954,7 @@
   "freq": "M",
   "unit": "USD million",
   "derived": true,
-  "method": "Parsed from the monthly CBE press release text. CBE does not publish this as a downloadable series."
+  "method": "Parsed by Miqyas from the text of CBE's monthly reserves press release. Each value is CBE's first figure for the month before, dated by the day the release was published. CBE's current monthly series, dated to the end of each month and revised since, is EG.SDDS.RES.NIR."
  },
  {
   "series_id": "EG.SDDS.CREDIT.GOVT.CREDIT",
