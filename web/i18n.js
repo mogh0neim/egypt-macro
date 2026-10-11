@@ -653,6 +653,45 @@ const AR = {
   "There is no series with that id": "لا توجد سلسلة بهذا المعرّف",
   "Could not load the data": "تعذّر تحميل البيانات",
   "Try again": "أعد المحاولة",
+
+  /* ---------- privacy (counter.js), calculator checks, control names ---------- */
+  "Privacy": "الخصوصية",
+  "Miqyas sets no cookies.": "لا يضع مقياس أي ملفات تعريف ارتباط (كوكيز).",
+  "It counts visits with GoatCounter, the only other site a page load contacts; the pages, the fonts and the data all come from this site's own address.":
+    "ويُحصي الزيارات عبر GoatCounter، وهو الموقع الآخر الوحيد الذي تتصل به الصفحة عند فتحها؛ أما الصفحات والخطوط والبيانات فكلها تأتي من عنوان هذا الموقع نفسه.",
+  "For each page you open, GoatCounter is sent the name of the page, such as /tools/salary, never what you typed into it, and, when you arrive, the address of the site that linked you here, without the rest of its link.":
+    "عن كل صفحة تفتحها يُرسَل إلى GoatCounter اسم الصفحة، مثل /tools/salary، ولا يُرسَل أبدًا ما كتبته فيها، وعند وصولك يُرسَل عنوان الموقع الذي أحالك إلى هنا دون بقية رابطه.",
+  "Your browser also sends it what every request carries: your IP address and the kind of browser you use.":
+    "ويُرسل إليه متصفحك أيضًا ما يحمله كل طلب: عنوان IP الخاص بك ونوع المتصفح الذي تستخدمه.",
+  "What GoatCounter keeps is set out in": "وما يحتفظ به GoatCounter مبيَّن في",
+  "its privacy policy": "سياسة الخصوصية الخاصة به",
+  "Miqyas counts no visits and sets no cookies.": "لا يُحصي مقياس الزيارات، ولا يضع أي ملفات تعريف ارتباط (كوكيز).",
+  "The pages, the fonts and the data all come from this site's own address, so opening a page tells no other site that you did.":
+    "الصفحات والخطوط والبيانات كلها تأتي من عنوان هذا الموقع نفسه، فلا يعلم أي موقع آخر أنك فتحت صفحة منه.",
+  "Your favourites and settings are kept in this browser and never sent anywhere.":
+    "تُحفظ مفضلاتك وإعداداتك في هذا المتصفح، ولا تُرسَل إلى أي مكان.",
+  "Nothing you type into a search box or a calculator is sent to any other site. Where it is kept in the page's address, so that an answer can be shared as a link, it sits after the # sign, which browsers do not send to any site.":
+    "لا يُرسَل أي شيء تكتبه في مربع البحث أو في الحاسبات إلى أي موقع آخر. وحين يُحفظ في عنوان الصفحة لتتمكن من مشاركة النتيجة كرابط، فإنه يأتي بعد علامة #، وهو جزء لا ترسله المتصفحات إلى أي موقع.",
+  "Links to cbe.org.eg and GitHub take you to those sites, under their own terms.":
+    "روابط cbe.org.eg وGitHub تنقلك إلى هذين الموقعين، وتخضع لشروطهما.",
+  "That is not an amount this can work with. Put in a number of pounds, more than zero.":
+    "هذا ليس مبلغًا يمكن الحساب به. أدخل عددًا من الجنيهات أكبر من صفر.",
+  "Could not read that month. Write it as year and month, for example 2016-11.":
+    "تعذّرت قراءة هذا الشهر. اكتبه بالسنة ثم الشهر، مثل 2016-11.",
+  "Could not read that date. Write it as year, month and day, for example 2016-11-03.":
+    "تعذّرت قراءة هذا التاريخ. اكتبه بالسنة ثم الشهر ثم اليوم، مثل 2016-11-03.",
+  "Miqyas holds no figure for that date. Pick one from {from} to {to}.":
+    "لا يحتفظ مقياس بأي رقم لهذا التاريخ. اختر تاريخًا من {from} إلى {to}.",
+  "Prices are to {prices}, the latest month in the index; the dollar rate is to {dollar}.":
+    "الأسعار حتى {prices}، وهو أحدث شهر في المؤشر؛ وسعر الدولار حتى {dollar}.",
+  "The dollar rate used for {asked} is from {held}, the last one Miqyas holds before it.":
+    "سعر الدولار المستخدم في {asked} هو سعر {held}، آخر سعر يحتفظ به مقياس قبله.",
+  "Miqyas holds no rate for {asked}. This is the last one before it, {days} days earlier.":
+    "لا يحتفظ مقياس بسعر في {asked}. هذا آخر سعر قبله، والفارق بينهما {days} من الأيام.",
+  "Compare with another series": "قارن بسلسلة أخرى",
+  "Kind of document": "نوع الوثيقة",
+  "Document topic": "موضوع الوثيقة",
+  "Year published": "سنة النشر",
 };
 
 /* The translation, or the English it was given. A missing entry is English on
