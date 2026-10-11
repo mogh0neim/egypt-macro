@@ -132,8 +132,8 @@ def test_cpi_keeps_every_month_and_its_base():
 def test_domestic_credit_heading_path():
     # Review example: July 2017 private-sector lending is 663,533 in total;
     # 273,782 is only its foreign-currency part.
-    assert value("EG.XL.BANK.CREDIT.DOMESTIC_CREDIT.CLAIMS_PRIVATE.LENDING", "2017-07-31") == 663533
-    assert value("EG.XL.BANK.CREDIT.FOREIGN.CLAIMS_PRIVATE.LENDING_DISCOUNT", "2017-07-31") == 273782
+    assert round(value("EG.XL.BANK.CREDIT.DOMESTIC_CREDIT.CLAIMS_PRIVATE.LENDING", "2017-07-31")) == 663533
+    assert round(value("EG.XL.BANK.CREDIT.FOREIGN.CLAIMS_PRIVATE.LENDING_DISCOUNT", "2017-07-31")) == 273782
 
 
 def test_header_lower_down_the_sheet():
@@ -142,8 +142,8 @@ def test_header_lower_down_the_sheet():
 
 
 def test_external_debt_dates():
-    assert value("EG.XL.XDEBT.TYPE.TOTAL_EXTERNAL_DEBT", "2024-03-31") == 160607
-    assert value("EG.XL.XDEBT.TYPE.TOTAL_EXTERNAL_DEBT", "2024-06-30") == 152885
+    assert value("EG.XL.XDEBT.TYPE.TOTAL_EXTERNAL_DEBT", "2024-03-31") == 160607.41
+    assert value("EG.XL.XDEBT.TYPE.TOTAL_EXTERNAL_DEBT", "2024-06-30") == 152885.2
 
 
 def test_units_per_row():
@@ -170,11 +170,13 @@ def test_frequency_matches_spacing():
         assert rec["freq"] == ("M" if gap <= 45 else "Q" if gap <= 135 else "A"), sid
 
 
-def test_values_rounded_to_six_significant_figures():
-    assert pe.round6(83435.71299999999) == 83435.7
-    assert pe.round6(0.03451234) == 0.0345123
-    # Whole numbers of a million or more keep every digit CBE prints.
-    assert pe.round6(3069622.677152216) == 3069623
+def test_values_keep_cbe_digits_without_float_noise():
+    # Noise in the last float digits goes; every digit CBE typed stays.
+    assert pe.round6(83435.71299999999) == 83435.713
+    assert pe.round6(0.03451234) == 0.03451234
+    assert pe.round6(160607.41) == 160607.41
+    assert pe.round6(3069622.677152216) == 3069622.6772
+    assert pe.round6(11503.1000227) == 11503.1
     _, series = parsed()
     for points in series.values():
         for v in points.values():

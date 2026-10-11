@@ -145,7 +145,8 @@ def test_cells_and_labels():
     assert ps.number(" -136462+") == -136462
     assert ps.number("303680x") == 303680
     assert ps.number(" - ") is None
-    assert ps.number(158158.46049828) == 158158
+    # CBE's underlying figure, without spreadsheet noise past four decimals.
+    assert ps.number(158158.46049828) == 158158.4605
     assert ps.clean_label("Net claims on banks (A-B):+") == "net claims on banks"
     assert ps.clean_label("  B- deposits in Foreign currency with CBE  ") == "deposits in foreign currency with cbe"
     assert ps.clean_label("Reserve Money (M0)**") == "reserve money (m0)"

@@ -55,7 +55,7 @@ import openpyxl
 
 # Bump whenever a change here changes what the parser writes. build_changes.py
 # reads it, so a re-read of the same CBE files is put down to Miqyas, not CBE.
-PARSER_VERSION = "2026.10.11"
+PARSER_VERSION = "2026.10.11.2"
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 MANIFEST = ROOT / "catalog" / "sdds_manifest.json"
@@ -243,15 +243,13 @@ def number(value) -> float | None:
 
 
 def round6(v: float) -> float:
-    """Six significant figures, never rounding away a whole number (as parse_excel.py).
+    """The archive's one rule, from parse_excel.py: strip spreadsheet noise
+    (158158.46049828) and keep every digit CBE typed. A copy of the old
+    six-figure rule here read M2 for June 2023 as 8,248,189 where CBE has
+    8,248,189.3."""
+    from parse_excel import round6 as archive_round  # noqa: PLC0415
 
-    A few cells carry spreadsheet noise (158158.46049828); CBE prints whole
-    millions of pounds, and those keep every digit.
-    """
-    if v == 0 or not math.isfinite(v):
-        return v
-    digits = math.floor(math.log10(abs(v))) + 1
-    return round(v, max(0, 6 - digits)) + 0.0
+    return archive_round(v)
 
 
 def month_of(value) -> int | None:

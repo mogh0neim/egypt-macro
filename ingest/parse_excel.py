@@ -67,7 +67,7 @@ import openpyxl
 # Bump whenever a change here changes what the parser writes. The What changed
 # page reads it, so a re-read of the same CBE files is labelled as ours rather
 # than reported as CBE news.
-PARSER_VERSION = "2026.10.11"
+PARSER_VERSION = "2026.10.11.2"
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 EXCEL = ROOT / "data" / "raw" / "excel"
@@ -302,17 +302,24 @@ def to_number(value) -> float | None:
 
 
 def round6(v: float) -> float:
-    """Six significant figures, but never rounding away a whole number.
+    """Strip spreadsheet noise, keeping every digit CBE typed.
 
-    The workbooks carry spreadsheet noise (83435.71299999999). Six significant
-    figures removes it; for values of a million or more, strict six figures
-    would also change digits CBE prints (3,069,623 would become 3,069,620), so
-    those keep their integer part exactly.
+    The workbooks carry noise like 83435.71299999999 in the last float digits.
+    Twelve significant figures removes that, and formula cells also carry
+    residue CBE never shows (11503.1000227, displayed as 11,503.1), so values
+    of 1 or more keep at most four decimals, more than any CBE table types.
+    Six significant figures, the rule before, cut the decimals off every value
+    of 100,000 or more: total external debt for March 2024 read 160,607 where
+    CBE printed 160,607.41, and 7,118 values lost digits that way. The name
+    stays so callers and tests do not churn.
     """
     if v == 0 or not math.isfinite(v):
         return v
     digits = math.floor(math.log10(abs(v))) + 1
-    out = round(v, max(0, 6 - digits))
+    places = max(0, 12 - digits)
+    # One rounding, not two: rounding to twelve figures and then to four
+    # decimals turned 3069622.677152 into ...6771.
+    out = round(v, min(places, 4) if abs(v) >= 1 else places)
     return out + 0.0
 
 
