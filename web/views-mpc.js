@@ -264,7 +264,7 @@ function nextPanel(next) {
   return (
     '<section class="section band-inset call"><div class="wrap-inner">' +
     '<p class="eyebrow">' + t("Next rate decision") + "</p>" +
-    "<h2>" + esc(niceDate(next.date)) + ", " + esc(countdownWords(next.days)) + "</h2>" +
+    "<h2>" + esc(niceDate(next.date)) + (RTL ? "، " : ", ") + esc(countdownWords(next.days)) + "</h2>" +
     '<p class="lede">' +
     t("The committee meets eight times a year, on dates the Central Bank publishes in advance.") +
     "</p>" +
