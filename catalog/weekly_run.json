@@ -1,0 +1,16 @@
+{
+ "documents": {
+  "check_failed": 2,
+  "checked_at": "2026-10-11T01:50:29+00:00",
+  "files": 2111,
+  "replaced": 1,
+  "withdrawn": 0
+ },
+ "excel": {
+  "check_failed": 0,
+  "checked_at": "2026-10-11T01:10:29+00:00",
+  "files": 981,
+  "replaced": 0,
+  "withdrawn": 0
+ }
+}
