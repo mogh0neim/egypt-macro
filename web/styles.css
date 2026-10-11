@@ -1878,3 +1878,32 @@ footer {
    underline and a tooltip: enough to be honest without turning 223 series
    titles into a page of disclaimers. */
 .ar-ours { border-bottom: 1px dotted var(--text-3); cursor: help; }
+
+/* ---------- periods, citations and Arabic titles ----------
+ * The few rules the markup for those needs. On /ar/ the Arabic title leads and
+ * CBE's English title sits under it as .alt-en, the counterpart of .ar on the
+ * English site. */
+.alt-en {
+  display: block;
+  color: var(--text-2);
+  font-size: 1rem;
+  /* Under the Arabic title it translates, so on the right of an Arabic page,
+     though the line itself runs left to right. */
+  text-align: right;
+  margin: 0.1rem 0 0.9rem;
+  overflow-wrap: anywhere;
+}
+.result.rich .alt-en { grid-area: ar; font-size: 0.82rem; margin: 0; }
+.ours-note { margin: -0.5rem 0 0.9rem; }
+/* A tile's second line, when Miqyas holds nothing newer. */
+.starter .asof i { display: block; font-style: normal; white-space: normal; }
+.starter .asof .stale { color: var(--gold); }
+/* Code reads left to right on both sites; its comments may be Arabic. */
+[dir="rtl"] pre.code { direction: ltr; text-align: left; }
+/* The field guide: a code, then a sentence. */
+.guide-table td.name { min-width: 0; width: 32%; }
+.guide-table td:last-child { white-space: normal; text-align: start; font-family: var(--body); min-width: 12rem; }
+.take-away { margin-block: 1.5rem; }
+/* A Latin run in an Arabic citation moves to the next line whole rather than
+   breaking across two, where its halves read in the wrong order. */
+.cite bdi { display: inline-block; max-width: 100%; overflow-wrap: anywhere; }

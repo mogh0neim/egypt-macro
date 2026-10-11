@@ -667,6 +667,8 @@ const AR = {
   "data to": "بيانات حتى",
   "Republished by Miqyas": "أعاد نشرها مقياس",
   "build of": "نسخة الموقع بتاريخ",
+  "in English:": "بالإنجليزية:",
+  "id": "المعرّف",
   "The Arabic title is Miqyas's translation; CBE publishes this series under its English name.":
     "العنوان العربي ترجمة من مقياس، والبنك المركزي ينشر هذه السلسلة باسمها الإنجليزي.",
   "no newer reading held": "لا قراءة أحدث لدينا",
@@ -711,9 +713,9 @@ const AR = {
   "reserves": "الاحتياطي",
   "inflation": "التضخم",
   "exports": "الصادرات",
-  "tourists": "السياحة",
+  "tourists": "السائحين",
   "external debt": "الدين الخارجي",
-  "budget deficit": "عجز الموازنة",
+  "budget deficit": "العجز الكلي",
   "remittances": "تحويلات",
   "By subject": "حسب الموضوع",
   "All of it, in thirteen subjects": "كل شيء، في ثلاثة عشر موضوعًا",
@@ -1067,6 +1069,28 @@ const AR = {
   "The full list is": "القائمة الكاملة في الملف",
   "in the repository.": "في المستودع.",
   "How this is built, and what is not in it →": "كيف بُني هذا، وما ليس فيه ←",
+
+  /* ---------- the pre-rendered bodies and chrome (prerender.py) ---------- */
+  "Search Miqyas": "ابحث في مقياس",
+  "Results": "النتائج",
+  "{v} as of {d}, from the Central Bank of Egypt. {n} readings covering {from} to {to}.":
+    "{v} حتى {d}، من البنك المركزي المصري. عدد القراءات: {n}، من {from} إلى {to}.",
+  "How this is worked out:": "طريقة الحساب:",
+  "The last two dozen readings": "آخر أربع وعشرين قراءة",
+  "The whole series as JSON": "السلسلة كاملة بصيغة JSON",
+  "CSV, Parquet, SQLite and the API": "CSV وParquet وSQLite وواجهة البيانات",
+  "The CBE page this came from": "صفحة البنك المركزي التي جاءت منها",
+  "{n} series, from the Central Bank of Egypt, updated daily.": "السلاسل: {n}، من البنك المركزي المصري، تُحدَّث يوميًا.",
+  "Showing the first 400 of {n}.": "تظهر أول 400 من أصل {n}.",
+  "Document": "وثيقة",
+  "{n} pages": "الصفحات: {n}",
+  "The title is available in English only, as CBE lists it.": "العنوان متاح بالإنجليزية فقط، كما يدرجه البنك المركزي.",
+  "Published by the Central Bank of Egypt, indexed here so its text can be searched and quoted.":
+    "نشرها البنك المركزي المصري، ومفهرسة هنا ليمكن البحث في نصها والاقتباس منه.",
+  "The document on cbe.org.eg": "الوثيقة على موقع البنك المركزي",
+  "Search the whole archive": "ابحث في الأرشيف كله",
+  "This document is a scan with no text layer of its own. Its text was read by OCR and is not as reliable as the rest.":
+    "هذه الوثيقة صورة ممسوحة ضوئيًا بلا طبقة نصية خاصة بها. قُرئ نصها بالتعرّف الضوئي على الحروف، وهو أقل موثوقية من باقي النصوص.",
 };
 
 /* The translation, or the English it was given. A missing entry is English on

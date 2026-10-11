@@ -1816,9 +1816,11 @@ function citation(data, meta, status) {
   const en = data.title_en || id;
   const sep = RTL ? "، " : ", ";
   // Each piece as [html, text]; the text is what the copy button puts on the clipboard.
+  // On /ar/ the English title and the id are isolated one at a time, so a
+  // line break inside either cannot carry a bracket to the wrong end.
   const name = RTL && arTitle(data)
-    ? ["«" + esc(arTitle(data)) + "» (" + bdiLTR(esc(en) + "; " + esc(id)) + ")",
-       "«" + arTitle(data) + "» (" + en + "; " + id + ")"]
+    ? ["«" + esc(arTitle(data)) + "»" + sep + t("in English:") + " " + bdiLTR(esc(en)) + sep + t("id") + " " + bdiLTR(esc(id)),
+       "«" + arTitle(data) + "»" + sep + t("in English:") + " " + en + sep + t("id") + " " + id]
     : ["<i>" + esc(en) + "</i> (" + esc(id) + ")", en + " (" + id + ")"];
   const plain = (s) => [esc(s), s];
   const pieces = (data.derived
