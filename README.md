@@ -57,8 +57,9 @@ added, changed or removed.
 
 ### Coverage
 
-**More than 1,300 series and 420,000 observations**, from three sources: 30
-live endpoints, 981 Excel files, and figures read from press-release text. On
+**More than 1,300 series and 420,000 observations**, from four sources: 30
+live endpoints, 981 Excel files in CBE's archive, the Excel files on CBE's
+SDDS page, and figures read from press-release text. On
 top of that, about 1,500 documents with more than 50,000 pages of searchable
 text, quoted back with the match highlighted, and every MPC rate decision since
 June 2005. The exact counts for each build are in `status.json`.
@@ -77,9 +78,19 @@ June 2005. The exact counts for each build are in `status.json`.
 - **Prices**: headline, core, regulated-item and fresh-produce inflation, both
   year-on-year and month-on-month, back to January 2000.
 - **Auctions**: repo, deposit and foreign-exchange auctions.
-- **Reserves and remittances**: read from press-release text and dated by the
-  day of the release. CBE also publishes reserves monthly on its own site, and
-  that series can differ from the first print kept here.
+- **Reserves and remittances**: net international reserves, gross official
+  reserves, gold, SDRs, foreign currencies and loans to the IMF, monthly since
+  February 2004, from CBE's SDDS file (`EG.SDDS.RES.*`, dated to the end of the
+  month). The first print of each month's reserves (`EG.RES.NIR`) and the
+  remittances are read from press-release text and dated by the day of the
+  release; CBE revises the monthly series, so the two can differ.
+- **Money and banking to the latest month**: reserve money (M0), domestic
+  liquidity (M2) and its parts, deposits in local and foreign currency by
+  sector, domestic credit, and foreign assets and liabilities, monthly since
+  2004, read weekly from the Excel files on CBE's
+  [SDDS page](https://www.cbe.org.eg/en/economic-research/sdds) (`EG.SDDS.*`).
+  The latest months carry CBE's "preliminary" or "provisional" mark, recorded
+  per series as `marked` in the catalogue.
 - **Rate decisions**: every MPC statement back to June 2005, with a diff
   against the previous one. Where CBE's own archive records no decision, it is
   recovered from the published corridor series.
@@ -90,7 +101,8 @@ From the Excel archive, which is where the rest of Egypt's macro record lives:
 - **Balance of payments**, quarterly and annual, back to FY2004/05
 - **External and domestic debt**, by type and by debtor sector
 - **Banking surveys**: M2 and counterparts, domestic credit, deposits by
-  sector in pounds versus foreign currency
+  sector in pounds versus foreign currency, to June 2023, where CBE stopped
+  extending these files (the SDDS series above carry on from there)
 - **Foreign trade** by country and by degree of processing
 - **State budget**: revenue, expenditure, deficit and financing
 - **FDI, tourism, stock market indicators**
@@ -112,6 +124,10 @@ What is checked for revisions:
   keeps its entry with `withdrawn_on`. A changed archive figure counts as a
   revision only when a replaced file is behind it and the parser carries a
   `PARSER_VERSION`.
+- **The SDDS files**: read weekly. A file CBE brought up to date is downloaded
+  again and dated `changed_on` in `catalog/sdds_manifest.json`. A new month is
+  an SDDS update; a figure that changed counts as a revision when a replaced
+  file is behind it and `parse_sdds.py` kept its `PARSER_VERSION`.
 - **Press releases**: the newest are read again each day (`fetch_press.py
   --refresh N`). Reserves and remittances parsed from them, and every other
   series Miqyas computes, are never counted as revisions.
@@ -161,6 +177,8 @@ python ingest/summarise.py              # coverage and quality flags
 # weekly: the archive and the corpus
 python ingest/fetch_excel.py --download
 python ingest/parse_excel.py
+python ingest/fetch_sdds.py             # the files on CBE's SDDS page
+python ingest/parse_sdds.py
 python ingest/fetch_docs.py --download
 python ingest/extract_text.py
 python ingest/mpc_archive.py
@@ -326,6 +344,16 @@ EG.XL.BANK.CREDIT.DOMESTIC_CREDIT.CLAIMS_PRIVATE.LENDING   lending to the privat
   July. Monthly and quarterly series carry no suffix; `freq` in the catalogue
   says which, measured from the spacing of the data.
 
+SDDS ids read `EG.SDDS.<table>.<line>` and are named one by one in
+`parse_sdds.py`, in the order CBE prints the lines; a sheet whose lines no
+longer match stops the parse rather than minting new ids:
+
+```
+EG.SDDS.M2.TOTAL                       domestic liquidity (M2), EGP million
+EG.SDDS.DEP.LC.TIME_SAVING.HOUSEHOLD   households' time and saving deposits in pounds
+EG.SDDS.RES.NIR                        net international reserves, USD million, end of month
+```
+
 **Ids do not change.** From 11 October 2026 every series id is fixed: a
 published id keeps naming the same measure, and is not reused for anything
 else. If CBE renames a line or table so a series must take a new id, the old
@@ -361,7 +389,9 @@ series and date:
 
 `python tests/test_parse_excel.py` (or `python -m pytest tests`) checks the
 parser against 15 real CBE workbooks kept in `tests/fixtures/excel/`, with the
-numbers read off the sheets; the publish job runs it before every deploy.
+numbers read off the sheets; the publish job runs it before every deploy, and
+`python tests/test_parse_sdds.py` the same way for the SDDS parser, against
+three real files in `tests/fixtures/sdds/`.
 
 ### Guards
 
