@@ -1,9 +1,9 @@
 {
- "note": "When the Monetary Policy Committee meets next. CBE publishes the year's schedule on the page named in source_url and does not serve it through any API this project could scrape: the page renders the dates client-side, and /api/sitecore/MPCMeetings/GetMPCMeetingsDetails returns 404 to anything outside the page. So this file is entered by hand, from that page, and every entry records the day it was checked. Nothing else on this site is hand-entered.",
+ "note": "When the Monetary Policy Committee meets next. CBE publishes the year's schedule on the page named in source_url, which renders the dates client-side from POST /api/sitecore/MPCMeetings/GetMPCMeetingsDetails (a GET there answers 404). ingest/fetch_mpc_calendar.py reads that endpoint every day and rewrites the current and later years here; checked_on is the day the list last changed. If CBE cannot be read, the dates already here stay, so they can still be typed in by hand from that page.",
  "source_url": "https://www.cbe.org.eg/en/monetary-policy/mpc-meetings-schedule",
- "checked_on": "2026-09-18",
+ "checked_on": "2026-10-11",
  "warn_below": 2,
- "warning": "summarise.py warns when fewer than warn_below meetings are still in the future, and the daily run turns red, after it has saved the day's data, once none is left. CBE publishes the following year's schedule late in the preceding one, so this file expires quietly unless something shouts.",
+ "warning": "summarise.py --calendar warns on the run page when fewer than warn_below meetings are still in the future. It never turns the run red: CBE publishes the following year's schedule late in the preceding one.",
  "meetings": [
   { "date": "2026-02-12", "year": 2026 },
   { "date": "2026-04-02", "year": 2026 },
