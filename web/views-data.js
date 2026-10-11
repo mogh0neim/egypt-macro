@@ -67,7 +67,8 @@ function indicatorRow(s, opts) {
     // columns it summarises, which is exactly backwards: it says what they say,
     // in a quarter of the space.
     "<td>" + gauge(s.latest_value, s.lowest && s.lowest.value, s.highest && s.highest.value, { median: s.median }) + "</td>" +
-    '<td class="asof">' + shortDate(s.last) + "</td>" +
+    // At the size of the period: a day for a daily rate, "Aug 2026" for a month.
+    '<td class="asof">' + periodLabel(s.last, s) + "</td>" +
     "</tr>"
   );
 }
@@ -98,7 +99,12 @@ async function viewHome() {
       '<span class="spark-wrap">' + spark(sparks[c.id], { w: 120, h: 30, step: s.freq === "IRR" }) + "</span>" +
       '<span class="delta ' + dirClass(ch, s.unit) + '">' + changeCell(ch, s.unit) +
       "<i> " + esc(changeLabel(s.freq)) + "</i></span>" +
-      '<span class="asof">latest ' + shortDate(s.last) + "</span>" +
+      /* The period the figure is for, and apart from it what kind of date
+       * that is. "latest Oct 2026" on reserves was the press release's day
+       * read as a month; it now says released. A series Miqyas has had no new
+       * reading for says so on the tile, not only on its own page. */
+      '<span class="asof">' + whenLabel(s) +
+      (s.stale_days ? '<i class="stale">' + t("no newer reading held") + "</i>" : "") + "</span>" +
       '<span class="note">' + esc(c.note) + "</span></a>"
     );
   }).join("");
@@ -111,12 +117,12 @@ async function viewHome() {
 
   const counts = {};
   index.forEach((s) => { const k = topicOf(s); counts[k] = (counts[k] || 0) + 1; });
-  const topicGrid = TOPICS.filter((t) => counts[t.key]).map((t) =>
-    '<a class="topic-card" href="#/topic/' + t.key + '">' +
-    '<span class="ico" aria-hidden="true">' + t.icon + "</span>" +
-    "<h3>" + esc(t.name) + "</h3>" +
-    "<p>" + esc(t.blurb) + "</p>" +
-    '<span class="count">' + counts[t.key].toLocaleString() + " series</span></a>"
+  const topicGrid = TOPICS.filter((tp) => counts[tp.key]).map((tp) =>
+    '<a class="topic-card" href="#/topic/' + tp.key + '">' +
+    '<span class="ico" aria-hidden="true">' + tp.icon + "</span>" +
+    "<h3>" + esc(tp.name) + "</h3>" +
+    "<p>" + esc(tp.blurb) + "</p>" +
+    '<span class="count">' + num(counts[tp.key]) + " " + t("series") + "</span></a>"
   ).join("");
 
   const latestMPC = mpc && mpc.statements && mpc.statements[mpc.statements.length - 1];
@@ -137,25 +143,27 @@ async function viewHome() {
     ? statements.filter((s) => s.date <= dep.last && Date.parse(dep.last) - Date.parse(s.date) <= 21 * 86400000).pop()
     : null;
   const level = dep && lend
-    ? "Overnight deposit " + esc(String(dep.latest_value)) + "%, overnight lending " +
-      esc(String(lend.latest_value)) + "%, in force since " +
-      (setBy ? "the " + niceDate(setBy.date) + " decision" : niceDate(dep.last)) +
+    ? (setBy
+        ? tf("Overnight deposit {d}%, overnight lending {l}%, in force since the {date} decision",
+               { d: esc(String(dep.latest_value)), l: esc(String(lend.latest_value)), date: niceDate(setBy.date) })
+        : tf("Overnight deposit {d}%, overnight lending {l}%, in force since {date}",
+               { d: esc(String(dep.latest_value)), l: esc(String(lend.latest_value)), date: niceDate(dep.last) })) +
       (latestMPC.decision === "hold" && (!setBy || latestMPC.date > setBy.date)
-        ? " and held at the " + niceDate(latestMPC.date) + " meeting"
+        ? tf(" and held at the {date} meeting", { date: niceDate(latestMPC.date) })
         : "") + "."
     : latestMPC && latestMPC.deposit_rate && latestMPC.lending_rate
-    ? "Overnight deposit " + esc(latestMPC.deposit_rate) + "%, overnight lending " +
-      esc(latestMPC.lending_rate) + "%."
+    ? tf("Overnight deposit {d}%, overnight lending {l}%.", { d: esc(latestMPC.deposit_rate), l: esc(latestMPC.lending_rate) })
     : "";
   const mpcCard = latestMPC
     ? '<a class="wide-card" href="#/rates">' +
-      '<p class="eyebrow">' + (next ? "Next rate decision" : "Latest rate decision") + "</p>" +
+      '<p class="eyebrow">' + t(next ? "Next rate decision" : "Latest rate decision") + "</p>" +
       (next
-        ? "<h3>" + niceDate(next.date) + ", " + esc(countdownWords(next.days)) + "</h3>"
-        : "<h3>" + niceDate(latestMPC.date) + ", the committee " +
-          ({ hold: "left rates unchanged", cut: "cut", hike: "raised" }[latestMPC.decision] || "met") + "</h3>") +
-      "<p>" + level + " Every decision back to June 2005, with what changed in the wording each time.</p>" +
-      '<span class="go">See all ' + (mpc.count || 0) + " decisions →</span></a>"
+        ? "<h3>" + niceDate(next.date) + (RTL ? "، " : ", ") + esc(countdownWords(next.days)) + "</h3>"
+        : "<h3>" + tf({ hold: "{date}, the committee left rates unchanged", cut: "{date}, the committee cut",
+                          hike: "{date}, the committee raised" }[latestMPC.decision] || "{date}, the committee met",
+                        { date: niceDate(latestMPC.date) }) + "</h3>") +
+      "<p>" + level + " " + t("Every decision back to June 2005, with what changed in the wording each time.") + "</p>" +
+      '<span class="go">' + tf("See all {n} decisions →", { n: num(mpc.count || 0) }) + "</span></a>"
     : "";
 
   app.innerHTML =
@@ -190,7 +198,7 @@ async function viewHome() {
     "<h2>" + t("Headline indicators") + "</h2>" +
     '<p class="lede">' + t("Latest reading, the change since the one before it, and where that sits between the series' own record low and high.") + "</p>" +
     '<div class="table-scroll"><table class="indicators"><thead><tr>' +
-    '<th class="star-col"><span class="sr-only">On your desk</span></th>' +
+    '<th class="star-col"><span class="sr-only">' + t("On your desk") + "</span></th>" +
     "<th>" + t("Series|one row of a table") + "</th><th>" + t("Latest") + "</th><th>" + t("Change") + "</th>" +
     '<th class="hide-sm">' + t("Lowest") + '</th><th class="hide-sm">' + t("Highest") + "</th>" +
     "<th>" + t("Where it sits") + "</th><th>" + t("As of") + "</th>" +
@@ -205,7 +213,7 @@ async function viewHome() {
     '<section class="section band"><div class="wrap">' +
     '<p class="eyebrow">' + t("Browse") + "</p>" +
     "<h2>" + t("Everything, by subject") + "</h2>" +
-    '<p class="lede">' + t("Thirteen topics over") + " " + index.length.toLocaleString() +
+    '<p class="lede">' + t("Thirteen topics over") + " " + num(index.length) +
     " " + t("series. No search box required. Pick a subject and read down.") + "</p>" +
     '<div class="topic-grid">' + topicGrid + moneyMarketTopicCard() + "</div>" +
     "</div></section>" +
@@ -239,7 +247,7 @@ async function viewHome() {
     '<a class="wide-card" href="#/data">' +
     '<p class="eyebrow">' + t("Take it with you") + "</p>" +
     "<h3>" + t("Parquet, SQLite, CSV, and a keyless API") + "</h3>" +
-    "<p>" + t("All") + " " + index.length.toLocaleString() + " " +
+    "<p>" + t("All") + " " + num(index.length) + " " +
     t("series in whichever shape suits you, updated daily. No key and no account, and a SHA-256 for every file so any copy can be checked against it.") + "</p>" +
     '<span class="go">' + t("Downloads and API →") + "</span></a>" +
     "</div></div></section>";
@@ -271,9 +279,10 @@ function nilometerBand(fx) {
     "</div>" +
     (mark
       ? '<div class="nilo-mark">' + mark +
-        '<p class="foot-note">Today\'s dollar rate, against every rate CBE has published since 2005. ' +
-        "Low " + fmt(fx.lowest.value, fx.unit) + " in " + shortDate(fx.lowest.period) +
-        ", high " + fmt(fx.highest.value, fx.unit) + " in " + shortDate(fx.highest.period) + ".</p></div>"
+        '<p class="foot-note">' +
+        tf("Today's dollar rate, against every rate CBE has published since 2005. Low {lo} in {lod}, high {hi} in {hid}.",
+           { lo: fmt(fx.lowest.value, fx.unit), lod: shortDate(fx.lowest.period),
+             hi: fmt(fx.highest.value, fx.unit), hid: shortDate(fx.highest.period) }) + "</p></div>"
       : "") +
     "</div></div></section>"
   );
@@ -316,10 +325,16 @@ function seriesResultRow(s, sparks) {
     '<span class="title">' + titleHTML(s) + "</span>" +
     '<span class="spk">' + spark(sparks[s.series_id], { w: 70, h: 20, step: s.freq === "IRR" }) + "</span>" +
     '<span class="v">' + fmt(s.latest_value, s.unit) + "</span>" +
-    titleAR(s) +
-    '<span class="sub">' + esc(s.series_id) + " · " + (s.n || 0).toLocaleString() + " readings · " +
-    shortDate(s.first) + " – " + shortDate(s.last) + (s.unit ? " · " + esc(unitShort(s.unit)) : "") +
-    (s.stale_days ? " · no newer data held" : "") +
+    titleAlt(s) +
+    /* Each piece isolated on its own: on /ar/ an id, a date range and "$ mn"
+     * in one run came out as "mn $" with the dates the wrong way round. */
+    '<span class="sub">' + [
+      bdiLTR(esc(s.series_id)),
+      tf("{n} readings", { n: num(s.n) }),
+      tf("{from} to {to}", { from: periodLabel(s.first, s), to: periodLabel(s.last, s) }),
+      s.unit ? "<bdi>" + esc(unitShort(s.unit)) + "</bdi>" : "",
+      s.stale_days ? t("no newer data held") : "",
+    ].filter(Boolean).join(" · ") +
     "</span></a></div>"
   );
 }
@@ -339,32 +354,29 @@ async function viewSeriesIndex(preset) {
 
   app.innerHTML =
     '<section class="section"><div class="wrap">' +
-    '<p class="eyebrow">' + index.length.toLocaleString() + " series</p>" +
-    "<h2>Find a series, or read down the subjects</h2>" +
-    '<p class="lede">Type a word if you know one. If you would rather not, every subject is ' +
-    "below and each opens onto the CBE tables it came from, so you can read a whole balance " +
-    "of payments rather than hunt one line of it. The star on any result keeps it in your " +
-    '<a href="#/favourites">favourites</a>.</p>' +
-    '<input class="search" id="q" placeholder="dollar, treasury bill yield, تحويلات…" autocomplete="off">' +
+    '<p class="eyebrow">' + num(index.length) + " " + t("series") + "</p>" +
+    "<h2>" + t("Find a series, or read down the subjects") + "</h2>" +
+    '<p class="lede">' + t("Type a word if you know one. If you would rather not, every subject is below and each opens onto the CBE tables it came from, so you can read a whole balance of payments rather than hunt one line of it. The star on any result keeps it in your") +
+    ' <a href="#/favourites">' + t("favourites") + "</a>.</p>" +
+    '<input class="search" id="q" placeholder="' + esc(t("dollar, treasury bill yield, تحويلات…")) + '" autocomplete="off">' +
     '<div class="controls suggest">' +
-    '<span class="hint">Try:</span>' +
-    FIND_SUGGESTIONS.map((s) => '<button class="chip" data-sug="' + esc(s) + '">' + esc(s) + "</button>").join("") +
+    '<span class="hint">' + t("Try:") + "</span>" +
+    FIND_SUGGESTIONS.map((s) => '<button class="chip" data-sug="' + esc(t(s)) + '">' + esc(t(s)) + "</button>").join("") +
     "</div>" +
     '<div class="results" id="results"></div>' +
     "</div></section>" +
 
     '<section class="section band" id="subjects"><div class="wrap">' +
-    '<p class="eyebrow">By subject</p>' +
-    "<h2>All of it, in thirteen subjects</h2>" +
-    '<p class="lede">The last card is not a subject: it is a screen assembled out of ' +
-    "several of them, for a desk that reads the same numbers every day.</p>" +
+    '<p class="eyebrow">' + t("By subject") + "</p>" +
+    "<h2>" + t("All of it, in thirteen subjects") + "</h2>" +
+    '<p class="lede">' + t("The last card is not a subject: it is a screen assembled out of several of them, for a desk that reads the same numbers every day.") + "</p>" +
     '<div class="topic-grid">' +
-    TOPICS.filter((t) => counts[t.key]).map((t) =>
-      '<a class="topic-card" href="#/topic/' + t.key + '">' +
-      '<span class="ico" aria-hidden="true">' + t.icon + "</span>" +
-      "<h3>" + esc(t.name) + "</h3><p>" + esc(t.blurb) + "</p>" +
-      '<span class="count">' + counts[t.key].toLocaleString() + " series · " +
-      obs[t.key].toLocaleString() + " observations</span></a>"
+    TOPICS.filter((tp) => counts[tp.key]).map((tp) =>
+      '<a class="topic-card" href="#/topic/' + tp.key + '">' +
+      '<span class="ico" aria-hidden="true">' + tp.icon + "</span>" +
+      "<h3>" + esc(tp.name) + "</h3><p>" + esc(tp.blurb) + "</p>" +
+      '<span class="count">' + tf("{s} series · {o} observations", { s: num(counts[tp.key]), o: num(obs[tp.key]) }) +
+      "</span></a>"
     ).join("") +
     moneyMarketTopicCard() +
     "</div></div></section>";
@@ -380,10 +392,9 @@ async function viewSeriesIndex(preset) {
     }
     const hits = searchSeries(typed, 100);
     out.innerHTML = hits.length
-      ? '<p class="count-line">' + hits.length + (hits.length === 100 ? "+" : "") + " matching series</p>" +
+      ? '<p class="count-line">' + tf("{n} matching series", { n: hits.length + (hits.length === 100 ? "+" : "") }) + "</p>" +
         hits.map((s) => seriesResultRow(s, sparks)).join("")
-      : '<p class="empty">Nothing matches “' + esc(typed) + '”. ' +
-        "Try a broader word, or pick a subject below.</p>";
+      : '<p class="empty">' + tf("Nothing matches “{q}”. Try a broader word, or pick a subject below.", { q: esc(typed) }) + "</p>";
   };
 
   input.addEventListener("input", run);
@@ -404,9 +415,10 @@ async function viewTopic(key) {
   app.innerHTML = skeleton(8);
   const topic = topicByKey(key);
   if (!topic) {
-    app.innerHTML = '<div class="wrap"><p class="empty">No such topic. <a href="#/series">See all thirteen</a>.</p></div>';
+    app.innerHTML = '<div class="wrap"><p class="empty">' + t("No such topic.") + ' <a href="#/series">' + t("See all thirteen") + "</a>.</p></div>";
     return;
   }
+  pageTitle(topic.name);
 
   const index = await loadIndex();
   const sparks = await loadSparks();
@@ -429,50 +441,49 @@ async function viewTopic(key) {
   const seriesRow = (s) => {
     const c = changeOf(s);
     return (
-      '<tr data-title="' + esc(((s.title_en || "") + " " + s.series_id).toLowerCase()) + '" data-freq="' + esc(s.freq || "") + '">' +
+      '<tr data-title="' + esc(((s.title_en || "") + " " + arTitle(s) + " " + s.series_id).toLowerCase()) + '" data-freq="' + esc(s.freq || "") + '">' +
       '<td class="star-col">' + starButton(s.series_id) + "</td>" +
-      '<td class="name"><a href="#/s/' + encodeURIComponent(s.series_id) + '">' +
-      (ARABIC_RE.test(lineOf(s)) ? '<span dir="auto">' + esc(lineOf(s)) + "</span>" : esc(lineOf(s))) +
-      "</a></td>" +
+      '<td class="name"><a href="#/s/' + encodeURIComponent(s.series_id) + '">' + lineHTML(s) + "</a></td>" +
       '<td class="sparkcell">' + spark(sparks[s.series_id], { w: 82, h: 22, step: s.freq === "IRR" }) + "</td>" +
       "<td>" + fmt(s.latest_value, s.unit) + '<i class="u">' + esc(unitTag(s.unit)) + "</i></td>" +
       '<td class="' + dirClass(c, s.unit) + ' hide-sm">' + changeCell(c, s.unit) + "</td>" +
-      '<td class="asof">' + shortDate(s.first) + " – " + shortDate(s.last) + "</td>" +
+      '<td class="asof">' + tf("{from} to {to}", { from: periodLabel(s.first, s), to: periodLabel(s.last, s) }) + "</td>" +
       '<td class="asof hide-sm">' + esc(FREQ_LABEL[s.freq] || s.freq || "") + "</td>" +
       "</tr>"
     );
   };
 
   const accordions = ordered.map((entry, i) => {
-    const name = entry[0], rows = entry[1];
+    const rows = entry[1];
     rows.sort((a, b) => (a.title_en || "").localeCompare(b.title_en || ""));
     const covers = rows.map((r) => r.first).filter(Boolean).sort()[0];
     return (
       "<details class=\"group\"" + (i === 0 ? " open" : "") + ">" +
-      "<summary><span class=\"g-name\">" + esc(name) + "</span>" +
-      '<span class="g-meta">' + rows.length + " series · from " + shortDate(covers) + "</span></summary>" +
+      "<summary><span class=\"g-name\">" + labelHTML(tableText(rows[0]), rows[0]) + "</span>" +
+      '<span class="g-meta">' + tf("{n} series · from {d}", { n: num(rows.length), d: shortDate(covers) }) + "</span></summary>" +
       '<div class="table-scroll"><table class="indicators compact"><thead><tr>' +
-      '<th class="star-col"><span class="sr-only">On your desk</span></th>' +
-      "<th>Line</th><th></th><th>Latest</th>" +
-      '<th class="hide-sm">Change</th><th>Covers</th><th class="hide-sm">Published</th>' +
+      '<th class="star-col"><span class="sr-only">' + t("On your desk") + "</span></th>" +
+      "<th>" + t("Line") + "</th><th></th><th>" + t("Latest") + "</th>" +
+      '<th class="hide-sm">' + t("Change") + "</th><th>" + t("Covers") + '</th><th class="hide-sm">' + t("Published") + "</th>" +
       "</tr></thead><tbody>" + rows.map(seriesRow).join("") + "</tbody></table></div></details>"
     );
   }).join("");
 
   app.innerHTML =
     '<div class="wrap">' +
-    crumbs([{ label: "Series", href: "#/series" }, { label: topic.name }]) +
+    crumbs([{ label: t("Series"), href: "#/series" }, { label: topic.name }]) +
     '<section class="section topic-head">' +
-    '<p class="eyebrow">' + topic.icon + " Topic</p>" +
+    '<p class="eyebrow">' + topic.icon + " " + t("Topic") + "</p>" +
     "<h2>" + esc(topic.name) + "</h2>" +
-    '<p class="lede">' + esc(topic.blurb) + " " + mine.length.toLocaleString() +
-    " series across " + ordered.length + (ordered.length === 1 ? " CBE table." : " CBE tables.") + "</p>" +
+    '<p class="lede">' + esc(topic.blurb) + " " +
+    tf(ordered.length === 1 ? "{n} series across 1 CBE table." : "{n} series across {k} CBE tables.",
+       { n: num(mine.length), k: num(ordered.length) }) + "</p>" +
     '<div class="controls">' +
-    '<input class="filter" id="tfilter" placeholder="Narrow this topic (optional)" autocomplete="off">' +
+    '<input class="filter" id="tfilter" placeholder="' + esc(t("Narrow this topic (optional)")) + '" autocomplete="off">' +
     '<span class="spacer"></span>' +
-    '<button class="chip" data-freq="" aria-pressed="true">Any frequency</button>' +
+    '<button class="chip" data-freq="" aria-pressed="true">' + t("Any frequency") + "</button>" +
     freqs.map((f) => '<button class="chip" data-freq="' + f + '" aria-pressed="false">' + esc(FREQ_LABEL[f] || f) + "</button>").join("") +
-    '<button class="chip" id="expand-all">Open all tables</button>' +
+    '<button class="chip" id="expand-all" data-open="0">' + t("Open all tables") + "</button>" +
     "</div>" +
     '<div id="groups">' + accordions + "</div>" +
     "</section>" +
@@ -507,10 +518,13 @@ async function viewTopic(key) {
       apply();
     })
   );
+  // Which way the button points is kept on it, not read off its words, which
+  // are Arabic on /ar/.
   document.getElementById("expand-all").addEventListener("click", (e) => {
-    const opening = e.target.textContent.indexOf("Open") === 0;
+    const opening = e.target.dataset.open !== "1";
     document.querySelectorAll("#groups details.group").forEach((d) => (d.open = opening));
-    e.target.textContent = opening ? "Close all tables" : "Open all tables";
+    e.target.dataset.open = opening ? "1" : "0";
+    e.target.textContent = t(opening ? "Close all tables" : "Open all tables");
   });
 }
 
@@ -532,31 +546,32 @@ function qualityNotice(meta, data) {
     /* What Miqyas holds, not what CBE has done. The flag measures the age of
      * the newest stored reading, so it cannot tell a source that stopped from
      * a newer release Miqyas has not picked up, and it must not pretend to. */
-    const cadence = (FREQ_LABEL[data.freq] || "").toLowerCase();
+    const cadence = FREQ_LABEL[data.freq] || "";
     out.push(
-      '<div class="notice"><h3>No newer reading here</h3>' +
-      "<p>Miqyas holds no value for this series after " + niceDate(meta.last) + ": " +
-      meta.stale_days.toLocaleString() + " days without a new " +
-      (cadence ? esc(cadence) + " reading" : "reading") +
-      ". The source may have stopped, or Miqyas may not have picked up a newer release" +
-      (data.source_url || data.source_file ? ". Check the CBE source linked below." : ".") +
+      '<div class="notice"><h3>' + t("No newer reading here") + "</h3>" +
+      "<p>" + tf(cadence
+        ? "Miqyas holds no value for this series after {d}: {n} days without a new reading ({f})."
+        : "Miqyas holds no value for this series after {d}: {n} days without a new reading.",
+        { d: periodLabel(meta.last, meta), n: num(meta.stale_days), f: esc(cadence.toLowerCase()) }) + " " +
+      t("The source may have stopped, or Miqyas may not have picked up a newer release.") +
+      (data.source_url || data.source_file ? " " + t("Check the CBE source linked below.") : "") +
       "</p></div>"
     );
   }
   if (meta.zero_values) {
     out.push(
-      '<div class="notice"><h3>' + meta.zero_values.toLocaleString() +
-      " of these readings are exactly zero</h3>" +
-      "<p>CBE publishes a zero where no rate was set rather than leaving the cell " +
-      "empty, and they are reproduced here as published rather than treated as " +
-      "missing. An average taken across this series will be pulled toward zero.</p></div>"
+      '<div class="notice"><h3>' + tf("{n} of these readings are exactly zero", { n: num(meta.zero_values) }) + "</h3>" +
+      "<p>" + t("CBE publishes a zero where no rate was set rather than leaving the cell empty, and they are reproduced here as published rather than treated as missing. An average taken across this series will be pulled toward zero.") +
+      "</p></div>"
     );
   }
   /* Anything summarise.py flags that build_exports could not classify. Empty in
    * the catalogue as it stands, and here so that a new kind of flag shows up on
-   * the page by itself rather than waiting for someone to notice it. */
+   * the page by itself rather than waiting for someone to notice it. The flag
+   * is English prose from the build, so on /ar/ it is held left to right. */
   (meta.flags || []).forEach((f) =>
-    out.push('<div class="notice"><h3>A note on this series</h3><p>' + esc(f) + "</p></div>")
+    out.push('<div class="notice"><h3>' + t("A note on this series") + "</h3><p" +
+      (RTL ? ' dir="ltr" lang="en"' : "") + ">" + esc(f) + "</p></div>")
   );
   return out.join("");
 }
@@ -568,17 +583,17 @@ function qualityNotice(meta, data) {
  * not a fact about the economy, it is a fact about dividing by almost nothing,
  * so it is only shown where it is readable -- and never on a series already
  * measured in percent, where the move in points is the thing that matters and
- * the ratio is noise. */
-function biggestMove(move, unit) {
+ * the ratio is noise. Signed figures are held left to right on /ar/. */
+function biggestMove(move, unit, meta) {
   if (!move || move.change === null || move.change === undefined) return "";
   const tag = unitTag(unit);
-  const size = (move.change > 0 ? "+" : "-") + fmtChange(move.change, unit) + (tag ? " " + tag : "");
+  const size = isoLTR((move.change > 0 ? "+" : "-") + fmtChange(move.change, unit)) + (tag ? " " + tag : "");
   const readable = Math.abs(move.pct_change) <= 500 && !/percent/i.test(unit || "");
-  return (
-    "Biggest single move " + size +
-    (readable ? " (" + (move.pct_change > 0 ? "+" : "") + move.pct_change.toFixed(1) + "%)" : "") +
-    " on " + niceDate(move.period) + "."
-  );
+  return tf("Biggest single move {size}{pct} on {d}.", {
+    size: size,
+    pct: readable ? " (" + isoLTR((move.pct_change > 0 ? "+" : "") + move.pct_change.toFixed(1) + "%") + ")" : "",
+    d: periodLabel(move.period, meta),
+  });
 }
 
 /* The graduated column, at full width, with the record low and high dated and
@@ -592,20 +607,19 @@ function whereItSits(meta, unit) {
   const hasMedian = meta.median !== null && meta.median !== undefined && meta.median !== 0;
   const note = [
     hasMedian
-      ? "The gold mark is the median of " + (meta.n || 0).toLocaleString() +
-        " readings, " + fmt(meta.median, unit) + "."
+      ? tf("The gold mark is the median of {n} readings, {m}.", { n: num(meta.n), m: fmt(meta.median, unit) })
       : "",
     hasMedian ? vsMedian(meta.latest_value, meta.median) : "",
-    biggestMove(meta.biggest_move, unit),
+    biggestMove(meta.biggest_move, unit, meta),
   ].filter(Boolean).join(" ");
 
   return (
     '<section class="where">' +
-    '<p class="eyebrow">Where this sits in its own record</p>' +
+    '<p class="eyebrow">' + t("Where this sits in its own record") + "</p>" +
     gauge(meta.latest_value, lo.value, hi.value, { w: 1000, h: 26, cls: "wide", median: meta.median }) +
     '<div class="gauge-ends">' +
-    "<span>lowest <b>" + fmt(lo.value, unit) + "</b><i>" + niceDate(lo.period) + "</i></span>" +
-    '<span class="hi">highest <b>' + fmt(hi.value, unit) + "</b><i>" + niceDate(hi.period) + "</i></span>" +
+    "<span>" + t("lowest") + " <b>" + fmt(lo.value, unit) + "</b><i>" + periodLabel(lo.period, meta) + "</i></span>" +
+    '<span class="hi">' + t("highest") + " <b>" + fmt(hi.value, unit) + "</b><i>" + periodLabel(hi.period, meta) + "</i></span>" +
     "</div>" +
     (note ? '<p class="where-note">' + esc(note) + "</p>" : "") +
     "</section>"
@@ -613,25 +627,26 @@ function whereItSits(meta, unit) {
 }
 
 /* The readings themselves, newest first. A chart answers "what shape is this";
- * only a table answers "what was the number on the third". */
-function observationsTable(points, unit) {
+ * only a table answers "what was the number on the third". Each period is
+ * written at its own size (periodLabel), and the heading says which size. */
+function observationsTable(points, unit, meta) {
   const CAP = 500;
   const rows = points.slice(-CAP).reverse();
+  const freq = meta && FREQ_LABEL[meta.freq];
   return (
     '<p class="count-line">' +
     (points.length > CAP
-      ? "Newest first. The most recent " + rows.length.toLocaleString() +
-        " of " + points.length.toLocaleString() + " readings in this range."
-      : "Newest first. All " + rows.length.toLocaleString() + " readings in this range.") +
+      ? tf("Newest first. The most recent {n} of {all} readings in this range.", { n: num(rows.length), all: num(points.length) })
+      : tf("Newest first. All {n} readings in this range.", { n: num(rows.length) })) +
     "</p>" +
     '<div class="table-scroll"><table class="indicators compact"><thead><tr>' +
-    "<th>Period</th><th>Value</th><th>Change</th>" +
+    "<th>" + t("Period") + (freq ? " (" + esc(freq.toLowerCase()) + ")" : "") + "</th><th>" + t("Value") + "</th><th>" + t("Change") + "</th>" +
     "</tr></thead><tbody>" +
     rows.map((p, i) => {
       const prev = rows[i + 1];
       const c = prev ? p[1] - prev[1] : null;
       return (
-        '<tr><td class="period">' + niceDate(p[0]) + "</td>" +
+        '<tr><td class="period">' + periodLabel(p[0], meta) + "</td>" +
         "<td>" + fmt(p[1], unit) + "</td>" +
         '<td class="' + dirClass(c, unit) + '">' + (prev ? changeCell(c, unit) : "—") + "</td></tr>"
       );
@@ -656,31 +671,36 @@ async function viewSeries(id) {
      * offering what the id nearly matches is the difference between a dead end
      * and one more click. */
     const near = nearestSeries(id, 5);
+    pageTitle(t("There is no series with that id"));
     app.innerHTML =
       '<div class="wrap">' +
-      crumbs([{ label: "Series", href: "#/series" }, { label: "Not found" }]) +
+      crumbs([{ label: t("Series"), href: "#/series" }, { label: t("Not found") }]) +
       '<section class="section">' +
-      "<h2>There is no series with that id</h2>" +
-      '<p class="lede">Nothing here is called <code class="series-id">' + esc(id) + "</code>. " +
+      "<h2>" + t("There is no series with that id") + "</h2>" +
+      '<p class="lede">' + t("Nothing here is called") + ' <code class="series-id">' + esc(id) + "</code>. " +
       (near.length
-        ? "These are the closest things in the catalogue."
-        : "Nothing in the catalogue looks close to it, so it may be from an older version of the site.") +
+        ? t("These are the closest things in the catalogue.")
+        : t("Nothing in the catalogue looks close to it, so it may be from an older version of the site.")) +
       "</p>" +
       (near.length
         ? '<div class="near">' +
           near.map((s) =>
             '<a class="result" href="#/s/' + encodeURIComponent(s.series_id) + '">' +
             '<span class="title">' + titleHTML(s) + "</span>" +
-            '<span class="sub">' + esc(s.series_id) + " · " + (s.n || 0).toLocaleString() + " readings</span>" +
+            '<span class="sub">' + bdiLTR(esc(s.series_id)) + " · " + tf("{n} readings", { n: num(s.n) }) + "</span>" +
             "</a>").join("") +
           "</div>"
         : "") +
       '<div class="controls">' +
-      '<a class="chip solid" href="#/series">Find or browse series</a>' +
-      '<a class="chip" href="#/">Overview</a>' +
+      '<a class="chip solid" href="#/series">' + t("Find or browse series") + "</a>" +
+      '<a class="chip" href="#/">' + t("Overview") + "</a>" +
       "</div></section></div>";
     return;
   }
+  // The build the page is from, for the citation. Already fetched by the
+  // freshness strip, so this is normally a cache hit.
+  const status = await loadStatus();
+  pageTitle(titleText(data));
 
   const topicKey = topicOf(data);
   const topic = topicByKey(topicKey);
@@ -716,25 +736,24 @@ async function viewSeries(id) {
     let sets = base, units = unit, labels = null;
     // What a comparison did, or why it was not drawn. Empty with no comparison.
     let compared = "";
+    const other = compareId ? await loadSeries(compareId).catch(() => null) : null;
 
-    if (compareId) {
-      const other = await loadSeries(compareId).catch(() => null);
-      if (other) {
-        // Rebased at one shared date, or as published when neither can be
-        // rebased and they share a unit, or not drawn together at all.
-        const pair = comparePair(applyRange(data.observations, range, ranges), data.unit,
-                                 applyRange(other.observations, range, ranges), other.unit);
-        compared = pair.note;
-        if (pair.sets) {
-          sets = pair.sets;
-          units = pair.units;
-          labels = [data.title_en || id, other.title_en || compareId];
-        }
+    if (other) {
+      // Rebased at one shared date, or as published when neither can be
+      // rebased and they share a unit, or not drawn together at all.
+      const pair = comparePair(applyRange(data.observations, range, ranges), data.unit,
+                               applyRange(other.observations, range, ranges), other.unit);
+      compared = pair.note;
+      if (pair.sets) {
+        sets = pair.sets;
+        units = pair.units;
+        labels = [titleText(data), titleText(other)];
       }
     }
 
     shown.points = isMulti(sets) ? sets[0] : sets;
     shown.unit = Array.isArray(units) ? units[0] : units;
+    // The note travels inside the CSV, which is written in English.
     shown.note =
       "Range: " + range + ". " +
       (labels ? compared + "." : TRANSFORMS[transform].label + ".");
@@ -754,19 +773,19 @@ async function viewSeries(id) {
     });
     readoutSlot().innerHTML = last
       ? '<span class="val">' + fmt(last[1], shown.unit, digitsFor(shown.points)) + "</span>" +
-        '<span class="when">' + niceDate(last[0]) + "</span>" +
+        '<span class="when">' + periodLabel(last[0], data) + "</span>" +
         "<span>" + esc(compared || TRANSFORMS[transform].label) + "</span>"
-      : '<span class="empty">Nothing in this range.</span>';
+      : '<span class="empty">' + t("Nothing in this range.") + "</span>";
     armLines(document.getElementById("sc"));
     wireHover(document.getElementById("sc"), sets, units, readoutSlot(), labels);
 
-    document.getElementById("obs-slot").innerHTML = observationsTable(shown.points, shown.unit);
+    document.getElementById("obs-slot").innerHTML = observationsTable(shown.points, shown.unit, data);
 
     document.querySelectorAll("[data-range]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.range === range)));
     document.querySelectorAll("[data-transform]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.transform === transform)));
     document.getElementById("legend").innerHTML = labels
       ? '<span class="item"><span class="key s0"></span>' + titleHTML(data) + "</span>" +
-        '<span class="item"><span class="key s1"></span>' + esc((state.byId.get(compareId) || {}).title_en || compareId) + "</span>"
+        '<span class="item"><span class="key s1"></span>' + titleHTML(state.byId.get(compareId) || other) + "</span>"
       : "";
   };
 
@@ -775,42 +794,54 @@ async function viewSeries(id) {
   // The Excel archive is CBE's numbers on dates Miqyas reads off the sheet, so
   // it is neither "as published" nor computed, and says so.
   const isExcel = data.dataset === "excel_archive";
+  const cite = citation(data, meta, status);
 
   // Comparison candidates: siblings first, then the headline series, so the
   // dropdown is useful whether you want context inside the same table or
   // against the pound.
-  const compareOptions = [{ id: "", label: "Compare with… (nothing selected)" }]
-    .concat(siblings.slice(0, 25).map((s) => ({ id: s.series_id, label: lineOf(s) + " (same table)" })))
+  const compareOptions = [{ id: "", label: t("Compare with… (nothing selected)") }]
+    .concat(siblings.slice(0, 25).map((s) => ({ id: s.series_id, label: tf("{line} (same table)", { line: lineText(s) }) })))
     .concat(STARTERS.filter((c) => c.id !== id && state.byId.get(c.id))
-      .map((c) => ({ id: c.id, label: (state.byId.get(c.id).title_en || c.id) })));
+      .map((c) => ({ id: c.id, label: titleText(state.byId.get(c.id)) })));
+
+  // A computed series names its method. The eight methods in the catalogue
+  // have Arabic in the dictionary, keyed on the English; a new one stays
+  // English, held left to right.
+  const method = esc(t(data.method || ""));
+  const methodHTML = RTL && !ARABIC_RE.test(method) ? '<span dir="ltr" lang="en">' + method + "</span>" : method;
 
   app.innerHTML =
     '<div class="wrap">' +
     crumbs([
-      { label: "Series", href: "#/series" },
-      topic ? { label: topic.name, href: "#/topic/" + topic.key } : { label: "Other" },
-      { label: table },
+      { label: t("Series"), href: "#/series" },
+      topic ? { label: topic.name, href: "#/topic/" + topic.key } : { label: t("Other") },
+      { label: tableText(data), html: labelHTML(tableText(data), data) },
     ]) +
     '<div class="series-head">' +
     '<span class="series-id">' + esc(data.series_id) + "</span>" +
     "<h1>" + titleHTML(data) + "</h1>" +
-    titleAR(data) +
+    titleAlt(data) +
+    // The mark, said in words where a reader cannot hover.
+    (RTL && arTitle(data) && data.title_ar_source === "miqyas"
+      ? '<p class="foot-note ours-note">' + t("Translated by Miqyas. CBE publishes no Arabic name for this series.") + "</p>"
+      : "") +
     '<div class="big-figure">' +
     '<span class="v">' + fmt(stats.latest_value, data.unit) + "</span>" +
-    '<span class="u">' + esc(unitTag(data.unit) || (data.unit ? "" : "no unit stated")) + "</span>" +
+    '<span class="u">' + esc(unitTag(data.unit) || (data.unit ? "" : t("no unit stated"))) + "</span>" +
     '<span class="d ' + dirClass(change, data.unit) + '">' + changeCell(change, data.unit) +
     " " + esc(changeLabel(data.freq)) + "</span>" +
-    '<span class="asof">as of ' + niceDate(stats.last) + " · " + staleness(stats.last) + "</span>" +
+    '<span class="asof">' + tf("as of {d}", { d: periodLabel(stats.last, data) }) + " · " + staleness(stats.last) + "</span>" +
     "</div>" +
     '<div class="meta-row">' +
-    "<span><b>Published</b> " + esc(FREQ_LABEL[data.freq] || data.freq || "—") + "</span>" +
-    "<span><b>Readings</b> " + data.count.toLocaleString() + "</span>" +
-    "<span><b>Covers</b> " + (stats.first ? niceDate(stats.first) + " to " + niceDate(stats.last) : "—") + "</span>" +
+    "<span><b>" + t("Published") + "</b> " + esc(FREQ_LABEL[data.freq] || data.freq || "—") + "</span>" +
+    "<span><b>" + t("Readings") + "</b> " + num(data.count) + "</span>" +
+    "<span><b>" + t("Covers") + "</b> " +
+    (stats.first ? tf("{from} to {to}", { from: periodLabel(stats.first, data), to: periodLabel(stats.last, data) }) : "—") + "</span>" +
     (data.derived
-      ? "<span><b>Computed by Miqyas</b> from CBE data</span>"
+      ? "<span><b>" + t("Computed by Miqyas") + "</b> " + t("from CBE data") + "</span>"
       : isExcel
-      ? "<span><b>Dates assigned by Miqyas</b> from the sheet</span>"
-      : "<span><b>Reproduced as published</b> yes</span>") +
+      ? "<span><b>" + t("Dates assigned by Miqyas") + "</b> " + t("from the sheet") + "</span>"
+      : "<span><b>" + t("Reproduced as published") + "</b> " + t("yes") + "</span>") +
     "</div></div>" +
 
     qualityNotice(meta, data) +
@@ -833,72 +864,65 @@ async function viewSeries(id) {
 
     '<div class="controls">' +
     '<button class="chip star-chip' + (watchHas(id) ? " on" : "") + '" data-star="' + esc(id) + '">' +
-    (watchHas(id) ? "★ On your desk" : "☆ Keep on your desk") + "</button>" +
-    '<button class="chip solid" id="dl-range">This range as CSV</button>' +
-    '<button class="chip" id="dl-all">Everything as CSV</button>' +
-    '<button class="chip" id="copy-tsv">Copy for a spreadsheet</button>' +
-    '<a class="chip" href="' + API + "/series/" + encodeURIComponent(id) + '.json" target="_blank" rel="noopener">Open the JSON</a>' +
-    '<button class="chip" id="share">Copy a link to this page</button>' +
+    t(watchHas(id) ? "★ On your desk" : "☆ Keep on your desk") + "</button>" +
+    '<button class="chip solid" id="dl-range">' + t("This range as CSV") + "</button>" +
+    '<button class="chip" id="dl-all">' + t("Everything as CSV") + "</button>" +
+    '<button class="chip" id="copy-tsv">' + t("Copy for a spreadsheet") + "</button>" +
+    '<a class="chip" href="' + API + "/series/" + encodeURIComponent(id) + '.json" target="_blank" rel="noopener">' + t("Open the JSON") + "</a>" +
+    '<button class="chip" id="share">' + t("Copy a link to this page") + "</button>" +
     "</div>" +
 
-    '<details class="obs"><summary><span class="g-name">The readings themselves</span>' +
-    '<span class="g-meta">' + data.count.toLocaleString() + " in total</span></summary>" +
+    '<details class="obs"><summary><span class="g-name">' + t("The readings themselves") + "</span>" +
+    '<span class="g-meta">' + tf("{n} in total", { n: num(data.count) }) + "</span></summary>" +
     '<div id="obs-slot"></div></details>' +
 
     '<section class="section two-col">' +
     "<div>" +
-    '<p class="eyebrow">Where this comes from</p>' +
-    "<h2>Provenance</h2>" +
+    '<p class="eyebrow">' + t("Where this comes from") + "</p>" +
+    "<h2>" + t("Provenance") + "</h2>" +
     '<p class="lede">' +
     (data.derived
-      ? "Computed by Miqyas from CBE data: " + esc(data.method || "")
+      ? t("Computed by Miqyas from CBE data:") + " " + methodHTML
       : isExcel
-      ? "Source: Central Bank of Egypt, Excel time-series archive. Miqyas reads the sheet and " +
-        "assigns each value to a date from the sheet's own period labels. Fiscal-year quarters " +
-        "follow Egypt's July to June year. Dates are our reading of the sheet and can be wrong; " +
-        "check the linked CBE file before citing."
-      : "Reproduced as published from the Central Bank of Egypt's daily tables. Where CBE printed " +
-        "two values for one date, Miqyas keeps one and lists both on the What changed page.") +
-    (data.period_basis === "end" ? " Values are dated to the end of the period they describe." : "") +
+      ? t("Source: Central Bank of Egypt, Excel time-series archive. Miqyas reads the sheet and assigns each value to a date from the sheet's own period labels. Fiscal-year quarters follow Egypt's July to June year. Dates are our reading of the sheet and can be wrong; check the linked CBE file before citing.")
+      : t("Reproduced as published from the Central Bank of Egypt's daily tables. Where CBE printed two values for one date, Miqyas keeps one and lists both on the What changed page.")) +
+    (data.period_basis === "end" ? " " + t("Values are dated to the end of the period they describe.") : "") +
     (data.unit
       ? ""
-      : " CBE's own sheet did not state a unit anywhere the parser could find one, so the " +
-        "figures are reproduced without one rather than given a guessed label.") +
+      : " " + t("CBE's own sheet did not state a unit anywhere the parser could find one, so the figures are reproduced without one rather than given a guessed label.")) +
+    ' <a href="#/data/guide">' + t("How periods and dates are written →") + "</a>" +
     "</p>" +
     '<div class="meta-col">' +
     (data.source_url
-      ? "<span><b>CBE page</b> <a href=\"" + esc(data.source_url) + '" target="_blank" rel="noopener">' +
-        esc(data.source_url.replace("https://www.cbe.org.eg", "cbe.org.eg")) + "</a></span>"
+      ? "<span><b>" + t("CBE page") + "</b> " + bdiLTR('<a href="' + esc(data.source_url) + '" target="_blank" rel="noopener">' +
+        esc(data.source_url.replace("https://www.cbe.org.eg", "cbe.org.eg")) + "</a>") + "</span>"
       : "") +
     (data.source_file
-      ? "<span><b>Source file</b> <a href=\"" +
+      ? "<span><b>" + t("Source file") + "</b> " + bdiLTR('<a href="' +
         esc(data.source_file.startsWith("http") ? data.source_file : "https://www.cbe.org.eg" + data.source_file) +
-        '" target="_blank" rel="noopener">' + esc(String(data.source_file).split("/").pop()) + "</a></span>"
+        '" target="_blank" rel="noopener">' + esc(String(data.source_file).split("/").pop()) + "</a>") + "</span>"
       : "") +
-    (data.dataset ? "<span><b>Dataset</b> " + esc(data.dataset) + "</span>" : "") +
+    (data.dataset ? "<span><b>" + t("Dataset") + "</b> " + bdiLTR(esc(data.dataset)) + "</span>" : "") +
     "</div>" +
-    // A computed series is Miqyas's arithmetic on CBE's numbers, and crediting
-    // it to CBE would put words in the Bank's mouth.
-    '<p class="cite">Suggested citation: ' +
-    (data.derived
-      ? "Miqyas, <i>" + esc(data.title_en || id) + "</i>, computed from Central Bank of Egypt data"
-      : "Central Bank of Egypt, <i>" + esc(data.title_en || id) + "</i>, via Miqyas") +
-    ", retrieved " + niceDate(new Date().toISOString().slice(0, 10)) + ".</p>" +
+    /* The citation names the series' own address, its id, the newest period
+     * it holds and the build, so a footnote can be followed and checked. See
+     * citation() in core.js. */
+    '<p class="cite">' + t("Suggested citation:") + " " + cite.html + "</p>" +
+    '<div class="controls"><button class="chip" id="copy-cite">' + t("Copy the citation") + "</button></div>" +
     "</div>" +
     "<div>" +
-    '<p class="eyebrow">Same table</p>' +
-    "<h2>" + esc(table) + "</h2>" +
+    '<p class="eyebrow">' + t("Same table") + "</p>" +
+    "<h2>" + labelHTML(tableText(data), data) + "</h2>" +
     (siblings.length
       ? '<ul class="sib-list">' + siblings.slice(0, 10).map((s) =>
-          '<li><a href="#/s/' + encodeURIComponent(s.series_id) + '">' +
-          (ARABIC_RE.test(lineOf(s)) ? '<span dir="auto">' + esc(lineOf(s)) + "</span>" : esc(lineOf(s))) +
+          '<li><a href="#/s/' + encodeURIComponent(s.series_id) + '">' + lineHTML(s) +
           "</a><b>" + fmt(s.latest_value, s.unit) +
           '<i class="u">' + esc(unitTag(s.unit)) + "</i></b></li>").join("") + "</ul>" +
         (siblings.length > 10
-          ? '<p class="foot-note">' + (siblings.length - 10) + " more lines in this table.</p>"
+          ? '<p class="foot-note">' + tf("{n} more lines in this table.", { n: num(siblings.length - 10) }) + "</p>"
           : "") +
-        (topic ? '<a class="go" href="#/topic/' + topic.key + '">All ' + esc(topic.name.toLowerCase()) + " series →</a>" : "")
-      : '<p class="lede">Nothing else came from this table.</p>') +
+        (topic ? '<a class="go" href="#/topic/' + topic.key + '">' + tf("All {topic} series →", { topic: esc(RTL ? topic.name : topic.name.toLowerCase()) }) + "</a>" : "")
+      : '<p class="lede">' + t("Nothing else came from this table.") + "</p>") +
     "</div></section></div>";
 
   await render();
@@ -928,5 +952,8 @@ async function viewSeries(id) {
     downloadCSV(id, data.observations, data, "Every observation."));
   document.getElementById("copy-tsv").addEventListener("click", (e) =>
     copyTSV(e.target, shown.points, ["period", data.series_id]));
-  document.getElementById("share").addEventListener("click", (e) => copyLink(e.target));
+  // The series' own address, never the hash route it happens to be open at.
+  document.getElementById("share").addEventListener("click", (e) => copyLink(e.target, seriesURL(id)));
+  document.getElementById("copy-cite").addEventListener("click", (e) =>
+    copyText(e.target, cite.text, t("Citation copied")));
 }

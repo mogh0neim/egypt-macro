@@ -137,35 +137,79 @@ const esc = (s) =>
     (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])
   );
 
-/* Titles come out of CBE's own spreadsheets, and a few hundred rows are
- * labelled only in Arabic. Rendering those left-to-right mangles them, so
- * anything with Arabic in it is marked up rather than silently broken. */
-const titleHTML = (s) => {
-  const text = (s && (s.title_en || s.series_id)) || "";
-  return ARABIC_RE.test(text) ? '<span dir="auto">' + esc(text) + "</span>" : esc(text);
+/* Digits stay Western on both sites (i18n.js says why). A bare toLocaleString()
+ * follows the browser, and a browser set to Egyptian Arabic printed "١٬٣١٨"
+ * beside "52.46". Every count goes through this. */
+const num = (n) => Number(n || 0).toLocaleString("en-US");
+
+/* t() with its {placeholders} filled. Arabic puts a count or a date where its
+ * own grammar wants it, so a sentence is translated whole and filled after,
+ * rather than cut into English-shaped pieces around the figure. */
+const tf = (key, map) =>
+  Object.keys(map || {}).reduce((s, k) => s.split("{" + k + "}").join(map[k]), t(key));
+
+/* A run of Latin text or a signed figure, held left to right inside an Arabic
+ * line. Without it "-5,554" printed as "5,554-": a leading minus is neutral and
+ * takes the direction of the line around it. LRI and PDI, the same isolate the
+ * chart markers use. Nothing on the English site. */
+const isoLTR = (s) => (RTL ? "⁦" + s + "⁩" : s);
+// The same, as markup, for a fragment that is HTML rather than text.
+const bdiLTR = (html) => (RTL ? '<bdi dir="ltr">' + html + "</bdi>" : html);
+
+/* The Arabic title, tidied: CBE pads some of its Arabic labels with runs of
+ * spaces. Its tatweel stays; that is how the Bank set the word. */
+const arTitle = (s) => String((s && s.title_ar) || "").replace(/\s+/g, " ").trim();
+
+/* The series' name in the page's language, as plain text: for a select, a
+ * legend, the browser tab and a citation. On /ar/ that is the Arabic title,
+ * which every series now has; the English one is CBE's and stays primary on
+ * the English site. */
+const titleText = (s) => {
+  if (!s) return "";
+  if (RTL && arTitle(s)) return arTitle(s);
+  return s.title_en || s.series_id || "";
 };
 
-/* CBE holds an Arabic title for 1,095 of the 1,317 series, and the site has only
- * ever used it as invisible search fodder.
+/* Titles come out of CBE's own spreadsheets, and a few hundred rows are
+ * labelled only in Arabic. Rendering those left-to-right mangles them, so
+ * anything with Arabic in it is marked up rather than silently broken.
  *
- * Shown where a reader is identifying a series rather than reading values off
- * one: the series page, search results, the palette. Not inside a table, where
- * it would double the height of every row for someone who arrived by browsing a
- * topic and already knows what they are looking at.
+ * On /ar/ the Arabic title is the label, in headings, tables and search
+ * results alike. 223 of them are ours rather than CBE's: the Bank names the
+ * Excel archive in Arabic and nothing else, which leaves every exchange rate,
+ * every policy rate, every treasury bill and all of inflation unnamed. Those are
+ * marked wherever they appear, with a dotted underline and a tooltip, because
+ * passing our translation off as the Bank's name for a figure is exactly the
+ * kind of small lie this project cannot afford. */
+const titleHTML = (s) => {
+  if (RTL && arTitle(s)) {
+    const mine = s.title_ar_source === "miqyas";
+    return '<span lang="ar"' + (mine
+      ? ' class="ar-ours" title="' + t("Translated by Miqyas. CBE publishes no Arabic name for this series.") + '"'
+      : "") + ">" + esc(arTitle(s)) + "</span>";
+  }
+  const text = (s && (s.title_en || s.series_id)) || "";
+  if (ARABIC_RE.test(text)) return '<span dir="auto">' + esc(text) + "</span>";
+  return RTL ? '<span dir="ltr" lang="en">' + esc(text) + "</span>" : esc(text);
+};
+
+/* The title in the other language, as a second line under the first, where a
+ * reader is identifying a series rather than reading values off one: the
+ * series page and search results. Not inside a table, where it would double
+ * the height of every row for someone who arrived by browsing a topic and
+ * already knows what they are looking at.
  *
- * Nothing is rendered for the 222 series without one. A placeholder would be
- * worse than an absence, because it would imply CBE published a name it did
- * not. */
-const titleAR = (s) => {
-  const ar = s && s.title_ar;
+ * On the English site that is the Arabic title, marked when it is ours. On
+ * /ar/ it is CBE's English title, which is the name the Bank publishes and the
+ * one to quote back to it. Nothing is rendered when there is no second title:
+ * a placeholder would imply CBE published a name it did not. */
+const titleAlt = (s) => {
+  if (RTL) {
+    if (!arTitle(s) || !s.title_en || s.title_en === arTitle(s)) return "";
+    return '<span class="alt-en" dir="ltr" lang="en">' + esc(s.title_en) + "</span>";
+  }
+  const ar = arTitle(s);
   if (!ar || ar === s.title_en) return "";
-  /* 223 of these are ours rather than CBE's: the Bank names the Excel archive
-   * in Arabic and nothing else, which leaves every exchange rate, every policy
-   * rate, every treasury bill and all of inflation unnamed. An Arabic site
-   * whose headline figures are labelled in English is not an Arabic site, so
-   * they are written here -- and marked, because passing our translation off
-   * as the Bank's name for a figure is exactly the kind of small lie this
-   * project cannot afford. */
   const mine = s.title_ar_source === "miqyas";
   return '<span class="ar' + (mine ? " ar-ours" : "") + '" dir="rtl" lang="ar"' +
     (mine ? ' title="' + t("Translated by Miqyas. CBE publishes no Arabic name for this series.") + '"' : "") +
@@ -184,7 +228,9 @@ const fmt = (v, unit, digits) => {
     minimumFractionDigits: digits,
     maximumFractionDigits: digits,
   });
-  return /percent/i.test(unit || "") ? s + "%" : s;
+  const out = /percent/i.test(unit || "") ? s + "%" : s;
+  // The minus stays on the left on /ar/ (isoLTR).
+  return v < 0 ? isoLTR(out) : out;
 };
 
 /* One precision for a whole series, set by its largest reading, for places
@@ -314,16 +360,77 @@ const shortDate = (iso) => {
   return MONTHS[+p[1] - 1] + " " + p[0];
 };
 
+/* What a reading is for, said at the size of its period. A monthly reading
+ * dated the 1st printed as "1 Jun 2026", which reads as a day; a fiscal year
+ * dated 30 June printed as "30 Jun 2020", which reads as calendar 2020 when it
+ * is July 2019 to June 2020. So: a day for daily and irregular series, a month
+ * for a monthly one, the calendar quarter for a quarterly one (Q2 2026 is April
+ * to June, whatever fiscal year it falls in), and FY2019/20 for a year that
+ * ends on 30 June. Decided from the date as well as the frequency, because a
+ * few series filed as quarterly carry month-end readings, and a date that is
+ * not a period end keeps its day. */
+const AR_QUARTERS = ["الربع الأول", "الربع الثاني", "الربع الثالث", "الربع الرابع"];
+const fiscalYear = (y) =>
+  RTL ? "العام المالي " + isoLTR((y - 1) + "/" + y) : "FY" + (y - 1) + "/" + String(y).slice(2);
+
+/* Series dated by the day CBE released them rather than by the period they
+ * describe: net international reserves is read out of a press release, and
+ * its date is the release's. Its readings keep their day. */
+const RELEASE_DATED = ["EG.RES.NIR"];
+
+function periodLabel(iso, s) {
+  if (!iso) return "—";
+  const freq = s && s.freq;
+  if (!/^[AQM]$/.test(freq || "") || (s && RELEASE_DATED.indexOf(s.series_id) !== -1)) return niceDate(iso);
+  const y = +iso.slice(0, 4), m = +iso.slice(5, 7), d = +iso.slice(8, 10);
+  const monthEnd = d === new Date(Date.UTC(y, m, 0)).getUTCDate();
+  if (freq === "A" && monthEnd && m === 6) return fiscalYear(y);
+  if (freq === "A" && monthEnd && m === 12) return String(y);
+  if (freq === "Q" && monthEnd && m % 3 === 0) {
+    return RTL ? AR_QUARTERS[m / 3 - 1] + " " + y : "Q" + m / 3 + " " + y;
+  }
+  return d === 1 || monthEnd ? shortDate(iso) : niceDate(iso);
+}
+
+/* The newest reading on a tile or in an As of column: the period it is for,
+ * or, where the date is not a period, what the date is. Release dates are not
+ * recorded for monthly and quarterly series, so those say the period only. */
+function whenLabel(s) {
+  if (!s || !s.last) return "—";
+  if (RELEASE_DATED.indexOf(s.series_id) !== -1) return t("released") + " " + niceDate(s.last);
+  if (s.freq === "IRR") return t("in force since") + " " + niceDate(s.last);
+  // The auction series are dated by the bills' issue date.
+  if (s.family === "govt" && s.freq === "W") return t("issued") + " " + niceDate(s.last);
+  if (/^[AQM]$/.test(s.freq || "")) return t("for|a period") + " " + periodLabel(s.last, s);
+  return niceDate(s.last);
+}
+
+/* A count of days, weeks, months or years in words. Arabic counts in four
+ * forms: يوم واحد, يومين, 3 to 10 أيام, then 11 يومًا. Gluing one form to every
+ * number gave "4 يومًا مضت" and "1 سنوات مضت". */
+const AR_COUNT = {
+  day: ["يوم واحد", "يومين", "أيام", "يومًا"],
+  week: ["أسبوع واحد", "أسبوعين", "أسابيع", "أسبوعًا"],
+  month: ["شهر واحد", "شهرين", "أشهر", "شهرًا"],
+  year: ["سنة واحدة", "سنتين", "سنوات", "سنة"],
+};
+function countWords(n, unit) {
+  if (!RTL) return n + " " + unit + (n === 1 ? "" : "s");
+  const f = AR_COUNT[unit];
+  return n === 1 ? f[0] : n === 2 ? f[1] : n <= 10 ? n + " " + f[2] : n + " " + f[3];
+}
+
 /* "3 days ago" is the fastest way to tell a live daily series from a
  * quarterly one that is two revisions behind. */
 const staleness = (iso) => {
   if (!iso) return "";
   const days = Math.round((Date.now() - Date.parse(iso)) / 86400000);
   if (days <= 1) return t("today");
-  if (days < 14) return days + " " + t("days ago");
-  if (days < 60) return Math.round(days / 7) + " " + t("weeks ago");
-  if (days < 730) return Math.round(days / 30) + " " + t("months ago");
-  return Math.floor(days / 365) + " " + t("years ago");
+  const ago = (n, unit) => t("{n} ago").replace("{n}", countWords(n, unit));
+  if (days < 14) return ago(days, "day");
+  if (days < 60) return ago(Math.round(days / 7), "week");
+  if (days < 730) return ago(Math.round(days / 30), "month");
+  return ago(Math.floor(days / 365), "year");
 };
 
 /* Arabic search matching. It lives here rather than beside the document search
@@ -632,6 +739,26 @@ const lineOf = (s) => {
   return i > 0 ? t.slice(i + 3) : t;
 };
 
+/* The line and the table, in the page's language. CBE's Arabic titles for
+ * the Excel archive name the line and nothing else, so its tables have no
+ * Arabic name and stay English on /ar/, held left to right. The titles
+ * Miqyas wrote carry both halves, and keep their mark. */
+const splitAR = (s) => {
+  const a = arTitle(s), i = a.indexOf(" - ");
+  return i > 0 ? [a.slice(0, i), a.slice(i + 3)] : [null, a];
+};
+const lineText = (s) => (RTL && arTitle(s) ? splitAR(s)[1] : lineOf(s));
+const tableText = (s) => (RTL && arTitle(s) && splitAR(s)[0]) || tableOf(s);
+const labelHTML = (text, s) => {
+  if (RTL && ARABIC_RE.test(text) && s && s.title_ar_source === "miqyas") {
+    return '<span lang="ar" class="ar-ours" title="' +
+      t("Translated by Miqyas. CBE publishes no Arabic name for this series.") + '">' + esc(text) + "</span>";
+  }
+  if (ARABIC_RE.test(text)) return '<span dir="auto">' + esc(text) + "</span>";
+  return RTL ? '<span dir="ltr" lang="en">' + esc(text) + "</span>" : esc(text);
+};
+const lineHTML = (s) => labelHTML(lineText(s), s);
+
 /* ---------- data ---------- */
 
 async function getJSON(url) {
@@ -738,9 +865,9 @@ function nextMeeting(calendar) {
 function countdownWords(days) {
   if (days <= 0) return t("today");
   if (days === 1) return t("tomorrow");
-  if (days < 14) return t("in") + " " + days + " " + t("days");
-  if (days < 60) return t("in") + " " + Math.round(days / 7) + " " + t("weeks");
-  return t("in") + " " + Math.round(days / 30) + " " + t("months");
+  if (days < 14) return t("in") + " " + countWords(days, "day");
+  if (days < 60) return t("in") + " " + countWords(Math.round(days / 7), "week");
+  return t("in") + " " + countWords(Math.round(days / 30), "month");
 }
 
 /* ---------- the gauge ----------
@@ -1597,10 +1724,15 @@ const skeleton = (rows) =>
   '<div class="sk-line"></div>'.repeat(rows || 6) +
   "</div></div>";
 
+// A part may carry html instead of a label: a CBE table name, held left to
+// right on /ar/ so its closing bracket stays where it belongs.
 const crumbs = (parts) =>
-  '<nav class="crumbs" aria-label="Breadcrumb">' +
+  '<nav class="crumbs" aria-label="' + t("Breadcrumb") + '">' +
   parts
-    .map((p) => (p.href ? '<a href="' + p.href + '">' + esc(p.label) + "</a>" : "<span>" + esc(p.label) + "</span>"))
+    .map((p) => {
+      const inner = p.html || esc(p.label);
+      return p.href ? '<a href="' + p.href + '">' + inner + "</a>" : "<span>" + inner + "</span>";
+    })
     .join('<i aria-hidden="true">/</i>') +
   "</nav>";
 
@@ -1617,6 +1749,8 @@ function downloadCSV(id, observations, meta, note) {
     // What the reader was looking at when they asked for it. A file of 1,200
     // rows out of 5,172 with nothing saying which 1,200 is a trap.
     (note ? "# " + note + "\n" : "") +
+    // The address a footnote can point at, which a downloaded file outlives.
+    "# Series page: " + seriesURL(id) + "\n" +
     "# Retrieved " + new Date().toISOString().slice(0, 10) + "\n" +
     "series_id,period,value\n";
   const body = observations.map((o) => id + "," + o[0] + "," + o[1]).join("\n");
@@ -1630,9 +1764,18 @@ function downloadCSV(id, observations, meta, note) {
   setTimeout(() => URL.revokeObjectURL(a.href), 4000);
 }
 
-/* Copy the current page URL. Used by the share button on a series page. */
-function copyLink(button) {
-  navigator.clipboard.writeText(location.href).then(() => flash(button, "Link copied"), () => {});
+/* Copy a link: the address given, or the current page. A series page gives its
+ * own pre-rendered address, /s/<id>/, rather than the hash route or the
+ * /s/<id>/#/s/<id> the pre-rendered copy ends up at: that is the address
+ * with the series' own title and share card, and one series should have one
+ * address in a footnote. */
+function copyLink(button, url) {
+  navigator.clipboard.writeText(url || location.href).then(() => flash(button, t("Link copied")), () => {});
+}
+
+/* Copy any text, with a word on the button to say it went. */
+function copyText(button, text, message) {
+  navigator.clipboard.writeText(text).then(() => flash(button, message), () => {});
 }
 
 /* Tab-separated onto the clipboard, which is what pastes straight into a
@@ -1642,9 +1785,60 @@ function copyTSV(button, rows, header) {
   const text =
     (header ? header.join("\t") + "\n" : "") + rows.map((r) => r.join("\t")).join("\n");
   navigator.clipboard.writeText(text).then(
-    () => flash(button, rows.length.toLocaleString() + " rows copied"),
+    () => flash(button, t("{n} rows copied").replace("{n}", num(rows.length))),
     () => {}
   );
+}
+
+/* ---------- addresses, tab titles and citations ---------- */
+
+/* A series' own address: the pre-rendered page, which carries its title, its
+ * share card and its figure in the HTML, in the language being read. */
+const seriesURL = (id) => siteBase() + (RTL ? "ar/" : "") + "s/" + encodeURIComponent(id) + "/";
+
+/* The browser tab, per page. Every route used to read "Miqyas: Egypt's economy
+ * in numbers", so ten saved tabs, a bookmark folder and a reference manager
+ * all held ten identical entries. */
+function pageTitle(name) {
+  document.title = name ? name + " | " + t("Miqyas") : t("Miqyas: Egypt's economy in numbers");
+}
+
+/* The citation for one series, as { html, text }. It names what a reader
+ * needs to find the same numbers again: the series' address and id, the
+ * newest period it holds, and the build it came from. The build date is the
+ * site's, from status.json, not the reader's clock, so two readers on the
+ * same day cite the same thing. A computed series is Miqyas's arithmetic on
+ * CBE's numbers, and crediting it to CBE would put words in the Bank's mouth.
+ *
+ * On /ar/ the Arabic title leads and CBE's English title follows it, since
+ * that is the name the Bank publishes; an Arabic title Miqyas wrote says so. */
+function citation(data, meta, status) {
+  const id = data.series_id;
+  const obs = data.observations || [];
+  const last = (meta && meta.last) || (obs.length ? obs[obs.length - 1][0] : "");
+  const built = status && status.built_at ? niceDate(status.built_at.slice(0, 10)) : "";
+  const url = seriesURL(id);
+  const en = data.title_en || id;
+  const sep = RTL ? "، " : ", ";
+  // Each piece as [html, text]; the text is what the copy button puts on the clipboard.
+  // On /ar/ the English title and the id are isolated one at a time, so a
+  // line break inside either cannot carry a bracket to the wrong end.
+  const name = RTL && arTitle(data)
+    ? ["«" + esc(arTitle(data)) + "»" + sep + t("in English:") + " " + bdiLTR(esc(en)) + sep + t("id") + " " + bdiLTR(esc(id)),
+       "«" + arTitle(data) + "»" + sep + t("in English:") + " " + en + sep + t("id") + " " + id]
+    : ["<i>" + esc(en) + "</i> (" + esc(id) + ")", en + " (" + id + ")"];
+  const plain = (s) => [esc(s), s];
+  const pieces = (data.derived
+    ? [plain(t("Miqyas")), name, plain(t("computed from Central Bank of Egypt data"))]
+    : [plain(t("Central Bank of Egypt")), name]
+  ).concat([plain(t("data to") + " " + periodLabel(last, data).replace(/[⁦-⁩]/g, ""))]);
+  const where = (data.derived ? [] : [plain(t("Republished by Miqyas"))])
+    .concat([[bdiLTR(esc(url)), url]])
+    .concat(built ? [plain(t("build of") + " " + built)] : []);
+  const ours = RTL && arTitle(data) && data.title_ar_source === "miqyas"
+    ? plain(" " + t("The Arabic title is Miqyas's translation; CBE publishes this series under its English name.")) : ["", ""];
+  const join = (k) => pieces.map((p) => p[k]).join(sep) + ". " + where.map((p) => p[k]).join(sep) + "." + ours[k];
+  return { html: join(0), text: join(1) };
 }
 
 /* Say something happened, then put the label back. Shared by every copy button

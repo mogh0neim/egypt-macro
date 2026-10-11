@@ -24,7 +24,7 @@ const MM_OVERNIGHT = [
 ];
 
 const MM_TENORS = ["3M", "6M", "9M", "12M"];
-const TENOR_LABEL = { "3M": "3 month", "6M": "6 month", "9M": "9 month", "12M": "12 month" };
+const TENOR_LABEL = { "3M": t("3 month"), "6M": t("6 month"), "9M": t("9 month"), "12M": t("12 month") };
 
 /* Auction amounts come out of CBE in whole pounds, which runs to eleven digits
  * and reads as noise. Billions is how the desk says it out loud. */
@@ -48,20 +48,19 @@ function moneyMarketCard() {
   const conia = (state.byId && state.byId.get(MM_CORRIDOR.benchmark)) || null;
   return (
     '<a class="wide-card" href="#/money-market">' +
-    '<p class="eyebrow">For a domestic market desk</p>' +
-    "<h3>The money market, on one screen</h3>" +
-    "<p>Where overnight money cleared inside the CBE corridor, the interbank tenors and " +
-    "their volumes, and the EGP bill curve with bid to cover at every tenor. Daily interbank " +
-    "since June 2010, every EGP bill auction since June 2002" +
-    (conia ? ", CONIA at " + fmt(conia.latest_value, conia.unit) + " on " + niceDate(conia.last) : "") +
+    '<p class="eyebrow">' + t("For a domestic market desk") + "</p>" +
+    "<h3>" + t("The money market, on one screen") + "</h3>" +
+    "<p>" + t("Where overnight money cleared inside the CBE corridor, the interbank tenors and their volumes, and the EGP bill curve with bid to cover at every tenor. Daily interbank since June 2010, every EGP bill auction since June 2002") +
+    (conia ? tf(", CONIA at {v} on {d}", { v: fmt(conia.latest_value, conia.unit), d: niceDate(conia.last) }) : "") +
     ".</p>" +
-    '<span class="go">Open the money market page →</span></a>'
+    '<span class="go">' + t("Open the money market page →") + "</span></a>"
   );
 }
 
 async function viewMoneyMarket() {
   const app = document.getElementById("app");
   app.innerHTML = skeleton(8);
+  pageTitle(t("The money market"));
 
   await loadIndex();
   const mpc = await loadMPC();
@@ -103,40 +102,43 @@ async function viewMoneyMarket() {
       '<span class="item"><span class="key band"></span>' + t("the CBE corridor, overnight deposit to overnight lending") + "</span>" +
       "</div>";
 
+    const range = { lo: fmt(lo, "percent per annum"), hi: fmt(hi, "percent per annum"), x: fmtChange(off, "percent") };
     corridorReadout =
       '<div class="readout" id="corridor-readout">' +
       '<span class="val">' + fmt(lastC[1], "percent per annum") + "</span>" +
-      '<span class="when">CONIA, ' + niceDate(lastC[0]) + "</span>" +
-      "<span>Corridor " + fmt(lo, "percent per annum") + " to " + fmt(hi, "percent per annum") + ", so " +
+      '<span class="when">' + tf("CONIA, {d}", { d: niceDate(lastC[0]) }) + "</span>" +
+      "<span>" +
       (Math.abs(off) < 0.005
-        ? "overnight money cleared on the midpoint"
-        : "overnight money cleared " + fmtChange(off, "percent") + (off > 0 ? " above" : " below") + " the midpoint") +
+        ? tf("Corridor {lo} to {hi}, so overnight money cleared on the midpoint", range)
+        : off > 0
+        ? tf("Corridor {lo} to {hi}, so overnight money cleared {x} above the midpoint", range)
+        : tf("Corridor {lo} to {hi}, so overnight money cleared {x} below the midpoint", range)) +
       "</span></div>";
   }
 
   /* ---------- overnight money ---------- */
 
-  const overnight = MM_OVERNIGHT.map(get).filter(Boolean).map(indicatorRow).join("");
+  const overnight = MM_OVERNIGHT.map(get).filter(Boolean).map((s) => indicatorRow(s)).join("");
 
   /* ---------- the EGP bill curve ---------- */
 
-  const curveRow = (t) => {
-    const way = get("EG.TB.EGP." + t + ".YLD.WAVG");
+  const curveRow = (tenor) => {
+    const way = get("EG.TB.EGP." + tenor + ".YLD.WAVG");
     if (!way) return "";
-    const min = get("EG.TB.EGP." + t + ".YLD.MIN");
-    const max = get("EG.TB.EGP." + t + ".YLD.MAX");
-    const cover = get("EG.TB.EGP." + t + ".BIDCOVER");
-    const acc = get("EG.TB.EGP." + t + ".AMT.ACC");
-    const sub = get("EG.TB.EGP." + t + ".AMT.SUB");
+    const min = get("EG.TB.EGP." + tenor + ".YLD.MIN");
+    const max = get("EG.TB.EGP." + tenor + ".YLD.MAX");
+    const cover = get("EG.TB.EGP." + tenor + ".BIDCOVER");
+    const acc = get("EG.TB.EGP." + tenor + ".AMT.ACC");
+    const sub = get("EG.TB.EGP." + tenor + ".AMT.SUB");
     const c = changeOf(way);
     return (
       "<tr>" +
-      '<td class="name"><a href="#/s/' + encodeURIComponent(way.series_id) + '">' + esc(TENOR_LABEL[t]) + "</a>" +
-      '<span class="unit">weighted average</span></td>' +
+      '<td class="name"><a href="#/s/' + encodeURIComponent(way.series_id) + '">' + esc(TENOR_LABEL[tenor]) + "</a>" +
+      '<span class="unit">' + t("weighted average") + "</span></td>" +
       "<td>" + fmt(way.latest_value, way.unit) + "</td>" +
       '<td class="' + dirClass(c, way.unit) + '">' + changeCell(c, way.unit) + "</td>" +
-      '<td class="hide-sm">' + fmt(min && min.latest_value, "percent per annum") + " to " +
-      fmt(max && max.latest_value, "percent per annum") + "</td>" +
+      '<td class="hide-sm">' + tf("{from} to {to}", {
+        from: fmt(min && min.latest_value, "percent per annum"), to: fmt(max && max.latest_value, "percent per annum") }) + "</td>" +
       "<td>" + fmt(cover && cover.latest_value, "ratio") + "</td>" +
       '<td class="hide-sm">' + bn(sub && sub.latest_value) + "</td>" +
       "<td>" + bn(acc && acc.latest_value) + "</td>" +
@@ -161,13 +163,13 @@ async function viewMoneyMarket() {
   const latest = mpc && mpc.statements && mpc.statements[mpc.statements.length - 1];
   const mpcCard = latest
     ? '<a class="wide-card" href="#/rates">' +
-      '<p class="eyebrow">Latest rate decision</p>' +
-      "<h3>" + niceDate(latest.date) + ", the committee " +
-      ({ hold: "left rates unchanged", cut: "cut", hike: "raised" }[latest.decision] || "met") + "</h3>" +
-      "<p>Overnight deposit " + esc(latest.deposit_rate || "—") + "%, overnight lending " +
-      esc(latest.lending_rate || "—") + "%. Every decision back to June 2005 with the " +
-      "statement text, and what changed in the wording each time.</p>" +
-      '<span class="go">See all ' + (mpc.count || 0) + " decisions →</span></a>"
+      '<p class="eyebrow">' + t("Latest rate decision") + "</p>" +
+      "<h3>" + tf({ hold: "{date}, the committee left rates unchanged", cut: "{date}, the committee cut",
+                    hike: "{date}, the committee raised" }[latest.decision] || "{date}, the committee met",
+                  { date: niceDate(latest.date) }) + "</h3>" +
+      "<p>" + tf("Overnight deposit {d}%, overnight lending {l}%.", { d: esc(latest.deposit_rate || "—"), l: esc(latest.lending_rate || "—") }) +
+      " " + t("Every decision back to June 2005 with the statement text, and what changed in the wording each time.") + "</p>" +
+      '<span class="go">' + tf("See all {n} decisions →", { n: num(mpc.count || 0) }) + "</span></a>"
     : "";
 
   /* ---------- the page ---------- */
@@ -177,46 +179,35 @@ async function viewMoneyMarket() {
   app.innerHTML =
     '<section class="hero"><div class="wrap">' +
     crumbs([
-      { label: "Series", href: "#/series" },
-      { label: "Interest rates", href: "#/topic/rates" },
-      { label: "Money market" },
+      { label: t("Series"), href: "#/series" },
+      { label: t("Interest rates"), href: "#/topic/rates" },
+      { label: t("Money market") },
     ]) +
-    "<h1>Where overnight money sits in the corridor.</h1>" +
-    '<p class="standfirst">The floor, the ceiling, and where the pound actually funded ' +
-    "between them. Underneath it: the interbank tenors with the volumes behind them, and " +
-    "what the government paid at every EGP bill auction. All of it CBE's own numbers, " +
-    "updated daily.</p>" +
+    "<h1>" + t("Where overnight money sits in the corridor.") + "</h1>" +
+    '<p class="standfirst">' + t("The floor, the ceiling, and where the pound actually funded between them. Underneath it: the interbank tenors with the volumes behind them, and what the government paid at every EGP bill auction. All of it CBE's own numbers, updated daily.") + "</p>" +
     corridor + corridorLegend + corridorReadout +
     "</div></section>" +
 
     '<section class="section"><div class="wrap">' +
-    '<p class="eyebrow">Overnight and short tenors</p>' +
-    "<h2>What money cost, and how much of it moved</h2>" +
-    '<p class="lede">Rates first, then the volumes underneath them, because a rate on ' +
-    "thin volume is not the same fact as a rate on heavy volume. The last column is where " +
-    "the current reading sits between that series' own record low and high.</p>" +
+    '<p class="eyebrow">' + t("Overnight and short tenors") + "</p>" +
+    "<h2>" + t("What money cost, and how much of it moved") + "</h2>" +
+    '<p class="lede">' + t("Rates first, then the volumes underneath them, because a rate on thin volume is not the same fact as a rate on heavy volume. The last column is where the current reading sits between that series' own record low and high.") + "</p>" +
     '<div class="table-scroll"><table class="indicators"><thead><tr>' +
-    '<th class="star-col"><span class="sr-only">On your desk</span></th>' +
-    "<th>Series</th><th>Latest</th><th>Change</th>" +
-    '<th class="hide-sm">Lowest</th><th class="hide-sm">Highest</th>' +
-    "<th>Where it sits</th><th>As of</th>" +
+    '<th class="star-col"><span class="sr-only">' + t("On your desk") + "</span></th>" +
+    "<th>" + t("Series|one row of a table") + "</th><th>" + t("Latest") + "</th><th>" + t("Change") + "</th>" +
+    '<th class="hide-sm">' + t("Lowest") + '</th><th class="hide-sm">' + t("Highest") + "</th>" +
+    "<th>" + t("Where it sits") + "</th><th>" + t("As of") + "</th>" +
     "</tr></thead><tbody>" + overnight + "</tbody></table></div>" +
     "</div></section>" +
 
     '<section class="section band"><div class="wrap">' +
-    '<p class="eyebrow">EGP treasury bills</p>' +
-    "<h2>The curve, and who turned up for it</h2>" +
-    '<p class="lede">The latest auction CBE has published at each tenor, dated by the ' +
-    "bill's issue date, which is why it can run a few days ahead of today. Bid to cover is " +
-    "the column that says whether the tenor was wanted: submitted over accepted, computed " +
-    "here because CBE publishes the two amounts and never the ratio. The 3-month runs back " +
-    "to June 2002, the 6-month to July 2002, the 12-month to April 2004 and the 9-month to " +
-    "October 2008, and the record-level table behind these carries the ISIN, the maturity " +
-    "date and the amount CBE asked for as well.</p>" +
+    '<p class="eyebrow">' + t("EGP treasury bills") + "</p>" +
+    "<h2>" + t("The curve, and who turned up for it") + "</h2>" +
+    '<p class="lede">' + t("The latest auction CBE has published at each tenor, dated by the bill's issue date, which is why it can run a few days ahead of today. Bid to cover is the column that says whether the tenor was wanted: submitted over accepted, computed here because CBE publishes the two amounts and never the ratio. The 3-month runs back to June 2002, the 6-month to July 2002, the 12-month to April 2004 and the 9-month to October 2008, and the record-level table behind these carries the ISIN, the maturity date and the amount CBE asked for as well.") + "</p>" +
     '<div class="table-scroll"><table class="indicators"><thead><tr>' +
-    "<th>Tenor</th><th>Yield</th><th>Change</th>" +
-    '<th class="hide-sm">Accepted range</th><th>Bid to cover</th>' +
-    '<th class="hide-sm">Submitted, EGP bn</th><th>Accepted, EGP bn</th><th>Issued</th>' +
+    "<th>" + t("Tenor") + "</th><th>" + t("Yield") + "</th><th>" + t("Change") + "</th>" +
+    '<th class="hide-sm">' + t("Accepted range") + "</th><th>" + t("Bid to cover") + "</th>" +
+    '<th class="hide-sm">' + t("Submitted, EGP bn") + "</th><th>" + t("Accepted, EGP bn") + "</th><th>" + t("Issued") + "</th>" +
     "</tr></thead><tbody>" + curve + "</tbody></table></div>" +
     slope +
     "</div></section>" +
@@ -224,13 +215,12 @@ async function viewMoneyMarket() {
     (mpcCard ? '<section class="section"><div class="wrap">' + mpcCard + "</div></section>" : "") +
 
     '<section class="section"><div class="wrap"><div class="band-inset">' +
-    '<p class="eyebrow">Take it to your desk</p>' +
-    "<h2>All the series on this page, without the page</h2>" +
-    '<p class="lede">No key and no account. Every endpoint is a static file on the same host ' +
-    "as this page, with no rate limit that we set.</p>" +
-    '<pre class="code"><code># the overnight fixing, every observation\n' +
+    '<p class="eyebrow">' + t("Take it to your desk") + "</p>" +
+    "<h2>" + t("All the series on this page, without the page") + "</h2>" +
+    '<p class="lede">' + t("No key and no account. Every endpoint is a static file on the same host as this page, with no rate limit that we set.") + "</p>" +
+    '<pre class="code"><code># ' + esc(t("the overnight fixing, every observation")) + "\n" +
     "curl " + site + "api/v1/series/EG.CONIA.ON.RATE.json\n\n" +
-    "# the whole money market, straight into Python\n" +
+    "# " + esc(t("the whole money market, straight into Python")) + "\n" +
     "import duckdb\n" +
     "duckdb.sql(&quot;&quot;&quot;\n" +
     "  SELECT series_id, period, value\n" +
@@ -239,36 +229,27 @@ async function viewMoneyMarket() {
     "                      &#39;EG.RATE.ON.DEP&#39;, &#39;EG.RATE.ON.LEND&#39;)\n" +
     "  ORDER BY period\n" +
     "&quot;&quot;&quot;)\n\n" +
-    "# every EGP bill auction since 2002\n" +
+    "# " + esc(t("every EGP bill auction since 2002")) + "\n" +
     "duckdb.sql(&quot;SELECT * FROM &#39;" + site + "parquet/govt.parquet&#39;&quot;)" +
     "</code></pre>" +
-    '<h3 class="sub-head">Open market operations</h3>' +
-    '<p class="lede">The liquidity management CBE does itself is published as auction tables ' +
-    "rather " +
-    "than as series, so it is not charted here, but it is in the record-level download: " +
-    "deposit auctions at the corridor rate, fixed-rate and variable-rate deposit auctions, " +
-    "fixed-rate and variable-rate repo auctions, and every EGP bill auction with its ISIN. " +
-    "One CSV per table, inside " +
-    "<code>records-csv.zip</code>.</p>" +
+    '<h3 class="sub-head">' + t("Open market operations") + "</h3>" +
+    '<p class="lede">' + t("The liquidity management CBE does itself is published as auction tables rather than as series, so it is not charted here, but it is in the record-level download: deposit auctions at the corridor rate, fixed-rate and variable-rate deposit auctions, fixed-rate and variable-rate repo auctions, and every EGP bill auction with its ISIN. One CSV per table, inside") +
+    " " + bdiLTR("<code>records-csv.zip</code>") + ".</p>" +
     '<div class="controls">' +
-    '<a class="chip solid" href="' + ROOT + '/bulk/records-csv.zip" download>records-csv.zip</a>' +
-    '<a class="chip" href="' + ROOT + '/parquet/rates.parquet" download>rates.parquet</a>' +
-    '<a class="chip" href="' + ROOT + '/parquet/govt.parquet" download>govt.parquet</a>' +
-    '<a class="chip" href="#/topic/rates">Every rate series</a>' +
-    '<a class="chip" href="#/data">Everything else</a>' +
+    '<a class="chip solid" href="' + ROOT + '/bulk/records-csv.zip" download>' + bdiLTR("records-csv.zip") + "</a>" +
+    '<a class="chip" href="' + ROOT + '/parquet/rates.parquet" download>' + bdiLTR("rates.parquet") + "</a>" +
+    '<a class="chip" href="' + ROOT + '/parquet/govt.parquet" download>' + bdiLTR("govt.parquet") + "</a>" +
+    '<a class="chip" href="#/topic/rates">' + t("Every rate series") + "</a>" +
+    '<a class="chip" href="#/data">' + t("Everything else") + "</a>" +
     "</div>" +
     "</div></div></section>" +
 
     '<section class="section"><div class="wrap">' +
-    '<p class="eyebrow">Where the record is not clean</p>' +
-    "<h2>Two prints for the same day</h2>" +
-    '<p class="lede">On 27 November 2023 CBE published two different interbank overnight ' +
-    "rates for the same session, 19.395 and 19.404, and two different overnight volumes 21 " +
-    "billion pounds apart, 264,437 and 243,187 million. Both are kept: the site shows one " +
-    "and records the other, and the same is true of every other conflict of this kind in " +
-    "the archive.</p>" +
-    '<p class="foot-note">The full list is <code>data/clean/anomalies.csv</code> in the ' +
-    'repository. <a href="#/about">How this is built, and what is not in it →</a></p>' +
+    '<p class="eyebrow">' + t("Where the record is not clean") + "</p>" +
+    "<h2>" + t("Two prints for the same day") + "</h2>" +
+    '<p class="lede">' + t("On 27 November 2023 CBE published two different interbank overnight rates for the same session, 19.395 and 19.404, and two different overnight volumes 21 billion pounds apart, 264,437 and 243,187 million. Both are kept: the site shows one and records the other, and the same is true of every other conflict of this kind in the archive.") + "</p>" +
+    '<p class="foot-note">' + t("The full list is") + " " + bdiLTR("<code>data/clean/anomalies.csv</code>") + " " + t("in the repository.") +
+    ' <a href="#/about">' + t("How this is built, and what is not in it →") + "</a></p>" +
     "</div></section>";
 
   /* ---------- wiring ---------- */

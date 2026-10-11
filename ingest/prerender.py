@@ -281,13 +281,21 @@ def load_ar() -> dict[str, str]:
 _AR: dict[str, str] = {}
 
 
+def _bare(text: str) -> str:
+    """The text without its disambiguator. Only a pipe with no space before it
+    is one: " | Miqyas" in a page title is part of the title, and cutting there
+    left every English title ending in a space with the site's name gone."""
+    m = re.search(r"[^ ]\|", text)
+    return text[:m.start() + 1] if m else text
+
+
 def tr(text: str, lang: str) -> str:
     """The Arabic for a string, or the string. Mirrors `t()` in i18n.js."""
     if lang != "ar":
-        return text.split("|", 1)[0]
+        return _bare(text)
     if text in _AR:
         return _AR[text]
-    return text.split("|", 1)[0]
+    return _bare(text)
 
 
 # The parts of the document that are HTML before any script runs, and therefore
@@ -297,6 +305,7 @@ CHROME = [
     "Independent project. Not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Official figures:",
     "Search series, topics, documents and pages",
     "Search series, topics, documents, pages…",
+    "Search Miqyas",
     "Switch between light, dark and system theme",
     "Egypt's macroeconomic record from the Central Bank's own publications, updated daily.",
     "Not affiliated with, endorsed by, or connected to the Central Bank of Egypt.",
@@ -318,12 +327,22 @@ CHROME = [
     "Documents",
     "Independent",
     "Overview",
+    "Results",
     "Series",
     "Search",
     "Rates",
     "About",
+    "Menu",
     "Data",
     "Auto",
+]
+
+# Chrome that is prose, wrapped across lines in the template, so it is matched
+# with any run of whitespace between its words. The footer's second sentence
+# stayed English on every Arabic page because the plain match above never saw
+# it whole.
+CHROME_PROSE = [
+    "The CBE is the source of every number here. Any error in the cleaning is ours. For official figures go to",
 ]
 
 
@@ -347,6 +366,12 @@ def translate_chrome(html: str) -> str:
             continue
         html = html.replace(">" + english + "<", ">" + arabic + "<")
         html = html.replace('="' + english + '"', '="' + arabic + '"')
+    for english in CHROME_PROSE:
+        arabic = _AR.get(english)
+        if not arabic:
+            continue
+        pattern = r"\s+".join(re.escape(word) for word in english.split())
+        html = re.sub(r"(>|\s)" + pattern + r"(?=\s*<)", lambda m, a=arabic: m.group(1) + a, html)
     return html
 
 
@@ -489,7 +514,8 @@ def series_body(meta: dict, full: dict, topic: dict | None, root: str, lang: str
     )
 
     title = full.get("title_en") or meta.get("series_id")
-    arabic = full.get("title_ar")
+    arabic = " ".join(str(full.get("title_ar") or "").split())
+    ours = full.get("title_ar_source") == "miqyas"
 
     facts = [
         (tr("Latest", lang), f"{fmt(latest, unit)}{unit_tag(unit)} {tr('on', lang)} {nice_date(meta.get('last'))}"),
@@ -507,31 +533,50 @@ def series_body(meta: dict, full: dict, topic: dict | None, root: str, lang: str
     source = full.get("source_url")
     method = full.get("method")
 
+    # On /ar/ the Arabic title is the heading and CBE's English title the line
+    # under it, the other way round from the English page; an Arabic title
+    # Miqyas wrote says so. The links stay inside the Arabic site.
+    if lang == "ar" and arabic:
+        heading = (f"<h1>{esc(arabic)}</h1>"
+                   + (f'<p class="alt-en" dir="ltr" lang="en">{esc(title)}</p>' if title != arabic else "")
+                   + (f'<p class="foot-note">{esc(tr("Translated by Miqyas. CBE publishes no Arabic name for this series.", lang))}</p>'
+                      if ours else ""))
+    else:
+        heading = (f"<h1{dir_attr(title)}>{esc(title)}</h1>"
+                   + (f'<p class="ar" dir="rtl" lang="ar">{esc(arabic)}</p>' if arabic else ""))
+    figure = f'<b dir="ltr">{esc(fmt(latest, unit))}</b>'
+    lede = (esc(tr("{v} as of {d}, from the Central Bank of Egypt. {n} readings covering {from} to {to}.", lang))
+            .replace("{v}", figure).replace("{d}", esc(nice_date(meta.get("last"))))
+            .replace("{n}", f'{meta.get("n", 0):,}').replace("{from}", esc(nice_date(meta.get("first"))))
+            .replace("{to}", esc(nice_date(meta.get("last")))))
+    app = f"{root}/{lang_prefix(lang)}"
+    method_html = esc(tr(method, lang)) if method else ""
+    if method and lang == "ar" and not ARABIC.search(method_html):
+        method_html = f'<span dir="ltr" lang="en">{method_html}</span>'
+
     return (
         '<div class="wrap"><section class="section">'
-        f'<p class="eyebrow">{esc(topic["name"]) if topic else "Series"}</p>'
-        f"<h1{dir_attr(title)}>{esc(title)}</h1>"
-        + (f'<p class="ar" dir="rtl" lang="ar">{esc(arabic)}</p>' if arabic else "")
-        + f'<p class="lede"><b>{esc(fmt(latest, unit))}</b> as of {esc(nice_date(meta.get("last")))}, '
-          f'from the Central Bank of Egypt. {meta.get("n", 0):,} readings covering '
-          f'{esc(nice_date(meta.get("first")))} to {esc(nice_date(meta.get("last")))}.</p>'
+        f'<p class="eyebrow">{esc(tr(topic["name"], lang)) if topic else esc(tr("Series", lang))}</p>'
+        + heading
+        + f'<p class="lede">{lede}</p>'
         + '<table class="indicators"><tbody>'
         + "".join(f"<tr><td class='name'>{esc(k)}</td><td>{esc(v)}</td></tr>" for k, v in facts)
         + "</tbody></table>"
-        + (f'<p class="foot-note">How this is worked out: {esc(method)}</p>' if method else "")
-        + "<h2>The last two dozen readings</h2>"
-        + f'<table class="indicators"><thead><tr><th>Period</th><th>{esc(unit or "Value")}</th></tr></thead>'
+        + (f'<p class="foot-note">{esc(tr("How this is worked out:", lang))} {method_html}</p>' if method else "")
+        + f'<h2>{esc(tr("The last two dozen readings", lang))}</h2>'
+        + f'<table class="indicators"><thead><tr><th>{esc(tr("Period", lang))}</th>'
+          f'<th>{esc(unit or tr("Value", lang))}</th></tr></thead>'
         + f"<tbody>{rows}</tbody></table>"
-        + f'<p><a href="{root}/api/v1/series/{esc(meta["series_id"])}.json">The whole series as JSON</a>'
-          f' · <a href="{root}/#/data">CSV, Parquet, SQLite and the API</a>'
-        + (f' · <a href="{esc(source)}" rel="noopener">The CBE page this came from</a>' if source else "")
+        + f'<p><a href="{root}/api/v1/series/{esc(meta["series_id"])}.json">{esc(tr("The whole series as JSON", lang))}</a>'
+          f' · <a href="{app}#/data">{esc(tr("CSV, Parquet, SQLite and the API", lang))}</a>'
+        + (f' · <a href="{esc(source)}" rel="noopener">{esc(tr("The CBE page this came from", lang))}</a>' if source else "")
         + "</p>"
         + attribution(lang)
         + "</section></div>"
     )
 
 
-def series_jsonld(meta: dict, full: dict, url: str) -> str:
+def series_jsonld(meta: dict, full: dict, url: str, lang: str = "en") -> str:
     """Schema.org Dataset, which is what Google Dataset Search reads.
 
     Worth the twenty lines: it is a route to this data that almost nobody
@@ -577,28 +622,42 @@ def series_jsonld(meta: dict, full: dict, url: str) -> str:
                                     "name": full.get("title_en"), "unitText": full["unit"]}
     if full.get("source_url"):
         data["isBasedOn"] = full["source_url"]
+    # The Arabic page names the dataset in Arabic, and says which language it
+    # is in; CBE's English title stays as an alternate name.
+    if lang == "ar" and full.get("title_ar"):
+        data["name"] = " ".join(str(full["title_ar"]).split())
+        data["alternateName"] = full.get("title_en") or meta["series_id"]
+    data["inLanguage"] = lang
     payload = (json.dumps(data, ensure_ascii=False)
                .replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e"))
     return '<script type="application/ld+json">' + payload + "</script>"
 
 
 def topic_body(topic: dict, members: list[dict], root: str, lang: str = "en") -> str:
+    # Each series by its title in the page's language, linked within that site.
+    def name(s):
+        if lang == "ar" and s.get("title_ar"):
+            return " ".join(str(s["title_ar"]).split())
+        return s.get("title_en") or s["series_id"]
     rows = "".join(
-        f'<tr><td class="name"><a href="{root}/s/{esc(s["series_id"])}/"{dir_attr(s.get("title_en"))}>'
-        f'{esc(s.get("title_en") or s["series_id"])}</a></td>'
+        f'<tr><td class="name"><a href="{root}/{lang_prefix(lang)}s/{esc(s["series_id"])}/"{dir_attr(name(s))}>'
+        f'{esc(name(s))}</a></td>'
         f'<td>{esc(fmt(s.get("latest_value"), s.get("unit")))}</td>'
         f'<td>{esc(short_date(s.get("last")))}</td></tr>'
         for s in members[:400]
     )
+    count = f"{len(members):,}"
     return (
         '<div class="wrap"><section class="section">'
-        '<p class="eyebrow">Subject</p>'
-        f'<h1>{esc(topic["name"])}</h1>'
-        f'<p class="lede">{esc(topic["blurb"])} {len(members):,} series, '
-        "from the Central Bank of Egypt, updated daily.</p>"
-        '<table class="indicators"><thead><tr><th>Series</th><th>Latest</th><th>As of</th></tr></thead>'
+        f'<p class="eyebrow">{esc(tr("Topic", lang))}</p>'
+        f'<h1>{esc(tr(topic["name"], lang))}</h1>'
+        f'<p class="lede">{esc(tr(topic["blurb"], lang))} '
+        + esc(tr("{n} series, from the Central Bank of Egypt, updated daily.", lang)).replace("{n}", count) + "</p>"
+        f'<table class="indicators"><thead><tr><th>{esc(tr("Series|one row of a table", lang))}</th>'
+        f'<th>{esc(tr("Latest", lang))}</th><th>{esc(tr("As of", lang))}</th></tr></thead>'
         f"<tbody>{rows}</tbody></table>"
-        + (f'<p class="foot-note">Showing the first 400 of {len(members):,}.</p>' if len(members) > 400 else "")
+        + (f'<p class="foot-note">{esc(tr("Showing the first 400 of {n}.", lang)).replace("{n}", count)}</p>'
+           if len(members) > 400 else "")
         + attribution(lang) + "</section></div>"
     )
 
@@ -608,22 +667,30 @@ def document_body(doc: dict, snippet: str, root: str, lang: str = "en") -> str:
     if doc.get("date"):
         bits.append(nice_date(doc["date"]))
     if doc.get("pages"):
-        bits.append(f"{doc['pages']:,} pages")
+        bits.append(tr("{n} pages", lang).replace("{n}", f"{doc['pages']:,}"))
     if doc.get("source"):
         bits.append(str(doc["source"]))
+    title = doc.get("title") or doc["id"]
+    # CBE lists its documents under English titles only. On /ar/ the title is
+    # held left to right and said to be English, rather than passed through
+    # half translated.
+    if lang == "ar" and not ARABIC.search(title):
+        heading = (f'<h1 dir="ltr" lang="en">{esc(title)}</h1>'
+                   f'<p class="foot-note">{esc(tr("The title is available in English only, as CBE lists it.", lang))}</p>')
+    else:
+        heading = f'<h1{dir_attr(title)}>{esc(title)}</h1>'
     return (
         '<div class="wrap"><section class="section">'
-        '<p class="eyebrow">Document</p>'
-        f'<h1{dir_attr(doc.get("title"))}>{esc(doc.get("title") or doc["id"])}</h1>'
-        f'<p class="lede">{esc(" · ".join(bits))}. Published by the Central Bank of Egypt, '
-        "indexed here so its text can be searched and quoted.</p>"
+        f'<p class="eyebrow">{esc(tr("Document", lang))}</p>'
+        + heading
+        + f'<p class="lede">{esc(" · ".join(bits))}. '
+        + esc(tr("Published by the Central Bank of Egypt, indexed here so its text can be searched and quoted.", lang)) + "</p>"
         + (f'<p{dir_attr(snippet)}>{esc(snippet)}</p>' if snippet else "")
-        + (f'<p><a href="{esc(doc["url"])}" rel="noopener">The document on cbe.org.eg</a>'
-           f' · <a href="{root}/#/docs">Search the whole archive</a></p>'
+        + (f'<p><a href="{esc(doc["url"])}" rel="noopener">{esc(tr("The document on cbe.org.eg", lang))}</a>'
+           f' · <a href="{root}/{lang_prefix(lang)}#/docs">{esc(tr("Search the whole archive", lang))}</a></p>'
            if doc.get("url") else "")
         + (
-            '<p class="foot-note">This document is a scan with no text layer of its own. '
-            "Its text was read by OCR and is not as reliable as the rest.</p>"
+            f'<p class="foot-note">{esc(tr("This document is a scan with no text layer of its own. Its text was read by OCR and is not as reliable as the rest.", lang))}</p>'
             if doc.get("ocr") or doc.get("needs_ocr") else ""
         )
         + attribution(lang) + "</section></div>"
@@ -767,13 +834,12 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
             continue
         full = json.loads(full_path.read_text(encoding="utf-8"))
 
-        # CBE's own Arabic title where there is one, which is the Excel archive
-        # and nothing else. Every FX, price, policy rate and treasury bill
-        # series -- which is to say everything on the front page -- has none,
-        # and falls back to the English rather than being given an invented
-        # name. An English title on an Arabic page is visibly unfinished; a
-        # made-up Arabic one is a claim about what the Bank called it.
-        title = (full.get("title_ar") if lang == "ar" else None) or full.get("title_en") or sid
+        # The Arabic title on /ar/: CBE's where it published one, which is the
+        # Excel archive, and Miqyas's translation, marked on the page, for every
+        # FX, price, policy rate and treasury bill series, which CBE names in
+        # English only.
+        title = (" ".join(str(full.get("title_ar") or "").split()) if lang == "ar" else None) \
+            or full.get("title_en") or sid
         url, alt = urls(f"s/{sid}/")
         unit = full.get("unit")
         reading = fmt(meta.get("latest_value"), unit) + unit_tag(unit)
@@ -785,12 +851,12 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
               else DIST / "s" / sid / "index.html",
               template.render(
                   root=up(2), page=f"/s/{sid}", lang=lang, alternate=alt,
-                  title=f"{title} | Miqyas",
+                  title=f"{title} | " + tr("Miqyas", lang),
                   description=description, url=url,
                   image=f"{SITE_URL}og/{sid}.png",
                   image_alt=f"{title}, {reading}",
                   body=series_body(meta, full, by_key.get(key or ""), up(2), lang),
-                  head_extra=series_jsonld(meta, full, url)))
+                  head_extra=series_jsonld(meta, full, url, lang)))
         written += 1
 
     # --- topics ---
@@ -803,7 +869,7 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
               else DIST / "topic" / topic["key"] / "index.html",
               template.render(
                   root=up(2), page=f"/topic/{topic['key']}", lang=lang, alternate=alt,
-                  title=f"{name}: {len(rows):,} " + tr("series from Egypt's central bank", lang) + " | Miqyas",
+                  title=f"{name}: {len(rows):,} " + tr("series from Egypt's central bank", lang) + " | " + tr("Miqyas", lang),
                   description=clamp(blurb + f" {len(rows):,} " + tr("series, updated daily.", lang)),
                   url=url,
                   image=f"{SITE_URL}og/topic-{topic['key']}.png",
@@ -820,7 +886,7 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
               else DIST / "docs" / doc["id"] / "index.html",
               template.render(
                   root=up(2), page=f"/docs/{doc['id']}", lang=lang, alternate=alt,
-                  title=f"{title} | Miqyas",
+                  title=f"{title} | " + tr("Miqyas", lang),
                   description=clamp(
                       f"{title}. {doc.get('pages', 0):,} " + tr("pages from the Central Bank of Egypt", lang) +
                       f", {nice_date(doc.get('date'))}. " + (snippet or "")),

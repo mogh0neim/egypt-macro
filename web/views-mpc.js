@@ -30,7 +30,7 @@ async function viewMPC() {
   const mpc = await loadMPC();
   if (!mpc || !mpc.statements || !mpc.statements.length) {
     app.innerHTML =
-      '<div class="wrap"><p class="empty">The rate-decision archive has not been built yet. ' +
+      '<div class="wrap"><p class="empty">' + t("The rate-decision archive has not been built yet.") + " " +
       "Run <code>python ingest/mpc_archive.py</code>, then <code>python ingest/build_exports.py</code>.</p></div>";
     return;
   }
@@ -108,40 +108,69 @@ async function viewMPC() {
     const s = r.s;
     const badge = r.decision
       ? '<span class="badge ' + r.decision + '">' + DECISION_LABEL[r.decision] +
-        (r.bp && r.decision !== "hold" ? " " + Math.abs(r.bp) + " bp" : "") + "</span>"
-      : '<span class="badge unknown">Statement only</span>';
+        (r.bp && r.decision !== "hold" ? " " + Math.abs(r.bp) + " " + t("bp") : "") + "</span>"
+      : '<span class="badge unknown">' + t("Statement only") + "</span>";
     const rateText =
-      (r.deposit !== null && r.deposit !== undefined ? "deposit <b>" + r.deposit + "%</b>" : "") +
-      (r.lending !== null && r.lending !== undefined ? " · lending <b>" + r.lending + "%</b>" : "");
+      (r.deposit !== null && r.deposit !== undefined ? t("deposit") + " <b>" + r.deposit + "%</b>" : "") +
+      (r.lending !== null && r.lending !== undefined ? " · " + t("lending") + " <b>" + r.lending + "%</b>" : "");
     const language = r.diff
-      ? '<span class="lang">' + Math.round((1 - parseFloat(r.diff.similarity || 0)) * 100) +
-        "% of the wording changed</span>"
+      ? '<span class="lang">' + tf("{n}% of the wording changed", { n: Math.round((1 - parseFloat(r.diff.similarity || 0)) * 100) }) + "</span>"
       : "";
     return (
       '<li class="mpc-row" data-decision="' + (r.decision || "unknown") + '">' +
       '<span class="when">' + niceDate(s.date) + "</span>" +
       badge +
-      '<span class="rates">' + rateText + (r.inferred ? ' <i class="from-series">from the rate series</i>' : "") + "</span>" +
+      '<span class="rates">' + rateText + (r.inferred ? ' <i class="from-series">' + t("from the rate series") + "</i>" : "") + "</span>" +
       language +
+      // CBE's statements are in English; the Arabic site says so on the link.
       '<a class="src" href="' + esc(s.url) + '" target="_blank" rel="noopener">' +
-      (s.format === "pdf" ? "PDF" : "Statement") + " ↗</a></li>"
+      t(s.format === "pdf" ? "PDF ↗" : "Statement ↗") + "</a></li>"
     );
   };
 
+  /* ---------- take it away ----------
+   * The decisions as a file, where they come from, and how to cite them. The
+   * JSON was published from the start and only linked from the Data page; the
+   * CSV is written here from the same rows the list is drawn from, so the file
+   * and the page cannot disagree. */
+  const status = await loadStatus();
+  const pageURL = siteBase() + (RTL ? "ar/" : "") + "rates/";
+  const built = status && status.built_at ? niceDate(status.built_at.slice(0, 10)) : "";
+  const sep = RTL ? "، " : ", ";
+  const citeText =
+    t("Central Bank of Egypt") + sep + tf("Monetary Policy Committee statements, {from} to {to}", {
+      from: niceDate(mpc.range[0]), to: niceDate(mpc.range[1]) }) + ". " +
+    t("Republished by Miqyas") + sep + pageURL + (built ? sep + t("build of") + " " + built : "") + ".";
+  const takeAway =
+    '<div class="band-inset take-away">' +
+    '<p class="eyebrow">' + t("Take it with you") + "</p>" +
+    "<h2>" + t("The decisions as data, and where they come from") + "</h2>" +
+    '<p class="lede">' + t("Source: the Monetary Policy Committee statements the Central Bank of Egypt publishes on cbe.org.eg, linked one by one below. The rates are read from each statement; where a statement could not be read, from CBE's own corridor series, and marked so. Every statement is in English.") + "</p>" +
+    '<div class="controls">' +
+    '<button class="chip solid" id="mpc-csv">' + t("All decisions as CSV") + "</button>" +
+    '<a class="chip" href="' + API + '/mpc.json" target="_blank" rel="noopener">' + t("Open the JSON") + "</a>" +
+    '<a class="chip" href="#/s/EG.RATE.ON.DEP">' + t("The corridor as a series") + "</a>" +
+    '<a class="chip" href="' + ROOT + '/parquet/rates.parquet" download>' + bdiLTR("rates.parquet") + "</a>" +
+    "</div>" +
+    '<p class="cite">' + t("Suggested citation:") + " " + esc(citeText).replace(esc(pageURL), bdiLTR(esc(pageURL))) + "</p>" +
+    '<div class="controls"><button class="chip" id="mpc-cite">' + t("Copy the citation") + "</button></div>" +
+    "</div>";
+
   app.innerHTML =
     '<div class="wrap">' +
-    crumbs([{ label: "Rate decisions" }]) +
+    crumbs([{ label: t("Rate decisions") }]) +
     nextPanel(nextMeeting(calendar)) +
     '<section class="section">' +
     '<p class="eyebrow">' + t("Monetary Policy Committee") + "</p>" +
     "<h2>" + t("Every rate decision since June 2005") + "</h2>" +
-    '<p class="lede">' + mpc.count + " statements, continuous from " + niceDate(mpc.range[0]) +
-    " to " + niceDate(mpc.range[1]) + ". " + tally.hike + " increases, " + tally.cut +
-    " cuts, " + tally.hold + " meetings that changed nothing" +
+    '<p class="lede">' +
+    tf("{n} statements, continuous from {from} to {to}. {h} increases, {c} cuts, {k} meetings that changed nothing", {
+      n: num(mpc.count), from: niceDate(mpc.range[0]), to: niceDate(mpc.range[1]),
+      h: num(tally.hike), c: num(tally.cut), k: num(tally.hold) }) +
     (tally.unknown
-      ? ", and " + tally.unknown + " older statements whose decision is in the PDF but not in any series CBE publishes"
+      ? tf(", and {u} older statements whose decision is in the PDF but not in any series CBE publishes", { u: num(tally.unknown) })
       : "") +
-    ". Each one links back to CBE's own copy.</p>" +
+    t(". Each one links back to CBE's own copy.") + "</p>" +
     (sets.length
       ? '<div id="mpc-chart"></div>' +
         '<div class="legend">' +
@@ -155,21 +184,25 @@ async function viewMPC() {
         t("The discount rate runs back to 1991. The corridor is only published from July 2014, which is why the older statements below carry no rate.") +
         "</span></div>"
       : "") +
+    takeAway +
     '<div class="controls">' +
-    '<button class="chip" data-dec="" aria-pressed="true">All ' + rows.length + "</button>" +
-    '<button class="chip" data-dec="hike" aria-pressed="false">Increases ' + tally.hike + "</button>" +
-    '<button class="chip" data-dec="cut" aria-pressed="false">Cuts ' + tally.cut + "</button>" +
-    '<button class="chip" data-dec="hold" aria-pressed="false">No change ' + tally.hold + "</button>" +
+    '<button class="chip" data-dec="" aria-pressed="true">' + t("All|decisions") + " " + rows.length + "</button>" +
+    '<button class="chip" data-dec="hike" aria-pressed="false">' + t("Increases") + " " + tally.hike + "</button>" +
+    '<button class="chip" data-dec="cut" aria-pressed="false">' + t("Cuts") + " " + tally.cut + "</button>" +
+    '<button class="chip" data-dec="hold" aria-pressed="false">' + t("No change") + " " + tally.hold + "</button>" +
     (tally.unknown
-      ? '<button class="chip" data-dec="unknown" aria-pressed="false">Unrecorded ' + tally.unknown + "</button>"
+      ? '<button class="chip" data-dec="unknown" aria-pressed="false">' + t("Unrecorded") + " " + tally.unknown + "</button>"
       : "") +
     "</div>" +
     '<ul class="mpc-list" id="mpc-list">' + rows.map(card).join("") + "</ul>" +
-    '<p class="foot-note">“Wording changed” compares each statement with the one before it, character by character. ' +
-    "A committee that holds rates but rewrites half its statement is doing something. " +
-    "Rates marked <i>from the rate series</i> were not machine-readable in the statement itself and have been " +
-    "recovered from CBE's published corridor history.</p>" +
+    '<p class="foot-note">' +
+    t("“Wording changed” compares each statement with the one before it, character by character. A committee that holds rates but rewrites half its statement is doing something. Rates marked") +
+    " <i>" + t("from the rate series") + "</i> " +
+    t("were not machine-readable in the statement itself and have been recovered from CBE's published corridor history.") + "</p>" +
     "</section></div>";
+
+  document.getElementById("mpc-csv").addEventListener("click", () => decisionsCSV(rows, pageURL));
+  document.getElementById("mpc-cite").addEventListener("click", (e) => copyText(e.target, citeText, t("Citation copied")));
 
   if (sets.length) {
     const readout = document.getElementById("mpc-readout");
@@ -189,6 +222,34 @@ async function viewMPC() {
   );
 }
 
+/* Every decision on the page as one CSV, newest first, the rows the list is
+ * drawn from. A rate read from the corridor series rather than the statement
+ * says so in its own column, as the list does. Headed like a series download:
+ * the attribution, the page it came from, the day it was taken. */
+function decisionsCSV(rows, pageURL) {
+  const cell = (v) => (v === null || v === undefined ? "" : /[",\n]/.test(String(v)) ? '"' + String(v).replace(/"/g, '""') + '"' : String(v));
+  const head =
+    "# Central Bank of Egypt, Monetary Policy Committee decisions\n" +
+    "# " + ATTRIBUTION + "\n" +
+    "# Page: " + pageURL + "\n" +
+    "# Retrieved " + new Date().toISOString().slice(0, 10) + "\n" +
+    "date,decision,change_bp,deposit_rate,lending_rate,rates_from,wording_changed_pct,statement_url\n";
+  const body = rows.map((r) => [
+    r.s.date, r.decision || "", r.bp === null ? "" : r.bp, r.deposit, r.lending,
+    r.deposit === null && r.lending === null ? "" : r.inferred ? "rate series" : "statement",
+    r.diff ? Math.round((1 - parseFloat(r.diff.similarity || 0)) * 100) : "",
+    r.s.url,
+  ].map(cell).join(",")).join("\n");
+  const blob = new Blob([head + body + "\n"], { type: "text/csv;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "mpc-decisions.csv";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+}
+
 /* ---------- the next meeting ----------
  *
  * The committee meets eight times a year on dates CBE publishes in advance, so
@@ -203,7 +264,7 @@ function nextPanel(next) {
   return (
     '<section class="section band-inset call"><div class="wrap-inner">' +
     '<p class="eyebrow">' + t("Next rate decision") + "</p>" +
-    "<h2>" + esc(niceDate(next.date)) + ", " + esc(countdownWords(next.days)) + "</h2>" +
+    "<h2>" + esc(niceDate(next.date)) + (RTL ? "، " : ", ") + esc(countdownWords(next.days)) + "</h2>" +
     '<p class="lede">' +
     t("The committee meets eight times a year, on dates the Central Bank publishes in advance.") +
     "</p>" +

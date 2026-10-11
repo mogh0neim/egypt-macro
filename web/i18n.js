@@ -133,7 +133,7 @@ const AR = {
     "لا حاجة لمربع بحث. اختر موضوعًا واقرأ من أعلى لأسفل.",
   "The name": "الاسم",
   "Cairo read the flood against a marble column": "القاهرة كانت تقرأ الفيضان على عمود من الرخام",
-  "What is your salary actually worth?": "كم تساوي أموالك اليوم فعلًا؟",
+  "What is your salary actually worth?": "كم يساوي راتبك فعلًا؟",
   "See what changed →": "شاهد ما تغيّر ←",
   "Work it out →": "احسبها ←",
   "Try it →": "جرّبها ←",
@@ -193,7 +193,7 @@ const AR = {
 
   /* ---------- the calculators ---------- */
   "Three questions about your own money": "ثلاثة أسئلة عن أموالك أنت",
-  "What is your salary worth?": "كم تساوي راتبك اليوم؟",
+  "What is your salary worth?": "كم يساوي راتبك اليوم؟",
   "What happened to your savings?": "ماذا حدث لمدخراتك؟",
   "What was a dollar worth that day?": "بكم كان الدولار في ذلك اليوم؟",
   "Monthly salary, in pounds": "الراتب الشهري بالجنيه",
@@ -216,7 +216,7 @@ const AR = {
   "today.": "اليوم.",
   "what": "ما يشتريه",
   "from": "من",
-  "buys, in the money of the day": "بنقود كل فترة",
+  "buys, in the money of the day": "مقوَّمًا بنقود ذلك اليوم",
   "The index runs from": "يمتد الرقم القياسي من",
   "kept as pounds now buys": "بقيت بالجنيه تشتري اليوم",
   "of": "من تسوّق",
@@ -236,8 +236,8 @@ const AR = {
   "A dollar costs": "الدولار يكلّف",
   "more today, at": "أكثر اليوم، عند",
   "Put the other way round,": "وبالعكس،",
-  "was": "كانت",
-  "then and is": "وقتها وهي الآن",
+  "was": "كانت تساوي",
+  "then and is": "وقتها، وأصبحت تساوي",
   "Any date from": "أي تاريخ من",
   "onwards.": "فصاعدًا.",
   "“What it buys” is in the money of": "“ما يشتريه” مُقوَّم بنقود",
@@ -692,6 +692,443 @@ const AR = {
   "Kind of document": "نوع الوثيقة",
   "Document topic": "موضوع الوثيقة",
   "Year published": "سنة النشر",
+  /* ---------- periods, counts and citations (core.js) ---------- */
+  "released": "صدر في",
+  "issued": "إصدار",
+  "for|a period": "عن",
+  "{n} ago": "قبل {n}",
+  "Breadcrumb": "مسار التنقل",
+  "{n} rows copied": "تم نسخ الصفوف: {n}",
+  "Miqyas": "مقياس",
+  "Central Bank of Egypt": "البنك المركزي المصري",
+  "computed from Central Bank of Egypt data": "محسوبة من بيانات البنك المركزي المصري",
+  "data to": "بيانات حتى",
+  "Republished by Miqyas": "أعاد نشرها مقياس",
+  "build of": "نسخة الموقع بتاريخ",
+  "in English:": "بالإنجليزية:",
+  "id": "المعرّف",
+  "The Arabic title is Miqyas's translation; CBE publishes this series under its English name.":
+    "العنوان العربي ترجمة من مقياس، والبنك المركزي ينشر هذه السلسلة باسمها الإنجليزي.",
+  "no newer reading held": "لا قراءة أحدث لدينا",
+  "Suggested citation:": "صيغة الاستشهاد المقترحة:",
+  "Copy the citation": "انسخ صيغة الاستشهاد",
+  "Citation copied": "تم نسخ صيغة الاستشهاد",
+  "MB": "ميغابايت",
+  "KB": "كيلوبايت",
+
+  /* ---------- the overview, the series list and a subject ---------- */
+  "Every number below is the latest Miqyas holds. Click one to see its whole history.":
+    "كل رقم بالأسفل هو أحدث ما لدى مقياس. اضغط على أيٍّ منها لترى تاريخه كاملًا.",
+  "On your desk": "في مفضلتك",
+  "Overnight deposit {d}%, overnight lending {l}%, in force since the {date} decision":
+    "الإيداع لليلة واحدة {d}%، والإقراض لليلة واحدة {l}%، ساريان منذ قرار {date}",
+  "Overnight deposit {d}%, overnight lending {l}%, in force since {date}":
+    "الإيداع لليلة واحدة {d}%، والإقراض لليلة واحدة {l}%، ساريان منذ {date}",
+  " and held at the {date} meeting": "، وثُبِّتا في اجتماع {date}",
+  "Overnight deposit {d}%, overnight lending {l}%.":
+    "الإيداع لليلة واحدة {d}%، والإقراض لليلة واحدة {l}%.",
+  "{date}, the committee left rates unchanged": "{date}: أبقت اللجنة الأسعار دون تغيير",
+  "{date}, the committee cut": "{date}: خفّضت اللجنة الأسعار",
+  "{date}, the committee raised": "{date}: رفعت اللجنة الأسعار",
+  "{date}, the committee met": "{date}: اجتمعت اللجنة",
+  "Every decision back to June 2005, with what changed in the wording each time.":
+    "كل القرارات منذ يونيو 2005، مع ما تغيّر في صياغة البيان كل مرة.",
+  "See all {n} decisions →": "شاهد القرارات كلها ({n}) ←",
+  "Today's dollar rate, against every rate CBE has published since 2005. Low {lo} in {lod}, high {hi} in {hid}.":
+    "سعر الدولار اليوم، مقارنة بكل سعر نشره البنك المركزي منذ 2005. الأدنى {lo} في {lod}، والأعلى {hi} في {hid}.",
+  "{n} readings": "القراءات: {n}",
+  "{from} to {to}": "من {from} إلى {to}",
+  "no newer data held": "لا بيانات أحدث لدينا",
+  "Find a series, or read down the subjects": "ابحث عن سلسلة، أو تصفّح الموضوعات",
+  "Type a word if you know one. If you would rather not, every subject is below and each opens onto the CBE tables it came from, so you can read a whole balance of payments rather than hunt one line of it. The star on any result keeps it in your":
+    "اكتب كلمة إن كنت تعرف واحدة. وإن لم تشأ، فكل موضوع موجود بالأسفل، ويفتح كلٌّ منها على جداول البنك المركزي التي جاء منها، فتقرأ ميزان المدفوعات كاملًا بدل أن تبحث عن سطر واحد منه. والنجمة على أي نتيجة تحفظها في",
+  "favourites": "المفضلة",
+  "dollar, treasury bill yield, تحويلات…": "دولار، عائد أذون الخزانة، تحويلات…",
+  "Try:": "جرّب:",
+  "dollar": "دولار",
+  "treasury bill yield": "عائد أذون الخزانة",
+  "deposits": "الودائع",
+  "reserves": "الاحتياطي",
+  "inflation": "التضخم",
+  "exports": "الصادرات",
+  "tourists": "السائحين",
+  "external debt": "الدين الخارجي",
+  "budget deficit": "العجز الكلي",
+  "remittances": "تحويلات",
+  "By subject": "حسب الموضوع",
+  "All of it, in thirteen subjects": "كل شيء، في ثلاثة عشر موضوعًا",
+  "The last card is not a subject: it is a screen assembled out of several of them, for a desk that reads the same numbers every day.":
+    "البطاقة الأخيرة ليست موضوعًا: إنها شاشة مجمّعة من عدة موضوعات، لمكتب يقرأ الأرقام نفسها كل يوم.",
+  "{s} series · {o} observations": "السلاسل: {s} · المشاهدات: {o}",
+  "{n} matching series": "السلاسل المطابقة: {n}",
+  "Nothing matches “{q}”. Try a broader word, or pick a subject below.":
+    "لا شيء يطابق «{q}». جرّب كلمة أعمّ، أو اختر موضوعًا بالأسفل.",
+  "No such topic.": "لا يوجد موضوع بهذا الاسم.",
+  "See all thirteen": "اعرض الموضوعات الثلاثة عشر",
+  "{n} series · from {d}": "السلاسل: {n} · منذ {d}",
+  "{n} series across 1 CBE table.": "السلاسل: {n}، في جدول واحد للبنك المركزي.",
+  "{n} series across {k} CBE tables.": "السلاسل: {n}، وجداول البنك المركزي: {k}.",
+  "Line": "البند",
+  "Covers": "الفترة المغطاة",
+  "Published": "الدورية",
+  "Topic": "موضوع",
+  "Narrow this topic (optional)": "ضيّق نطاق هذا الموضوع (اختياري)",
+  "Any frequency": "أي دورية",
+  "Open all tables": "افتح كل الجداول",
+  "Close all tables": "أغلق كل الجداول",
+
+  /* ---------- one series ---------- */
+  "No newer reading here": "لا قراءة أحدث هنا",
+  "Miqyas holds no value for this series after {d}: {n} days without a new reading ({f}).":
+    "لا يحتفظ مقياس بأي قيمة لهذه السلسلة بعد {d}، وعدد الأيام دون قراءة جديدة: {n} (الدورية: {f}).",
+  "Miqyas holds no value for this series after {d}: {n} days without a new reading.":
+    "لا يحتفظ مقياس بأي قيمة لهذه السلسلة بعد {d}، وعدد الأيام دون قراءة جديدة: {n}.",
+  "The source may have stopped, or Miqyas may not have picked up a newer release.":
+    "ربما توقف المصدر، أو ربما لم يلتقط مقياس إصدارًا أحدث.",
+  "Check the CBE source linked below.": "راجع مصدر البنك المركزي المرتبط بالأسفل.",
+  "{n} of these readings are exactly zero": "قراءات تساوي صفرًا تمامًا: {n}",
+  "CBE publishes a zero where no rate was set rather than leaving the cell empty, and they are reproduced here as published rather than treated as missing. An average taken across this series will be pulled toward zero.":
+    "ينشر البنك المركزي صفرًا حيث لم يُحدَّد سعر بدل أن يترك الخانة فارغة، وتُعرض هذه الأصفار هنا كما نُشرت لا بوصفها قيمًا مفقودة. وأي متوسط يؤخذ على هذه السلسلة سينجذب نحو الصفر.",
+  "A note on this series": "ملاحظة على هذه السلسلة",
+  "Biggest single move {size}{pct} on {d}.": "أكبر تحرّك منفرد {size}{pct} في {d}.",
+  "The gold mark is the median of {n} readings, {m}.": "العلامة الذهبية هي وسيط كل القراءات ({n})، وقيمته {m}.",
+  "Where this sits in its own record": "موقعها في سجلها الخاص",
+  "lowest": "الأدنى",
+  "highest": "الأعلى",
+  "Newest first. The most recent {n} of {all} readings in this range.":
+    "الأحدث أولًا. آخر {n} من أصل {all} قراءة في هذه الفترة.",
+  "Newest first. All {n} readings in this range.": "الأحدث أولًا. كل القراءات في هذه الفترة: {n}.",
+  "Value": "القيمة",
+  "Not found": "غير موجود",
+  "Nothing here is called": "لا شيء هنا يحمل الاسم",
+  "These are the closest things in the catalogue.": "هذه أقرب ما في الفهرس.",
+  "Nothing in the catalogue looks close to it, so it may be from an older version of the site.":
+    "لا شيء في الفهرس يشبهه، فربما يكون من نسخة أقدم من الموقع.",
+  "Nothing in this range.": "لا شيء في هذه الفترة.",
+  "Compare with… (nothing selected)": "قارن مع… (لم يُختر شيء)",
+  "{line} (same table)": "{line} (الجدول نفسه)",
+  "Other": "أخرى",
+  "no unit stated": "لم تُذكر وحدة",
+  "as of {d}": "حتى {d}",
+  "Computed by Miqyas": "حسبها مقياس",
+  "from CBE data": "من بيانات البنك المركزي",
+  "Dates assigned by Miqyas": "تواريخ حدّدها مقياس",
+  "from the sheet": "من الملف",
+  "Reproduced as published": "منقولة كما نُشرت",
+  "yes": "نعم",
+  "★ On your desk": "★ في مفضلتك",
+  "☆ Keep on your desk": "☆ أضف إلى مفضلتك",
+  "This range as CSV": "هذه الفترة بصيغة CSV",
+  "Everything as CSV": "كل البيانات بصيغة CSV",
+  "Copy for a spreadsheet": "انسخ لجدول بيانات",
+  "Open the JSON": "افتح ملف JSON",
+  "Copy a link to this page": "انسخ رابط هذه الصفحة",
+  "The readings themselves": "القراءات نفسها",
+  "{n} in total": "المجموع: {n}",
+  "Where this comes from": "من أين تأتي",
+  "Provenance": "المصدر",
+  "Computed by Miqyas from CBE data:": "حسبها مقياس من بيانات البنك المركزي:",
+  "Source: Central Bank of Egypt, Excel time-series archive. Miqyas reads the sheet and assigns each value to a date from the sheet's own period labels. Fiscal-year quarters follow Egypt's July to June year. Dates are our reading of the sheet and can be wrong; check the linked CBE file before citing.":
+    "المصدر: البنك المركزي المصري، أرشيف السلاسل الزمنية بصيغة Excel. يقرأ مقياس الملف وينسب كل قيمة إلى تاريخ استنادًا إلى تسميات الفترات في الملف نفسه. وتتبع الأرباع المالية السنة المالية المصرية من يوليو إلى يونيو. والتواريخ قراءتنا للملف وقد تكون خاطئة، فراجع ملف البنك المركزي المرتبط قبل الاستشهاد.",
+  "Reproduced as published from the Central Bank of Egypt's daily tables. Where CBE printed two values for one date, Miqyas keeps one and lists both on the What changed page.":
+    "منقولة كما نُشرت من الجداول اليومية للبنك المركزي المصري. وحيث نشر البنك قيمتين لتاريخ واحد، يحتفظ مقياس بإحداهما ويدرج الاثنتين في صفحة «ما الذي تغيّر».",
+  "Values are dated to the end of the period they describe.": "تُؤرَّخ القيم بنهاية الفترة التي تصفها.",
+  "CBE's own sheet did not state a unit anywhere the parser could find one, so the figures are reproduced without one rather than given a guessed label.":
+    "لم يذكر ملف البنك المركزي نفسه وحدة في أي موضع استطاع المعالج العثور عليه، فتُعرض الأرقام بلا وحدة بدل أن تُعطى تسمية مخمّنة.",
+  "How periods and dates are written →": "كيف تُكتب الفترات والتواريخ ←",
+  "CBE page": "صفحة البنك المركزي",
+  "Source file": "الملف المصدر",
+  "Dataset": "مجموعة البيانات",
+  "Same table": "الجدول نفسه",
+  "{n} more lines in this table.": "بنود أخرى في هذا الجدول: {n}.",
+  "All {topic} series →": "كل سلاسل {topic} ←",
+  "Nothing else came from this table.": "لم يأتِ شيء آخر من هذا الجدول.",
+  /* The methods of the computed series, as the catalogue words them. A method
+     not listed here stays English on /ar/, held left to right. */
+  "CBE publishes inflation as a rate and never as a level. This chains EG.CPI.HDL.MOM, the published month-on-month headline rate, from a base of 100 in December 2004. Recomputing year-on-year inflation from it reproduces the published EG.CPI.HDL.YOY to a median of 0.001 percentage points. It does not reproduce 2009 and 2010, where CAPMAS rebased the basket and a chained index cannot see the link: a comparison spanning those two years carries roughly 1.5 percentage points of error in that one year.":
+    "ينشر البنك المركزي التضخم معدّلًا لا مستوى. وهذه السلسلة تربط EG.CPI.HDL.MOM، وهو معدّل التضخم العام الشهري المنشور، بدءًا من أساس 100 في ديسمبر 2004. وإعادة حساب التضخم السنوي منها تعيد إنتاج EG.CPI.HDL.YOY المنشور بفارق وسيط قدره 0.001 نقطة مئوية. ولا تعيد إنتاج عامي 2009 و2010، حين أعاد الجهاز المركزي للتعبئة العامة والإحصاء أساس السلة ولا يستطيع رقم متسلسل أن يرى الربط: فأي مقارنة تمتد عبر هذين العامين تحمل خطأً يقارب 1.5 نقطة مئوية في ذلك العام وحده.",
+  "Parsed from CBE remittances press releases, which report a running total from the start of the fiscal year (1 July). The period is the last day of the cumulative window, not a monthly flow.":
+    "مستخرجة من البيانات الصحفية للبنك المركزي عن التحويلات، التي تذكر مجموعًا تراكميًا منذ بداية السنة المالية (1 يوليو). والفترة هي آخر يوم في النافذة التراكمية، لا تدفقًا شهريًا.",
+  "Parsed from the monthly CBE press release text. CBE does not publish this as a downloadable series.":
+    "مستخرجة من نص البيان الصحفي الشهري للبنك المركزي. ولا ينشرها البنك سلسلةً قابلة للتنزيل.",
+  "Auctions with tenor in [60, 120] days, grouped as 3M.": "العطاءات التي يقع أجلها بين 60 و120 يومًا، مجمّعة تحت أجل 3 أشهر.",
+  "Auctions with tenor in [150, 200] days, grouped as 6M.": "العطاءات التي يقع أجلها بين 150 و200 يوم، مجمّعة تحت أجل 6 أشهر.",
+  "Auctions with tenor in [240, 290] days, grouped as 9M.": "العطاءات التي يقع أجلها بين 240 و290 يومًا، مجمّعة تحت أجل 9 أشهر.",
+  "Auctions with tenor in [330, 400] days, grouped as 12M.": "العطاءات التي يقع أجلها بين 330 و400 يوم، مجمّعة تحت أجل 12 شهرًا.",
+  "Submitted Amount / Accepted Amount, computed here. Not published by CBE.":
+    "المبلغ المقدَّم مقسومًا على المبلغ المقبول، محسوبًا هنا. لا ينشره البنك المركزي.",
+
+  /* ---------- get the data ---------- */
+  "Get the data": "احصل على البيانات",
+  "Free, no key, no account": "مجانًا، بلا مفتاح ولا حساب",
+  "Take all of it": "خذها كلها",
+  "{s} series and {o} observations, in whichever shape suits you. Everything here is rebuilt from CBE's own publications and updated daily, so a bookmark stays current.":
+    "السلاسل: {s}، والمشاهدات: {o}، بالشكل الذي يناسبك. كل ما هنا يُعاد بناؤه من منشورات البنك المركزي نفسها ويُحدَّث يوميًا، فيبقى الرابط المحفوظ محدَّثًا.",
+  "What each field, code and date means →": "ماذا يعني كل حقل ورمز وتاريخ ←",
+  "Whole-archive downloads": "تنزيلات الأرشيف كاملًا",
+  "Every observation. Opens in DuckDB, pandas, Polars, R.": "كل المشاهدات. يُفتح في DuckDB وpandas وPolars وR.",
+  "The catalogue: titles, units, frequency, provenance.": "الفهرس: العناوين والوحدات والدورية والمصدر.",
+  "One SQLite file: series, observations and a revisions table.": "ملف SQLite واحد: السلاسل والمشاهدات وجدول للتعديلات.",
+  "Plain CSV, one file per dataset, plus the catalogue.": "ملفات CSV عادية، ملف لكل مجموعة بيانات، ومعها الفهرس.",
+  "The record-level tables behind the derived series.": "الجداول التفصيلية التي تُحسب منها السلاسل المشتقة.",
+  "Every value each series has held, with the first and last day it was held.":
+    "كل قيمة حملتها كل سلسلة، مع أول يوم وآخر يوم حملتها فيه.",
+  "The same record as CSV: series_id, period, value, first_seen, last_seen.":
+    "السجل نفسه بصيغة CSV، بالأعمدة series_id وperiod وvalue وfirst_seen وlast_seen.",
+  "Every published file with its SHA-256, so any copy can be checked against it.":
+    "كل ملف منشور مع بصمة SHA-256 الخاصة به، حتى يمكن مطابقة أي نسخة بها.",
+  "By topic": "حسب الموضوع",
+  "Smaller files if you only want one part of it.": "ملفات أصغر إن أردت جزءًا واحدًا فقط.",
+  "API": "واجهة البيانات",
+  "Static JSON, no key": "ملفات JSON ثابتة، بلا مفتاح",
+  "There is no server. Every endpoint is a static file on GitHub Pages, with no key and no rate limit that we set.":
+    "لا يوجد خادم. كل نقطة وصول ملف ثابت على GitHub Pages، بلا مفتاح ولا حدّ للطلبات من جهتنا.",
+  "the catalogue: one light record per series": "الفهرس: سجل خفيف لكل سلسلة",
+  "one series, with every observation": "سلسلة واحدة بكل مشاهداتها",
+  "the rate decisions": "قرارات أسعار الفائدة",
+  "query the whole archive from Python, no download": "استعلم عن الأرشيف كله من بايثون، دون تنزيل",
+  "Terms": "الشروط",
+  "Using it": "استخدامها",
+  "Cite the Central Bank of Egypt as the source. Miqyas cleans and dates the values; where a number was computed, the series page says so and names the method. If you find a value that does not match CBE's,":
+    "استشهد بالبنك المركزي المصري مصدرًا. يتولى مقياس تنقية القيم وتأريخها، وحيث حُسب رقم ما تذكر صفحة السلسلة ذلك وتسمّي الطريقة. وإن وجدت قيمة لا تطابق ما نشره البنك المركزي،",
+  "tell us": "فأخبرنا",
+  "Miqyas is not affiliated with, endorsed by, or connected to the Central Bank of Egypt. The code is MIT-licensed; the data is CBE's.":
+    "مقياس غير تابع للبنك المركزي المصري ولا معتمد منه ولا مرتبط به. الكود مرخّص برخصة MIT، أما البيانات فملك للبنك المركزي.",
+  "The full terms are on the About page.": "الشروط كاملة في صفحة «عن الموقع».",
+
+  /* ---------- the field and date guide ---------- */
+  "Fields and dates": "الحقول والتواريخ",
+  "Field": "الحقل",
+  "What it means": "معناه",
+  "A one-page guide": "دليل في صفحة واحدة",
+  "What the fields, codes and dates mean": "ماذا تعني الحقول والرموز والتواريخ",
+  "Every file holds the same three things: which series, which period, and the value. The catalogue says what each series is. This page says what the columns mean, and how each kind of series is dated, because the dates are not all dated the same way.":
+    "كل ملف يحمل الأشياء الثلاثة نفسها: أي سلسلة، وأي فترة، والقيمة. ويقول الفهرس ما هي كل سلسلة. وتشرح هذه الصفحة معنى الأعمدة، وكيف يُؤرَّخ كل نوع من السلاسل، لأن التواريخ لا تُكتب كلها بالطريقة نفسها.",
+  "The readings": "القراءات",
+  "The series. Ids for CBE's daily tables are not expected to change. Ids for the series read from CBE's Excel archive are being reworked and may change.":
+    "السلسلة. لا يُتوقع أن تتغير معرّفات الجداول اليومية للبنك المركزي، أما معرّفات السلاسل المقروءة من أرشيف Excel فيُعاد العمل عليها وقد تتغير.",
+  "The date the reading is filed under, as YYYY-MM-DD. What that date stands for depends on the series: see the dates below.":
+    "التاريخ الذي تُسجَّل تحته القراءة، بصيغة YYYY-MM-DD. وما يعنيه هذا التاريخ يتوقف على السلسلة: انظر التواريخ بالأسفل.",
+  "The number as CBE published it, or as Miqyas computed it for a computed series. Its unit is in the catalogue.":
+    "الرقم كما نشره البنك المركزي، أو كما حسبه مقياس إن كانت السلسلة محسوبة. ووحدته مذكورة في الفهرس.",
+  "In the JSON for one series, the readings as a list of [period, value] pairs, oldest first.":
+    "في ملف JSON لسلسلة واحدة: القراءات قائمةً من أزواج [period, value]، الأقدم أولًا.",
+  "The catalogue": "الفهرس",
+  "CBE's English and Arabic titles. For the Excel archive, CBE's Arabic title names the line of the table only.":
+    "عنوانا البنك المركزي بالإنجليزية والعربية. وفي أرشيف Excel يسمّي العنوان العربي للبنك بند الجدول وحده.",
+  "\"miqyas\" where CBE publishes no Arabic name and the Arabic title is Miqyas's translation.":
+    "القيمة \"miqyas\" حيث لا ينشر البنك المركزي اسمًا عربيًا ويكون العنوان العربي ترجمة من مقياس.",
+  "What the value is measured in, as CBE states it: percent, EGP million, USD million and so on. Empty where CBE's sheet did not say.":
+    "ما تُقاس به القيمة كما يذكره البنك المركزي: نسبة مئوية، أو مليون جنيه، أو مليون دولار، وهكذا. وتبقى فارغة حيث لم يذكرها ملف البنك.",
+  "How often the series has a reading. The codes are below.": "كم مرة تصدر للسلسلة قراءة. الرموز بالأسفل.",
+  "The CBE table or file group the series was read from, and the wider group the subjects are built on.":
+    "جدول البنك المركزي أو مجموعة الملفات التي قُرئت منها السلسلة، والمجموعة الأوسع التي تُبنى عليها الموضوعات.",
+  "The CBE page or Excel file the series was read from. source_file is a path on www.cbe.org.eg.":
+    "صفحة البنك المركزي أو ملف Excel الذي قُرئت منه السلسلة. والحقل source_file مسار على www.cbe.org.eg.",
+  "true where Miqyas computed the series from CBE's numbers, with the method in words.":
+    "القيمة true حيث حسب مقياس السلسلة من أرقام البنك المركزي، مع وصف الطريقة بالكلمات.",
+  "\"end\" where each value is dated to the last day of the period it describes.":
+    "القيمة \"end\" حيث تُؤرَّخ كل قيمة بآخر يوم في الفترة التي تصفها.",
+  "Egypt's fiscal year, 1 July to 30 June, for the series that follow it.":
+    "السنة المالية المصرية، من 1 يوليو إلى 30 يونيو، للسلاسل التي تتبعها.",
+  "Frequency codes": "رموز الدورية",
+  "Daily: each business day CBE publishes the table.": "يومي: كل يوم عمل ينشر فيه البنك المركزي الجدول.",
+  "Weekly: the treasury bill auctions.": "أسبوعي: عطاءات أذون الخزانة.",
+  "Every two weeks.": "كل أسبوعين.",
+  "Monthly.": "شهري.",
+  "Quarterly.": "ربع سنوي.",
+  "Yearly, which in the Excel archive is Egypt's fiscal year.": "سنوي، وهو في أرشيف Excel السنة المالية المصرية.",
+  "Only when it changes: a policy rate, with one reading for each new level.":
+    "عند التغيّر فقط: سعر من أسعار السياسة النقدية، بقراءة واحدة لكل مستوى جديد.",
+  "How each kind of series is dated": "كيف يُؤرَّخ كل نوع من السلاسل",
+  "Exchange rates, CONIA and the interbank and secondary-market tables: the day CBE's table gives for the reading.":
+    "أسعار الصرف وكونيا وجداول ما بين البنوك والسوق الثانوية: اليوم الذي يذكره جدول البنك المركزي للقراءة.",
+  "Policy rates (the corridor, the discount rate, the main operation rate): the day a new level took effect, usually a few days after the meeting. The level holds until the next reading.":
+    "أسعار السياسة النقدية (الكوريدور وسعر الخصم وسعر العملية الرئيسية): اليوم الذي بدأ فيه سريان المستوى الجديد، وعادة ما يكون بعد الاجتماع ببضعة أيام. ويبقى المستوى ساريًا حتى القراءة التالية.",
+  "Inflation and the retail interest rates, from CBE's monthly tables: the first day of the month the reading is for. 2026-08-01 is August 2026.":
+    "التضخم وأسعار الفائدة على الودائع والقروض، من الجداول الشهرية للبنك المركزي: أول يوم من الشهر الذي تخصه القراءة. فالتاريخ 2026-08-01 يعني أغسطس 2026.",
+  "Treasury bill auctions: the bill's issue date, which can run a few days ahead of the auction.":
+    "عطاءات أذون الخزانة: تاريخ إصدار الإذن، وقد يأتي بعد العطاء ببضعة أيام.",
+  "Net international reserves: the day of CBE's press release, not the month the figure describes.":
+    "صافي الاحتياطيات الدولية: يوم البيان الصحفي للبنك المركزي، لا الشهر الذي يصفه الرقم.",
+  "Remittances: the last day of the window the running total covers. The value is the total since 1 July, the start of the fiscal year.":
+    "التحويلات: آخر يوم في الفترة التي يغطيها المجموع التراكمي. والقيمة هي المجموع منذ 1 يوليو، بداية السنة المالية.",
+  "The Excel archive: the last day of the period. A month ends on its last day, a quarter on 31 March, 30 June, 30 September or 31 December, and a fiscal year on 30 June.":
+    "أرشيف Excel: آخر يوم في الفترة. فالشهر ينتهي بآخر أيامه، والربع في 31 مارس أو 30 يونيو أو 30 سبتمبر أو 31 ديسمبر، والسنة المالية في 30 يونيو.",
+  "So the same month can carry two different dates. Inflation for August 2026 is filed under 2026-08-01, and a monthly Excel series for August 2026 under 2026-08-31. To put the two side by side, join on the year and the month, not on the date.":
+    "لذلك قد يحمل الشهر نفسه تاريخين مختلفين. فتضخم أغسطس 2026 مسجّل تحت 2026-08-01، وسلسلة شهرية من أرشيف Excel عن أغسطس 2026 تحت 2026-08-31. ولوضعهما جنبًا إلى جنب، اربطهما بالسنة والشهر لا بالتاريخ.",
+  "How the site writes a period": "كيف يكتب الموقع الفترة",
+  "A month as Jun 2026.": "الشهر هكذا: يونيو 2026.",
+  "A quarter as the calendar quarter, Q2 2026 for April to June 2026, whichever fiscal year it falls in.":
+    "الربع بوصفه ربعًا من السنة الميلادية: الربع الثاني 2026 يعني أبريل إلى يونيو 2026، أيًّا كانت السنة المالية التي يقع فيها.",
+  "A fiscal year as FY2019/20, which is 1 July 2019 to 30 June 2020. The files date it 2020-06-30.":
+    "السنة المالية هكذا: العام المالي 2019/2020، أي من 1 يوليو 2019 إلى 30 يونيو 2020. وتؤرّخها الملفات 2020-06-30.",
+  "Daily series, policy rates, auctions and reserves with the full date, because the day is the fact.":
+    "السلاسل اليومية وأسعار السياسة النقدية والعطاءات والاحتياطيات بالتاريخ كاملًا، لأن اليوم نفسه هو المعلومة.",
+  "The first day Miqyas held that value for that series and period.":
+    "أول يوم احتفظ فيه مقياس بتلك القيمة لتلك السلسلة والفترة.",
+  "The last day it was held. Empty while it is still held. When a different value replaces it for the same period, last_seen is the day before the new one was first seen.":
+    "آخر يوم احتُفظ بها فيه. ويبقى فارغًا ما دامت محفوظة. وحين تحلّ قيمة مختلفة محلها للفترة نفسها، يكون last_seen اليوم السابق لأول ظهور للقيمة الجديدة.",
+  "Updates": "التحديثات",
+  "The files are rebuilt every day from what Miqyas has read. status.json gives the time of the build and of the last read of CBE, and manifest.json gives every file with its SHA-256, so a copy can be checked against the one it came from.":
+    "يُعاد بناء الملفات كل يوم مما قرأه مقياس. ويذكر ملف status.json وقت البناء ووقت آخر قراءة من البنك المركزي، ويذكر ملف manifest.json كل ملف مع بصمة SHA-256 الخاصة به، حتى يمكن مطابقة أي نسخة بالأصل الذي جاءت منه.",
+  "Back to the downloads →": "العودة إلى التنزيلات ←",
+
+  /* ---------- about ---------- */
+  "An independent dataset of Central Bank of Egypt statistics": "مجموعة بيانات مستقلة لإحصاءات البنك المركزي المصري",
+  "Independent project. Not affiliated with, endorsed by, or connected to the Central Bank of Egypt.":
+    "مشروع مستقل. غير تابع للبنك المركزي المصري ولا معتمد منه ولا مرتبط به.",
+  "Official figures are on": "الأرقام الرسمية على موقع",
+  "Who made this, and why": "من صنع هذا، ولماذا",
+  "It republishes Central Bank of Egypt statistics as one clean dataset, with a dated archive of the daily tables, for people who write about Egypt's economy: analysts, journalists and researchers. CBE's figures are spread across live tables, Excel files and PDFs; here they are one catalogue with one set of ids, charted, searchable, and downloadable as CSV, Parquet, SQLite or JSON.":
+    "يعيد نشر إحصاءات البنك المركزي المصري في مجموعة بيانات واحدة منظمة، مع أرشيف مؤرَّخ للجداول اليومية، لمن يكتبون عن اقتصاد مصر: المحللين والصحفيين والباحثين. أرقام البنك المركزي موزعة بين جداول حية وملفات Excel وملفات PDF، وهنا تجتمع في فهرس واحد بمجموعة واحدة من المعرّفات، مع رسوم بيانية وبحث، ويمكن تنزيلها بصيغ CSV وParquet وSQLite وJSON.",
+  "Questions and corrections go to": "تُرسل الأسئلة والتصحيحات إلى",
+  "the project's GitHub issues page": "صفحة البلاغات الخاصة بالمشروع على GitHub",
+  "What it does": "ماذا يفعل",
+  "Miqyas copies CBE's live tables once a day and its Excel archive and publications once a week, and saves each copy. It keeps a dated copy of the daily tables from 20 August 2026, so past values can be looked up. If CBE changes a figure it has already published, the change appears on the":
+    "ينسخ مقياس الجداول الحية للبنك المركزي مرة كل يوم، وأرشيف Excel والمنشورات مرة كل أسبوع، ويحفظ كل نسخة. ويحتفظ بنسخة مؤرَّخة من الجداول اليومية منذ 20 أغسطس 2026، فيمكن الرجوع إلى القيم السابقة. وإذا غيّر البنك المركزي رقمًا سبق نشره، يظهر التغيير في صفحة",
+  "page. The weekly Excel archive is not yet checked for changes.":
+    "المخصصة لذلك. ولا يُفحص أرشيف Excel الأسبوعي بحثًا عن تغييرات بعد.",
+  "Each series page says how its numbers got here: reproduced as published from one of CBE's daily tables, dated by Miqyas from the period labels in a CBE Excel sheet, or computed by Miqyas (a bid-to-cover ratio, a yield-curve bucket, reserves read from a press release), with the method named.":
+    "تذكر كل صفحة سلسلة كيف وصلت أرقامها إلى هنا: منقولة كما نُشرت من أحد الجداول اليومية للبنك المركزي، أو مؤرَّخة من مقياس استنادًا إلى تسميات الفترات في ملف Excel للبنك المركزي، أو محسوبة من مقياس (نسبة تغطية، أو شريحة من منحنى العائد، أو احتياطيات مستخرجة من بيان صحفي)، مع تسمية الطريقة.",
+  "The code is MIT-licensed. The data is the Central Bank of Egypt's, and Miqyas claims no rights in it. CBE's":
+    "الكود مرخّص برخصة MIT. أما البيانات فملك للبنك المركزي المصري، ولا يدّعي مقياس أي حق فيها. ويسمح",
+  "disclaimer": "إخلاء المسؤولية الخاص بالبنك المركزي",
+  "allows reuse of information from its website if CBE is cited as the source, any transformation is stated explicitly, and the information appears accurately. Miqyas cites CBE on every page and in every file, and says for each series what was done to the numbers. Errors in cleaning or dating are ours, not CBE's: check against CBE before you cite.":
+    "بإعادة استخدام المعلومات المنشورة على موقعه بشرط ذكر البنك المركزي مصدرًا، والتصريح بأي تحويل أُجري عليها، وعرضها بدقة. ويذكر مقياس البنك المركزي مصدرًا في كل صفحة وفي كل ملف، ويبيّن لكل سلسلة ما جرى على أرقامها. وأي خطأ في التنقية أو التأريخ مسؤوليتنا لا مسؤولية البنك المركزي: راجع البنك المركزي قبل الاستشهاد.",
+  "To cite a figure, name the Central Bank of Egypt as the source and Miqyas as where you found it. Each series page suggests a citation for its own series.":
+    "للاستشهاد برقم، اذكر البنك المركزي المصري مصدرًا ومقياس مكانًا وجدته فيه. وتقترح كل صفحة سلسلة صيغة استشهاد خاصة بها.",
+  "is the Nilometer on Rhoda Island: the graduated marble column Cairo read the flood against to forecast the harvest and set the tax rate. Egypt's first macroeconomic indicator, in service by 861 AD, and the reason the graduated gauge recurs through this site.":
+    "هو مقياس النيل في جزيرة الروضة: العمود الرخامي المدرّج الذي كانت القاهرة تقرأ عليه الفيضان لتتنبأ بالمحصول وتحدّد الضريبة. أول مؤشر اقتصادي كلي في مصر، دخل الخدمة قبل عام 861 ميلاديًا، وهو سبب تكرار المقياس المدرّج في هذا الموقع.",
+  "Known limits": "حدود معروفة",
+  "Some series stop earlier than CBE's own. Money and banking figures from the Excel archive end in mid-2023, where CBE stopped extending those files; CBE publishes newer figures elsewhere on its site that Miqyas does not yet read.":
+    "بعض السلاسل تتوقف قبل سلاسل البنك المركزي نفسه. فأرقام النقود والبنوك من أرشيف Excel تنتهي في منتصف 2023، حيث توقف البنك عن تمديد تلك الملفات، وهو ينشر أرقامًا أحدث في مواضع أخرى من موقعه لا يقرؤها مقياس بعد.",
+  "Some documents are scans of paper with no text layer of their own. They are read by OCR, using Tesseract in Arabic and English, so their text is searchable. It is not as good as a real text layer: the odd word comes out wrong, and Arabic in a scan often comes back with its letters in visual rather than logical order, so searching inside these particular documents works better in English than in Arabic. The Documents page counts and labels every one of them.":
+    "بعض الوثائق صور ممسوحة ضوئيًا لأوراق لا تحمل طبقة نصية خاصة بها. تُقرأ بالتعرّف الضوئي على الحروف (OCR) باستخدام Tesseract بالعربية والإنجليزية، فيصبح نصها قابلًا للبحث. لكنه أقل جودة من طبقة نصية حقيقية: تخرج بعض الكلمات خاطئة، وكثيرًا ما يعود النص العربي في المسح بحروف مرتبة ترتيبًا بصريًا لا منطقيًا، ولذلك يعمل البحث داخل هذه الوثائق تحديدًا بالإنجليزية أفضل منه بالعربية. وتعدّ صفحة الوثائق كل واحدة منها وتشير إليها.",
+  "About one page of text in twenty lost at least a sixth of its characters on the way out of the PDF. Those files embed a font with no Unicode mapping, so the text layer holds glyph indices rather than letters and nothing short of OCR can recover the words. Those pages are still searched and quoted on whatever could be read, which is why a quote from one can have words missing from the middle.":
+    "نحو صفحة من كل عشرين صفحة نصية فقدت سدس حروفها على الأقل عند استخراجها من ملف PDF. فهذه الملفات تضمّن خطًا بلا ربط بترميز Unicode، فتحمل طبقتها النصية أرقام أشكال الحروف لا الحروف نفسها، ولا يستعيد الكلمات إلا التعرّف الضوئي. ومع ذلك يُبحث في هذه الصفحات ويُقتبس منها بما أمكن قراءته، ولهذا قد تغيب كلمات من وسط الاقتباس منها.",
+  "The Financial Soundness Indicator tables are extracted as text but not yet parsed into series.":
+    "جداول مؤشرات السلامة المالية مستخرجة نصًا، لكنها لم تُحوَّل إلى سلاسل بعد.",
+  "Some Excel files in the archive resisted parsing. Each one is listed with its reason in":
+    "تعذّرت معالجة بعض ملفات Excel في الأرشيف، وكلٌّ منها مدرج مع سبب ذلك في",
+  "Around one series in eight carries no unit, because CBE's own sheet did not state one anywhere the parser could find it.":
+    "نحو سلسلة من كل ثماني سلاسل بلا وحدة، لأن ملف البنك المركزي نفسه لم يذكر وحدة في أي موضع استطاع المعالج العثور عليه.",
+  "How it is built": "كيف بُني",
+  "Python for the ingest, static JSON and Parquet for the output, and a front end with no framework and no build step. Two scheduled jobs, the live tables once a day and the Excel archive and document corpus once a week, plus a publish step that rebuilds this site after each of them, and an OCR pass run by hand when new scans turn up. The daily job often starts hours after its scheduled time; the status line on every page says when CBE was last read. The whole thing is a repository, and the repository is the archive.":
+    "بايثون لجمع البيانات، وملفات JSON وParquet ثابتة للمخرجات، وواجهة بلا إطار عمل ولا خطوة بناء. مهمتان مجدولتان: الجداول الحية مرة كل يوم، وأرشيف Excel ومجموعة الوثائق مرة كل أسبوع، ومعهما خطوة نشر تعيد بناء الموقع بعد كل منهما، وتمريرة تعرّف ضوئي تُشغَّل يدويًا عند ظهور مسوح جديدة. وكثيرًا ما تبدأ المهمة اليومية بعد موعدها بساعات، ويذكر سطر الحالة في كل صفحة متى قُرئ البنك المركزي آخر مرة. والمشروع كله مستودع، والمستودع هو الأرشيف.",
+  "The code and the data are on GitHub ↗": "الكود والبيانات على GitHub ↗",
+
+  /* ---------- rate decisions ---------- */
+  "The rate-decision archive has not been built yet.": "لم يُبنَ أرشيف قرارات الفائدة بعد.",
+  "bp": "نقطة أساس",
+  "Statement only": "بيان فقط",
+  "deposit": "الإيداع",
+  "lending": "الإقراض",
+  "{n}% of the wording changed": "تغيّر {n}% من الصياغة",
+  "from the rate series": "من سلسلة الأسعار",
+  /* CBE publishes the statements in English, and the Arabic site says so on
+     each link rather than letting a reader find out after the click. */
+  "PDF ↗": "PDF بالإنجليزية ↗",
+  "Statement ↗": "البيان بالإنجليزية ↗",
+  "The decisions as data, and where they come from": "القرارات بيانات، ومن أين تأتي",
+  "Source: the Monetary Policy Committee statements the Central Bank of Egypt publishes on cbe.org.eg, linked one by one below. The rates are read from each statement; where a statement could not be read, from CBE's own corridor series, and marked so. Every statement is in English.":
+    "المصدر: بيانات لجنة السياسة النقدية التي ينشرها البنك المركزي المصري على cbe.org.eg، وكل منها مرتبط بالأسفل. تُقرأ الأسعار من كل بيان، وحيث تعذّرت قراءة البيان تؤخذ من سلسلة الكوريدور التي ينشرها البنك نفسه ويُشار إلى ذلك. وكل البيانات بالإنجليزية.",
+  "All decisions as CSV": "كل القرارات بصيغة CSV",
+  "The corridor as a series": "الكوريدور سلسلةً زمنية",
+  "Monetary Policy Committee statements, {from} to {to}": "بيانات لجنة السياسة النقدية، من {from} إلى {to}",
+  "{n} statements, continuous from {from} to {to}. {h} increases, {c} cuts, {k} meetings that changed nothing":
+    "البيانات: {n}، متصلة من {from} إلى {to}. قرارات الرفع: {h}، والخفض: {c}، والاجتماعات التي لم تغيّر شيئًا: {k}",
+  ", and {u} older statements whose decision is in the PDF but not in any series CBE publishes":
+    "، وبيانات أقدم قرارها مذكور في ملف PDF لا في أي سلسلة ينشرها البنك المركزي: {u}",
+  ". Each one links back to CBE's own copy.": ". ويرتبط كل بيان بنسخة البنك المركزي نفسها.",
+  "All|decisions": "الكل",
+  "Increases": "رفع",
+  "Cuts": "خفض",
+  "No change": "بلا تغيير",
+  "Unrecorded": "غير مسجّل",
+  "“Wording changed” compares each statement with the one before it, character by character. A committee that holds rates but rewrites half its statement is doing something. Rates marked":
+    "«تغيّر الصياغة» يقارن كل بيان بالبيان الذي سبقه، حرفًا بحرف. فاللجنة التي تثبّت الأسعار لكنها تعيد كتابة نصف بيانها تفعل شيئًا. والأسعار الموسومة بعبارة",
+  "were not machine-readable in the statement itself and have been recovered from CBE's published corridor history.":
+    "لم تكن قابلة للقراءة آليًا في البيان نفسه، واستُعيدت من سجل الكوريدور الذي ينشره البنك المركزي.",
+
+  /* ---------- the money market ---------- */
+  "6 month": "6 أشهر",
+  "9 month": "9 أشهر",
+  "For a domestic market desk": "لمكتب السوق المحلية",
+  "The money market, on one screen": "سوق النقد في شاشة واحدة",
+  "Where overnight money cleared inside the CBE corridor, the interbank tenors and their volumes, and the EGP bill curve with bid to cover at every tenor. Daily interbank since June 2010, every EGP bill auction since June 2002":
+    "أين سُوّيت أموال الليلة الواحدة داخل كوريدور البنك المركزي، وآجال ما بين البنوك وأحجامها، ومنحنى أذون الخزانة بالجنيه مع نسبة التغطية عند كل أجل. بيانات يومية لما بين البنوك منذ يونيو 2010، وكل عطاء لأذون الخزانة بالجنيه منذ يونيو 2002",
+  ", CONIA at {v} on {d}": "، وكونيا عند {v} في {d}",
+  "Open the money market page →": "افتح صفحة سوق النقد ←",
+  "CONIA, {d}": "كونيا، {d}",
+  "Corridor {lo} to {hi}, so overnight money cleared on the midpoint":
+    "الكوريدور من {lo} إلى {hi}، وسُوّيت أموال الليلة الواحدة عند منتصفه",
+  "Corridor {lo} to {hi}, so overnight money cleared {x} above the midpoint":
+    "الكوريدور من {lo} إلى {hi}، وسُوّيت أموال الليلة الواحدة أعلى من منتصفه بمقدار {x}",
+  "Corridor {lo} to {hi}, so overnight money cleared {x} below the midpoint":
+    "الكوريدور من {lo} إلى {hi}، وسُوّيت أموال الليلة الواحدة أدنى من منتصفه بمقدار {x}",
+  "weighted average": "المتوسط المرجّح",
+  "Every decision back to June 2005 with the statement text, and what changed in the wording each time.":
+    "كل القرارات منذ يونيو 2005 مع نص البيان، وما تغيّر في الصياغة كل مرة.",
+  "Where overnight money sits in the corridor.": "أين تقع أموال الليلة الواحدة داخل الكوريدور.",
+  "The floor, the ceiling, and where the pound actually funded between them. Underneath it: the interbank tenors with the volumes behind them, and what the government paid at every EGP bill auction. All of it CBE's own numbers, updated daily.":
+    "الأرضية والسقف، وأين تموّل الجنيه فعلًا بينهما. وتحت ذلك: آجال ما بين البنوك والأحجام التي وراءها، وما دفعته الحكومة في كل عطاء لأذون الخزانة بالجنيه. كلها أرقام البنك المركزي نفسه، تُحدَّث يوميًا.",
+  "Overnight and short tenors": "الليلة الواحدة والآجال القصيرة",
+  "What money cost, and how much of it moved": "كم كلّف المال، وكم منه تحرّك",
+  "Rates first, then the volumes underneath them, because a rate on thin volume is not the same fact as a rate on heavy volume. The last column is where the current reading sits between that series' own record low and high.":
+    "الأسعار أولًا، ثم الأحجام تحتها، لأن سعرًا على حجم ضئيل ليس الحقيقة نفسها التي يمثلها سعر على حجم كبير. ويبيّن العمود الأخير موقع القراءة الحالية بين أدنى وأعلى مستوى سجّلته السلسلة نفسها.",
+  "EGP treasury bills": "أذون الخزانة بالجنيه",
+  "The curve, and who turned up for it": "المنحنى، ومن تقدّم إليه",
+  "The latest auction CBE has published at each tenor, dated by the bill's issue date, which is why it can run a few days ahead of today. Bid to cover is the column that says whether the tenor was wanted: submitted over accepted, computed here because CBE publishes the two amounts and never the ratio. The 3-month runs back to June 2002, the 6-month to July 2002, the 12-month to April 2004 and the 9-month to October 2008, and the record-level table behind these carries the ISIN, the maturity date and the amount CBE asked for as well.":
+    "آخر عطاء نشره البنك المركزي لكل أجل، مؤرَّخًا بتاريخ إصدار الإذن، ولهذا قد يسبق اليوم ببضعة أيام. ونسبة التغطية هي العمود الذي يقول هل كان الأجل مطلوبًا: المبلغ المقدَّم مقسومًا على المقبول، محسوبة هنا لأن البنك المركزي ينشر المبلغين ولا ينشر النسبة. يعود أجل 3 أشهر إلى يونيو 2002، و6 أشهر إلى يوليو 2002، و12 شهرًا إلى أبريل 2004، و9 أشهر إلى أكتوبر 2008، ويحمل الجدول التفصيلي وراءها أيضًا رمز ISIN وتاريخ الاستحقاق والمبلغ الذي طلبه البنك المركزي.",
+  "Tenor": "الأجل",
+  "Yield": "العائد",
+  "Accepted range": "مدى المقبول",
+  "Bid to cover": "نسبة التغطية",
+  "Submitted, EGP bn": "المقدَّم، مليار جنيه",
+  "Accepted, EGP bn": "المقبول، مليار جنيه",
+  "Issued": "الإصدار",
+  "Take it to your desk": "خذها إلى مكتبك",
+  "All the series on this page, without the page": "كل سلاسل هذه الصفحة، من دون الصفحة",
+  "No key and no account. Every endpoint is a static file on the same host as this page, with no rate limit that we set.":
+    "بلا مفتاح ولا حساب. كل نقطة وصول ملف ثابت على الخادم نفسه الذي يستضيف هذه الصفحة، بلا حدّ للطلبات من جهتنا.",
+  "the overnight fixing, every observation": "تثبيتة الليلة الواحدة بكل مشاهداتها",
+  "the whole money market, straight into Python": "سوق النقد كله مباشرة في بايثون",
+  "every EGP bill auction since 2002": "كل عطاء لأذون الخزانة بالجنيه منذ 2002",
+  "Open market operations": "عمليات السوق المفتوحة",
+  "The liquidity management CBE does itself is published as auction tables rather than as series, so it is not charted here, but it is in the record-level download: deposit auctions at the corridor rate, fixed-rate and variable-rate deposit auctions, fixed-rate and variable-rate repo auctions, and every EGP bill auction with its ISIN. One CSV per table, inside":
+    "إدارة السيولة التي يجريها البنك المركزي بنفسه تُنشر جداول عطاءات لا سلاسل، ولذلك لا تُرسم هنا، لكنها في التنزيل التفصيلي: عطاءات الودائع بسعر الكوريدور، وعطاءات الودائع بسعر ثابت وبسعر متغير، وعطاءات إعادة الشراء بسعر ثابت وبسعر متغير، وكل عطاء لأذون الخزانة بالجنيه مع رمز ISIN الخاص به. ملف CSV لكل جدول، داخل",
+  "Every rate series": "كل سلاسل أسعار الفائدة",
+  "Everything else": "كل ما عدا ذلك",
+  "Where the record is not clean": "حيث لا يكون السجل نظيفًا",
+  "Two prints for the same day": "قيمتان لليوم نفسه",
+  "On 27 November 2023 CBE published two different interbank overnight rates for the same session, 19.395 and 19.404, and two different overnight volumes 21 billion pounds apart, 264,437 and 243,187 million. Both are kept: the site shows one and records the other, and the same is true of every other conflict of this kind in the archive.":
+    "في 27 نوفمبر 2023 نشر البنك المركزي سعرين مختلفين لليلة الواحدة بين البنوك للجلسة نفسها، 19.395 و19.404، وحجمين مختلفين لليلة الواحدة يفصل بينهما 21 مليار جنيه، 264,437 و243,187 مليونًا. والاثنان محفوظان: يعرض الموقع أحدهما ويسجّل الآخر، وكذلك الحال في كل تعارض آخر من هذا النوع في الأرشيف.",
+  "The full list is": "القائمة الكاملة في الملف",
+  "in the repository.": "في المستودع.",
+  "How this is built, and what is not in it →": "كيف بُني هذا، وما ليس فيه ←",
+
+  /* ---------- the pre-rendered bodies and chrome (prerender.py) ---------- */
+  "Search Miqyas": "ابحث في مقياس",
+  "Results": "النتائج",
+  "{v} as of {d}, from the Central Bank of Egypt. {n} readings covering {from} to {to}.":
+    "{v} حتى {d}، من البنك المركزي المصري. عدد القراءات: {n}، من {from} إلى {to}.",
+  "How this is worked out:": "طريقة الحساب:",
+  "The last two dozen readings": "آخر أربع وعشرين قراءة",
+  "The whole series as JSON": "السلسلة كاملة بصيغة JSON",
+  "CSV, Parquet, SQLite and the API": "CSV وParquet وSQLite وواجهة البيانات",
+  "The CBE page this came from": "صفحة البنك المركزي التي جاءت منها",
+  "{n} series, from the Central Bank of Egypt, updated daily.": "السلاسل: {n}، من البنك المركزي المصري، تُحدَّث يوميًا.",
+  "Showing the first 400 of {n}.": "تظهر أول 400 من أصل {n}.",
+  "Document": "وثيقة",
+  "{n} pages": "الصفحات: {n}",
+  "The title is available in English only, as CBE lists it.": "العنوان متاح بالإنجليزية فقط، كما يدرجه البنك المركزي.",
+  "Published by the Central Bank of Egypt, indexed here so its text can be searched and quoted.":
+    "نشرها البنك المركزي المصري، ومفهرسة هنا ليمكن البحث في نصها والاقتباس منه.",
+  "The document on cbe.org.eg": "الوثيقة على موقع البنك المركزي",
+  "Search the whole archive": "ابحث في الأرشيف كله",
+  "This document is a scan with no text layer of its own. Its text was read by OCR and is not as reliable as the rest.":
+    "هذه الوثيقة صورة ممسوحة ضوئيًا بلا طبقة نصية خاصة بها. قُرئ نصها بالتعرّف الضوئي على الحروف، وهو أقل موثوقية من باقي النصوص.",
 };
 
 /* The translation, or the English it was given. A missing entry is English on
@@ -703,12 +1140,16 @@ const AR = {
  * of them, and Arabic does not use the same word for both: السلاسل against
  * السلسلة. `t("Series|one row of a table")` keeps them apart and still falls
  * back to "Series" when there is no Arabic for it.
+ *
+ * Only a pipe with no space before it is a disambiguator. " | Miqyas" in a
+ * page title is part of the text, and cutting there left every pre-rendered
+ * English title ending in a space with the site's name gone.
  */
 function t(english) {
-  const cut = english.indexOf("|");
-  if (!RTL) return cut < 0 ? english : english.slice(0, cut);
+  const cut = english.search(/[^ ]\|/) + 1;
+  if (!RTL) return cut < 1 ? english : english.slice(0, cut);
   if (Object.prototype.hasOwnProperty.call(AR, english)) return AR[english];
-  return cut < 0 ? english : english.slice(0, cut);
+  return cut < 1 ? english : english.slice(0, cut);
 }
 
 /* Months, because a date is the one piece of formatting that cannot survive
