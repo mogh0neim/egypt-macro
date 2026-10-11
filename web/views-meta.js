@@ -225,7 +225,7 @@ function viewAbout() {
     "<li>" + t("Some documents are scans of paper with no text layer of their own. They are read by OCR, using Tesseract in Arabic and English, so their text is searchable. It is not as good as a real text layer: the odd word comes out wrong, and Arabic in a scan often comes back with its letters in visual rather than logical order, so searching inside these particular documents works better in English than in Arabic. The Documents page counts and labels every one of them.") + "</li>" +
     "<li>" + t("About one page of text in twenty lost at least a sixth of its characters on the way out of the PDF. Those files embed a font with no Unicode mapping, so the text layer holds glyph indices rather than letters and nothing short of OCR can recover the words. Those pages are still searched and quoted on whatever could be read, which is why a quote from one can have words missing from the middle.") + "</li>" +
     "<li>" + t("The Financial Soundness Indicator tables are extracted as text but not yet parsed into series.") + "</li>" +
-    "<li>" + t("Some Excel files in the archive resisted parsing. Each one is listed with its reason in") +
+    "<li>" + t("When an Excel file in the archive cannot be parsed, it is listed with its reason in") +
     " " + bdiLTR("<code>catalog/excel_quarantine.json</code>") + ".</li>" +
     "<li>" + t("Around one series in eight carries no unit, because CBE's own sheet did not state one anywhere the parser could find it.") + "</li>" +
     "</ul>" +

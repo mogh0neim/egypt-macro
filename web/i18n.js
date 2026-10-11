@@ -1009,8 +1009,8 @@ const AR = {
     "نحو صفحة من كل عشرين صفحة نصية فقدت سدس حروفها على الأقل عند استخراجها من ملف PDF. فهذه الملفات تضمّن خطًا بلا ربط بترميز Unicode، فتحمل طبقتها النصية أرقام أشكال الحروف لا الحروف نفسها، ولا يستعيد الكلمات إلا التعرّف الضوئي. ومع ذلك يُبحث في هذه الصفحات ويُقتبس منها بما أمكن قراءته، ولهذا قد تغيب كلمات من وسط الاقتباس منها.",
   "The Financial Soundness Indicator tables are extracted as text but not yet parsed into series.":
     "جداول مؤشرات السلامة المالية مستخرجة نصًا، لكنها لم تُحوَّل إلى سلاسل بعد.",
-  "Some Excel files in the archive resisted parsing. Each one is listed with its reason in":
-    "تعذّرت معالجة بعض ملفات Excel في الأرشيف، وكلٌّ منها مدرج مع سبب ذلك في",
+  "When an Excel file in the archive cannot be parsed, it is listed with its reason in":
+    "إذا تعذّرت معالجة ملف Excel في الأرشيف، يُدرج مع سبب ذلك في",
   "Around one series in eight carries no unit, because CBE's own sheet did not state one anywhere the parser could find it.":
     "نحو سلسلة من كل ثماني سلاسل بلا وحدة، لأن ملف البنك المركزي نفسه لم يذكر وحدة في أي موضع استطاع المعالج العثور عليه.",
   "How it is built": "كيف بُني",

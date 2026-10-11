@@ -644,10 +644,12 @@ and the last dollar day, and a dollar rate taken from more than four days
 before the date asked for is named as such, because the archive has holes of
 seven and eight weeks in 2014 and 2015 that are not CBE's doing.
 
-**The MPC calendar is the one hand-entered file in the repository.**
-`data/mpc_calendar.json`. CBE renders the year's meeting dates client-side and
-`/api/sitecore/MPCMeetings/GetMPCMeetingsDetails` returns 404 to anything
-outside their page, so there is nothing to scrape. Everything else here fails
+**The MPC calendar is fetched, with a hand-entered fallback.**
+`ingest/fetch_mpc_calendar.py` reads CBE's schedule from
+`/api/sitecore/MPCMeetings/GetMPCMeetingsDetails`, which answers a POST with
+browser-like headers and returns 404 to a GET (the GET was all that had been
+tried, so this file was typed by hand until October 2026).
+`data/mpc_calendar.json` remains the fallback. Everything else here fails
 loudly when it goes stale because a fetch stops returning rows; this cannot, it
 just quietly stops having a next meeting. So `summarise.py` warns when fewer
 than two meetings remain ahead, `summarise.py --calendar` turns the daily run

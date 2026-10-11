@@ -47,7 +47,7 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - run: pip install -r requirements.txt
+      - run: pip install --require-hashes -r requirements.lock
 
       - name: Reset manifests
         if: inputs.force_redownload
@@ -56,8 +56,18 @@ jobs:
       - name: Excel time-series archive (new, replaced and withdrawn files)
         run: python ingest/fetch_excel.py --download --delay 1.0
 
+      # The parser refuses a same-file conflict or a published id dropped without
+      # an id_map.json entry. That must not cost the week's downloads, which are
+      # the revision record: carry on, commit, and fail the run at the end.
       - name: Parse the Excel archive
+        id: parse
+        continue-on-error: true
         run: python ingest/parse_excel.py
+
+      # Arabic titles are keyed by series id, so they follow every parse.
+      - name: Arabic titles for the archive series
+        if: steps.parse.outcome == 'success'
+        run: python ingest/build_titles_ar.py
 
       - name: Document corpus (new, replaced and withdrawn files)
         run: python ingest/fetch_docs.py --download --delay 1.0
@@ -110,3 +120,9 @@ jobs:
               print(f\"  {f.get('category')} | {f.get('subcategory')} | {f['reason'][:70]}\")
           "
           fi
+
+      - name: Fail the run if the parser stopped
+        if: steps.parse.outcome == 'failure'
+        run: |
+          echo "::error::parse_excel.py stopped; the downloads were committed, the archive tables were not rebuilt. See the Parse step."
+          exit 1

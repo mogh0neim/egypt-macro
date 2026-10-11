@@ -769,11 +769,16 @@ def load_id_map() -> dict[str, list[str]]:
     if not path.exists():
         return {}
     raw = json.loads(path.read_text(encoding="utf-8"))
-    if isinstance(raw, dict) and isinstance(raw.get("map"), dict):
-        raw = raw["map"]
+    # The parser writes {"note", "generated", "parser_version", "count", "ids":
+    # {old: new or null}}; a bare {old: new} still reads.
+    for key in ("ids", "map"):
+        if isinstance(raw, dict) and isinstance(raw.get(key), dict):
+            raw = raw[key]
+            break
     if not isinstance(raw, dict):
         return {}
-    return {old: [new] if isinstance(new, str) else list(new or []) for old, new in raw.items()}
+    return {old: [new] if isinstance(new, str) else list(new or []) for old, new in raw.items()
+            if isinstance(new, (str, list, type(None)))}
 
 
 def coverage(commits: list[dict]) -> dict:
