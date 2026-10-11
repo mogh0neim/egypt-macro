@@ -27,7 +27,7 @@ a media query** or the explicit light choice cannot override the system.
 |---|---|---|
 | `--ink` `#101b33` | text | the ink of a stone well |
 | `--marble-2` `#f4f4f1` | page | marble |
-| `--brass` `#a8823a` → `--gold` | structure | brass inscription |
+| `--brass` `#7e6024` → `--gold` | structure | brass inscription |
 | `--faience` `#1f6f6b` → `--accent` | measurement | the era's blue-green tilework |
 | `--clay` `#a6412e` → `--down` | a fall | - |
 
@@ -44,6 +44,18 @@ holding the pound, which is why that one looks inverted and is not.
 Never introduce a fourth accent. If something needs to be distinguished and the
 three do not cover it, use weight, size or dash pattern instead - `--text-3` with
 `stroke-dasharray` is what `.chart .line.s2` does.
+
+**Every text colour reaches 4.5:1 on every background it sits on, in both
+themes** (decided 11 October 2026). Measured, not eyeballed: the old quiet grey
+`#8b93a7` was 2.8:1 on the page and the old brass `#a8823a` 3.2:1, and between
+them they coloured every unit, date, axis label, eyebrow and note on the site.
+Now light `--text-3` is `#646c82` (4.75 on the page, 5.2 on white), light brass
+is `#7e6024` (5.3, and 4.5 on the stale strip's tint), dark `--text-3` is
+`#8a94ae` (5.2 on `--surface-2`), and dark `--accent-quiet` is `#12292a` so the
+teal on it reaches 4.7. Text on a teal fill uses `--on-accent`: white in light,
+ink in dark, because white on the dark theme's lighter teal was 3.3:1. Never
+put `opacity` on text; the chart's regime labels had 0.8 and read at 2.5:1.
+The favicon keeps the original brass: it is a mark, not text.
 
 ## Type
 
@@ -196,6 +208,10 @@ first:
   for a rate (inflation's year-on-year change read 20.83% against 14.5%) and for
   anything that crosses zero. Decided from the unit and the values, and a
   withheld button gets one line saying why rather than just not being there.
+- **Range windows count back from the series' own last reading** (`rangesFor`
+  gives each window as the date it starts). Counted from today, "1 year" on a
+  series that stopped in 2023 cut nothing, fell back to the whole history, and
+  exported it labelled "Range: 1 year".
 - **One precision per series in a readout** (`digitsFor`), from its largest
   reading, so a value does not gain and lose decimals as the crosshair moves.
 - **The corridor is a band wherever it is drawn**: on the Rates page too, with
@@ -300,6 +316,13 @@ Standing rules:
   `index.html` a reader holds points at the assets that belong with it. It hashes
   the asset bytes rather than the build time, because the archive rebuilds every
   morning and the front end does not.
+- **Layout shift stays under 0.1** on home and a series page, at 360 and 1366
+  (measured with a `layout-shift` PerformanceObserver: 0.0001 to 0.0008, from
+  0.5 to 0.9). Two things held it there: `#app` starts `min-height: 100vh`, so
+  the footer is below the fold before, during and after a view draws, and the
+  freshness strip's one line is held open, invisible, until `status.json`
+  fills it. Anything new that appears above the page area after the first
+  paint needs its space reserved the same way.
 - `--gutter` is `clamp(1rem, 4vw, 3.5rem)`; `--measure` caps the wrap at 1180px.
 - `--radius` is 3px. Everywhere. Chips and badges use 2px.
 
@@ -326,6 +349,23 @@ Function declarations (`renderFreshness`, `route`) *are* window properties.
 - **Hash routing, not history routing.** The site is static files on a CDN with
   nothing to rewrite a deep URL back to `index.html`. A hash also survives being
   pasted into a chat window, which is how most of these links travel.
+- **The chrome links to real paths; a click is still a hash route.** The nav,
+  the footer and the home page's static HTML say `changes/`, `data/`,
+  `topic/fx/`, because a crawler follows a path and ignores a hash, and
+  `prerender.py` writes a page at each one and points every deeper or Arabic
+  page's copies at its own language's home. `app.js` turns a plain click on
+  such a link into the hash route, so nothing a reader sees changes; a new-tab
+  click, a download, the other language and other sites go to the browser.
+  Links inside the views are still `#/`.
+- **Only the newest navigation draws** (`routeSeq` in `app.js`). Views fetch
+  before they draw, so two quick taps let the slower, older view draw last:
+  Rates under an address and a highlighted nav item saying About. Every
+  navigation gets a fresh `<main id="app">`, the screen moved into it, so an
+  older view that finishes late writes into a node no longer in the page, and
+  the error screen, the scroll and the visit count check the number first. A
+  view that looks up its own elements after an await should also stop on
+  `if (!app.isConnected) return;`, as the calculators and Favourites do; the
+  star is delegated from the document because `#app` is replaced.
 - **`ROOT` is detected, not configured** (`core.js`), so serving the repo root
   and serving `dist/` both work with no flag.
 - **The nav has no room for an eighth item.** Seven links plus the language
@@ -337,6 +377,14 @@ Function declarations (`renderFreshness`, `route`) *are* window properties.
   the one orchestrated moment; the skeleton shimmer stops too.
 - **`localStorage` reads and writes must be inside `try/catch`.** A private
   window throws on access and the page must still render.
+- **Anything read back from storage is checked before it is drawn.** Any page
+  on the same origin can write it (on `github.io` that is every project site
+  under the account), so the palette's recent items are kept only if the
+  address is a plain `#/` route and the labels are text, and the address is
+  escaped like everything else.
+- **A shared favourites list is added to the reader's own, never put in its
+  place.** "Save these as mine" replaced a list someone had built, with no
+  undo; the button now says "Add these to your favourites" and merges.
 - **Search and browse are one page**, `#/series`. They were two, Browse and
   Find, which is why the site could not say where series lived: the navigation
   had no item meaning "series" at all. `#/browse` and `#/find` still route there,
@@ -512,6 +560,24 @@ it at all. The front end works out its own from `ROOT` (`siteBase()`), which is
 what the copy-paste API examples are built from. A domain move is that one
 line; README.md has the steps around it.
 
+**The home page has a heading and links before any script runs.** Its static
+body used to be a loading skeleton: no `h1`, no link a crawler could follow.
+`home_body()` in `prerender.py` writes the overview's own heading and two
+buttons and a plain link to each subject, in both languages, and the view
+replaces it as it replaces every pre-rendered body.
+
+**Counting visits is prepared and off** (`web/counter.js`, `goatcounter` in
+`site.toml`). Off, nothing is sent. On, each route sends GoatCounter one
+request from the site's own code, never GoatCounter's script: the route's name
+and nothing after "?", because the hash is where searches, salary figures and
+shared lists live; an id only when it is one the site has, anything else as
+`/not-found`; `/ar` in front on the Arabic site; the referring site by its
+origin, once; no cookies, no screen size, and never from `localhost`. The About
+page's privacy paragraph is `privacyNote()` in the same file and is written
+from the same setting, so it cannot say something the build does not do. The
+order matters and was kept: fonts were self-hosted first, so the "no other
+host" sentence was true before anything was allowed to break it.
+
 **Counts are never typed.** The pre-rendered titles fill `{series}`,
 `{documents}`, `{pages}` and `{decisions}` from the build's own files, and the
 placeholders sit inside the dictionary keys so the Arabic carries them too. The
@@ -541,6 +607,18 @@ basket, seen from the other side of the same event that drops
 `EG.XL.PRICE.CPI.ALL_ITEMS` from 133.6 to 102.4 between those two Junes. A
 chained index cannot see a rebasing and CBE never published the link, so the
 calculators say so rather than hiding it.
+
+**What is typed is read strictly, and a problem is said, not answered round.**
+A month of "garbage", or one after the index ends, used to be read as the last
+month and compared with itself ("EGP 8,000 then is EGP 8,000 now"); a date
+before the data printed nothing; `parseFloat` read "8,000" as 8; a savings
+date after the last price month was told prices had risen 1x. `readAmount`,
+`readMonth` and `readDay` in `views-tools.js` return a value, nothing, or
+"bad", and the page prints one line under the form saying which and what range
+Miqyas holds. The savings answer names both "now" dates, the last price month
+and the last dollar day, and a dollar rate taken from more than four days
+before the date asked for is named as such, because the archive has holes of
+seven and eight weeks in 2014 and 2015 that are not CBE's doing.
 
 **The MPC calendar is the one hand-entered file in the repository.**
 `data/mpc_calendar.json`. CBE renders the year's meeting dates client-side and
