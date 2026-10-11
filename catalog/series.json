@@ -957,6 +957,1569 @@
   "method": "Parsed from the monthly CBE press release text. CBE does not publish this as a downloadable series."
  },
  {
+  "series_id": "EG.SDDS.CREDIT.GOVT.CREDIT",
+  "title_en": "Domestic Credit and Other Items, Net (SDDS) - Net claims on government - Credit facilities",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.CREDIT.GOVT.DEPOSITS",
+  "title_en": "Domestic Credit and Other Items, Net (SDDS) - Net claims on government - Deposits",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.CREDIT.GOVT.NET",
+  "title_en": "Domestic Credit and Other Items, Net (SDDS) - Net claims on government",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.CREDIT.GOVT.SECURITIES",
+  "title_en": "Domestic Credit and Other Items, Net (SDDS) - Net claims on government - Securities",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.CREDIT.HOUSEHOLD",
+  "title_en": "Domestic Credit and Other Items, Net (SDDS) - Claims on household sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.CREDIT.OTHER_ITEMS",
+  "title_en": "Domestic Credit and Other Items, Net (SDDS) - Other items (net)",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.CREDIT.OTHER_ITEMS.CAPITAL",
+  "title_en": "Domestic Credit and Other Items, Net (SDDS) - Other items (net) - Capital accounts",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.CREDIT.OTHER_ITEMS.UNCLASSIFIED",
+  "title_en": "Domestic Credit and Other Items, Net (SDDS) - Other items (net) - Net unclassified assets and liabilities",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.CREDIT.PRIVATE_BUSINESS",
+  "title_en": "Domestic Credit and Other Items, Net (SDDS) - Claims on private business sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.CREDIT.PUBLIC_BUSINESS",
+  "title_en": "Domestic Credit and Other Items, Net (SDDS) - Claims on public business sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.CREDIT.PUB_AUTH.CLAIMS",
+  "title_en": "Domestic Credit and Other Items, Net (SDDS) - Net claims on public economic authorities - Claims",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.CREDIT.PUB_AUTH.DEPOSITS",
+  "title_en": "Domestic Credit and Other Items, Net (SDDS) - Net claims on public economic authorities - Deposits",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.CREDIT.PUB_AUTH.NET",
+  "title_en": "Domestic Credit and Other Items, Net (SDDS) - Net claims on public economic authorities",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.CREDIT.TOTAL",
+  "title_en": "Domestic Credit and Other Items, Net (SDDS) - Domestic credit",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.FC.DEMAND",
+  "title_en": "Deposits in Foreign Currencies (SDDS) - Demand deposits",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposit-in-foreign-currencies-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.FC.DEMAND.HOUSEHOLD",
+  "title_en": "Deposits in Foreign Currencies (SDDS) - Demand deposits - Household sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposit-in-foreign-currencies-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.FC.DEMAND.LESS_CHEQUES",
+  "title_en": "Deposits in Foreign Currencies (SDDS) - Demand deposits - Less purchased cheques and drafts",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposit-in-foreign-currencies-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.FC.DEMAND.PRIVATE_BUSINESS",
+  "title_en": "Deposits in Foreign Currencies (SDDS) - Demand deposits - Private business sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposit-in-foreign-currencies-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.FC.DEMAND.PUBLIC_BUSINESS",
+  "title_en": "Deposits in Foreign Currencies (SDDS) - Demand deposits - Public business sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposit-in-foreign-currencies-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.FC.TIME_SAVING",
+  "title_en": "Deposits in Foreign Currencies (SDDS) - Time and saving deposits",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposit-in-foreign-currencies-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.FC.TIME_SAVING.HOUSEHOLD",
+  "title_en": "Deposits in Foreign Currencies (SDDS) - Time and saving deposits - Household sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposit-in-foreign-currencies-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.FC.TIME_SAVING.PRIVATE_BUSINESS",
+  "title_en": "Deposits in Foreign Currencies (SDDS) - Time and saving deposits - Private business sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposit-in-foreign-currencies-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.FC.TIME_SAVING.PUBLIC_BUSINESS",
+  "title_en": "Deposits in Foreign Currencies (SDDS) - Time and saving deposits - Public business sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposit-in-foreign-currencies-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.FC.TOTAL",
+  "title_en": "Deposits in Foreign Currencies (SDDS) - Total deposits in foreign currencies",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposit-in-foreign-currencies-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.LC.DEMAND",
+  "title_en": "Deposits in Local Currency (SDDS) - Demand deposits",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposits-in-local-currency-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.LC.DEMAND.HOUSEHOLD",
+  "title_en": "Deposits in Local Currency (SDDS) - Demand deposits - Household sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposits-in-local-currency-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.LC.DEMAND.LESS_CHEQUES",
+  "title_en": "Deposits in Local Currency (SDDS) - Demand deposits - Less purchased cheques and drafts",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposits-in-local-currency-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.LC.DEMAND.PRIVATE_BUSINESS",
+  "title_en": "Deposits in Local Currency (SDDS) - Demand deposits - Private business sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposits-in-local-currency-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.LC.DEMAND.PUBLIC_BUSINESS",
+  "title_en": "Deposits in Local Currency (SDDS) - Demand deposits - Public business sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposits-in-local-currency-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.LC.TIME_SAVING",
+  "title_en": "Deposits in Local Currency (SDDS) - Time and saving deposits",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposits-in-local-currency-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.LC.TIME_SAVING.HOUSEHOLD",
+  "title_en": "Deposits in Local Currency (SDDS) - Time and saving deposits - Household sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposits-in-local-currency-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.LC.TIME_SAVING.PRIVATE_BUSINESS",
+  "title_en": "Deposits in Local Currency (SDDS) - Time and saving deposits - Private business sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposits-in-local-currency-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.LC.TIME_SAVING.PUBLIC_BUSINESS",
+  "title_en": "Deposits in Local Currency (SDDS) - Time and saving deposits - Public business sector",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposits-in-local-currency-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.DEP.LC.TOTAL",
+  "title_en": "Deposits in Local Currency (SDDS) - Total deposits in local currency",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/deposits-in-local-currency-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.BANKS.CLAIMS",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net claims on banks - Claims",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.BANKS.DEPOSITS_FC",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net claims on banks - Deposits in foreign currency with the CBE",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.BANKS.NET",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net claims on banks",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.BANK_DEPOSITS_LC",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Banks' deposits in local currency with the CBE",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.CURRENCY",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Currency in circulation outside the CBE",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.GOVT.CREDIT",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net claims on government - Credit facilities",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.GOVT.DEPOSITS",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net claims on government - Deposits",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.GOVT.NET",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net claims on government",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.GOVT.SECURITIES",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net claims on government - Securities",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.NDA",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net domestic assets",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.NFA",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net foreign assets",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.OTHER_BANKING.CLAIMS",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net claims on other banking institutions - Claims",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx"
+ },
+ {
+  "series_id": "EG.SDDS.M0.OTHER_BANKING.DEPOSITS_FC",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net claims on other banking institutions - Deposits in foreign currency with the CBE",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx"
+ },
+ {
+  "series_id": "EG.SDDS.M0.OTHER_BANKING.NET",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net claims on other banking institutions",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx"
+ },
+ {
+  "series_id": "EG.SDDS.M0.OTHER_ITEMS",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Other items (net)",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.OTHER_ITEMS.OPEN_MARKET",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Other items (net) - Open market operations",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.OTHER_ITEMS.UNCLASSIFIED",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Other items (net) - Unclassified assets and liabilities",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.PUB_AUTH.CLAIMS",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net claims on public economic authorities - Claims",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.PUB_AUTH.DEPOSITS",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net claims on public economic authorities - Deposits",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.PUB_AUTH.NET",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Net claims on public economic authorities",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M0.TOTAL",
+  "title_en": "Reserve Money and Counterpart Assets (SDDS) - Reserve money (M0)",
+  "dataset": "sdds",
+  "family": "cbe",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M2.DOMESTIC_ASSETS",
+  "title_en": "Domestic Liquidity and Counterpart Assets (SDDS) - Counterpart assets - Domestic assets",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-liquidity(m2)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M2.DOMESTIC_CREDIT",
+  "title_en": "Domestic Liquidity and Counterpart Assets (SDDS) - Counterpart assets - Domestic credit",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-liquidity(m2)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M2.M1",
+  "title_en": "Domestic Liquidity and Counterpart Assets (SDDS) - Money supply (M1)",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-liquidity(m2)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M2.M1.CURRENCY",
+  "title_en": "Domestic Liquidity and Counterpart Assets (SDDS) - Money supply (M1) - Currency in circulation outside the banking system",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-liquidity(m2)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M2.M1.DEMAND_LC",
+  "title_en": "Domestic Liquidity and Counterpart Assets (SDDS) - Money supply (M1) - Demand deposits in local currency",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-liquidity(m2)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M2.NFA",
+  "title_en": "Domestic Liquidity and Counterpart Assets (SDDS) - Counterpart assets - Net foreign assets",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-liquidity(m2)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M2.OTHER_ITEMS",
+  "title_en": "Domestic Liquidity and Counterpart Assets (SDDS) - Counterpart assets - Other items (net)",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-liquidity(m2)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M2.QUASI",
+  "title_en": "Domestic Liquidity and Counterpart Assets (SDDS) - Quasi-money",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-liquidity(m2)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M2.QUASI.DEPOSITS_FC",
+  "title_en": "Domestic Liquidity and Counterpart Assets (SDDS) - Quasi-money - Demand, time and saving deposits in foreign currencies",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-liquidity(m2)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M2.QUASI.TIME_SAVING_LC",
+  "title_en": "Domestic Liquidity and Counterpart Assets (SDDS) - Quasi-money - Time and saving deposits in local currency",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-liquidity(m2)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.M2.TOTAL",
+  "title_en": "Domestic Liquidity and Counterpart Assets (SDDS) - Domestic liquidity (M2)",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/domestic-liquidity(m2)-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.NFA.ASSETS",
+  "title_en": "Foreign Assets and Liabilities (SDDS) - Foreign assets",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/foreign-assets-and-liabilities-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.NFA.ASSETS.BANKS",
+  "title_en": "Foreign Assets and Liabilities (SDDS) - Foreign assets - Banks",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/foreign-assets-and-liabilities-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.NFA.ASSETS.CBE",
+  "title_en": "Foreign Assets and Liabilities (SDDS) - Foreign assets - Central Bank of Egypt",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/foreign-assets-and-liabilities-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.NFA.LIABILITIES",
+  "title_en": "Foreign Assets and Liabilities (SDDS) - Foreign liabilities",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/foreign-assets-and-liabilities-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.NFA.LIABILITIES.BANKS",
+  "title_en": "Foreign Assets and Liabilities (SDDS) - Foreign liabilities - Banks",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/foreign-assets-and-liabilities-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.NFA.LIABILITIES.CBE",
+  "title_en": "Foreign Assets and Liabilities (SDDS) - Foreign liabilities - Central Bank of Egypt",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/foreign-assets-and-liabilities-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.NFA.TOTAL",
+  "title_en": "Foreign Assets and Liabilities (SDDS) - Net foreign assets",
+  "dataset": "sdds",
+  "family": "banking_surveys",
+  "freq": "M",
+  "unit": "EGP million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/sdds-files/foreign-assets-and-liabilities-aug,-d-,-2026.xlsx",
+  "marked": {
+   "as": "preliminary",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.RES.FOREIGN_CURRENCIES",
+  "title_en": "International Reserves (SDDS) - Foreign currencies",
+  "dataset": "sdds",
+  "family": "external",
+  "freq": "M",
+  "unit": "USD million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/nir/group-one/files-to-process/internationalreserves-sept-2026.xlsx",
+  "marked": {
+   "as": "provisional",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31",
+    "2026-09-30"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.RES.GOLD",
+  "title_en": "International Reserves (SDDS) - Gold",
+  "dataset": "sdds",
+  "family": "external",
+  "freq": "M",
+  "unit": "USD million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/nir/group-one/files-to-process/internationalreserves-sept-2026.xlsx",
+  "marked": {
+   "as": "provisional",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31",
+    "2026-09-30"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.RES.GROSS",
+  "title_en": "International Reserves (SDDS) - Gross official reserves",
+  "dataset": "sdds",
+  "family": "external",
+  "freq": "M",
+  "unit": "USD million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/nir/group-one/files-to-process/internationalreserves-sept-2026.xlsx",
+  "marked": {
+   "as": "provisional",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31",
+    "2026-09-30"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.RES.IMF_LOANS",
+  "title_en": "International Reserves (SDDS) - Loans to the IMF",
+  "dataset": "sdds",
+  "family": "external",
+  "freq": "M",
+  "unit": "USD million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/nir/group-one/files-to-process/internationalreserves-sept-2026.xlsx",
+  "marked": {
+   "as": "provisional",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31",
+    "2026-09-30"
+   ]
+  }
+ },
+ {
+  "series_id": "EG.SDDS.RES.NIR",
+  "title_en": "International Reserves (SDDS) - Net international reserves",
+  "dataset": "sdds",
+  "family": "external",
+  "freq": "M",
+  "unit": "USD million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/nir/group-one/files-to-process/internationalreserves-sept-2026.xlsx",
+  "marked": {
+   "as": "provisional",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31",
+    "2026-09-30"
+   ]
+  },
+  "note": "CBE's current monthly series, dated to the last day of each month, from the International Reserves file on its SDDS page. CBE marks the latest months provisional and revises them. EG.RES.NIR keeps instead the first figure from each month's press release, dated by the day the release came out."
+ },
+ {
+  "series_id": "EG.SDDS.RES.SDR",
+  "title_en": "International Reserves (SDDS) - SDRs",
+  "dataset": "sdds",
+  "family": "external",
+  "freq": "M",
+  "unit": "USD million",
+  "period_basis": "end",
+  "provenance": "Dated by Miqyas from the sheet's month labels",
+  "source_url": "https://www.cbe.org.eg/en/economic-research/sdds",
+  "source_file": "https://www.cbe.org.eg/-/media/project/cbe/listing/sdds/nir/group-one/files-to-process/internationalreserves-sept-2026.xlsx",
+  "marked": {
+   "as": "provisional",
+   "periods": [
+    "2026-06-30",
+    "2026-07-31",
+    "2026-08-31",
+    "2026-09-30"
+   ]
+  }
+ },
+ {
   "series_id": "EG.TB.EGP.12M.AMT.ACC",
   "title_en": "EGP treasury bill 12-month auction, amount accepted",
   "dataset": "derived_auctions",

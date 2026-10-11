@@ -1,0 +1,157 @@
+{
+ "count": 15,
+ "files": [
+  {
+   "bytes": 132608,
+   "key": "balance-of-payments",
+   "last_modified": "Mon, 20 Jul 2026 09:01:21 GMT",
+   "local": "data/raw/sdds/balance-of-payments.xls",
+   "section": "Balance of Payments",
+   "sha256": "8de1571926f9761646be9c72a17e5846b0f7595c4a5eba20caa275ea8477ab19",
+   "title": "Balance of Payments",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/balance-of-payments-q1-2026.xls"
+  },
+  {
+   "bytes": 79469,
+   "key": "deposits-in-foreign-currencies",
+   "last_modified": "Thu, 01 Oct 2026 09:45:39 GMT",
+   "local": "data/raw/sdds/deposits-in-foreign-currencies.xlsx",
+   "section": "Domestic Liquidity (M2) & Reserve Money (MO)",
+   "sha256": "38297781b645ac762d7ba047d3952e47950c57af2f085b0f531301671ea2766a",
+   "title": "Deposits in Foreign Currencies",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/deposit-in-foreign-currencies-aug,-d-,-2026.xlsx"
+  },
+  {
+   "bytes": 79711,
+   "key": "deposits-in-local-currency",
+   "last_modified": "Thu, 01 Oct 2026 09:45:38 GMT",
+   "local": "data/raw/sdds/deposits-in-local-currency.xlsx",
+   "section": "Domestic Liquidity (M2) & Reserve Money (MO)",
+   "sha256": "f435fa96db5cf5c9c16800fffdd826a14040e89034a033e0464a92428423bf0f",
+   "title": "Deposits in Local Currency",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/deposits-in-local-currency-aug,-d-,-2026.xlsx"
+  },
+  {
+   "bytes": 101455,
+   "key": "domestic-credit-and-other-items-net",
+   "last_modified": "Thu, 01 Oct 2026 09:45:40 GMT",
+   "local": "data/raw/sdds/domestic-credit-and-other-items-net.xlsx",
+   "section": "Domestic Liquidity (M2) & Reserve Money (MO)",
+   "sha256": "05c4aa3bebecb9ea2c9438b74093be317444139c1a4875bd9224ebc915d43007",
+   "title": "Domestic Credit and Other Items (Net)",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/domestic-credit-and-other-items-net-aug,-d-,-2026.xlsx"
+  },
+  {
+   "bytes": 85536,
+   "key": "domestic-liquidity-m2",
+   "last_modified": "Thu, 01 Oct 2026 09:45:37 GMT",
+   "local": "data/raw/sdds/domestic-liquidity-m2.xlsx",
+   "section": "Domestic Liquidity (M2) & Reserve Money (MO)",
+   "sha256": "751fd6d23b8337fe1d919b35bcdbebc1643cbdd3bf8584131fb21bcf6624f3c8",
+   "title": "Domestic Liquidity (M2)",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/domestic-liquidity(m2)-aug,-d-,-2026.xlsx"
+  },
+  {
+   "bytes": 53550,
+   "key": "egypt-s-iip",
+   "last_modified": "Sun, 09 Aug 2026 08:43:28 GMT",
+   "local": "data/raw/sdds/egypt-s-iip.xlsx",
+   "section": "International Investment Position (IIP)",
+   "sha256": "f98f53792248049b6a8c5c97863201df70b60ed3f9d10b805469e6ee55d33994",
+   "title": "Egypt's IIP",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/egypt's-iip-march-2026.xlsx"
+  },
+  {
+   "bytes": 30849,
+   "key": "external-debt",
+   "last_modified": "Sun, 09 Aug 2026 08:45:59 GMT",
+   "local": "data/raw/sdds/external-debt.xlsx",
+   "section": "External Debt Statistics",
+   "sha256": "7ff751a94af9072084dbd2e0605c8a79d309e940ede5a193bfb1678a14403a6d",
+   "title": "External Debt",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/external-debt-march-2026.xlsx"
+  },
+  {
+   "bytes": 78299,
+   "key": "foreign-assets-and-liabilities",
+   "last_modified": "Thu, 01 Oct 2026 09:45:41 GMT",
+   "local": "data/raw/sdds/foreign-assets-and-liabilities.xlsx",
+   "section": "Domestic Liquidity (M2) & Reserve Money (MO)",
+   "sha256": "a41e96092b8b53a0412d40d41fa253bd0e73aeae5e59c34e67e9ca5363d1ad18",
+   "title": "Foreign Assets and Liabilities",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/foreign-assets-and-liabilities-aug,-d-,-2026.xlsx"
+  },
+  {
+   "bytes": 110073,
+   "key": "i-official-reserve-assets-and-other-foreign-currency-assets",
+   "last_modified": "Wed, 07 Oct 2026 06:14:26 GMT",
+   "local": "data/raw/sdds/i-official-reserve-assets-and-other-foreign-currency-assets.xlsx",
+   "section": "International Reserves",
+   "sha256": "00e2f6350a108761c495c2decf49bbb78c992bf90f011f18e132a817d87ffcb7",
+   "title": "I. Official Reserve Assets and Other Foreign Currency Assets",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/i_officialreserveassets-sept-2026.xlsx"
+  },
+  {
+   "bytes": 140426,
+   "key": "ii-predetermined-short-term-net-drains-on-foreign-currency",
+   "last_modified": "Sun, 19 Jul 2026 15:42:19 GMT",
+   "local": "data/raw/sdds/ii-predetermined-short-term-net-drains-on-foreign-currency.xlsx",
+   "section": "International Reserves",
+   "sha256": "1be22675a42a2294c8ac98bd91febb0fc95806be714c7a16cf895badca4d8b0a",
+   "title": "II. Predetermined Short-term Net Drains on Foreign Currency Assets",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/ii_predetermined_short-term_net_drains_on_foreign_currency_assets_sdds-may-2026.xlsx"
+  },
+  {
+   "bytes": 220821,
+   "key": "iii-contingent-short-term-net-drains-on-foreign-currency",
+   "last_modified": "Sun, 19 Jul 2026 15:42:20 GMT",
+   "local": "data/raw/sdds/iii-contingent-short-term-net-drains-on-foreign-currency.xlsx",
+   "section": "International Reserves",
+   "sha256": "5b9d99f411b521d50b9d60a017b43d2834e2ff9872815a978e0bb8503c1cae3e",
+   "title": "III. Contingent Short-term Net Drains on Foreign Currency Assets",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/iii_contingent_short_term_net_drains_on_foreign_currency_assets_sdds-may-2026.xlsx"
+  },
+  {
+   "bytes": 53469,
+   "key": "international-reserves",
+   "last_modified": "Wed, 07 Oct 2026 06:13:57 GMT",
+   "local": "data/raw/sdds/international-reserves.xlsx",
+   "section": "International Reserves",
+   "sha256": "29fdbbe9636b19311c750fcbe6b81f637182f9ae25fd7a875d66448963dd714c",
+   "title": "International Reserves",
+   "url": "/-/media/project/cbe/listing/sdds/nir/group-one/files-to-process/internationalreserves-sept-2026.xlsx"
+  },
+  {
+   "bytes": 99525,
+   "key": "iv-memo-items",
+   "last_modified": "Wed, 07 Oct 2026 06:14:27 GMT",
+   "local": "data/raw/sdds/iv-memo-items.xlsx",
+   "section": "International Reserves",
+   "sha256": "c2490596cd33db0234e2abbeb91aecb786795148738be5b9952b8aad37f4d483",
+   "title": "Iv Memo Items",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/iv_memo_items_sdds-sept-2026.xlsx"
+  },
+  {
+   "bytes": 124894,
+   "key": "reserve-money-m0",
+   "last_modified": "Thu, 01 Oct 2026 09:45:36 GMT",
+   "local": "data/raw/sdds/reserve-money-m0.xlsx",
+   "section": "Domestic Liquidity (M2) & Reserve Money (MO)",
+   "sha256": "7ee80ee4b0b133597a545df80f36c4541f52d9f8ab553dd43738e5cf9b5ceaf7",
+   "title": "Reserve Money (M0)",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-aug,-d-,-2026.xlsx"
+  },
+  {
+   "bytes": 151812,
+   "key": "v-predetermined-short-term-net-flows-affecting-the-official",
+   "last_modified": "Sun, 19 Jul 2026 15:42:21 GMT",
+   "local": "data/raw/sdds/v-predetermined-short-term-net-flows-affecting-the-official.xlsx",
+   "section": "International Reserves",
+   "sha256": "c3fc5354e3cdbc0b2a8868017a92678c09e8e9d3107d344a47afe8f4a68c9dc6",
+   "title": "v. Predetermined Short-term Net Flows Affecting the Official Reserves",
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/v_predeterminedshort-may-2026.xlsx"
+  }
+ ],
+ "source": "https://www.cbe.org.eg/en/economic-research/sdds",
+ "withdrawn": 0
+}
