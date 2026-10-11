@@ -10,10 +10,14 @@ Product -- `catalog/summary.json` is exactly the Last / Previous / Highest /
 Lowest table the homepage needs, precomputed at build time so the browser
 never has to scan a series to render a tile.
 
-Run:  python ingest/summarise.py [--check | --calendar]
-      --check exits non-zero if any series trips a hard quality rule.
-      --calendar checks only the MPC calendar, and exits non-zero once no
-      meeting is left in it.
+Run:  python ingest/summarise.py [--check | --dates | --shrink [--restore] | --calendar]
+      --check exits non-zero if any series trips a hard quality rule,
+      including an observation dated after today or before 1950.
+      --dates runs only that date rule, writes nothing, for the publish job.
+      --shrink compares every clean CSV with the last commit and exits
+      non-zero if one lost rows or series; --restore puts the committed copy
+      back, so a short CBE response is flagged but never saved over the record.
+      --calendar checks only the MPC calendar. It warns, never fails.
 """
 
 from __future__ import annotations
@@ -25,11 +29,18 @@ import datetime as dt
 import json
 import pathlib
 import statistics
+import subprocess
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SERIES = ROOT / "data" / "clean" / "series"
+RECORDS = ROOT / "data" / "clean" / "records"
 CATALOG = ROOT / "catalog"
+
+# No observation can be dated after the day it was built, and nothing CBE
+# publishes goes back before this. Either one is a parsing error: the old
+# Excel parser once dated $34bn of external debt to 2086.
+EARLIEST = "1950-01-01"
 
 # A daily series that has not moved in this long is probably discontinued
 # rather than merely quiet. Reported, not fatal -- several CBE series really
@@ -109,15 +120,26 @@ def summarise(sid: str, points: list[tuple[str, float]], meta: dict) -> dict:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true", help="exit 1 on a hard failure")
+    ap.add_argument("--dates", action="store_true",
+                    help="check only observation dates; exit 1 on any after today or before 1950")
+    ap.add_argument("--shrink", action="store_true",
+                    help="exit 1 if a clean CSV lost rows or series against the last commit")
+    ap.add_argument("--restore", action="store_true",
+                    help="with --shrink: put the committed copy back over any file that shrank")
     ap.add_argument("--calendar", action="store_true",
-                    help="check only the MPC calendar; exit 1 when no meeting is left")
+                    help="check only the MPC calendar; warns, never fails")
     args = ap.parse_args()
 
-    # Kept out of --check on purpose. The daily workflow runs --check before it
-    # commits, and a calendar running low there stopped every day's data being
-    # saved until somebody typed next year's dates in. It runs after the commit.
+    # Kept out of --check on purpose. A calendar running low once stopped every
+    # day's data being saved, and later turned every daily run red from mid
+    # December. A missing next meeting is a reminder, never a failure.
     if args.calendar:
-        return 0 if check_mpc_calendar() else 1
+        check_mpc_calendar()
+        return 0
+    if args.shrink:
+        return 1 if check_shrink(args.restore) else 0
+    if args.dates:
+        return 1 if check_dates(load_series()) else 0
 
     catalog_path = CATALOG / "series.json"
     catalog = (
@@ -179,23 +201,87 @@ def main() -> int:
             print(f"  {sid}", file=sys.stderr)
 
     check_mpc_calendar()
+    misdated = check_dates(data)
 
     if args.check:
         hard = [s for s in summaries if any(f.startswith("duplicate") for f in s["flags"])]
-        if hard or uncatalogued:
+        if hard or uncatalogued or misdated:
             return 1
     return 0
 
 
-def check_mpc_calendar() -> int:
-    """Shout before the meeting calendar runs out. Returns the meetings left.
+def check_dates(data: dict[str, list[tuple[str, float]]]) -> list[str]:
+    """Series with an observation dated after today or before 1950."""
+    today = dt.date.today().isoformat()
+    bad = []
+    for sid, points in sorted(data.items()):
+        wrong = [p for p, _ in points if p > today or p < EARLIEST]
+        if wrong:
+            bad.append(sid)
+            print(f"::error::{sid} has {len(wrong)} observation(s) dated outside {EARLIEST}..{today}, "
+                  f"e.g. {wrong[0]}", file=sys.stderr)
+    if not bad:
+        print(f"dates: every observation falls between {EARLIEST} and {today}")
+    return bad
 
-    data/mpc_calendar.json is the one hand-entered file in the repository: CBE
-    publishes the year's meeting dates on a page that renders them client-side
-    and serves them through no endpoint this project can reach. Everything else
-    here fails loudly when it goes stale because a scrape stops returning rows.
-    This cannot. It just quietly stops having a next meeting to count down to,
-    and nobody notices until the countdown has been missing for a month.
+
+def _committed(path: pathlib.Path) -> bytes | None:
+    """The file as of the last commit, or None if it is new or git is unavailable."""
+    rel = path.relative_to(ROOT).as_posix()
+    try:
+        out = subprocess.run(["git", "show", f"HEAD:{rel}"], cwd=ROOT, capture_output=True, check=False)
+    except OSError:
+        return None
+    return out.stdout if out.returncode == 0 else None
+
+
+def _shape(text: str, keyed: bool) -> tuple[int, set]:
+    rows = list(csv.reader(text.splitlines()))[1:]
+    return len(rows), ({r[0] for r in rows if r} if keyed else set())
+
+
+def check_shrink(restore: bool) -> list[str]:
+    """Clean CSVs that lost rows or series against the last commit.
+
+    The daily static floors in datasets.yaml let a response cut by a few
+    percent through. Comparing with what was committed yesterday catches any
+    loss at all. With restore, the committed copy goes back, so the run still
+    saves everything else and the shrunken file waits for a person.
+    """
+    # An id retired on purpose (catalog/id_map.json says where it went) is not lost.
+    id_map = CATALOG / "id_map.json"
+    moved = set(json.loads(id_map.read_text(encoding="utf-8")).get("ids", {})) if id_map.exists() else set()
+    shrunk = []
+    for path in sorted(SERIES.glob("*.csv")) + sorted(RECORDS.glob("*.csv")):
+        before = _committed(path)
+        if before is None:
+            continue
+        keyed = path.parent == SERIES
+        old_rows, old_ids = _shape(before.decode("utf-8"), keyed)
+        new_rows, new_ids = _shape(path.read_text(encoding="utf-8"), keyed)
+        lost = sorted(old_ids - new_ids - moved)
+        if new_rows >= old_rows and not lost:
+            continue
+        rel = path.relative_to(ROOT).as_posix()
+        shrunk.append(rel)
+        print(f"::error::{rel} shrank: {old_rows:,} rows to {new_rows:,}"
+              + (f", lost {len(lost)} series (e.g. {lost[0]})" if lost else "")
+              + ("; the committed copy is kept" if restore else ""), file=sys.stderr)
+        if restore:
+            path.write_bytes(before)
+    if not shrunk:
+        print("shrink: no clean CSV lost rows or series against the last commit")
+    return shrunk
+
+
+def check_mpc_calendar() -> int:
+    """Speak up before the meeting calendar runs out. Returns the meetings left.
+
+    data/mpc_calendar.json is filled by fetch_mpc_calendar.py from CBE's
+    schedule endpoint, with the dates typed in by hand as the fallback.
+    Everything else here fails loudly when it goes stale because a scrape stops
+    returning rows. This cannot. It just quietly stops having a next meeting to
+    count down to, so it warns, and nobody has to notice a missing countdown.
     """
     path = ROOT / "data" / "mpc_calendar.json"
     if not path.exists():
@@ -211,9 +297,11 @@ def check_mpc_calendar() -> int:
     ahead = [m["date"] for m in calendar.get("meetings", []) if m.get("date", "") >= today]
     floor = calendar.get("warn_below", 2)
     if len(ahead) < floor:
-        print(f"\nWARNING: only {len(ahead)} MPC meeting(s) left in data/mpc_calendar.json "
-              f"(want at least {floor}). Add next year's dates from "
-              f"{calendar.get('source_url', 'cbe.org.eg')} and update checked_on.",
+        # ::warning:: shows on the run's summary page without turning it red.
+        print(f"\n::warning::only {len(ahead)} MPC meeting(s) left in data/mpc_calendar.json "
+              f"(want at least {floor}). ingest/fetch_mpc_calendar.py reads them from CBE; if it "
+              f"cannot, add next year's dates from {calendar.get('source_url', 'cbe.org.eg')} "
+              f"and update checked_on.",
               file=sys.stderr)
         return len(ahead)
     print(f"MPC calendar: {len(ahead)} meetings ahead, next {ahead[0]}")

@@ -1,0 +1,140 @@
+{
+ "note": "Real CBE workbooks, frozen here so that CBE revising its live archive cannot move the expected numbers. Entries copied from catalog/excel_manifest.json on 2026-10-11.",
+ "files": [
+  {
+   "id": "fdfebe342983bdc9",
+   "url": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx",
+   "category": "BOP",
+   "subcategory": "Egypt's Balance of Payments",
+   "frequency": "Annual",
+   "period_label": "All Years",
+   "sha256": "f8cb328bb4dac721d4cc8632ab77eeef237d7af3a70bfcf59cce023f446f1b90"
+  },
+  {
+   "id": "44d846e60dcf91f2",
+   "url": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-_2022-2023.xlsx",
+   "category": "BOP",
+   "subcategory": "Egypt's Balance of Payments",
+   "frequency": "Quarterly",
+   "period_label": "2022/2023",
+   "sha256": "00f5572bc49ca3abb4f8ecbcab897c5c3d6a7ac45ed73b94727bf29ebde3c280"
+  },
+  {
+   "id": "9558672365daf8c5",
+   "url": "/-/media/project/cbe/listing/time-series/banking-survey/domestic-credit/domestic-credit-monthly-2017-2018.xlsx",
+   "category": "Banking Surveys",
+   "subcategory": "Domestic Credit",
+   "frequency": "Monthly",
+   "period_label": "2017/2018",
+   "sha256": "fcbacfcc4ac80f32bc9d7a097c9f69929935cc304acc6f08acc5e97fc621db28"
+  },
+  {
+   "id": "ac451f8290ce9f72",
+   "url": "/-/media/project/cbe/listing/time-series/external-debt/external-debt-and-indicators/external_debt-2023-2024,-d-,xls.xlsx",
+   "category": "External Debt",
+   "subcategory": "External debt by type",
+   "frequency": "Quarterly",
+   "period_label": "2023/2024",
+   "sha256": "390e526ed2fec8c7e55587fe5ed569491c2cf0de27aeaddb4dec476655062292"
+  },
+  {
+   "id": "7a64d12082545d5b",
+   "url": "/-/media/project/cbe/listing/time-series/foreign-trade/imports-by-geographical-distribution/importsbygeographicaldistribution_quarter2005-2006.xlsx",
+   "category": "Foreign Trade",
+   "subcategory": "Imports by Geographical Distribution",
+   "frequency": "Quarterly",
+   "period_label": "2005/2006",
+   "sha256": "7e9b27c0ab1b4b22864b195b8120c80f077a4d8d2f42832ffa91aae5be8678ae"
+  },
+  {
+   "id": "f82e1a208e180ebe",
+   "url": "/-/media/project/cbe/listing/time-series/foreign-trade/main-merchandise-balances/main_merchandise_annual---new.xlsx",
+   "category": "Foreign Trade",
+   "subcategory": "Main Merchandise Balances",
+   "frequency": "Annual",
+   "period_label": "All Years (new)",
+   "sha256": "bfbf6572b5c97fb18b53e243fdbad204d8e2ee2b7198cb3ddd175a7229f8bbf8"
+  },
+  {
+   "id": "2f7cbe5d9b9f648c",
+   "url": "/-/media/project/cbe/listing/time-series/foreign-trade/main-merchandise-balances/main_merchandise_quarter-2017-2018.xlsx",
+   "category": "Foreign Trade",
+   "subcategory": "Main Merchandise Balances",
+   "frequency": "Quarterly",
+   "period_label": "2017/2018",
+   "sha256": "0335276e07324596710169a7b589f02c9996fe60ac3f38156f841e81b50d25f8"
+  },
+  {
+   "id": "615df450f55de314",
+   "url": "/-/media/project/cbe/listing/time-series/gdp/gdp-at-factor-cost-constant/gdp_factor-cost_constant-prices_quarterly_2016-2017-_.xlsx",
+   "category": "GDP",
+   "subcategory": "GDP at Factor Cost (Constant Prices)",
+   "frequency": "Quarterly",
+   "period_label": "2016/2017",
+   "sha256": "bb9f46e461323d780fd5b85d2e61f4a9bc0715da8d423f91a4e6e5783e3bf5bf"
+  },
+  {
+   "id": "569f1aff213a0e7c",
+   "url": "/-/media/project/cbe/listing/time-series/inflation/cpi/cpi-monthly2006-2007.xlsx",
+   "category": "Inflation",
+   "subcategory": "CPI",
+   "frequency": "Monthly",
+   "period_label": "2006/2007",
+   "sha256": "09f09bf612e1e2a540dab28dddaf614ce329bd08c057c64fdd5c263a59672cc1"
+  },
+  {
+   "id": "8090395c7b570b5d",
+   "url": "/-/media/project/cbe/listing/time-series/inflation/cpi/cpi-monthly2007-2008.xlsx",
+   "category": "Inflation",
+   "subcategory": "CPI",
+   "frequency": "Monthly",
+   "period_label": "2007/2008",
+   "sha256": "78a8afb5fb93f76769a6328f9be6b866a07e0e4fee2a3e5497da50add3e9e7cd"
+  },
+  {
+   "id": "1ac6c0ef830d0501",
+   "url": "/-/media/project/cbe/listing/time-series/inflation/cpi/cpi-monthly2021-2022.xlsx",
+   "category": "Inflation",
+   "subcategory": "CPI",
+   "frequency": "Monthly",
+   "period_label": "2021/2022",
+   "sha256": "98b0f41c96725512d90152fb18a584a4a3c76332284c416eeff90f76e0d673a4"
+  },
+  {
+   "id": "a76cb138e3cc6d61",
+   "url": "/-/media/project/cbe/listing/time-series/net-foreign-direct-investment/netforeigndirectinvestmentinegyptfdibycountry-20202021.xlsx",
+   "category": "Net Foreign Direct Investment",
+   "subcategory": "Net Foreign Direct Investment",
+   "frequency": "Quarterly",
+   "period_label": "2020/2021",
+   "sha256": "7f88819dd2c1c140d3458e3ece1cca6b290f1f8e5b80c06e5e2a39a69ff917bd"
+  },
+  {
+   "id": "ed51d7caf565c437",
+   "url": "/-/media/project/cbe/listing/time-series/state-budget/revenues/revenues-annual__.xlsx",
+   "category": "State Budget",
+   "subcategory": "Revenues",
+   "frequency": "Annual",
+   "period_label": "All Years",
+   "sha256": "c9d2bc02ee73993bfe65574a24c02821b970b4aa4f790d6c8cbad0330389af7e"
+  },
+  {
+   "id": "d6bfd3bd53aa4627",
+   "url": "/-/media/project/cbe/listing/time-series/state-budget/revenues/revenuesquarter20102011xls.xlsx",
+   "category": "State Budget",
+   "subcategory": "Revenues",
+   "frequency": "Quarterly",
+   "period_label": "2010/2011",
+   "sha256": "f82e7d8bc943519c864abad18206647ed6a03cd2b9178f73dcd57a4f05f951b8"
+  },
+  {
+   "id": "13f7fcdc6d62f081",
+   "url": "/-/media/project/cbe/listing/time-series/stock/stock-market-main-indicators/the-stock-markets-main-indicators-monthly-20142015.xlsx",
+   "category": "Stocks",
+   "subcategory": "Stock Market Main Indicators",
+   "frequency": "Monthly",
+   "period_label": "2014/2015",
+   "sha256": "10f45b0b94c217196c7f48f8bdc31bcafb4e2a442eb0aea66f83427d2117bd9d"
+  }
+ ]
+}

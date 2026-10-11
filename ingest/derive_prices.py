@@ -6,10 +6,10 @@ fine for reading the news and useless for the only question most people
 actually have, which is what their salary or their savings are worth now
 compared to some year they remember. Answering that needs an index.
 
-The Excel archive does carry `EG.XL.PRICE.CPI.*` levels, and they cannot be
-used: 32 series of annual June snapshots, three to eleven points each, with two
-visible rebasings and a twelve-year hole between 2009 and 2019. They are a
-by-product of whichever spreadsheet tab they arrived on.
+The Excel archive does carry monthly CPI levels, but in four bases, each its
+own series: `EG.XL.PRICE.CPI.B1999_00.*`, `.BJAN2007.*`, `.BJAN2010.*` and
+`.B2018_19.*` (1999/2000, January 2007, January 2010 and 2018/19 = 100). One
+index across them would need CBE's linking factors, which it does not publish.
 
 So the index is chained from `EG.CPI.HDL.MOM`, which is monthly, unbroken from
 January 2005, and published by CBE itself:
@@ -27,9 +27,9 @@ quietly ship a calculator that is wrong.
 
 **It disagrees in 2009 and 2010.** Ten months there drift by more than a point,
 peaking at 1.8pp in June 2010. That is not compounding error -- compounding
-error grows, and this is a bulge that closes again. It is a rebasing: the
-`EG.XL.PRICE.CPI.ALL_ITEMS` series in the Excel archive drops from 133.6 to
-102.4 between June 2009 and June 2010, which is the same event seen from the
+error grows, and this is a bulge that closes again. It is a rebasing: in mid
+2010 the Excel archive's CPI moves from `EG.XL.PRICE.CPI.BJAN2007.ALL_ITEMS` to
+`EG.XL.PRICE.CPI.BJAN2010.ALL_ITEMS`, which is the same event seen from the
 other side. A chained index cannot see a rebasing, and CBE has never published
 the linking factor, so the honest thing is to state it: a comparison that spans
 2009 to 2010 carries about a point and a half of error in that one year, out of

@@ -54,8 +54,22 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: requirements.lock
 
-      - run: pip install -r requirements.txt
+      - run: pip install --require-hashes -r requirements.lock
+
+      # Before anything is built. The golden files are real CBE workbooks, one
+      # per layout that has gone wrong before, with the numbers read off the
+      # sheets; a parser change that moves one of them stops the deploy.
+      - name: Golden-file tests for the Excel parser
+        run: python tests/test_parse_excel.py
+
+      - name: Tests for the revision record
+        run: python tests/test_build_changes.py
+
+      # The old Excel parser once dated $34bn of external debt to 2086.
+      - name: No observation dated after today or before 1950
+        run: python ingest/summarise.py --dates
 
       - name: Build the exports (Parquet, SQLite, static API, bulk zips)
         run: python ingest/build_exports.py
@@ -72,6 +86,9 @@ jobs:
       # so the freshness strip can link to them without another fetch.
       - name: Read the revision record out of the git history
         run: python ingest/build_changes.py
+
+      - name: How the data jobs are doing
+        run: python ingest/health.py
 
       - name: Assemble the site root
         run: python ingest/build_site.py
