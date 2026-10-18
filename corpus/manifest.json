@@ -1,15 +1,120 @@
 {
  "by_source": {
-  "News": 797,
-  "circulars": 402,
-  "publications": 1399
+  "News": 800,
+  "circulars": 403,
+  "publications": 1402
  },
- "count": 2598,
+ "count": 2605,
  "date_range": [
   "2002-04-01",
-  "2026-10-09"
+  "2026-10-15"
  ],
  "documents": [
+  {
+   "bytes": 519548,
+   "categories": [
+    "Monetary Policy",
+    "Monetary Policy Inflation Note"
+   ],
+   "date": "2026-10-15",
+   "id": "e0569136e708fa68",
+   "is_file": true,
+   "last_modified": "Thu, 15 Oct 2026 16:16:48 GMT",
+   "local": "corpus/files/e0569136e708fa68.pdf",
+   "sha256": "6b53a5ea2eefe42232a9dcb3e30b5d8cb5720ae7508c04b914a95e1553fa667f",
+   "source": "publications",
+   "title": "Monetary Policy Inflation Note September 2026",
+   "url": "/-/media/project/cbe/listing/publication/2026/september/inf_sep-2026-en.pdf"
+  },
+  {
+   "bytes": 3014860,
+   "categories": [
+    "Economic Review"
+   ],
+   "date": "2026-10-14",
+   "id": "be5fb54c08a2e6ca",
+   "is_file": true,
+   "last_modified": "Wed, 14 Oct 2026 09:25:59 GMT",
+   "local": "corpus/files/be5fb54c08a2e6ca.pdf",
+   "sha256": "5863816bc3648f69853ca7dee977552c464a640fc1952e3ec9bbe98fe3f4b3eb",
+   "source": "publications",
+   "title": "Volume 66 No.1",
+   "url": "/-/media/project/cbe/listing/research/volumes/2025-2026/volume-66-no,-d-,1.pdf"
+  },
+  {
+   "bytes": 15480779,
+   "categories": [
+    "Financial Stability"
+   ],
+   "date": "2026-10-14",
+   "id": "5e9bc8156e8ff9c1",
+   "is_file": true,
+   "last_modified": "Wed, 14 Oct 2026 12:59:59 GMT",
+   "local": "corpus/files/5e9bc8156e8ff9c1.pdf",
+   "sha256": "4d1c8b548d62797df78e46487cf08b76f4d7522bd41e2bda7b8b87dab65f94bc",
+   "source": "publications",
+   "title": "Financial Stability Report \u2013 March 2026",
+   "url": "/-/media/project/cbe/page-content/rich-text/financial-stability/financial-stability-report-\u2013-march-2026_en.pdf"
+  },
+  {
+   "bytes": null,
+   "categories": [
+    "Press Release",
+    "Remittances"
+   ],
+   "date": "2026-10-13",
+   "id": "91d85fe6a022dc31",
+   "is_file": false,
+   "local": null,
+   "sha256": null,
+   "source": "News",
+   "title": "Remittances from Egyptians Working Abroad Record USD 33.9 Billion During the First Eight Months of 2026",
+   "url": "/en/news-publications/news/2026/10/13/08/05/remittances-august-2026"
+  },
+  {
+   "bytes": null,
+   "categories": [
+    "Balance of Payments"
+   ],
+   "date": "2026-10-12",
+   "id": "30ef6fa4ea82f7a0",
+   "is_file": false,
+   "local": null,
+   "sha256": null,
+   "source": "News",
+   "title": "Press Release Balance of Payments Performance During FY 2025-2026",
+   "url": "/en/news-publications/news/2026/10/12/10/18/bop-press-release"
+  },
+  {
+   "bytes": 185188,
+   "categories": [
+    "Credit Granting"
+   ],
+   "date": "2026-10-12",
+   "id": "75889464c4ec915b",
+   "is_file": true,
+   "last_modified": "Mon, 12 Oct 2026 10:24:12 GMT",
+   "local": "corpus/files/75889464c4ec915b.pdf",
+   "sha256": "7301bae177f3d1772fb3499eb625dc0e9ba7d0ff16e4aa2feb128376b5eef1e8",
+   "source": "circulars",
+   "title": "Circular dated 12 October 2026 prohibition of granting credit facilities to consumer finance companies to finance operations stated in FRA\u2019s circular dated 16 September 2026",
+   "url": "/-/media/project/cbe/listing/circulars/2026/october/circular-dated-12-october-2026-prohibition-of-granting-credit-facilities-to-consumer-finance-compani.pdf"
+  },
+  {
+   "bytes": null,
+   "categories": [
+    "CPI Press Release",
+    "Monetary Policy"
+   ],
+   "date": "2026-10-11",
+   "id": "c76067b3d9d7c7bb",
+   "is_file": false,
+   "local": null,
+   "sha256": null,
+   "source": "News",
+   "title": "CPI Press Release September 2026",
+   "url": "/en/news-publications/news/2026/10/11/11/36/cpi-press-release-september-2026"
+  },
   {
    "bytes": null,
    "categories": [
@@ -19392,13 +19497,13 @@
    "categories": [
     "Interviews, Talks and Speeches"
    ],
-   "changed_on": "2026-10-11",
+   "changed_on": "2026-10-18",
    "date": "2020-08-28",
    "id": "30c445285b9927b9",
    "is_file": true,
-   "last_modified": "Sun, 11 Oct 2026 10:52:14 GMT",
+   "last_modified": "Sun, 18 Oct 2026 08:58:03 GMT",
    "local": "corpus/files/30c445285b9927b9.html",
-   "sha256": "e5aa55362f00e92314b29ea98d08f34d9757e13e2982ff8f4225abb9725bc67f",
+   "sha256": "6f30e9bdf4917c72bd519f12f6df47fe2aa822a50ddbfe1756aca38ad9f91836",
    "source": "News",
    "title": "Statement by the Central Bank Governor of Egypt at The African Development Bank Group Annual Meetings 2020",
    "url": "https://am.afdb.org/en/videos/2020-annual-meetings-governor-statement-egypt"
