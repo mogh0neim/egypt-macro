@@ -42,6 +42,12 @@ CATALOG = ROOT / "catalog"
 # Excel parser once dated $34bn of external debt to 2086.
 EARLIEST = "1950-01-01"
 
+# Treasury bill auctions are dated by issue (settlement) date, up to five days
+# after the auction, and CBE posts the results on auction day. So the newest
+# auction point is legitimately in the future; allow it this far ahead.
+SETTLES_AHEAD = ("EG.TB.EGP.", "EG.TB.USD.", "EG.TB.EUR.")
+SETTLE_DAYS = 14
+
 # A daily series that has not moved in this long is probably discontinued
 # rather than merely quiet. Reported, not fatal -- several CBE series really
 # did stop (the FX auctions ended in 2016).
@@ -211,14 +217,16 @@ def main() -> int:
 
 
 def check_dates(data: dict[str, list[tuple[str, float]]]) -> list[str]:
-    """Series with an observation dated after today or before 1950."""
+    """Series with an observation dated after today (or settlement) or before 1950."""
     today = dt.date.today().isoformat()
+    settle = (dt.date.today() + dt.timedelta(days=SETTLE_DAYS)).isoformat()
     bad = []
     for sid, points in sorted(data.items()):
-        wrong = [p for p, _ in points if p > today or p < EARLIEST]
+        latest = settle if sid.startswith(SETTLES_AHEAD) else today
+        wrong = [p for p, _ in points if p > latest or p < EARLIEST]
         if wrong:
             bad.append(sid)
-            print(f"::error::{sid} has {len(wrong)} observation(s) dated outside {EARLIEST}..{today}, "
+            print(f"::error::{sid} has {len(wrong)} observation(s) dated outside {EARLIEST}..{latest}, "
                   f"e.g. {wrong[0]}", file=sys.stderr)
     if not bad:
         print(f"dates: every observation falls between {EARLIEST} and {today}")
