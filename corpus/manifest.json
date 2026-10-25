@@ -1,15 +1,30 @@
 {
  "by_source": {
-  "News": 800,
+  "News": 801,
   "circulars": 403,
   "publications": 1402
  },
- "count": 2605,
+ "count": 2606,
  "date_range": [
   "2002-04-01",
-  "2026-10-15"
+  "2026-10-21"
  ],
  "documents": [
+  {
+   "bytes": null,
+   "categories": [
+    "African Cooperation",
+    "Press Release"
+   ],
+   "date": "2026-10-21",
+   "id": "7430919df6dd4c26",
+   "is_file": false,
+   "local": null,
+   "sha256": null,
+   "source": "News",
+   "title": "Central Bank of Egypt Supports the Capacities of COMESA Central Banks on \"Incorporating Climate Risks in Micro and Macro Stress Testing\"",
+   "url": "/en/news-publications/news/2026/10/21/09/04/comesa-21-october-2026"
+  },
   {
    "bytes": 519548,
    "categories": [
@@ -42,6 +57,21 @@
    "url": "/-/media/project/cbe/listing/research/volumes/2025-2026/volume-66-no,-d-,1.pdf"
   },
   {
+   "bytes": 15400598,
+   "categories": [
+    "Financial Stability"
+   ],
+   "date": "2026-10-14",
+   "id": "6022982632e83092",
+   "is_file": true,
+   "last_modified": "Sun, 18 Oct 2026 15:05:55 GMT",
+   "local": "corpus/files/6022982632e83092.pdf",
+   "sha256": "f64bf89d7c1c5cd593beaa92c024d3374de2b341d04fa09afe73624943f64347",
+   "source": "publications",
+   "title": "Financial Stability Report \u2013 March 2026",
+   "url": "/-/media/project/cbe/page-content/rich-text/financial-stability/\u062a\u0642\u0631\u064a\u0631-\u0627\u0644\u0627\u0633\u062a\u0642\u0631\u0627\u0631-\u0627\u0644\u0645\u0627\u0644\u064a---\u0645\u0627\u0631\u0633-2026-.pdf"
+  },
+  {
    "bytes": 15480779,
    "categories": [
     "Financial Stability"
@@ -54,7 +84,8 @@
    "sha256": "4d1c8b548d62797df78e46487cf08b76f4d7522bd41e2bda7b8b87dab65f94bc",
    "source": "publications",
    "title": "Financial Stability Report \u2013 March 2026",
-   "url": "/-/media/project/cbe/page-content/rich-text/financial-stability/financial-stability-report-\u2013-march-2026_en.pdf"
+   "url": "/-/media/project/cbe/page-content/rich-text/financial-stability/financial-stability-report-\u2013-march-2026_en.pdf",
+   "withdrawn_on": "2026-10-25"
   },
   {
    "bytes": null,
@@ -19497,13 +19528,13 @@
    "categories": [
     "Interviews, Talks and Speeches"
    ],
-   "changed_on": "2026-10-18",
+   "changed_on": "2026-10-25",
    "date": "2020-08-28",
    "id": "30c445285b9927b9",
    "is_file": true,
-   "last_modified": "Sun, 18 Oct 2026 08:58:03 GMT",
+   "last_modified": "Sun, 25 Oct 2026 09:16:56 GMT",
    "local": "corpus/files/30c445285b9927b9.html",
-   "sha256": "6f30e9bdf4917c72bd519f12f6df47fe2aa822a50ddbfe1756aca38ad9f91836",
+   "sha256": "b5cfe71201dd0b58282f3e5c3e2dab8de616909d84d70da1249a692f638e4877",
    "source": "News",
    "title": "Statement by the Central Bank Governor of Egypt at The African Development Bank Group Annual Meetings 2020",
    "url": "https://am.afdb.org/en/videos/2020-annual-meetings-governor-statement-egypt"
@@ -39230,5 +39261,5 @@
    "url": "/-/media/project/cbe/listing/research/volumes/vol-43-no_62_en.pdf"
   }
  ],
- "withdrawn": 0
+ "withdrawn": 1
 }
