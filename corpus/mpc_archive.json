@@ -1,8 +1,8 @@
 {
- "count": 173,
+ "count": 174,
  "range": [
   "2005-06-02",
-  "2026-09-24"
+  "2026-10-29"
  ],
  "statements": [
   {
@@ -1500,6 +1500,15 @@
    "discount_rate": 19.5,
    "decision": "hold",
    "chars": 4360
+  },
+  {
+   "date": "2026-10-29",
+   "title": "MPC Press Release 29 October 2026",
+   "url": "https://www.cbe.org.eg/en/news-publications/news/2026/10/29/13/08/mpc-press-release-29-october-2026",
+   "format": "html",
+   "discount_rate": 20.5,
+   "decision": "hike",
+   "chars": 4357
   }
  ],
  "diffs": [
@@ -15162,6 +15171,113 @@
      "change": 0.0
     }
    }
+  },
+  {
+   "from_date": "2026-09-24",
+   "to_date": "2026-10-29",
+   "similarity": 0.501,
+   "sentence_overlap": 0.04,
+   "sentences_added": [],
+   "sentences_removed": [],
+   "sentences_changed": [
+    {
+     "before": "News & Publications News MPC Press Release 24 September 2026 MPC Press Release 24 September 2026 24 Sep 2026 MPC decides to keep key policy rates unchanged Cairo, Egypt — The Monetary Policy Committee (MPC) of the Central Bank of Egypt (CBE) has decided to keep its key policy rates unchanged.",
+     "after": "News & Publications News MPC Press Release 29 October 2026 MPC Press Release 29 October 2026 29 Oct 2026 MPC decides to raise key policy rates by 100 bps Cairo, Egypt — The Monetary Policy Committee (MPC) of the Central Bank of Egypt (CBE) decided to raise the key policy rates by 100 bps."
+    },
+    {
+     "before": "The overnight deposit rate, overnight lending rate, and the rate of the main operation remain at 19.00 percent, 20.00 percent, and 19.50 percent, respectively.",
+     "after": "Accordingly, the overnight deposit rate, overnight lending rate, and the rate of the main operation were raised to 20.0 percent, 21.0 percent, and 20.5 percent, respectively."
+    },
+    {
+     "before": "The discount rate was also maintained at 19.50 percent.",
+     "after": "The discount rate was also raised to 20.5 percent."
+    },
+    {
+     "before": "This decision reflects the Committee’s assessment of recent and forecasted inflation dynamics and the evolving balance of risks surrounding the inflation outlook.",
+     "after": "This decision comes amid challenging external conditions and elevated uncertainty, and aims to keep expectations anchored and safeguard the disinflation trajectory."
+    },
+    {
+     "before": "Globally, economic activity has moderated, weighed down by geopolitical volatility and subdued demand, yet supported by resilient global trade and investment.",
+     "after": "Globally, economic activity remains resilient, underpinned by sustained trade and investment, particularly in technology-related sectors, although geopolitical tensions and uneven growth continued to weigh on the economic landscape."
+    },
+    {
+     "before": "Inflation remains broadly elevated—despite divergent price dynamics across economies—prompting central banks to maintain cautious monetary policy stances aligned with their respective economic conditions.",
+     "after": "Meanwhile, commodity markets exhibited a broad-based upturn, notably in energy and agricultural prices, amid escalating regional tensions and supply disruptions."
+    },
+    {
+     "before": "Commodity markets have experienced a broad-based upturn, with energy and agricultural prices driven higher by escalating regional tensions and supply concerns.",
+     "after": "Inflationary pressures remained broadly elevated, albeit with divergent dynamics across economies, leading central banks to tighten their monetary policy stances."
+    },
+    {
+     "before": "Overall, the global outlook remains uncertain and susceptible to risks stemming from prolonged geopolitical tensions, tighter financial conditions, and renewed supply chain disruptions.",
+     "after": "Against this backdrop, global prospects remain subject to heightened uncertainty, with risks arising from persistent geopolitical tensions, tighter financial conditions, and disruptions to global trade and supply chains."
+    },
+    {
+     "before": "Domestically, real economic activity continued to moderate, with growth recording 4.7 percent in Q2 2026, down from 5.0 percent in Q1 2026, mainly attributable to the adverse impact of regional tensions.",
+     "after": "Domestically, the CBE nowcast suggests that real GDP growth will remain broadly stable in Q3 2026, hovering near the 4.7 growth rate recorded in Q2 2026."
+    },
+    {
+     "before": "Accordingly, real GDP growth averaged 5.1 percent in FY 2025/26 and is expected to remain broadly stable near this level in FY 2026/27.",
+     "after": "This reflects continued resilience of economic activity across key sectors—most notably manufacturing, services, and trade—despite ongoing geopolitical tensions in the region."
+    },
+    {
+     "before": "Nonetheless, output remains below its potential and is projected to gradually converge toward full capacity by H2 2027.",
+     "after": "Nonetheless, output remains below potential, though expected to converge toward full capacity by H2 2027."
+    },
+    {
+     "before": "Accordingly, the projected output gap suggests that demand-side inflationary pressures will remain limited in the short term, supported by an adequately tight monetary policy stance.",
+     "after": "Accordingly, demand-driven inflationary pressures should remain limited in the short term, supported by the prevailing restrictive monetary policy stance."
+    },
+    {
+     "before": "Regarding inflation outturns, annual headline inflation eased marginally to 14.5 percent in August 2026, primarily driven by declining food inflation, which offset increases in electricity tariffs and housing rents.",
+     "after": "Regarding inflation outturns, monthly headline and core inflation accelerated in September 2026 compared to August 2026, recording 1.3 percent and 0.8 percent, respectively."
+    },
+    {
+     "before": "Meanwhile, annual core inflation remained relatively stable at 14.9 percent in August 2026, reflecting broadly stable price developments across core food, retail items and services.",
+     "after": "In particular, the acceleration in monthly core inflation reflected higher core food prices and seasonal dynamics."
+    },
+    {
+     "before": "Overall, annual price dynamics reflected continued disinflation, supported by broad-based price stability across the CPI basket over the past three months.",
+     "after": "Despite the monthly slowdown in non-food inflation, its level remains broadly elevated."
+    },
+    {
+     "before": "This is evidenced by monthly headline inflation recording negative 0.4 percent, 0.0 percent and 0.1 percent in June, July, and August 2026, respectively.",
+     "after": "Meanwhile, annual headline and core inflation eased to 13.9 percent and 14.1 percent, respectively, in September 2026, supported by subdued monthly dynamics from June through August 2026."
+    },
+    {
+     "before": "Given these inflation developments, which turned out more favorable than expected, the CBE revised its inflation forecast downward relative to the August MPC meeting.",
+     "after": "Looking ahead, with risks and uncertainty becoming more pronounced relative to the previous MPC meeting, the risk-off sentiment has increased, inducing further global economic and financial volatility."
+    },
+    {
+     "before": "Accordingly, annual headline inflation is projected to stabilize on average in Q3 2026, before gradually decelerating then converging toward the target of 7 percent (± 2 p.p.) during H2 2027.",
+     "after": "Hence, further anchoring inflation expectations and preserving the disinflation path warrant a more restrictive stance to converge toward the CBE target level of 7 percent (± 2 percentage points), on average, in Q4 2027."
+    },
+    {
+     "before": "The downward revision to the inflation forecast reinforces the current monetary stance that is sufficiently tight, further supporting the forecasted disinflation path.",
+     "after": "Nonetheless, this forecast remains increasingly susceptible to global uncertainty given the regional conflict that proved more persistent than initially envisaged and its spillovers to global energy and other commodity prices, fueling imported inflation."
+    },
+    {
+     "before": "Nonetheless, the balance of risks surrounding the inflation outlook remains tilted to the upside, reflecting the resurgence of regional hostilities.",
+     "after": "These risks also include tighter global financial conditions, and a higher-than-expected pass-through of domestic fiscal consolidation measures."
+    },
+    {
+     "before": "These risks could feed into domestic inflation through a higher-than-anticipated passthrough from fiscal consolidation measures and international food prices, particularly if global energy prices remain elevated for an extended period.",
+     "after": "In view of the above, and mindful of the balance of risks, the MPC deems it necessary to raise the CBE key policy rates by 100 bps to reinforce its restrictive stance, with a view to anchoring inflation expectations more firmly and containing potential inflationary pressures."
+    },
+    {
+     "before": "In light of these dynamics, the MPC decided to keep the key policy rates unchanged, given that the current degree of policy restrictiveness serves as a buffer against the above-mentioned risks, preserving the projected disinflation path.",
+     "after": "This preemptive decision aims to preserve the projected disinflation path and to ensure the achievement of the CBE’s inflation target level of 7 percent (± 2 percentage points), on average, in Q4 2027."
+    },
+    {
+     "before": "Looking ahead, the Committee will continue to evaluate its monetary stance in light of evolving economic conditions, the forecasted inflation trajectory, and the prevailing balance of risks.",
+     "after": "The Committee will continue to evaluate its monetary stance based on evolving economic conditions, the forecasted inflation trajectory, and the prevailing balance of risks."
+    },
+    {
+     "before": "The MPC will remain vigilant toward risks and developments affecting the inflation outlook and stands ready to deploy all available policy tools to ensure price stability.",
+     "after": "The MPC remains committed to price stability and will adjust its policy stance as necessary to ensure that inflation returns to target in the near term."
+    }
+   ],
+   "rate_move": null
   }
  ]
 }
