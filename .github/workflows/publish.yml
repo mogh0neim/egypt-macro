@@ -19,6 +19,7 @@ on:
       - "catalog/**"
       - "corpus/**"
       - "events.json"
+      - "contract/**"
       - ".github/workflows/publish.yml"
   workflow_run:
     workflows: ["scrape-daily", "scrape-weekly", "ocr-scans"]
@@ -70,6 +71,9 @@ jobs:
       - name: Tests for the revision record
         run: python tests/test_build_changes.py
 
+      - name: Tests for the API contract check
+        run: python tests/test_api_contract.py
+
       # The old Excel parser once dated $34bn of external debt to 2086.
       - name: No observation dated after today or before 1950
         run: python ingest/summarise.py --dates
@@ -89,6 +93,12 @@ jobs:
       # so the freshness strip can link to them without another fetch.
       - name: Read the revision record out of the git history
         run: python ingest/build_changes.py
+
+      # After build_changes, which writes the last file in api/v1. The phone
+      # app reads these files and old copies of it live for years, so a field
+      # that vanished or changed type stops the deploy (contract/api-v1/).
+      - name: Check api/v1 keeps its contract
+        run: python ingest/check_api.py
 
       - name: How the data jobs are doing
         run: python ingest/health.py
@@ -115,7 +125,7 @@ jobs:
                            "views-mpc.js", "views-meta.js", "views-desk.js",
                            "views-mydesk.js", "views-tools.js", "views-changes.js",
                            "i18n.js",
-                           "api/v1/series.json", "api/v1/sparks.json",
+                           "api/v1/series.json", "api/v1/sparks.json", "api/v1/latest.json",
                            "api/v1/changes.json", "changes.xml", "changes-revisions.xml",
                            "search/documents.json", "search/meta.json"):
               if not (dist / required).exists():

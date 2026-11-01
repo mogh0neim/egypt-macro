@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "events.schema.json",
+  "title": "api/v1/events.json",
+  "description": "Marks for charts: exchange-rate regimes, big one-day moves in the pound, and MPC decisions.",
+  "type": "object",
+  "required": ["fx_regimes", "events"],
+  "properties": {
+    "fx_regimes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "label"],
+        "properties": {
+          "from": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+          "to": {"type": ["string", "null"], "description": "null for the regime still in force."},
+          "label": {"type": "string"}
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "type"],
+        "properties": {
+          "date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+          "type": {"type": "string", "description": "fx_move or mpc today. New types can appear."},
+          "label": {"type": ["string", "null"]},
+          "url": {"type": "string"}
+        }
+      }
+    }
+  }
+}

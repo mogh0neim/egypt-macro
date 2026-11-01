@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sparks.schema.json",
+  "title": "api/v1/sparks.json",
+  "description": "A small trend line per series: up to 49 values, oldest first, evenly sampled, the last one always the latest. Keyed by series_id. Series with fewer than two values are left out.",
+  "type": "object",
+  "additionalProperties": {
+    "type": "array",
+    "minItems": 2,
+    "items": {"type": "number"}
+  }
+}

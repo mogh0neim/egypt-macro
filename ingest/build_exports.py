@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import collections
 import csv
+import datetime
 import hashlib
 import json
 import pathlib
@@ -374,6 +375,37 @@ def main() -> int:
     index.sort(key=lambda s: s["series_id"])
     (API / "series.json").write_text(json.dumps(index, ensure_ascii=False), encoding="utf-8")
     print(f"  api/v1/series.json  {len(index):,} series indexed")
+
+    # ---- Latest values, for the phone app ----
+    # One small file the app checks instead of a file per followed series.
+    # data_version is a hash of the values alone, so it moves only when a
+    # number does, never because the site was rebuilt. Shape and rules:
+    # contract/api-v1/.
+    latest = {}
+    for sid in sorted(per_series):
+        points = per_series[sid]
+        row = {"period": points[-1][0], "value": points[-1][1]}
+        if len(points) > 1:
+            row["previous_period"], row["previous_value"] = points[-2]
+        latest[sid] = row
+    body = json.dumps(latest, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+    (API / "latest.json").write_text(
+        json.dumps({
+            "api": "v1",
+            "data_version": hashlib.sha256(body.encode()).hexdigest()[:16],
+            "built": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
+            "series": latest,
+        }, ensure_ascii=False, separators=(",", ":")),
+        encoding="utf-8",
+    )
+    print(f"  api/v1/latest.json  {(API / 'latest.json').stat().st_size/1e3:.0f} KB")
+
+    # The contract itself, next to what it describes, so an app developer
+    # can read the rules at the same address as the data.
+    schema_dir = API / "schema"
+    schema_dir.mkdir(exist_ok=True)
+    for path in (ROOT / "contract" / "api-v1").iterdir():
+        shutil.copy(path, schema_dir / path.name)
 
     # ---- Sparklines ----
     # One 48-point shape per series, values only. This is what lets a browse
