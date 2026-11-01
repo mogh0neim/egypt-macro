@@ -45,7 +45,10 @@ EARLIEST = "1950-01-01"
 # Treasury bill auctions are dated by issue (settlement) date, up to five days
 # after the auction, and CBE posts the results on auction day. So the newest
 # auction point is legitimately in the future; allow it this far ahead.
-SETTLES_AHEAD = ("EG.TB.EGP.", "EG.TB.USD.", "EG.TB.EUR.")
+# Policy rates are the same: an MPC decision is announced on the meeting day
+# and dated by when it takes effect, usually a few days later.
+SETTLES_AHEAD = ("EG.TB.EGP.", "EG.TB.USD.", "EG.TB.EUR.",
+                 "EG.RATE.DISCOUNT", "EG.RATE.MAIN", "EG.RATE.ON.")
 SETTLE_DAYS = 14
 
 # A daily series that has not moved in this long is probably discontinued
