@@ -3,13 +3,14 @@
  "files": [
   {
    "bytes": 132608,
+   "changed_on": "2026-11-01",
    "key": "balance-of-payments",
-   "last_modified": "Mon, 20 Jul 2026 09:01:21 GMT",
+   "last_modified": "Thu, 29 Oct 2026 10:18:04 GMT",
    "local": "data/raw/sdds/balance-of-payments.xls",
    "section": "Balance of Payments",
-   "sha256": "8de1571926f9761646be9c72a17e5846b0f7595c4a5eba20caa275ea8477ab19",
+   "sha256": "ce154ff731274dd52d94a0ccdb519ebf948d559d7f0eaca7fdce8092ab265758",
    "title": "Balance of Payments",
-   "url": "/-/media/project/cbe/listing/sdds/sdds-files/balance-of-payments-q1-2026.xls"
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/balance-of-payments-q2-2026.xls"
   },
   {
    "bytes": 79469,

@@ -14,7 +14,23 @@
    "sha256": "f8cb328bb4dac721d4cc8632ab77eeef237d7af3a70bfcf59cce023f446f1b90",
    "subcategory": "Egypt's Balance of Payments",
    "subcategory_ar": "ميزان المدفوعات المصري",
-   "url": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+   "url": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx",
+   "withdrawn_on": "2026-11-01"
+  },
+  {
+   "bytes": 36342,
+   "category": "BOP",
+   "frequency": "Annual",
+   "frequency_ar": "السنوي",
+   "id": "80bdb89b51407e61",
+   "last_modified": "Thu, 29 Oct 2026 10:50:53 GMT",
+   "local": "data/raw/excel/80bdb89b51407e61.xlsx",
+   "period_label": "All Years",
+   "period_label_ar": "جميع السنوات",
+   "sha256": "f4e61480ceff165ed0a884ecdef2a33a56f4bf390ca5ac47c003132a1dc6764b",
+   "subcategory": "Egypt's Balance of Payments",
+   "subcategory_ar": "ميزان المدفوعات المصري",
+   "url": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
   },
   {
    "bytes": 23125,
@@ -56,7 +72,23 @@
    "sha256": "3b652fa93f41f6e71f19fa0d08d0a6a05dd6f550022b2acb8e61d9659988d968",
    "subcategory": "Egypt's Balance of Payments",
    "subcategory_ar": "ميزان المدفوعات المصري",
-   "url": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-quarter_-.xlsx"
+   "url": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-quarter_-.xlsx",
+   "withdrawn_on": "2026-11-01"
+  },
+  {
+   "bytes": 216004,
+   "category": "BOP",
+   "frequency": "Quarterly",
+   "frequency_ar": "ربع سنوي",
+   "id": "5f4e17696a8963e7",
+   "last_modified": "Thu, 29 Oct 2026 11:00:28 GMT",
+   "local": "data/raw/excel/5f4e17696a8963e7.xlsx",
+   "period_label": "All Years",
+   "period_label_ar": "جميع السنوات",
+   "sha256": "fe1d18856c40c274b1c0356e721fcc5fb991373bc61e3b5c2258da1d11e64570",
+   "subcategory": "Egypt's Balance of Payments",
+   "subcategory_ar": "ميزان المدفوعات المصري",
+   "url": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-quarter____.xlsx"
   },
   {
    "bytes": 21029,
@@ -71,7 +103,23 @@
    "sha256": "59f643a6abb9d70d4c6eca2f7ffa62c2e848f78f86952e2e63e5f64215d6df55",
    "subcategory": "Egypt's Balance of Payments",
    "subcategory_ar": "ميزان المدفوعات المصري",
-   "url": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+   "url": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx",
+   "withdrawn_on": "2026-11-01"
+  },
+  {
+   "bytes": 21585,
+   "category": "BOP",
+   "frequency": "Quarterly",
+   "frequency_ar": "ربع سنوي",
+   "id": "a3cac3cbe853efc8",
+   "last_modified": "Thu, 29 Oct 2026 10:43:37 GMT",
+   "local": "data/raw/excel/a3cac3cbe853efc8.xlsx",
+   "period_label": "2025_2026",
+   "period_label_ar": "2025/2026",
+   "sha256": "afeab29ca923cacdfb09da2377e2fe01cacb886c19b455b28c00b4e7d54fe294",
+   "subcategory": "Egypt's Balance of Payments",
+   "subcategory_ar": "ميزان المدفوعات المصري",
+   "url": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
   },
   {
    "bytes": 37300,
@@ -14714,5 +14762,5 @@
    "url": "/-/media/project/cbe/listing/time-series/tourism/number-of-tourists/numberoftourists.xlsx"
   }
  ],
- "withdrawn": 0
+ "withdrawn": 3
 }

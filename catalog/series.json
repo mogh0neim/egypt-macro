@@ -4207,7 +4207,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.BONDS.A",
@@ -4220,7 +4220,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.CAPITAL_ACCOUNT",
@@ -4233,7 +4233,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.CAPITAL_ACCOUNT.A",
@@ -4246,7 +4246,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.CAPITAL_FINANCIAL_ACCOUNT",
@@ -4259,7 +4259,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.CAPITAL_FINANCIAL_ACCOUNT.A",
@@ -4272,7 +4272,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.CHANGE_CBE_RESERVE_ASSETS",
@@ -4298,7 +4298,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.CHANGE_CBE_S_RESERVE_ASSETS.A",
@@ -4311,7 +4311,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.CURRENT_ACCOUNT_BALANCE",
@@ -4324,7 +4324,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.CURRENT_ACCOUNT_BALANCE.A",
@@ -4337,7 +4337,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.DIRECT_INVESTMENT_ABROAD",
@@ -4363,7 +4363,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.DIRECT_INVESTMENT_ABROAD_NET.A",
@@ -4376,7 +4376,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.DIRECT_INVESTMENT_EGYPT_NET",
@@ -4389,7 +4389,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.DIRECT_INVESTMENT_EGYPT_NET.A",
@@ -4402,7 +4402,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.EXPORTS",
@@ -4415,7 +4415,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.EXPORTS.A",
@@ -4428,7 +4428,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.EXPORTS.OTHER_EXPORTS",
@@ -4441,7 +4441,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.EXPORTS.OTHER_EXPORTS.A",
@@ -4454,7 +4454,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.EXPORTS.PETROLEUM",
@@ -4467,7 +4467,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.EXPORTS.PETROLEUM.A",
@@ -4480,7 +4480,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.FINANCIAL_ACCOUNT",
@@ -4493,7 +4493,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.FINANCIAL_ACCOUNT.A",
@@ -4506,7 +4506,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.GOVT_EXPENDITURES",
@@ -4519,7 +4519,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.GOVT_EXPENDITURES.A",
@@ -4532,7 +4532,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.GOVT_RECEIPTS",
@@ -4545,7 +4545,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.GOVT_RECEIPTS.A",
@@ -4558,7 +4558,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.IMPORTS",
@@ -4571,7 +4571,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.IMPORTS.A",
@@ -4584,7 +4584,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.IMPORTS.OTHER_EXPORTS",
@@ -4623,7 +4623,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.IMPORTS.PETROLEUM.A",
@@ -4636,7 +4636,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.INCOME_BALANCE_NET",
@@ -4649,7 +4649,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.INCOME_BALANCE_NET.A",
@@ -4662,7 +4662,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.INCOME_PAYMENTS",
@@ -4675,7 +4675,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.INCOME_PAYMENTS.A",
@@ -4688,7 +4688,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.INCOME_RECEIPTS",
@@ -4701,7 +4701,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.INCOME_RECEIPTS.A",
@@ -4714,7 +4714,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.INTEREST_PAID",
@@ -4727,7 +4727,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.INTEREST_PAID.A",
@@ -4740,7 +4740,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.MEDIUM_LONG_TERM_SUPPLIERS",
@@ -4792,7 +4792,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.M_L_TERM_BUYERS_SUPPLIERS_CREDIT.A",
@@ -4805,7 +4805,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.M_L_TERM_BUYERS_SUPPLIERS_CREDIT.DRAWINGS",
@@ -4818,7 +4818,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.M_L_TERM_BUYERS_SUPPLIERS_CREDIT.DRAWINGS.A",
@@ -4831,7 +4831,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.M_L_TERM_BUYERS_SUPPLIERS_CREDIT.REPAYMENTS",
@@ -4844,7 +4844,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.M_L_TERM_BUYERS_SUPPLIERS_CREDIT.REPAYMENTS.A",
@@ -4857,7 +4857,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.M_L_TERM_LOANS",
@@ -4870,7 +4870,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.M_L_TERM_LOANS.A",
@@ -4883,7 +4883,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.M_L_TERM_LOANS.DRAWINGS",
@@ -4896,7 +4896,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.M_L_TERM_LOANS.DRAWINGS.A",
@@ -4909,7 +4909,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.M_L_TERM_LOANS.REPAYMENTS",
@@ -4922,7 +4922,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.M_L_TERM_LOANS.REPAYMENTS.A",
@@ -4935,7 +4935,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.NET_BORROWING",
@@ -4948,7 +4948,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.NET_BORROWING.A",
@@ -4961,7 +4961,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.NET_ERRORS_OMISSIONS",
@@ -4974,7 +4974,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.NET_ERRORS_OMISSIONS.A",
@@ -4987,7 +4987,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OFFICIAL_NET",
@@ -5013,7 +5013,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OFFICIAL_TRANSFERS_NET.A",
@@ -5026,7 +5026,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_ASSETS",
@@ -5039,7 +5039,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_ASSETS.A",
@@ -5052,7 +5052,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_ASSETS.BANKS",
@@ -5065,7 +5065,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_ASSETS.BANKS.A",
@@ -5078,7 +5078,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_ASSETS.CBE",
@@ -5104,7 +5104,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_ASSETS.CENTRAL_BANK.A",
@@ -5117,7 +5117,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_ASSETS.OTHER",
@@ -5130,7 +5130,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_ASSETS.OTHER.A",
@@ -5143,7 +5143,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_IMPORTS",
@@ -5156,7 +5156,20 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
+ },
+ {
+  "series_id": "EG.XL.BOP.OTHER_IMPORTS.A",
+  "title_en": "Egypt's Balance of Payments - Other Imports (fiscal year)",
+  "title_ar": "واردات  اخرى",
+  "dataset": "excel_archive",
+  "family": "bop",
+  "freq": "A",
+  "unit": "USD million",
+  "level": 2,
+  "period_basis": "end",
+  "fiscal_year_basis": "Egypt, 1 July to 30 June",
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_INVESTMENT_NET",
@@ -5169,7 +5182,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_INVESTMENT_NET.A",
@@ -5182,7 +5195,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_LIABILITIES",
@@ -5195,7 +5208,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_LIABILITIES.A",
@@ -5208,7 +5221,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_LIABILITIES.BANKS",
@@ -5221,7 +5234,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_LIABILITIES.BANKS.A",
@@ -5234,7 +5247,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_LIABILITIES.CBE",
@@ -5260,7 +5273,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OTHER_LIABILITIES.CENTRAL_BANK.A",
@@ -5273,7 +5286,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OVERALL_BALANCE",
@@ -5286,7 +5299,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.OVERALL_BALANCE.A",
@@ -5299,7 +5312,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.PAYMENTS",
@@ -5312,7 +5325,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.PAYMENTS.A",
@@ -5325,7 +5338,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.PAYMENTS.OTHER",
@@ -5338,7 +5351,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.PAYMENTS.OTHER.A",
@@ -5351,7 +5364,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.PAYMENTS.OTHERS",
@@ -5377,7 +5390,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.PAYMENTS.TRANSPORTATION.A",
@@ -5390,7 +5403,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.PAYMENTS.TRAVEL",
@@ -5403,7 +5416,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.PAYMENTS.TRAVEL.A",
@@ -5416,7 +5429,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.PORTFOLIO_INVESTMENT_ABROAD",
@@ -5442,7 +5455,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.PORTFOLIO_INVESTMENT_ABROAD_NET.A",
@@ -5455,7 +5468,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.PORTFOLIO_INVESTMENT_EGYPT_NET",
@@ -5468,7 +5481,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.PORTFOLIO_INVESTMENT_EGYPT_NET.A",
@@ -5481,7 +5494,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.PRIVATE_NET",
@@ -5507,7 +5520,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.PRIVATE_TRANSFERS_NET.A",
@@ -5520,7 +5533,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.RECEIPTS",
@@ -5533,7 +5546,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.RECEIPTS.A",
@@ -5546,7 +5559,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.RECEIPTS.OTHER",
@@ -5559,7 +5572,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.RECEIPTS.OTHER.A",
@@ -5572,7 +5585,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.RECEIPTS.OTHERS",
@@ -5598,7 +5611,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.RECEIPTS.TRANSPORTATION.A",
@@ -5611,7 +5624,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.RECEIPTS.TRAVEL",
@@ -5624,7 +5637,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.RECEIPTS.TRAVEL.A",
@@ -5637,7 +5650,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.REMITTANES_EGYPTIANS_WORKING",
@@ -5663,7 +5676,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.SERVICES_BALANCE_NET.A",
@@ -5676,7 +5689,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.SHORT_TERM_BUYERS_SUPPLIERS",
@@ -5689,7 +5702,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.SHORT_TERM_BUYERS_SUPPLIERS.A",
@@ -5702,7 +5715,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.ST_SUPPLIERS_CREDIT_NET",
@@ -5728,7 +5741,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.SUEZ_CANAL_DUES.A",
@@ -5741,7 +5754,7 @@
   "level": 2,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.TRADE_BALANCE",
@@ -5754,7 +5767,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.TRADE_BALANCE.A",
@@ -5767,7 +5780,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.TRANSFERS",
@@ -5780,7 +5793,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.TRANSFERS.A",
@@ -5793,7 +5806,7 @@
   "level": 0,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.TRAVEL_TOURISM_REVENUES",
@@ -5819,7 +5832,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop_quarter-2025-2026_.xlsx"
  },
  {
   "series_id": "EG.XL.BOP.WORKERS_REMITTANCES.A",
@@ -5832,7 +5845,7 @@
   "level": 1,
   "period_basis": "end",
   "fiscal_year_basis": "Egypt, 1 July to 30 June",
-  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop--annual--.xlsx"
+  "source_file": "/-/media/project/cbe/listing/time-series/bop/egypts-balance-of-payments/bop-annual___.xlsx"
  },
  {
   "series_id": "EG.XL.BUDGET.DEFICIT.ARREARS.BUDGET_SECTOR.A",
