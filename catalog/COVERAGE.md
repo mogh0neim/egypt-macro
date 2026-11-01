@@ -4,7 +4,7 @@ _Generated from `data/clean/series/`. See `catalog/last_run.json` for the
 run timestamp -- keeping it out of here means this file only changes when
 the coverage actually does._
 
-**3776 series, 511,733 observations.**
+**3776 series, 511,752 observations.**
 
 | Series | Coverage | n | Latest | Unit |
 |---|---|---|---|---|
@@ -24,25 +24,25 @@ the coverage actually does._
 | `EG.CPI.REG.MOM` | 2005-01-01 to 2026-09-01 | 261 | 0.1 | percent |
 | `EG.CPI.REG.YOY` | 2005-01-01 to 2026-09-01 | 261 | 12 | percent |
 | `EG.EXT.REMIT.FYTD` | 2025-05-31 to 2026-05-31 | 6 | 43100 | USD million |
-| `EG.FX.IBK.WAVG` | 2004-12-23 to 2026-10-29 | 5,342 | 56.055 | EGP per USD |
-| `EG.FX.MKT.AED.BUY` | 2014-11-25 to 2026-10-29 | 2,845 | 15.2434 | EGP per unit of foreign currency |
-| `EG.FX.MKT.AED.SELL` | 2014-11-25 to 2026-10-29 | 2,845 | 15.2732 | EGP per unit of foreign currency |
-| `EG.FX.MKT.CHF.BUY` | 2014-11-25 to 2026-10-29 | 2,845 | 67.4866 | EGP per unit of foreign currency |
-| `EG.FX.MKT.CHF.SELL` | 2014-11-25 to 2026-10-29 | 2,845 | 67.8097 | EGP per unit of foreign currency |
-| `EG.FX.MKT.CNY.BUY` | 2014-11-25 to 2026-10-29 | 2,846 | 8.402 | EGP per unit of foreign currency |
-| `EG.FX.MKT.CNY.SELL` | 2014-11-25 to 2026-10-29 | 2,846 | 8.421 | EGP per unit of foreign currency |
-| `EG.FX.MKT.EUR.BUY` | 2014-11-25 to 2026-10-29 | 2,846 | 62.2985 | EGP per unit of foreign currency |
-| `EG.FX.MKT.EUR.SELL` | 2014-11-25 to 2026-10-29 | 2,846 | 62.6045 | EGP per unit of foreign currency |
-| `EG.FX.MKT.GBP.BUY` | 2014-11-25 to 2026-10-29 | 2,846 | 74.4547 | EGP per unit of foreign currency |
-| `EG.FX.MKT.GBP.SELL` | 2014-11-25 to 2026-10-29 | 2,846 | 74.8046 | EGP per unit of foreign currency |
-| `EG.FX.MKT.JPY100.BUY` | 2014-11-25 to 2026-10-29 | 2,845 | 35.4255 | EGP per unit of foreign currency |
-| `EG.FX.MKT.JPY100.SELL` | 2014-11-25 to 2026-10-29 | 2,845 | 35.5893 | EGP per unit of foreign currency |
-| `EG.FX.MKT.KWD.BUY` | 2014-11-25 to 2026-10-29 | 2,846 | 181.679 | EGP per unit of foreign currency |
-| `EG.FX.MKT.KWD.SELL` | 2014-11-25 to 2026-10-29 | 2,846 | 181.94 | EGP per unit of foreign currency |
-| `EG.FX.MKT.SAR.BUY` | 2014-11-25 to 2026-10-29 | 2,845 | 14.9209 | EGP per unit of foreign currency |
-| `EG.FX.MKT.SAR.SELL` | 2014-11-25 to 2026-10-29 | 2,845 | 14.9476 | EGP per unit of foreign currency |
-| `EG.FX.MKT.USD.BUY` | 2014-11-25 to 2026-10-29 | 2,847 | 55.9936 | EGP per unit of foreign currency |
-| `EG.FX.MKT.USD.SELL` | 2014-11-25 to 2026-10-29 | 2,847 | 56.0922 | EGP per unit of foreign currency |
+| `EG.FX.IBK.WAVG` | 2004-12-23 to 2026-11-01 | 5,343 | 55.7884 | EGP per USD |
+| `EG.FX.MKT.AED.BUY` | 2014-11-25 to 2026-11-01 | 2,846 | 15.1734 | EGP per unit of foreign currency |
+| `EG.FX.MKT.AED.SELL` | 2014-11-25 to 2026-11-01 | 2,846 | 15.2011 | EGP per unit of foreign currency |
+| `EG.FX.MKT.CHF.BUY` | 2014-11-25 to 2026-11-01 | 2,846 | 67.513 | EGP per unit of foreign currency |
+| `EG.FX.MKT.CHF.SELL` | 2014-11-25 to 2026-11-01 | 2,846 | 68.1293 | EGP per unit of foreign currency |
+| `EG.FX.MKT.CNY.BUY` | 2014-11-25 to 2026-11-01 | 2,847 | 8.3668 | EGP per unit of foreign currency |
+| `EG.FX.MKT.CNY.SELL` | 2014-11-25 to 2026-11-01 | 2,847 | 8.3924 | EGP per unit of foreign currency |
+| `EG.FX.MKT.EUR.BUY` | 2014-11-25 to 2026-11-01 | 2,847 | 62.0687 | EGP per unit of foreign currency |
+| `EG.FX.MKT.EUR.SELL` | 2014-11-25 to 2026-11-01 | 2,847 | 62.61 | EGP per unit of foreign currency |
+| `EG.FX.MKT.GBP.BUY` | 2014-11-25 to 2026-11-01 | 2,847 | 74.5416 | EGP per unit of foreign currency |
+| `EG.FX.MKT.GBP.SELL` | 2014-11-25 to 2026-11-01 | 2,847 | 74.9991 | EGP per unit of foreign currency |
+| `EG.FX.MKT.JPY100.BUY` | 2014-11-25 to 2026-11-01 | 2,846 | 35.298 | EGP per unit of foreign currency |
+| `EG.FX.MKT.JPY100.SELL` | 2014-11-25 to 2026-11-01 | 2,846 | 35.5686 | EGP per unit of foreign currency |
+| `EG.FX.MKT.KWD.BUY` | 2014-11-25 to 2026-11-01 | 2,847 | 180.831 | EGP per unit of foreign currency |
+| `EG.FX.MKT.KWD.SELL` | 2014-11-25 to 2026-11-01 | 2,847 | 181.155 | EGP per unit of foreign currency |
+| `EG.FX.MKT.SAR.BUY` | 2014-11-25 to 2026-11-01 | 2,846 | 14.8504 | EGP per unit of foreign currency |
+| `EG.FX.MKT.SAR.SELL` | 2014-11-25 to 2026-11-01 | 2,846 | 14.8778 | EGP per unit of foreign currency |
+| `EG.FX.MKT.USD.BUY` | 2014-11-25 to 2026-11-01 | 2,848 | 55.732 | EGP per unit of foreign currency |
+| `EG.FX.MKT.USD.SELL` | 2014-11-25 to 2026-11-01 | 2,848 | 55.832 | EGP per unit of foreign currency |
 | `EG.FX.OFF.AED.BUY` | 2005-01-02 to 2026-11-01 | 5,221 | 15.1697 | EGP per unit of foreign currency |
 | `EG.FX.OFF.AED.SELL` | 2005-01-02 to 2026-11-01 | 5,221 | 15.2079 | EGP per unit of foreign currency |
 | `EG.FX.OFF.AUD.BUY` | 2005-01-02 to 2026-11-01 | 5,220 | 39.171 | EGP per unit of foreign currency |
