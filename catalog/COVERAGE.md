@@ -4,16 +4,16 @@ _Generated from `data/clean/series/`. See `catalog/last_run.json` for the
 run timestamp -- keeping it out of here means this file only changes when
 the coverage actually does._
 
-**3776 series, 511,669 observations.**
+**3776 series, 511,733 observations.**
 
 | Series | Coverage | n | Latest | Unit |
 |---|---|---|---|---|
-| `EG.CONIA.IDX.180D` | 2017-07-02 to 2026-10-29 | 2,266 | 20.6012 | percent per annum |
-| `EG.CONIA.IDX.30D` | 2017-01-31 to 2026-10-29 | 2,366 | 19.532 | percent per annum |
-| `EG.CONIA.IDX.90D` | 2017-04-02 to 2026-10-29 | 2,323 | 19.9241 | percent per annum |
-| `EG.CONIA.IDX.LEVEL` | 2017-01-02 to 2026-10-29 | 2,386 | 5383.86 | index |
-| `EG.CONIA.ON.RATE` | 2016-12-29 to 2026-10-28 | 2,386 | 19.468 | percent per annum |
-| `EG.CONIA.ON.VOL` | 2016-12-29 to 2026-10-28 | 2,386 | 21637 | EGP million |
+| `EG.CONIA.IDX.180D` | 2017-07-02 to 2026-11-01 | 2,267 | 20.5983 | percent per annum |
+| `EG.CONIA.IDX.30D` | 2017-01-31 to 2026-11-01 | 2,367 | 19.5296 | percent per annum |
+| `EG.CONIA.IDX.90D` | 2017-04-02 to 2026-11-01 | 2,324 | 19.9139 | percent per annum |
+| `EG.CONIA.IDX.LEVEL` | 2017-01-02 to 2026-11-01 | 2,387 | 5392.6 | index |
+| `EG.CONIA.ON.RATE` | 2016-12-29 to 2026-10-29 | 2,387 | 19.499 | percent per annum |
+| `EG.CONIA.ON.VOL` | 2016-12-29 to 2026-10-29 | 2,387 | 41965 | EGP million |
 | `EG.CPI.CORE.MOM` | 2005-01-01 to 2026-09-01 | 261 | 0.8 | percent |
 | `EG.CPI.CORE.YOY` | 2005-01-01 to 2026-09-01 | 261 | 14.1 | percent |
 | `EG.CPI.FRVEG.MOM` | 2005-01-01 to 2026-09-01 | 261 | 11.3 | percent |
@@ -43,42 +43,42 @@ the coverage actually does._
 | `EG.FX.MKT.SAR.SELL` | 2014-11-25 to 2026-10-29 | 2,845 | 14.9476 | EGP per unit of foreign currency |
 | `EG.FX.MKT.USD.BUY` | 2014-11-25 to 2026-10-29 | 2,847 | 55.9936 | EGP per unit of foreign currency |
 | `EG.FX.MKT.USD.SELL` | 2014-11-25 to 2026-10-29 | 2,847 | 56.0922 | EGP per unit of foreign currency |
-| `EG.FX.OFF.AED.BUY` | 2005-01-02 to 2026-10-29 | 5,220 | 15.2436 | EGP per unit of foreign currency |
-| `EG.FX.OFF.AED.SELL` | 2005-01-02 to 2026-10-29 | 5,220 | 15.2817 | EGP per unit of foreign currency |
-| `EG.FX.OFF.AUD.BUY` | 2005-01-02 to 2026-10-29 | 5,219 | 39.3922 | EGP per unit of foreign currency |
-| `EG.FX.OFF.AUD.SELL` | 2005-01-02 to 2026-10-29 | 5,219 | 39.4941 | EGP per unit of foreign currency |
-| `EG.FX.OFF.BHD.BUY` | 2005-01-02 to 2026-10-29 | 5,219 | 148.328 | EGP per unit of foreign currency |
-| `EG.FX.OFF.BHD.SELL` | 2005-01-02 to 2026-10-29 | 5,219 | 148.73 | EGP per unit of foreign currency |
-| `EG.FX.OFF.CAD.BUY` | 2005-01-02 to 2026-10-29 | 5,219 | 40.0276 | EGP per unit of foreign currency |
-| `EG.FX.OFF.CAD.SELL` | 2005-01-02 to 2026-10-29 | 5,219 | 40.1312 | EGP per unit of foreign currency |
-| `EG.FX.OFF.CHF.BUY` | 2005-01-02 to 2026-10-29 | 5,219 | 67.584 | EGP per unit of foreign currency |
-| `EG.FX.OFF.CHF.SELL` | 2005-01-02 to 2026-10-29 | 5,219 | 67.7656 | EGP per unit of foreign currency |
-| `EG.FX.OFF.CNY.BUY` | 2006-08-26 to 2026-10-29 | 4,517 | 8.4045 | EGP per unit of foreign currency |
-| `EG.FX.OFF.CNY.SELL` | 2006-08-26 to 2026-10-29 | 4,517 | 8.4253 | EGP per unit of foreign currency |
-| `EG.FX.OFF.DKK.BUY` | 2005-01-02 to 2026-10-29 | 5,218 | 8.3516 | EGP per unit of foreign currency |
-| `EG.FX.OFF.DKK.SELL` | 2005-01-02 to 2026-10-29 | 5,218 | 8.3733 | EGP per unit of foreign currency |
-| `EG.FX.OFF.EUR.BUY` | 2005-01-02 to 2026-10-29 | 5,220 | 62.4194 | EGP per unit of foreign currency |
-| `EG.FX.OFF.EUR.SELL` | 2005-01-02 to 2026-10-29 | 5,220 | 62.5776 | EGP per unit of foreign currency |
-| `EG.FX.OFF.GBP.BUY` | 2005-01-02 to 2026-10-29 | 5,220 | 74.5853 | EGP per unit of foreign currency |
-| `EG.FX.OFF.GBP.SELL` | 2005-01-02 to 2026-10-29 | 5,220 | 74.7845 | EGP per unit of foreign currency |
-| `EG.FX.OFF.JOD.BUY` | 2005-01-02 to 2026-10-29 | 5,218 | 78.8543 | EGP per unit of foreign currency |
-| `EG.FX.OFF.JOD.SELL` | 2005-01-02 to 2026-10-29 | 5,218 | 79.2704 | EGP per unit of foreign currency |
-| `EG.FX.OFF.JPY100.BUY` | 2005-01-02 to 2026-10-29 | 5,220 | 35.4256 | EGP per unit of foreign currency |
-| `EG.FX.OFF.JPY100.SELL` | 2005-01-02 to 2026-10-29 | 5,220 | 35.5212 | EGP per unit of foreign currency |
-| `EG.FX.OFF.KWD.BUY` | 2005-01-02 to 2026-10-29 | 5,220 | 181.598 | EGP per unit of foreign currency |
-| `EG.FX.OFF.KWD.SELL` | 2005-01-02 to 2026-10-29 | 5,220 | 182.101 | EGP per unit of foreign currency |
-| `EG.FX.OFF.NOK.BUY` | 2005-01-02 to 2026-10-29 | 5,218 | 6.0271 | EGP per unit of foreign currency |
-| `EG.FX.OFF.NOK.SELL` | 2005-01-02 to 2026-10-29 | 5,218 | 6.0471 | EGP per unit of foreign currency |
-| `EG.FX.OFF.OMR.BUY` | 2005-01-02 to 2026-10-29 | 5,219 | 145.405 | EGP per unit of foreign currency |
-| `EG.FX.OFF.OMR.SELL` | 2005-01-02 to 2026-10-29 | 5,219 | 145.779 | EGP per unit of foreign currency |
-| `EG.FX.OFF.QAR.BUY` | 2005-01-02 to 2026-10-29 | 5,219 | 15.3581 | EGP per unit of foreign currency |
-| `EG.FX.OFF.QAR.SELL` | 2005-01-02 to 2026-10-29 | 5,219 | 15.3974 | EGP per unit of foreign currency |
-| `EG.FX.OFF.SAR.BUY` | 2005-01-02 to 2026-10-29 | 5,220 | 14.9182 | EGP per unit of foreign currency |
-| `EG.FX.OFF.SAR.SELL` | 2005-01-02 to 2026-10-29 | 5,220 | 14.9555 | EGP per unit of foreign currency |
-| `EG.FX.OFF.SEK.BUY` | 2005-01-02 to 2026-10-29 | 5,220 | 5.6648 | EGP per unit of foreign currency |
-| `EG.FX.OFF.SEK.SELL` | 2005-01-02 to 2026-10-29 | 5,220 | 5.6794 | EGP per unit of foreign currency |
-| `EG.FX.OFF.USD.BUY` | 2005-01-02 to 2026-10-29 | 5,220 | 55.9866 | EGP per unit of foreign currency |
-| `EG.FX.OFF.USD.SELL` | 2005-01-02 to 2026-10-29 | 5,220 | 56.1234 | EGP per unit of foreign currency |
+| `EG.FX.OFF.AED.BUY` | 2005-01-02 to 2026-11-01 | 5,221 | 15.1697 | EGP per unit of foreign currency |
+| `EG.FX.OFF.AED.SELL` | 2005-01-02 to 2026-11-01 | 5,221 | 15.2079 | EGP per unit of foreign currency |
+| `EG.FX.OFF.AUD.BUY` | 2005-01-02 to 2026-11-01 | 5,220 | 39.171 | EGP per unit of foreign currency |
+| `EG.FX.OFF.AUD.SELL` | 2005-01-02 to 2026-11-01 | 5,220 | 39.3011 | EGP per unit of foreign currency |
+| `EG.FX.OFF.BHD.BUY` | 2005-01-02 to 2026-11-01 | 5,220 | 147.582 | EGP per unit of foreign currency |
+| `EG.FX.OFF.BHD.SELL` | 2005-01-02 to 2026-11-01 | 5,220 | 147.986 | EGP per unit of foreign currency |
+| `EG.FX.OFF.CAD.BUY` | 2005-01-02 to 2026-11-01 | 5,220 | 39.8738 | EGP per unit of foreign currency |
+| `EG.FX.OFF.CAD.SELL` | 2005-01-02 to 2026-11-01 | 5,220 | 39.9751 | EGP per unit of foreign currency |
+| `EG.FX.OFF.CHF.BUY` | 2005-01-02 to 2026-11-01 | 5,220 | 67.5309 | EGP per unit of foreign currency |
+| `EG.FX.OFF.CHF.SELL` | 2005-01-02 to 2026-11-01 | 5,220 | 67.7056 | EGP per unit of foreign currency |
+| `EG.FX.OFF.CNY.BUY` | 2006-08-26 to 2026-11-01 | 4,518 | 8.3734 | EGP per unit of foreign currency |
+| `EG.FX.OFF.CNY.SELL` | 2006-08-26 to 2026-11-01 | 4,518 | 8.3948 | EGP per unit of foreign currency |
+| `EG.FX.OFF.DKK.BUY` | 2005-01-02 to 2026-11-01 | 5,219 | 8.3191 | EGP per unit of foreign currency |
+| `EG.FX.OFF.DKK.SELL` | 2005-01-02 to 2026-11-01 | 5,219 | 8.3409 | EGP per unit of foreign currency |
+| `EG.FX.OFF.EUR.BUY` | 2005-01-02 to 2026-11-01 | 5,221 | 62.1721 | EGP per unit of foreign currency |
+| `EG.FX.OFF.EUR.SELL` | 2005-01-02 to 2026-11-01 | 5,221 | 62.3477 | EGP per unit of foreign currency |
+| `EG.FX.OFF.GBP.BUY` | 2005-01-02 to 2026-11-01 | 5,221 | 74.6143 | EGP per unit of foreign currency |
+| `EG.FX.OFF.GBP.SELL` | 2005-01-02 to 2026-11-01 | 5,221 | 74.8151 | EGP per unit of foreign currency |
+| `EG.FX.OFF.JOD.BUY` | 2005-01-02 to 2026-11-01 | 5,219 | 78.4785 | EGP per unit of foreign currency |
+| `EG.FX.OFF.JOD.SELL` | 2005-01-02 to 2026-11-01 | 5,219 | 78.8943 | EGP per unit of foreign currency |
+| `EG.FX.OFF.JPY100.BUY` | 2005-01-02 to 2026-11-01 | 5,221 | 35.3641 | EGP per unit of foreign currency |
+| `EG.FX.OFF.JPY100.SELL` | 2005-01-02 to 2026-11-01 | 5,221 | 35.4581 | EGP per unit of foreign currency |
+| `EG.FX.OFF.KWD.BUY` | 2005-01-02 to 2026-11-01 | 5,221 | 180.791 | EGP per unit of foreign currency |
+| `EG.FX.OFF.KWD.SELL` | 2005-01-02 to 2026-11-01 | 5,221 | 181.296 | EGP per unit of foreign currency |
+| `EG.FX.OFF.NOK.BUY` | 2005-01-02 to 2026-11-01 | 5,219 | 6.0431 | EGP per unit of foreign currency |
+| `EG.FX.OFF.NOK.SELL` | 2005-01-02 to 2026-11-01 | 5,219 | 6.08 | EGP per unit of foreign currency |
+| `EG.FX.OFF.OMR.BUY` | 2005-01-02 to 2026-11-01 | 5,220 | 144.712 | EGP per unit of foreign currency |
+| `EG.FX.OFF.OMR.SELL` | 2005-01-02 to 2026-11-01 | 5,220 | 145.087 | EGP per unit of foreign currency |
+| `EG.FX.OFF.QAR.BUY` | 2005-01-02 to 2026-11-01 | 5,220 | 15.274 | EGP per unit of foreign currency |
+| `EG.FX.OFF.QAR.SELL` | 2005-01-02 to 2026-11-01 | 5,220 | 15.3369 | EGP per unit of foreign currency |
+| `EG.FX.OFF.SAR.BUY` | 2005-01-02 to 2026-11-01 | 5,221 | 14.8467 | EGP per unit of foreign currency |
+| `EG.FX.OFF.SAR.SELL` | 2005-01-02 to 2026-11-01 | 5,221 | 14.8841 | EGP per unit of foreign currency |
+| `EG.FX.OFF.SEK.BUY` | 2005-01-02 to 2026-11-01 | 5,221 | 5.6627 | EGP per unit of foreign currency |
+| `EG.FX.OFF.SEK.SELL` | 2005-01-02 to 2026-11-01 | 5,221 | 5.692 | EGP per unit of foreign currency |
+| `EG.FX.OFF.USD.BUY` | 2005-01-02 to 2026-11-01 | 5,221 | 55.7197 | EGP per unit of foreign currency |
+| `EG.FX.OFF.USD.SELL` | 2005-01-02 to 2026-11-01 | 5,221 | 55.8571 | EGP per unit of foreign currency |
 | `EG.IBK.BW.GT1M` | 2010-07-26 to 2026-09-28 | 157 | 19.673 | percent per annum |
 | `EG.IBK.BW.LT1M` | 2010-07-12 to 2026-10-26 | 418 | 19.242 | percent per annum |
 | `EG.IBK.BW.LT1W` | 2010-07-12 to 2026-10-26 | 422 | 19.39 | percent per annum |
@@ -94,17 +94,17 @@ the coverage actually does._
 | `EG.IBK.BW.W1` | 2010-07-12 to 2026-10-26 | 419 | 19.54 | percent per annum |
 | `EG.IBK.D.GT1M` | 2010-07-14 to 2026-09-27 | 221 | 19.673 | percent per annum |
 | `EG.IBK.D.LT1M` | 2010-06-29 to 2026-10-27 | 1,787 | 19.543 | percent per annum |
-| `EG.IBK.D.LT1W` | 2010-06-29 to 2026-10-28 | 2,261 | 19.518 | percent per annum |
+| `EG.IBK.D.LT1W` | 2010-06-29 to 2026-10-29 | 2,262 | 19.5 | percent per annum |
 | `EG.IBK.D.M1` | 2010-09-15 to 2026-09-29 | 211 | 19.65 | percent per annum |
-| `EG.IBK.D.ON` | 2010-06-29 to 2026-10-28 | 3,960 | 19.462 | percent per annum |
-| `EG.IBK.D.VOL.GT1M` | 2010-06-29 to 2026-10-28 | 3,970 | 0 | EGP million |
-| `EG.IBK.D.VOL.LT1M` | 2010-06-29 to 2026-10-28 | 3,970 | 0 | EGP million |
-| `EG.IBK.D.VOL.LT1W` | 2010-06-29 to 2026-10-28 | 3,970 | 5550 | EGP million |
-| `EG.IBK.D.VOL.M1` | 2010-06-29 to 2026-10-28 | 3,970 | 0 | EGP million |
-| `EG.IBK.D.VOL.ON` | 2010-06-29 to 2026-10-28 | 3,970 | 30910 | EGP million |
-| `EG.IBK.D.VOL.TOTAL` | 2010-06-29 to 2026-10-28 | 3,970 | 37960 | EGP million |
-| `EG.IBK.D.VOL.W1` | 2010-06-29 to 2026-10-28 | 3,970 | 1500 | EGP million |
-| `EG.IBK.D.W1` | 2010-06-29 to 2026-10-28 | 2,291 | 19.55 | percent per annum |
+| `EG.IBK.D.ON` | 2010-06-29 to 2026-10-29 | 3,961 | 19.494 | percent per annum |
+| `EG.IBK.D.VOL.GT1M` | 2010-06-29 to 2026-10-29 | 3,971 | 0 | EGP million |
+| `EG.IBK.D.VOL.LT1M` | 2010-06-29 to 2026-10-29 | 3,971 | 0 | EGP million |
+| `EG.IBK.D.VOL.LT1W` | 2010-06-29 to 2026-10-29 | 3,971 | 10000 | EGP million |
+| `EG.IBK.D.VOL.M1` | 2010-06-29 to 2026-10-29 | 3,971 | 0 | EGP million |
+| `EG.IBK.D.VOL.ON` | 2010-06-29 to 2026-10-29 | 3,971 | 59950 | EGP million |
+| `EG.IBK.D.VOL.TOTAL` | 2010-06-29 to 2026-10-29 | 3,971 | 71950 | EGP million |
+| `EG.IBK.D.VOL.W1` | 2010-06-29 to 2026-10-29 | 3,971 | 2000 | EGP million |
+| `EG.IBK.D.W1` | 2010-06-29 to 2026-10-29 | 2,292 | 19.55 | percent per annum |
 | `EG.RATE.DISCOUNT` | 1991-01-03 to 2026-11-01 | 113 | 20.5 | percent per annum |
 | `EG.RATE.MAIN` | 2014-07-20 to 2026-11-01 | 32 | 20.5 | percent per annum |
 | `EG.RATE.ON.DEP` | 2014-07-20 to 2026-11-01 | 32 | 20 | percent per annum |
@@ -223,18 +223,18 @@ the coverage actually does._
 | `EG.TB.EUR.12M.YLD.MAX` | 2012-08-29 to 2025-11-04 | 25 | 2.25 | percent per annum |
 | `EG.TB.EUR.12M.YLD.MIN` | 2012-08-29 to 2025-11-04 | 25 | 2.25 | percent per annum |
 | `EG.TB.EUR.12M.YLD.WAVG` | 2012-08-29 to 2025-11-04 | 25 | 2.25 | percent per annum |
-| `EG.TB.SEC.12M.VOL` | 2014-01-06 to 2026-10-28 | 2,383 | 12435.5 | EGP million |
-| `EG.TB.SEC.12M.YLD` | 2014-01-06 to 2026-10-28 | 2,380 | 25.963 | percent per annum |
-| `EG.TB.SEC.1M.VOL` | 2014-01-06 to 2026-10-28 | 2,423 | 18438.5 | EGP million |
-| `EG.TB.SEC.1M.YLD` | 2014-01-06 to 2026-10-28 | 2,423 | 24.492 | percent per annum |
-| `EG.TB.SEC.2M.VOL` | 2014-01-06 to 2026-10-28 | 2,413 | 22091.4 | EGP million |
-| `EG.TB.SEC.2M.YLD` | 2014-01-06 to 2026-10-28 | 2,413 | 25.014 | percent per annum |
-| `EG.TB.SEC.3M.VOL` | 2014-01-06 to 2026-10-28 | 2,422 | 24424.3 | EGP million |
-| `EG.TB.SEC.3M.YLD` | 2014-01-06 to 2026-10-28 | 2,422 | 24.731 | percent per annum |
-| `EG.TB.SEC.6M.VOL` | 2014-01-06 to 2026-10-28 | 2,421 | 16669 | EGP million |
-| `EG.TB.SEC.6M.YLD` | 2014-01-06 to 2026-10-28 | 2,421 | 25.511 | percent per annum |
-| `EG.TB.SEC.9M.VOL` | 2014-01-06 to 2026-10-28 | 2,359 | 10901.7 | EGP million |
-| `EG.TB.SEC.9M.YLD` | 2014-01-06 to 2026-10-28 | 2,359 | 25.891 | percent per annum |
+| `EG.TB.SEC.12M.VOL` | 2014-01-06 to 2026-10-29 | 2,384 | 1171.88 | EGP million |
+| `EG.TB.SEC.12M.YLD` | 2014-01-06 to 2026-10-29 | 2,381 | 25.63 | percent per annum |
+| `EG.TB.SEC.1M.VOL` | 2014-01-06 to 2026-10-29 | 2,424 | 24560.9 | EGP million |
+| `EG.TB.SEC.1M.YLD` | 2014-01-06 to 2026-10-29 | 2,424 | 23.241 | percent per annum |
+| `EG.TB.SEC.2M.VOL` | 2014-01-06 to 2026-10-29 | 2,414 | 5901.57 | EGP million |
+| `EG.TB.SEC.2M.YLD` | 2014-01-06 to 2026-10-29 | 2,414 | 24.372 | percent per annum |
+| `EG.TB.SEC.3M.VOL` | 2014-01-06 to 2026-10-29 | 2,423 | 22136.2 | EGP million |
+| `EG.TB.SEC.3M.YLD` | 2014-01-06 to 2026-10-29 | 2,423 | 24.285 | percent per annum |
+| `EG.TB.SEC.6M.VOL` | 2014-01-06 to 2026-10-29 | 2,422 | 22161.2 | EGP million |
+| `EG.TB.SEC.6M.YLD` | 2014-01-06 to 2026-10-29 | 2,422 | 25.102 | percent per annum |
+| `EG.TB.SEC.9M.VOL` | 2014-01-06 to 2026-10-29 | 2,360 | 4785.65 | EGP million |
+| `EG.TB.SEC.9M.YLD` | 2014-01-06 to 2026-10-29 | 2,360 | 25.686 | percent per annum |
 | `EG.TB.USD.12M.AMT.ACC` | 2011-11-30 to 2026-06-02 | 83 | 4.615e+08 | EGP |
 | `EG.TB.USD.12M.AMT.SUB` | 2011-11-30 to 2026-06-02 | 83 | 5.515e+08 | EGP |
 | `EG.TB.USD.12M.BIDCOVER` | 2011-11-30 to 2026-06-02 | 83 | 1.195 | ratio |
