@@ -586,6 +586,9 @@
    "title": "MPC Press Release January 2015",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/english/press/mpc/mpc_statem_401_en.pdf",
    "format": "pdf",
+   "deposit_rate": 8.75,
+   "lending_rate": 9.75,
+   "main_operation_rate": 9.25,
    "basis_points": 50,
    "decision": "cut",
    "chars": 2675
@@ -603,6 +606,9 @@
    "title": "MPC Press Release 2015 April 23",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/press-release/en/2015/mpc_statement-april-2015.pdf",
    "format": "pdf",
+   "deposit_rate": 8.75,
+   "lending_rate": 9.75,
+   "main_operation_rate": 9.25,
    "decision": "hold",
    "chars": 2987
   },
@@ -611,6 +617,9 @@
    "title": "MPC Press Release June, 11",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/english/press/mpc/mpcpressre_398_en.pdf",
    "format": "pdf",
+   "deposit_rate": 8.75,
+   "lending_rate": 9.75,
+   "main_operation_rate": 9.25,
    "decision": "hold",
    "chars": 2740
   },
@@ -619,6 +628,9 @@
    "title": "MPC Press Release 30 July  2015",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/press-release/en/2015/mpc_statement_july_30_2015.pdf",
    "format": "pdf",
+   "deposit_rate": 8.75,
+   "lending_rate": 9.75,
+   "main_operation_rate": 9.25,
    "decision": "hold",
    "chars": 2675
   },
@@ -658,6 +670,9 @@
    "title": "MPC Statement march 17 2016",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/press-release/en/2016/mpc_statement_march-17-2016.pdf",
    "format": "pdf",
+   "deposit_rate": 10.75,
+   "lending_rate": 11.75,
+   "main_operation_rate": 11.25,
    "decision": "hike",
    "chars": 1931
   },
@@ -674,6 +689,9 @@
    "title": "MPC Press Release 28 July 2016",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/english/press/mpc/mpc_press_347_en.pdf",
    "format": "pdf",
+   "deposit_rate": 11.75,
+   "lending_rate": 12.75,
+   "main_operation_rate": 12.25,
    "decision": "hold",
    "chars": 2680
   },
@@ -682,6 +700,9 @@
    "title": "MPC Press Release 22 September2016",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/english/press/mpc/mpc_press_345_en.pdf",
    "format": "pdf",
+   "deposit_rate": 11.75,
+   "lending_rate": 12.75,
+   "main_operation_rate": 12.25,
    "decision": "hold",
    "chars": 2619
   },
@@ -699,6 +720,9 @@
    "title": "MPC Press Release 29 December 2016",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/english/press/mpc/mpc_press_328_en.pdf",
    "format": "pdf",
+   "deposit_rate": 14.75,
+   "lending_rate": 15.75,
+   "main_operation_rate": 15.25,
    "decision": "hold",
    "chars": 2940
   },
@@ -749,6 +773,9 @@
    "title": "MPC Press Release 28 September 2017",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/english/press/mpc/mpc-press_291_en.pdf",
    "format": "pdf",
+   "deposit_rate": 18.75,
+   "lending_rate": 19.75,
+   "main_operation_rate": 19.25,
    "decision": "hold",
    "chars": 3260
   },
@@ -878,6 +905,9 @@
    "title": "MPC Press Release 22 August 2019",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/english/press/mpc/mpc-press_207_en.pdf",
    "format": "pdf",
+   "deposit_rate": 14.25,
+   "lending_rate": 15.25,
+   "main_operation_rate": 14.75,
    "basis_points": 150,
    "decision": "cut",
    "chars": 2438
@@ -887,6 +917,9 @@
    "title": "MPC Press Release September 26 2019",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/english/press/mpc/mpc-press_203_en.pdf",
    "format": "pdf",
+   "deposit_rate": 13.25,
+   "lending_rate": 14.25,
+   "main_operation_rate": 13.75,
    "basis_points": 100,
    "decision": "cut",
    "chars": 2234
@@ -981,6 +1014,9 @@
    "title": "MPC Press Release September 24 2020",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/english/press/mpc/mpc-press_114_en.pdf",
    "format": "pdf",
+   "deposit_rate": 8.75,
+   "lending_rate": 9.75,
+   "main_operation_rate": 9.25,
    "basis_points": 50,
    "decision": "cut",
    "chars": 2845
@@ -1118,6 +1154,9 @@
    "title": "Special MPC Meeting Press Release - 21 March 2022",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/english/files/special-mp_5_en.pdf",
    "format": "pdf",
+   "deposit_rate": 9.25,
+   "lending_rate": 10.25,
+   "main_operation_rate": 9.75,
    "basis_points": 100,
    "decision": "hike",
    "chars": 2481
@@ -1134,6 +1173,9 @@
    "title": "MPC Press Release 18 August 2022",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/mpc-meetings/2022/en/mpc-press-release-18-august-2022.pdf",
    "format": "pdf",
+   "deposit_rate": 11.25,
+   "lending_rate": 12.25,
+   "main_operation_rate": 11.75,
    "decision": "hold",
    "chars": 4345
   },
@@ -1142,6 +1184,9 @@
    "title": "MPC Press Release 22 September 2022",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/english/sept/mpc-press-release-22-september-2022.pdf",
    "format": "pdf",
+   "deposit_rate": 11.25,
+   "lending_rate": 12.25,
+   "main_operation_rate": 11.75,
    "decision": "hold",
    "chars": 3907
   },
@@ -1165,6 +1210,9 @@
    "title": "MPC Press Release 22 December 2022",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/news/english/mpc--22-december-2022/mpc-press-release-22-december-2022.pdf",
    "format": "pdf",
+   "deposit_rate": 16.25,
+   "lending_rate": 17.25,
+   "main_operation_rate": 16.75,
    "basis_points": 300,
    "decision": "hike",
    "chars": 4102
@@ -1174,6 +1222,9 @@
    "title": "MPC Press Release 2 February 2023",
    "url": "https://www.cbe.org.eg/-/media/project/cbe/listing/mpc-meetings/2023/einglish/mpc-press-release-2-feb-2023.pdf",
    "format": "pdf",
+   "deposit_rate": 16.25,
+   "lending_rate": 17.25,
+   "main_operation_rate": 16.75,
    "decision": "hold",
    "chars": 3810
   },
@@ -1182,6 +1233,9 @@
    "title": "MPC Press Release 30 March 2023",
    "url": "https://www.cbe.org.eg/en/news-publications/news/2023/03/30/16/00/mpc-press-release-30-march-2023",
    "format": "html",
+   "deposit_rate": 18.25,
+   "lending_rate": 19.25,
+   "main_operation_rate": 18.75,
    "discount_rate": 18.75,
    "decision": "hike",
    "chars": 3695
@@ -1215,6 +1269,9 @@
    "title": "MPC Press Release 3 August 2023",
    "url": "https://www.cbe.org.eg/en/news-publications/news/2023/08/03/14/12/mpc-press-release-3-august-2023",
    "format": "html",
+   "deposit_rate": 19.25,
+   "lending_rate": 20.25,
+   "main_operation_rate": 19.75,
    "discount_rate": 19.75,
    "decision": "hike",
    "chars": 3501
@@ -1260,6 +1317,9 @@
    "title": "MPC Press Release 1 February 2024",
    "url": "https://www.cbe.org.eg/en/news-publications/news/2024/02/01/17/37/press-release-–-february-1st,-2024",
    "format": "html",
+   "deposit_rate": 21.25,
+   "lending_rate": 22.25,
+   "main_operation_rate": 21.75,
    "discount_rate": 21.75,
    "decision": "hike",
    "chars": 3620
@@ -1269,6 +1329,9 @@
    "title": "Special MPC Press Release 6 March 2024",
    "url": "https://www.cbe.org.eg/en/news-publications/news/2024/03/06/05/42/special-mpc-press-release-6-march-2024",
    "format": "html",
+   "deposit_rate": 27.25,
+   "lending_rate": 28.25,
+   "main_operation_rate": 27.75,
    "discount_rate": 27.75,
    "chars": 5377
   },
@@ -1368,6 +1431,9 @@
    "title": "MPC Press Release 17 April 2025",
    "url": "https://www.cbe.org.eg/en/news-publications/news/2025/04/17/15/09/mpc-press-release-17-april-2025",
    "format": "html",
+   "deposit_rate": 25.0,
+   "lending_rate": 26.0,
+   "main_operation_rate": 25.5,
    "discount_rate": 25.5,
    "decision": "cut",
    "chars": 4887
@@ -1377,6 +1443,9 @@
    "title": "MPC Press Release 22 May 2025",
    "url": "https://www.cbe.org.eg/en/news-publications/news/2025/05/22/14/05/mpc-press-release-22-may-2025",
    "format": "html",
+   "deposit_rate": 24.0,
+   "lending_rate": 25.0,
+   "main_operation_rate": 24.5,
    "discount_rate": 24.5,
    "decision": "cut",
    "chars": 4923
@@ -1398,6 +1467,9 @@
    "title": "MPC Press Release 28 August 2025",
    "url": "https://www.cbe.org.eg/en/news-publications/news/2025/08/28/14/45/mpc-press-release-28-august-2025",
    "format": "html",
+   "deposit_rate": 22.0,
+   "lending_rate": 23.0,
+   "main_operation_rate": 22.5,
    "discount_rate": 22.5,
    "decision": "cut",
    "chars": 4245
@@ -1407,6 +1479,9 @@
    "title": "MPC Press Release 2 October 2025",
    "url": "https://www.cbe.org.eg/en/news-publications/news/2025/10/02/14/43/mpc-press-release-2-october-2025",
    "format": "html",
+   "deposit_rate": 21.0,
+   "lending_rate": 22.0,
+   "main_operation_rate": 21.5,
    "discount_rate": 21.5,
    "decision": "cut",
    "chars": 4186
@@ -1428,6 +1503,9 @@
    "title": "MPC Press Release 25 December 2025",
    "url": "https://www.cbe.org.eg/en/news-publications/news/2025/12/25/15/51/mpc-press-release-25-december-2025",
    "format": "html",
+   "deposit_rate": 20.0,
+   "lending_rate": 21.0,
+   "main_operation_rate": 20.5,
    "discount_rate": 20.5,
    "decision": "cut",
    "chars": 3920
@@ -1437,6 +1515,9 @@
    "title": "MPC Press Release 12 February 2026",
    "url": "https://www.cbe.org.eg/en/news-publications/news/2026/02/12/15/02/mpc-press-release-12-february-2026",
    "format": "html",
+   "deposit_rate": 19.0,
+   "lending_rate": 20.0,
+   "main_operation_rate": 19.5,
    "discount_rate": 19.5,
    "decision": "cut",
    "chars": 5363
@@ -1506,6 +1587,9 @@
    "title": "MPC Press Release 29 October 2026",
    "url": "https://www.cbe.org.eg/en/news-publications/news/2026/10/29/13/08/mpc-press-release-29-october-2026",
    "format": "html",
+   "deposit_rate": 20.0,
+   "lending_rate": 21.0,
+   "main_operation_rate": 20.5,
    "discount_rate": 20.5,
    "decision": "hike",
    "chars": 4357
@@ -5466,7 +5550,23 @@
      "after": null
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 8.75,
+     "to": 8.75,
+     "change": 0.0
+    },
+    "lending_rate": {
+     "from": 9.75,
+     "to": 9.75,
+     "change": 0.0
+    },
+    "main_operation_rate": {
+     "from": 9.25,
+     "to": 9.25,
+     "change": 0.0
+    }
+   }
   },
   {
    "from_date": "2015-06-22",
@@ -5505,7 +5605,23 @@
      "after": "Looking ahead, while investments in domestic mega projects are expected to contribute to economic growth, the downside risks that surround the global economy on the back of challenges facing the Euro Area and the softening growth in emerging markets could pose downside risks to domestic GDP."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 8.75,
+     "to": 8.75,
+     "change": 0.0
+    },
+    "lending_rate": {
+     "from": 9.75,
+     "to": 9.75,
+     "change": 0.0
+    },
+    "main_operation_rate": {
+     "from": 9.25,
+     "to": 9.25,
+     "change": 0.0
+    }
+   }
   },
   {
    "from_date": "2015-07-30",
@@ -6001,7 +6117,23 @@
      "after": "Given the balance of risks, the MPC judges that the key CBE rates are currently appropriate."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 11.75,
+     "to": 11.75,
+     "change": 0.0
+    },
+    "lending_rate": {
+     "from": 12.75,
+     "to": 12.75,
+     "change": 0.0
+    },
+    "main_operation_rate": {
+     "from": 12.25,
+     "to": 12.25,
+     "change": 0.0
+    }
+   }
   },
   {
    "from_date": "2016-09-22",
@@ -7694,7 +7826,23 @@
      "after": "Accordingly, the pace and magnitude of future policy rates adjustment will continue to be subject to confirmation that inflation expectations are anchored at target levels that are consistent with disinflation and price stability over the medium term."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 15.75,
+     "to": 14.25,
+     "change": -1.5
+    },
+    "lending_rate": {
+     "from": 16.75,
+     "to": 15.25,
+     "change": -1.5
+    },
+    "main_operation_rate": {
+     "from": 16.25,
+     "to": 14.75,
+     "change": -1.5
+    }
+   }
   },
   {
    "from_date": "2019-08-22",
@@ -7733,7 +7881,23 @@
      "after": "The path for future policy rates remains a function of inflation expectations."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 14.25,
+     "to": 13.25,
+     "change": -1.0
+    },
+    "lending_rate": {
+     "from": 15.25,
+     "to": 14.25,
+     "change": -1.0
+    },
+    "main_operation_rate": {
+     "from": 14.75,
+     "to": 13.75,
+     "change": -1.0
+    }
+   }
   },
   {
    "from_date": "2019-09-26",
@@ -8391,7 +8555,23 @@
      "after": "In 2020 Q4, average annual headline inflation is expected to hover around the lower band of the inflation target 9 percent (±3 percentage points)."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 9.25,
+     "to": 8.75,
+     "change": -0.5
+    },
+    "lending_rate": {
+     "from": 10.25,
+     "to": 9.75,
+     "change": -0.5
+    },
+    "main_operation_rate": {
+     "from": 9.75,
+     "to": 9.25,
+     "change": -0.5
+    }
+   }
   },
   {
    "from_date": "2020-09-24",
@@ -11229,7 +11409,23 @@
      "after": null
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 8.25,
+     "to": 9.25,
+     "change": 1.0
+    },
+    "lending_rate": {
+     "from": 9.25,
+     "to": 10.25,
+     "change": 1.0
+    },
+    "main_operation_rate": {
+     "from": 8.75,
+     "to": 9.75,
+     "change": 1.0
+    }
+   }
   },
   {
    "from_date": "2022-03-21",
@@ -11514,7 +11710,23 @@
      "after": null
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 11.25,
+     "to": 11.25,
+     "change": 0.0
+    },
+    "lending_rate": {
+     "from": 12.25,
+     "to": 12.25,
+     "change": 0.0
+    },
+    "main_operation_rate": {
+     "from": 11.75,
+     "to": 11.75,
+     "change": 0.0
+    }
+   }
   },
   {
    "from_date": "2022-09-22",
@@ -11890,7 +12102,23 @@
      "after": null
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 16.25,
+     "to": 16.25,
+     "change": 0.0
+    },
+    "lending_rate": {
+     "from": 17.25,
+     "to": 17.25,
+     "change": 0.0
+    },
+    "main_operation_rate": {
+     "from": 16.75,
+     "to": 16.75,
+     "change": 0.0
+    }
+   }
   },
   {
    "from_date": "2023-02-02",
@@ -11989,7 +12217,23 @@
      "after": null
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 16.25,
+     "to": 18.25,
+     "change": 2.0
+    },
+    "lending_rate": {
+     "from": 17.25,
+     "to": 19.25,
+     "change": 2.0
+    },
+    "main_operation_rate": {
+     "from": 16.75,
+     "to": 18.75,
+     "change": 2.0
+    }
+   }
   },
   {
    "from_date": "2023-03-30",
@@ -12080,7 +12324,23 @@
      "after": "The Committee is closely tracking the inflation risks that may arise from possible supply chain disruptions and geopolitical tensions, among other factors."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 18.25,
+     "to": 18.25,
+     "change": 0.0
+    },
+    "lending_rate": {
+     "from": 19.25,
+     "to": 19.25,
+     "change": 0.0
+    },
+    "main_operation_rate": {
+     "from": 18.75,
+     "to": 18.75,
+     "change": 0.0
+    }
+   }
   },
   {
    "from_date": "2023-05-18",
@@ -12270,7 +12530,23 @@
      "after": "The MPC reiterates that the path of future policy rates remains a function of forecasted inflation rather than prevailing inflation rates, and will continue to monitor all incoming developments underlying the economic outlook."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 18.25,
+     "to": 19.25,
+     "change": 1.0
+    },
+    "lending_rate": {
+     "from": 19.25,
+     "to": 20.25,
+     "change": 1.0
+    },
+    "main_operation_rate": {
+     "from": 18.75,
+     "to": 19.75,
+     "change": 1.0
+    }
+   }
   },
   {
    "from_date": "2023-08-03",
@@ -12343,7 +12619,23 @@
      "after": "The MPC reiterates that the path of future policy rates remains a function of forecasted inflation rather than prevailing inflation rates and will continue to monitor all incoming developments underlying the economic outlook."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 19.25,
+     "to": 19.25,
+     "change": 0.0
+    },
+    "lending_rate": {
+     "from": 20.25,
+     "to": 20.25,
+     "change": 0.0
+    },
+    "main_operation_rate": {
+     "from": 19.75,
+     "to": 19.75,
+     "change": 0.0
+    }
+   }
   },
   {
    "from_date": "2023-09-21",
@@ -12648,7 +12940,23 @@
      "after": "Monetary Policy Sector monetary.policy@cbe.org.eg To download press release, click here"
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 19.25,
+     "to": 21.25,
+     "change": 2.0
+    },
+    "lending_rate": {
+     "from": 20.25,
+     "to": 22.25,
+     "change": 2.0
+    },
+    "main_operation_rate": {
+     "from": 19.75,
+     "to": 21.75,
+     "change": 2.0
+    }
+   }
   },
   {
    "from_date": "2024-02-01",
@@ -12763,7 +13071,23 @@
      "after": "Monetary Policy Sector monetary.policy@cbe.org.eg To download the press release, click here"
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 21.25,
+     "to": 27.25,
+     "change": 6.0
+    },
+    "lending_rate": {
+     "from": 22.25,
+     "to": 28.25,
+     "change": 6.0
+    },
+    "main_operation_rate": {
+     "from": 21.75,
+     "to": 27.75,
+     "change": 6.0
+    }
+   }
   },
   {
    "from_date": "2024-03-06",
@@ -13838,7 +14162,23 @@
      "after": null
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 27.25,
+     "to": 25.0,
+     "change": -2.25
+    },
+    "lending_rate": {
+     "from": 28.25,
+     "to": 26.0,
+     "change": -2.25
+    },
+    "main_operation_rate": {
+     "from": 27.75,
+     "to": 25.5,
+     "change": -2.25
+    }
+   }
   },
   {
    "from_date": "2025-04-17",
@@ -13949,7 +14289,23 @@
      "after": "The MPC will continue to monitor economic and financial developments, and will not hesitate to utilize all tools at its disposal to achieve its price stability mandate, steering inflation towards its target of 7 percent (± 2 percentage points), on average, in Q4 2026."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 25.0,
+     "to": 24.0,
+     "change": -1.0
+    },
+    "lending_rate": {
+     "from": 26.0,
+     "to": 25.0,
+     "change": -1.0
+    },
+    "main_operation_rate": {
+     "from": 25.5,
+     "to": 24.5,
+     "change": -1.0
+    }
+   }
   },
   {
    "from_date": "2025-05-22",
@@ -14052,7 +14408,23 @@
      "after": "The MPC will closely monitor economic and financial developments, and will not hesitate to utilize all tools at its disposal to achieve its price stability mandate, steering inflation towards its target of 7 percent (± 2 percentage points), on average, in Q4 2026."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 24.0,
+     "to": 24.0,
+     "change": 0.0
+    },
+    "lending_rate": {
+     "from": 25.0,
+     "to": 25.0,
+     "change": 0.0
+    },
+    "main_operation_rate": {
+     "from": 24.5,
+     "to": 24.5,
+     "change": 0.0
+    }
+   }
   },
   {
    "from_date": "2025-07-10",
@@ -14155,7 +14527,23 @@
      "after": "The MPC will continue to closely monitor economic and financial developments, and stands ready to adjust its policy instruments as needed to fulfil its price stability mandate, steering inflation towards its targets of 7 percent (± 2 p.p.) in Q4 2026 and 5 percent (± 2 p.p.) in Q4 2028, on average."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 24.0,
+     "to": 22.0,
+     "change": -2.0
+    },
+    "lending_rate": {
+     "from": 25.0,
+     "to": 23.0,
+     "change": -2.0
+    },
+    "main_operation_rate": {
+     "from": 24.5,
+     "to": 22.5,
+     "change": -2.0
+    }
+   }
   },
   {
    "from_date": "2025-08-28",
@@ -14254,7 +14642,23 @@
      "after": "The MPC will continue to closely monitor economic and financial developments, and stands ready to adjust its policy instruments as needed to fulfil its price stability mandate, steering inflation towards its targets of 7 percent (± 2 p.p.) in Q4 2026, and 5 percent (± 2 p.p.) in Q4 2028, on average."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 22.0,
+     "to": 21.0,
+     "change": -1.0
+    },
+    "lending_rate": {
+     "from": 23.0,
+     "to": 22.0,
+     "change": -1.0
+    },
+    "main_operation_rate": {
+     "from": 22.5,
+     "to": 21.5,
+     "change": -1.0
+    }
+   }
   },
   {
    "from_date": "2025-10-02",
@@ -14353,7 +14757,23 @@
      "after": null
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 21.0,
+     "to": 21.0,
+     "change": 0.0
+    },
+    "lending_rate": {
+     "from": 22.0,
+     "to": 22.0,
+     "change": 0.0
+    },
+    "main_operation_rate": {
+     "from": 21.5,
+     "to": 21.5,
+     "change": 0.0
+    }
+   }
   },
   {
    "from_date": "2025-11-20",
@@ -14452,7 +14872,23 @@
      "after": "The Committee stands ready to adjust its policy instruments as needed to fulfil its price-stability mandate, guiding inflation toward the CBE target of 7 percent (± 2 p.p.) in Q4 2026, on average."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 21.0,
+     "to": 20.0,
+     "change": -1.0
+    },
+    "lending_rate": {
+     "from": 22.0,
+     "to": 21.0,
+     "change": -1.0
+    },
+    "main_operation_rate": {
+     "from": 21.5,
+     "to": 20.5,
+     "change": -1.0
+    }
+   }
   },
   {
    "from_date": "2025-12-25",
@@ -14579,7 +15015,23 @@
      "after": "The Committee will continue to remain vigilant and stands prepared to adjust its policy instruments as needed to fulfil its price-stability mandate, steering inflation toward the CBE target of 7 percent (± 2 p.p.) in Q4 2026, on average."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 20.0,
+     "to": 19.0,
+     "change": -1.0
+    },
+    "lending_rate": {
+     "from": 21.0,
+     "to": 20.0,
+     "change": -1.0
+    },
+    "main_operation_rate": {
+     "from": 20.5,
+     "to": 19.5,
+     "change": -1.0
+    }
+   }
   },
   {
    "from_date": "2026-02-12",
@@ -14706,7 +15158,23 @@
      "after": null
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 19.0,
+     "to": 19.0,
+     "change": 0.0
+    },
+    "lending_rate": {
+     "from": 20.0,
+     "to": 20.0,
+     "change": 0.0
+    },
+    "main_operation_rate": {
+     "from": 19.5,
+     "to": 19.5,
+     "change": 0.0
+    }
+   }
   },
   {
    "from_date": "2026-04-02",
@@ -15277,7 +15745,23 @@
      "after": "The MPC remains committed to price stability and will adjust its policy stance as necessary to ensure that inflation returns to target in the near term."
     }
    ],
-   "rate_move": null
+   "rate_move": {
+    "deposit_rate": {
+     "from": 19.0,
+     "to": 20.0,
+     "change": 1.0
+    },
+    "lending_rate": {
+     "from": 20.0,
+     "to": 21.0,
+     "change": 1.0
+    },
+    "main_operation_rate": {
+     "from": 19.5,
+     "to": 20.5,
+     "change": 1.0
+    }
+   }
   }
  ]
 }

@@ -5198,11 +5198,11 @@
   "family": "govt",
   "freq": "W",
   "unit": "EGP",
-  "n": 1072,
+  "n": 1073,
   "first_period": "2002-06-27",
-  "last_period": "2026-10-27",
-  "last": 12745900000.0,
-  "previous": 46785850000.0,
+  "last_period": "2026-11-03",
+  "last": 24820125000.0,
+  "previous": 12745900000.0,
   "highest": {
    "value": 162612750000.0,
    "period": "2024-02-20"
@@ -5211,7 +5211,7 @@
    "value": 21400000.0,
    "period": "2003-05-15"
   },
-  "median": 2572100000.0,
+  "median": 2618725000.0,
   "biggest_move": {
    "period": "2003-05-22",
    "pct_change": 11643.46,
@@ -5225,11 +5225,11 @@
   "family": "govt",
   "freq": "W",
   "unit": "EGP",
-  "n": 1072,
+  "n": 1073,
   "first_period": "2002-06-27",
-  "last_period": "2026-10-27",
-  "last": 54081175000.0,
-  "previous": 85900300000.0,
+  "last_period": "2026-11-03",
+  "last": 54558125000.0,
+  "previous": 54081175000.0,
   "highest": {
    "value": 271618500000.0,
    "period": "2025-03-18"
@@ -5238,7 +5238,7 @@
    "value": 310000000.0,
    "period": "2003-01-30"
   },
-  "median": 7313025000.0,
+  "median": 7411425000.0,
   "biggest_move": {
    "period": "2003-02-06",
    "pct_change": 814.52,
@@ -5252,11 +5252,11 @@
   "family": "govt",
   "freq": "W",
   "unit": "ratio",
-  "n": 1072,
+  "n": 1073,
   "first_period": "2002-06-27",
-  "last_period": "2026-10-27",
-  "last": 4.243,
-  "previous": 1.836,
+  "last_period": "2026-11-03",
+  "last": 2.1981,
+  "previous": 4.243,
   "highest": {
    "value": 367.2777,
    "period": "2020-03-31"
@@ -5265,7 +5265,7 @@
    "value": 1.0,
    "period": "2003-01-30"
   },
-  "median": 2.0208,
+  "median": 2.0219,
   "biggest_move": {
    "period": "2019-02-19",
    "pct_change": 7662.87,
@@ -5279,11 +5279,11 @@
   "family": "govt",
   "freq": "W",
   "unit": "percent per annum",
-  "n": 1072,
+  "n": 1073,
   "first_period": "2002-06-27",
-  "last_period": "2026-10-27",
-  "last": 24.348,
-  "previous": 24.1,
+  "last_period": "2026-11-03",
+  "last": 25.239,
+  "previous": 24.348,
   "highest": {
    "value": 31.698,
    "period": "2024-12-17"
@@ -5306,11 +5306,11 @@
   "family": "govt",
   "freq": "W",
   "unit": "percent per annum",
-  "n": 1072,
+  "n": 1073,
   "first_period": "2002-06-27",
-  "last_period": "2026-10-27",
-  "last": 23.502,
-  "previous": 22.999,
+  "last_period": "2026-11-03",
+  "last": 23.956,
+  "previous": 23.502,
   "highest": {
    "value": 31.301,
    "period": "2024-12-17"
@@ -5333,11 +5333,11 @@
   "family": "govt",
   "freq": "W",
   "unit": "percent per annum",
-  "n": 1072,
+  "n": 1073,
   "first_period": "2002-06-27",
-  "last_period": "2026-10-27",
-  "last": 24.316,
-  "previous": 23.956,
+  "last_period": "2026-11-03",
+  "last": 25.0,
+  "previous": 24.316,
   "highest": {
    "value": 31.637,
    "period": "2024-12-17"
@@ -5346,7 +5346,7 @@
    "value": 4.603,
    "period": "2003-01-16"
   },
-  "median": 12.9235,
+  "median": 12.93,
   "biggest_move": {
    "period": "2008-05-20",
    "pct_change": 56.95,
@@ -5522,11 +5522,11 @@
   "family": "govt",
   "freq": "W",
   "unit": "EGP",
-  "n": 846,
+  "n": 847,
   "first_period": "2008-10-14",
-  "last_period": "2026-10-27",
-  "last": 67805700000.0,
-  "previous": 37987325000.0,
+  "last_period": "2026-11-03",
+  "last": 49270275000.0,
+  "previous": 67805700000.0,
   "highest": {
    "value": 120299125000.0,
    "period": "2026-08-25"
@@ -5549,11 +5549,11 @@
   "family": "govt",
   "freq": "W",
   "unit": "EGP",
-  "n": 846,
+  "n": 847,
   "first_period": "2008-10-14",
-  "last_period": "2026-10-27",
-  "last": 129600700000.0,
-  "previous": 124572325000.0,
+  "last_period": "2026-11-03",
+  "last": 121939825000.0,
+  "previous": 129600700000.0,
   "highest": {
    "value": 348051875000.0,
    "period": "2024-03-19"
@@ -5562,7 +5562,7 @@
    "value": 2446000000.0,
    "period": "2008-10-28"
   },
-  "median": 11936400000.0,
+  "median": 11944250000.0,
   "biggest_move": {
    "period": "2024-03-12",
    "pct_change": 321.69,
@@ -5576,11 +5576,11 @@
   "family": "govt",
   "freq": "W",
   "unit": "ratio",
-  "n": 846,
+  "n": 847,
   "first_period": "2008-10-14",
-  "last_period": "2026-10-27",
-  "last": 1.9114,
-  "previous": 3.2793,
+  "last_period": "2026-11-03",
+  "last": 2.4749,
+  "previous": 1.9114,
   "highest": {
    "value": 3046.8817,
    "period": "2022-09-27"
@@ -5589,7 +5589,7 @@
    "value": 1.0356,
    "period": "2014-06-03"
   },
-  "median": 2.095,
+  "median": 2.0951,
   "biggest_move": {
    "period": "2022-09-27",
    "pct_change": 129229.84,
@@ -5603,11 +5603,11 @@
   "family": "govt",
   "freq": "W",
   "unit": "percent per annum",
-  "n": 846,
+  "n": 847,
   "first_period": "2008-10-14",
-  "last_period": "2026-10-27",
-  "last": 25.9,
-  "previous": 25.431,
+  "last_period": "2026-11-03",
+  "last": 26.491,
+  "previous": 25.9,
   "highest": {
    "value": 31.801,
    "period": "2024-03-12"
@@ -5616,7 +5616,7 @@
    "value": 9.75,
    "period": "2009-09-29"
   },
-  "median": 15.519,
+  "median": 15.53,
   "biggest_move": {
    "period": "2011-02-08",
    "pct_change": 18.55,
@@ -5630,9 +5630,9 @@
   "family": "govt",
   "freq": "W",
   "unit": "percent per annum",
-  "n": 846,
+  "n": 847,
   "first_period": "2008-10-14",
-  "last_period": "2026-10-27",
+  "last_period": "2026-11-03",
   "last": 25.0,
   "previous": 25.0,
   "highest": {
@@ -5643,7 +5643,7 @@
    "value": 9.6,
    "period": "2009-09-29"
   },
-  "median": 15.16,
+  "median": 15.2,
   "biggest_move": {
    "period": "2017-06-13",
    "pct_change": 30.56,
@@ -5657,11 +5657,11 @@
   "family": "govt",
   "freq": "W",
   "unit": "percent per annum",
-  "n": 846,
+  "n": 847,
   "first_period": "2008-10-14",
-  "last_period": "2026-10-27",
-  "last": 25.807,
-  "previous": 25.383,
+  "last_period": "2026-11-03",
+  "last": 26.359,
+  "previous": 25.807,
   "highest": {
    "value": 31.471,
    "period": "2024-03-12"
@@ -5670,7 +5670,7 @@
    "value": 9.707,
    "period": "2009-09-29"
   },
-  "median": 15.4495,
+  "median": 15.454,
   "biggest_move": {
    "period": "2016-11-15",
    "pct_change": 13.12,
