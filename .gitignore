@@ -24,3 +24,6 @@ CLAUDE.md
 /docs/decisions/
 /docs/reviews/
 /docs/lessons.md
+
+# MPC fast-watch output (ingest/watch_mpc.py)
+mpc_alert.json

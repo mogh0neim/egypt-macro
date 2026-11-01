@@ -1,0 +1,91 @@
+# The MPC fast watch.
+#
+# The daily scrape reads an MPC decision the next afternoon; an alert that late
+# is worthless. On a meeting day this job reads CBE's news list every 60 seconds
+# from when it starts until 22:00 UTC (midnight Cairo), and the moment the
+# release is up it writes the alert (ingest/watch_mpc.py) and starts the daily
+# scrape so the site updates within minutes.
+#
+# Started by hand for now (Actions tab, or `gh workflow run mpc-watch.yml`) on
+# the meeting day before 11:00 UTC. A Cloudflare scheduled trigger will start it
+# on time once that account exists. GitHub stops a job at 6 hours, so a run
+# that reaches its limit with the window still open starts a fresh one.
+#
+# Alerts only go to the run summary and an artifact for now; push to phones
+# comes with the app (miqyas-app spec 001).
+
+name: mpc-watch
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Meeting day YYYY-MM-DD (blank = today)"
+        required: false
+        default: ""
+      any_day:
+        description: "Watch even if the day is not on the MPC calendar (for tests)"
+        type: boolean
+        default: false
+      stop_at:
+        description: "Stop watching at this UTC time"
+        required: false
+        default: "22:00"
+
+concurrency:
+  group: mpc-watch
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    env:
+      DAY: ${{ inputs.date }}
+      ANY_DAY: ${{ inputs.any_day }}
+      STOP_AT: ${{ inputs.stop_at }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Watch CBE for the MPC release
+        id: watch
+        run: |
+          set +e
+          args=(--stop-at "$STOP_AT" --max-minutes 340)
+          [ -n "$DAY" ] && args+=(--date "$DAY")
+          [ "$ANY_DAY" = "true" ] && args+=(--any-day)
+          python ingest/watch_mpc.py "${args[@]}"
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          today=$(date -u +%F)
+          [ -z "$DAY" ] || [ "$DAY" = "$today" ] && echo "live=true" >> "$GITHUB_OUTPUT"
+          case $code in 0|3|4|5) exit 0 ;; *) exit $code ;; esac
+
+      - name: Keep the alert
+        if: steps.watch.outputs.code == '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mpc-alert
+          path: mpc_alert.json
+
+      - name: Refresh the site now
+        # Only for a live watch; a test replay of a past day leaves the site alone.
+        if: steps.watch.outputs.code == '0' && steps.watch.outputs.live == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run scrape-daily.yml
+
+      - name: Keep watching in a fresh run
+        if: steps.watch.outputs.code == '4'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run mpc-watch.yml -f date="${DAY:-$(date -u +%F)}" -f any_day="$ANY_DAY" -f stop_at="$STOP_AT"

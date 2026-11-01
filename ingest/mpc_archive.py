@@ -33,12 +33,8 @@ PAGES = CORPUS / "pages"
 MANIFEST = CORPUS / "manifest.json"
 OUT = CORPUS / "mpc_archive.json"
 
-_RE_RATES = re.compile(
-    r"overnight deposit rate,?\s*(?:the\s*)?overnight lending rate,?\s*and the "
-    r"rate of the main operation[^.]*?at\s*([\d.]+)\s*percent,?\s*([\d.]+)\s*"
-    r"percent,?\s*and\s*([\d.]+)\s*percent",
-    re.I,
-)
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+from fetch_press import _RE_MPC_RATES as _RE_RATES  # noqa: E402  one pattern, kept there
 _RE_BPS = re.compile(r"by\s*([\d,]+)\s*basis points", re.I)
 _RE_DECISION = re.compile(
     r"decided to\s+(keep|maintain|raise|cut|lower|reduce|increase)", re.I

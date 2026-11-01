@@ -151,10 +151,13 @@ def parse_remittances(text: str) -> dict[str, tuple[str, float]]:
 
 
 # --- MPC ------------------------------------------------------------------
+# "... and the rate of the [CBE's] main operation unchanged at / by 100 bps to /
+# were raised to 20.0 percent, 21.0 percent, and 20.5 percent". A hold says
+# "at", a move says "to"; both must parse, or every rate change loses its rates.
 _RE_MPC_RATES = re.compile(
     r"overnight deposit rate,?\s*(?:the\s*)?overnight lending rate,?\s*and the "
-    r"rate of the main operation[^.]*?at\s*([\d.]+)\s*percent,?\s*([\d.]+)\s*"
-    r"percent,?\s*and\s*([\d.]+)\s*percent",
+    r"rate of the [^.]{0,40}?main operation[^.]*?\b(?:at|to)\s*([\d.]+)\s*percent,?\s*"
+    r"([\d.]+)\s*percent,?\s*and\s*([\d.]+)\s*percent",
     re.I,
 )
 _RE_MPC_DISCOUNT = re.compile(r"discount rate[^.]*?([\d.]+)\s*percent", re.I)
