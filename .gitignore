@@ -16,3 +16,11 @@ CLAUDE.md
 # text, which is what search actually needs and is two orders of magnitude
 # smaller. Deep links point at CBE's own copy.
 /corpus/files/
+
+# Mo's working notes: local only, this repo is public (decided 2026-11-01).
+/STATUS.md
+/CHANGELOG.md
+/docs/sessions/
+/docs/decisions/
+/docs/reviews/
+/docs/lessons.md

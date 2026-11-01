@@ -225,8 +225,15 @@ def check_dates(data: dict[str, list[tuple[str, float]]]) -> list[str]:
     settle = (dt.date.today() + dt.timedelta(days=SETTLE_DAYS)).isoformat()
     bad = []
     for sid, points in sorted(data.items()):
-        latest = settle if sid.startswith(SETTLES_AHEAD) else today
-        wrong = [p for p, _ in points if p > latest or p < EARLIEST]
+        known_ahead = sid.startswith(SETTLES_AHEAD)
+        latest = settle if known_ahead else today
+        # A few days ahead on a series not listed above is most likely another
+        # effective-date case, not a parser bug: warn, and keep publishing.
+        near = [p for p, _ in points if today < p <= settle] if not known_ahead else []
+        if near:
+            print(f"::warning::{sid} is dated ahead ({near[-1]}); if CBE dates it by when it "
+                  f"takes effect, add it to SETTLES_AHEAD", file=sys.stderr)
+        wrong = [p for p, _ in points if (p > latest and p not in near) or p < EARLIEST]
         if wrong:
             bad.append(sid)
             print(f"::error::{sid} has {len(wrong)} observation(s) dated outside {EARLIEST}..{latest}, "
