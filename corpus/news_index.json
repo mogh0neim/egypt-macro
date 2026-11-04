@@ -5100,22 +5100,6 @@
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/09/04/12/09/CBE's Governor chairs Egypt's meetings at the African Central Bank Annual Meetings in Mauritius"
  },
  {
-  "title": "Egypt's Pioneering Journey Towards Financial Inclusion",
-  "date": "29 Aug 2024",
-  "time": "00:00:00",
-  "customDate": "2024-08-29T00:00:00",
-  "url": "/en/news-publications/news/2024/08/19/09/24/better-than-cash-blog",
-  "imageUrl": "/-/media/project/cbe/listing/publication/cbe_logo/picture-for-blog.jpg?h=497&w=693&hash=B6CEF49AA4DB7292F9E8CCA43CEACDD1",
-  "categories": [
-   {
-    "key": "f3c20fab51f14e368cfeb8f00e495789",
-    "value": "Financial Inclusion"
-   }
-  ],
-  "itemId": "{8BD6285F-8ECB-483F-A79F-EE02CEC50700}",
-  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/08/19/09/24/Better Than Cash Blog"
- },
- {
   "title": "The UNCDF-based \u201cBetter Than Cash Alliance\u201d Conducts an Interview with the Governor of the Central Bank of Egypt \u2013 Mr. Hassan Abdalla",
   "date": "29 Aug 2024",
   "time": "00:00:00",
@@ -5130,6 +5114,22 @@
   ],
   "itemId": "{32AADA8E-E471-4299-A8D0-D743BBB5431F}",
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/08/19/07/57/Better Than Cash Alliance conduct an Interview with Mr. Hassan Abdalla"
+ },
+ {
+  "title": "Egypt's Pioneering Journey Towards Financial Inclusion",
+  "date": "29 Aug 2024",
+  "time": "00:00:00",
+  "customDate": "2024-08-29T00:00:00",
+  "url": "/en/news-publications/news/2024/08/19/09/24/better-than-cash-blog",
+  "imageUrl": "/-/media/project/cbe/listing/publication/cbe_logo/picture-for-blog.jpg?h=497&w=693&hash=B6CEF49AA4DB7292F9E8CCA43CEACDD1",
+  "categories": [
+   {
+    "key": "f3c20fab51f14e368cfeb8f00e495789",
+    "value": "Financial Inclusion"
+   }
+  ],
+  "itemId": "{8BD6285F-8ECB-483F-A79F-EE02CEC50700}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/08/19/09/24/Better Than Cash Blog"
  },
  {
   "title": "Central Bank of Egypt Announces the Core Set of Financial Inclusion Indicators as of June 2024",
@@ -5444,6 +5444,22 @@
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/06/06/08/11/CBE Hosts a Delegation from The Central Bank of Kenya"
  },
  {
+  "title": "Net International Reserves reached US$ 46,125.5 mn at the end of May 2024",
+  "date": "04 Jun 2024",
+  "time": "00:00:00",
+  "customDate": "2024-06-04T00:00:00",
+  "url": "/en/news-publications/news/2024/net-international-reserves-at-the-end-of-may-2024",
+  "imageUrl": "/-/media/project/cbe/listing/news/featured-listing/highlights-2.png?h=236&w=372&hash=5EF1CB28907A7B1E53451C551F5275B9",
+  "categories": [
+   {
+    "key": "87bac54c4a3f4e23aef42e453f6fd552",
+    "value": "International Reserves"
+   }
+  ],
+  "itemId": "{5064D6FE-0173-4811-85E9-C2BCAEC947F5}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/Net International Reserves at the end of May 2024"
+ },
+ {
   "title": "Central Bank of Egypt Issues New Conditions and Rules for Listing and Delisting Accounting Firms and Auditors in its Register",
   "date": "04 Jun 2024",
   "time": "00:00:00",
@@ -5462,22 +5478,6 @@
   ],
   "itemId": "{1ED0B677-B34D-4057-B4FB-46AB4C501F04}",
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/06/02/11/03/CBE Issues New Regulations for the Accounting Firms and External Auditors"
- },
- {
-  "title": "Net International Reserves reached US$ 46,125.5 mn at the end of May 2024",
-  "date": "04 Jun 2024",
-  "time": "00:00:00",
-  "customDate": "2024-06-04T00:00:00",
-  "url": "/en/news-publications/news/2024/net-international-reserves-at-the-end-of-may-2024",
-  "imageUrl": "/-/media/project/cbe/listing/news/featured-listing/highlights-2.png?h=236&w=372&hash=5EF1CB28907A7B1E53451C551F5275B9",
-  "categories": [
-   {
-    "key": "87bac54c4a3f4e23aef42e453f6fd552",
-    "value": "International Reserves"
-   }
-  ],
-  "itemId": "{5064D6FE-0173-4811-85E9-C2BCAEC947F5}",
-  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/Net International Reserves at the end of May 2024"
  },
  {
   "title": "Central Bank of Egypt\u2019s Governor Delivers the Final Communiqu\u00e9 of the 2024 Annual Meetings of the African Development Bank Group",
@@ -5536,22 +5536,6 @@
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/05/30/12/57/CBE Governor heads Egypt's delegation in AfDB"
  },
  {
-  "title": "CBE Governor's Statement on the Occasion of the 60th Anniversary of the Establishment of AfDB Group and the Holding of its 2024 Annual Meetings",
-  "date": "29 May 2024",
-  "time": "00:00:00",
-  "customDate": "2024-05-29T00:00:00",
-  "url": "/en/news-publications/news/2024/05/29/11/24/cbe-governor's-statement-in-afdb-2024",
-  "imageUrl": "/-/media/mr-governor-video-in-afdb-2024-high-quality.png?h=443&w=600&hash=C99263301E5C9D06D469CD34DDF39A94",
-  "categories": [
-   {
-    "key": "cb321efe957b48108503dbe35d9aef9c",
-    "value": "Press Release"
-   }
-  ],
-  "itemId": "{2BD55402-F087-4DED-BFA2-1F3CEDEF39E9}",
-  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/05/29/11/24/CBE Governor's Statement in AfDB 2024"
- },
- {
   "title": "A Delegation from the Arab Republic of Egypt Participates in the African Development Bank Group\u2019s 2024 Annual Meetings in Kenya",
   "date": "29 May 2024",
   "time": "00:00:00",
@@ -5566,6 +5550,22 @@
   ],
   "itemId": "{1216D1A9-91E3-4326-895F-C4E11CFCDCA5}",
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/05/29/07/05/The delegation of Egypt participates in the annual meetings of the AFDB Group for the year 2024"
+ },
+ {
+  "title": "CBE Governor's Statement on the Occasion of the 60th Anniversary of the Establishment of AfDB Group and the Holding of its 2024 Annual Meetings",
+  "date": "29 May 2024",
+  "time": "00:00:00",
+  "customDate": "2024-05-29T00:00:00",
+  "url": "/en/news-publications/news/2024/05/29/11/24/cbe-governor's-statement-in-afdb-2024",
+  "imageUrl": "/-/media/mr-governor-video-in-afdb-2024-high-quality.png?h=443&w=600&hash=C99263301E5C9D06D469CD34DDF39A94",
+  "categories": [
+   {
+    "key": "cb321efe957b48108503dbe35d9aef9c",
+    "value": "Press Release"
+   }
+  ],
+  "itemId": "{2BD55402-F087-4DED-BFA2-1F3CEDEF39E9}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/05/29/11/24/CBE Governor's Statement in AfDB 2024"
  },
  {
   "title": "MPC Press Release 23 May 2024",
@@ -5588,26 +5588,6 @@
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/05/23/15/13/MPC Press Release 23 May 2024"
  },
  {
-  "title": "CPI Press Release April 2024",
-  "date": "09 May 2024",
-  "time": "00:00:00",
-  "customDate": "2024-05-09T00:00:00",
-  "url": "/en/news-publications/news/2024/05/09/14/01/cpi-press-release-april-2024",
-  "imageUrl": "/-/media/project/cbe/listing/news/featured-listing/highlights-1.png?h=236&w=372&hash=DC99190509D72C7D251408740D1FAC41",
-  "categories": [
-   {
-    "key": "539f213545e64a9c90b390b6ad9f382f",
-    "value": "Monetary Policy"
-   },
-   {
-    "key": "3d72b8aa1fa0478db21703d864794f8c",
-    "value": "CPI Press Release"
-   }
-  ],
-  "itemId": "{BD40EB67-FD69-489F-A294-D313FDCC4371}",
-  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/05/09/14/01/CPI Press Release April 2024"
- },
- {
   "title": "\u201cFundamentals of FinTech\u201d Course to be Integrated into Universities\u2019 Curricula for the First Time in Egypt",
   "date": "09 May 2024",
   "time": "00:00:00",
@@ -5626,6 +5606,26 @@
   ],
   "itemId": "{61212139-DD87-4083-A494-96E7FBF4149C}",
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/05/09/07/51/Fundamentals of FinTech Course to be Integrated into Universities Curricula"
+ },
+ {
+  "title": "CPI Press Release April 2024",
+  "date": "09 May 2024",
+  "time": "00:00:00",
+  "customDate": "2024-05-09T00:00:00",
+  "url": "/en/news-publications/news/2024/05/09/14/01/cpi-press-release-april-2024",
+  "imageUrl": "/-/media/project/cbe/listing/news/featured-listing/highlights-1.png?h=236&w=372&hash=DC99190509D72C7D251408740D1FAC41",
+  "categories": [
+   {
+    "key": "539f213545e64a9c90b390b6ad9f382f",
+    "value": "Monetary Policy"
+   },
+   {
+    "key": "3d72b8aa1fa0478db21703d864794f8c",
+    "value": "CPI Press Release"
+   }
+  ],
+  "itemId": "{BD40EB67-FD69-489F-A294-D313FDCC4371}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/05/09/14/01/CPI Press Release April 2024"
  },
  {
   "title": "Net International Reserves reached US$ 41,057.0 mn at the end of April 2024",
@@ -5696,22 +5696,6 @@
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/04/22/14/41/Amendment to the Main Operation of the Central Bank of Egypt"
  },
  {
-  "title": "Press Release Balance of Payments Performance during the First Half of FY 2023-2024",
-  "date": "08 Apr 2024",
-  "time": "00:00:00",
-  "customDate": "2024-04-08T00:00:00",
-  "url": "/en/news-publications/news/2024/04/08/10/10/press-release-bop-h1-2023--2024",
-  "imageUrl": "/-/media/project/cbe/listing/news/featured-listing/highlights-3.png?h=236&w=372&hash=4D3CC6A59300722E1884925CC80B374E",
-  "categories": [
-   {
-    "key": "2e25fb2f06d143f7bf6afc1c26433ee4",
-    "value": "Balance of Payments"
-   }
-  ],
-  "itemId": "{3CA4AF20-5031-4EDE-B78C-6D7D908266C0}",
-  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/04/08/10/10/Press release BOP H1 2023--2024"
- },
- {
   "title": "CPI Press Release March 2024",
   "date": "08 Apr 2024",
   "time": "00:00:00",
@@ -5730,6 +5714,22 @@
   ],
   "itemId": "{7E9EACCB-10D2-48AF-AB77-0544D6C360F1}",
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/04/08/12/56/CPI Press Release March 2024"
+ },
+ {
+  "title": "Press Release Balance of Payments Performance during the First Half of FY 2023-2024",
+  "date": "08 Apr 2024",
+  "time": "00:00:00",
+  "customDate": "2024-04-08T00:00:00",
+  "url": "/en/news-publications/news/2024/04/08/10/10/press-release-bop-h1-2023--2024",
+  "imageUrl": "/-/media/project/cbe/listing/news/featured-listing/highlights-3.png?h=236&w=372&hash=4D3CC6A59300722E1884925CC80B374E",
+  "categories": [
+   {
+    "key": "2e25fb2f06d143f7bf6afc1c26433ee4",
+    "value": "Balance of Payments"
+   }
+  ],
+  "itemId": "{3CA4AF20-5031-4EDE-B78C-6D7D908266C0}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2024/04/08/10/10/Press release BOP H1 2023--2024"
  },
  {
   "title": "\u201cFinTech Egypt\u201d Launches \"Women for Women in FinTech\" Initiative",
@@ -6408,22 +6408,6 @@
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2023/10/26/07/26/Regulations to Facilitate the Usage of Credit Cards Abroad"
  },
  {
-  "title": "Press Release Concerning Facilitating the Usage of Credit Cards Abroad",
-  "date": "17 Oct 2023",
-  "time": "00:00:00",
-  "customDate": "2023-10-17T00:00:00",
-  "url": "/en/news-publications/news/2023/10/17/16/30/press-release-concerning-facilitating-the-usage-of-credit-cards-abroad",
-  "imageUrl": "/-/media/project/cbe/listing/publication/cbe_logo.png?h=595&w=815&hash=BE57249DD36300D2DB69CD8E38461C28",
-  "categories": [
-   {
-    "key": "cb321efe957b48108503dbe35d9aef9c",
-    "value": "Press Release"
-   }
-  ],
-  "itemId": "{37C9FD4C-9852-4C54-B8D2-903CECE903A1}",
-  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2023/10/17/16/30/Press Release Concerning Facilitating the Usage of Credit Cards Abroad"
- },
- {
   "title": "CBE, EU, and GIZ Announce the Successful Completion of the Joint Project \u201cStrengthening Financial Inclusion and Banking Supervision in Egypt\u201d",
   "date": "17 Oct 2023",
   "time": "00:00:00",
@@ -6438,6 +6422,22 @@
   ],
   "itemId": "{07072F59-C64A-4B46-8814-1120F9D3907B}",
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2023/10/17/07/08/CBE, the European Union, and GIZ announce the successful completion of the Joint Project"
+ },
+ {
+  "title": "Press Release Concerning Facilitating the Usage of Credit Cards Abroad",
+  "date": "17 Oct 2023",
+  "time": "00:00:00",
+  "customDate": "2023-10-17T00:00:00",
+  "url": "/en/news-publications/news/2023/10/17/16/30/press-release-concerning-facilitating-the-usage-of-credit-cards-abroad",
+  "imageUrl": "/-/media/project/cbe/listing/publication/cbe_logo.png?h=595&w=815&hash=BE57249DD36300D2DB69CD8E38461C28",
+  "categories": [
+   {
+    "key": "cb321efe957b48108503dbe35d9aef9c",
+    "value": "Press Release"
+   }
+  ],
+  "itemId": "{37C9FD4C-9852-4C54-B8D2-903CECE903A1}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2023/10/17/16/30/Press Release Concerning Facilitating the Usage of Credit Cards Abroad"
  },
  {
   "title": "CPI Press Release September 2023",
@@ -7384,26 +7384,6 @@
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2023/03/Egyptian Banks have no Deposits or Financial Transactions with Silicon Valley Bank"
  },
  {
-  "title": "CBE Raises the Maximum Limit of Transactions through the Instant Payment Network (InstaPay)",
-  "date": "09 Mar 2023",
-  "time": "00:00:00",
-  "customDate": "2023-03-09T00:00:00",
-  "url": "/en/news-publications/news/2023/03/09/17/45/cbe-raises-the-maximum-limit-of-transactions-through-the-instant-payment-network-instapay",
-  "imageUrl": "/-/media/project/cbe/listing/publication/cbe_logo/instapay.png?h=236&w=372&hash=40F5A7B452B2619E257D0807B27AD5A1",
-  "categories": [
-   {
-    "key": "cb321efe957b48108503dbe35d9aef9c",
-    "value": "Press Release"
-   },
-   {
-    "key": "bffd769062c241c1ab96cc3ceb4f5145",
-    "value": "Payment Systems and Services"
-   }
-  ],
-  "itemId": "{E74D1FF7-AE14-42A4-AF6D-243ED9C9CCED}",
-  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2023/03/09/17/45/CBE Raises the Maximum Limit of Transactions through the Instant Payment Network InstaPay"
- },
- {
   "title": "CPI Press Release February 2023",
   "date": "09 Mar 2023",
   "time": "00:00:00",
@@ -7424,12 +7404,12 @@
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2023/03/09/14/40/CPI Press Release Feb 2023"
  },
  {
-  "title": "CBE Issues Regulations on the Tokenization of Payment Cards on Electronic Devices",
-  "date": "08 Mar 2023",
+  "title": "CBE Raises the Maximum Limit of Transactions through the Instant Payment Network (InstaPay)",
+  "date": "09 Mar 2023",
   "time": "00:00:00",
-  "customDate": "2023-03-08T00:00:00",
-  "url": "/en/news-publications/news/2023/03/08/cbe-issues-the-regulations-of-the-payment-cards-tokenization-on-electronic-devices-applications",
-  "imageUrl": "/-/media/project/cbe/listing/news/tokenization.png?h=236&w=372&hash=3A699D6D0F6BFF0BE9CE711120092755",
+  "customDate": "2023-03-09T00:00:00",
+  "url": "/en/news-publications/news/2023/03/09/17/45/cbe-raises-the-maximum-limit-of-transactions-through-the-instant-payment-network-instapay",
+  "imageUrl": "/-/media/project/cbe/listing/publication/cbe_logo/instapay.png?h=236&w=372&hash=40F5A7B452B2619E257D0807B27AD5A1",
   "categories": [
    {
     "key": "cb321efe957b48108503dbe35d9aef9c",
@@ -7440,8 +7420,28 @@
     "value": "Payment Systems and Services"
    }
   ],
-  "itemId": "{DF7790C8-63C8-452D-87BA-7D71751B2053}",
-  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2023/03/08/CBE issues the Regulations of the Payment Cards Tokenization on Electronic Devices Applications"
+  "itemId": "{E74D1FF7-AE14-42A4-AF6D-243ED9C9CCED}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2023/03/09/17/45/CBE Raises the Maximum Limit of Transactions through the Instant Payment Network InstaPay"
+ },
+ {
+  "title": "The Fourth (4th) Warning Statement on Cryptocurrencies",
+  "date": "08 Mar 2023",
+  "time": "00:00:00",
+  "customDate": "2023-03-08T00:00:00",
+  "url": "/en/news-publications/news/2023/03/08/warning-statement",
+  "imageUrl": "/-/media/project/cbe/listing/news/4th.png?h=236&w=372&hash=E1B38550206B7F96BD0DADB76CEAA4E4",
+  "categories": [
+   {
+    "key": "cb321efe957b48108503dbe35d9aef9c",
+    "value": "Press Release"
+   },
+   {
+    "key": "bffd769062c241c1ab96cc3ceb4f5145",
+    "value": "Payment Systems and Services"
+   }
+  ],
+  "itemId": "{A9E24937-17DD-4E46-B359-2B37A0A553ED}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2023/03/08/Warning Statement"
  },
  {
   "title": "Central Bank of Egypt Strengthens Means of Cooperation with Central Bank of Jordan in e-Payment Systems and Services and FinTech Activities ",
@@ -7468,12 +7468,12 @@
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2023/03/08/CBE Strengthens Means of Cooperation with the Central Bank of Jordan"
  },
  {
-  "title": "The Fourth (4th) Warning Statement on Cryptocurrencies",
+  "title": "CBE Issues Regulations on the Tokenization of Payment Cards on Electronic Devices",
   "date": "08 Mar 2023",
   "time": "00:00:00",
   "customDate": "2023-03-08T00:00:00",
-  "url": "/en/news-publications/news/2023/03/08/warning-statement",
-  "imageUrl": "/-/media/project/cbe/listing/news/4th.png?h=236&w=372&hash=E1B38550206B7F96BD0DADB76CEAA4E4",
+  "url": "/en/news-publications/news/2023/03/08/cbe-issues-the-regulations-of-the-payment-cards-tokenization-on-electronic-devices-applications",
+  "imageUrl": "/-/media/project/cbe/listing/news/tokenization.png?h=236&w=372&hash=3A699D6D0F6BFF0BE9CE711120092755",
   "categories": [
    {
     "key": "cb321efe957b48108503dbe35d9aef9c",
@@ -7484,8 +7484,8 @@
     "value": "Payment Systems and Services"
    }
   ],
-  "itemId": "{A9E24937-17DD-4E46-B359-2B37A0A553ED}",
-  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2023/03/08/Warning Statement"
+  "itemId": "{DF7790C8-63C8-452D-87BA-7D71751B2053}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2023/03/08/CBE issues the Regulations of the Payment Cards Tokenization on Electronic Devices Applications"
  },
  {
   "title": " Net International Reserves reached US$ 34,352.3 mn at the end of February 2023",
@@ -11342,6 +11342,22 @@
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/04/21/10/27/Q and A regarding the pre-implementation of IFRS9 20180412"
  },
  {
+  "title": "Press Release About Balance of Payments Performance During July-Dec., 2017-2018",
+  "date": "29 Mar 2018",
+  "time": "00:00:00",
+  "customDate": "2018-03-29T00:00:00",
+  "url": "/-/media/project/cbe/listing/news/english/press/press-rele_267_en.pdf",
+  "imageUrl": "/-/media/project/cbe/listing/publication/cbe_logo.png?h=595&w=815&hash=BE57249DD36300D2DB69CD8E38461C28",
+  "categories": [
+   {
+    "key": "2e25fb2f06d143f7bf6afc1c26433ee4",
+    "value": "Balance of Payments"
+   }
+  ],
+  "itemId": "{AC27B46B-B354-4AEF-B3A0-64205A9AF768}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/04/21/10/28/Press Release about Balance of Payments Performance 20180329"
+ },
+ {
   "title": "MPC Press Release 29 March 2018",
   "date": "29 Mar 2018",
   "time": "00:00:00",
@@ -11360,22 +11376,6 @@
   ],
   "itemId": "{55CAADF5-6654-4201-AB3F-67CBC0673C9E}",
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/04/21/10/27/MPC Press Release 29 March 2018"
- },
- {
-  "title": "Press Release About Balance of Payments Performance During July-Dec., 2017-2018",
-  "date": "29 Mar 2018",
-  "time": "00:00:00",
-  "customDate": "2018-03-29T00:00:00",
-  "url": "/-/media/project/cbe/listing/news/english/press/press-rele_267_en.pdf",
-  "imageUrl": "/-/media/project/cbe/listing/publication/cbe_logo.png?h=595&w=815&hash=BE57249DD36300D2DB69CD8E38461C28",
-  "categories": [
-   {
-    "key": "2e25fb2f06d143f7bf6afc1c26433ee4",
-    "value": "Balance of Payments"
-   }
-  ],
-  "itemId": "{AC27B46B-B354-4AEF-B3A0-64205A9AF768}",
-  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/04/21/10/28/Press Release about Balance of Payments Performance 20180329"
  },
  {
   "title": "CPI preess release February 2018",
@@ -12617,26 +12617,6 @@
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/04/21/10/33/The November 2015 Core Inflation Release"
  },
  {
-  "title": "MPC Press Release 29 October 2015",
-  "date": "29 Oct 2015",
-  "time": "00:00:00",
-  "customDate": "2015-10-29T00:00:00",
-  "url": "/-/media/project/cbe/listing/news/press-release/en/2015/mpcpressreleaseoctober292015_en.pdf",
-  "imageUrl": "/-/media/project/cbe/listing/publication/cbe_logo.png?h=595&w=815&hash=BE57249DD36300D2DB69CD8E38461C28",
-  "categories": [
-   {
-    "key": "7185e116d73040b78de697623070479e",
-    "value": "MPC Press Release"
-   },
-   {
-    "key": "539f213545e64a9c90b390b6ad9f382f",
-    "value": "Monetary Policy"
-   }
-  ],
-  "itemId": "{6BE1675A-70FA-4A42-A034-8D2C85F5BB2F}",
-  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/07/23/04/15/MPC Press Release 29 October 2015"
- },
- {
   "title": "MPC Press Release October 29 2015",
   "date": "29 Oct 2015",
   "time": "00:00:00",
@@ -12657,6 +12637,26 @@
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/07/23/04/14/MPC Press Release October 29 2015"
  },
  {
+  "title": "MPC Press Release 29 October 2015",
+  "date": "29 Oct 2015",
+  "time": "00:00:00",
+  "customDate": "2015-10-29T00:00:00",
+  "url": "/-/media/project/cbe/listing/news/press-release/en/2015/mpcpressreleaseoctober292015_en.pdf",
+  "imageUrl": "/-/media/project/cbe/listing/publication/cbe_logo.png?h=595&w=815&hash=BE57249DD36300D2DB69CD8E38461C28",
+  "categories": [
+   {
+    "key": "7185e116d73040b78de697623070479e",
+    "value": "MPC Press Release"
+   },
+   {
+    "key": "539f213545e64a9c90b390b6ad9f382f",
+    "value": "Monetary Policy"
+   }
+  ],
+  "itemId": "{6BE1675A-70FA-4A42-A034-8D2C85F5BB2F}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/07/23/04/15/MPC Press Release 29 October 2015"
+ },
+ {
   "title": "Press Release Balance of Payments Performance During FY 2014/15",
   "date": "30 Sep 2015",
   "time": "00:00:00",
@@ -12671,26 +12671,6 @@
   ],
   "itemId": "{B955440E-2DF7-49BE-AABA-1EC6E6CDF296}",
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/04/21/10/33/Press Release Balance of Payments Performance 20150930"
- },
- {
-  "title": "MPC Statement September 17",
-  "date": "17 Sep 2015",
-  "time": "00:00:00",
-  "customDate": "2015-09-17T00:00:00",
-  "url": "/-/media/project/cbe/listing/news/press-release/en/2015/mpc_statement_september_17.pdf",
-  "imageUrl": "/-/media/project/cbe/listing/publication/cbe_logo.png?h=595&w=815&hash=BE57249DD36300D2DB69CD8E38461C28",
-  "categories": [
-   {
-    "key": "7185e116d73040b78de697623070479e",
-    "value": "MPC Press Release"
-   },
-   {
-    "key": "539f213545e64a9c90b390b6ad9f382f",
-    "value": "Monetary Policy"
-   }
-  ],
-  "itemId": "{A49B4362-EDD6-4072-9C25-4BAB1F64729E}",
-  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/07/23/04/10/MPC Statement September 17"
  },
  {
   "title": "MPC Press Release 17 September 2015",
@@ -12711,6 +12691,26 @@
   ],
   "itemId": "{CBA046A6-3324-43E9-9321-BA07F5C297A6}",
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/07/23/04/09/MPC Press Release 17 September 2015"
+ },
+ {
+  "title": "MPC Statement September 17",
+  "date": "17 Sep 2015",
+  "time": "00:00:00",
+  "customDate": "2015-09-17T00:00:00",
+  "url": "/-/media/project/cbe/listing/news/press-release/en/2015/mpc_statement_september_17.pdf",
+  "imageUrl": "/-/media/project/cbe/listing/publication/cbe_logo.png?h=595&w=815&hash=BE57249DD36300D2DB69CD8E38461C28",
+  "categories": [
+   {
+    "key": "7185e116d73040b78de697623070479e",
+    "value": "MPC Press Release"
+   },
+   {
+    "key": "539f213545e64a9c90b390b6ad9f382f",
+    "value": "Monetary Policy"
+   }
+  ],
+  "itemId": "{A49B4362-EDD6-4072-9C25-4BAB1F64729E}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/07/23/04/10/MPC Statement September 17"
  },
  {
   "title": "MPC Press Release 30 July  2015",
@@ -12749,6 +12749,22 @@
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/07/20/12/12/Net International Reserves reached US 195597 mn at the end of May 2015"
  },
  {
+  "title": "Press Release Performance of the Balance of Payments During July/March 2014/15.",
+  "date": "22 Jun 2015",
+  "time": "00:00:00",
+  "customDate": "2015-06-22T00:00:00",
+  "url": "/-/media/project/cbe/listing/news/english/files/bop_jul_ma_397_en.pdf",
+  "imageUrl": "/-/media/project/cbe/listing/publication/cbe_logo.png?h=595&w=815&hash=BE57249DD36300D2DB69CD8E38461C28",
+  "categories": [
+   {
+    "key": "2e25fb2f06d143f7bf6afc1c26433ee4",
+    "value": "Balance of Payments"
+   }
+  ],
+  "itemId": "{29E600C1-841C-4029-9F5F-183D6D9F4C5E}",
+  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/04/21/10/33/Press Release Performance of the Balance of Payments 20150622"
+ },
+ {
   "title": "MPC Press Release June, 11",
   "date": "22 Jun 2015",
   "time": "00:00:00",
@@ -12767,22 +12783,6 @@
   ],
   "itemId": "{3F637EB9-1FA9-4267-BF92-B3ABBFDFEE7F}",
   "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/04/21/10/34/MPC Press Release June 11"
- },
- {
-  "title": "Press Release Performance of the Balance of Payments During July/March 2014/15.",
-  "date": "22 Jun 2015",
-  "time": "00:00:00",
-  "customDate": "2015-06-22T00:00:00",
-  "url": "/-/media/project/cbe/listing/news/english/files/bop_jul_ma_397_en.pdf",
-  "imageUrl": "/-/media/project/cbe/listing/publication/cbe_logo.png?h=595&w=815&hash=BE57249DD36300D2DB69CD8E38461C28",
-  "categories": [
-   {
-    "key": "2e25fb2f06d143f7bf6afc1c26433ee4",
-    "value": "Balance of Payments"
-   }
-  ],
-  "itemId": "{29E600C1-841C-4029-9F5F-183D6D9F4C5E}",
-  "itemPath": "/sitecore/content/Central Bank Of Egypt/website/Home/News Publications/News/2022/04/21/10/33/Press Release Performance of the Balance of Payments 20150622"
  },
  {
   "title": "MPC Press Release 2015 April 23",
