@@ -1,0 +1,7 @@
+{
+  // The phone app's data address. Static files only: no code runs here, so
+  // there is nothing to attack and nothing to bill beyond the free tier.
+  "name": "miqyas-api",
+  "compatibility_date": "2026-11-01",
+  "assets": { "directory": "./public" }
+}

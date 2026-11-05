@@ -1,0 +1,6 @@
+/api/v1/*
+  Cache-Control: public, max-age=300, stale-while-revalidate=600
+  Access-Control-Allow-Origin: *
+  X-Content-Type-Options: nosniff
+/api/v1/latest.json
+  Cache-Control: public, max-age=60, stale-while-revalidate=120
