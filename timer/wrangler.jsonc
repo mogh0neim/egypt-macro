@@ -1,0 +1,6 @@
+{
+  "name": "miqyas-timer",
+  "main": "index.js",
+  "compatibility_date": "2026-11-01",
+  "triggers": { "crons": ["0 11 * * *", "30 5 * * *"] }
+}
