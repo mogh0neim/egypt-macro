@@ -1,0 +1,46 @@
+# Manual rehearsal of the push alerts.
+#
+# Sends ONE test message to the topics rehearsal.en and rehearsal.ar, so the
+# phones can prove the whole path works (the spec's 5-minute check). A dry run
+# unless you tick "send". Sending needs the repository secret
+# FIREBASE_SERVICE_ACCOUNT (the Firebase service-account JSON); it is never
+# printed or stored.
+
+name: alert-rehearsal
+
+on:
+  workflow_dispatch:
+    inputs:
+      send:
+        description: "Really send the test message (otherwise a dry run)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  rehearse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install the sender's Firebase packages
+        if: inputs.send
+        run: pip install google-auth requests
+
+      - name: Send the test message
+        env:
+          SEND: ${{ inputs.send }}
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          if [ "$SEND" = "true" ]; then
+            python -m ingest.send_alerts --rehearsal --send
+          else
+            python -m ingest.send_alerts --rehearsal --dry-run
+          fi

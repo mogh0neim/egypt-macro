@@ -9,3 +9,6 @@ duckdb>=1.0          # Parquet writing in build_exports
 Pillow>=10.0         # the share card per series, in build_og
 arabic-reshaper>=3.0 # joins Arabic letters for those cards: Pillow here is
 python-bidi>=0.4     # built without Raqm, so it cannot shape a script itself
+# Not listed above on purpose: the push sender (ingest/send_alerts.py --send) also needs
+# google-auth and requests. Only the send step installs them, so the daily jobs stay as they are;
+# pin them with hashes in requirements.lock when real sending is switched on.

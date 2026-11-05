@@ -69,6 +69,18 @@ jobs:
           [ -z "$DAY" ] || [ "$DAY" = "$today" ] && echo "live=true" >> "$GITHUB_OUTPUT"
           case $code in 0|3|4|5) exit 0 ;; *) exit $code ;; esac
 
+      # Dry run only: prints the push messages this decision would send (both
+      # languages) and sends nothing. The decision is cross-checked against the
+      # new rates inside the sender; a mismatch becomes the link-only message.
+      # To go live, change --dry-run to --send, add the Firebase service-account
+      # JSON as the repository secret FIREBASE_SERVICE_ACCOUNT, expose it in this
+      # step's env, and install the sender's two extra packages first
+      # (`pip install google-auth requests`). Not switched on yet.
+      - name: Push alert (dry run)
+        if: steps.watch.outputs.code == '0' && steps.watch.outputs.live == 'true'
+        continue-on-error: true
+        run: python -m ingest.send_alerts --dry-run --mpc-file mpc_alert.json
+
       - name: Keep the alert
         if: steps.watch.outputs.code == '0'
         uses: actions/upload-artifact@v4

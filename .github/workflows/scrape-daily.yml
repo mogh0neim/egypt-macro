@@ -39,6 +39,11 @@ jobs:
           cache: pip
           cache-dependency-path: requirements.lock
 
+      # Remember where the data stood before today's scrape, so the alert step
+      # at the end can tell what is new.
+      - name: Note the commit before the scrape
+        run: echo "BEFORE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+
       # Exact versions and hashes: this job holds a token that can push to main.
       - run: pip install --require-hashes -r requirements.lock
 
@@ -137,6 +142,17 @@ jobs:
           done
           echo "::error::could not push after three attempts"
           exit 1
+
+      # Dry run only: prints the T-bill and FX push messages today's data would
+      # send and sends nothing; it never turns the run red. To go live, change
+      # --dry-run to --send, add the Firebase service-account JSON as the secret
+      # FIREBASE_SERVICE_ACCOUNT, expose it in this step's env, and run
+      # `pip install google-auth requests` first. CBE-revision alerts are not here:
+      # they need changes.json, which the publish workflow builds.
+      - name: Push alerts (dry run)
+        if: always()
+        continue-on-error: true
+        run: python -m ingest.send_alerts --dry-run --before-rev "$BEFORE_SHA"
 
       # After the commit, and warning only. A calendar running out is a
       # reminder, never a reason to lose a day of data or turn the run red.
