@@ -148,7 +148,7 @@ def pct_text(p: float) -> str:
 
 def make(key: str, base: str, link: str, en: tuple[str, str], ar: tuple[str, str], **data) -> dict:
     return {"key": key, "base": base, "link": link, "en": en, "ar": ar,
-            "data": {"link": link, **{k: str(v) for k, v in data.items()}}}
+            "data": {"url": link, **{k: str(v) for k, v in data.items()}}}
 
 
 def mpc_alert(alert: dict | None) -> list[dict]:
@@ -162,7 +162,7 @@ def mpc_alert(alert: dict | None) -> list[dict]:
         key, "mpc", "miqyas://mpc",
         ("MPC statement", "CBE published an MPC statement. Tap for the details."),
         ("بيان لجنة السياسة النقدية", "نشر البنك المركزي المصري بيان لجنة السياسة النقدية. اضغط للتفاصيل."),
-        kind="mpc", status="link_only", date=day, url=url)
+        kind="mpc", status="link_only", date=day, source_url=url)
     if alert.get("status") != "full":
         return [link_only]
     # Check the decision words against the rates again, here, before trusting them.
@@ -189,7 +189,7 @@ def mpc_alert(alert: dict | None) -> list[dict]:
         key, "mpc", "miqyas://mpc",
         (en_word, f"Main operation rate {fmt(m)}%. Deposit {fmt(dep)}%, lending {fmt(lend)}%."),
         (ar_word, f"سعر العملية الرئيسية {fmt(m)}%. الإيداع {fmt(dep)}% والإقراض {fmt(lend)}%."),
-        kind="mpc", status="full", decision=d, date=day, url=url)]
+        kind="mpc", status="full", decision=d, date=day, source_url=url)]
 
 
 def tbill_alerts(before: dict, after: dict, titles: dict) -> list[dict]:
@@ -264,7 +264,7 @@ def revision_alerts(changes: dict | None, since: str, titles: dict) -> list[dict
                  f"{en_t}, {r['period']}: was {fmt(r['was'], 4)}, now {fmt(r['now'], 4)}."),
                 ("عدّل البنك المركزي رقمًا سبق نشره",
                  f"{ar_t}، {r['period']}: كان {fmt(r['was'], 4)} وأصبح {fmt(r['now'], 4)}."),
-                kind="revision", series_id=sid, period=r["period"]))
+                kind="rev", series_id=sid, period=r["period"]))
     return out
 
 
@@ -284,7 +284,7 @@ def to_messages(alerts: list[dict]) -> list[dict]:
                 raise ValueError(f"not a valid FCM topic name: {topic!r}")
             title, body = a[lang]
             msgs.append({"id": f"{a['key']}|{lang}", "topic": topic, "title": title, "body": body,
-                         "data": {**a["data"], "lang": lang}})
+                         "data": {**a["data"], "title": title, "body": body, "lang": lang}})
     return msgs
 
 
@@ -305,12 +305,14 @@ def save_state(path: pathlib.Path, sent: dict) -> None:
 # ---------- sending ----------
 
 def fcm_body(msg: dict) -> dict:
+    """Data-only on purpose (miqyas-app decision 0007): no `notification` part, so the
+    phone, not the system, decides whether to show it (quiet hours, daily cap)."""
     return {"message": {
         "topic": msg["topic"],
-        "notification": {"title": msg["title"], "body": msg["body"]},
-        "data": msg["data"],
+        "data": {k: str(v) for k, v in msg["data"].items()},
         "android": {"priority": "HIGH"},
-        "apns": {"headers": {"apns-priority": "10"}},
+        "apns": {"headers": {"apns-priority": "5", "apns-push-type": "background"},
+                 "payload": {"aps": {"content-available": 1}}},
     }}
 
 

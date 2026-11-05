@@ -79,8 +79,9 @@ def test_dry_run_prints_exact_messages_and_sends_nothing():
     assert by_topic["tbill-3m.en"] == {
         "topic": "tbill-3m.en", "title": "3-month T-bill auction",
         "body": "Average yield 25% (+68 bps from the last auction).",
-        "data": {"link": f"miqyas://series/{TB}", "kind": "tbill", "series_id": TB,
-                 "period": "2026-11-03", "lang": "en"}}
+        "data": {"url": f"miqyas://series/{TB}", "kind": "tbill", "series_id": TB,
+                 "period": "2026-11-03", "title": "3-month T-bill auction",
+                 "body": "Average yield 25% (+68 bps from the last auction).", "lang": "en"}}
     assert by_topic["tbill-3m.ar"]["data"]["lang"] == "ar"
 
 
@@ -105,7 +106,7 @@ def test_mpc_full_message():
         _, lines = run(["--mpc-file", write(tmp, "m.json", mpc())], tmp)
     en = next(m for m in lines if m["topic"] == "mpc.en")
     assert en["title"] == "CBE raised rates by 100 bps"
-    assert en["data"]["link"] == "miqyas://mpc" and en["data"]["status"] == "full"
+    assert en["data"]["url"] == "miqyas://mpc" and en["data"]["status"] == "full"
     assert any(m["topic"] == "mpc.ar" for m in lines)
 
 
@@ -142,7 +143,16 @@ def test_idempotency():
         finally:
             without_account()
     assert posted[0]["message"]["topic"] == "tbill-3m.en"
-    assert posted[0]["message"]["notification"]["title"] == "3-month T-bill auction"
+    for body in posted:
+        m = body["message"]
+        assert "notification" not in m  # data-only
+        assert m["android"]["priority"] == "HIGH"
+        assert m["apns"]["payload"]["aps"]["content-available"] == 1
+        assert m["apns"]["headers"]["apns-push-type"] == "background"
+        assert set(m["data"]) >= {"kind", "title", "body", "url"}
+        assert all(isinstance(v, str) for v in m["data"].values())
+    assert posted[0]["message"]["data"]["title"] == "3-month T-bill auction"
+    assert {b["message"]["data"]["kind"] for b in posted} == {"tbill", "fx"}
 
 
 def test_message_cap():
@@ -179,6 +189,8 @@ def test_revisions_and_rehearsal():
         assert lines == []
         _, lines = run(["--rehearsal"], tmp)
         assert [m["topic"] for m in lines] == ["rehearsal.en", "rehearsal.ar"]
+        assert lines[0]["data"]["kind"] == "rehearsal" and lines[0]["data"]["url"] == "miqyas://mpc"
+        assert lines[0]["data"]["title"] == lines[0]["title"]
 
 
 def test_send_without_credentials_refuses():
