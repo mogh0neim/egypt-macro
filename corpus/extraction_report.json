@@ -1,8 +1,9 @@
 {
- "extracted": 1,
- "pages": 1,
+ "extracted": 2,
+ "pages": 126,
  "by_language": {
-  "ar": 1
+  "ar": 1,
+  "en": 1
  },
  "needs_ocr_count": 0,
  "needs_ocr": [],
