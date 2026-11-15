@@ -20,17 +20,19 @@ OUT = ROOT / "web" / "og.png"
 FX = ROOT / "data" / "clean" / "series" / "fx_official.csv"
 
 W, H = 1200, 630
-INK = (16, 27, 51)
-GOLD = (168, 130, 58)
-TEAL = (63, 156, 150)
-MARBLE = (233, 233, 228)
-MUTED = (140, 150, 175)
+INK = (26, 21, 17)        # look C, dark theme: silt
+GOLD = (199, 154, 106)    # structure
+TEAL = (111, 191, 151)    # Nile green
+MARBLE = (241, 234, 219)  # flood cream
+MUTED = (168, 152, 125)   # quiet
 
 
 def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont:
     """Whatever condensed-ish grotesque this machine has. Falls back rather
     than failing: an og image with the wrong face beats no og image."""
     candidates = [
+        str(pathlib.Path(__file__).resolve().parent.parent / "assets/fonts/Newsreader-Bold.ttf") if bold
+        else "C:/Windows/Fonts/segoeui.ttf",
         "C:/Windows/Fonts/segoeuib.ttf" if bold else "C:/Windows/Fonts/segoeui.ttf",
         "C:/Windows/Fonts/arialbd.ttf" if bold else "C:/Windows/Fonts/arial.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold
@@ -87,7 +89,7 @@ def main() -> int:
         )
         d.line(coords, fill=TEAL, width=4, joint="curve")
 
-    d.text((120, 92), "MACROMASR", font=font(104, bold=True), fill=MARBLE)
+    d.text((120, 92), "MacroMasr", font=font(104, bold=True), fill=MARBLE)
     d.text((122, 214), "Egypt's macroeconomic record", font=font(40), fill=MARBLE)
     d.text((122, 268), "Every number the Central Bank publishes, cleaned and searchable",
            font=font(26), fill=MUTED)

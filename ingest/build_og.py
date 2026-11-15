@@ -33,15 +33,16 @@ FONTS = ROOT / "assets" / "fonts"
 
 W, H = 1200, 630
 
-# The palette, from web/styles.css. Dark ground in every card: the site has a
-# light and a dark theme and a card has neither, and the marble-on-ink reading
-# is the one the wordmark was drawn for.
-INK = (16, 27, 51)
-GOLD = (168, 130, 58)
-TEAL = (63, 156, 150)
-CLAY = (176, 78, 58)
-MARBLE = (233, 233, 228)
-MUTED = (140, 150, 175)
+# The palette, from web/styles.css (look C, its dark theme). Dark ground in
+# every card: the site has a light and a dark theme and a card has neither, and
+# cream on wet silt holds up best as a small thumbnail in a feed. The names
+# are the old ones so the drawing code below did not have to change.
+INK = (26, 21, 17)        # silt, dark theme ground #1a1511
+GOLD = (199, 154, 106)    # structure #c79a6a
+TEAL = (111, 191, 151)    # Nile green, the data #6fbf97
+CLAY = (224, 122, 92)     # a fall #e07a5c
+MARBLE = (241, 234, 219)  # flood cream #f1eadb
+MUTED = (168, 152, 125)   # quiet #a8987d
 
 ARABIC = re.compile(r"[\u0600-\u06ff]")
 
@@ -52,13 +53,13 @@ _FONT_CACHE: dict[tuple[str, int], ImageFont.FreeTypeFont] = {}
 # allowed: a card in DejaVu beats no card, and this must never be the reason a
 # publish fails.
 FACES = {
-    "display": ["IBMPlexSansCondensed-Bold.ttf", "C:/Windows/Fonts/segoeuib.ttf",
+    "display": ["Newsreader-Bold.ttf", "C:/Windows/Fonts/segoeuib.ttf",
                 "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"],
     "body": ["IBMPlexSansCondensed-Regular.ttf", "C:/Windows/Fonts/segoeui.ttf",
              "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"],
     "mono": ["IBMPlexMono-Medium.ttf", "C:/Windows/Fonts/consola.ttf",
              "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"],
-    "arabic": ["Almarai-Bold.ttf", "C:/Windows/Fonts/segoeui.ttf",
+    "arabic": ["IBMPlexSansArabic-Bold.ttf", "C:/Windows/Fonts/segoeui.ttf",
                "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"],
 }
 
@@ -90,9 +91,9 @@ def shape_arabic(text: str) -> str:
     them safe on a runner.
 
     `use_unshaped_instead_of_isolated` is load-bearing. The reshaper's normal
-    output is Arabic Presentation Forms, and Almarai -- which is the site's
-    Arabic face because it is CBE's own -- does not carry every isolated form
-    in that block. A title like "(أ+ب+ج+د+هـ+و)", which is how CBE labels the
+    output is Arabic Presentation Forms, and Almarai (the Arabic face before
+    look C) did not carry every isolated form in that block; IBM Plex Sans
+    Arabic carries more, but not every one, so the setting stays. A title like "(أ+ب+ج+د+هـ+و)", which is how CBE labels the
     parts of a total, came out as six tofu boxes. Falling back to the plain
     letter renders correctly and costs nothing: these are single letters, so
     there is no join to preserve.
@@ -186,7 +187,7 @@ def base() -> tuple[Image.Image, ImageDraw.ImageDraw]:
     img = Image.new("RGB", (W, H), INK)
     draw = ImageDraw.Draw(img)
     column(draw)
-    draw.text((110, 44), "MACROMASR", font=font("display", 44), fill=MARBLE)
+    draw.text((110, 40), "MacroMasr", font=font("display", 46), fill=MARBLE)
     draw.text((110, H - 58),
               "INDEPENDENT  \u00b7  NOT AFFILIATED WITH THE CENTRAL BANK OF EGYPT  \u00b7  UPDATED DAILY",
               font=font("mono", 19), fill=MUTED)

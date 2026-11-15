@@ -23,39 +23,46 @@ two places for dark: a `prefers-color-scheme` block guarded with
 toggle wins in both directions. **Never give a colour its only definition inside
 a media query** or the explicit light choice cannot override the system.
 
-| Token | Light | Role |
-|---|---|---|
-| `--ink` `#101b33` | text | the ink of a stone well |
-| `--marble-2` `#f4f4f1` | page | marble |
-| `--brass` `#7e6024` → `--gold` | structure | brass inscription |
-| `--faience` `#1f6f6b` → `--accent` | measurement | the era's blue-green tilework |
-| `--clay` `#a6412e` → `--down` | a fall | - |
+Look C, "Inundation", from the November 2026 brand refresh (decision 0010 in
+`miqyas-app` for the name; the look was the canvas's pick). It replaced a navy,
+petrol teal and brass palette that sat a shade away from CBE's own
+`#28334a` / `#154c65` / `#ac8a4d`: the wrong look for a site whose first
+promise is "not affiliated".
 
-The rule that keeps it coherent, and the one worth defending:
+| Token | Light | Dark | Role |
+|---|---|---|---|
+| `--cream` → `--bg` | `#f1eadb` | `#1a1511` | the page: flood cream / wet silt |
+| `--surface`, `--surface-2` | `#fbf7ee`, `#f4eee1` | `#221b15`, `#2a221a` | cards, the masthead |
+| `--silt` → `--text` | `#2a2119` | `#efe6d3` | text |
+| `--text-2`, `--text-3` | `#5e5144`, `#6b5d4e` | `#c9bba2`, `#a8987d` | quiet text |
+| `--structure` → `--gold` | `#7a5230` | `#c79a6a` | structure |
+| `--nile` → `--accent` | `#2d6a4f` | `#6fbf97` | measurement, the data |
+| `--clay` → `--down` | `#a3432a` | `#e07a5c` | a fall |
 
-> **Gold is structure. Teal is measurement. Red is only ever a fall.**
+The token names `--gold` and `--accent` stayed so no rule below the token
+block had to change. The rule that keeps it coherent, and the one worth
+defending:
 
-So gold carries eyebrows, group headings, section rules, the `wide-card` left
-edge, event markers, the corridor band, the graduation marks. Teal carries data:
-lines, sparklines, the gauge fill and mark, a rise. Red appears only on a
+> **Brown is structure. Green is measurement. Clay is only ever a fall.**
+
+So brown carries eyebrows, group headings, section rules, the `wide-card` left
+edge, event markers, the corridor band, the graduation marks. Green carries
+data: lines, sparklines, the gauge fill and mark, a rise. Clay appears only on a
 negative change and on `.badge.hike` - a rate rise is a fall for the reader
-holding the pound, which is why that one looks inverted and is not.
+holding the pound, which is why that one looks inverted and is not. Keep the
+green muted: a brighter one drifts toward the National Bank of Egypt's.
 
 Never introduce a fourth accent. If something needs to be distinguished and the
 three do not cover it, use weight, size or dash pattern instead - `--text-3` with
 `stroke-dasharray` is what `.chart .line.s2` does.
 
 **Every text colour reaches 4.5:1 on every background it sits on, in both
-themes** (decided 11 October 2026). Measured, not eyeballed: the old quiet grey
-`#8b93a7` was 2.8:1 on the page and the old brass `#a8823a` 3.2:1, and between
-them they coloured every unit, date, axis label, eyebrow and note on the site.
-Now light `--text-3` is `#646c82` (4.75 on the page, 5.2 on white), light brass
-is `#7e6024` (5.3, and 4.5 on the stale strip's tint), dark `--text-3` is
-`#8a94ae` (5.2 on `--surface-2`), and dark `--accent-quiet` is `#12292a` so the
-teal on it reaches 4.7. Text on a teal fill uses `--on-accent`: white in light,
-ink in dark, because white on the dark theme's lighter teal was 3.3:1. Never
-put `opacity` on text; the chart's regime labels had 0.8 and read at 2.5:1.
-The favicon keeps the original brass: it is a mark, not text.
+themes** (decided 11 October 2026, re-measured for look C). Light: `--text-3`
+5.3 on the page and 5.0 on `--accent-quiet`, green 5.3 on the page, clay 4.5 on
+the page; white on the green 6.4. Dark: `--text-3` 5.1 on `--accent-quiet`,
+clay 4.8, green 8.3 on the page. Text on a green fill uses `--on-accent`: white
+in light, silt in dark. Never put `opacity` on text; the chart's regime labels
+had 0.8 and read at 2.5:1.
 
 ## Type
 
@@ -70,33 +77,30 @@ anything** (GoatCounter, when switched on, is the one exception, and About
 says so). `build_site.py` copies the folder to `dist/fonts/`; the stylesheet
 names the files relative to itself, so they resolve at any depth.
 
-- `--display` **IBM Plex Sans Condensed** 600/700. Headlines, card titles,
-  wordmark, accordion names. Condensed because the headlines are long sentences
-  and want to stay on two lines.
+- `--display` **Newsreader** 600/700, one variable file with an optical size
+  axis. Headlines, card titles, the wordmark, accordion names. Before look C
+  this was IBM Plex Sans Condensed; the serif is slower to read than a
+  condensed sans, which is why headlines keep `max-width` in `ch`.
 - `--body` **IBM Plex Sans** 400/450/600. Prose. `450` exists and is used for
   table-cell links - a real weight, not a synthetic one.
 - `--mono` **IBM Plex Mono** 400/500. **Every number on the site**, plus
   eyebrows, units, dates, chips, metadata, code. Always with
   `font-variant-numeric: tabular-nums` where figures stack in a column.
-- `--arabic` **Almarai** 400/700/800. The wordmark and every Arabic title.
-  **This is the typeface CBE itself uses**: cbe.org.eg loads Almarai at 300, 400,
-  700 and 800 and sets every Arabic word on the site in it. Checked in their
-  stylesheet, not guessed. **None of the IBM Plex faces carry Arabic at all**, so
-  before this the wordmark and all 1,095 Arabic titles fell through to whatever
-  the operating system picked.
+- `--arabic` **IBM Plex Sans Arabic** 400 to 700, Arabic subset only (Latin in
+  an Arabic line falls through to IBM Plex Sans). Every Arabic title and the
+  whole Arabic site. Drawn to sit beside IBM Plex.
+- `--arabic-mark` **Amiri** 700, the Arabic half of the wordmark only. Amiri,
+  by the Cairo type designer Khaled Hosny, revives the 1905 Bulaq press face.
 
-  CBE's *logo* is a separate thing and is not reproduced: bespoke interlocked
-  calligraphy drawn for the mark, which no typeface renders, and copying it would
-  be taking a trademark rather than matching a typeface.
+The site used Almarai before look C, chosen *because* CBE sets its own Arabic
+in it. The refresh reversed that on purpose: matching CBE's type, like matching
+its colours, says "official" when the site's first promise is that it is not.
+CBE's *logo* lettering was never reproduced and must not be.
 
-  An earlier pass used Amiri, the Naskh revival from the Amiria Press at Bulaq.
-  Better provenance, wrong answer: CBE's own type is a modern geometric sans, and
-  Almarai also pairs far better with IBM Plex than a book face did.
-
-Almarai carries a Latin-sized x-height, so it needs almost none of the
-compensation a Naskh does: `.ar` sits at `0.95em` with `line-height: 1.6`, and
-`.mark-ar` is nudged `0.02em` onto the shared baseline rather than the `0.06em`
-Amiri needed.
+Amiri is a Naskh with a small x-height, so `.mark-ar` is set a size above the
+Latin half. Arabic headlines get `line-height: 1.35` (`.hero h1`,
+`.series-head h1` under `[dir="rtl"]`), because the 1.05 set for Newsreader
+makes two Arabic lines touch.
 
 Body is `15px / 1.55`. Headline sizes are all `clamp()` so nothing needs a
 breakpoint to be readable.
@@ -532,16 +536,16 @@ minute. Notes worth keeping:
   so it cannot shape Arabic. `arabic-reshaper` plus `python-bidi` do it in pure
   Python, with no system dependency, which is what makes them safe on a runner.
 - `use_unshaped_instead_of_isolated` is not optional. The reshaper emits Arabic
-  Presentation Forms and **Almarai does not carry every isolated form in that
-  block**: `(أ+ب+ج+د+هـ+و)`, which is how CBE labels the parts of a total, came
+  Presentation Forms and **Almarai (the face before look C) did not carry every
+  isolated form in that block**: `(أ+ب+ج+د+هـ+و)`, which is how CBE labels the parts of a total, came
   out as six tofu boxes. Falling back to the plain letter is correct here
   because these are single letters with no join to preserve.
 - **Wrap the logical string, shape each line.** Shaping first puts the text in
   visual order, and breaking a visual-order line leaves the halves of an Arabic
   title in the wrong sequence. Measure on the shaped form, though, or joined
   Arabic wraps early.
-- The fonts are committed under `assets/fonts/`, about 560 KB of static IBM Plex
-  and Almarai, so a runner draws in the site's own type. The fallback chain is
+- The fonts are committed under `assets/fonts/`: static Newsreader, IBM Plex and
+  IBM Plex Sans Arabic, so a runner draws in the site's own type. The fallback chain is
   still there and must stay: a card in DejaVu beats no card, and a missing image
   library must never be why a publish fails.
 
