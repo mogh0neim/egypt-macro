@@ -5,11 +5,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2276,
+  "n": 2277,
   "first_period": "2017-07-02",
-  "last_period": "2026-11-12",
-  "last": 20.644,
-  "previous": 20.6398,
+  "last_period": "2026-11-15",
+  "last": 20.6578,
+  "previous": 20.644,
   "highest": {
    "value": 29.4336,
    "period": "2025-04-22"
@@ -18,7 +18,7 @@
    "value": 9.2586,
    "period": "2022-01-03"
   },
-  "median": 17.69635,
+  "median": 17.6967,
   "biggest_move": {
    "period": "2024-06-23",
    "pct_change": 1.94,
@@ -32,11 +32,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2376,
+  "n": 2377,
   "first_period": "2017-01-31",
-  "last_period": "2026-11-12",
-  "last": 19.8703,
-  "previous": 19.8233,
+  "last_period": "2026-11-15",
+  "last": 19.9802,
+  "previous": 19.8703,
   "highest": {
    "value": 27.9057,
    "period": "2025-02-13"
@@ -45,7 +45,7 @@
    "value": 8.8135,
    "period": "2021-08-10"
   },
-  "median": 17.0543,
+  "median": 17.0552,
   "biggest_move": {
    "period": "2024-03-10",
    "pct_change": 3.01,
@@ -59,11 +59,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2333,
+  "n": 2334,
   "first_period": "2017-04-02",
-  "last_period": "2026-11-12",
-  "last": 20.0059,
-  "previous": 19.9915,
+  "last_period": "2026-11-15",
+  "last": 20.0524,
+  "previous": 20.0059,
   "highest": {
    "value": 28.4627,
    "period": "2025-04-08"
@@ -72,7 +72,7 @@
    "value": 9.0936,
    "period": "2021-12-28"
   },
-  "median": 17.3256,
+  "median": 17.3257,
   "biggest_move": {
    "period": "2024-04-15",
    "pct_change": 2.76,
@@ -86,20 +86,20 @@
   "family": "rates",
   "freq": "D",
   "unit": "index",
-  "n": 2396,
+  "n": 2397,
   "first_period": "2017-01-02",
-  "last_period": "2026-11-12",
-  "last": 5426.18376,
-  "previous": 5423.10492,
+  "last_period": "2026-11-15",
+  "last": 5435.46669,
+  "previous": 5426.18376,
   "highest": {
-   "value": 5426.18376,
-   "period": "2026-11-12"
+   "value": 5435.46669,
+   "period": "2026-11-15"
   },
   "lowest": {
    "value": 1000.0,
    "period": "2017-01-02"
   },
-  "median": 2013.97928,
+  "median": 2014.24583,
   "biggest_move": {
    "period": "2024-06-23",
    "pct_change": 0.76,
@@ -113,11 +113,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2396,
+  "n": 2397,
   "first_period": "2016-12-29",
-  "last_period": "2026-11-11",
-  "last": 20.438,
-  "previous": 20.436,
+  "last_period": "2026-11-12",
+  "last": 20.529,
+  "previous": 20.438,
   "highest": {
    "value": 27.75,
    "period": "2025-02-09"
@@ -126,7 +126,7 @@
    "value": 8.286,
    "period": "2022-02-21"
   },
-  "median": 16.9335,
+  "median": 16.934,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 26.68,
@@ -140,11 +140,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 2396,
+  "n": 2397,
   "first_period": "2016-12-29",
-  "last_period": "2026-11-11",
-  "last": 20878.9,
-  "previous": 24330.6,
+  "last_period": "2026-11-12",
+  "last": 61264.0,
+  "previous": 20878.9,
   "highest": {
    "value": 105031.5,
    "period": "2024-03-05"
@@ -153,7 +153,7 @@
    "value": 310.8,
    "period": "2018-02-14"
   },
-  "median": 10645.25,
+  "median": 10650.5,
   "biggest_move": {
    "period": "2024-02-13",
    "pct_change": 1820.0,
@@ -445,11 +445,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per USD",
-  "n": 5352,
+  "n": 5353,
   "first_period": "2004-12-23",
-  "last_period": "2026-11-12",
-  "last": 53.435,
-  "previous": 53.5557,
+  "last_period": "2026-11-15",
+  "last": 53.7927,
+  "previous": 53.435,
   "highest": {
    "value": 56.2819,
    "period": "2026-10-26"
@@ -472,11 +472,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2855,
+  "n": 2856,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 14.5339,
-  "previous": 14.5633,
+  "last_period": "2026-11-15",
+  "last": 14.6306,
+  "previous": 14.5339,
   "highest": {
    "value": 15.306,
    "period": "2026-10-26"
@@ -485,7 +485,7 @@
    "value": 1.9447,
    "period": "2014-12-14"
   },
-  "median": 4.8466,
+  "median": 4.8472,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 60.43,
@@ -499,11 +499,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2855,
+  "n": 2856,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 14.5651,
-  "previous": 14.5949,
+  "last_period": "2026-11-15",
+  "last": 14.658,
+  "previous": 14.5651,
   "highest": {
    "value": 15.3378,
    "period": "2026-10-26"
@@ -526,11 +526,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2855,
+  "n": 2856,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 64.0118,
-  "previous": 64.4696,
+  "last_period": "2026-11-15",
+  "last": 64.0047,
+  "previous": 64.0118,
   "highest": {
    "value": 68.4352,
    "period": "2026-05-05"
@@ -539,7 +539,7 @@
    "value": 6.9946,
    "period": "2015-01-14"
   },
-  "median": 18.0186,
+  "median": 18.0188,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 60.83,
@@ -553,11 +553,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2855,
+  "n": 2856,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 64.3477,
-  "previous": 64.9738,
+  "last_period": "2026-11-15",
+  "last": 64.5069,
+  "previous": 64.3477,
   "highest": {
    "value": 68.5889,
    "period": "2026-05-05"
@@ -566,7 +566,7 @@
    "value": 7.0275,
    "period": "2015-01-14"
   },
-  "median": 18.1314,
+  "median": 18.13185,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 60.65,
@@ -580,11 +580,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2856,
+  "n": 2857,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 8.0033,
-  "previous": 8.0115,
+  "last_period": "2026-11-15",
+  "last": 8.0555,
+  "previous": 8.0033,
   "highest": {
    "value": 19.3719,
    "period": "2022-09-15"
@@ -593,7 +593,7 @@
    "value": 1.1476,
    "period": "2014-12-24"
   },
-  "median": 2.6338,
+  "median": 2.6339,
   "biggest_move": {
    "period": "2022-09-15",
    "pct_change": 597.48,
@@ -607,11 +607,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2856,
+  "n": 2857,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 8.0221,
-  "previous": 8.0368,
+  "last_period": "2026-11-15",
+  "last": 8.0713,
+  "previous": 8.0221,
   "highest": {
    "value": 19.4483,
    "period": "2022-09-15"
@@ -620,7 +620,7 @@
    "value": 1.153,
    "period": "2014-12-24"
   },
-  "median": 2.65485,
+  "median": 2.6551,
   "biggest_move": {
    "period": "2022-09-15",
    "pct_change": 597.17,
@@ -634,11 +634,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2856,
+  "n": 2857,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 59.0821,
-  "previous": 59.5474,
+  "last_period": "2026-11-15",
+  "last": 59.225,
+  "previous": 59.0821,
   "highest": {
    "value": 63.2016,
    "period": "2026-04-07"
@@ -647,7 +647,7 @@
    "value": 7.9783,
    "period": "2015-03-15"
   },
-  "median": 19.99425,
+  "median": 19.9946,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 60.77,
@@ -661,11 +661,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2856,
+  "n": 2857,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 59.38,
-  "previous": 59.8677,
+  "last_period": "2026-11-15",
+  "last": 59.6089,
+  "previous": 59.38,
   "highest": {
    "value": 63.3281,
    "period": "2026-04-07"
@@ -674,7 +674,7 @@
    "value": 1.954,
    "period": "2014-11-27"
   },
-  "median": 20.12035,
+  "median": 20.1227,
   "biggest_move": {
    "period": "2014-12-03",
    "pct_change": 352.87,
@@ -688,11 +688,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2856,
+  "n": 2857,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 70.7416,
-  "previous": 71.1936,
+  "last_period": "2026-11-15",
+  "last": 70.9668,
+  "previous": 70.7416,
   "highest": {
    "value": 75.0232,
    "period": "2026-10-26"
@@ -701,7 +701,7 @@
    "value": 10.7386,
    "period": "2016-10-25"
   },
-  "median": 22.96855,
+  "median": 22.9703,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 60.9,
@@ -715,11 +715,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2856,
+  "n": 2857,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 71.1576,
-  "previous": 71.7394,
+  "last_period": "2026-11-15",
+  "last": 71.3455,
+  "previous": 71.1576,
   "highest": {
    "value": 75.4045,
    "period": "2026-10-26"
@@ -728,7 +728,7 @@
    "value": 10.7688,
    "period": "2016-10-25"
   },
-  "median": 23.10955,
+  "median": 23.1117,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 62.59,
@@ -742,11 +742,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2855,
+  "n": 2856,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 33.3787,
-  "previous": 33.6057,
+  "last_period": "2026-11-15",
+  "last": 33.5487,
+  "previous": 33.3787,
   "highest": {
    "value": 36.3054,
    "period": "2025-04-22"
@@ -755,7 +755,7 @@
    "value": 5.9465,
    "period": "2014-12-24"
   },
-  "median": 15.7005,
+  "median": 15.7021,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 61.37,
@@ -769,11 +769,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2855,
+  "n": 2856,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 33.5355,
-  "previous": 33.7788,
+  "last_period": "2026-11-15",
+  "last": 33.7476,
+  "previous": 33.5355,
   "highest": {
    "value": 36.387,
    "period": "2025-04-22"
@@ -782,7 +782,7 @@
    "value": 5.9741,
    "period": "2014-12-24"
   },
-  "median": 15.8248,
+  "median": 15.82525,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 61.19,
@@ -796,11 +796,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2856,
+  "n": 2857,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 173.0217,
-  "previous": 173.5784,
+  "last_period": "2026-11-15",
+  "last": 174.0513,
+  "previous": 173.0217,
   "highest": {
    "value": 182.5838,
    "period": "2026-10-26"
@@ -809,7 +809,7 @@
    "value": 24.2715,
    "period": "2015-01-08"
   },
-  "median": 58.7617,
+  "median": 58.762,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 60.45,
@@ -823,11 +823,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2856,
+  "n": 2857,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 173.2896,
-  "previous": 173.8464,
+  "last_period": "2026-11-15",
+  "last": 174.429,
+  "previous": 173.2896,
   "highest": {
    "value": 182.8491,
    "period": "2026-10-26"
@@ -850,11 +850,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2855,
+  "n": 2856,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 14.2176,
-  "previous": 14.2476,
+  "last_period": "2026-11-15",
+  "last": 14.3176,
+  "previous": 14.2176,
   "highest": {
    "value": 14.9798,
    "period": "2026-10-26"
@@ -863,7 +863,7 @@
    "value": 1.9023,
    "period": "2015-01-08"
   },
-  "median": 4.7467,
+  "median": 4.7476,
   "biggest_move": {
    "period": "2025-07-10",
    "pct_change": 106.25,
@@ -877,11 +877,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2855,
+  "n": 2856,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 14.2511,
-  "previous": 14.2822,
+  "last_period": "2026-11-15",
+  "last": 14.3448,
+  "previous": 14.2511,
   "highest": {
    "value": 15.01,
    "period": "2026-10-26"
@@ -890,7 +890,7 @@
    "value": 1.912,
    "period": "2015-01-12"
   },
-  "median": 4.7786,
+  "median": 4.7787,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 60.77,
@@ -904,11 +904,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2857,
+  "n": 2858,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 53.3858,
-  "previous": 53.4969,
+  "last_period": "2026-11-15",
+  "last": 53.7383,
+  "previous": 53.3858,
   "highest": {
    "value": 56.2267,
    "period": "2026-10-26"
@@ -917,7 +917,7 @@
    "value": 7.1431,
    "period": "2014-12-14"
   },
-  "median": 17.8013,
+  "median": 17.80135,
   "biggest_move": {
    "period": "2024-03-06",
    "pct_change": 60.42,
@@ -931,11 +931,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 2857,
+  "n": 2858,
   "first_period": "2014-11-25",
-  "last_period": "2026-11-12",
-  "last": 53.4858,
-  "previous": 53.5969,
+  "last_period": "2026-11-15",
+  "last": 53.8375,
+  "previous": 53.4858,
   "highest": {
    "value": 56.3267,
    "period": "2026-10-26"
@@ -944,7 +944,7 @@
    "value": 7.1766,
    "period": "2014-11-25"
   },
-  "median": 17.92,
+  "median": 17.9207,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 60.76,
@@ -958,11 +958,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 14.5295,
-  "previous": 14.563,
+  "last_period": "2026-11-15",
+  "last": 14.626,
+  "previous": 14.5295,
   "highest": {
    "value": 15.3038,
    "period": "2026-10-26"
@@ -985,11 +985,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 14.5682,
-  "previous": 14.6013,
+  "last_period": "2026-11-15",
+  "last": 14.6645,
+  "previous": 14.5682,
   "highest": {
    "value": 15.3424,
    "period": "2026-10-26"
@@ -1012,11 +1012,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5229,
+  "n": 5230,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 36.4432,
-  "previous": 36.7027,
+  "last_period": "2026-11-15",
+  "last": 36.3757,
+  "previous": 36.4432,
   "highest": {
    "value": 39.5174,
    "period": "2026-10-26"
@@ -1039,11 +1039,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5229,
+  "n": 5230,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 36.5437,
-  "previous": 36.8025,
+  "last_period": "2026-11-15",
+  "last": 36.4811,
+  "previous": 36.5437,
   "highest": {
    "value": 39.6205,
    "period": "2026-10-26"
@@ -1052,7 +1052,7 @@
    "value": 3.397,
    "period": "2008-10-27"
   },
-  "median": 6.6982,
+  "median": 6.69855,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.94,
@@ -1066,11 +1066,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5229,
+  "n": 5230,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 141.4774,
-  "previous": 141.7998,
+  "last_period": "2026-11-15",
+  "last": 142.4254,
+  "previous": 141.4774,
   "highest": {
    "value": 148.9864,
    "period": "2026-10-26"
@@ -1093,11 +1093,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5229,
+  "n": 5230,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 141.9223,
-  "previous": 142.2402,
+  "last_period": "2026-11-15",
+  "last": 142.8715,
+  "previous": 141.9223,
   "highest": {
    "value": 149.4329,
    "period": "2026-10-26"
@@ -1106,7 +1106,7 @@
    "value": 14.0857,
    "period": "2008-08-07"
   },
-  "median": 20.5373,
+  "median": 20.5376,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.71,
@@ -1120,11 +1120,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5229,
+  "n": 5230,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 37.4572,
-  "previous": 37.5848,
+  "last_period": "2026-11-15",
+  "last": 37.6421,
+  "previous": 37.4572,
   "highest": {
    "value": 40.0974,
    "period": "2026-10-26"
@@ -1133,7 +1133,7 @@
    "value": 4.334,
    "period": "2008-10-27"
   },
-  "median": 6.6974,
+  "median": 6.69805,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.65,
@@ -1147,11 +1147,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5229,
+  "n": 5230,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 37.563,
-  "previous": 37.6842,
+  "last_period": "2026-11-15",
+  "last": 37.748,
+  "previous": 37.563,
   "highest": {
    "value": 40.2049,
    "period": "2026-10-26"
@@ -1160,7 +1160,7 @@
    "value": 4.3502,
    "period": "2008-10-27"
   },
-  "median": 6.7181,
+  "median": 6.7185,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.47,
@@ -1174,11 +1174,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5229,
+  "n": 5230,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 64.1025,
-  "previous": 64.4809,
+  "last_period": "2026-11-15",
+  "last": 64.0244,
+  "previous": 64.1025,
   "highest": {
    "value": 68.5346,
    "period": "2026-05-05"
@@ -1187,7 +1187,7 @@
    "value": 4.3403,
    "period": "2006-02-28"
   },
-  "median": 8.0805,
+  "median": 8.0816,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.23,
@@ -1201,11 +1201,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5229,
+  "n": 5230,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 64.2931,
-  "previous": 64.6625,
+  "last_period": "2026-11-15",
+  "last": 64.2138,
+  "previous": 64.2931,
   "highest": {
    "value": 68.7309,
    "period": "2026-05-05"
@@ -1214,7 +1214,7 @@
    "value": 4.3564,
    "period": "2006-02-28"
   },
-  "median": 8.1068,
+  "median": 8.10835,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.12,
@@ -1228,11 +1228,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 4527,
+  "n": 4528,
   "first_period": "2006-08-26",
-  "last_period": "2026-11-12",
-  "last": 8.003,
-  "previous": 8.0177,
+  "last_period": "2026-11-15",
+  "last": 8.0514,
+  "previous": 8.003,
   "highest": {
    "value": 8.4298,
    "period": "2026-10-26"
@@ -1241,7 +1241,7 @@
    "value": 0.7328,
    "period": "2007-11-05"
   },
-  "median": 2.2827,
+  "median": 2.28275,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.75,
@@ -1255,11 +1255,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 4527,
+  "n": 4528,
   "first_period": "2006-08-26",
-  "last_period": "2026-11-12",
-  "last": 8.024,
-  "previous": 8.0393,
+  "last_period": "2026-11-15",
+  "last": 8.0741,
+  "previous": 8.024,
   "highest": {
    "value": 8.451,
    "period": "2026-10-26"
@@ -1282,11 +1282,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5228,
+  "n": 5229,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 7.917,
-  "previous": 7.9673,
+  "last_period": "2026-11-15",
+  "last": 7.9205,
+  "previous": 7.917,
   "highest": {
    "value": 8.4532,
    "period": "2026-04-07"
@@ -1295,7 +1295,7 @@
    "value": 0.8982,
    "period": "2005-11-16"
   },
-  "median": 1.29715,
+  "median": 1.2972,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.83,
@@ -1309,11 +1309,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5228,
+  "n": 5229,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 7.9389,
-  "previous": 7.9884,
+  "last_period": "2026-11-15",
+  "last": 7.9422,
+  "previous": 7.9389,
   "highest": {
    "value": 8.4753,
    "period": "2026-04-07"
@@ -1322,7 +1322,7 @@
    "value": 0.9017,
    "period": "2005-11-16"
   },
-  "median": 1.3009,
+  "median": 1.301,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.68,
@@ -1336,11 +1336,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 59.1821,
-  "previous": 59.5576,
+  "last_period": "2026-11-15",
+  "last": 59.208,
+  "previous": 59.1821,
   "highest": {
    "value": 63.1676,
    "period": "2026-04-07"
@@ -1363,11 +1363,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 59.3474,
-  "previous": 59.7217,
+  "last_period": "2026-11-15",
+  "last": 59.3781,
+  "previous": 59.3474,
   "highest": {
    "value": 63.3349,
    "period": "2026-04-07"
@@ -1376,7 +1376,7 @@
    "value": 6.7231,
    "period": "2005-11-16"
   },
-  "median": 9.70055,
+  "median": 9.7006,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.66,
@@ -1390,11 +1390,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 70.8051,
-  "previous": 71.1803,
+  "last_period": "2026-11-15",
+  "last": 70.9948,
+  "previous": 70.8051,
   "highest": {
    "value": 75.0438,
    "period": "2026-10-26"
@@ -1403,7 +1403,7 @@
    "value": 1.1424,
    "period": "2016-02-02"
   },
-  "median": 11.92205,
+  "median": 11.9235,
   "biggest_move": {
    "period": "2016-02-03",
    "pct_change": 879.81,
@@ -1417,11 +1417,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 71.0061,
-  "previous": 71.3797,
+  "last_period": "2026-11-15",
+  "last": 71.1955,
+  "previous": 71.0061,
   "highest": {
    "value": 75.24,
    "period": "2026-10-26"
@@ -1430,7 +1430,7 @@
    "value": 7.6469,
    "period": "2009-01-22"
   },
-  "median": 11.95645,
+  "median": 11.9583,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 68.71,
@@ -1444,11 +1444,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5228,
+  "n": 5229,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 75.1624,
-  "previous": 75.3336,
+  "last_period": "2026-11-15",
+  "last": 75.666,
+  "previous": 75.1624,
   "highest": {
    "value": 79.1726,
    "period": "2026-10-26"
@@ -1471,11 +1471,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5228,
+  "n": 5229,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 75.5716,
-  "previous": 75.7409,
+  "last_period": "2026-11-15",
+  "last": 76.0771,
+  "previous": 75.5716,
   "highest": {
    "value": 79.592,
    "period": "2026-10-26"
@@ -1484,7 +1484,7 @@
    "value": 7.4994,
    "period": "2008-08-07"
   },
-  "median": 10.93855,
+  "median": 10.9401,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.79,
@@ -1498,11 +1498,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 33.4222,
-  "previous": 33.6121,
+  "last_period": "2026-11-15",
+  "last": 33.6378,
+  "previous": 33.4222,
   "highest": {
    "value": 36.3485,
    "period": "2025-04-22"
@@ -1511,7 +1511,7 @@
    "value": 4.0484,
    "period": "2008-09-10"
   },
-  "median": 7.81545,
+  "median": 7.8176,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 67.05,
@@ -1525,11 +1525,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 33.5117,
-  "previous": 33.7071,
+  "last_period": "2026-11-15",
+  "last": 33.7358,
+  "previous": 33.5117,
   "highest": {
    "value": 36.4454,
    "period": "2025-04-22"
@@ -1538,7 +1538,7 @@
    "value": 4.607,
    "period": "2007-06-24"
   },
-  "median": 7.8446,
+  "median": 7.8486,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.9,
@@ -1552,11 +1552,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 172.8991,
-  "previous": 173.4897,
+  "last_period": "2026-11-15",
+  "last": 173.9448,
+  "previous": 172.8991,
   "highest": {
    "value": 182.4787,
    "period": "2026-10-26"
@@ -1565,7 +1565,7 @@
    "value": 18.5944,
    "period": "2009-02-05"
   },
-  "median": 25.7766,
+  "median": 25.7852,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.61,
@@ -1579,11 +1579,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 173.4069,
-  "previous": 173.9928,
+  "last_period": "2026-11-15",
+  "last": 174.4537,
+  "previous": 173.4069,
   "highest": {
    "value": 182.988,
    "period": "2026-10-26"
@@ -1592,7 +1592,7 @@
    "value": 18.8512,
    "period": "2009-02-05"
   },
-  "median": 25.86065,
+  "median": 25.8693,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.29,
@@ -1606,11 +1606,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5228,
+  "n": 5229,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 5.5853,
-  "previous": 5.6067,
+  "last_period": "2026-11-15",
+  "last": 5.6079,
+  "previous": 5.5853,
   "highest": {
    "value": 6.0431,
    "period": "2026-11-01"
@@ -1619,7 +1619,7 @@
    "value": 0.7662,
    "period": "2009-01-15"
   },
-  "median": 1.16405,
+  "median": 1.1641,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 67.02,
@@ -1633,11 +1633,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5228,
+  "n": 5229,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 5.6046,
-  "previous": 5.6259,
+  "last_period": "2026-11-15",
+  "last": 5.6255,
+  "previous": 5.6046,
   "highest": {
    "value": 6.08,
    "period": "2026-11-01"
@@ -1646,7 +1646,7 @@
    "value": 0.7693,
    "period": "2009-01-15"
   },
-  "median": 1.16835,
+  "median": 1.1684,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.91,
@@ -1660,11 +1660,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5229,
+  "n": 5230,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 138.5968,
-  "previous": 138.9125,
+  "last_period": "2026-11-15",
+  "last": 139.5254,
+  "previous": 138.5968,
   "highest": {
    "value": 145.9915,
    "period": "2026-10-26"
@@ -1687,11 +1687,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5229,
+  "n": 5230,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 138.9769,
-  "previous": 139.2882,
+  "last_period": "2026-11-15",
+  "last": 139.9064,
+  "previous": 138.9769,
   "highest": {
    "value": 146.3704,
    "period": "2026-10-26"
@@ -1714,11 +1714,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5229,
+  "n": 5230,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 14.6286,
-  "previous": 14.662,
+  "last_period": "2026-11-15",
+  "last": 14.7267,
+  "previous": 14.6286,
   "highest": {
    "value": 15.4091,
    "period": "2026-10-26"
@@ -1741,11 +1741,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5229,
+  "n": 5230,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 14.691,
-  "previous": 14.7239,
+  "last_period": "2026-11-15",
+  "last": 14.7893,
+  "previous": 14.691,
   "highest": {
    "value": 15.4726,
    "period": "2026-10-26"
@@ -1768,11 +1768,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 14.219,
-  "previous": 14.2506,
+  "last_period": "2026-11-15",
+  "last": 14.3143,
+  "previous": 14.219,
   "highest": {
    "value": 14.9772,
    "period": "2026-10-26"
@@ -1795,11 +1795,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 14.2569,
-  "previous": 14.2896,
+  "last_period": "2026-11-15",
+  "last": 14.3523,
+  "previous": 14.2569,
   "highest": {
    "value": 15.0158,
    "period": "2026-10-26"
@@ -1822,11 +1822,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 5.3547,
-  "previous": 5.3906,
+  "last_period": "2026-11-15",
+  "last": 5.3308,
+  "previous": 5.3547,
   "highest": {
    "value": 5.7893,
    "period": "2026-04-30"
@@ -1835,7 +1835,7 @@
    "value": 0.6083,
    "period": "2009-03-02"
   },
-  "median": 1.06595,
+  "median": 1.066,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.55,
@@ -1849,11 +1849,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 5.373,
-  "previous": 5.4056,
+  "last_period": "2026-11-15",
+  "last": 5.3473,
+  "previous": 5.373,
   "highest": {
    "value": 5.8301,
    "period": "2026-05-03"
@@ -1862,7 +1862,7 @@
    "value": 0.6111,
    "period": "2009-03-02"
   },
-  "median": 1.06955,
+  "median": 1.0697,
   "biggest_move": {
    "period": "2016-11-03",
    "pct_change": 66.45,
@@ -1876,11 +1876,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 53.3653,
-  "previous": 53.4869,
+  "last_period": "2026-11-15",
+  "last": 53.7229,
+  "previous": 53.3653,
   "highest": {
    "value": 56.2126,
    "period": "2026-10-26"
@@ -1903,11 +1903,11 @@
   "family": "fx",
   "freq": "D",
   "unit": "EGP per unit of foreign currency",
-  "n": 5230,
+  "n": 5231,
   "first_period": "2005-01-02",
-  "last_period": "2026-11-12",
-  "last": 53.5047,
-  "previous": 53.6246,
+  "last_period": "2026-11-15",
+  "last": 53.8626,
+  "previous": 53.5047,
   "highest": {
    "value": 56.3511,
    "period": "2026-10-26"
@@ -2395,11 +2395,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 3970,
+  "n": 3971,
   "first_period": "2010-06-29",
-  "last_period": "2026-11-11",
-  "last": 20.435,
-  "previous": 20.445,
+  "last_period": "2026-11-12",
+  "last": 20.524,
+  "previous": 20.435,
   "highest": {
    "value": 27.735,
    "period": "2025-02-09"
@@ -2422,9 +2422,9 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 3980,
+  "n": 3981,
   "first_period": "2010-06-29",
-  "last_period": "2026-11-11",
+  "last_period": "2026-11-12",
   "last": 0.0,
   "previous": 0.0,
   "highest": {
@@ -2449,11 +2449,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 3980,
+  "n": 3981,
   "first_period": "2010-06-29",
-  "last_period": "2026-11-11",
+  "last_period": "2026-11-12",
   "last": 0.0,
-  "previous": 18200.0,
+  "previous": 0.0,
   "highest": {
    "value": 95581.0,
    "period": "2024-06-11"
@@ -2476,11 +2476,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 3980,
+  "n": 3981,
   "first_period": "2010-06-29",
-  "last_period": "2026-11-11",
-  "last": 2600.0,
-  "previous": 1250.0,
+  "last_period": "2026-11-12",
+  "last": 0.0,
+  "previous": 2600.0,
   "highest": {
    "value": 106175.0,
    "period": "2026-05-19"
@@ -2496,7 +2496,7 @@
    "change": 11758.0
   },
   "flags": [
-   "1711 zero values (CBE publishes 0 where no rate was set)"
+   "1712 zero values (CBE publishes 0 where no rate was set)"
   ]
  },
  {
@@ -2505,9 +2505,9 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 3980,
+  "n": 3981,
   "first_period": "2010-06-29",
-  "last_period": "2026-11-11",
+  "last_period": "2026-11-12",
   "last": 0.0,
   "previous": 0.0,
   "highest": {
@@ -2532,11 +2532,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 3980,
+  "n": 3981,
   "first_period": "2010-06-29",
-  "last_period": "2026-11-11",
-  "last": 29827.0,
-  "previous": 34758.0,
+  "last_period": "2026-11-12",
+  "last": 87520.0,
+  "previous": 29827.0,
   "highest": {
    "value": 150045.0,
    "period": "2024-03-05"
@@ -2545,7 +2545,7 @@
    "value": 0.0,
    "period": "2010-08-12"
   },
-  "median": 7363.5,
+  "median": 7380.0,
   "biggest_move": {
    "period": "2010-12-15",
    "pct_change": 3350.0,
@@ -2561,11 +2561,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 3980,
+  "n": 3981,
   "first_period": "2010-06-29",
-  "last_period": "2026-11-11",
-  "last": 32427.0,
-  "previous": 147952.5,
+  "last_period": "2026-11-12",
+  "last": 87520.0,
+  "previous": 32427.0,
   "highest": {
    "value": 252830.0,
    "period": "2026-04-28"
@@ -2574,7 +2574,7 @@
    "value": 0.0,
    "period": "2020-06-07"
   },
-  "median": 9934.0,
+  "median": 9939.0,
   "biggest_move": {
    "period": "2010-10-26",
    "pct_change": 3805.0,
@@ -2590,11 +2590,11 @@
   "family": "rates",
   "freq": "D",
   "unit": "EGP million",
-  "n": 3980,
+  "n": 3981,
   "first_period": "2010-06-29",
-  "last_period": "2026-11-11",
+  "last_period": "2026-11-12",
   "last": 0.0,
-  "previous": 93744.5,
+  "previous": 0.0,
   "highest": {
    "value": 203115.0,
    "period": "2026-05-12"
@@ -2603,14 +2603,14 @@
    "value": 0.0,
    "period": "2010-08-02"
   },
-  "median": 131.5,
+  "median": 130.0,
   "biggest_move": {
    "period": "2011-11-29",
    "pct_change": 69500.0,
    "change": 3475.0
   },
   "flags": [
-   "1685 zero values (CBE publishes 0 where no rate was set)"
+   "1686 zero values (CBE publishes 0 where no rate was set)"
   ]
  },
  {
@@ -5842,11 +5842,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "EGP million",
-  "n": 2393,
+  "n": 2394,
   "first_period": "2014-01-06",
-  "last_period": "2026-11-11",
-  "last": 4243.325,
-  "previous": 42997.4,
+  "last_period": "2026-11-12",
+  "last": 10595.85,
+  "previous": 4243.325,
   "highest": {
    "value": 276575000.0,
    "period": "2018-12-19"
@@ -5855,7 +5855,7 @@
    "value": 0.0,
    "period": "2020-07-06"
   },
-  "median": 1260.5,
+  "median": 1261.7125,
   "biggest_move": {
    "period": "2018-12-19",
    "pct_change": 2348832171.76,
@@ -5871,11 +5871,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2390,
+  "n": 2391,
   "first_period": "2014-01-06",
-  "last_period": "2026-11-11",
-  "last": 25.602,
-  "previous": 25.789,
+  "last_period": "2026-11-12",
+  "last": 25.588,
+  "previous": 25.602,
   "highest": {
    "value": 31.336,
    "period": "2024-03-12"
@@ -5884,7 +5884,7 @@
    "value": 10.25,
    "period": "2020-04-12"
   },
-  "median": 18.4015,
+  "median": 18.405,
   "biggest_move": {
    "period": "2022-07-07",
    "pct_change": 24.77,
@@ -5898,11 +5898,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "EGP million",
-  "n": 2433,
+  "n": 2434,
   "first_period": "2014-01-06",
-  "last_period": "2026-11-11",
-  "last": 17423.9,
-  "previous": 45894.65,
+  "last_period": "2026-11-12",
+  "last": 17772.5,
+  "previous": 17423.9,
   "highest": {
    "value": 1793925000.0,
    "period": "2018-12-19"
@@ -5911,7 +5911,7 @@
    "value": 0.275,
    "period": "2016-12-18"
   },
-  "median": 2571.9,
+  "median": 2574.675,
   "biggest_move": {
    "period": "2018-12-19",
    "pct_change": 238197410.37,
@@ -5925,11 +5925,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2433,
+  "n": 2434,
   "first_period": "2014-01-06",
-  "last_period": "2026-11-11",
-  "last": 21.894,
-  "previous": 22.723,
+  "last_period": "2026-11-12",
+  "last": 21.727,
+  "previous": 21.894,
   "highest": {
    "value": 30.961,
    "period": "2024-11-25"
@@ -5952,11 +5952,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "EGP million",
-  "n": 2423,
+  "n": 2424,
   "first_period": "2014-01-06",
-  "last_period": "2026-11-11",
-  "last": 3157.65,
-  "previous": 11933.35,
+  "last_period": "2026-11-12",
+  "last": 15908.9,
+  "previous": 3157.65,
   "highest": {
    "value": 4256050000.0,
    "period": "2018-12-19"
@@ -5965,7 +5965,7 @@
    "value": 0.025,
    "period": "2019-08-04"
   },
-  "median": 1025.775,
+  "median": 1026.9625,
   "biggest_move": {
    "period": "2018-12-19",
    "pct_change": 306521326.0,
@@ -5979,11 +5979,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2423,
+  "n": 2424,
   "first_period": "2014-01-06",
-  "last_period": "2026-11-11",
-  "last": 23.865,
-  "previous": 23.661,
+  "last_period": "2026-11-12",
+  "last": 24.044,
+  "previous": 23.865,
   "highest": {
    "value": 31.097,
    "period": "2024-11-25"
@@ -5992,7 +5992,7 @@
    "value": 6.868,
    "period": "2017-02-14"
   },
-  "median": 17.755,
+  "median": 17.758,
   "biggest_move": {
    "period": "2017-02-15",
    "pct_change": 141.74,
@@ -6006,11 +6006,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "EGP million",
-  "n": 2432,
+  "n": 2433,
   "first_period": "2014-01-06",
-  "last_period": "2026-11-11",
-  "last": 5604.675,
-  "previous": 58077.075,
+  "last_period": "2026-11-12",
+  "last": 13227.675,
+  "previous": 5604.675,
   "highest": {
    "value": 5763850000.0,
    "period": "2018-12-19"
@@ -6019,7 +6019,7 @@
    "value": 0.225,
    "period": "2016-12-19"
   },
-  "median": 2305.8375,
+  "median": 2306.0,
   "biggest_move": {
    "period": "2018-12-19",
    "pct_change": 292365925.01,
@@ -6033,11 +6033,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2432,
+  "n": 2433,
   "first_period": "2014-01-06",
-  "last_period": "2026-11-11",
-  "last": 24.508,
-  "previous": 24.456,
+  "last_period": "2026-11-12",
+  "last": 24.357,
+  "previous": 24.508,
   "highest": {
    "value": 31.614,
    "period": "2024-12-11"
@@ -6046,7 +6046,7 @@
    "value": 6.461,
    "period": "2017-02-20"
   },
-  "median": 18.3785,
+  "median": 18.381,
   "biggest_move": {
    "period": "2017-02-21",
    "pct_change": 159.99,
@@ -6060,11 +6060,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "EGP million",
-  "n": 2431,
+  "n": 2432,
   "first_period": "2014-01-06",
-  "last_period": "2026-11-11",
-  "last": 13736.325,
-  "previous": 53721.75,
+  "last_period": "2026-11-12",
+  "last": 14259.35,
+  "previous": 13736.325,
   "highest": {
    "value": 1245900000.0,
    "period": "2018-12-19"
@@ -6073,7 +6073,7 @@
    "value": 0.4,
    "period": "2017-08-27"
   },
-  "median": 2306.175,
+  "median": 2310.6,
   "biggest_move": {
    "period": "2018-12-19",
    "pct_change": 214689944.37,
@@ -6087,11 +6087,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2431,
+  "n": 2432,
   "first_period": "2014-01-06",
-  "last_period": "2026-11-11",
-  "last": 24.695,
-  "previous": 24.974,
+  "last_period": "2026-11-12",
+  "last": 24.991,
+  "previous": 24.695,
   "highest": {
    "value": 31.544,
    "period": "2024-12-11"
@@ -6100,7 +6100,7 @@
    "value": 10.414,
    "period": "2014-01-06"
   },
-  "median": 18.38,
+  "median": 18.3805,
   "biggest_move": {
    "period": "2017-10-16",
    "pct_change": 56.31,
@@ -6114,11 +6114,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "EGP million",
-  "n": 2369,
+  "n": 2370,
   "first_period": "2014-01-06",
-  "last_period": "2026-11-11",
-  "last": 7231.65,
-  "previous": 114370.85,
+  "last_period": "2026-11-12",
+  "last": 3317.675,
+  "previous": 7231.65,
   "highest": {
    "value": 570225000.0,
    "period": "2018-12-19"
@@ -6127,7 +6127,7 @@
    "value": 0.025,
    "period": "2016-09-19"
   },
-  "median": 1180.225,
+  "median": 1180.5625,
   "biggest_move": {
    "period": "2023-08-29",
    "pct_change": 64000300.0,
@@ -6141,11 +6141,11 @@
   "family": "govt",
   "freq": "D",
   "unit": "percent per annum",
-  "n": 2369,
+  "n": 2370,
   "first_period": "2014-01-06",
-  "last_period": "2026-11-11",
-  "last": 25.562,
-  "previous": 26.039,
+  "last_period": "2026-11-12",
+  "last": 25.268,
+  "previous": 25.562,
   "highest": {
    "value": 34.502,
    "period": "2024-03-10"
@@ -6154,7 +6154,7 @@
    "value": 10.4,
    "period": "2016-04-04"
   },
-  "median": 18.264,
+  "median": 18.266,
   "biggest_move": {
    "period": "2022-12-22",
    "pct_change": 37.44,
