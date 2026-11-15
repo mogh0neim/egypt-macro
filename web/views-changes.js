@@ -1,12 +1,12 @@
-/* Miqyas -- what changed.
+/* MacroMasr -- what changed.
  *
- * CBE overwrites its files in place when it revises a figure. Miqyas keeps a
+ * CBE overwrites its files in place when it revises a figure. MacroMasr keeps a
  * dated copy of the daily tables from 20 August 2026, so its own history can
  * say what a figure read before it changed. This page reads that history.
  *
  * It keeps three things apart, because merging any two of them would put a
  * false statement about CBE on the page: new readings CBE published, figures
- * CBE revised after publishing them, and values that changed because Miqyas
+ * CBE revised after publishing them, and values that changed because MacroMasr
  * read the same files differently. build_changes.py does the sorting; this
  * only says it plainly, including which sources are checked at all.
  */
@@ -52,7 +52,7 @@ async function viewChanges() {
     '<p class="eyebrow">' + t("The revision record") + "</p>" +
     "<h2>" + t("What CBE published, and what was revised") + "</h2>" +
     '<p class="lede">' +
-    t("Miqyas keeps a dated copy of the daily tables from 20 August 2026. If CBE changes a figure it has already published, the change appears here.") +
+    t("MacroMasr keeps a dated copy of the daily tables from 20 August 2026. If CBE changes a figure it has already published, the change appears here.") +
     "</p>" +
     '<div class="stat-row">' +
     stat(readings.toLocaleString(), t("new readings"),
@@ -83,12 +83,12 @@ async function viewChanges() {
         t("Money, banking and reserves to the latest month, from CBE's SDDS page. Read weekly; a new month is listed as an SDDS update, and a figure that changes in a file CBE replaced counts as a revision.") + "</li>"
       : "") +
     "<li><strong>" + t("Not counted") + "</strong>: " +
-    t("The series Miqyas computes or parses from press releases, such as reserves, remittances and the yield curve. They move when their sources move.") + "</li>" +
+    t("The series MacroMasr computes or parses from press releases, such as reserves, remittances and the yield curve. They move when their sources move.") + "</li>" +
     "</ul>" +
-    '<p class="foot-note">' + t("Every value Miqyas has held, with the first and last day it was held:") +
+    '<p class="foot-note">' + t("Every value MacroMasr has held, with the first and last day it was held:") +
     ' <a href="' + ROOT + '/bulk/revisions-csv.zip">CSV</a>' +
     ' · <a href="' + ROOT + '/parquet/revisions.parquet">Parquet</a>' +
-    ' · <a href="' + ROOT + '/miqyas.sqlite">' + t("the revisions table in miqyas.sqlite") + "</a>.</p>" +
+    ' · <a href="' + ROOT + '/macromasr.sqlite">' + t("the revisions table in macromasr.sqlite") + "</a>.</p>" +
     "</div></section>" +
 
     (anomalies.length
@@ -96,7 +96,7 @@ async function viewChanges() {
         '<p class="eyebrow">' + t("Two values for one date") + "</p>" +
         "<h2>" + t("Where CBE published two different values for one date") + "</h2>" +
         '<p class="lede">' +
-        t("These do not need a history to find: the same figure appears twice, differently, inside one of CBE's own tables. Miqyas keeps one, the same one every day, and records both.") +
+        t("These do not need a history to find: the same figure appears twice, differently, inside one of CBE's own tables. MacroMasr keeps one, the same one every day, and records both.") +
         "</p>" +
         '<div class="table-scroll"><table class="indicators compact"><thead><tr>' +
         "<th>" + t("Series|one row of a table") + "</th><th>" + t("For") + "</th><th>" +
@@ -124,9 +124,9 @@ async function viewChanges() {
 
     '<section class="section"><div class="band-inset">' +
     '<p class="eyebrow">' + t("How this is built") + "</p>" +
-    "<h3>" + t("Read out of the git history, with each change put down to CBE or to Miqyas") + "</h3>" +
+    "<h3>" + t("Read out of the git history, with each change put down to CBE or to MacroMasr") + "</h3>" +
     "<p>" +
-    t("A change counts as a CBE revision only when the file CBE served changed: a different value for the same date, in the same table, than the one Miqyas saved before. When Miqyas reads the same files differently, after a parser fix or a new way of dating a quarter, the change is listed as re-read by Miqyas. Series Miqyas computes are never counted as revisions. More than 500 changes in one go are held back for a check rather than reported.") +
+    t("A change counts as a CBE revision only when the file CBE served changed: a different value for the same date, in the same table, than the one MacroMasr saved before. When MacroMasr reads the same files differently, after a parser fix or a new way of dating a quarter, the change is listed as re-read by MacroMasr. Series MacroMasr computes are never counted as revisions. More than 500 changes in one go are held back for a check rather than reported.") +
     "</p>" +
     '<p class="foot-note">' +
     (data.history_commits ? esc(tsub("{n} commits of history.", { n: data.history_commits.toLocaleString() })) + " " : "") +
@@ -151,10 +151,10 @@ const changeValue = (v, unit) => (typeof v === "number" ? fmt(v, unit) : esc(v))
 const REREAD_WHY = {
   parser: "The Excel archive was read again after a change to the parser.",
   sdds_parser: "The SDDS files were read again after a change to their parser.",
-  miqyas: "Changed by Miqyas in the repository: a parser fix, a new series or a correction.",
+  miqyas: "Changed by MacroMasr in the repository: a parser fix, a new series or a correction.",
   no_source_change: "A table changed although the file CBE served behind it did not.",
   conflict: "A date where CBE published two values; the one kept changed.",
-  computed: "Series Miqyas computes were recomputed from their sources.",
+  computed: "Series MacroMasr computes were recomputed from their sources.",
 };
 
 function dayCard(day) {
@@ -240,7 +240,7 @@ function dayCard(day) {
     const r = day.reread;
     const ex = r.examples && r.examples[0];
     parts.push(
-      '<p class="change-head quiet">' + t("Re-read by Miqyas") + "</p>" +
+      '<p class="change-head quiet">' + t("Re-read by MacroMasr") + "</p>" +
       "<p class='foot-note'>" +
       r.why.map((w) => t(REREAD_WHY[w] || w)).join(" ") + " " +
       esc(tsub("{c} values changed, {a} added and {r} removed.",
@@ -288,7 +288,7 @@ function daySummary(day) {
   }
   if (day.archive) bits.push(t("archive update"));
   if (day.sdds) bits.push(t("SDDS update"));
-  if (day.reparsed) bits.push(tsub("{n} re-read by Miqyas", { n: day.reparsed.toLocaleString() }));
+  if (day.reparsed) bits.push(tsub("{n} re-read by MacroMasr", { n: day.reparsed.toLocaleString() }));
   if (day.held_back) bits.push(tsub("{n} held back", { n: day.held_back.toLocaleString() }));
   return bits.join(" · ");
 }

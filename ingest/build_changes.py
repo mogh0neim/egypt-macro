@@ -3,7 +3,7 @@
 CBE overwrites its files in place when it revises a figure, and keeps no public
 changelog of it. This repository commits every clean file each day, so its
 history is a dated record of what CBE published, and of any later revisions.
-Miqyas keeps a dated copy of the daily tables from 20 August 2026.
+MacroMasr keeps a dated copy of the daily tables from 20 August 2026.
 
 `data/clean/series/*.csv` is `series_id,period,value`, and `fetch_series.py`
 sorts by `(series_id, period)` before writing, so each series occupies a
@@ -18,7 +18,7 @@ row per auction. A row there is matched to its earlier self by its dates,
 tenor, ISIN and auction number.
 
 **Whose change it was decides everything**, and it is decided per file, per
-commit. A change is re-read by Miqyas, not revised by CBE, when:
+commit. A change is re-read by MacroMasr, not revised by CBE, when:
 
   - a person made the commit (a parser fix, a new series, a re-dating);
   - the Excel parser's PARSER_VERSION changed since the archive was last
@@ -29,7 +29,7 @@ commit. A change is re-read by Miqyas, not revised by CBE, when:
   - the reading sits on a date where CBE published two values for one figure,
     and the one kept changed.
 
-Series Miqyas computes or parses out of prose (the 39 marked `derived`) move
+Series MacroMasr computes or parses out of prose (the 39 marked `derived`) move
 when their sources move and are never counted as revisions. A scraper commit
 that would restate or remove more than 500 readings at once is held back
 rather than trusted: CBE does not do that in a day, and a short download or an
@@ -696,7 +696,7 @@ def headline(day: dict) -> str:
     if day.get("sdds"):
         bits.append("SDDS update, " + plural(day["sdds"]["added"], "reading") + " added")
     if day.get("reread"):
-        bits.append(f"{day['reparsed']:,} re-read by Miqyas")
+        bits.append(f"{day['reparsed']:,} re-read by MacroMasr")
     if day["held_back"]:
         bits.append(f"{day['held_back']:,} held back")
     if day.get("start"):
@@ -764,7 +764,7 @@ def rss(days: list[dict], *, path: pathlib.Path, title: str, description: str,
                                 + ".</p>")
             if day.get("reread"):
                 r = day["reread"]
-                body.append(f"<p><b>Re-read by Miqyas, not changed by CBE</b>: "
+                body.append(f"<p><b>Re-read by MacroMasr, not changed by CBE</b>: "
                             f"{r['changed']:,} values changed, {r['added']:,} added and "
                             f"{r['removed']:,} removed.</p>")
             if day["held_back"]:
@@ -880,18 +880,18 @@ def main() -> int:
         "anomalies": anomalies,
         "note": ("Built from this repository's own git history. CBE overwrites its files in "
                  "place when it revises a figure, so a revision is only visible to something "
-                 "that kept the previous copy. Values Miqyas re-read, and series it computes, "
+                 "that kept the previous copy. Values MacroMasr re-read, and series it computes, "
                  "are counted separately and never as revisions."),
     }
     (API / "changes.json").write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
 
     all_items = rss(days, path=DIST / "changes.xml",
-                    title="Miqyas: what changed in Egypt's data",
+                    title="MacroMasr: what changed in Egypt's data",
                     description="What the Central Bank of Egypt published each day, and any "
                                 "revisions. Independent; not affiliated with CBE.",
                     link=SITE_URL + "#/changes", only_revisions=False)
     rev_items = rss(days, path=DIST / "changes-revisions.xml",
-                    title="Miqyas: CBE revisions",
+                    title="MacroMasr: CBE revisions",
                     description="Figures the Central Bank of Egypt changed after publishing them. "
                                 "Low volume. Independent; not affiliated with CBE.",
                     link=SITE_URL + "#/changes", only_revisions=True)
@@ -903,7 +903,7 @@ def main() -> int:
     archive = sum(d.get(b, {}).get("added", 0) for d in days for b in ("archive", "sdds"))
     print(f"changes: {len(days)} days over {WINDOW_DAYS}, {moved:,} new readings, "
           f"{archive:,} added by archive updates, {revisions} revised by CBE, "
-          f"{reread:,} re-read by Miqyas, {held:,} held back, "
+          f"{reread:,} re-read by MacroMasr, {held:,} held back, "
           f"{len(anomalies)} same-day conflicts on record")
     print(f"  changes.xml {all_items} items · changes-revisions.xml {rev_items} items")
     return 0

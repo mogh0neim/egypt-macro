@@ -1,4 +1,4 @@
-/* Miqyas -- get the data, the field and date guide, and about.
+/* MacroMasr -- get the data, the field and date guide, and about.
  *
  * The download page reads its sizes off the build rather than out of the copy,
  * so they cannot quietly rot. It used to read manifest.json for that, which is
@@ -90,10 +90,10 @@ async function viewData() {
     '<p class="eyebrow">' + t("Terms") + "</p>" +
     "<h2>" + t("Using it") + "</h2>" +
     '<p class="lede">' +
-    t("Cite the Central Bank of Egypt as the source. Miqyas cleans and dates the values; where a number was computed, the series page says so and names the method. If you find a value that does not match CBE's,") +
+    t("Cite the Central Bank of Egypt as the source. MacroMasr cleans and dates the values; where a number was computed, the series page says so and names the method. If you find a value that does not match CBE's,") +
     ' <a href="' + CONTACT_URL + '" target="_blank" rel="noopener">' + t("tell us") + "</a>.</p>" +
     '<p class="lede">' +
-    t("Miqyas is not affiliated with, endorsed by, or connected to the Central Bank of Egypt. The code is MIT-licensed; the data is CBE's.") +
+    t("MacroMasr is not affiliated with, endorsed by, or connected to the Central Bank of Egypt. The code is MIT-licensed; the data is CBE's.") +
     ' <a href="#/about">' + t("The full terms are on the About page.") + "</a></p>" +
     "</section></div>";
 }
@@ -128,19 +128,19 @@ function viewGuide() {
     table([
       row("series_id", esc(t("The series. Ids for CBE's daily tables are not expected to change. Ids for the series read from CBE's Excel archive are being reworked and may change."))),
       row("period", esc(t("The date the reading is filed under, as YYYY-MM-DD. What that date stands for depends on the series: see the dates below."))),
-      row("value", esc(t("The number as CBE published it, or as Miqyas computed it for a computed series. Its unit is in the catalogue."))),
+      row("value", esc(t("The number as CBE published it, or as MacroMasr computed it for a computed series. Its unit is in the catalogue."))),
       row("observations", esc(t("In the JSON for one series, the readings as a list of [period, value] pairs, oldest first."))),
     ]) +
 
     "<h3>" + t("The catalogue") + "</h3>" +
     table([
       row("title_en, title_ar", esc(t("CBE's English and Arabic titles. For the Excel archive, CBE's Arabic title names the line of the table only."))),
-      row("title_ar_source", esc(t("\"miqyas\" where CBE publishes no Arabic name and the Arabic title is Miqyas's translation."))),
+      row("title_ar_source", esc(t("\"miqyas\" where CBE publishes no Arabic name and the Arabic title is MacroMasr's translation."))),
       row("unit", esc(t("What the value is measured in, as CBE states it: percent, EGP million, USD million and so on. Empty where CBE's sheet did not say."))),
       row("freq", esc(t("How often the series has a reading. The codes are below."))),
       row("dataset, family", esc(t("The CBE table or file group the series was read from, and the wider group the subjects are built on."))),
       row("source_url, source_file", esc(t("The CBE page or Excel file the series was read from. source_file is a path on www.cbe.org.eg."))),
-      row("derived, method", esc(t("true where Miqyas computed the series from CBE's numbers, with the method in words."))),
+      row("derived, method", esc(t("true where MacroMasr computed the series from CBE's numbers, with the method in words."))),
       row("period_basis", esc(t("\"end\" where each value is dated to the last day of the period it describes."))),
       row("provenance, note, marked", esc(t("For the SDDS series: how the dates were found, a note where a near twin exists, and the latest periods CBE marks preliminary or provisional in its own file."))),
       row("fiscal_year_basis", esc(t("Egypt's fiscal year, 1 July to 30 June, for the series that follow it."))),
@@ -180,12 +180,12 @@ function viewGuide() {
 
     "<h3>" + t("The revision record") + "</h3>" +
     table([
-      row("first_seen", esc(t("The first day Miqyas held that value for that series and period."))),
+      row("first_seen", esc(t("The first day MacroMasr held that value for that series and period."))),
       row("last_seen", esc(t("The last day it was held. Empty while it is still held. When a different value replaces it for the same period, last_seen is the day before the new one was first seen."))),
     ]) +
 
     "<h3>" + t("Updates") + "</h3>" +
-    "<p>" + t("The files are rebuilt every day from what Miqyas has read. status.json gives the time of the build and of the last read of CBE, and manifest.json gives every file with its SHA-256, so a copy can be checked against the one it came from.") + "</p>" +
+    "<p>" + t("The files are rebuilt every day from what MacroMasr has read. status.json gives the time of the build and of the last read of CBE, and manifest.json gives every file with its SHA-256, so a copy can be checked against the one it came from.") + "</p>" +
     '<p><a href="#/data">' + t("Back to the downloads →") + "</a></p>" +
     "</section></div>";
 }
@@ -202,24 +202,24 @@ function viewAbout() {
     '<a href="https://www.cbe.org.eg/en/" target="_blank" rel="noopener">cbe.org.eg</a>.</p>' +
 
     "<h3>" + t("Who made this, and why") + "</h3>" +
-    "<p>" + t("Miqyas is made by Mohamed Ghoneim, as an independent project.") + " " +
+    "<p>" + t("MacroMasr is made by Mohamed Ghoneim, as an independent project.") + " " +
     t("It republishes Central Bank of Egypt statistics as one clean dataset, with a dated archive of the daily tables, for people who write about Egypt's economy: analysts, journalists and researchers. CBE's figures are spread across live tables, Excel files and PDFs; here they are one catalogue with one set of ids, charted, searchable, and downloadable as CSV, Parquet, SQLite or JSON.") + "</p>" +
     "<p>" + t("Questions and corrections go to") + ' <a href="' + CONTACT_URL + '" target="_blank" rel="noopener">' +
     t("the project's GitHub issues page") + "</a>. " + removalLine() + "</p>" +
 
     "<h3>" + t("What it does") + "</h3>" +
-    "<p>" + t("Miqyas copies CBE's live tables once a day and its Excel archive and publications once a week, and saves each copy. It keeps a dated copy of the daily tables from 20 August 2026, so past values can be looked up. If CBE changes a figure it has already published, the change appears on the") +
+    "<p>" + t("MacroMasr copies CBE's live tables once a day and its Excel archive and publications once a week, and saves each copy. It keeps a dated copy of the daily tables from 20 August 2026, so past values can be looked up. If CBE changes a figure it has already published, the change appears on the") +
     ' <a href="#/changes">' + t("What changed") + "</a> " + t("page. Each week the Excel archive and the publications are also checked for files CBE has replaced or withdrawn.") + "</p>" +
-    "<p>" + t("Each series page says how its numbers got here: reproduced as published from one of CBE's daily tables, dated by Miqyas from the period labels in a CBE Excel sheet, or computed by Miqyas (a bid-to-cover ratio, a yield-curve bucket, reserves read from a press release), with the method named.") + "</p>" +
+    "<p>" + t("Each series page says how its numbers got here: reproduced as published from one of CBE's daily tables, dated by MacroMasr from the period labels in a CBE Excel sheet, or computed by MacroMasr (a bid-to-cover ratio, a yield-curve bucket, reserves read from a press release), with the method named.") + "</p>" +
 
     '<h3 id="terms">' + t("Terms") + "</h3>" +
-    "<p>" + t("The code is MIT-licensed. The data is the Central Bank of Egypt's, and Miqyas claims no rights in it. CBE's") + " " +
+    "<p>" + t("The code is MIT-licensed. The data is the Central Bank of Egypt's, and MacroMasr claims no rights in it. CBE's") + " " +
     '<a href="https://www.cbe.org.eg/en/disclaimer" target="_blank" rel="noopener">' + t("disclaimer") + "</a> " +
-    t("allows reuse of information from its website if CBE is cited as the source, any transformation is stated explicitly, and the information appears accurately. Miqyas cites CBE on every page and in every file, and says for each series what was done to the numbers. Errors in cleaning or dating are ours, not CBE's: check against CBE before you cite.") + "</p>" +
-    "<p>" + t("To cite a figure, name the Central Bank of Egypt as the source and Miqyas as where you found it. Each series page suggests a citation for its own series.") + "</p>" +
+    t("allows reuse of information from its website if CBE is cited as the source, any transformation is stated explicitly, and the information appears accurately. MacroMasr cites CBE on every page and in every file, and says for each series what was done to the numbers. Errors in cleaning or dating are ours, not CBE's: check against CBE before you cite.") + "</p>" +
+    "<p>" + t("To cite a figure, name the Central Bank of Egypt as the source and MacroMasr as where you found it. Each series page suggests a citation for its own series.") + "</p>" +
 
     "<h3>" + t("The name") + "</h3>" +
-    "<p><i>" + t("Miqyas") + "</i> " + t("is the Nilometer on Rhoda Island: the graduated marble column Cairo read the flood against to forecast the harvest and set the tax rate. Egypt's first macroeconomic indicator, in service by 861 AD, and the reason the graduated gauge recurs through this site.") + "</p>" +
+    "<p><i>" + t("MacroMasr") + "</i> " + t("is Egypt's macroeconomy, named the way Egyptians say it: Masr is Egypt. Macro means the economy as a whole: prices, the pound, interest rates, money, debt and growth, rather than any one firm or household.") + "</p>" +
 
     "<h3>" + t("Known limits") + "</h3>" +
     "<ul>" +

@@ -1,4 +1,4 @@
-/* Miqyas -- the rate decisions.
+/* MacroMasr -- the rate decisions.
  *
  * Every Monetary Policy Committee statement CBE has published since June
  * 2005, in one list, with what the committee did and how much of the wording
@@ -142,7 +142,7 @@ async function viewMPC() {
   const citeText =
     t("Central Bank of Egypt") + sep + tf("Monetary Policy Committee statements, {from} to {to}", {
       from: niceDate(mpc.range[0]), to: niceDate(mpc.range[1]) }) + ". " +
-    t("Republished by Miqyas") + sep + pageURL + (built ? sep + t("build of") + " " + built : "") + ".";
+    t("Republished by MacroMasr") + sep + pageURL + (built ? sep + t("build of") + " " + built : "") + ".";
   const takeAway =
     '<div class="band-inset take-away">' +
     '<p class="eyebrow">' + t("Take it with you") + "</p>" +

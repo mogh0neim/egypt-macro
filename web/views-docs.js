@@ -1,4 +1,4 @@
-/* Miqyas -- the document archive.
+/* MacroMasr -- the document archive.
  *
  * Two modes over the same corpus, because the two questions are different
  * shapes. Filtering titles and facets is instant, since documents.json is

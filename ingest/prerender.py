@@ -49,9 +49,9 @@ from site_config import SITE_URL  # noqa: E402  (same directory; not a package)
 # The one attribution sentence. The same words are ATTRIBUTION in web/core.js
 # and in ingest/build_exports.py; change all three together. The Arabic is in
 # the dictionary in web/i18n.js, keyed on this.
-ATTRIBUTION = ("Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by Miqyas, "
+ATTRIBUTION = ("Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by MacroMasr, "
                "an independent project not affiliated with, endorsed by, or connected to the "
-               "Central Bank of Egypt. Values are cleaned and dated by Miqyas; check against CBE "
+               "Central Bank of Egypt. Values are cleaned and dated by MacroMasr; check against CBE "
                "before citing.")
 
 # Written per build; every directory here is pruned before it is rewritten, so a
@@ -283,7 +283,7 @@ _AR: dict[str, str] = {}
 
 def _bare(text: str) -> str:
     """The text without its disambiguator. Only a pipe with no space before it
-    is one: " | Miqyas" in a page title is part of the title, and cutting there
+    is one: " | MacroMasr" in a page title is part of the title, and cutting there
     left every English title ending in a space with the site's name gone."""
     m = re.search(r"[^ ]\|", text)
     return text[:m.start() + 1] if m else text
@@ -305,7 +305,7 @@ CHROME = [
     "Independent project. Not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Official figures:",
     "Search series, topics, documents and pages",
     "Search series, topics, documents, pages…",
-    "Search Miqyas",
+    "Search MacroMasr",
     "Switch between light, dark and system theme",
     "Egypt's macroeconomic record from the Central Bank's own publications, updated daily.",
     "Not affiliated with, endorsed by, or connected to the Central Bank of Egypt.",
@@ -535,11 +535,11 @@ def series_body(meta: dict, full: dict, topic: dict | None, root: str, lang: str
 
     # On /ar/ the Arabic title is the heading and CBE's English title the line
     # under it, the other way round from the English page; an Arabic title
-    # Miqyas wrote says so. The links stay inside the Arabic site.
+    # MacroMasr wrote says so. The links stay inside the Arabic site.
     if lang == "ar" and arabic:
         heading = (f"<h1>{esc(arabic)}</h1>"
                    + (f'<p class="alt-en" dir="ltr" lang="en">{esc(title)}</p>' if title != arabic else "")
-                   + (f'<p class="foot-note">{esc(tr("Translated by Miqyas. CBE publishes no Arabic name for this series.", lang))}</p>'
+                   + (f'<p class="foot-note">{esc(tr("Translated by MacroMasr. CBE publishes no Arabic name for this series.", lang))}</p>'
                       if ours else ""))
     else:
         heading = (f"<h1{dir_attr(title)}>{esc(title)}</h1>"
@@ -618,7 +618,7 @@ def series_jsonld(meta: dict, full: dict, url: str, lang: str = "en") -> str:
             f"{full.get('title_en') or meta['series_id']}. "
             f"{meta.get('n', 0):,} observations from {nice_date(meta.get('first'))} to "
             f"{nice_date(meta.get('last'))}, published by the Central Bank of Egypt and "
-            f"republished by Miqyas.", 300),
+            f"republished by MacroMasr.", 300),
         "identifier": meta["series_id"],
         "url": url,
         "temporalCoverage": f"{meta.get('first', '')}/{meta.get('last', '')}",
@@ -626,7 +626,7 @@ def series_jsonld(meta: dict, full: dict, url: str, lang: str = "en") -> str:
         "usageInfo": f"{SITE_URL}about/",
         "creator": {"@type": "Organization", "name": "Central Bank of Egypt",
                     "url": "https://www.cbe.org.eg/en/"},
-        "publisher": {"@type": "Organization", "name": "Miqyas", "url": SITE_URL},
+        "publisher": {"@type": "Organization", "name": "MacroMasr", "url": SITE_URL},
         "distribution": [
             {"@type": "DataDownload", "encodingFormat": "application/json",
              "contentUrl": f"{SITE_URL}api/v1/series/{meta['series_id']}.json"},
@@ -826,13 +826,13 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
     home_url, home_alt = urls("")
     home = template.render(
         root=up(0), page="", lang=lang, alternate=home_alt,
-        title=tr("Miqyas: Egypt's economy in numbers", lang),
+        title=tr("MacroMasr: Egypt's economy in numbers", lang),
         description=tr("Central Bank of Egypt statistics as one clean dataset: exchange rates, "
                        "treasury auctions, inflation, policy rates and the CBE Excel archive, with "
                        "a free API, bulk files and a daily record of changes. Independent; not "
                        "affiliated with CBE.", lang),
         url=home_url, image=f"{SITE_URL}og.png",
-        image_alt=tr("Miqyas: Egypt's economy in numbers", lang),
+        image_alt=tr("MacroMasr: Egypt's economy in numbers", lang),
         body=home_body(topics, lang))
     # render() injects MIQYAS_PAGE; an empty one has to go rather than be
     # believed, or app.js treats the home page as a pre-rendered sub-page.
@@ -852,7 +852,7 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
         full = json.loads(full_path.read_text(encoding="utf-8"))
 
         # The Arabic title on /ar/: CBE's where it published one, which is the
-        # Excel archive, and Miqyas's translation, marked on the page, for every
+        # Excel archive, and MacroMasr's translation, marked on the page, for every
         # FX, price, policy rate and treasury bill series, which CBE names in
         # English only.
         title = (" ".join(str(full.get("title_ar") or "").split()) if lang == "ar" else None) \
@@ -868,7 +868,7 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
               else DIST / "s" / sid / "index.html",
               template.render(
                   root=up(2), page=f"/s/{sid}", lang=lang, alternate=alt,
-                  title=f"{title} | " + tr("Miqyas", lang),
+                  title=f"{title} | " + tr("MacroMasr", lang),
                   description=description, url=url,
                   image=f"{SITE_URL}og/{sid}.png",
                   image_alt=f"{title}, {reading}",
@@ -886,11 +886,11 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
               else DIST / "topic" / topic["key"] / "index.html",
               template.render(
                   root=up(2), page=f"/topic/{topic['key']}", lang=lang, alternate=alt,
-                  title=f"{name}: {len(rows):,} " + tr("series from Egypt's central bank", lang) + " | " + tr("Miqyas", lang),
+                  title=f"{name}: {len(rows):,} " + tr("series from Egypt's central bank", lang) + " | " + tr("MacroMasr", lang),
                   description=clamp(blurb + f" {len(rows):,} " + tr("series, updated daily.", lang)),
                   url=url,
                   image=f"{SITE_URL}og/topic-{topic['key']}.png",
-                  image_alt=name + ", Miqyas",
+                  image_alt=name + ", MacroMasr",
                   body=topic_body(topic, rows, up(2), lang)))
         written += 1
 
@@ -903,13 +903,13 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
               else DIST / "docs" / doc["id"] / "index.html",
               template.render(
                   root=up(2), page=f"/docs/{doc['id']}", lang=lang, alternate=alt,
-                  title=f"{title} | " + tr("Miqyas", lang),
+                  title=f"{title} | " + tr("MacroMasr", lang),
                   description=clamp(
                       f"{title}. {doc.get('pages', 0):,} " + tr("pages from the Central Bank of Egypt", lang) +
                       f", {nice_date(doc.get('date'))}. " + (snippet or "")),
                   url=url,
                   image=f"{SITE_URL}og.png",
-                  image_alt="Miqyas",
+                  image_alt="MacroMasr",
                   body=document_body(doc, snippet, up(2), lang)))
         written += 1
 
@@ -920,36 +920,36 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
     # The {placeholders} sit inside the dictionary keys, so the Arabic carries
     # them too and both languages are filled the same way.
     fixed = [
-        ("series", "/series", "Find or browse {series} Egyptian economic series | Miqyas",
+        ("series", "/series", "Find or browse {series} Egyptian economic series | MacroMasr",
          "Central Bank of Egypt statistics in thirteen subjects, searchable in English and Arabic."),
-        ("favourites", "/favourites", "Your favourites | Miqyas",
+        ("favourites", "/favourites", "Your favourites | MacroMasr",
          "One screen of the numbers you check most, with no prose in the way."),
-        ("rates", "/rates", "Every CBE rate decision since 2005 | Miqyas",
+        ("rates", "/rates", "Every CBE rate decision since 2005 | MacroMasr",
          "{decisions} Monetary Policy Committee statements back to June 2005, with the corridor and what changed in the wording each time."),
-        ("tools", "/tools", "Egyptian inflation calculator: what is your money worth? | Miqyas",
+        ("tools", "/tools", "Egyptian inflation calculator: what is your money worth? | MacroMasr",
          "Three calculators on the Central Bank's own numbers: what a salary from any month is worth "
          "today, what savings kept as pounds still buy, and the dollar rate on any date since 2005."),
-        ("tools/salary", "/tools/salary", "What is your Egyptian salary worth today? | Miqyas",
+        ("tools/salary", "/tools/salary", "What is your Egyptian salary worth today? | MacroMasr",
          "A salary from any month since 2005, priced in today's money using the Central Bank's own "
          "inflation. Free, and the answer is a link you can send."),
-        ("tools/savings", "/tools/savings", "What happened to your Egyptian pound savings? | Miqyas",
+        ("tools/savings", "/tools/savings", "What happened to your Egyptian pound savings? | MacroMasr",
          "What pounds set aside on any date since 2005 still buy, against what the same money would "
          "be worth had it been swapped for dollars that day."),
-        ("tools/dollar", "/tools/dollar", "What was the dollar worth in Egypt on any date? | Miqyas",
+        ("tools/dollar", "/tools/dollar", "What was the dollar worth in Egypt on any date? | MacroMasr",
          "The Central Bank's official EGP/USD rate on any date since January 2005, and on the same "
          "calendar day in every year since."),
-        ("changes", "/changes", "Revisions to published figures | Miqyas",
+        ("changes", "/changes", "Revisions to published figures | MacroMasr",
          "Daily record of CBE figures as published, and any revisions to figures already published. "
          "Independent; not affiliated with CBE."),
-        ("docs", "/docs", "Search {documents} Central Bank of Egypt publications | Miqyas",
+        ("docs", "/docs", "Search {documents} Central Bank of Egypt publications | MacroMasr",
          "CBE publications in PDF, {pages} pages of text indexed so you can search inside them in "
          "English and Arabic. Each result links to the original on cbe.org.eg."),
-        ("money-market", "/money-market", "Egypt's money market: the corridor, the tenors, the bill curve | Miqyas",
+        ("money-market", "/money-market", "Egypt's money market: the corridor, the tenors, the bill curve | MacroMasr",
          "Where the pound funded inside the CBE corridor, the interbank tenors with their volumes, and the EGP bill curve with bid to cover."),
-        ("data", "/data", "Download Egypt's macroeconomic data: Parquet, SQLite, CSV and a keyless API | Miqyas",
+        ("data", "/data", "Download Egypt's macroeconomic data: Parquet, SQLite, CSV and a keyless API | MacroMasr",
          "All {series} series in whichever shape suits you, updated daily. No key and no account."),
-        ("about", "/about", "About Miqyas: an independent dataset of Egyptian central bank data",
-         "Who made Miqyas and why, what is here and what is not, and the terms. Miqyas is an "
+        ("about", "/about", "About MacroMasr: an independent dataset of Egyptian central bank data",
+         "Who made MacroMasr and why, what is here and what is not, and the terms. MacroMasr is an "
          "independent project, not affiliated with the Central Bank of Egypt."),
     ]
 
@@ -969,7 +969,7 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
             root=up(slug.count("/") + 1), page=page, lang=lang, alternate=alt,
             title=title, description=clamp(description),
             url=url, image=f"{SITE_URL}og.png",
-            image_alt="Miqyas",
+            image_alt="MacroMasr",
             body='<div class="wrap"><section class="section">'
                  f"<h1>{esc(title.split(' | ')[0])}</h1>"
                  f'<p class="lede">{esc(description)}</p>'
@@ -984,8 +984,8 @@ def render_language(template, lang, *, index, topics, by_family, by_key, documen
 # any script runs. The Dataset markup on every series page points its
 # usageInfo here, so the terms have to be in the HTML a crawler reads.
 ABOUT_LINES = (
-    "Miqyas is made by Mohamed Ghoneim, as an independent project.",
-    "The code is MIT-licensed. The data is the Central Bank of Egypt's, and Miqyas claims no "
+    "MacroMasr is made by Mohamed Ghoneim, as an independent project.",
+    "The code is MIT-licensed. The data is the Central Bank of Egypt's, and MacroMasr claims no "
     "rights in it: cite CBE as the source, and check against CBE before citing.",
 )
 
@@ -1053,12 +1053,12 @@ def write_not_found(template: Template) -> None:
     site_path = urllib.parse.urlsplit(SITE_URL).path.rstrip("/")
     html = template.render(
         root=site_path, page="", lang="en",
-        title="Page not found | Miqyas",
+        title="Page not found | MacroMasr",
         description=tr("Central Bank of Egypt statistics as one clean dataset: exchange rates, "
                        "treasury auctions, inflation, policy rates and the CBE Excel archive, with "
                        "a free API, bulk files and a daily record of changes. Independent; not "
                        "affiliated with CBE.", "en"),
-        url=SITE_URL, image=f"{SITE_URL}og.png", image_alt="Miqyas",
+        url=SITE_URL, image=f"{SITE_URL}og.png", image_alt="MacroMasr",
         head_extra='<meta name="robots" content="noindex">',
         # What a reader with no script sees; app.js replaces it with the
         # nearest series to whatever the address carried.

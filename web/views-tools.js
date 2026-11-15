@@ -1,4 +1,4 @@
-/* Miqyas -- the three questions people actually turn up with.
+/* MacroMasr -- the three questions people actually turn up with.
  *
  * The rest of the site answers an analyst's questions: where the corridor is,
  * what bid-to-cover was at the last auction, how reserves moved. Those are the
@@ -90,7 +90,7 @@ const AMOUNT_PROBLEM = () => t("That is not an amount this can work with. Put in
 const MONTH_PROBLEM = () => t("Could not read that month. Write it as year and month, for example 2016-11.");
 const DAY_PROBLEM = () => t("Could not read that date. Write it as year, month and day, for example 2016-11-03.");
 const RANGE_PROBLEM = (from, to) =>
-  fillIn(t("Miqyas holds no figure for that date. Pick one from {from} to {to}."), { from: from, to: to });
+  fillIn(t("MacroMasr holds no figure for that date. Pick one from {from} to {to}."), { from: from, to: to });
 
 const toolProblem = (text) => (text ? '<p class="tool-problem" role="alert">' + esc(text) + "</p>" : "");
 
@@ -330,7 +330,7 @@ async function viewSavings(query) {
       " " + fillIn(t("Prices are to {prices}, the latest month in the index; the dollar rate is to {dollar}."),
                    { prices: esc(niceDate(priceNow[0]).replace(/^\d+ /, "")), dollar: esc(niceDate(fxNow[0])) }) +
       (fxStale
-        ? " " + fillIn(t("The dollar rate used for {asked} is from {held}, the last one Miqyas holds before it."),
+        ? " " + fillIn(t("The dollar rate used for {asked} is from {held}, the last one MacroMasr holds before it."),
                        { asked: esc(niceDate(from)), held: esc(niceDate(fxThen[0])) })
         : "") +
       "</p>" +
@@ -429,7 +429,7 @@ async function viewDollarOn(query) {
         "<h2>" + esc(fmt(hit[1], fx.unit)) + " " + t("on") + " " + esc(niceDate(hit[0])) + "</h2>" +
         '<p class="lede">' +
         (hit[0] !== asked && gap > 4
-          ? fillIn(t("Miqyas holds no rate for {asked}. This is the last one before it, {days} days earlier."),
+          ? fillIn(t("MacroMasr holds no rate for {asked}. This is the last one before it, {days} days earlier."),
                    { asked: esc(niceDate(asked)), days: gap }) + " "
           : hit[0] !== asked
           ? "CBE published no rate on " + esc(niceDate(asked)) +

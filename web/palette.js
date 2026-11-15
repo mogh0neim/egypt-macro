@@ -1,4 +1,4 @@
-/* Miqyas -- the command palette.
+/* MacroMasr -- the command palette.
  *
  * The masthead search box reached series and nothing else, and it was hidden
  * outright below 1150px, so on most laptops the site's only accelerator was
@@ -37,7 +37,7 @@ const PALETTE_PAGES = [
   { label: "What changed", href: "#/changes", hint: "revisions to published figures",
     alt: "revisions revised restated changelog news feed rss updates diff history vintage corrections anomalies latest today" },
   { label: "About", href: "#/about", hint: "how this is built, and what is not in it",
-    alt: "methodology provenance source disclaimer unofficial licence citation nilometer miqyas" },
+    alt: "methodology provenance source disclaimer unofficial licence citation nilometer miqyas macromasr masr" },
 ];
 
 /* How well a haystack answers a query term.

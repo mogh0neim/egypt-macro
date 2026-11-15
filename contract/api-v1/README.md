@@ -1,9 +1,9 @@
 # The api/v1 contract
 
-Miqyas publishes its data as plain JSON files at
+MacroMasr publishes its data as plain JSON files at
 `https://mogh0neim.github.io/egypt-macro/api/v1/`. No key, no sign-up. This page
 is the promise about their shape, for anyone who builds on them, including the
-Miqyas phone app. Copies of an app stay on people's phones for years, so the
+MacroMasr phone app. Copies of an app stay on people's phones for years, so the
 rules below do not bend.
 
 ## The files
@@ -42,5 +42,5 @@ tests are in `tests/test_api_contract.py`.
 ## Credit
 
 Every series file carries an `attribution` line. Show it wherever the numbers
-are shown. The data is the Central Bank of Egypt's; Miqyas is not affiliated
+are shown. The data is the Central Bank of Egypt's; MacroMasr is not affiliated
 with the CBE.

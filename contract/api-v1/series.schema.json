@@ -17,7 +17,7 @@
     "dataset": {"type": ["string", "null"]},
     "source_url": {"type": ["string", "null"], "description": "The CBE page the numbers come from."},
     "source_file": {"type": ["string", "null"]},
-    "derived": {"type": ["boolean", "null"], "description": "true when Miqyas computed the series from CBE data; see method."},
+    "derived": {"type": ["boolean", "null"], "description": "true when MacroMasr computed the series from CBE data; see method."},
     "method": {"type": ["string", "null"]},
     "note": {"type": ["string", "null"]},
     "observations": {

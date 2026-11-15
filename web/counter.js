@@ -1,4 +1,4 @@
-/* Miqyas -- the visit counter, and what the About page says about it.
+/* MacroMasr -- the visit counter, and what the About page says about it.
  *
  * Off unless site.toml names a GoatCounter site code, which build_site.py
  * writes into <meta name="miqyas:goatcounter">. Off, nothing here sends
@@ -65,14 +65,14 @@ function privacyNote() {
   return (
     '<h3 id="privacy">' + t("Privacy") + "</h3><p>" +
     (COUNTER_CODE
-      ? t("Miqyas sets no cookies.") + " " +
+      ? t("MacroMasr sets no cookies.") + " " +
         t("It counts visits with GoatCounter, the only other site a page load contacts; the pages, the fonts and the data all come from this site's own address.") + " " +
         t("For each page you open, GoatCounter is sent the name of the page, such as /tools/salary, never what you typed into it, and, when you arrive, the address of the site that linked you here, without the rest of its link.") + " " +
         t("Your browser also sends it what every request carries: your IP address and the kind of browser you use.") + " " +
         t("What GoatCounter keeps is set out in") +
         ' <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener">' +
         t("its privacy policy") + "</a>."
-      : t("Miqyas counts no visits and sets no cookies.") + " " +
+      : t("MacroMasr counts no visits and sets no cookies.") + " " +
         t("The pages, the fonts and the data all come from this site's own address, so opening a page tells no other site that you did.")) +
     "</p><p>" +
     t("Your favourites and settings are kept in this browser and never sent anywhere.") + " " +

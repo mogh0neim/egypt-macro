@@ -270,8 +270,8 @@ def revision_alerts(changes: dict | None, since: str, titles: dict) -> list[dict
 
 def rehearsal_alert() -> list[dict]:
     return [make("rehearsal", "rehearsal", "miqyas://mpc",
-                 ("Miqyas test alert", "This is a rehearsal. No action needed."),
-                 ("تنبيه تجريبي من مقياس", "هذا اختبار فقط. لا حاجة لأي إجراء."), kind="rehearsal")]
+                 ("MacroMasr test alert", "This is a rehearsal. No action needed."),
+                 ("تنبيه تجريبي من ماكرو مصر", "هذا اختبار فقط. لا حاجة لأي إجراء."), kind="rehearsal")]
 
 
 def to_messages(alerts: list[dict]) -> list[dict]:

@@ -1,4 +1,4 @@
-# Miqyas: the design
+# MacroMasr: the design
 
 Notes for whoever touches the front end next, including me in six months. This
 records the decisions and the reasons, so they do not have to be re-derived or
@@ -258,7 +258,7 @@ All in `core.js`, and all of it is about not spending precision on nothing:
   (net international reserves) keeps its day too, because its date is the
   press release's, not the month's.
 - `whenLabel` - the newest reading on a home tile: the period it is for, or
-  what kind of date it is ("released", "in force since", "issued"). Miqyas
+  what kind of date it is ("released", "in force since", "issued"). MacroMasr
   does not record CBE's release dates for monthly and quarterly series, so
   those say the period only, and a tile whose series has gone quiet says "no
   newer reading held" under it.
@@ -639,7 +639,7 @@ before the data printed nothing; `parseFloat` read "8,000" as 8; a savings
 date after the last price month was told prices had risen 1x. `readAmount`,
 `readMonth` and `readDay` in `views-tools.js` return a value, nothing, or
 "bad", and the page prints one line under the form saying which and what range
-Miqyas holds. The savings answer names both "now" dates, the last price month
+MacroMasr holds. The savings answer names both "now" dates, the last price month
 and the last dollar day, and a dollar rate taken from more than four days
 before the date asked for is named as such, because the archive has holes of
 seven and eight weeks in 2014 and 2015 that are not CBE's doing.
@@ -736,7 +736,7 @@ A key may carry a disambiguator after a pipe, because keying on the source
 collides two senses of one word. `t("Series|one row of a table")` is السلسلة
 where the nav item `t("Series")` is السلاسل, and both fall back to "Series".
 Only a pipe with no space before it is a disambiguator: `tr()` in
-`prerender.py` used to cut " | Miqyas" off every English page title too.
+`prerender.py` used to cut " | MacroMasr" off every English page title too.
 
 **`/ar/` is a directory of real files**, not a switch. A hash cannot be indexed
 and a query string is a different page to nobody, so `prerender.py` runs twice
@@ -760,15 +760,15 @@ above the site.
   reads, Arabic publications included. `lineChart`, `gauge` and `spark` keep
   their geometry, and `wireHover` keeps working because it maps a real
   `clientX` through the SVG's own box.
-- **The Arabic title leads on `/ar/`, and the ones Miqyas wrote say so**
+- **The Arabic title leads on `/ar/`, and the ones MacroMasr wrote say so**
   (decided 11 October 2026, replacing "series titles are CBE's"). Every series
   now has an Arabic title: CBE's for the Excel archive, where it names the line
-  of the table only, and Miqyas's own for the 223 FX, price, policy rate and
+  of the table only, and MacroMasr's own for the 223 FX, price, policy rate and
   treasury bill series CBE names in English alone (`title_ar_source:
   "miqyas"`). `titleHTML`, `titleText`, `lineHTML` and `tableText` give the
   Arabic in headings, tables, search results, the tab and the citation; CBE's
   English title is the second line (`titleAlt`, `.alt-en`), because it is the
-  name the Bank publishes. A title Miqyas wrote carries a dotted underline and
+  name the Bank publishes. A title MacroMasr wrote carries a dotted underline and
   a tooltip wherever it appears, a visible sentence under the series heading,
   and a sentence in the citation. The Excel tables have no Arabic name, so a
   table heading stays English on `/ar/`, held left to right.
@@ -804,7 +804,7 @@ Decided 11 October 2026, for the people who save and cite pages.
   the title, the series id, "data to" the newest period, the address and the
   build date from `status.json`. It used to end with the reader's own clock,
   so two readers on the same day cited different things. A computed series is
-  credited to Miqyas, computed from CBE data. "Copy the citation" copies the
+  credited to MacroMasr, computed from CBE data. "Copy the citation" copies the
   plain text.
 - **Every page names its tab.** `pageTitle()`; `app.js` sets one per nav key
   (`TAB_TITLES`) and the series, subject and money market views name
@@ -830,9 +830,9 @@ numbers do not move daily* and the copy should not imply they do.
 published figures". Never "quietly restated", "caught in the act", "kept
 honest", "the only record", "nothing else does", or "mirror": each says
 something about CBE's intent, or about completeness, that the site cannot
-back. Say what Miqyas holds, not what CBE did: "No newer reading here. Miqyas
+back. Say what MacroMasr holds, not what CBE did: "No newer reading here. MacroMasr
 holds no value after...", not "CBE has published nothing new". Excel series
-are "dated by Miqyas", computed series "computed by Miqyas", and only the daily
+are "dated by MacroMasr", computed series "computed by MacroMasr", and only the daily
 tables are "reproduced as published". Say "updated daily", never a clock time:
 the job is scheduled in the morning and GitHub often starts it hours late.
 
@@ -841,7 +841,7 @@ the removal line, "If anything here should not be, contact me and it will be
 removed.", which is also under the document search results. The contact is
 `CONTACT_URL` in `core.js`, the GitHub issues page for now, and nowhere else.
 The one attribution sentence ("Source: Central Bank of Egypt
-(https://www.cbe.org.eg). Republished by Miqyas, an independent project...")
+(https://www.cbe.org.eg). Republished by MacroMasr, an independent project...")
 is `ATTRIBUTION` in `core.js`, `build_exports.py` and `prerender.py`, and goes
 in every file a reader takes away.
 

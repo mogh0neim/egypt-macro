@@ -1,4 +1,4 @@
-/* Miqyas -- the money market page.
+/* MacroMasr -- the money market page.
  *
  * Every other view here is generic: it will render whichever of the 1,300
  * series you point it at. This one is not. It is one desk's screen, assembled

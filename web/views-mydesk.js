@@ -1,4 +1,4 @@
-/* Miqyas -- favourites.
+/* MacroMasr -- favourites.
  *
  * One screen of the numbers someone reads every morning, with no prose in the
  * way. It was called the desk, which described what it is for rather than what
@@ -76,7 +76,7 @@ function deskGroups(ids) {
  * a snapshot, and anyone who wants the history has the series page. */
 function deskCSV(rows) {
   const head =
-    "# Miqyas desk, " + new Date().toISOString().slice(0, 10) + "\n" +
+    "# MacroMasr desk, " + new Date().toISOString().slice(0, 10) + "\n" +
     "# " + ATTRIBUTION + "\n" +
     "series_id,title,unit,period,value,previous,change\n";
   const csv = (v) => {
@@ -93,7 +93,7 @@ function deskCSV(rows) {
   const blob = new Blob([head + body], { type: "text/csv;charset=utf-8" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = "miqyas-desk.csv";
+  a.download = "macromasr-desk.csv";
   document.body.appendChild(a);
   a.click();
   a.remove();

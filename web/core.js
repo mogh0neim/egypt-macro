@@ -1,4 +1,4 @@
-/* Miqyas -- shared core.
+/* MacroMasr -- shared core.
  *
  * Everything more than one view needs: where the data lives, how a number is
  * formatted, how a chart is drawn, and the topic taxonomy that turns 1,300
@@ -33,7 +33,7 @@ const siteBase = () => new URL(ROOT + "/", location.href).href;
  * words are in ingest/build_exports.py (JSON, Parquet, SQLite, the zip README)
  * and ingest/prerender.py (the pre-rendered pages); change all three together. */
 const ATTRIBUTION =
-  "Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by Miqyas, an independent project not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Values are cleaned and dated by Miqyas; check against CBE before citing.";
+  "Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by MacroMasr, an independent project not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Values are cleaned and dated by MacroMasr; check against CBE before citing.";
 
 /* Where a reader reaches the person behind the site: questions, corrections,
  * and requests to take something down. Set here and nowhere else, because it
@@ -188,7 +188,7 @@ const titleHTML = (s) => {
   if (RTL && arTitle(s)) {
     const mine = s.title_ar_source === "miqyas";
     return '<span lang="ar"' + (mine
-      ? ' class="ar-ours" title="' + t("Translated by Miqyas. CBE publishes no Arabic name for this series.") + '"'
+      ? ' class="ar-ours" title="' + t("Translated by MacroMasr. CBE publishes no Arabic name for this series.") + '"'
       : "") + ">" + esc(arTitle(s)) + "</span>";
   }
   const text = (s && (s.title_en || s.series_id)) || "";
@@ -215,7 +215,7 @@ const titleAlt = (s) => {
   if (!ar || ar === s.title_en) return "";
   const mine = s.title_ar_source === "miqyas";
   return '<span class="ar' + (mine ? " ar-ours" : "") + '" dir="rtl" lang="ar"' +
-    (mine ? ' title="' + t("Translated by Miqyas. CBE publishes no Arabic name for this series.") + '"' : "") +
+    (mine ? ' title="' + t("Translated by MacroMasr. CBE publishes no Arabic name for this series.") + '"' : "") +
     ">" + esc(ar) + "</span>";
 };
 
@@ -745,7 +745,7 @@ const lineOf = (s) => {
 /* The line and the table, in the page's language. CBE's Arabic titles for
  * the Excel archive name the line and nothing else, so its tables have no
  * Arabic name and stay English on /ar/, held left to right. The titles
- * Miqyas wrote carry both halves, and keep their mark. */
+ * MacroMasr wrote carry both halves, and keep their mark. */
 const splitAR = (s) => {
   const a = arTitle(s), i = a.indexOf(" - ");
   return i > 0 ? [a.slice(0, i), a.slice(i + 3)] : [null, a];
@@ -755,7 +755,7 @@ const tableText = (s) => (RTL && arTitle(s) && splitAR(s)[0]) || tableOf(s);
 const labelHTML = (text, s) => {
   if (RTL && ARABIC_RE.test(text) && s && s.title_ar_source === "miqyas") {
     return '<span lang="ar" class="ar-ours" title="' +
-      t("Translated by Miqyas. CBE publishes no Arabic name for this series.") + '">' + esc(text) + "</span>";
+      t("Translated by MacroMasr. CBE publishes no Arabic name for this series.") + '">' + esc(text) + "</span>";
   }
   if (ARABIC_RE.test(text)) return '<span dir="auto">' + esc(text) + "</span>";
   return RTL ? '<span dir="ltr" lang="en">' + esc(text) + "</span>" : esc(text);
@@ -1745,9 +1745,9 @@ function downloadCSV(id, observations, meta, note) {
   const head =
     "# " + ((meta && meta.title_en) || id) + "\n" +
     "# " + ATTRIBUTION + "\n" +
-    // A computed series is Miqyas's arithmetic, and the file says so where it
+    // A computed series is MacroMasr's arithmetic, and the file says so where it
     // credits the source, not only on the page it was downloaded from.
-    (meta && meta.derived ? "# Computed by Miqyas from CBE data: " + (meta.method || "") + "\n" : "") +
+    (meta && meta.derived ? "# Computed by MacroMasr from CBE data: " + (meta.method || "") + "\n" : "") +
     "# Unit: " + ((meta && meta.unit) || "not stated") + "\n" +
     // What the reader was looking at when they asked for it. A file of 1,200
     // rows out of 5,172 with nothing saying which 1,200 is a trap.
@@ -1799,22 +1799,22 @@ function copyTSV(button, rows, header) {
  * share card and its figure in the HTML, in the language being read. */
 const seriesURL = (id) => siteBase() + (RTL ? "ar/" : "") + "s/" + encodeURIComponent(id) + "/";
 
-/* The browser tab, per page. Every route used to read "Miqyas: Egypt's economy
+/* The browser tab, per page. Every route used to read "MacroMasr: Egypt's economy
  * in numbers", so ten saved tabs, a bookmark folder and a reference manager
  * all held ten identical entries. */
 function pageTitle(name) {
-  document.title = name ? name + " | " + t("Miqyas") : t("Miqyas: Egypt's economy in numbers");
+  document.title = name ? name + " | " + t("MacroMasr") : t("MacroMasr: Egypt's economy in numbers");
 }
 
 /* The citation for one series, as { html, text }. It names what a reader
  * needs to find the same numbers again: the series' address and id, the
  * newest period it holds, and the build it came from. The build date is the
  * site's, from status.json, not the reader's clock, so two readers on the
- * same day cite the same thing. A computed series is Miqyas's arithmetic on
+ * same day cite the same thing. A computed series is MacroMasr's arithmetic on
  * CBE's numbers, and crediting it to CBE would put words in the Bank's mouth.
  *
  * On /ar/ the Arabic title leads and CBE's English title follows it, since
- * that is the name the Bank publishes; an Arabic title Miqyas wrote says so. */
+ * that is the name the Bank publishes; an Arabic title MacroMasr wrote says so. */
 function citation(data, meta, status) {
   const id = data.series_id;
   const obs = data.observations || [];
@@ -1832,14 +1832,14 @@ function citation(data, meta, status) {
     : ["<i>" + esc(en) + "</i> (" + esc(id) + ")", en + " (" + id + ")"];
   const plain = (s) => [esc(s), s];
   const pieces = (data.derived
-    ? [plain(t("Miqyas")), name, plain(t("computed from Central Bank of Egypt data"))]
+    ? [plain(t("MacroMasr")), name, plain(t("computed from Central Bank of Egypt data"))]
     : [plain(t("Central Bank of Egypt")), name]
   ).concat([plain(t("data to") + " " + periodLabel(last, data).replace(/[⁦-⁩]/g, ""))]);
-  const where = (data.derived ? [] : [plain(t("Republished by Miqyas"))])
+  const where = (data.derived ? [] : [plain(t("Republished by MacroMasr"))])
     .concat([[bdiLTR(esc(url)), url]])
     .concat(built ? [plain(t("build of") + " " + built)] : []);
   const ours = RTL && arTitle(data) && data.title_ar_source === "miqyas"
-    ? plain(" " + t("The Arabic title is Miqyas's translation; CBE publishes this series under its English name.")) : ["", ""];
+    ? plain(" " + t("The Arabic title is MacroMasr's translation; CBE publishes this series under its English name.")) : ["", ""];
   const join = (k) => pieces.map((p) => p[k]).join(sep) + ". " + where.map((p) => p[k]).join(sep) + "." + ours[k];
   return { html: join(0), text: join(1) };
 }

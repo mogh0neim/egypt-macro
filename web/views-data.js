@@ -1,4 +1,4 @@
-/* Miqyas -- the data views: overview, browse, topic, series, find.
+/* MacroMasr -- the data views: overview, browse, topic, series, find.
  *
  * The governing rule for all of these: nobody should have to invent a query.
  * Every screen ends in something clickable, and the search box is an
@@ -101,7 +101,7 @@ async function viewHome() {
       "<i> " + esc(changeLabel(s.freq)) + "</i></span>" +
       /* The period the figure is for, and apart from it what kind of date
        * that is. "latest Oct 2026" on reserves was the press release's day
-       * read as a month; it now says released. A series Miqyas has had no new
+       * read as a month; it now says released. A series MacroMasr has had no new
        * reading for says so on the tile, not only on its own page. */
       '<span class="asof">' + whenLabel(s) +
       (s.stale_days ? '<i class="stale">' + t("no newer reading held") + "</i>" : "") + "</span>" +
@@ -189,7 +189,7 @@ async function viewHome() {
     '<section class="section band"><div class="wrap">' +
     '<p class="eyebrow">' + t("Start here") + "</p>" +
     "<h2>" + t("Seven questions, already answered") + "</h2>" +
-    '<p class="lede">' + t("Every number below is the latest Miqyas holds. Click one to see its whole history.") + "</p>" +
+    '<p class="lede">' + t("Every number below is the latest MacroMasr holds. Click one to see its whole history.") + "</p>" +
     '<div class="starters">' + starters + "</div>" +
     "</div></section>" +
 
@@ -237,7 +237,7 @@ async function viewHome() {
     '<a class="wide-card" href="#/changes">' +
     '<p class="eyebrow">' + t("What changed") + "</p>" +
     "<h3>" + t("A dated record of what CBE published") + "</h3>" +
-    "<p>" + t("Miqyas keeps a dated copy of the daily tables from 20 August 2026. If CBE changes a figure it has already published, the change appears on the What changed page, which also counts the revisions recorded so far. The weekly Excel archive is not yet checked for changes.") + "</p>" +
+    "<p>" + t("MacroMasr keeps a dated copy of the daily tables from 20 August 2026. If CBE changes a figure it has already published, the change appears on the What changed page, which also counts the revisions recorded so far. The weekly Excel archive is not yet checked for changes.") + "</p>" +
     '<span class="go">' + t("See what changed →") + "</span></a>" +
     '<a class="wide-card" href="#/docs">' +
     '<p class="eyebrow">' + t("Documents") + "</p>" +
@@ -543,17 +543,17 @@ function qualityNotice(meta, data) {
   if (!meta) return "";
   const out = [];
   if (meta.stale_days) {
-    /* What Miqyas holds, not what CBE has done. The flag measures the age of
+    /* What MacroMasr holds, not what CBE has done. The flag measures the age of
      * the newest stored reading, so it cannot tell a source that stopped from
-     * a newer release Miqyas has not picked up, and it must not pretend to. */
+     * a newer release MacroMasr has not picked up, and it must not pretend to. */
     const cadence = FREQ_LABEL[data.freq] || "";
     out.push(
       '<div class="notice"><h3>' + t("No newer reading here") + "</h3>" +
       "<p>" + tf(cadence
-        ? "Miqyas holds no value for this series after {d}: {n} days without a new reading ({f})."
-        : "Miqyas holds no value for this series after {d}: {n} days without a new reading.",
+        ? "MacroMasr holds no value for this series after {d}: {n} days without a new reading ({f})."
+        : "MacroMasr holds no value for this series after {d}: {n} days without a new reading.",
         { d: periodLabel(meta.last, meta), n: num(meta.stale_days), f: esc(cadence.toLowerCase()) }) + " " +
-      t("The source may have stopped, or Miqyas may not have picked up a newer release.") +
+      t("The source may have stopped, or MacroMasr may not have picked up a newer release.") +
       (data.source_url || data.source_file ? " " + t("Check the CBE source linked below.") : "") +
       "</p></div>"
     );
@@ -811,7 +811,7 @@ async function viewSeries(id) {
 
   const stats = meta || {};
   const change = changeOf(stats);
-  // The Excel archive is CBE's numbers on dates Miqyas reads off the sheet, so
+  // The Excel archive is CBE's numbers on dates MacroMasr reads off the sheet, so
   // it is neither "as published" nor computed, and says so.
   const isExcel = data.dataset === "excel_archive";
   // The same holds for the files on CBE's SDDS page, which are read the same way.
@@ -848,7 +848,7 @@ async function viewSeries(id) {
     titleAlt(data) +
     // The mark, said in words where a reader cannot hover.
     (RTL && arTitle(data) && data.title_ar_source === "miqyas"
-      ? '<p class="foot-note ours-note">' + t("Translated by Miqyas. CBE publishes no Arabic name for this series.") + "</p>"
+      ? '<p class="foot-note ours-note">' + t("Translated by MacroMasr. CBE publishes no Arabic name for this series.") + "</p>"
       : "") +
     '<div class="big-figure">' +
     '<span class="v">' + fmt(stats.latest_value, data.unit) + "</span>" +
@@ -863,9 +863,9 @@ async function viewSeries(id) {
     "<span><b>" + t("Covers") + "</b> " +
     (stats.first ? tf("{from} to {to}", { from: periodLabel(stats.first, data), to: periodLabel(stats.last, data) }) : "—") + "</span>" +
     (data.derived
-      ? "<span><b>" + t("Computed by Miqyas") + "</b> " + t("from CBE data") + "</span>"
+      ? "<span><b>" + t("Computed by MacroMasr") + "</b> " + t("from CBE data") + "</span>"
       : isExcel || isSDDS
-      ? "<span><b>" + t("Dates assigned by Miqyas") + "</b> " + t("from the sheet") + "</span>"
+      ? "<span><b>" + t("Dates assigned by MacroMasr") + "</b> " + t("from the sheet") + "</span>"
       : "<span><b>" + t("Reproduced as published") + "</b> " + t("yes") + "</span>") +
     "</div></div>" +
 
@@ -907,12 +907,12 @@ async function viewSeries(id) {
     "<h2>" + t("Provenance") + "</h2>" +
     '<p class="lede">' +
     (data.derived
-      ? t("Computed by Miqyas from CBE data:") + " " + methodHTML
+      ? t("Computed by MacroMasr from CBE data:") + " " + methodHTML
       : isExcel
-      ? t("Source: Central Bank of Egypt, Excel time-series archive. Miqyas reads the sheet and assigns each value to a date from the sheet's own period labels. Fiscal-year quarters follow Egypt's July to June year. Dates are our reading of the sheet and can be wrong; check the linked CBE file before citing.")
+      ? t("Source: Central Bank of Egypt, Excel time-series archive. MacroMasr reads the sheet and assigns each value to a date from the sheet's own period labels. Fiscal-year quarters follow Egypt's July to June year. Dates are our reading of the sheet and can be wrong; check the linked CBE file before citing.")
       : isSDDS
-      ? t("Source: Central Bank of Egypt, the Excel files on its SDDS page, where CBE keeps money, banking and reserves up to the latest month. Miqyas reads the file and dates each value to the last day of its month from the sheet's own month labels. Check the linked CBE file before citing.")
-      : t("Reproduced as published from the Central Bank of Egypt's daily tables. Where CBE printed two values for one date, Miqyas keeps one and lists both on the What changed page.")) +
+      ? t("Source: Central Bank of Egypt, the Excel files on its SDDS page, where CBE keeps money, banking and reserves up to the latest month. MacroMasr reads the file and dates each value to the last day of its month from the sheet's own month labels. Check the linked CBE file before citing.")
+      : t("Reproduced as published from the Central Bank of Egypt's daily tables. Where CBE printed two values for one date, MacroMasr keeps one and lists both on the What changed page.")) +
     (data.note ? " " + noteHTML : "") +
     (data.period_basis === "end" ? " " + t("Values are dated to the end of the period they describe.") : "") +
     (data.unit

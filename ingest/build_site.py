@@ -244,7 +244,7 @@ def main() -> int:
         "observations": sum(s.get("n", 0) for s in series),
         "documents": len(documents),
         "source": "Central Bank of Egypt",
-        "affiliation": "None. Miqyas is an independent project, not affiliated with, endorsed by, "
+        "affiliation": "None. MacroMasr is an independent project, not affiliated with, endorsed by, "
                        "or connected to the Central Bank of Egypt.",
     }
 

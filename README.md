@@ -1,4 +1,4 @@
-# Miqyas
+# MacroMasr
 
 **[mogh0neim.github.io/egypt-macro](https://mogh0neim.github.io/egypt-macro/)**
 
@@ -13,9 +13,9 @@ Central Bank of Egypt statistics as clean data: more than 1,300 series,
 charted, searchable and downloadable, with no key and no account. Coverage is
 listed on the Data page; some series stop earlier than CBE's own.
 
-*Miqyas* is the Nilometer on Rhoda Island: the graduated marble column Cairo read
-the flood against to forecast the harvest and set the tax rate. Egypt's first
-macroeconomic indicator, in service by 861 AD.
+*MacroMasr* is Egypt's macroeconomy, named the way Egyptians say it: Masr is
+Egypt. Macro means the economy as a whole: prices, the pound, interest rates,
+money, debt and growth.
 
 The CBE puts a genuinely valuable body of statistics on its website, spread
 across live tables, Excel files and PDFs. This repository copies CBE's live
@@ -109,7 +109,7 @@ From the Excel archive, which is where the rest of Egypt's macro record lives:
 
 ## The revision record
 
-CBE overwrites its files in place when it revises a figure. Miqyas keeps a dated
+CBE overwrites its files in place when it revises a figure. MacroMasr keeps a dated
 copy of the daily tables from 20 August 2026: every run commits the raw response
 and the cleaned table, so `git log` can say what a figure read on any day since.
 
@@ -130,11 +130,11 @@ What is checked for revisions:
   file is behind it and `parse_sdds.py` kept its `PARSER_VERSION`.
 - **Press releases**: the newest are read again each day (`fetch_press.py
   --refresh N`). Reserves and remittances parsed from them, and every other
-  series Miqyas computes, are never counted as revisions.
+  series MacroMasr computes, are never counted as revisions.
 
 `ingest/build_changes.py` decides whose change each one was. A commit by a
 person, a change in `PARSER_VERSION`, a clean table that changed when CBE's raw
-file did not, or a date where CBE published two values, is re-read by Miqyas,
+file did not, or a date where CBE published two values, is re-read by MacroMasr,
 not revised by CBE. More than 500 changes in one scraper commit are held back
 rather than reported.
 
@@ -142,7 +142,7 @@ rather than reported.
 table with one row per value a series has held: `series_id, period, value,
 first_seen, last_seen` (UTC days; `last_seen` is empty while the value is still
 held). It is published as `parquet/revisions.parquet`, `bulk/revisions-csv.zip`
-and the `revisions` table in `miqyas.sqlite`. What a series read on a day:
+and the `revisions` table in `macromasr.sqlite`. What a series read on a day:
 
 ```sql
 SELECT period, value FROM revisions
@@ -223,17 +223,17 @@ are.
 The site's address is one line, `url` in [`site.toml`](site.toml). Every
 canonical link, share card, sitemap entry and feed link is built from it, so
 nothing else in the code needs changing. The rest is done in GitHub and at
-whoever sold the domain. Say the domain is `miqyas.org`:
+whoever sold the domain. Say the domain is `macromasr.com`:
 
 1. **Tell GitHub the domain is yours.** On github.com, your profile picture,
-   Settings, Pages, "Add a domain", type `miqyas.org`. GitHub shows a TXT
+   Settings, Pages, "Add a domain", type `macromasr.com`. GitHub shows a TXT
    record; add it at the domain seller (step 3) and press Verify. This stops
    anyone else pointing the domain at their own GitHub site.
 2. **Point the repository at it.** In this repository: Settings, Pages, Custom
-   domain, type `miqyas.org`, Save. No `CNAME` file is needed: the site is
+   domain, type `macromasr.com`, Save. No `CNAME` file is needed: the site is
    published by a workflow, and GitHub ignores that file for those.
 3. **Point the domain at GitHub.** In the domain seller's DNS settings, add:
-   - four `A` records for `miqyas.org` (the host is often written `@`):
+   - four `A` records for `macromasr.com` (the host is often written `@`):
      `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
    - four `AAAA` records for `@`: `2606:50c0:8000::153`, `2606:50c0:8001::153`,
      `2606:50c0:8002::153`, `2606:50c0:8003::153`
@@ -244,10 +244,10 @@ whoever sold the domain. Say the domain is `miqyas.org`:
 4. **Wait, then turn on HTTPS.** DNS takes from minutes to a day. When
    Settings, Pages shows the domain as checked, tick "Enforce HTTPS" (the
    certificate can take up to an hour to appear).
-5. **Change the one line.** In `site.toml`, set `url = "https://miqyas.org/"`
+5. **Change the one line.** In `site.toml`, set `url = "https://macromasr.com/"`
    (with the slash at the end), commit and push. The publish workflow rebuilds
    every page with the new address.
-6. **Check it.** Open `https://miqyas.org/`, view the page source and look for
+6. **Check it.** Open `https://macromasr.com/`, view the page source and look for
    `rel="canonical"`: it should show the new address. The old address,
    `mogh0neim.github.io/egypt-macro/`, forwards to the new one by itself.
 
@@ -264,7 +264,7 @@ search engines do not look for it, and submitting now would point Google at
 addresses that are about to change.
 
 1. Go to [Search Console](https://search.google.com/search-console), "Add
-   property", choose "Domain" and type `miqyas.org`. Google shows a TXT record:
+   property", choose "Domain" and type `macromasr.com`. Google shows a TXT record:
    add it at the domain seller, as in step 3 above, and press Verify.
 2. In Search Console, open "Sitemaps", type `sitemap.xml` and Submit. It
    lists every page of the site in both languages. Its status should read
@@ -279,8 +279,8 @@ which sets no cookies. It is off: `goatcounter` in `site.toml` is empty, and
 while it is empty no page contacts GoatCounter at all. To switch it on:
 
 1. Make a free account at goatcounter.com. The "code" you pick is the first
-   part of your dashboard address: `miqyas` for `miqyas.goatcounter.com`.
-2. In `site.toml`, set `goatcounter = "miqyas"`, commit and push.
+   part of your dashboard address: `macromasr` for `macromasr.goatcounter.com`.
+2. In `site.toml`, set `goatcounter = "macromasr"`, commit and push.
 3. Open the site, click around, and check the dashboard a minute later.
 
 Each page a reader opens then sends GoatCounter its name only, such as
@@ -303,7 +303,7 @@ dist/search/                         sharded full-text index over the corpus
 dist/status.json                     when it was built and how much is in it
 dist/parquet/*.parquet               partitioned, sorted for DuckDB range reads
 dist/parquet/revisions.parquet       every value each series has held, with first and last day
-dist/miqyas.sqlite                   the whole thing, queryable, with a revisions table
+dist/macromasr.sqlite                   the whole thing, queryable, with a revisions table
 dist/bulk/*.zip                      CSV bundles, including revisions-csv.zip
 ```
 
@@ -385,7 +385,7 @@ series and date:
 - A file that cannot be read is listed in `catalog/excel_quarantine.json` with
   its table and fiscal year, which names the gap it leaves.
 - `PARSER_VERSION` in `parse_excel.py` changes whenever its output does, so a
-  re-read of the same files is put down to Miqyas, not to CBE.
+  re-read of the same files is put down to MacroMasr, not to CBE.
 
 `python tests/test_parse_excel.py` (or `python -m pytest tests`) checks the
 parser against 15 real CBE workbooks kept in `tests/fixtures/excel/`, with the
@@ -418,18 +418,18 @@ forward-filled - a gap is a gap.
 
 CBE's [disclaimer](https://www.cbe.org.eg/en/disclaimer) allows reuse of
 information from its website if CBE is cited as the source, any transformation
-is stated explicitly, and the information appears accurately. Miqyas cites CBE
+is stated explicitly, and the information appears accurately. MacroMasr cites CBE
 on every page and file, states per series whether a value is reproduced, dated
-by Miqyas or computed, and links each series to its CBE source where it has one.
+by MacroMasr or computed, and links each series to its CBE source where it has one.
 Errors in cleaning or dating are ours: check against CBE before you cite. Raw
 responses are kept in this repository under `data/raw/`.
 
 If you use this data, cite the Central Bank of Egypt as the source. Every file
 carries the same line:
 
-> Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by Miqyas,
+> Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by MacroMasr,
 > an independent project not affiliated with, endorsed by, or connected to the
-> Central Bank of Egypt. Values are cleaned and dated by Miqyas; check against
+> Central Bank of Egypt. Values are cleaned and dated by MacroMasr; check against
 > CBE before citing.
 
 If anything here should not be, [open an issue](https://github.com/mogh0neim/egypt-macro/issues)

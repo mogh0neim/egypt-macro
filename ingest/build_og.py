@@ -186,7 +186,7 @@ def base() -> tuple[Image.Image, ImageDraw.ImageDraw]:
     img = Image.new("RGB", (W, H), INK)
     draw = ImageDraw.Draw(img)
     column(draw)
-    draw.text((110, 44), "MIQYAS", font=font("display", 44), fill=MARBLE)
+    draw.text((110, 44), "MACROMASR", font=font("display", 44), fill=MARBLE)
     draw.text((110, H - 58),
               "INDEPENDENT  \u00b7  NOT AFFILIATED WITH THE CENTRAL BANK OF EGYPT  \u00b7  UPDATED DAILY",
               font=font("mono", 19), fill=MUTED)

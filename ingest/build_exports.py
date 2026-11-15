@@ -46,9 +46,9 @@ SPARK_POINTS = 48
 # per-series JSON, the Parquet metadata, an "about" table in SQLite and the zip
 # README. The same words are ATTRIBUTION in web/core.js (CSV downloads) and in
 # ingest/prerender.py (the pre-rendered pages); change all three together.
-ATTRIBUTION = ("Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by Miqyas, "
+ATTRIBUTION = ("Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by MacroMasr, "
                "an independent project not affiliated with, endorsed by, or connected to the "
-               "Central Bank of Egypt. Values are cleaned and dated by Miqyas; check against CBE "
+               "Central Bank of Egypt. Values are cleaned and dated by MacroMasr; check against CBE "
                "before citing.")
 # Written into every Parquet file's key-value metadata. The sentence has no
 # single quote in it, which is what lets it sit inside DuckDB's literal as is.
@@ -87,7 +87,7 @@ def load_observations() -> list[tuple[str, str, float]]:
 
 
 REVISIONS_README = """\
-Miqyas revision record: every value the clean series have held
+MacroMasr revision record: every value the clean series have held
 
 Source: Central Bank of Egypt (cbe.org.eg). Not affiliated with or endorsed by the CBE.
 
@@ -98,7 +98,7 @@ One row per value a series held for a period, with the days it was held:
               maps the old id to the new one
   period      the date the value is for
   value       the value
-  first_seen  the first day (UTC) Miqyas held this value
+  first_seen  the first day (UTC) MacroMasr held this value
   last_seen   the last day it held it; empty while it still does
 
 What a series read on day D:
@@ -106,7 +106,7 @@ What a series read on day D:
 
 Built from the git history of data/clean/series, which starts on 20 August 2026.
 A value written and overwritten within one day is left out. The table records
-what Miqyas held, which includes values that changed because Miqyas re-read
+what MacroMasr held, which includes values that changed because MacroMasr re-read
 CBE's files, not only revisions by CBE: the What changed page and
 changes-revisions.xml say which is which.
 """
@@ -164,7 +164,7 @@ def write_revisions(con, sqlite_path: pathlib.Path) -> None:
     current = sum(1 for r in rows if r[4] is None)
     print(f"  revisions  {len(rows):,} rows ({len(rows) - current:,} no longer held)  "
           f"parquet/revisions.parquet {(PARQUET / 'revisions.parquet').stat().st_size/1e6:.1f} MB, "
-          f"bulk/revisions-csv.zip, miqyas.sqlite {sqlite_path.stat().st_size/1e6:.1f} MB")
+          f"bulk/revisions-csv.zip, macromasr.sqlite {sqlite_path.stat().st_size/1e6:.1f} MB")
 
 
 def main() -> int:
@@ -196,7 +196,7 @@ def main() -> int:
                 record["title_ar"] = arabic
                 record["title_ar_source"] = "miqyas"
                 ours += 1
-        print(f"Arabic titles: {ours:,} supplied by Miqyas where CBE published none")
+        print(f"Arabic titles: {ours:,} supplied by MacroMasr where CBE published none")
 
     print(f"{len(observations):,} observations across {len({o[0] for o in observations}):,} series")
 
@@ -248,7 +248,7 @@ def main() -> int:
     )
 
     # ---- SQLite, for anyone who would rather just query it ----
-    sqlite_path = DIST / "miqyas.sqlite"
+    sqlite_path = DIST / "macromasr.sqlite"
     # Rebuilt from scratch each run; dist/ is no longer wiped wholesale, so the
     # previous file has to be removed explicitly. Sweeping the glob rather than
     # the one path means a rename does not leave 50 MB of orphan behind.
@@ -289,7 +289,7 @@ def main() -> int:
     db.executescript("CREATE INDEX obs_period ON observations(period);")
     db.commit()
     db.close()
-    print(f"  miqyas.sqlite  {sqlite_path.stat().st_size/1e6:.1f} MB")
+    print(f"  macromasr.sqlite  {sqlite_path.stat().st_size/1e6:.1f} MB")
 
     write_revisions(con, sqlite_path)
 
@@ -335,7 +335,7 @@ def main() -> int:
                     "count": len(points),
                     # A computed series says so where it credits the source.
                     "attribution": ATTRIBUTION + (
-                        f" Computed by Miqyas from CBE data: {meta.get('method') or ''}".rstrip()
+                        f" Computed by MacroMasr from CBE data: {meta.get('method') or ''}".rstrip()
                         if meta.get("derived") else ""),
                 },
                 ensure_ascii=False,
@@ -474,11 +474,11 @@ def main() -> int:
             z.write(CATALOG / "series.json", "catalog/series.json")
             z.writestr(
                 "README.txt",
-                "Miqyas bulk export -- Egypt's macroeconomic record\n\n"
+                "MacroMasr bulk export -- Egypt's macroeconomic record\n\n"
                 + ATTRIBUTION + "\n\n"
                 "Cite the Central Bank of Egypt as the source. Series computed by\n"
-                "Miqyas are marked derived in catalog/series.json, with their method;\n"
-                "Excel-archive series are dated by Miqyas from the sheets' period labels,\n"
+                "MacroMasr are marked derived in catalog/series.json, with their method;\n"
+                "Excel-archive series are dated by MacroMasr from the sheets' period labels,\n"
                 "and EG.SDDS series from the month labels of the files on CBE's SDDS page.\n",
             )
         print(f"  bulk/{name}-csv.zip")

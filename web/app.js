@@ -1,4 +1,4 @@
-/* Miqyas -- router, theme, and the bits of chrome that live outside a view.
+/* MacroMasr -- router, theme, and the bits of chrome that live outside a view.
  *
  * Hash routing rather than history routing, because the site is static files
  * on a CDN and there is nothing to rewrite a deep URL back to index.html.

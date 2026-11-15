@@ -107,7 +107,7 @@ def test_source_file_and_provenance():
     entry = catalog["EG.SDDS.M2.TOTAL"]
     assert entry["source_file"].startswith("https://www.cbe.org.eg/-/media/") and entry["source_file"].endswith(".xlsx")
     assert entry["source_url"] == ps.PAGE
-    assert entry["provenance"] == "Dated by Miqyas from the sheet's month labels"
+    assert entry["provenance"] == "Dated by MacroMasr from the sheet's month labels"
     assert entry["title_en"].startswith("Domestic Liquidity and Counterpart Assets (SDDS) - ")
 
 

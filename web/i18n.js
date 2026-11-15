@@ -1,4 +1,4 @@
-/* Miqyas -- English and Arabic, from one set of views.
+/* MacroMasr -- English and Arabic, from one set of views.
  *
  * Egypt reads Arabic. The data here is Egyptian, the source is Egyptian, and
  * every word of the site around it was English. That is not a localisation
@@ -69,7 +69,7 @@ const AR = {
   /* ---------- the freshness strip ----------
    * On every page, and the only route to the change log, so it is the one
    * piece of chrome that cannot be left in English. */
-  "Miqyas: Egypt's economy in numbers": "مقياس: اقتصاد مصر بالأرقام",
+  "MacroMasr: Egypt's economy in numbers": "ماكرو مصر: اقتصاد مصر بالأرقام",
   "Central Bank of Egypt statistics as one clean dataset: exchange rates, treasury auctions, inflation, policy rates and the CBE Excel archive, with a free API, bulk files and a daily record of changes. Independent; not affiliated with CBE.":
     "إحصاءات البنك المركزي المصري في مجموعة بيانات واحدة منظمة: أسعار الصرف وعطاءات الخزانة والتضخم وأسعار الفائدة وأرشيف ملفات Excel، مع واجهة مجانية وملفات تحميل وسجل يومي للتغييرات. موقع مستقل غير تابع للبنك المركزي.",
   "Rebuilt": "أُعيد البناء",
@@ -188,8 +188,8 @@ const AR = {
   "The same numbers, asked in the second person. A salary from a year you remember, priced in today's money. Savings kept as pounds against the same money swapped for dollars on day one. The dollar rate on any date since 2005.":
     "الأرقام نفسها، مطروحة بصيغة المخاطب. راتب من عام تتذكره، مُقوَّم بنقود اليوم. مدخرات بقيت بالجنيه مقابل المال نفسه لو حُوِّل إلى دولار من اليوم الأول. وسعر الدولار في أي تاريخ منذ 2005.",
   "A dated record of what CBE published": "سجل مؤرَّخ لما نشره البنك المركزي",
-  "Miqyas keeps a dated copy of the daily tables from 20 August 2026. If CBE changes a figure it has already published, the change appears on the What changed page, which also counts the revisions recorded so far. The weekly Excel archive is not yet checked for changes.":
-    "يحتفظ مقياس بنسخة مؤرَّخة من الجداول اليومية منذ 20 أغسطس 2026. إذا غيّر البنك المركزي رقمًا سبق نشره فسيظهر التغيير في صفحة «ما الذي تغيّر»، التي تعرض أيضًا عدد التعديلات المرصودة حتى الآن. ولا يُفحص أرشيف Excel الأسبوعي بحثًا عن تغييرات بعد.",
+  "MacroMasr keeps a dated copy of the daily tables from 20 August 2026. If CBE changes a figure it has already published, the change appears on the What changed page, which also counts the revisions recorded so far. The weekly Excel archive is not yet checked for changes.":
+    "يحتفظ ماكرو مصر بنسخة مؤرَّخة من الجداول اليومية منذ 20 أغسطس 2026. إذا غيّر البنك المركزي رقمًا سبق نشره فسيظهر التغيير في صفحة «ما الذي تغيّر»، التي تعرض أيضًا عدد التعديلات المرصودة حتى الآن. ولا يُفحص أرشيف Excel الأسبوعي بحثًا عن تغييرات بعد.",
 
   /* ---------- the calculators ---------- */
   "Three questions about your own money": "ثلاثة أسئلة عن أموالك أنت",
@@ -281,8 +281,8 @@ const AR = {
   "The revision record": "سجل التعديلات",
   "What CBE published, and what was revised":
     "ما نشره البنك المركزي، وما جرى تعديله",
-  "Miqyas keeps a dated copy of the daily tables from 20 August 2026. If CBE changes a figure it has already published, the change appears here.":
-    "يحتفظ مقياس بنسخة مؤرَّخة من الجداول اليومية منذ 20 أغسطس 2026. إذا غيّر البنك المركزي رقمًا سبق نشره فسيظهر التغيير هنا.",
+  "MacroMasr keeps a dated copy of the daily tables from 20 August 2026. If CBE changes a figure it has already published, the change appears here.":
+    "يحتفظ ماكرو مصر بنسخة مؤرَّخة من الجداول اليومية منذ 20 أغسطس 2026. إذا غيّر البنك المركزي رقمًا سبق نشره فسيظهر التغيير هنا.",
   "new readings": "قراءة جديدة",
   "figures revised": "رقمًا جرى تعديله",
   "after first publishing them": "بعد نشرها أول مرة",
@@ -313,25 +313,25 @@ const AR = {
   "Money, banking and reserves to the latest month, from CBE's SDDS page. Read weekly; a new month is listed as an SDDS update, and a figure that changes in a file CBE replaced counts as a revision.":
     "النقود والبنوك والاحتياطيات حتى أحدث شهر، من صفحة SDDS لدى البنك المركزي. تُقرأ أسبوعيًا، ويُدرج الشهر الجديد تحديثًا لملفات SDDS، وأي رقم يتغيّر في ملف استبدله البنك المركزي يُحتسب تعديلًا.",
   "Not counted": "لا تُحتسب",
-  "The series Miqyas computes or parses from press releases, such as reserves, remittances and the yield curve. They move when their sources move.":
-    "السلاسل التي يحسبها مقياس أو يستخرجها من البيانات الصحفية، مثل الاحتياطيات والتحويلات ومنحنى العائد. تتحرك حين تتحرك مصادرها.",
-  "Every value Miqyas has held, with the first and last day it was held:":
-    "كل قيمة احتفظ بها مقياس، مع أول يوم وآخر يوم احتفظ بها فيه:",
-  "the revisions table in miqyas.sqlite": "جدول revisions في miqyas.sqlite",
+  "The series MacroMasr computes or parses from press releases, such as reserves, remittances and the yield curve. They move when their sources move.":
+    "السلاسل التي يحسبها ماكرو مصر أو يستخرجها من البيانات الصحفية، مثل الاحتياطيات والتحويلات ومنحنى العائد. تتحرك حين تتحرك مصادرها.",
+  "Every value MacroMasr has held, with the first and last day it was held:":
+    "كل قيمة احتفظ بها ماكرو مصر، مع أول يوم وآخر يوم احتفظ بها فيه:",
+  "the revisions table in macromasr.sqlite": "جدول revisions في macromasr.sqlite",
   "since": "منذ",
   "Where CBE published two different values for one date":
     "حيث نشر البنك المركزي قيمتين مختلفتين لتاريخ واحد",
-  "These do not need a history to find: the same figure appears twice, differently, inside one of CBE's own tables. Miqyas keeps one, the same one every day, and records both.":
-    "هذه لا تحتاج تاريخًا لاكتشافها: الرقم نفسه يظهر مرتين، مختلفًا، داخل جدول واحد من جداول البنك المركزي. يحتفظ مقياس بواحد، هو نفسه كل يوم، ويسجّل كليهما.",
+  "These do not need a history to find: the same figure appears twice, differently, inside one of CBE's own tables. MacroMasr keeps one, the same one every day, and records both.":
+    "هذه لا تحتاج تاريخًا لاكتشافها: الرقم نفسه يظهر مرتين، مختلفًا، داخل جدول واحد من جداول البنك المركزي. يحتفظ ماكرو مصر بواحد، هو نفسه كل يوم، ويسجّل كليهما.",
   "Day by day": "يومًا بيوم",
   "{n} days on the record": "{n} يومًا في السجل",
   "The tables are read once a day and any change is saved. Days with no change are not listed.":
     "تُقرأ الجداول مرة كل يوم ويُحفظ أي تغيير. الأيام التي لم يتغيّر فيها شيء لا تظهر هنا.",
   "How this is built": "كيف بُني هذا",
-  "Read out of the git history, with each change put down to CBE or to Miqyas":
-    "مقروء من سجل git، وكل تغيير منسوب إلى البنك المركزي أو إلى مقياس",
-  "A change counts as a CBE revision only when the file CBE served changed: a different value for the same date, in the same table, than the one Miqyas saved before. When Miqyas reads the same files differently, after a parser fix or a new way of dating a quarter, the change is listed as re-read by Miqyas. Series Miqyas computes are never counted as revisions. More than 500 changes in one go are held back for a check rather than reported.":
-    "لا يُحتسب التغيير تعديلًا من البنك المركزي إلا إذا تغيّر الملف الذي قدّمه البنك: قيمة مختلفة للتاريخ نفسه، في الجدول نفسه، عن تلك التي حفظها مقياس من قبل. وحين يقرأ مقياس الملفات نفسها قراءة مختلفة، بعد إصلاح في المعالج أو طريقة جديدة لتأريخ ربع السنة، يُدرج التغيير على أنه إعادة قراءة من مقياس. ولا تُحتسب السلاسل التي يحسبها مقياس تعديلات أبدًا. وأكثر من 500 تغيير دفعة واحدة تُحجز للمراجعة بدل نشرها.",
+  "Read out of the git history, with each change put down to CBE or to MacroMasr":
+    "مقروء من سجل git، وكل تغيير منسوب إلى البنك المركزي أو إلى ماكرو مصر",
+  "A change counts as a CBE revision only when the file CBE served changed: a different value for the same date, in the same table, than the one MacroMasr saved before. When MacroMasr reads the same files differently, after a parser fix or a new way of dating a quarter, the change is listed as re-read by MacroMasr. Series MacroMasr computes are never counted as revisions. More than 500 changes in one go are held back for a check rather than reported.":
+    "لا يُحتسب التغيير تعديلًا من البنك المركزي إلا إذا تغيّر الملف الذي قدّمه البنك: قيمة مختلفة للتاريخ نفسه، في الجدول نفسه، عن تلك التي حفظها ماكرو مصر من قبل. وحين يقرأ ماكرو مصر الملفات نفسها قراءة مختلفة، بعد إصلاح في المعالج أو طريقة جديدة لتأريخ ربع السنة، يُدرج التغيير على أنه إعادة قراءة من ماكرو مصر. ولا تُحتسب السلاسل التي يحسبها ماكرو مصر تعديلات أبدًا. وأكثر من 500 تغيير دفعة واحدة تُحجز للمراجعة بدل نشرها.",
   "{n} commits of history.": "عدد الإيداعات في السجل: {n}.",
   "Up to {n} new readings shown per day, biggest move against each series' usual level first; the totals count all of them.":
     "تُعرض حتى {n} قراءة جديدة في اليوم، الأكبر تحركًا قياسًا إلى المستوى المعتاد لكل سلسلة أولًا، والمجاميع تشمل الجميع.",
@@ -361,19 +361,19 @@ const AR = {
   ", newest for {d}": "، أحدثها بتاريخ {d}",
   "{n} values changed or removed; not counted as revisions.":
     "تغيّرت أو حُذفت {n} قيمة، ولا تُحتسب تعديلات.",
-  "Re-read by Miqyas": "أعاد مقياس قراءتها",
+  "Re-read by MacroMasr": "أعاد ماكرو مصر قراءتها",
   "The Excel archive was read again after a change to the parser.":
     "أُعيدت قراءة أرشيف Excel بعد تغيير في المعالج.",
   "The SDDS files were read again after a change to their parser.":
     "أُعيدت قراءة ملفات SDDS بعد تغيير في معالجها.",
-  "Changed by Miqyas in the repository: a parser fix, a new series or a correction.":
-    "غيّرها مقياس في المستودع: إصلاح في المعالج أو سلسلة جديدة أو تصحيح.",
+  "Changed by MacroMasr in the repository: a parser fix, a new series or a correction.":
+    "غيّرها ماكرو مصر في المستودع: إصلاح في المعالج أو سلسلة جديدة أو تصحيح.",
   "A table changed although the file CBE served behind it did not.":
     "تغيّر جدول مع أن الملف الذي قدّمه البنك المركزي وراءه لم يتغيّر.",
   "A date where CBE published two values; the one kept changed.":
     "تاريخ نشر له البنك المركزي قيمتين، وتغيّرت القيمة المحفوظة.",
-  "Series Miqyas computes were recomputed from their sources.":
-    "أُعيد حساب سلاسل يحسبها مقياس من مصادرها.",
+  "Series MacroMasr computes were recomputed from their sources.":
+    "أُعيد حساب سلاسل يحسبها ماكرو مصر من مصادرها.",
   "{c} values changed, {a} added and {r} removed.": "تغيّرت {c} قيمة، وأُضيفت {a}، وحُذفت {r}.",
   "Series under new ids: {n}.": "سلاسل بمعرّفات جديدة: {n}.",
   "Series added: {n}. Series dropped: {g}.": "سلاسل أُضيفت: {n}. سلاسل أُزيلت: {g}.",
@@ -390,7 +390,7 @@ const AR = {
   "{n} auction result": "{n} نتيجة مزاد",
   "{n} auction results": "{n} نتيجة مزاد",
   "archive update": "تحديث الأرشيف",
-  "{n} re-read by Miqyas": "{n} أعاد مقياس قراءتها",
+  "{n} re-read by MacroMasr": "{n} أعاد ماكرو مصر قراءتها",
   "{n} held back": "{n} محجوزة",
 
   /* ---------- the workhorse table ---------- */
@@ -504,8 +504,8 @@ const AR = {
   "As published": "كما نُشرت",
   "Change on a year earlier": "التغيّر عن العام السابق",
   "Rebased, first reading = 100": "معادة الأساس، أول قراءة = 100",
-  "Translated by Miqyas. CBE publishes no Arabic name for this series.":
-    "ترجمة مقياس. البنك المركزي لا ينشر اسمًا عربيًا لهذه السلسلة.",
+  "Translated by MacroMasr. CBE publishes no Arabic name for this series.":
+    "ترجمة ماكرو مصر. البنك المركزي لا ينشر اسمًا عربيًا لهذه السلسلة.",
   "In your favourites": "في مفضلتك",
   "Add to your favourites": "أضف إلى مفضلتك",
   "Remove from favourites": "أزل من المفضلة",
@@ -585,8 +585,8 @@ const AR = {
    * Read by prerender.py as well as by the front end. These are the titles and
    * descriptions a search result shows and a crawler indexes, so they are the
    * first Arabic anybody sees. */
-  "Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by Miqyas, an independent project not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Values are cleaned and dated by Miqyas; check against CBE before citing.":
-    "المصدر: البنك المركزي المصري (https://www.cbe.org.eg). أعاد نشرها مقياس، وهو مشروع مستقل غير تابع للبنك المركزي المصري ولا معتمد منه ولا مرتبط به. تنقية القيم وتأريخها من عمل مقياس؛ راجع البنك المركزي قبل الاستشهاد.",
+  "Source: Central Bank of Egypt (https://www.cbe.org.eg). Republished by MacroMasr, an independent project not affiliated with, endorsed by, or connected to the Central Bank of Egypt. Values are cleaned and dated by MacroMasr; check against CBE before citing.":
+    "المصدر: البنك المركزي المصري (https://www.cbe.org.eg). أعاد نشرها ماكرو مصر، وهو مشروع مستقل غير تابع للبنك المركزي المصري ولا معتمد منه ولا مرتبط به. تنقية القيم وتأريخها من عمل ماكرو مصر؛ راجع البنك المركزي قبل الاستشهاد.",
   "on": "في",
   "to": "إلى",
   "readings back to": "قراءة تعود إلى",
@@ -599,57 +599,57 @@ const AR = {
   "Readings": "عدد القراءات",
   "Coverage": "الفترة المغطاة",
 
-  "Find or browse {series} Egyptian economic series | Miqyas":
-    "ابحث أو تصفّح {series} سلسلة اقتصادية مصرية | مقياس",
+  "Find or browse {series} Egyptian economic series | MacroMasr":
+    "ابحث أو تصفّح {series} سلسلة اقتصادية مصرية | ماكرو مصر",
   "Central Bank of Egypt statistics in thirteen subjects, searchable in English and Arabic.":
     "إحصاءات البنك المركزي المصري في ثلاثة عشر موضوعًا، قابلة للبحث بالعربية والإنجليزية.",
-  "Your favourites | Miqyas": "مفضلتك | مقياس",
+  "Your favourites | MacroMasr": "مفضلتك | ماكرو مصر",
   "One screen of the numbers you check most, with no prose in the way.":
     "شاشة واحدة تضم الأرقام التي تتابعها أكثر من غيرها، بلا كلام يعترض الطريق.",
-  "Every CBE rate decision since 2005 | Miqyas":
-    "كل قرارات الفائدة للبنك المركزي منذ 2005 | مقياس",
+  "Every CBE rate decision since 2005 | MacroMasr":
+    "كل قرارات الفائدة للبنك المركزي منذ 2005 | ماكرو مصر",
   "{decisions} Monetary Policy Committee statements back to June 2005, with the corridor and what changed in the wording each time.":
     "{decisions} بيانًا للجنة السياسة النقدية تعود إلى يونيو 2005، مع الكوريدور وما تغيّر في الصياغة كل مرة.",
-  "Egyptian inflation calculator: what is your money worth? | Miqyas":
-    "حاسبة التضخم في مصر: كم تساوي أموالك؟ | مقياس",
+  "Egyptian inflation calculator: what is your money worth? | MacroMasr":
+    "حاسبة التضخم في مصر: كم تساوي أموالك؟ | ماكرو مصر",
   "Three calculators on the Central Bank's own numbers: what a salary from any month is worth today, what savings kept as pounds still buy, and the dollar rate on any date since 2005.":
     "ثلاث حاسبات تعمل على أرقام البنك المركزي نفسها: كم يساوي راتب من أي شهر اليوم، وماذا تشتري مدخرات بقيت بالجنيه، وسعر الدولار في أي تاريخ منذ 2005.",
-  "What is your Egyptian salary worth today? | Miqyas":
-    "كم يساوي راتبك في مصر اليوم؟ | مقياس",
+  "What is your Egyptian salary worth today? | MacroMasr":
+    "كم يساوي راتبك في مصر اليوم؟ | ماكرو مصر",
   "A salary from any month since 2005, priced in today's money using the Central Bank's own inflation. Free, and the answer is a link you can send.":
     "راتب من أي شهر منذ 2005، مُقوَّم بنقود اليوم باستخدام تضخم البنك المركزي نفسه. مجانًا، والإجابة رابط يمكنك إرساله.",
-  "What happened to your Egyptian pound savings? | Miqyas":
-    "ماذا حدث لمدخراتك بالجنيه المصري؟ | مقياس",
+  "What happened to your Egyptian pound savings? | MacroMasr":
+    "ماذا حدث لمدخراتك بالجنيه المصري؟ | ماكرو مصر",
   "What pounds set aside on any date since 2005 still buy, against what the same money would be worth had it been swapped for dollars that day.":
     "ماذا تشتري اليوم جنيهات ادُّخرت في أي تاريخ منذ 2005، مقابل ما كانت ستساويه لو حُوِّلت إلى دولار في ذلك اليوم.",
-  "What was the dollar worth in Egypt on any date? | Miqyas":
-    "بكم كان الدولار في مصر في أي تاريخ؟ | مقياس",
+  "What was the dollar worth in Egypt on any date? | MacroMasr":
+    "بكم كان الدولار في مصر في أي تاريخ؟ | ماكرو مصر",
   "The Central Bank's official EGP/USD rate on any date since January 2005, and on the same calendar day in every year since.":
     "سعر الدولار الرسمي لدى البنك المركزي في أي تاريخ منذ يناير 2005، وفي اليوم نفسه من كل عام منذ ذلك الحين.",
-  "Revisions to published figures | Miqyas":
-    "التعديلات على الأرقام المنشورة | مقياس",
+  "Revisions to published figures | MacroMasr":
+    "التعديلات على الأرقام المنشورة | ماكرو مصر",
   "Daily record of CBE figures as published, and any revisions to figures already published. Independent; not affiliated with CBE.":
     "سجل يومي لأرقام البنك المركزي كما نُشرت، وأي تعديلات على أرقام سبق نشرها. موقع مستقل غير تابع للبنك المركزي.",
-  "Search {documents} Central Bank of Egypt publications | Miqyas":
-    "ابحث في {documents} منشورًا للبنك المركزي المصري | مقياس",
+  "Search {documents} Central Bank of Egypt publications | MacroMasr":
+    "ابحث في {documents} منشورًا للبنك المركزي المصري | ماكرو مصر",
   "CBE publications in PDF, {pages} pages of text indexed so you can search inside them in English and Arabic. Each result links to the original on cbe.org.eg.":
     "منشورات البنك المركزي بصيغة PDF، {pages} صفحة من النصوص مفهرسة لتبحث داخلها بالعربية والإنجليزية. كل نتيجة ترتبط بالأصل على موقع البنك المركزي.",
-  "Egypt's money market: the corridor, the tenors, the bill curve | Miqyas":
-    "سوق النقد المصري: الكوريدور والآجال ومنحنى الأذون | مقياس",
+  "Egypt's money market: the corridor, the tenors, the bill curve | MacroMasr":
+    "سوق النقد المصري: الكوريدور والآجال ومنحنى الأذون | ماكرو مصر",
   "Where the pound funded inside the CBE corridor, the interbank tenors with their volumes, and the EGP bill curve with bid to cover.":
     "أين تموّل الجنيه داخل كوريدور البنك المركزي، وآجال ما بين البنوك بأحجامها، ومنحنى أذون الخزانة بالجنيه مع نسبة التغطية.",
-  "Download Egypt's macroeconomic data: Parquet, SQLite, CSV and a keyless API | Miqyas":
-    "حمّل بيانات الاقتصاد الكلي المصري: Parquet وSQLite وCSV وواجهة بلا مفتاح | مقياس",
+  "Download Egypt's macroeconomic data: Parquet, SQLite, CSV and a keyless API | MacroMasr":
+    "حمّل بيانات الاقتصاد الكلي المصري: Parquet وSQLite وCSV وواجهة بلا مفتاح | ماكرو مصر",
   "All {series} series in whichever shape suits you, updated daily. No key and no account.":
     "كل السلاسل الـ{series} بالشكل الذي يناسبك، تُحدَّث يوميًا. بلا مفتاح ولا حساب.",
-  "Miqyas is made by Mohamed Ghoneim, as an independent project.":
-    "مقياس مشروع مستقل من إعداد محمد غنيم.",
-  "The code is MIT-licensed. The data is the Central Bank of Egypt's, and Miqyas claims no rights in it: cite CBE as the source, and check against CBE before citing.":
-    "الكود مرخّص برخصة MIT. أما البيانات فملك للبنك المركزي المصري، ولا يدّعي مقياس أي حق فيها: استشهد بالبنك المركزي مصدرًا، وراجعه قبل الاستشهاد.",
-  "About Miqyas: an independent dataset of Egyptian central bank data":
-    "عن مقياس: مجموعة بيانات مستقلة من بيانات البنك المركزي المصري",
-  "Who made Miqyas and why, what is here and what is not, and the terms. Miqyas is an independent project, not affiliated with the Central Bank of Egypt.":
-    "من صنع مقياس ولماذا، وما هو موجود وما هو غير موجود، وشروط الاستخدام. مقياس مشروع مستقل غير تابع للبنك المركزي المصري.",
+  "MacroMasr is made by Mohamed Ghoneim, as an independent project.":
+    "ماكرو مصر مشروع مستقل من إعداد محمد غنيم.",
+  "The code is MIT-licensed. The data is the Central Bank of Egypt's, and MacroMasr claims no rights in it: cite CBE as the source, and check against CBE before citing.":
+    "الكود مرخّص برخصة MIT. أما البيانات فملك للبنك المركزي المصري، ولا يدّعي ماكرو مصر أي حق فيها: استشهد بالبنك المركزي مصدرًا، وراجعه قبل الاستشهاد.",
+  "About MacroMasr: an independent dataset of Egyptian central bank data":
+    "عن ماكرو مصر: مجموعة بيانات مستقلة من بيانات البنك المركزي المصري",
+  "Who made MacroMasr and why, what is here and what is not, and the terms. MacroMasr is an independent project, not affiliated with the Central Bank of Egypt.":
+    "من صنع ماكرو مصر ولماذا، وما هو موجود وما هو غير موجود، وشروط الاستخدام. ماكرو مصر مشروع مستقل غير تابع للبنك المركزي المصري.",
 
   /* ---------- error and empty states ---------- */
   "Nothing lives at that address": "لا يوجد شيء على هذا العنوان",
@@ -662,7 +662,7 @@ const AR = {
 
   /* ---------- privacy (counter.js), calculator checks, control names ---------- */
   "Privacy": "الخصوصية",
-  "Miqyas sets no cookies.": "لا يضع مقياس أي ملفات تعريف ارتباط (كوكيز).",
+  "MacroMasr sets no cookies.": "لا يضع ماكرو مصر أي ملفات تعريف ارتباط (كوكيز).",
   "It counts visits with GoatCounter, the only other site a page load contacts; the pages, the fonts and the data all come from this site's own address.":
     "ويُحصي الزيارات عبر GoatCounter، وهو الموقع الآخر الوحيد الذي تتصل به الصفحة عند فتحها؛ أما الصفحات والخطوط والبيانات فكلها تأتي من عنوان هذا الموقع نفسه.",
   "For each page you open, GoatCounter is sent the name of the page, such as /tools/salary, never what you typed into it, and, when you arrive, the address of the site that linked you here, without the rest of its link.":
@@ -671,7 +671,7 @@ const AR = {
     "ويُرسل إليه متصفحك أيضًا ما يحمله كل طلب: عنوان IP الخاص بك ونوع المتصفح الذي تستخدمه.",
   "What GoatCounter keeps is set out in": "وما يحتفظ به GoatCounter مبيَّن في",
   "its privacy policy": "سياسة الخصوصية الخاصة به",
-  "Miqyas counts no visits and sets no cookies.": "لا يُحصي مقياس الزيارات، ولا يضع أي ملفات تعريف ارتباط (كوكيز).",
+  "MacroMasr counts no visits and sets no cookies.": "لا يُحصي ماكرو مصر الزيارات، ولا يضع أي ملفات تعريف ارتباط (كوكيز).",
   "The pages, the fonts and the data all come from this site's own address, so opening a page tells no other site that you did.":
     "الصفحات والخطوط والبيانات كلها تأتي من عنوان هذا الموقع نفسه، فلا يعلم أي موقع آخر أنك فتحت صفحة منه.",
   "Your favourites and settings are kept in this browser and never sent anywhere.":
@@ -686,14 +686,14 @@ const AR = {
     "تعذّرت قراءة هذا الشهر. اكتبه بالسنة ثم الشهر، مثل 2016-11.",
   "Could not read that date. Write it as year, month and day, for example 2016-11-03.":
     "تعذّرت قراءة هذا التاريخ. اكتبه بالسنة ثم الشهر ثم اليوم، مثل 2016-11-03.",
-  "Miqyas holds no figure for that date. Pick one from {from} to {to}.":
-    "لا يحتفظ مقياس بأي رقم لهذا التاريخ. اختر تاريخًا من {from} إلى {to}.",
+  "MacroMasr holds no figure for that date. Pick one from {from} to {to}.":
+    "لا يحتفظ ماكرو مصر بأي رقم لهذا التاريخ. اختر تاريخًا من {from} إلى {to}.",
   "Prices are to {prices}, the latest month in the index; the dollar rate is to {dollar}.":
     "الأسعار حتى {prices}، وهو أحدث شهر في المؤشر؛ وسعر الدولار حتى {dollar}.",
-  "The dollar rate used for {asked} is from {held}, the last one Miqyas holds before it.":
-    "سعر الدولار المستخدم في {asked} هو سعر {held}، آخر سعر يحتفظ به مقياس قبله.",
-  "Miqyas holds no rate for {asked}. This is the last one before it, {days} days earlier.":
-    "لا يحتفظ مقياس بسعر في {asked}. هذا آخر سعر قبله، والفارق بينهما {days} من الأيام.",
+  "The dollar rate used for {asked} is from {held}, the last one MacroMasr holds before it.":
+    "سعر الدولار المستخدم في {asked} هو سعر {held}، آخر سعر يحتفظ به ماكرو مصر قبله.",
+  "MacroMasr holds no rate for {asked}. This is the last one before it, {days} days earlier.":
+    "لا يحتفظ ماكرو مصر بسعر في {asked}. هذا آخر سعر قبله، والفارق بينهما {days} من الأيام.",
   "Compare with another series": "قارن بسلسلة أخرى",
   "Kind of document": "نوع الوثيقة",
   "Document topic": "موضوع الوثيقة",
@@ -705,16 +705,16 @@ const AR = {
   "{n} ago": "قبل {n}",
   "Breadcrumb": "مسار التنقل",
   "{n} rows copied": "تم نسخ الصفوف: {n}",
-  "Miqyas": "مقياس",
+  "MacroMasr": "ماكرو مصر",
   "Central Bank of Egypt": "البنك المركزي المصري",
   "computed from Central Bank of Egypt data": "محسوبة من بيانات البنك المركزي المصري",
   "data to": "بيانات حتى",
-  "Republished by Miqyas": "أعاد نشرها مقياس",
+  "Republished by MacroMasr": "أعاد نشرها ماكرو مصر",
   "build of": "نسخة الموقع بتاريخ",
   "in English:": "بالإنجليزية:",
   "id": "المعرّف",
-  "The Arabic title is Miqyas's translation; CBE publishes this series under its English name.":
-    "العنوان العربي ترجمة من مقياس، والبنك المركزي ينشر هذه السلسلة باسمها الإنجليزي.",
+  "The Arabic title is MacroMasr's translation; CBE publishes this series under its English name.":
+    "العنوان العربي ترجمة من ماكرو مصر، والبنك المركزي ينشر هذه السلسلة باسمها الإنجليزي.",
   "no newer reading held": "لا قراءة أحدث لدينا",
   "Suggested citation:": "صيغة الاستشهاد المقترحة:",
   "Copy the citation": "انسخ صيغة الاستشهاد",
@@ -723,8 +723,8 @@ const AR = {
   "KB": "كيلوبايت",
 
   /* ---------- the overview, the series list and a subject ---------- */
-  "Every number below is the latest Miqyas holds. Click one to see its whole history.":
-    "كل رقم بالأسفل هو أحدث ما لدى مقياس. اضغط على أيٍّ منها لترى تاريخه كاملًا.",
+  "Every number below is the latest MacroMasr holds. Click one to see its whole history.":
+    "كل رقم بالأسفل هو أحدث ما لدى ماكرو مصر. اضغط على أيٍّ منها لترى تاريخه كاملًا.",
   "On your desk": "في مفضلتك",
   "Overnight deposit {d}%, overnight lending {l}%, in force since the {date} decision":
     "الإيداع لليلة واحدة {d}%، والإقراض لليلة واحدة {l}%، ساريان منذ قرار {date}",
@@ -785,12 +785,12 @@ const AR = {
 
   /* ---------- one series ---------- */
   "No newer reading here": "لا قراءة أحدث هنا",
-  "Miqyas holds no value for this series after {d}: {n} days without a new reading ({f}).":
-    "لا يحتفظ مقياس بأي قيمة لهذه السلسلة بعد {d}، وعدد الأيام دون قراءة جديدة: {n} (الدورية: {f}).",
-  "Miqyas holds no value for this series after {d}: {n} days without a new reading.":
-    "لا يحتفظ مقياس بأي قيمة لهذه السلسلة بعد {d}، وعدد الأيام دون قراءة جديدة: {n}.",
-  "The source may have stopped, or Miqyas may not have picked up a newer release.":
-    "ربما توقف المصدر، أو ربما لم يلتقط مقياس إصدارًا أحدث.",
+  "MacroMasr holds no value for this series after {d}: {n} days without a new reading ({f}).":
+    "لا يحتفظ ماكرو مصر بأي قيمة لهذه السلسلة بعد {d}، وعدد الأيام دون قراءة جديدة: {n} (الدورية: {f}).",
+  "MacroMasr holds no value for this series after {d}: {n} days without a new reading.":
+    "لا يحتفظ ماكرو مصر بأي قيمة لهذه السلسلة بعد {d}، وعدد الأيام دون قراءة جديدة: {n}.",
+  "The source may have stopped, or MacroMasr may not have picked up a newer release.":
+    "ربما توقف المصدر، أو ربما لم يلتقط ماكرو مصر إصدارًا أحدث.",
   "Check the CBE source linked below.": "راجع مصدر البنك المركزي المرتبط بالأسفل.",
   "{n} of these readings are exactly zero": "قراءات تساوي صفرًا تمامًا: {n}",
   "CBE publishes a zero where no rate was set rather than leaving the cell empty, and they are reproduced here as published rather than treated as missing. An average taken across this series will be pulled toward zero.":
@@ -822,9 +822,9 @@ const AR = {
   "Other": "أخرى",
   "no unit stated": "لم تُذكر وحدة",
   "as of {d}": "حتى {d}",
-  "Computed by Miqyas": "حسبها مقياس",
+  "Computed by MacroMasr": "حسبها ماكرو مصر",
   "from CBE data": "من بيانات البنك المركزي",
-  "Dates assigned by Miqyas": "تواريخ حدّدها مقياس",
+  "Dates assigned by MacroMasr": "تواريخ حدّدها ماكرو مصر",
   "from the sheet": "من الملف",
   "Reproduced as published": "منقولة كما نُشرت",
   "yes": "نعم",
@@ -839,13 +839,13 @@ const AR = {
   "{n} in total": "المجموع: {n}",
   "Where this comes from": "من أين تأتي",
   "Provenance": "المصدر",
-  "Computed by Miqyas from CBE data:": "حسبها مقياس من بيانات البنك المركزي:",
-  "Source: Central Bank of Egypt, Excel time-series archive. Miqyas reads the sheet and assigns each value to a date from the sheet's own period labels. Fiscal-year quarters follow Egypt's July to June year. Dates are our reading of the sheet and can be wrong; check the linked CBE file before citing.":
-    "المصدر: البنك المركزي المصري، أرشيف السلاسل الزمنية بصيغة Excel. يقرأ مقياس الملف وينسب كل قيمة إلى تاريخ استنادًا إلى تسميات الفترات في الملف نفسه. وتتبع الأرباع المالية السنة المالية المصرية من يوليو إلى يونيو. والتواريخ قراءتنا للملف وقد تكون خاطئة، فراجع ملف البنك المركزي المرتبط قبل الاستشهاد.",
-  "Source: Central Bank of Egypt, the Excel files on its SDDS page, where CBE keeps money, banking and reserves up to the latest month. Miqyas reads the file and dates each value to the last day of its month from the sheet's own month labels. Check the linked CBE file before citing.":
-    "المصدر: البنك المركزي المصري، ملفات Excel على صفحة SDDS لديه، حيث يُبقي أرقام النقود والبنوك والاحتياطيات حتى أحدث شهر. يقرأ مقياس الملف ويؤرّخ كل قيمة بآخر يوم في شهرها استنادًا إلى تسميات الأشهر في الملف نفسه. فراجع ملف البنك المركزي المرتبط قبل الاستشهاد.",
-  "Reproduced as published from the Central Bank of Egypt's daily tables. Where CBE printed two values for one date, Miqyas keeps one and lists both on the What changed page.":
-    "منقولة كما نُشرت من الجداول اليومية للبنك المركزي المصري. وحيث نشر البنك قيمتين لتاريخ واحد، يحتفظ مقياس بإحداهما ويدرج الاثنتين في صفحة «ما الذي تغيّر».",
+  "Computed by MacroMasr from CBE data:": "حسبها ماكرو مصر من بيانات البنك المركزي:",
+  "Source: Central Bank of Egypt, Excel time-series archive. MacroMasr reads the sheet and assigns each value to a date from the sheet's own period labels. Fiscal-year quarters follow Egypt's July to June year. Dates are our reading of the sheet and can be wrong; check the linked CBE file before citing.":
+    "المصدر: البنك المركزي المصري، أرشيف السلاسل الزمنية بصيغة Excel. يقرأ ماكرو مصر الملف وينسب كل قيمة إلى تاريخ استنادًا إلى تسميات الفترات في الملف نفسه. وتتبع الأرباع المالية السنة المالية المصرية من يوليو إلى يونيو. والتواريخ قراءتنا للملف وقد تكون خاطئة، فراجع ملف البنك المركزي المرتبط قبل الاستشهاد.",
+  "Source: Central Bank of Egypt, the Excel files on its SDDS page, where CBE keeps money, banking and reserves up to the latest month. MacroMasr reads the file and dates each value to the last day of its month from the sheet's own month labels. Check the linked CBE file before citing.":
+    "المصدر: البنك المركزي المصري، ملفات Excel على صفحة SDDS لديه، حيث يُبقي أرقام النقود والبنوك والاحتياطيات حتى أحدث شهر. يقرأ ماكرو مصر الملف ويؤرّخ كل قيمة بآخر يوم في شهرها استنادًا إلى تسميات الأشهر في الملف نفسه. فراجع ملف البنك المركزي المرتبط قبل الاستشهاد.",
+  "Reproduced as published from the Central Bank of Egypt's daily tables. Where CBE printed two values for one date, MacroMasr keeps one and lists both on the What changed page.":
+    "منقولة كما نُشرت من الجداول اليومية للبنك المركزي المصري. وحيث نشر البنك قيمتين لتاريخ واحد، يحتفظ ماكرو مصر بإحداهما ويدرج الاثنتين في صفحة «ما الذي تغيّر».",
   "Values are dated to the end of the period they describe.": "تُؤرَّخ القيم بنهاية الفترة التي تصفها.",
   "CBE's own sheet did not state a unit anywhere the parser could find one, so the figures are reproduced without one rather than given a guessed label.":
     "لم يذكر ملف البنك المركزي نفسه وحدة في أي موضع استطاع المعالج العثور عليه، فتُعرض الأرقام بلا وحدة بدل أن تُعطى تسمية مخمّنة.",
@@ -865,8 +865,8 @@ const AR = {
     "مستخرجة من البيانات الصحفية للبنك المركزي عن التحويلات، التي تذكر مجموعًا تراكميًا منذ بداية السنة المالية (1 يوليو). والفترة هي آخر يوم في النافذة التراكمية، لا تدفقًا شهريًا.",
   "Parsed from the monthly CBE press release text. CBE does not publish this as a downloadable series.":
     "مستخرجة من نص البيان الصحفي الشهري للبنك المركزي. ولا ينشرها البنك سلسلةً قابلة للتنزيل.",
-  "Parsed by Miqyas from the text of CBE's monthly reserves press release. Each value is CBE's first figure for the month before, dated by the day the release was published. CBE's current monthly series, dated to the end of each month and revised since, is EG.SDDS.RES.NIR.":
-    "استخرجها مقياس من نص البيان الصحفي الشهري للبنك المركزي عن الاحتياطيات. وكل قيمة هي أول رقم أعلنه البنك عن الشهر السابق، مؤرّخة بيوم نشر البيان. أما السلسلة الشهرية الحالية للبنك، المؤرّخة بنهاية كل شهر والمعدّلة منذ ذلك الحين، فهي EG.SDDS.RES.NIR.",
+  "Parsed by MacroMasr from the text of CBE's monthly reserves press release. Each value is CBE's first figure for the month before, dated by the day the release was published. CBE's current monthly series, dated to the end of each month and revised since, is EG.SDDS.RES.NIR.":
+    "استخرجها ماكرو مصر من نص البيان الصحفي الشهري للبنك المركزي عن الاحتياطيات. وكل قيمة هي أول رقم أعلنه البنك عن الشهر السابق، مؤرّخة بيوم نشر البيان. أما السلسلة الشهرية الحالية للبنك، المؤرّخة بنهاية كل شهر والمعدّلة منذ ذلك الحين، فهي EG.SDDS.RES.NIR.",
   /* The notes on the SDDS series, keyed the same way. */
   "CBE's current monthly series, dated to the last day of each month, from the International Reserves file on its SDDS page. CBE marks the latest months provisional and revises them. EG.RES.NIR keeps instead the first figure from each month's press release, dated by the day the release came out.":
     "السلسلة الشهرية الحالية للبنك المركزي، مؤرّخة بآخر يوم في كل شهر، من ملف الاحتياطيات الدولية على صفحة SDDS لديه. ويصف البنك أحدث الأشهر بأنها مؤقتة ويعدّلها. أما EG.RES.NIR فتحتفظ بأول رقم في البيان الصحفي لكل شهر، مؤرّخًا بيوم صدور البيان.",
@@ -908,11 +908,11 @@ const AR = {
   "query the whole archive from Python, no download": "استعلم عن الأرشيف كله من بايثون، دون تنزيل",
   "Terms": "الشروط",
   "Using it": "استخدامها",
-  "Cite the Central Bank of Egypt as the source. Miqyas cleans and dates the values; where a number was computed, the series page says so and names the method. If you find a value that does not match CBE's,":
-    "استشهد بالبنك المركزي المصري مصدرًا. يتولى مقياس تنقية القيم وتأريخها، وحيث حُسب رقم ما تذكر صفحة السلسلة ذلك وتسمّي الطريقة. وإن وجدت قيمة لا تطابق ما نشره البنك المركزي،",
+  "Cite the Central Bank of Egypt as the source. MacroMasr cleans and dates the values; where a number was computed, the series page says so and names the method. If you find a value that does not match CBE's,":
+    "استشهد بالبنك المركزي المصري مصدرًا. يتولى ماكرو مصر تنقية القيم وتأريخها، وحيث حُسب رقم ما تذكر صفحة السلسلة ذلك وتسمّي الطريقة. وإن وجدت قيمة لا تطابق ما نشره البنك المركزي،",
   "tell us": "فأخبرنا",
-  "Miqyas is not affiliated with, endorsed by, or connected to the Central Bank of Egypt. The code is MIT-licensed; the data is CBE's.":
-    "مقياس غير تابع للبنك المركزي المصري ولا معتمد منه ولا مرتبط به. الكود مرخّص برخصة MIT، أما البيانات فملك للبنك المركزي.",
+  "MacroMasr is not affiliated with, endorsed by, or connected to the Central Bank of Egypt. The code is MIT-licensed; the data is CBE's.":
+    "ماكرو مصر غير تابع للبنك المركزي المصري ولا معتمد منه ولا مرتبط به. الكود مرخّص برخصة MIT، أما البيانات فملك للبنك المركزي.",
   "The full terms are on the About page.": "الشروط كاملة في صفحة «عن الموقع».",
 
   /* ---------- the field and date guide ---------- */
@@ -928,15 +928,15 @@ const AR = {
     "السلسلة. لا يُتوقع أن تتغير معرّفات الجداول اليومية للبنك المركزي، أما معرّفات السلاسل المقروءة من أرشيف Excel فيُعاد العمل عليها وقد تتغير.",
   "The date the reading is filed under, as YYYY-MM-DD. What that date stands for depends on the series: see the dates below.":
     "التاريخ الذي تُسجَّل تحته القراءة، بصيغة YYYY-MM-DD. وما يعنيه هذا التاريخ يتوقف على السلسلة: انظر التواريخ بالأسفل.",
-  "The number as CBE published it, or as Miqyas computed it for a computed series. Its unit is in the catalogue.":
-    "الرقم كما نشره البنك المركزي، أو كما حسبه مقياس إن كانت السلسلة محسوبة. ووحدته مذكورة في الفهرس.",
+  "The number as CBE published it, or as MacroMasr computed it for a computed series. Its unit is in the catalogue.":
+    "الرقم كما نشره البنك المركزي، أو كما حسبه ماكرو مصر إن كانت السلسلة محسوبة. ووحدته مذكورة في الفهرس.",
   "In the JSON for one series, the readings as a list of [period, value] pairs, oldest first.":
     "في ملف JSON لسلسلة واحدة: القراءات قائمةً من أزواج [period, value]، الأقدم أولًا.",
   "The catalogue": "الفهرس",
   "CBE's English and Arabic titles. For the Excel archive, CBE's Arabic title names the line of the table only.":
     "عنوانا البنك المركزي بالإنجليزية والعربية. وفي أرشيف Excel يسمّي العنوان العربي للبنك بند الجدول وحده.",
-  "\"miqyas\" where CBE publishes no Arabic name and the Arabic title is Miqyas's translation.":
-    "القيمة \"miqyas\" حيث لا ينشر البنك المركزي اسمًا عربيًا ويكون العنوان العربي ترجمة من مقياس.",
+  "\"miqyas\" where CBE publishes no Arabic name and the Arabic title is MacroMasr's translation.":
+    "القيمة \"miqyas\" حيث لا ينشر البنك المركزي اسمًا عربيًا ويكون العنوان العربي ترجمة من ماكرو مصر.",
   "What the value is measured in, as CBE states it: percent, EGP million, USD million and so on. Empty where CBE's sheet did not say.":
     "ما تُقاس به القيمة كما يذكره البنك المركزي: نسبة مئوية، أو مليون جنيه، أو مليون دولار، وهكذا. وتبقى فارغة حيث لم يذكرها ملف البنك.",
   "How often the series has a reading. The codes are below.": "كم مرة تصدر للسلسلة قراءة. الرموز بالأسفل.",
@@ -944,8 +944,8 @@ const AR = {
     "جدول البنك المركزي أو مجموعة الملفات التي قُرئت منها السلسلة، والمجموعة الأوسع التي تُبنى عليها الموضوعات.",
   "The CBE page or Excel file the series was read from. source_file is a path on www.cbe.org.eg.":
     "صفحة البنك المركزي أو ملف Excel الذي قُرئت منه السلسلة. والحقل source_file مسار على www.cbe.org.eg.",
-  "true where Miqyas computed the series from CBE's numbers, with the method in words.":
-    "القيمة true حيث حسب مقياس السلسلة من أرقام البنك المركزي، مع وصف الطريقة بالكلمات.",
+  "true where MacroMasr computed the series from CBE's numbers, with the method in words.":
+    "القيمة true حيث حسب ماكرو مصر السلسلة من أرقام البنك المركزي، مع وصف الطريقة بالكلمات.",
   "\"end\" where each value is dated to the last day of the period it describes.":
     "القيمة \"end\" حيث تُؤرَّخ كل قيمة بآخر يوم في الفترة التي تصفها.",
   "For the SDDS series: how the dates were found, a note where a near twin exists, and the latest periods CBE marks preliminary or provisional in its own file.":
@@ -988,13 +988,13 @@ const AR = {
     "السنة المالية هكذا: العام المالي 2019/2020، أي من 1 يوليو 2019 إلى 30 يونيو 2020. وتؤرّخها الملفات 2020-06-30.",
   "Daily series, policy rates, auctions and reserves with the full date, because the day is the fact.":
     "السلاسل اليومية وأسعار السياسة النقدية والعطاءات والاحتياطيات بالتاريخ كاملًا، لأن اليوم نفسه هو المعلومة.",
-  "The first day Miqyas held that value for that series and period.":
-    "أول يوم احتفظ فيه مقياس بتلك القيمة لتلك السلسلة والفترة.",
+  "The first day MacroMasr held that value for that series and period.":
+    "أول يوم احتفظ فيه ماكرو مصر بتلك القيمة لتلك السلسلة والفترة.",
   "The last day it was held. Empty while it is still held. When a different value replaces it for the same period, last_seen is the day before the new one was first seen.":
     "آخر يوم احتُفظ بها فيه. ويبقى فارغًا ما دامت محفوظة. وحين تحلّ قيمة مختلفة محلها للفترة نفسها، يكون last_seen اليوم السابق لأول ظهور للقيمة الجديدة.",
   "Updates": "التحديثات",
-  "The files are rebuilt every day from what Miqyas has read. status.json gives the time of the build and of the last read of CBE, and manifest.json gives every file with its SHA-256, so a copy can be checked against the one it came from.":
-    "يُعاد بناء الملفات كل يوم مما قرأه مقياس. ويذكر ملف status.json وقت البناء ووقت آخر قراءة من البنك المركزي، ويذكر ملف manifest.json كل ملف مع بصمة SHA-256 الخاصة به، حتى يمكن مطابقة أي نسخة بالأصل الذي جاءت منه.",
+  "The files are rebuilt every day from what MacroMasr has read. status.json gives the time of the build and of the last read of CBE, and manifest.json gives every file with its SHA-256, so a copy can be checked against the one it came from.":
+    "يُعاد بناء الملفات كل يوم مما قرأه ماكرو مصر. ويذكر ملف status.json وقت البناء ووقت آخر قراءة من البنك المركزي، ويذكر ملف manifest.json كل ملف مع بصمة SHA-256 الخاصة به، حتى يمكن مطابقة أي نسخة بالأصل الذي جاءت منه.",
   "Back to the downloads →": "العودة إلى التنزيلات ←",
 
   /* ---------- about ---------- */
@@ -1008,21 +1008,21 @@ const AR = {
   "Questions and corrections go to": "تُرسل الأسئلة والتصحيحات إلى",
   "the project's GitHub issues page": "صفحة البلاغات الخاصة بالمشروع على GitHub",
   "What it does": "ماذا يفعل",
-  "Miqyas copies CBE's live tables once a day and its Excel archive and publications once a week, and saves each copy. It keeps a dated copy of the daily tables from 20 August 2026, so past values can be looked up. If CBE changes a figure it has already published, the change appears on the":
-    "ينسخ مقياس الجداول الحية للبنك المركزي مرة كل يوم، وأرشيف Excel والمنشورات مرة كل أسبوع، ويحفظ كل نسخة. ويحتفظ بنسخة مؤرَّخة من الجداول اليومية منذ 20 أغسطس 2026، فيمكن الرجوع إلى القيم السابقة. وإذا غيّر البنك المركزي رقمًا سبق نشره، يظهر التغيير في صفحة",
+  "MacroMasr copies CBE's live tables once a day and its Excel archive and publications once a week, and saves each copy. It keeps a dated copy of the daily tables from 20 August 2026, so past values can be looked up. If CBE changes a figure it has already published, the change appears on the":
+    "ينسخ ماكرو مصر الجداول الحية للبنك المركزي مرة كل يوم، وأرشيف Excel والمنشورات مرة كل أسبوع، ويحفظ كل نسخة. ويحتفظ بنسخة مؤرَّخة من الجداول اليومية منذ 20 أغسطس 2026، فيمكن الرجوع إلى القيم السابقة. وإذا غيّر البنك المركزي رقمًا سبق نشره، يظهر التغيير في صفحة",
   "page. Each week the Excel archive and the publications are also checked for files CBE has replaced or withdrawn.":
     "المخصصة لذلك. ويُفحص أرشيف Excel والمنشورات كل أسبوع أيضًا بحثًا عن ملفات استبدلها البنك المركزي أو سحبها.",
-  "Each series page says how its numbers got here: reproduced as published from one of CBE's daily tables, dated by Miqyas from the period labels in a CBE Excel sheet, or computed by Miqyas (a bid-to-cover ratio, a yield-curve bucket, reserves read from a press release), with the method named.":
-    "تذكر كل صفحة سلسلة كيف وصلت أرقامها إلى هنا: منقولة كما نُشرت من أحد الجداول اليومية للبنك المركزي، أو مؤرَّخة من مقياس استنادًا إلى تسميات الفترات في ملف Excel للبنك المركزي، أو محسوبة من مقياس (نسبة تغطية، أو شريحة من منحنى العائد، أو احتياطيات مستخرجة من بيان صحفي)، مع تسمية الطريقة.",
-  "The code is MIT-licensed. The data is the Central Bank of Egypt's, and Miqyas claims no rights in it. CBE's":
-    "الكود مرخّص برخصة MIT. أما البيانات فملك للبنك المركزي المصري، ولا يدّعي مقياس أي حق فيها. ويسمح",
+  "Each series page says how its numbers got here: reproduced as published from one of CBE's daily tables, dated by MacroMasr from the period labels in a CBE Excel sheet, or computed by MacroMasr (a bid-to-cover ratio, a yield-curve bucket, reserves read from a press release), with the method named.":
+    "تذكر كل صفحة سلسلة كيف وصلت أرقامها إلى هنا: منقولة كما نُشرت من أحد الجداول اليومية للبنك المركزي، أو مؤرَّخة من ماكرو مصر استنادًا إلى تسميات الفترات في ملف Excel للبنك المركزي، أو محسوبة من ماكرو مصر (نسبة تغطية، أو شريحة من منحنى العائد، أو احتياطيات مستخرجة من بيان صحفي)، مع تسمية الطريقة.",
+  "The code is MIT-licensed. The data is the Central Bank of Egypt's, and MacroMasr claims no rights in it. CBE's":
+    "الكود مرخّص برخصة MIT. أما البيانات فملك للبنك المركزي المصري، ولا يدّعي ماكرو مصر أي حق فيها. ويسمح",
   "disclaimer": "إخلاء المسؤولية الخاص بالبنك المركزي",
-  "allows reuse of information from its website if CBE is cited as the source, any transformation is stated explicitly, and the information appears accurately. Miqyas cites CBE on every page and in every file, and says for each series what was done to the numbers. Errors in cleaning or dating are ours, not CBE's: check against CBE before you cite.":
-    "بإعادة استخدام المعلومات المنشورة على موقعه بشرط ذكر البنك المركزي مصدرًا، والتصريح بأي تحويل أُجري عليها، وعرضها بدقة. ويذكر مقياس البنك المركزي مصدرًا في كل صفحة وفي كل ملف، ويبيّن لكل سلسلة ما جرى على أرقامها. وأي خطأ في التنقية أو التأريخ مسؤوليتنا لا مسؤولية البنك المركزي: راجع البنك المركزي قبل الاستشهاد.",
-  "To cite a figure, name the Central Bank of Egypt as the source and Miqyas as where you found it. Each series page suggests a citation for its own series.":
-    "للاستشهاد برقم، اذكر البنك المركزي المصري مصدرًا ومقياس مكانًا وجدته فيه. وتقترح كل صفحة سلسلة صيغة استشهاد خاصة بها.",
-  "is the Nilometer on Rhoda Island: the graduated marble column Cairo read the flood against to forecast the harvest and set the tax rate. Egypt's first macroeconomic indicator, in service by 861 AD, and the reason the graduated gauge recurs through this site.":
-    "هو مقياس النيل في جزيرة الروضة: العمود الرخامي المدرّج الذي كانت القاهرة تقرأ عليه الفيضان لتتنبأ بالمحصول وتحدّد الضريبة. أول مؤشر اقتصادي كلي في مصر، دخل الخدمة قبل عام 861 ميلاديًا، وهو سبب تكرار المقياس المدرّج في هذا الموقع.",
+  "allows reuse of information from its website if CBE is cited as the source, any transformation is stated explicitly, and the information appears accurately. MacroMasr cites CBE on every page and in every file, and says for each series what was done to the numbers. Errors in cleaning or dating are ours, not CBE's: check against CBE before you cite.":
+    "بإعادة استخدام المعلومات المنشورة على موقعه بشرط ذكر البنك المركزي مصدرًا، والتصريح بأي تحويل أُجري عليها، وعرضها بدقة. ويذكر ماكرو مصر البنك المركزي مصدرًا في كل صفحة وفي كل ملف، ويبيّن لكل سلسلة ما جرى على أرقامها. وأي خطأ في التنقية أو التأريخ مسؤوليتنا لا مسؤولية البنك المركزي: راجع البنك المركزي قبل الاستشهاد.",
+  "To cite a figure, name the Central Bank of Egypt as the source and MacroMasr as where you found it. Each series page suggests a citation for its own series.":
+    "للاستشهاد برقم، اذكر البنك المركزي المصري مصدرًا وماكرو مصر مكانًا وجدته فيه. وتقترح كل صفحة سلسلة صيغة استشهاد خاصة بها.",
+  "is Egypt's macroeconomy, named the way Egyptians say it: Masr is Egypt. Macro means the economy as a whole: prices, the pound, interest rates, money, debt and growth, rather than any one firm or household.":
+    "هو اقتصاد مصر الكلي. والماكرو هو الاقتصاد ككل: الأسعار والجنيه والفائدة والنقود والدين والنمو، لا شركة أو أسرة بعينها.",
   "Known limits": "حدود معروفة",
   "Some series stop earlier than CBE's own. Money and banking figures from the Excel archive end in mid-2023, where CBE stopped extending those files. The newer months of reserve money, M2, deposits, domestic credit, foreign assets and international reserves are read weekly from the files on CBE's SDDS page instead, as their own series, whose ids start EG.SDDS.":
     "بعض السلاسل تتوقف قبل سلاسل البنك المركزي نفسه. فأرقام النقود والبنوك من أرشيف Excel تنتهي في منتصف 2023، حيث توقف البنك عن تمديد تلك الملفات. أما الأشهر الأحدث من نقود الاحتياطي وM2 والودائع والائتمان المحلي والأصول الأجنبية والاحتياطيات الدولية فتُقرأ أسبوعيًا من الملفات المنشورة على صفحة SDDS لدى البنك المركزي، سلاسلَ مستقلة تبدأ معرّفاتها بـ EG.SDDS.",
@@ -1132,7 +1132,7 @@ const AR = {
   "How this is built, and what is not in it →": "كيف بُني هذا، وما ليس فيه ←",
 
   /* ---------- the pre-rendered bodies and chrome (prerender.py) ---------- */
-  "Search Miqyas": "ابحث في مقياس",
+  "Search MacroMasr": "ابحث في ماكرو مصر",
   "Results": "النتائج",
   "{v} as of {d}, from the Central Bank of Egypt. {n} readings covering {from} to {to}.":
     "{v} حتى {d}، من البنك المركزي المصري. عدد القراءات: {n}، من {from} إلى {to}.",
@@ -1164,7 +1164,7 @@ const AR = {
  * السلسلة. `t("Series|one row of a table")` keeps them apart and still falls
  * back to "Series" when there is no Arabic for it.
  *
- * Only a pipe with no space before it is a disambiguator. " | Miqyas" in a
+ * Only a pipe with no space before it is a disambiguator. " | MacroMasr" in a
  * page title is part of the text, and cutting there left every pre-rendered
  * English title ending in a space with the site's name gone.
  */

@@ -54,7 +54,7 @@ import sys
 import openpyxl
 
 # Bump whenever a change here changes what the parser writes. build_changes.py
-# reads it, so a re-read of the same CBE files is put down to Miqyas, not CBE.
+# reads it, so a re-read of the same CBE files is put down to MacroMasr, not CBE.
 PARSER_VERSION = "2026.10.11.2"
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -392,7 +392,7 @@ def build(spec: Spec, meta: dict, path: pathlib.Path) -> tuple[list[tuple], dict
             "freq": "M",
             "unit": spec.unit,
             "period_basis": "end",
-            "provenance": "Dated by Miqyas from the sheet's month labels",
+            "provenance": "Dated by MacroMasr from the sheet's month labels",
             "source_url": PAGE,
             "source_file": ("https://www.cbe.org.eg" + url) if url.startswith("/") else url,
         }

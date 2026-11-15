@@ -6,6 +6,6 @@
 # card, sitemap entry and feed link is built from this one line.
 url = "https://mogh0neim.github.io/egypt-macro/"
 
-# The GoatCounter site code, e.g. "miqyas" for miqyas.goatcounter.com.
+# The GoatCounter site code, e.g. "macromasr" for macromasr.goatcounter.com.
 # Empty means no visit is counted and no request goes to GoatCounter.
 goatcounter = ""

@@ -27,4 +27,4 @@ if not SITE_URL.endswith("/"):
 # else is refused rather than written into every page.
 GOATCOUNTER = str(_SETTINGS.get("goatcounter") or "").strip()
 if GOATCOUNTER and not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,62}", GOATCOUNTER):
-    raise SystemExit(f"site.toml: goatcounter must be a site code such as \"miqyas\", not {GOATCOUNTER!r}")
+    raise SystemExit(f"site.toml: goatcounter must be a site code such as \"macromasr\", not {GOATCOUNTER!r}")

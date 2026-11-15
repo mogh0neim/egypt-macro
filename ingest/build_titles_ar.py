@@ -83,7 +83,7 @@ def main() -> int:
             gaps.append((s["series_id"], s.get("title_en") or ""))
 
     OUT.write_text(json.dumps({
-        "note": ("Arabic titles written by Miqyas for the series CBE named only in English. "
+        "note": ("Arabic titles written by MacroMasr for the series CBE named only in English. "
                  "Composed by ingest/build_titles_ar.py from catalog/titles_ar_vocab.json. "
                  "These are not CBE's names and the site says so."),
         "count": len(written),

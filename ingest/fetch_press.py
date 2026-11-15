@@ -329,7 +329,7 @@ def main() -> int:
                 "unit": "USD million",
                 "derived": True,
                 "method": (
-                    "Parsed by Miqyas from the text of CBE's monthly reserves press "
+                    "Parsed by MacroMasr from the text of CBE's monthly reserves press "
                     "release. Each value is CBE's first figure for the month before, "
                     "dated by the day the release was published. CBE's current monthly "
                     "series, dated to the end of each month and revised since, is "

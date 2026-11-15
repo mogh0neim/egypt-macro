@@ -1,4 +1,4 @@
-/* Miqyas
+/* MacroMasr
  *
  * The design is built on the Nilometer -- the graduated marble column on
  * Rhoda Island that Cairo read the flood against for eleven centuries to
@@ -215,6 +215,12 @@ a:hover { color: var(--accent); }
   transform: translateY(0.02em);
 }
 .wordmark:hover .mark-ar { color: var(--accent); }
+/* MacroMasr is half as long again as the old name: on a small phone the two
+   halves step down a size so the header row still fits without a sideways scroll. */
+@media (max-width: 420px) {
+  .wordmark { font-size: 0.95rem; gap: 0.4rem; letter-spacing: 0.01em; }
+  .mark-ar { font-size: 0.98rem; }
+}
 
 .unofficial {
   font-family: var(--mono);
@@ -1961,7 +1967,7 @@ footer {
 }
 .result.rich .alt-en { grid-area: ar; font-size: 0.82rem; margin: 0; }
 .ours-note { margin: -0.5rem 0 0.9rem; }
-/* A tile's second line, when Miqyas holds nothing newer. */
+/* A tile's second line, when MacroMasr holds nothing newer. */
 .starter .asof i { display: block; font-style: normal; white-space: normal; }
 .starter .asof .stale { color: var(--gold); }
 /* Code reads left to right on both sites; its comments may be Arabic. */

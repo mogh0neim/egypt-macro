@@ -1,4 +1,4 @@
-"""Draw web/og.png, the card that shows when a Miqyas link is pasted anywhere.
+"""Draw web/og.png, the card that shows when a MacroMasr link is pasted anywhere.
 
 This is a development script, not part of the build. It needs Pillow, which
 deliberately is not in requirements.txt: the output is committed, so no
@@ -87,7 +87,7 @@ def main() -> int:
         )
         d.line(coords, fill=TEAL, width=4, joint="curve")
 
-    d.text((120, 92), "MIQYAS", font=font(104, bold=True), fill=MARBLE)
+    d.text((120, 92), "MACROMASR", font=font(104, bold=True), fill=MARBLE)
     d.text((122, 214), "Egypt's macroeconomic record", font=font(40), fill=MARBLE)
     d.text((122, 268), "Every number the Central Bank publishes, cleaned and searchable",
            font=font(26), fill=MUTED)
