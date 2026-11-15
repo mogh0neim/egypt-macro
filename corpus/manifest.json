@@ -1,15 +1,45 @@
 {
  "by_source": {
-  "News": 806,
+  "News": 808,
   "circulars": 405,
   "publications": 1403
  },
- "count": 2614,
+ "count": 2616,
  "date_range": [
   "2002-04-01",
-  "2026-11-06"
+  "2026-11-10"
  ],
  "documents": [
+  {
+   "bytes": null,
+   "categories": [
+    "Press Release",
+    "Remittances"
+   ],
+   "date": "2026-11-10",
+   "id": "4becabfb0f30ac66",
+   "is_file": false,
+   "local": null,
+   "sha256": null,
+   "source": "News",
+   "title": "Remittances from Egyptians Working Abroad Record USD 13 Billion During the First Quarter of FY 2026/2027",
+   "url": "/en/news-publications/news/2026/11/10/13/14/remittances-sep-2026"
+  },
+  {
+   "bytes": null,
+   "categories": [
+    "CPI Press Release",
+    "Monetary Policy"
+   ],
+   "date": "2026-11-09",
+   "id": "dddb98412c89fc96",
+   "is_file": false,
+   "local": null,
+   "sha256": null,
+   "source": "News",
+   "title": "CPI Press Release October 2026",
+   "url": "/en/news-publications/news/2026/11/09/08/58/cpi-press-release-october-2026"
+  },
   {
    "bytes": null,
    "categories": [
@@ -19644,13 +19674,13 @@
    "categories": [
     "Interviews, Talks and Speeches"
    ],
-   "changed_on": "2026-11-08",
+   "changed_on": "2026-11-15",
    "date": "2020-08-28",
    "id": "30c445285b9927b9",
    "is_file": true,
-   "last_modified": "Sun, 08 Nov 2026 11:19:53 GMT",
+   "last_modified": "Sun, 15 Nov 2026 12:06:18 GMT",
    "local": "corpus/files/30c445285b9927b9.html",
-   "sha256": "fdb69a2a64723d8c4482ee79fddc15eb47af88a1f4e03164aa7017369a1ec36f",
+   "sha256": "3681fb74506f6744852e8bd960b0b807f8e410a5260f64b6a0bd409f0933bb1e",
    "source": "News",
    "title": "Statement by the Central Bank Governor of Egypt at The African Development Bank Group Annual Meetings 2020",
    "url": "https://am.afdb.org/en/videos/2020-annual-meetings-governor-statement-egypt"

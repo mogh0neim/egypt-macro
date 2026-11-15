@@ -1,23 +1,23 @@
 {
  "documents": {
   "check_failed": 2,
-  "checked_at": "2026-11-08T11:45:57+00:00",
+  "checked_at": "2026-11-15T12:34:52+00:00",
   "files": 2118,
   "replaced": 1,
   "withdrawn": 1
  },
  "excel": {
   "check_failed": 0,
-  "checked_at": "2026-11-08T11:01:31+00:00",
+  "checked_at": "2026-11-15T11:45:23+00:00",
   "files": 981,
   "replaced": 0,
   "withdrawn": 3
  },
  "sdds": {
   "check_failed": 0,
-  "checked_at": "2026-11-08T11:03:55+00:00",
+  "checked_at": "2026-11-15T11:47:05+00:00",
   "files": 15,
-  "replaced": 11,
+  "replaced": 0,
   "withdrawn": 0
  }
 }

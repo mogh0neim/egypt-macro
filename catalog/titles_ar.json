@@ -1,5 +1,5 @@
 {
- "note": "Arabic titles written by Miqyas for the series CBE named only in English. Composed by ingest/build_titles_ar.py from catalog/titles_ar_vocab.json. These are not CBE's names and the site says so.",
+ "note": "Arabic titles written by MacroMasr for the series CBE named only in English. Composed by ingest/build_titles_ar.py from catalog/titles_ar_vocab.json. These are not CBE's names and the site says so.",
  "count": 233,
  "titles": {
   "EG.CONIA.IDX.180D": "أسعار كونيا المركّبة والرقم القياسي - سعر 180 يومًا",
