@@ -1,15 +1,46 @@
 {
  "by_source": {
   "News": 808,
-  "circulars": 405,
-  "publications": 1403
+  "circulars": 406,
+  "publications": 1414
  },
- "count": 2616,
+ "count": 2628,
  "date_range": [
   "2002-04-01",
-  "2026-11-10"
+  "2026-11-22"
  ],
  "documents": [
+  {
+   "bytes": 83793,
+   "categories": [
+    "Banking Practices"
+   ],
+   "date": "2026-11-22",
+   "id": "a7b08955a1fa016d",
+   "is_file": true,
+   "last_modified": "Sun, 22 Nov 2026 11:26:15 GMT",
+   "local": "corpus/files/a7b08955a1fa016d.pdf",
+   "sha256": "c2c734933a841ffda1bd3163395fe2f9e1e21cfbd36911d2619bf74fd2246719",
+   "source": "circulars",
+   "title": "Circular dated 22 November 2026 regarding digital registration of deposit certificates for companies\u2019 incorporation and capital increases through iscore",
+   "url": "/-/media/project/cbe/listing/circulars/2026/november/circular-dated-22-november-2026-regarding-digital-registration-of-deposit-certificates-for-companies.pdf"
+  },
+  {
+   "bytes": 576574,
+   "categories": [
+    "Monetary Policy",
+    "Monetary Policy Inflation Note"
+   ],
+   "date": "2026-11-16",
+   "id": "cf0f03864587eae9",
+   "is_file": true,
+   "last_modified": "Mon, 16 Nov 2026 10:59:42 GMT",
+   "local": "corpus/files/cf0f03864587eae9.pdf",
+   "sha256": "650e516e82c55dfebebf936373b6c27e877fba906a3ed76ff3513c118ce9995e",
+   "source": "publications",
+   "title": "Monetary Policy Inflation Note October 2026",
+   "url": "/-/media/project/cbe/listing/publication/2026/october/inf_oct-2026-en.pdf"
+  },
   {
    "bytes": null,
    "categories": [
@@ -737,6 +768,81 @@
    "url": "/en/news-publications/news/2026/09/07/07/24/net-international-reserves-at-the-end-of-august-2026"
   },
   {
+   "bytes": 7509733,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "date": "2026-09-05",
+   "id": "e11ddeb76962c24a",
+   "is_file": true,
+   "last_modified": "Thu, 19 Nov 2026 11:26:40 GMT",
+   "local": "corpus/files/e11ddeb76962c24a.pdf",
+   "sha256": "e1445bb90ed9396b54e39f48d88a046fbaf7ccdf7399d6dbcbca6a8f055d91c0",
+   "source": "publications",
+   "title": "Monthly Statistical Bulletin 354",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/bulletin/september/monthly-statistical-bulletin-354.pdf"
+  },
+  {
+   "bytes": 1319485,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "date": "2026-09-04",
+   "id": "f1cd418d33a08ba8",
+   "is_file": true,
+   "last_modified": "Thu, 19 Nov 2026 12:03:20 GMT",
+   "local": "corpus/files/f1cd418d33a08ba8.xlsx",
+   "sha256": "13716ec9fc253163c7a9a5a77cde4ceeda7d78d64624ba27acde6fec108e5d22",
+   "source": "publications",
+   "title": "Financial and Monetary Sector 354",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/financial/financial-and-monetary-sector-354.xlsx"
+  },
+  {
+   "bytes": 713055,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "date": "2026-09-03",
+   "id": "4892ac486c970367",
+   "is_file": true,
+   "last_modified": "Thu, 19 Nov 2026 13:00:49 GMT",
+   "local": "corpus/files/4892ac486c970367.xlsx",
+   "sha256": "7ec9898f2d086b1d15607990edc59a3938b9b50223d402c8ee311f902980d232",
+   "source": "publications",
+   "title": "External Sector 354",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/external/external-sector-354.xlsx"
+  },
+  {
+   "bytes": 109665,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "date": "2026-09-02",
+   "id": "25c3bf3721794357",
+   "is_file": true,
+   "last_modified": "Thu, 19 Nov 2026 11:13:51 GMT",
+   "local": "corpus/files/25c3bf3721794357.xlsx",
+   "sha256": "92b6f6f4028ae06b9a1a3d30a0f502d25310812986e02ef098e266284dcb02ab",
+   "source": "publications",
+   "title": "Fiscal Sector 354",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/fiscal/fiscal-sector-354.xlsx"
+  },
+  {
+   "bytes": 228152,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "date": "2026-09-01",
+   "id": "ef81462ff1a1d795",
+   "is_file": true,
+   "last_modified": "Thu, 19 Nov 2026 11:15:00 GMT",
+   "local": "corpus/files/ef81462ff1a1d795.xlsx",
+   "sha256": "77db8ec2f19382eb2b0965fbfee6a17cd9d1331e4bd3ae93898c6cfdb4e6bb88",
+   "source": "publications",
+   "title": "Real Sector 354",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/real/real-sector-354.xlsx"
+  },
+  {
    "bytes": null,
    "categories": [
     "Press Release"
@@ -916,6 +1022,21 @@
    "url": "/en/news-publications/news/2026/08/05/07/21/net-international-reserves-at-the-end-of-july-2026"
   },
   {
+   "bytes": 7613924,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "date": "2026-08-05",
+   "id": "80ef92d5fa151a13",
+   "is_file": true,
+   "last_modified": "Thu, 19 Nov 2026 11:26:58 GMT",
+   "local": "corpus/files/80ef92d5fa151a13.pdf",
+   "sha256": "0c85f00b3bf9dac19e9d150826b914d8dd3e90800b283b309241c16dfdb9372a",
+   "source": "publications",
+   "title": "Monthly Statistical Bulletin 353",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/bulletin/august/monthly-statistical-bulletin-353.pdf"
+  },
+  {
    "bytes": null,
    "categories": [
     "Press Release"
@@ -944,6 +1065,21 @@
    "url": "/en/news-publications/news/2026/08/04/10/03/governor-of-cbe-and-minister-of-higher-education-aug-4"
   },
   {
+   "bytes": 1319769,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "date": "2026-08-04",
+   "id": "ed7a0336eb1e2284",
+   "is_file": true,
+   "last_modified": "Thu, 19 Nov 2026 11:54:31 GMT",
+   "local": "corpus/files/ed7a0336eb1e2284.xlsx",
+   "sha256": "73c7ff58bb2d0cfdf3999a8da02bf68acdc2234fb6e067f1fb0a7f2e456e292c",
+   "source": "publications",
+   "title": "Financial and Monetary Sector 353",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/financial/financial-and-monetary-sector-353.xlsx"
+  },
+  {
    "bytes": 111294,
    "categories": [
     "Financial Inclusion"
@@ -957,6 +1093,21 @@
    "source": "circulars",
    "title": "Circular dated 4 August 2026 regarding financial inclusion data hub for companies",
    "url": "/-/media/project/cbe/listing/circulars/2026/august/circular-dated-4-august-2026-regarding-financial-inclusion-data-hub-for-companies.pdf"
+  },
+  {
+   "bytes": 707487,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "date": "2026-08-03",
+   "id": "ac3e82d8116243bb",
+   "is_file": true,
+   "last_modified": "Thu, 19 Nov 2026 12:21:56 GMT",
+   "local": "corpus/files/ac3e82d8116243bb.xlsx",
+   "sha256": "cd948c5b7d9c2282236f1d55471cfdf76968ac9cff68492a48ed977164c5e9da",
+   "source": "publications",
+   "title": "External Sector 353",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/external/external-sector-353.xlsx"
   },
   {
    "bytes": null,
@@ -974,6 +1125,21 @@
    "url": "/en/news-publications/news/2026/08/03/08/43/african-financial-stability-electronic-portal-3aug"
   },
   {
+   "bytes": 110130,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "date": "2026-08-02",
+   "id": "b11f14741c635134",
+   "is_file": true,
+   "last_modified": "Thu, 19 Nov 2026 11:08:38 GMT",
+   "local": "corpus/files/b11f14741c635134.xlsx",
+   "sha256": "9499e66df784a66eece95f6d2cfb0254ca94c3c74654d9537839430e8064c61f",
+   "source": "publications",
+   "title": "Fiscal Sector 353",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/fiscal/fiscal-sector-353.xlsx"
+  },
+  {
    "bytes": null,
    "categories": [
     "Press Release"
@@ -986,6 +1152,21 @@
    "source": "News",
    "title": "Central Bank of Egypt and Ministry of Foreign Affairs Launch \u201cUpdate Your KYC in Egypt\u201d Initiative for Egyptians Working Abroad in Cooperation with the National Bank of Egypt and Banque Misr",
    "url": "/en/news-publications/news/2026/08/02/11/32/cbe-and-ministry-of-foreign"
+  },
+  {
+   "bytes": 227292,
+   "categories": [
+    "Monthly Statistical Bulletins"
+   ],
+   "date": "2026-08-01",
+   "id": "3ccbaf02cc6f9c31",
+   "is_file": true,
+   "last_modified": "Thu, 19 Nov 2026 11:14:25 GMT",
+   "local": "corpus/files/3ccbaf02cc6f9c31.xlsx",
+   "sha256": "e23a50e5546b9d146a296e5017e393357c175c97c9c014e499d30d2998082c6b",
+   "source": "publications",
+   "title": "Real Sector 353",
+   "url": "/-/media/project/cbe/listing/monthly-statistical-bulletin/real/real-sector-353.xlsx"
   },
   {
    "bytes": null,
@@ -19670,17 +19851,17 @@
    "url": "/-/media/project/cbe/listing/publication/2020/monetary-policy-report-iii-2020.pdf"
   },
   {
-   "bytes": 71726,
+   "bytes": 71686,
    "categories": [
     "Interviews, Talks and Speeches"
    ],
-   "changed_on": "2026-11-15",
+   "changed_on": "2026-11-22",
    "date": "2020-08-28",
    "id": "30c445285b9927b9",
    "is_file": true,
-   "last_modified": "Sun, 15 Nov 2026 12:06:18 GMT",
+   "last_modified": "Sun, 22 Nov 2026 12:31:09 GMT",
    "local": "corpus/files/30c445285b9927b9.html",
-   "sha256": "3681fb74506f6744852e8bd960b0b807f8e410a5260f64b6a0bd409f0933bb1e",
+   "sha256": "f05f44b3202df169445714773f419547bf1641bd2bf7ce382ebab8b01e10d587",
    "source": "News",
    "title": "Statement by the Central Bank Governor of Egypt at The African Development Bank Group Annual Meetings 2020",
    "url": "https://am.afdb.org/en/videos/2020-annual-meetings-governor-statement-egypt"
@@ -28295,7 +28476,7 @@
    "date": "2016-11-03",
    "id": "cb30307d6278d423",
    "is_file": true,
-   "last_modified": "Thu, 19 May 2022 03:38:11 GMT",
+   "last_modified": "Tue, 19 Apr 2022 09:40:46 GMT",
    "local": "corpus/files/cb30307d6278d423.pdf",
    "sha256": "d95970de63a523c8537f6ab52a26e7b5518c67f19cc7298764f03d832774b5da",
    "source": "circulars",
@@ -30778,7 +30959,7 @@
    "date": "2015-08-30",
    "id": "709192694474e9ec",
    "is_file": true,
-   "last_modified": "Thu, 19 May 2022 03:37:21 GMT",
+   "last_modified": "Tue, 19 Apr 2022 09:42:19 GMT",
    "local": "corpus/files/709192694474e9ec.pdf",
    "sha256": "bcc7b17d2d986d2082ec72638bc910b1f7c71046ae6cef2602a7dcefae5e6067",
    "source": "circulars",
@@ -32850,7 +33031,7 @@
    "date": "2014-06-25",
    "id": "352f15f11ec56925",
    "is_file": true,
-   "last_modified": "Thu, 19 May 2022 07:54:06 GMT",
+   "last_modified": "Fri, 06 May 2022 13:51:20 GMT",
    "local": "corpus/files/352f15f11ec56925.pdf",
    "sha256": "2167ac311153d1c7a7297811ff7b427e9fa102fa7932a49a191e411ac7741a9f",
    "source": "publications",

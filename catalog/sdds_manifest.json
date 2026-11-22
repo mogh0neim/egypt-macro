@@ -143,15 +143,15 @@
    "url": "/-/media/project/cbe/listing/sdds/sdds-files/iv_memo_items_sdds-oct-2026.xlsx"
   },
   {
-   "bytes": 126286,
-   "changed_on": "2026-11-08",
+   "bytes": 124944,
+   "changed_on": "2026-11-22",
    "key": "reserve-money-m0",
-   "last_modified": "Thu, 05 Nov 2026 11:13:32 GMT",
+   "last_modified": "Sun, 22 Nov 2026 10:25:11 GMT",
    "local": "data/raw/sdds/reserve-money-m0.xlsx",
    "section": "Domestic Liquidity (M2) & Reserve Money (MO)",
-   "sha256": "11712aad64a3f924a71745bc13bae9a1c3392f1d883a587bd4fab4fcfad7cb21",
+   "sha256": "ae704302e06d2e8dd520e2d4080b0f4ac031b0b3b602693bc05125a66980c4cd",
    "title": "Reserve Money (M0)",
-   "url": "/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-sept-2026.xlsx"
+   "url": "/-/media/project/cbe/listing/sdds/sdds-files/reserve-money-(m0)-october-2026-preliminary.xlsx"
   },
   {
    "bytes": 151812,
